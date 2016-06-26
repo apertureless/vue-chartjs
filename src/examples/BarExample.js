@@ -1,8 +1,6 @@
 import BarChart from '../BaseCharts/Bar'
 
 export default BarChart.extend({
-  props: ['player', 'opponent'],
-
   ready () {
     this.render({
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
