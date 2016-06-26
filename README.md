@@ -6,6 +6,8 @@
 
 You need to import the base chart class and extend it. This gives much more flexibility when working with different data. You can pass the data over props or vue-resource.
 
+Just create your own component.
+
 ```javascript
 // CommitChart.js
 import BarChart from '../BaseCharts/Bar'
@@ -38,6 +40,7 @@ import CommitChart from 'path/to/component/CommitChart'
 You can overwrite the default chart options. Just pass the options object as a second paramenter to the render method
 
 ```javascript
+// MonthlyIncome.js
 import LineChart from '../BaseCharts/Line'
 
 export default LineChart.extend({
@@ -46,6 +49,23 @@ export default LineChart.extend({
     this.render(this.data, this.options)
   }
 })
+```
+
+Use it in your vue app
+
+```javascript
+import MonthlyIncome from 'path/to/component/MonthlyIncome'
+
+<template>
+  <monthly-income :data={....} />
+</template>
+
+<script>
+export default {
+  components: { MonthlyIncome },
+  ....
+}
+</script>
 ```
 
 ## Available ChartJ
