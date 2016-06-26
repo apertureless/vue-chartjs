@@ -12,6 +12,7 @@ import BarChart from '../BaseCharts/Bar'
 
 export default BarChart.extend({
   ready () {
+    // Overwriting base render method with actual data.
     this.render({
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       datasets: [
@@ -32,6 +33,20 @@ Then simply import and use your own extended component and use it like a normal 
 import CommitChart from 'path/to/component/CommitChart'
 ```
 
+## Another Example with options
+
+You can overwrite the default chart options. Just pass the options object as a second paramenter to the render method
+
+```javascript
+import LineChart from '../BaseCharts/Line'
+
+export default LineChart.extend({
+  props: [data, options],
+  ready () {
+    this.render(this.data, this.options)
+  }
+})
+```
 
 ## Available ChartJ
 
