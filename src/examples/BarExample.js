@@ -1,5 +1,4 @@
-// import BarChart from './BaseCharts/Bar'
-import BarChart from './BaseCharts/Line'
+import BarChart from '../BaseCharts/Bar'
 
 export default BarChart.extend({
   props: ['player', 'opponent'],

@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    <test-chart :width="100" :height="200" :player={wins:'12'} :opponent={wins:'23'}></test-chart>
+    <bar-example :width="100" :height="200" :player={wins:'12'} :opponent={wins:'23'}></bar-example>
   </div>
 </template>
 
 <script>
-  import TestChart from './components/TestChart'
+  import BarExample from './examples/BarExample'
 
   export default {
-    components: { TestChart }
+    components: { BarExample }
   }
 </script>
 
