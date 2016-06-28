@@ -78,6 +78,18 @@ export default {
 
 ![Bar](src/assets/line.png)
 
+## Todo
+
+- [x] Implement Bar Chart
+- [x] Implement Line Chart
+- [ ] Implement Radar Chart
+- [ ] Implement Polar Area Chart
+- [ ] Implement Pie Chart
+- [ ] Implement Doughnut Chart
+- [ ] Make npm module
+- [ ] Add tests
+
+
 ## Build Setup
 
 ``` bash
