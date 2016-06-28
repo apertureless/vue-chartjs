@@ -68,7 +68,7 @@ export default {
 </script>
 ```
 
-## Available ChartJ
+## Available Charts
 
 ### Bar Chart
 
