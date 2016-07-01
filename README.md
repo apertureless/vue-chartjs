@@ -76,7 +76,11 @@ export default {
 
 ### Line Chart
 
-![Bar](src/assets/line.png)
+![Line](src/assets/line.png)
+
+### Doughnut
+
+![Doughnut](src/assets/doughnut.png)
 
 ## Todo
 
@@ -85,7 +89,7 @@ export default {
 - [ ] Implement Radar Chart
 - [ ] Implement Polar Area Chart
 - [ ] Implement Pie Chart
-- [ ] Implement Doughnut Chart
+- [x] Implement Doughnut Chart
 - [ ] Make npm module
 - [ ] Add tests
 

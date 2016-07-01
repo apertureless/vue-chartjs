@@ -1,16 +1,18 @@
 <template>
   <div class="container">
-    <bar-example :width="100" :height="200" :player={wins:'12'} :opponent={wins:'23'}></bar-example>
+    <bar-example></bar-example>
     <line-example></line-example>
+    <doughnut-example></doughnut-example>
   </div>
 </template>
 
 <script>
   import BarExample from './examples/BarExample'
   import LineExample from './examples/LineExample'
+  import DoughnutExample from './examples/DoughnutExample'
 
   export default {
-    components: { BarExample, LineExample }
+    components: { BarExample, LineExample, DoughnutExample }
   }
 </script>
 
