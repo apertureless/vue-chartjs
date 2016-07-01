@@ -82,13 +82,17 @@ export default {
 
 ![Doughnut](src/assets/doughnut.png)
 
+### Pie
+
+![Pie](src/assets/pie.png)
+
 ## Todo
 
 - [x] Implement Bar Chart
 - [x] Implement Line Chart
 - [ ] Implement Radar Chart
 - [ ] Implement Polar Area Chart
-- [ ] Implement Pie Chart
+- [x] Implement Pie Chart
 - [x] Implement Doughnut Chart
 - [ ] Make npm module
 - [ ] Add tests

@@ -3,6 +3,7 @@
     <bar-example></bar-example>
     <line-example></line-example>
     <doughnut-example></doughnut-example>
+    <pie-example></pie-example>
   </div>
 </template>
 
@@ -10,9 +11,10 @@
   import BarExample from './examples/BarExample'
   import LineExample from './examples/LineExample'
   import DoughnutExample from './examples/DoughnutExample'
+  import PieExample from './examples/PieExample'
 
   export default {
-    components: { BarExample, LineExample, DoughnutExample }
+    components: { BarExample, LineExample, DoughnutExample, PieExample }
   }
 </script>
 
