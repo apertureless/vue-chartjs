@@ -90,12 +90,16 @@ export default {
 
 ![Pie](src/assets/radar.png)
 
+### Polar Area
+
+![Pie](src/assets/polar.png)
+
 ## Todo
 
 - [x] ~~Implement Bar Chart~~
 - [x] ~~Implement Line Chart~~
 - [x] ~~Implement Radar Chart~~
-- [ ] Implement Polar Area Chart
+- [x] ~~Implement Polar Area Chart~~
 - [x] ~~Implement Pie Chart~~
 - [x] ~~Implement Doughnut Chart~~
 - [ ] Make npm module
