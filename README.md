@@ -86,14 +86,18 @@ export default {
 
 ![Pie](src/assets/pie.png)
 
+### Radar
+
+![Pie](src/assets/radar.png)
+
 ## Todo
 
-- [x] Implement Bar Chart
-- [x] Implement Line Chart
-- [ ] Implement Radar Chart
+- [x] ~~Implement Bar Chart~~
+- [x] ~~Implement Line Chart~~
+- [x] ~~Implement Radar Chart~~
 - [ ] Implement Polar Area Chart
-- [x] Implement Pie Chart
-- [x] Implement Doughnut Chart
+- [x] ~~Implement Pie Chart~~
+- [x] ~~Implement Doughnut Chart~~
 - [ ] Make npm module
 - [ ] Add tests
 

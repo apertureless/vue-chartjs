@@ -4,6 +4,7 @@
     <line-example></line-example>
     <doughnut-example></doughnut-example>
     <pie-example></pie-example>
+    <radar-example></radar-example>
   </div>
 </template>
 
@@ -12,9 +13,10 @@
   import LineExample from './examples/LineExample'
   import DoughnutExample from './examples/DoughnutExample'
   import PieExample from './examples/PieExample'
+  import RadarExample from './examples/RadarExample'
 
   export default {
-    components: { BarExample, LineExample, DoughnutExample, PieExample }
+    components: { BarExample, LineExample, DoughnutExample, PieExample, RadarExample }
   }
 </script>
 
