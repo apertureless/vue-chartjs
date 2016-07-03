@@ -3,6 +3,16 @@
   "version": "1.0.0",
   "description": "Vue wrapper for chart.js",
   "author": "Jakub Juszczak <jakub@nextindex.de>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:apertureless/vue-chartjs.git"
+  },
+  "keywords": [
+    "ChartJs",
+    "Vue",
+    "Visualisation",
+    "Wrapper"
+  ],
   "private": true,
   "main": "src/index.js",
   "scripts": {
