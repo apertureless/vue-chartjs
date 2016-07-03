@@ -4,6 +4,7 @@
   "description": "Vue wrapper for chart.js",
   "author": "Jakub Juszczak <jakub@nextindex.de>",
   "private": true,
+  "main": "src/index.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
