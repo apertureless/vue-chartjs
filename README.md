@@ -14,7 +14,8 @@ You can import the whole package or each module individual.
 
 ```javascript
 import VueCharts from 'vue-chartjs'
-import { Bar } from 'vue-chartjs'
+import { Bar, Line } from 'vue-chartjs'
+```
 
 Just create your own component.
 
