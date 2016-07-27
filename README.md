@@ -1,5 +1,7 @@
 # Vue-ChartJs
 
+[![npm version](https://badge.fury.io/js/vue-chartjs.svg)](https://badge.fury.io/js/vue-chartjs)
+
 > VueJS wrapper for ChartJs
 
 ## Install
