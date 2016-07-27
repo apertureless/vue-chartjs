@@ -2,15 +2,25 @@
 
 > VueJS wrapper for ChartJs
 
+## Install
+
+Simply run `npm install vue-chartjs`
+
 ## How to use
 
 You need to import the base chart class and extend it. This gives much more flexibility when working with different data. You can pass the data over props or vue-resource.
+
+You can import the whole package or each module individual.
+
+```javascript
+import VueCharts from 'vue-chartjs'
+import { Bar } from 'vue-chartjs'
 
 Just create your own component.
 
 ```javascript
 // CommitChart.js
-import BarChart from '../BaseCharts/Bar'
+import { Bar } from 'vue-chartjs'
 
 export default BarChart.extend({
   ready () {
@@ -41,7 +51,7 @@ You can overwrite the default chart options. Just pass the options object as a s
 
 ```javascript
 // MonthlyIncome.js
-import LineChart from '../BaseCharts/Line'
+import { Line } from 'vue-chartjs'
 
 export default LineChart.extend({
   props: [data, options],
@@ -102,7 +112,7 @@ export default {
 - [x] ~~Implement Polar Area Chart~~
 - [x] ~~Implement Pie Chart~~
 - [x] ~~Implement Doughnut Chart~~
-- [ ] Make npm module
+- [x] ~~Make npm module~~
 - [ ] Add tests
 
 
