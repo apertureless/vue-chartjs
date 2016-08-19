@@ -55,7 +55,7 @@ export default Vue.extend({
       this._chart.generateLegend()
     }
   },
-  destroy () {
+  beforeDestroy () {
     this._chart.destroy()
   }
 })
