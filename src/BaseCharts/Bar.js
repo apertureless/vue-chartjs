@@ -45,14 +45,17 @@ export default Vue.extend({
 
   methods: {
     render (data, options = this.options) {
-      const chart = new Chart(
+      this._chart = new Chart(
         this.$els.canvas.getContext('2d'), {
           type: 'bar',
           data: data,
           options: options
         }
       )
-      chart.generateLegend()
+      this._chart.generateLegend()
     }
+  },
+  destroy () {
+    this._chart.destroy()
   }
 })
