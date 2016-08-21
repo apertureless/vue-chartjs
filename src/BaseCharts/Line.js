@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Chart from 'chart.js'
+import { mergeOptions } from '../helpers/options'
 
 export default Vue.extend({
   template: `
@@ -21,7 +22,7 @@ export default Vue.extend({
 
   data () {
     return {
-      options: {
+      defaultOptions: {
         scales: {
           yAxes: [{
             ticks: {
@@ -42,12 +43,14 @@ export default Vue.extend({
   },
 
   methods: {
-    render (data, options = this.options) {
+    render (data, options) {
+      let chartOptions = mergeOptions(this.defaultOptions, options)
+
       this._chart = new Chart(
         this.$els.canvas.getContext('2d'), {
           type: 'line',
           data: data,
-          options: options
+          options: chartOptions
         }
       )
       this._chart.generateLegend()
