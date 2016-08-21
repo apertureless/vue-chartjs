@@ -1,6 +1,5 @@
-export function optionExtend (obj, src) {
-  Object.keys(src).forEach((key) => {
-    obj[key] = src[key]
-  })
-  return obj
+import merge from 'lodash/fp/merge'
+
+export function mergeOptions (obj, src) {
+  return merge(obj, src)
 }
