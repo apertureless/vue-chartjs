@@ -1,8 +1,11 @@
 # Change Log
 
-## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
+## [1.1.0](https://github.com/apertureless/vue-chartjs/tree/1.1.0) (2016-08-21)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.0.3...1.1.0)
 
-[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.0.3...HEAD)
+**Implemented enhancements:**
+
+- Use Vue.util.mergeOptions to merge default options with user's options [\#5](https://github.com/apertureless/vue-chartjs/issues/5)
 
 **Merged pull requests:**
 
