@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
+
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.0.3...HEAD)
+
+**Merged pull requests:**
+
+- Feature/merge options \#5 [\#6](https://github.com/apertureless/vue-chartjs/pull/6) ([apertureless](https://github.com/apertureless))
+
 ## [1.0.3](https://github.com/apertureless/vue-chartjs/tree/1.0.3) (2016-08-20)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.0.2...1.0.3)
 
