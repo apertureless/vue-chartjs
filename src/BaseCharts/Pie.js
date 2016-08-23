@@ -28,7 +28,7 @@ export default Vue.extend({
   },
 
   methods: {
-    render (data, options) {
+    renderChart (data, options) {
       let chartOptions = mergeOptions(this.defaultOptions, options)
 
       this._chart = new Chart(
