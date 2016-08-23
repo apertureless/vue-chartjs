@@ -8,7 +8,7 @@
 
 ## Install
 
-Simply run `npm install vue-chartjs`
+Simply run `npm install vue-chartjs@next`
 
 ## How to use
 
