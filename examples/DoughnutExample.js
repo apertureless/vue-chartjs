@@ -1,8 +1,8 @@
 import DoughnutChart from '../BaseCharts/Doughnut'
 
 export default DoughnutChart.extend({
-  ready () {
-    this.render({
+  mounted () {
+    this.renderChart({
       labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
       datasets: [
         {
