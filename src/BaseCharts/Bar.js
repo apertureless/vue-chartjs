@@ -5,7 +5,7 @@ import { mergeOptions } from '../helpers/options'
 export default Vue.extend({
   template: `
     <div>
-      <canvas id="bar-chart" width=width height=height v-el:canvas></canvas>
+      <canvas id="bar-chart" width=width height=height ref="canvas"></canvas>
     </div>
   `,
 
@@ -49,7 +49,7 @@ export default Vue.extend({
       let chartOptions = mergeOptions(this.defaultOptions, options)
 
       this._chart = new Chart(
-        this.$els.canvas.getContext('2d'), {
+        this.$refs.canvas.getContext('2d'), {
           type: 'bar',
           data: data,
           options: chartOptions
