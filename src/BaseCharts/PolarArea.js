@@ -5,7 +5,7 @@ import { mergeOptions } from '../helpers/options'
 export default Vue.extend({
   template: `
     <div>
-      <canvas id="polar-chart" width=width height=height v-el:canvas></canvas>
+      <canvas id="polar-chart" width={{width}} height={{height}} v-el:canvas></canvas>
     </div>
   `,
 
