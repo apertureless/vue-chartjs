@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.1.2](https://github.com/apertureless/vue-chartjs/tree/1.1.2) (2016-09-07)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.1...1.1.2)
+
+**Implemented enhancements:**
+
+- Change name of the render method to ensure compatiblity with Vue 2.0 [\#4](https://github.com/apertureless/vue-chartjs/issues/4)
+
 ## [1.1.1](https://github.com/apertureless/vue-chartjs/tree/1.1.1) (2016-08-23)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.0...1.1.1)
 
