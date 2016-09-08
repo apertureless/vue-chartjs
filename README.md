@@ -107,16 +107,9 @@ export default {
 
 ![Pie](assets/polar.png)
 
-## Todo
+### Bubble
 
-- [x] ~~Implement Bar Chart~~
-- [x] ~~Implement Line Chart~~
-- [x] ~~Implement Radar Chart~~
-- [x] ~~Implement Polar Area Chart~~
-- [x] ~~Implement Pie Chart~~
-- [x] ~~Implement Doughnut Chart~~
-- [x] ~~Make npm module~~
-- [ ] Add tests
+![Bubble](assets/bubble.png)
 
 
 ## Build Setup
