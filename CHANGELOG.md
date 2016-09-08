@@ -1,5 +1,20 @@
 # Change Log
 
+## [v1.1.3](https://github.com/apertureless/vue-chartjs/tree/v1.1.3) (2016-09-08)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.2...v1.1.3)
+
+**Implemented enhancements:**
+
+- Add test [\#1](https://github.com/apertureless/vue-chartjs/issues/1)
+
+**Fixed bugs:**
+
+- Passing chart size \(width / height\) as prop doesnt resize the chart [\#8](https://github.com/apertureless/vue-chartjs/issues/8)
+
+**Merged pull requests:**
+
+- Added bubble chart type [\#9](https://github.com/apertureless/vue-chartjs/pull/9) ([jcalonso](https://github.com/jcalonso))
+
 ## [1.1.2](https://github.com/apertureless/vue-chartjs/tree/1.1.2) (2016-09-07)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.1...1.1.2)
 
