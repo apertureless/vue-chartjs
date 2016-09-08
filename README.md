@@ -1,6 +1,6 @@
 # Vue-ChartJs
 
-[![npm version](https://badge.fury.io/js/vue-chartjs.svg)](https://badge.fury.io/js/vue-chartjs) ![npm dependencies](https://david-dm.org/apertureless/vue-chartjs.svg)
+[![npm version](https://badge.fury.io/js/vue-chartjs.svg)](https://badge.fury.io/js/vue-chartjs) ![npm dependencies](https://david-dm.org/apertureless/vue-chartjs.svg) [![codecov](https://codecov.io/gh/apertureless/vue-chartjs/branch/master/graph/badge.svg)](https://codecov.io/gh/apertureless/vue-chartjs) [![Build Status](https://travis-ci.org/apertureless/vue-chartjs.svg?branch=master)](https://travis-ci.org/apertureless/vue-chartjs)
 
 > VueJS wrapper for ChartJs
 
