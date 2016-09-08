@@ -6,6 +6,7 @@
     <pie-example></pie-example>
     <radar-example></radar-example>
     <polar-area-example></polar-area-example>
+    <bubble-example></bubble-example>
   </div>
 </template>
 
@@ -16,9 +17,18 @@
   import PieExample from './examples/PieExample'
   import RadarExample from './examples/RadarExample'
   import PolarAreaExample from './examples/PolarAreaExample'
+  import BubbleExample from './examples/BubbleExample'
 
   export default {
-    components: { BarExample, LineExample, DoughnutExample, PieExample, RadarExample, PolarAreaExample }
+    components: {
+      BarExample,
+      LineExample,
+      DoughnutExample,
+      PieExample,
+      RadarExample,
+      PolarAreaExample,
+      BubbleExample
+    }
   }
 </script>
 

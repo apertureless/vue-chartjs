@@ -111,7 +111,6 @@ export default {
 
 ![Bubble](assets/bubble.png)
 
-
 ## Build Setup
 
 ``` bash
