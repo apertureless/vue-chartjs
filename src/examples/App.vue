@@ -11,13 +11,13 @@
 </template>
 
 <script>
-  import BarExample from './examples/BarExample'
-  import LineExample from './examples/LineExample'
-  import DoughnutExample from './examples/DoughnutExample'
-  import PieExample from './examples/PieExample'
-  import RadarExample from './examples/RadarExample'
-  import PolarAreaExample from './examples/PolarAreaExample'
-  import BubbleExample from './examples/BubbleExample'
+  import BarExample from './BarExample'
+  import LineExample from './LineExample'
+  import DoughnutExample from './DoughnutExample'
+  import PieExample from './PieExample'
+  import RadarExample from './RadarExample'
+  import PolarAreaExample from './PolarAreaExample'
+  import BubbleExample from './BubbleExample'
 
   export default {
     components: {
