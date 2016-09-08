@@ -4,6 +4,7 @@ import Line from './BaseCharts/Line'
 import Pie from './BaseCharts/Pie'
 import PolarArea from './BaseCharts/PolarArea'
 import Radar from './BaseCharts/Radar'
+import Bubble from './BaseCharts/Bubble'
 
 const VueCharts = {
   Bar,
@@ -11,7 +12,8 @@ const VueCharts = {
   Line,
   Pie,
   PolarArea,
-  Radar
+  Radar,
+  Bubble
 }
 
 module.exports = VueCharts
