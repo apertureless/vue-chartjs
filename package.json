@@ -1,6 +1,6 @@
 {
   "name": "vue-chartjs",
-  "version": "2.0.0-alpha",
+  "version": "2.1.0",
   "description": "Vue wrapper for chart.js",
   "author": "Jakub Juszczak <jakub@nextindex.de>",
   "repository": {
@@ -20,8 +20,9 @@
     "build": "node build/build.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
-    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
+    "test": "npm run unit",
+    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "prepublish": "node build/build.js"
   },
   "dependencies": {
     "babel-runtime": "^6.11.6",
