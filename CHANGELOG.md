@@ -1,5 +1,33 @@
 # Change Log
 
+## [v.2.1.0](https://github.com/apertureless/vue-chartjs/tree/v.2.1.0) (2016-09-23)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v1.1.3...v.2.1.0)
+
+## [v1.1.3](https://github.com/apertureless/vue-chartjs/tree/v1.1.3) (2016-09-08)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.2...v1.1.3)
+
+**Implemented enhancements:**
+
+- Add test [\#1](https://github.com/apertureless/vue-chartjs/issues/1)
+
+**Fixed bugs:**
+
+- Passing chart size \(width / height\) as prop doesnt resize the chart [\#8](https://github.com/apertureless/vue-chartjs/issues/8)
+
+**Merged pull requests:**
+
+- Added bubble chart type [\#9](https://github.com/apertureless/vue-chartjs/pull/9) ([jcalonso](https://github.com/jcalonso))
+
+## [1.1.2](https://github.com/apertureless/vue-chartjs/tree/1.1.2) (2016-09-07)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.1...1.1.2)
+
+**Implemented enhancements:**
+
+- Change name of the render method to ensure compatiblity with Vue 2.0 [\#4](https://github.com/apertureless/vue-chartjs/issues/4)
+
+## [1.1.1](https://github.com/apertureless/vue-chartjs/tree/1.1.1) (2016-08-23)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.0...1.1.1)
+
 ## [1.1.0](https://github.com/apertureless/vue-chartjs/tree/1.1.0) (2016-08-21)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.0.3...1.1.0)
 
