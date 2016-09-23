@@ -5,11 +5,15 @@ import { mergeOptions } from '../helpers/options'
 export default Vue.extend({
   template: `
     <div>
-      <canvas id="bar-chart" width=width height=height ref="canvas"></canvas>
+      <canvas :id="chartId" :width="width" :height="height" ref="canvas"></canvas>
     </div>
   `,
 
   props: {
+    chartId: {
+      default: 'bubble-chart',
+      type: String
+    },
     width: {
       default: 400,
       type: Number

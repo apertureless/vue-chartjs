@@ -5,11 +5,15 @@ import { mergeOptions } from '../helpers/options'
 export default Vue.extend({
   template: `
     <div>
-      <canvas id="radar-chart" width=width height=height ref="canvas"></canvas>
+      <canvas :id="chartId" :width="width" :height="height" ref="canvas"></canvas>
     </div>
   `,
 
   props: {
+    chartId: {
+      default: 'radar-chart',
+      type: String
+    },
     width: {
       default: 400,
       type: Number
