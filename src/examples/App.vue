@@ -6,6 +6,7 @@
     <pie-example></pie-example>
     <radar-example></radar-example>
     <polar-area-example></polar-area-example>
+    <bubble-example></bubble-example>
   </div>
 </template>
 
