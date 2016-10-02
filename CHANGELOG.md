@@ -1,9 +1,10 @@
 # Change Log
 
+## [v2.1.1](https://github.com/apertureless/vue-chartjs/tree/v2.1.1) (2016-10-02)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v.2.1.0...v2.1.1)
 
 ## [v.2.1.0](https://github.com/apertureless/vue-chartjs/tree/v.2.1.0) (2016-09-23)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v1.1.3...v.2.1.0)
-
 
 ## [v1.1.3](https://github.com/apertureless/vue-chartjs/tree/v1.1.3) (2016-09-08)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.2...v1.1.3)
