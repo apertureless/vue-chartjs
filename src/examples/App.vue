@@ -20,9 +20,20 @@
   import PolarAreaExample from './PolarAreaExample'
   import BubbleExample from './BubbleExample'
   import ReactiveExample from './ReactiveExample'
+  import ReactivePropExample from './ReactivePropExample'
 
   export default {
-    components: { BarExample, LineExample, DoughnutExample, PieExample, RadarExample, PolarAreaExample, BubbleExample, ReactiveExample }
+    components: {
+      BarExample,
+      LineExample,
+      DoughnutExample,
+      PieExample,
+      RadarExample,
+      PolarAreaExample,
+      BubbleExample,
+      ReactiveExample,
+      ReactivePropExample
+    }
   }
 </script>
 
