@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <bar-example></bar-example>
+    <reactive-example></reactive-example>
     <line-example></line-example>
     <doughnut-example></doughnut-example>
     <pie-example></pie-example>
@@ -18,9 +19,10 @@
   import RadarExample from './RadarExample'
   import PolarAreaExample from './PolarAreaExample'
   import BubbleExample from './BubbleExample'
+  import ReactiveExample from './ReactiveExample'
 
   export default {
-    components: { BarExample, LineExample, DoughnutExample, PieExample, RadarExample, PolarAreaExample, BubbleExample }
+    components: { BarExample, LineExample, DoughnutExample, PieExample, RadarExample, PolarAreaExample, BubbleExample, ReactiveExample }
   }
 </script>
 
