@@ -4,11 +4,18 @@
 
 > VueJS wrapper for ChartJs
 
-# 🚧 VUE 2.0 WIP ⚠
+### Compatibility
+
+- v1 later
+-- Vue.js 1.x
+- v2 later
+-- Vue.js 2.x
+
+If you're looking for v1 check this [branch](https://github.com/apertureless/vue-chartjs/tree/release/1.1.3)
 
 ## Install
 
-Simply run `npm install vue-chartjs@next`
+Simply run `npm install vue-chartjs`
 
 ## How to use
 
