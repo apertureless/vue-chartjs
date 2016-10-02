@@ -36,7 +36,7 @@ Just create your own component.
 // CommitChart.js
 import { Bar } from 'vue-chartjs'
 
-export default BarChart.extend({
+export default Bar.extend({
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart({
@@ -67,7 +67,7 @@ You can overwrite the default chart options. Just pass the options object as a s
 // MonthlyIncome.js
 import { Line } from 'vue-chartjs'
 
-export default LineChart.extend({
+export default Line.extend({
   props: [data, options],
   mounted () {
     this.renderChart(this.data, this.options)
@@ -90,6 +90,30 @@ export default {
   ....
 }
 </script>
+```
+
+## Reactivity
+
+Chart.js does not update or re-render the chart if new data is passed.
+However you can simply implement this by your own or use one of the two mixins which are included.
+
+- `reactiveProp`
+- `reactiveData`
+
+The mixins automatically create `chartData` as a prop or data. And add a watcher. If data has changed, the chart will update.
+
+```javascript
+// MonthlyIncome.js
+import { Line, reactiveProp } from 'vue-chartjs'
+
+export default Line.extend({
+  mixins: [reactiveProp]
+  props: [chartData, options],
+  mounted () {
+    this.renderChart(this.chartData, this.options)
+  }
+})
+
 ```
 
 ## Available Charts
