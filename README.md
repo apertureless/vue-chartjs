@@ -4,9 +4,11 @@
 
 > VueJS wrapper for ChartJs
 
+# 🚧 VUE 2.0 WIP ⚠
+
 ## Install
 
-Simply run `npm install vue-chartjs`
+Simply run `npm install vue-chartjs@next`
 
 ## How to use
 
@@ -26,9 +28,9 @@ Just create your own component.
 import { Bar } from 'vue-chartjs'
 
 export default BarChart.extend({
-  ready () {
+  mounted () {
     // Overwriting base render method with actual data.
-    this.render({
+    this.renderChart({
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       datasets: [
         {
@@ -58,8 +60,8 @@ import { Line } from 'vue-chartjs'
 
 export default LineChart.extend({
   props: [data, options],
-  ready () {
-    this.render(this.data, this.options)
+  mounted () {
+    this.renderChart(this.data, this.options)
   }
 })
 ```

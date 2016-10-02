@@ -1,8 +1,8 @@
 import BubbleChart from '../BaseCharts/Bubble'
 
 export default BubbleChart.extend({
-  ready () {
-    this.render({
+  mounted () {
+    this.renderChart({
       datasets: [
         {
           label: 'Data One',

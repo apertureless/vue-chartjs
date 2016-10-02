@@ -1,8 +1,8 @@
 import PieChart from '../BaseCharts/Pie'
 
 export default PieChart.extend({
-  ready () {
-    this.render({
+  mounted () {
+    this.renderChart({
       labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
       datasets: [
         {

@@ -1,8 +1,8 @@
 import PolarAreaChart from '../BaseCharts/PolarArea'
 
 export default PolarAreaChart.extend({
-  ready () {
-    this.render({
+  mounted () {
+    this.renderChart({
       labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
       datasets: [
         {

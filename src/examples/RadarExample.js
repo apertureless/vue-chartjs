@@ -1,8 +1,8 @@
 import RadarChart from '../BaseCharts/Radar'
 
 export default RadarChart.extend({
-  ready () {
-    this.render({
+  mounted () {
+    this.renderChart({
       labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
       datasets: [
         {

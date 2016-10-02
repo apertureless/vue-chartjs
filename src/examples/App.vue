@@ -20,15 +20,7 @@
   import BubbleExample from './BubbleExample'
 
   export default {
-    components: {
-      BarExample,
-      LineExample,
-      DoughnutExample,
-      PieExample,
-      RadarExample,
-      PolarAreaExample,
-      BubbleExample
-    }
+    components: { BarExample, LineExample, DoughnutExample, PieExample, RadarExample, PolarAreaExample, BubbleExample }
   }
 </script>
 

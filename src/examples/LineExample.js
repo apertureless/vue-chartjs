@@ -1,8 +1,8 @@
 import LineChart from '../BaseCharts/Line'
 
 export default LineChart.extend({
-  ready () {
-    this.render({
+  mounted () {
+    this.renderChart({
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
         {

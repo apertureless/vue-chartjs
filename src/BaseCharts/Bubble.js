@@ -5,7 +5,7 @@ import { mergeOptions } from '../helpers/options'
 export default Vue.extend({
   template: `
     <div>
-      <canvas id="{{chartId}}" width={{width}} height={{height}} v-el:canvas></canvas>
+      <canvas :id="chartId" :width="width" :height="height" ref="canvas"></canvas>
     </div>
   `,
 
@@ -27,16 +27,33 @@ export default Vue.extend({
   data () {
     return {
       defaultOptions: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines: {
+              display: false
+            }
+          }],
+          xAxes: [ {
+            gridLines: {
+              display: false
+            },
+            categoryPercentage: 0.5,
+            barPercentage: 0.2
+          }]
+        }
       }
     }
   },
 
   methods: {
-    render (data, options) {
+    renderChart (data, options) {
       let chartOptions = mergeOptions(this.defaultOptions, options)
 
       this._chart = new Chart(
-        this.$els.canvas.getContext('2d'), {
+        this.$refs.canvas.getContext('2d'), {
           type: 'bubble',
           data: data,
           options: chartOptions
