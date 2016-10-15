@@ -19,3 +19,5 @@ const VueCharts = {
   reactiveProp,
   reactiveData
 }
+
+module.exports = VueCharts
