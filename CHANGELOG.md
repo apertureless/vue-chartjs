@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
-
-[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.1.1...HEAD)
+## [v2.2.0](https://github.com/apertureless/vue-chartjs/tree/v2.2.0) (2016-10-24)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.1.1...v2.2.0)
 
 **Closed issues:**
 
