@@ -1,5 +1,19 @@
 # Change Log
 
+## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
+
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.1.1...HEAD)
+
+**Closed issues:**
+
+- question:syntax with vue-loader [\#12](https://github.com/apertureless/vue-chartjs/issues/12)
+- Rerender when data has changed [\#10](https://github.com/apertureless/vue-chartjs/issues/10)
+
+**Merged pull requests:**
+
+- add horizontal bar parameter [\#14](https://github.com/apertureless/vue-chartjs/pull/14) ([wahaha2012](https://github.com/wahaha2012))
+- WIP Feature/reactive chart data \#11 [\#11](https://github.com/apertureless/vue-chartjs/pull/11) ([apertureless](https://github.com/apertureless))
+
 ## [v2.1.1](https://github.com/apertureless/vue-chartjs/tree/v2.1.1) (2016-10-02)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v.2.1.0...v2.1.1)
 
