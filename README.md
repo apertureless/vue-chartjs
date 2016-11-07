@@ -68,7 +68,7 @@ You can overwrite the default chart options. Just pass the options object as a s
 import { Line } from 'vue-chartjs'
 
 export default Line.extend({
-  props: [data, options],
+  props: ["data", "options"],
   mounted () {
     this.renderChart(this.data, this.options)
   }
@@ -107,8 +107,8 @@ The mixins automatically create `chartData` as a prop or data. And add a watcher
 import { Line, reactiveProp } from 'vue-chartjs'
 
 export default Line.extend({
-  mixins: [reactiveProp]
-  props: [chartData, options],
+  mixins: [reactiveProp],
+  props: ["chartData", "options"],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
