@@ -15,6 +15,6 @@ export default DoughnutChart.extend({
           data: [40, 20, 80, 10]
         }
       ]
-    })
+    }, {responsive: true, maintainAspectRatio: false})
   }
 })

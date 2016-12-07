@@ -26,6 +26,6 @@ export default RadarChart.extend({
           data: [28, 48, 40, 19, 96, 27, 100]
         }
       ]
-    })
+    }, {responsive: true, maintainAspectRatio: false})
   }
 })

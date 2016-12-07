@@ -47,6 +47,6 @@ export default BubbleChart.extend({
           ]
         }
       ]
-    })
+    }, {responsive: true, maintainAspectRatio: false})
   }
 })
