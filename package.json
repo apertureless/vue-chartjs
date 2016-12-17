@@ -1,7 +1,7 @@
 {
   "name": "vue-chartjs",
-  "version": "2.2.1",
-  "description": "Vue wrapper for chart.js",
+  "version": "2.3.0",
+  "description": "vue.js wrapper for chart.js",
   "author": "Jakub Juszczak <jakub@nextindex.de>",
   "repository": {
     "type": "git",
