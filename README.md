@@ -100,11 +100,58 @@ However you can simply implement this by your own or use one of the two mixins w
 - `reactiveProp`
 - `reactiveData`
 
+Both are included in the `mixins` module.
+
 The mixins automatically create `chartData` as a prop or data. And add a watcher. If data has changed, the chart will update.
 
 ```javascript
 // MonthlyIncome.js
-import { Line, reactiveProp } from 'vue-chartjs'
+import { Line, mixins } from 'vue-chartjs'
+
+export default Line.extend({
+  mixins: [mixins.reactiveProp],
+  props: ["chartData", "options"],
+  mounted () {
+    this.renderChart(this.chartData, this.options)
+  }
+})
+
+```
+
+### Mixins module
+The `mixins` module is included in the `VueCharts` module and as a seperate module.
+Some ways to import them:
+
+```javascript
+// Load complete module with all charts
+import VueCharts from 'vue-chartjs'
+
+export default VueCharts.Line.extend({
+  mixins: [VueCharts.mixins.reactiveProp],
+  props: ["chartData", "options"],
+  mounted () {
+    this.renderChart(this.chartData, this.options)
+  }
+})
+```
+
+```javascript
+// Load speperate modules
+import { Line, mixins } from 'vue-chartjs'
+
+export default Line.extend({
+  mixins: [mixins.reactiveProp],
+  props: ["chartData", "options"],
+  mounted () {
+    this.renderChart(this.chartData, this.options)
+  }
+})
+```
+
+```javascript
+// Load speperate modules with destructure assign
+import { Line, mixins } from 'vue-chartjs'
+const { reactiveProp } = mixins
 
 export default Line.extend({
   mixins: [reactiveProp],
@@ -113,7 +160,6 @@ export default Line.extend({
     this.renderChart(this.chartData, this.options)
   }
 })
-
 ```
 
 ## Available Charts

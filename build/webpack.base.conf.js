@@ -16,8 +16,9 @@ module.exports = {
     extensions: ['', '.js', '.vue'],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
-      'vue': 'vue/dist/vue.js',
+      'vue': 'vue/dist/vue.common.js',
       'src': path.resolve(__dirname, '../src'),
+      'mixins': path.resolve(__dirname, '../src/mixins'),
       'BaseCharts': path.resolve(__dirname, '../src/BaseCharts')
     }
   },
