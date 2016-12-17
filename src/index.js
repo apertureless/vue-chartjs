@@ -5,8 +5,7 @@ import Pie from './BaseCharts/Pie'
 import PolarArea from './BaseCharts/PolarArea'
 import Radar from './BaseCharts/Radar'
 import Bubble from './BaseCharts/Bubble'
-import reactiveProp from './mixins/reactiveProp'
-import reactiveData from './mixins/reactiveData'
+import mixins from './mixins/index.js'
 
 const VueCharts = {
   Bar,
@@ -16,8 +15,19 @@ const VueCharts = {
   PolarArea,
   Radar,
   Bubble,
-  reactiveProp,
-  reactiveData
+  mixins
 }
 
-module.exports = VueCharts
+export default VueCharts
+
+export {
+  VueCharts,
+  Bar,
+  Doughnut,
+  Line,
+  Pie,
+  PolarArea,
+  Radar,
+  Bubble,
+  mixins
+}
