@@ -10,7 +10,11 @@ describe('LineChart', () => {
 
   it('should render a canvas', () => {
     const vm = new Vue({
-      template: '<line-chart></line-chart>',
+      render: function (createElement) {
+        return createElement(
+          LineChart
+        )
+      },
       components: { LineChart }
     }).$mount(el)
 
@@ -22,7 +26,15 @@ describe('LineChart', () => {
 
   it('should change id based on prop', () => {
     const vm = new Vue({
-      template: '<line-chart chartId="linechartprop"></line-chart>',
+      render: function (createElement) {
+        return createElement(
+          LineChart, {
+            props: {
+              chartId: 'linechartprop'
+            }
+          }
+        )
+      },
       components: { LineChart }
     }).$mount(el)
 

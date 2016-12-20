@@ -10,7 +10,11 @@ describe('BubbleChart', () => {
 
   it('should render a canvas', () => {
     const vm = new Vue({
-      template: '<bubble-chart></bubble-chart>',
+      render: function (createElement) {
+        return createElement(
+          BubbleChart
+        )
+      },
       components: { BubbleChart }
     }).$mount(el)
 
@@ -22,7 +26,15 @@ describe('BubbleChart', () => {
 
   it('should change id based on prop', () => {
     const vm = new Vue({
-      template: '<bubble-chart chartId="bubblechartprop"></bubble-chart>',
+      render: function (createElement) {
+        return createElement(
+          BubbleChart, {
+            props: {
+              chartId: 'bubblechartprop'
+            }
+          }
+        )
+      },
       components: { BubbleChart }
     }).$mount(el)
 

@@ -10,7 +10,11 @@ describe('PolarChart', () => {
 
   it('should render a canvas', () => {
     const vm = new Vue({
-      template: '<polar-chart></polar-chart>',
+      render: function (createElement) {
+        return createElement(
+          PolarChart
+        )
+      },
       components: { PolarChart }
     }).$mount(el)
 
@@ -22,7 +26,15 @@ describe('PolarChart', () => {
 
   it('should change id based on prop', () => {
     const vm = new Vue({
-      template: '<polar-chart chartId="polarchartprop"></polar-chart>',
+      render: function (createElement) {
+        return createElement(
+          PolarChart, {
+            props: {
+              chartId: 'polarchartprop'
+            }
+          }
+        )
+      },
       components: { PolarChart }
     }).$mount(el)
 

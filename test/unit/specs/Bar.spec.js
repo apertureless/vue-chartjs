@@ -10,7 +10,11 @@ describe('BarChart', () => {
 
   it('should render a canvas', () => {
     const vm = new Vue({
-      template: '<bar-chart></bar-chart>',
+      render: function (createElement) {
+        return createElement(
+          BarChart
+        )
+      },
       components: { BarChart }
     }).$mount(el)
 
@@ -22,7 +26,15 @@ describe('BarChart', () => {
 
   it('should change id based on prop', () => {
     const vm = new Vue({
-      template: '<bar-chart chartId="barchartprop"></bar-chart>',
+      render: function (createElement) {
+        return createElement(
+          BarChart, {
+            props: {
+              chartId: 'barchartprop'
+            }
+          }
+        )
+      },
       components: { BarChart }
     }).$mount(el)
 

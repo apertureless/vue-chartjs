@@ -10,7 +10,11 @@ describe('PieChart', () => {
 
   it('should render a canvas', () => {
     const vm = new Vue({
-      template: '<pie-chart></pie-chart>',
+      render: function (createElement) {
+        return createElement(
+          PieChart
+        )
+      },
       components: { PieChart }
     }).$mount(el)
 
@@ -22,7 +26,15 @@ describe('PieChart', () => {
 
   it('should change id based on prop', () => {
     const vm = new Vue({
-      template: '<pie-chart chartId="piechartprop"></pie-chart>',
+      render: function (createElement) {
+        return createElement(
+          PieChart, {
+            props: {
+              chartId: 'piechartprop'
+            }
+          }
+        )
+      },
       components: { PieChart }
     }).$mount(el)
 

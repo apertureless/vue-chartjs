@@ -10,7 +10,11 @@ describe('RadarChart', () => {
 
   it('should render a canvas', () => {
     const vm = new Vue({
-      template: '<radar-chart></radar-chart>',
+      render: function (createElement) {
+        return createElement(
+          RadarChart
+        )
+      },
       components: { RadarChart }
     }).$mount(el)
 
@@ -22,7 +26,15 @@ describe('RadarChart', () => {
 
   it('should change id based on prop', () => {
     const vm = new Vue({
-      template: '<radar-chart chartId="rodarchartprop"></radar-chart>',
+      render: function (createElement) {
+        return createElement(
+          RadarChart, {
+            props: {
+              chartId: 'rodarchartprop'
+            }
+          }
+        )
+      },
       components: { RadarChart }
     }).$mount(el)
 
