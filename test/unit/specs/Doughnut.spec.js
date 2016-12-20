@@ -10,7 +10,11 @@ describe('DoughnutChart', () => {
 
   it('should render a canvas', () => {
     const vm = new Vue({
-      template: '<doughnut-chart></doughnut-chart>',
+      render: function (createElement) {
+        return createElement(
+          DoughnutChart
+        )
+      },
       components: { DoughnutChart }
     }).$mount(el)
 
@@ -22,7 +26,15 @@ describe('DoughnutChart', () => {
 
   it('should change id based on prop', () => {
     const vm = new Vue({
-      template: '<doughnut-chart chartId="doughnutchartprop"></doughnut-chart>',
+      render: function (createElement) {
+        return createElement(
+          DoughnutChart, {
+            props: {
+              chartId: 'doughnutchartprop'
+            }
+          }
+        )
+      },
       components: { DoughnutChart }
     }).$mount(el)
 
