@@ -1,7 +1,20 @@
 # Change Log
 
-## [minification](https://github.com/apertureless/vue-chartjs/tree/minification) (2016-12-17)
-[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.0...minification)
+## [v2.3.1](https://github.com/apertureless/vue-chartjs/tree/v2.3.1) (2016-12-20)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.0...v2.3.1)
+
+**Fixed bugs:**
+
+- Issues after using gulp-- production [\#19](https://github.com/apertureless/vue-chartjs/issues/19)
+
+**Closed issues:**
+
+- Error in rendering [\#21](https://github.com/apertureless/vue-chartjs/issues/21)
+
+**Merged pull requests:**
+
+- ✅ Add tests for chart instance destroying [\#24](https://github.com/apertureless/vue-chartjs/pull/24) ([apertureless](https://github.com/apertureless))
+- Feature/runtimebuild \#22 [\#23](https://github.com/apertureless/vue-chartjs/pull/23) ([apertureless](https://github.com/apertureless))
 
 ## [v2.3.0](https://github.com/apertureless/vue-chartjs/tree/v2.3.0) (2016-12-17)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.2.1...v2.3.0)
