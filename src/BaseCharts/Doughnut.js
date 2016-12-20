@@ -3,11 +3,23 @@ import Chart from 'chart.js'
 import { mergeOptions } from '../helpers/options'
 
 export default Vue.extend({
-  template: `
-    <div>
-      <canvas :id="chartId" :width="width" :height="height" ref="canvas"></canvas>
-    </div>
-  `,
+  render: function (createElement) {
+    return createElement(
+      'div',
+      [
+        createElement(
+          'canvas', {
+            attrs: {
+              id: this.chartId,
+              width: this.width,
+              height: this.height
+            },
+            ref: 'canvas'
+          }
+        )
+      ]
+    )
+  },
 
   props: {
     chartId: {
