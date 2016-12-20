@@ -40,4 +40,25 @@ describe('DoughnutChart', () => {
 
     expect(vm.$el.querySelector('#doughnutchartprop')).not.to.be.an('undefined')
   })
+
+  it('should destroy chart instance', (done) => {
+    const vm = new Vue({
+      render: function (createElement) {
+        return createElement(
+          DoughnutChart
+        )
+      },
+      components: { DoughnutChart }
+    }).$mount(el)
+
+    expect(vm.$children[0]._chart.chart.ctx).not.to.be.null
+
+    vm.$destroy()
+
+    vm.$nextTick(() => {
+      vm.$forceUpdate()
+      expect(vm.$children[0]._chart.chart.ctx).to.be.null
+      done()
+    })
+  })
 })
