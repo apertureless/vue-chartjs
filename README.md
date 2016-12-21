@@ -4,7 +4,8 @@
 
 Is a vue.js wrapper for chart.js. You can easily create your chart components.
 
-### Demo
+## Demo
+
 [Demo](https://apertureless.github.io/vue-chartjs/)
 
 ### Compatibility
