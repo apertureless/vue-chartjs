@@ -1,6 +1,6 @@
 {
   "name": "vue-chartjs",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "vue.js wrapper for chart.js",
   "author": "Jakub Juszczak <jakub@nextindex.de>",
   "repository": {
@@ -22,8 +22,7 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js",
-    "prepublish": "node build/build.js"
+    "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js"
   },
   "dependencies": {
     "babel-runtime": "^6.11.6",
