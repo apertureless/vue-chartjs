@@ -22,6 +22,7 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js",
     "prepublish": "node build/build.js"
   },
   "dependencies": {
