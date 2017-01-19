@@ -65,31 +65,31 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _Bar2 = _interopRequireDefault(_Bar);
 
-	var _Doughnut = __webpack_require__(379);
+	var _Doughnut = __webpack_require__(380);
 
 	var _Doughnut2 = _interopRequireDefault(_Doughnut);
 
-	var _Line = __webpack_require__(380);
+	var _Line = __webpack_require__(381);
 
 	var _Line2 = _interopRequireDefault(_Line);
 
-	var _Pie = __webpack_require__(381);
+	var _Pie = __webpack_require__(382);
 
 	var _Pie2 = _interopRequireDefault(_Pie);
 
-	var _PolarArea = __webpack_require__(382);
+	var _PolarArea = __webpack_require__(383);
 
 	var _PolarArea2 = _interopRequireDefault(_PolarArea);
 
-	var _Radar = __webpack_require__(383);
+	var _Radar = __webpack_require__(384);
 
 	var _Radar2 = _interopRequireDefault(_Radar);
 
-	var _Bubble = __webpack_require__(384);
+	var _Bubble = __webpack_require__(385);
 
 	var _Bubble2 = _interopRequireDefault(_Bubble);
 
-	var _index = __webpack_require__(385);
+	var _index = __webpack_require__(386);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -212,8 +212,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process, global) {/*!
-	 * Vue.js v2.1.6
-	 * (c) 2014-2016 Evan You
+	 * Vue.js v2.1.10
+	 * (c) 2014-2017 Evan You
 	 * Released under the MIT License.
 	 */
 	'use strict';
@@ -236,8 +236,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * If the conversion fails, return original string.
 	 */
 	function toNumber (val) {
-	  var n = parseFloat(val, 10);
-	  return (n || n === 0) ? n : val
+	  var n = parseFloat(val);
+	  return isNaN(n) ? val : n
 	}
 
 	/**
@@ -295,14 +295,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	function cached (fn) {
 	  var cache = Object.create(null);
-	  return function cachedFn (str) {
+	  return (function cachedFn (str) {
 	    var hit = cache[str];
 	    return hit || (cache[str] = fn(str))
-	  }
+	  })
 	}
 
 	/**
-	 * Camelize a hyphen-delmited string.
+	 * Camelize a hyphen-delimited string.
 	 */
 	var camelizeRE = /-(\w)/g;
 	var camelize = cached(function (str) {
@@ -428,13 +428,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * if they are plain objects, do they have the same shape?
 	 */
 	function looseEqual (a, b) {
-	  /* eslint-disable eqeqeq */
-	  return a == b || (
-	    isObject(a) && isObject(b)
-	      ? JSON.stringify(a) === JSON.stringify(b)
-	      : false
-	  )
-	  /* eslint-enable eqeqeq */
+	  var isObjectA = isObject(a);
+	  var isObjectB = isObject(b);
+	  if (isObjectA && isObjectB) {
+	    return JSON.stringify(a) === JSON.stringify(b)
+	  } else if (!isObjectA && !isObjectB) {
+	    return String(a) === String(b)
+	  } else {
+	    return false
+	  }
 	}
 
 	function looseIndexOf (arr, val) {
@@ -470,7 +472,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * Ignore certain custom elements
 	   */
-	  ignoredElements: null,
+	  ignoredElements: [],
 
 	  /**
 	   * Custom user key aliases for v-on
@@ -943,7 +945,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * returns the new observer if successfully observed,
 	 * or the existing observer if the value already has one.
 	 */
-	function observe (value) {
+	function observe (value, asRootData) {
 	  if (!isObject(value)) {
 	    return
 	  }
@@ -958,6 +960,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    !value._isVue
 	  ) {
 	    ob = new Observer(value);
+	  }
+	  if (asRootData && ob) {
+	    ob.vmCount++;
 	  }
 	  return ob
 	}
@@ -1425,10 +1430,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var absent = !hasOwn(propsData, key);
 	  var value = propsData[key];
 	  // handle boolean props
-	  if (isBooleanType(prop.type)) {
+	  if (isType(Boolean, prop.type)) {
 	    if (absent && !hasOwn(prop, 'default')) {
 	      value = false;
-	    } else if (value === '' || value === hyphenate(key)) {
+	    } else if (!isType(String, prop.type) && (value === '' || value === hyphenate(key))) {
 	      value = true;
 	    }
 	  }
@@ -1508,7 +1513,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    for (var i = 0; i < type.length && !valid; i++) {
 	      var assertedType = assertType(value, type[i]);
-	      expectedTypes.push(assertedType.expectedType);
+	      expectedTypes.push(assertedType.expectedType || '');
 	      valid = assertedType.valid;
 	    }
 	  }
@@ -1569,12 +1574,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return match && match[1]
 	}
 
-	function isBooleanType (fn) {
+	function isType (type, fn) {
 	  if (!Array.isArray(fn)) {
-	    return getType(fn) === 'Boolean'
+	    return getType(fn) === getType(type)
 	  }
 	  for (var i = 0, len = fn.length; i < len; i++) {
-	    if (getType(fn[i]) === 'Boolean') {
+	    if (getType(fn[i]) === getType(type)) {
 	      return true
 	    }
 	  }
@@ -1707,572 +1712,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/*  */
 
-
-	var queue = [];
-	var has$1 = {};
-	var circular = {};
-	var waiting = false;
-	var flushing = false;
-	var index = 0;
-
-	/**
-	 * Reset the scheduler's state.
-	 */
-	function resetSchedulerState () {
-	  queue.length = 0;
-	  has$1 = {};
-	  if (process.env.NODE_ENV !== 'production') {
-	    circular = {};
-	  }
-	  waiting = flushing = false;
-	}
-
-	/**
-	 * Flush both queues and run the watchers.
-	 */
-	function flushSchedulerQueue () {
-	  flushing = true;
-
-	  // Sort queue before flush.
-	  // This ensures that:
-	  // 1. Components are updated from parent to child. (because parent is always
-	  //    created before the child)
-	  // 2. A component's user watchers are run before its render watcher (because
-	  //    user watchers are created before the render watcher)
-	  // 3. If a component is destroyed during a parent component's watcher run,
-	  //    its watchers can be skipped.
-	  queue.sort(function (a, b) { return a.id - b.id; });
-
-	  // do not cache length because more watchers might be pushed
-	  // as we run existing watchers
-	  for (index = 0; index < queue.length; index++) {
-	    var watcher = queue[index];
-	    var id = watcher.id;
-	    has$1[id] = null;
-	    watcher.run();
-	    // in dev build, check and stop circular updates.
-	    if (process.env.NODE_ENV !== 'production' && has$1[id] != null) {
-	      circular[id] = (circular[id] || 0) + 1;
-	      if (circular[id] > config._maxUpdateCount) {
-	        warn(
-	          'You may have an infinite update loop ' + (
-	            watcher.user
-	              ? ("in watcher with expression \"" + (watcher.expression) + "\"")
-	              : "in a component render function."
-	          ),
-	          watcher.vm
-	        );
-	        break
-	      }
-	    }
-	  }
-
-	  // devtool hook
-	  /* istanbul ignore if */
-	  if (devtools && config.devtools) {
-	    devtools.emit('flush');
-	  }
-
-	  resetSchedulerState();
-	}
-
-	/**
-	 * Push a watcher into the watcher queue.
-	 * Jobs with duplicate IDs will be skipped unless it's
-	 * pushed when the queue is being flushed.
-	 */
-	function queueWatcher (watcher) {
-	  var id = watcher.id;
-	  if (has$1[id] == null) {
-	    has$1[id] = true;
-	    if (!flushing) {
-	      queue.push(watcher);
-	    } else {
-	      // if already flushing, splice the watcher based on its id
-	      // if already past its id, it will be run next immediately.
-	      var i = queue.length - 1;
-	      while (i >= 0 && queue[i].id > watcher.id) {
-	        i--;
-	      }
-	      queue.splice(Math.max(i, index) + 1, 0, watcher);
-	    }
-	    // queue the flush
-	    if (!waiting) {
-	      waiting = true;
-	      nextTick(flushSchedulerQueue);
-	    }
-	  }
-	}
-
-	/*  */
-
-	var uid$2 = 0;
-
-	/**
-	 * A watcher parses an expression, collects dependencies,
-	 * and fires callback when the expression value changes.
-	 * This is used for both the $watch() api and directives.
-	 */
-	var Watcher = function Watcher (
-	  vm,
-	  expOrFn,
-	  cb,
-	  options
-	) {
-	  if ( options === void 0 ) options = {};
-
-	  this.vm = vm;
-	  vm._watchers.push(this);
-	  // options
-	  this.deep = !!options.deep;
-	  this.user = !!options.user;
-	  this.lazy = !!options.lazy;
-	  this.sync = !!options.sync;
-	  this.expression = expOrFn.toString();
-	  this.cb = cb;
-	  this.id = ++uid$2; // uid for batching
-	  this.active = true;
-	  this.dirty = this.lazy; // for lazy watchers
-	  this.deps = [];
-	  this.newDeps = [];
-	  this.depIds = new _Set();
-	  this.newDepIds = new _Set();
-	  // parse expression for getter
-	  if (typeof expOrFn === 'function') {
-	    this.getter = expOrFn;
-	  } else {
-	    this.getter = parsePath(expOrFn);
-	    if (!this.getter) {
-	      this.getter = function () {};
-	      process.env.NODE_ENV !== 'production' && warn(
-	        "Failed watching path: \"" + expOrFn + "\" " +
-	        'Watcher only accepts simple dot-delimited paths. ' +
-	        'For full control, use a function instead.',
-	        vm
-	      );
-	    }
-	  }
-	  this.value = this.lazy
-	    ? undefined
-	    : this.get();
-	};
-
-	/**
-	 * Evaluate the getter, and re-collect dependencies.
-	 */
-	Watcher.prototype.get = function get () {
-	  pushTarget(this);
-	  var value = this.getter.call(this.vm, this.vm);
-	  // "touch" every property so they are all tracked as
-	  // dependencies for deep watching
-	  if (this.deep) {
-	    traverse(value);
-	  }
-	  popTarget();
-	  this.cleanupDeps();
-	  return value
-	};
-
-	/**
-	 * Add a dependency to this directive.
-	 */
-	Watcher.prototype.addDep = function addDep (dep) {
-	  var id = dep.id;
-	  if (!this.newDepIds.has(id)) {
-	    this.newDepIds.add(id);
-	    this.newDeps.push(dep);
-	    if (!this.depIds.has(id)) {
-	      dep.addSub(this);
-	    }
-	  }
-	};
-
-	/**
-	 * Clean up for dependency collection.
-	 */
-	Watcher.prototype.cleanupDeps = function cleanupDeps () {
-	    var this$1 = this;
-
-	  var i = this.deps.length;
-	  while (i--) {
-	    var dep = this$1.deps[i];
-	    if (!this$1.newDepIds.has(dep.id)) {
-	      dep.removeSub(this$1);
-	    }
-	  }
-	  var tmp = this.depIds;
-	  this.depIds = this.newDepIds;
-	  this.newDepIds = tmp;
-	  this.newDepIds.clear();
-	  tmp = this.deps;
-	  this.deps = this.newDeps;
-	  this.newDeps = tmp;
-	  this.newDeps.length = 0;
-	};
-
-	/**
-	 * Subscriber interface.
-	 * Will be called when a dependency changes.
-	 */
-	Watcher.prototype.update = function update () {
-	  /* istanbul ignore else */
-	  if (this.lazy) {
-	    this.dirty = true;
-	  } else if (this.sync) {
-	    this.run();
-	  } else {
-	    queueWatcher(this);
-	  }
-	};
-
-	/**
-	 * Scheduler job interface.
-	 * Will be called by the scheduler.
-	 */
-	Watcher.prototype.run = function run () {
-	  if (this.active) {
-	    var value = this.get();
-	      if (
-	        value !== this.value ||
-	      // Deep watchers and watchers on Object/Arrays should fire even
-	      // when the value is the same, because the value may
-	      // have mutated.
-	      isObject(value) ||
-	      this.deep
-	    ) {
-	      // set new value
-	      var oldValue = this.value;
-	      this.value = value;
-	      if (this.user) {
-	        try {
-	          this.cb.call(this.vm, value, oldValue);
-	        } catch (e) {
-	          /* istanbul ignore else */
-	          if (config.errorHandler) {
-	            config.errorHandler.call(null, e, this.vm);
-	          } else {
-	            process.env.NODE_ENV !== 'production' && warn(
-	              ("Error in watcher \"" + (this.expression) + "\""),
-	              this.vm
-	            );
-	            throw e
-	          }
-	        }
-	      } else {
-	        this.cb.call(this.vm, value, oldValue);
-	      }
-	    }
-	  }
-	};
-
-	/**
-	 * Evaluate the value of the watcher.
-	 * This only gets called for lazy watchers.
-	 */
-	Watcher.prototype.evaluate = function evaluate () {
-	  this.value = this.get();
-	  this.dirty = false;
-	};
-
-	/**
-	 * Depend on all deps collected by this watcher.
-	 */
-	Watcher.prototype.depend = function depend () {
-	    var this$1 = this;
-
-	  var i = this.deps.length;
-	  while (i--) {
-	    this$1.deps[i].depend();
-	  }
-	};
-
-	/**
-	 * Remove self from all dependencies' subscriber list.
-	 */
-	Watcher.prototype.teardown = function teardown () {
-	    var this$1 = this;
-
-	  if (this.active) {
-	    // remove self from vm's watcher list
-	    // this is a somewhat expensive operation so we skip it
-	    // if the vm is being destroyed or is performing a v-for
-	    // re-render (the watcher list is then filtered by v-for).
-	    if (!this.vm._isBeingDestroyed && !this.vm._vForRemoving) {
-	      remove$1(this.vm._watchers, this);
-	    }
-	    var i = this.deps.length;
-	    while (i--) {
-	      this$1.deps[i].removeSub(this$1);
-	    }
-	    this.active = false;
-	  }
-	};
-
-	/**
-	 * Recursively traverse an object to evoke all converted
-	 * getters, so that every nested property inside the object
-	 * is collected as a "deep" dependency.
-	 */
-	var seenObjects = new _Set();
-	function traverse (val) {
-	  seenObjects.clear();
-	  _traverse(val, seenObjects);
-	}
-
-	function _traverse (val, seen) {
-	  var i, keys;
-	  var isA = Array.isArray(val);
-	  if ((!isA && !isObject(val)) || !Object.isExtensible(val)) {
-	    return
-	  }
-	  if (val.__ob__) {
-	    var depId = val.__ob__.dep.id;
-	    if (seen.has(depId)) {
-	      return
-	    }
-	    seen.add(depId);
-	  }
-	  if (isA) {
-	    i = val.length;
-	    while (i--) { _traverse(val[i], seen); }
-	  } else {
-	    keys = Object.keys(val);
-	    i = keys.length;
-	    while (i--) { _traverse(val[keys[i]], seen); }
-	  }
-	}
-
-	/*  */
-
-	function initState (vm) {
-	  vm._watchers = [];
-	  initProps(vm);
-	  initMethods(vm);
-	  initData(vm);
-	  initComputed(vm);
-	  initWatch(vm);
-	}
-
-	var isReservedProp = { key: 1, ref: 1, slot: 1 };
-
-	function initProps (vm) {
-	  var props = vm.$options.props;
-	  if (props) {
-	    var propsData = vm.$options.propsData || {};
-	    var keys = vm.$options._propKeys = Object.keys(props);
-	    var isRoot = !vm.$parent;
-	    // root instance props should be converted
-	    observerState.shouldConvert = isRoot;
-	    var loop = function ( i ) {
-	      var key = keys[i];
-	      /* istanbul ignore else */
-	      if (process.env.NODE_ENV !== 'production') {
-	        if (isReservedProp[key]) {
-	          warn(
-	            ("\"" + key + "\" is a reserved attribute and cannot be used as component prop."),
-	            vm
-	          );
-	        }
-	        defineReactive$$1(vm, key, validateProp(key, props, propsData, vm), function () {
-	          if (vm.$parent && !observerState.isSettingProps) {
-	            warn(
-	              "Avoid mutating a prop directly since the value will be " +
-	              "overwritten whenever the parent component re-renders. " +
-	              "Instead, use a data or computed property based on the prop's " +
-	              "value. Prop being mutated: \"" + key + "\"",
-	              vm
-	            );
-	          }
-	        });
-	      } else {
-	        defineReactive$$1(vm, key, validateProp(key, props, propsData, vm));
-	      }
-	    };
-
-	    for (var i = 0; i < keys.length; i++) loop( i );
-	    observerState.shouldConvert = true;
-	  }
-	}
-
-	function initData (vm) {
-	  var data = vm.$options.data;
-	  data = vm._data = typeof data === 'function'
-	    ? data.call(vm)
-	    : data || {};
-	  if (!isPlainObject(data)) {
-	    data = {};
-	    process.env.NODE_ENV !== 'production' && warn(
-	      'data functions should return an object:\n' +
-	      'https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function',
-	      vm
-	    );
-	  }
-	  // proxy data on instance
-	  var keys = Object.keys(data);
-	  var props = vm.$options.props;
-	  var i = keys.length;
-	  while (i--) {
-	    if (props && hasOwn(props, keys[i])) {
-	      process.env.NODE_ENV !== 'production' && warn(
-	        "The data property \"" + (keys[i]) + "\" is already declared as a prop. " +
-	        "Use prop default value instead.",
-	        vm
-	      );
-	    } else {
-	      proxy(vm, keys[i]);
-	    }
-	  }
-	  // observe data
-	  observe(data);
-	  data.__ob__ && data.__ob__.vmCount++;
-	}
-
-	var computedSharedDefinition = {
-	  enumerable: true,
-	  configurable: true,
-	  get: noop,
-	  set: noop
-	};
-
-	function initComputed (vm) {
-	  var computed = vm.$options.computed;
-	  if (computed) {
-	    for (var key in computed) {
-	      var userDef = computed[key];
-	      if (typeof userDef === 'function') {
-	        computedSharedDefinition.get = makeComputedGetter(userDef, vm);
-	        computedSharedDefinition.set = noop;
-	      } else {
-	        computedSharedDefinition.get = userDef.get
-	          ? userDef.cache !== false
-	            ? makeComputedGetter(userDef.get, vm)
-	            : bind$1(userDef.get, vm)
-	          : noop;
-	        computedSharedDefinition.set = userDef.set
-	          ? bind$1(userDef.set, vm)
-	          : noop;
-	      }
-	      Object.defineProperty(vm, key, computedSharedDefinition);
-	    }
-	  }
-	}
-
-	function makeComputedGetter (getter, owner) {
-	  var watcher = new Watcher(owner, getter, noop, {
-	    lazy: true
-	  });
-	  return function computedGetter () {
-	    if (watcher.dirty) {
-	      watcher.evaluate();
-	    }
-	    if (Dep.target) {
-	      watcher.depend();
-	    }
-	    return watcher.value
-	  }
-	}
-
-	function initMethods (vm) {
-	  var methods = vm.$options.methods;
-	  if (methods) {
-	    for (var key in methods) {
-	      vm[key] = methods[key] == null ? noop : bind$1(methods[key], vm);
-	      if (process.env.NODE_ENV !== 'production' && methods[key] == null) {
-	        warn(
-	          "method \"" + key + "\" has an undefined value in the component definition. " +
-	          "Did you reference the function correctly?",
-	          vm
-	        );
-	      }
-	    }
-	  }
-	}
-
-	function initWatch (vm) {
-	  var watch = vm.$options.watch;
-	  if (watch) {
-	    for (var key in watch) {
-	      var handler = watch[key];
-	      if (Array.isArray(handler)) {
-	        for (var i = 0; i < handler.length; i++) {
-	          createWatcher(vm, key, handler[i]);
-	        }
-	      } else {
-	        createWatcher(vm, key, handler);
-	      }
-	    }
-	  }
-	}
-
-	function createWatcher (vm, key, handler) {
-	  var options;
-	  if (isPlainObject(handler)) {
-	    options = handler;
-	    handler = handler.handler;
-	  }
-	  if (typeof handler === 'string') {
-	    handler = vm[handler];
-	  }
-	  vm.$watch(key, handler, options);
-	}
-
-	function stateMixin (Vue) {
-	  // flow somehow has problems with directly declared definition object
-	  // when using Object.defineProperty, so we have to procedurally build up
-	  // the object here.
-	  var dataDef = {};
-	  dataDef.get = function () {
-	    return this._data
-	  };
-	  if (process.env.NODE_ENV !== 'production') {
-	    dataDef.set = function (newData) {
-	      warn(
-	        'Avoid replacing instance root $data. ' +
-	        'Use nested data properties instead.',
-	        this
-	      );
-	    };
-	  }
-	  Object.defineProperty(Vue.prototype, '$data', dataDef);
-
-	  Vue.prototype.$set = set$1;
-	  Vue.prototype.$delete = del;
-
-	  Vue.prototype.$watch = function (
-	    expOrFn,
-	    cb,
-	    options
-	  ) {
-	    var vm = this;
-	    options = options || {};
-	    options.user = true;
-	    var watcher = new Watcher(vm, expOrFn, cb, options);
-	    if (options.immediate) {
-	      cb.call(vm, watcher.value);
-	    }
-	    return function unwatchFn () {
-	      watcher.teardown();
-	    }
-	  };
-	}
-
-	function proxy (vm, key) {
-	  if (!isReserved(key)) {
-	    Object.defineProperty(vm, key, {
-	      configurable: true,
-	      enumerable: true,
-	      get: function proxyGetter () {
-	        return vm._data[key]
-	      },
-	      set: function proxySetter (val) {
-	        vm._data[key] = val;
-	      }
-	    });
-	  }
-	}
-
-	/*  */
-
 	var VNode = function VNode (
 	  tag,
 	  data,
@@ -2292,7 +1731,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this.functionalContext = undefined;
 	  this.key = data && data.key;
 	  this.componentOptions = componentOptions;
-	  this.child = undefined;
+	  this.componentInstance = undefined;
 	  this.parent = undefined;
 	  this.raw = false;
 	  this.isStatic = false;
@@ -2301,6 +1740,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this.isCloned = false;
 	  this.isOnce = false;
 	};
+
+	var prototypeAccessors = { child: {} };
+
+	// DEPRECATED: alias for componentInstance for backwards compat.
+	/* istanbul ignore next */
+	prototypeAccessors.child.get = function () {
+	  return this.componentInstance
+	};
+
+	Object.defineProperties( VNode.prototype, prototypeAccessors );
 
 	var createEmptyVNode = function () {
 	  var node = new VNode();
@@ -2340,215 +1789,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    res[i] = cloneVNode(vnodes[i]);
 	  }
 	  return res
-	}
-
-	/*  */
-
-	var activeInstance = null;
-
-	function initLifecycle (vm) {
-	  var options = vm.$options;
-
-	  // locate first non-abstract parent
-	  var parent = options.parent;
-	  if (parent && !options.abstract) {
-	    while (parent.$options.abstract && parent.$parent) {
-	      parent = parent.$parent;
-	    }
-	    parent.$children.push(vm);
-	  }
-
-	  vm.$parent = parent;
-	  vm.$root = parent ? parent.$root : vm;
-
-	  vm.$children = [];
-	  vm.$refs = {};
-
-	  vm._watcher = null;
-	  vm._inactive = false;
-	  vm._isMounted = false;
-	  vm._isDestroyed = false;
-	  vm._isBeingDestroyed = false;
-	}
-
-	function lifecycleMixin (Vue) {
-	  Vue.prototype._mount = function (
-	    el,
-	    hydrating
-	  ) {
-	    var vm = this;
-	    vm.$el = el;
-	    if (!vm.$options.render) {
-	      vm.$options.render = createEmptyVNode;
-	      if (process.env.NODE_ENV !== 'production') {
-	        /* istanbul ignore if */
-	        if (vm.$options.template && vm.$options.template.charAt(0) !== '#') {
-	          warn(
-	            'You are using the runtime-only build of Vue where the template ' +
-	            'option is not available. Either pre-compile the templates into ' +
-	            'render functions, or use the compiler-included build.',
-	            vm
-	          );
-	        } else {
-	          warn(
-	            'Failed to mount component: template or render function not defined.',
-	            vm
-	          );
-	        }
-	      }
-	    }
-	    callHook(vm, 'beforeMount');
-	    vm._watcher = new Watcher(vm, function () {
-	      vm._update(vm._render(), hydrating);
-	    }, noop);
-	    hydrating = false;
-	    // manually mounted instance, call mounted on self
-	    // mounted is called for render-created child components in its inserted hook
-	    if (vm.$vnode == null) {
-	      vm._isMounted = true;
-	      callHook(vm, 'mounted');
-	    }
-	    return vm
-	  };
-
-	  Vue.prototype._update = function (vnode, hydrating) {
-	    var vm = this;
-	    if (vm._isMounted) {
-	      callHook(vm, 'beforeUpdate');
-	    }
-	    var prevEl = vm.$el;
-	    var prevVnode = vm._vnode;
-	    var prevActiveInstance = activeInstance;
-	    activeInstance = vm;
-	    vm._vnode = vnode;
-	    // Vue.prototype.__patch__ is injected in entry points
-	    // based on the rendering backend used.
-	    if (!prevVnode) {
-	      // initial render
-	      vm.$el = vm.__patch__(
-	        vm.$el, vnode, hydrating, false /* removeOnly */,
-	        vm.$options._parentElm,
-	        vm.$options._refElm
-	      );
-	    } else {
-	      // updates
-	      vm.$el = vm.__patch__(prevVnode, vnode);
-	    }
-	    activeInstance = prevActiveInstance;
-	    // update __vue__ reference
-	    if (prevEl) {
-	      prevEl.__vue__ = null;
-	    }
-	    if (vm.$el) {
-	      vm.$el.__vue__ = vm;
-	    }
-	    // if parent is an HOC, update its $el as well
-	    if (vm.$vnode && vm.$parent && vm.$vnode === vm.$parent._vnode) {
-	      vm.$parent.$el = vm.$el;
-	    }
-	    if (vm._isMounted) {
-	      callHook(vm, 'updated');
-	    }
-	  };
-
-	  Vue.prototype._updateFromParent = function (
-	    propsData,
-	    listeners,
-	    parentVnode,
-	    renderChildren
-	  ) {
-	    var vm = this;
-	    var hasChildren = !!(vm.$options._renderChildren || renderChildren);
-	    vm.$options._parentVnode = parentVnode;
-	    vm.$vnode = parentVnode; // update vm's placeholder node without re-render
-	    if (vm._vnode) { // update child tree's parent
-	      vm._vnode.parent = parentVnode;
-	    }
-	    vm.$options._renderChildren = renderChildren;
-	    // update props
-	    if (propsData && vm.$options.props) {
-	      observerState.shouldConvert = false;
-	      if (process.env.NODE_ENV !== 'production') {
-	        observerState.isSettingProps = true;
-	      }
-	      var propKeys = vm.$options._propKeys || [];
-	      for (var i = 0; i < propKeys.length; i++) {
-	        var key = propKeys[i];
-	        vm[key] = validateProp(key, vm.$options.props, propsData, vm);
-	      }
-	      observerState.shouldConvert = true;
-	      if (process.env.NODE_ENV !== 'production') {
-	        observerState.isSettingProps = false;
-	      }
-	      vm.$options.propsData = propsData;
-	    }
-	    // update listeners
-	    if (listeners) {
-	      var oldListeners = vm.$options._parentListeners;
-	      vm.$options._parentListeners = listeners;
-	      vm._updateListeners(listeners, oldListeners);
-	    }
-	    // resolve slots + force update if has children
-	    if (hasChildren) {
-	      vm.$slots = resolveSlots(renderChildren, parentVnode.context);
-	      vm.$forceUpdate();
-	    }
-	  };
-
-	  Vue.prototype.$forceUpdate = function () {
-	    var vm = this;
-	    if (vm._watcher) {
-	      vm._watcher.update();
-	    }
-	  };
-
-	  Vue.prototype.$destroy = function () {
-	    var vm = this;
-	    if (vm._isBeingDestroyed) {
-	      return
-	    }
-	    callHook(vm, 'beforeDestroy');
-	    vm._isBeingDestroyed = true;
-	    // remove self from parent
-	    var parent = vm.$parent;
-	    if (parent && !parent._isBeingDestroyed && !vm.$options.abstract) {
-	      remove$1(parent.$children, vm);
-	    }
-	    // teardown watchers
-	    if (vm._watcher) {
-	      vm._watcher.teardown();
-	    }
-	    var i = vm._watchers.length;
-	    while (i--) {
-	      vm._watchers[i].teardown();
-	    }
-	    // remove reference from data ob
-	    // frozen object may not have observer.
-	    if (vm._data.__ob__) {
-	      vm._data.__ob__.vmCount--;
-	    }
-	    // call the last hook...
-	    vm._isDestroyed = true;
-	    callHook(vm, 'destroyed');
-	    // turn off all instance listeners.
-	    vm.$off();
-	    // remove __vue__ reference
-	    if (vm.$el) {
-	      vm.$el.__vue__ = null;
-	    }
-	    // invoke destroy hooks on current rendered tree
-	    vm.__patch__(vm._vnode, null);
-	  };
-	}
-
-	function callHook (vm, hook) {
-	  var handlers = vm.$options[hook];
-	  if (handlers) {
-	    for (var i = 0, j = handlers.length; i < j; i++) {
-	      handlers[i].call(vm);
-	    }
-	  }
-	  vm.$emit('hook:' + hook);
 	}
 
 	/*  */
@@ -2703,8 +1943,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  parentElm,
 	  refElm
 	) {
-	  if (!vnode.child || vnode.child._isDestroyed) {
-	    var child = vnode.child = createComponentInstanceForVnode(
+	  if (!vnode.componentInstance || vnode.componentInstance._isDestroyed) {
+	    var child = vnode.componentInstance = createComponentInstanceForVnode(
 	      vnode,
 	      activeInstance,
 	      parentElm,
@@ -2723,7 +1963,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  vnode
 	) {
 	  var options = vnode.componentOptions;
-	  var child = vnode.child = oldVnode.child;
+	  var child = vnode.componentInstance = oldVnode.componentInstance;
 	  child._updateFromParent(
 	    options.propsData, // updated props
 	    options.listeners, // updated listeners
@@ -2733,23 +1973,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function insert (vnode) {
-	  if (!vnode.child._isMounted) {
-	    vnode.child._isMounted = true;
-	    callHook(vnode.child, 'mounted');
+	  if (!vnode.componentInstance._isMounted) {
+	    vnode.componentInstance._isMounted = true;
+	    callHook(vnode.componentInstance, 'mounted');
 	  }
 	  if (vnode.data.keepAlive) {
-	    vnode.child._inactive = false;
-	    callHook(vnode.child, 'activated');
+	    vnode.componentInstance._inactive = false;
+	    callHook(vnode.componentInstance, 'activated');
 	  }
 	}
 
 	function destroy$1 (vnode) {
-	  if (!vnode.child._isDestroyed) {
+	  if (!vnode.componentInstance._isDestroyed) {
 	    if (!vnode.data.keepAlive) {
-	      vnode.child.$destroy();
+	      vnode.componentInstance.$destroy();
 	    } else {
-	      vnode.child._inactive = true;
-	      callHook(vnode.child, 'deactivated');
+	      vnode.componentInstance._inactive = true;
+	      callHook(vnode.componentInstance, 'deactivated');
 	    }
 	  }
 	}
@@ -2890,6 +2130,37 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/*  */
 
+	var normalizeEvent = cached(function (name) {
+	  var once = name.charAt(0) === '~'; // Prefixed last, checked first
+	  name = once ? name.slice(1) : name;
+	  var capture = name.charAt(0) === '!';
+	  name = capture ? name.slice(1) : name;
+	  return {
+	    name: name,
+	    once: once,
+	    capture: capture
+	  }
+	});
+
+	function createEventHandle (fn) {
+	  var handle = {
+	    fn: fn,
+	    invoker: function () {
+	      var arguments$1 = arguments;
+
+	      var fn = handle.fn;
+	      if (Array.isArray(fn)) {
+	        for (var i = 0; i < fn.length; i++) {
+	          fn[i].apply(null, arguments$1);
+	        }
+	      } else {
+	        fn.apply(null, arguments);
+	      }
+	    }
+	  };
+	  return handle
+	}
+
 	function updateListeners (
 	  on,
 	  oldOn,
@@ -2897,73 +2168,61 @@ return /******/ (function(modules) { // webpackBootstrap
 	  remove$$1,
 	  vm
 	) {
-	  var name, cur, old, fn, event, capture, once;
+	  var name, cur, old, event;
 	  for (name in on) {
 	    cur = on[name];
 	    old = oldOn[name];
+	    event = normalizeEvent(name);
 	    if (!cur) {
 	      process.env.NODE_ENV !== 'production' && warn(
-	        "Invalid handler for event \"" + name + "\": got " + String(cur),
+	        "Invalid handler for event \"" + (event.name) + "\": got " + String(cur),
 	        vm
 	      );
 	    } else if (!old) {
-	      once = name.charAt(0) === '~'; // Prefixed last, checked first
-	      event = once ? name.slice(1) : name;
-	      capture = event.charAt(0) === '!';
-	      event = capture ? event.slice(1) : event;
-	      if (Array.isArray(cur)) {
-	        add(event, (cur.invoker = arrInvoker(cur)), once, capture);
-	      } else {
-	        if (!cur.invoker) {
-	          fn = cur;
-	          cur = on[name] = {};
-	          cur.fn = fn;
-	          cur.invoker = fnInvoker(cur);
-	        }
-	        add(event, cur.invoker, once, capture);
+	      if (!cur.invoker) {
+	        cur = on[name] = createEventHandle(cur);
 	      }
+	      add(event.name, cur.invoker, event.once, event.capture);
 	    } else if (cur !== old) {
-	      if (Array.isArray(old)) {
-	        old.length = cur.length;
-	        for (var i = 0; i < old.length; i++) { old[i] = cur[i]; }
-	        on[name] = old;
-	      } else {
-	        old.fn = cur;
-	        on[name] = old;
-	      }
+	      old.fn = cur;
+	      on[name] = old;
 	    }
 	  }
 	  for (name in oldOn) {
 	    if (!on[name]) {
-	      once = name.charAt(0) === '~'; // Prefixed last, checked first
-	      event = once ? name.slice(1) : name;
-	      capture = event.charAt(0) === '!';
-	      event = capture ? event.slice(1) : event;
-	      remove$$1(event, oldOn[name].invoker, capture);
+	      event = normalizeEvent(name);
+	      remove$$1(event.name, oldOn[name].invoker, event.capture);
 	    }
-	  }
-	}
-
-	function arrInvoker (arr) {
-	  return function (ev) {
-	    var arguments$1 = arguments;
-
-	    var single = arguments.length === 1;
-	    for (var i = 0; i < arr.length; i++) {
-	      single ? arr[i](ev) : arr[i].apply(null, arguments$1);
-	    }
-	  }
-	}
-
-	function fnInvoker (o) {
-	  return function (ev) {
-	    var single = arguments.length === 1;
-	    single ? o.fn(ev) : o.fn.apply(null, arguments);
 	  }
 	}
 
 	/*  */
 
+	// The template compiler attempts to minimize the need for normalization by
+	// statically analyzing the template at compile time.
+	//
+	// For plain HTML markup, normalization can be completely skipped because the
+	// generated render function is guaranteed to return Array<VNode>. There are
+	// two cases where extra normalization is needed:
+
+	// 1. When the children contains components - because a functional component
+	// may return an Array instead of a single root. In this case, just a simple
+	// nomralization is needed - if any child is an Array, we flatten the whole
+	// thing with Array.prototype.concat. It is guaranteed to be only 1-level deep
+	// because functional components already normalize their own children.
+	function simpleNormalizeChildren (children) {
+	  for (var i = 0; i < children.length; i++) {
+	    if (Array.isArray(children[i])) {
+	      return Array.prototype.concat.apply([], children)
+	    }
+	  }
+	  return children
+	}
+
+	// 2. When the children contains constrcuts that always generated nested Arrays,
+	// e.g. <template>, <slot>, v-for, or when the children is provided by user
+	// with hand-written render functions / JSX. In such cases a full normalization
+	// is needed to cater to all possible types of children values.
 	function normalizeChildren (children) {
 	  return isPrimitive(children)
 	    ? [createTextVNode(children)]
@@ -3012,6 +2271,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/*  */
 
+	var SIMPLE_NORMALIZE = 1;
+	var ALWAYS_NORMALIZE = 2;
+
 	// wrapper function for providing a more flexible interface
 	// without getting yelled at by flow
 	function createElement (
@@ -3019,16 +2281,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  tag,
 	  data,
 	  children,
-	  needNormalization,
+	  normalizationType,
 	  alwaysNormalize
 	) {
 	  if (Array.isArray(data) || isPrimitive(data)) {
-	    needNormalization = children;
+	    normalizationType = children;
 	    children = data;
 	    data = undefined;
 	  }
-	  if (alwaysNormalize) { needNormalization = true; }
-	  return _createElement(context, tag, data, children, needNormalization)
+	  if (alwaysNormalize) { normalizationType = ALWAYS_NORMALIZE; }
+	  return _createElement(context, tag, data, children, normalizationType)
 	}
 
 	function _createElement (
@@ -3036,7 +2298,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  tag,
 	  data,
 	  children,
-	  needNormalization
+	  normalizationType
 	) {
 	  if (data && data.__ob__) {
 	    process.env.NODE_ENV !== 'production' && warn(
@@ -3057,8 +2319,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    data.scopedSlots = { default: children[0] };
 	    children.length = 0;
 	  }
-	  if (needNormalization) {
+	  if (normalizationType === ALWAYS_NORMALIZE) {
 	    children = normalizeChildren(children);
+	  } else if (normalizationType === SIMPLE_NORMALIZE) {
+	    children = simpleNormalizeChildren(children);
 	  }
 	  var vnode, ns;
 	  if (typeof tag === 'string') {
@@ -3077,7 +2341,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // unknown or unlisted namespaced elements
 	      // check at runtime because it may get assigned a namespace when its
 	      // parent normalizes children
-	      ns = tag === 'foreignObject' ? 'xhtml' : ns;
 	      vnode = new VNode(
 	        tag, data, children,
 	        undefined, undefined, context
@@ -3097,6 +2360,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function applyNS (vnode, ns) {
 	  vnode.ns = ns;
+	  if (vnode.tag === 'foreignObject') {
+	    // use default namespace inside foreignObject
+	    return
+	  }
 	  if (vnode.children) {
 	    for (var i = 0, l = vnode.children.length; i < l; i++) {
 	      var child = vnode.children[i];
@@ -3119,15 +2386,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  vm.$scopedSlots = {};
 	  // bind the createElement fn to this instance
 	  // so that we get proper render context inside it.
-	  // args order: tag, data, children, needNormalization, alwaysNormalize
+	  // args order: tag, data, children, normalizationType, alwaysNormalize
 	  // internal version is used by render functions compiled from templates
 	  vm._c = function (a, b, c, d) { return createElement(vm, a, b, c, d, false); };
 	  // normalization is always applied for the public version, used in
 	  // user-written render functions.
 	  vm.$createElement = function (a, b, c, d) { return createElement(vm, a, b, c, d, true); };
-	  if (vm.$options.el) {
-	    vm.$mount(vm.$options.el);
-	  }
 	}
 
 	function renderMixin (Vue) {
@@ -3263,7 +2527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    render
 	  ) {
 	    var ret, i, l, keys, key;
-	    if (Array.isArray(val)) {
+	    if (Array.isArray(val) || typeof val === 'string') {
 	      ret = new Array(val.length);
 	      for (i = 0, l = val.length; i < l; i++) {
 	        ret[i] = render(val[i], i);
@@ -3288,11 +2552,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  Vue.prototype._t = function (
 	    name,
 	    fallback,
-	    props
+	    props,
+	    bindObject
 	  ) {
 	    var scopedSlotFn = this.$scopedSlots[name];
 	    if (scopedSlotFn) { // scoped slot
-	      return scopedSlotFn(props || {}) || fallback
+	      props = props || {};
+	      if (bindObject) {
+	        extend(props, bindObject);
+	      }
+	      return scopedSlotFn(props) || fallback
 	    } else {
 	      var slotNodes = this.$slots[name];
 	      // warn duplicate slot usage
@@ -3329,7 +2598,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          if (key === 'class' || key === 'style') {
 	            data[key] = value[key];
 	          } else {
-	            var hash = asProp || config.mustUseProp(tag, key)
+	            var type = data.attrs && data.attrs.type;
+	            var hash = asProp || config.mustUseProp(tag, type, key)
 	              ? data.domProps || (data.domProps = {})
 	              : data.attrs || (data.attrs = {});
 	            hash[key] = value[key];
@@ -3395,23 +2665,46 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function initEvents (vm) {
 	  vm._events = Object.create(null);
+	  vm._hasHookEvent = false;
 	  // init parent attached events
 	  var listeners = vm.$options._parentListeners;
-	  var add = function (event, fn, once) {
-	    once ? vm.$once(event, fn) : vm.$on(event, fn);
-	  };
-	  var remove$$1 = bind$1(vm.$off, vm);
-	  vm._updateListeners = function (listeners, oldListeners) {
-	    updateListeners(listeners, oldListeners || {}, add, remove$$1, vm);
-	  };
 	  if (listeners) {
-	    vm._updateListeners(listeners);
+	    updateComponentListeners(vm, listeners);
 	  }
 	}
 
+	var target;
+
+	function add$1 (event, fn, once) {
+	  if (once) {
+	    target.$once(event, fn);
+	  } else {
+	    target.$on(event, fn);
+	  }
+	}
+
+	function remove$2 (event, fn) {
+	  target.$off(event, fn);
+	}
+
+	function updateComponentListeners (
+	  vm,
+	  listeners,
+	  oldListeners
+	) {
+	  target = vm;
+	  updateListeners(listeners, oldListeners || {}, add$1, remove$2, vm);
+	}
+
 	function eventsMixin (Vue) {
+	  var hookRE = /^hook:/;
 	  Vue.prototype.$on = function (event, fn) {
 	    var vm = this;(vm._events[event] || (vm._events[event] = [])).push(fn);
+	    // optimize hook:event cost by using a boolean flag marked at registration
+	    // instead of a hash lookup
+	    if (hookRE.test(event)) {
+	      vm._hasHookEvent = true;
+	    }
 	    return vm
 	  };
 
@@ -3471,6 +2764,796 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/*  */
 
+	var activeInstance = null;
+
+	function initLifecycle (vm) {
+	  var options = vm.$options;
+
+	  // locate first non-abstract parent
+	  var parent = options.parent;
+	  if (parent && !options.abstract) {
+	    while (parent.$options.abstract && parent.$parent) {
+	      parent = parent.$parent;
+	    }
+	    parent.$children.push(vm);
+	  }
+
+	  vm.$parent = parent;
+	  vm.$root = parent ? parent.$root : vm;
+
+	  vm.$children = [];
+	  vm.$refs = {};
+
+	  vm._watcher = null;
+	  vm._inactive = false;
+	  vm._isMounted = false;
+	  vm._isDestroyed = false;
+	  vm._isBeingDestroyed = false;
+	}
+
+	function lifecycleMixin (Vue) {
+	  Vue.prototype._mount = function (
+	    el,
+	    hydrating
+	  ) {
+	    var vm = this;
+	    vm.$el = el;
+	    if (!vm.$options.render) {
+	      vm.$options.render = createEmptyVNode;
+	      if (process.env.NODE_ENV !== 'production') {
+	        /* istanbul ignore if */
+	        if (vm.$options.template && vm.$options.template.charAt(0) !== '#') {
+	          warn(
+	            'You are using the runtime-only build of Vue where the template ' +
+	            'option is not available. Either pre-compile the templates into ' +
+	            'render functions, or use the compiler-included build.',
+	            vm
+	          );
+	        } else {
+	          warn(
+	            'Failed to mount component: template or render function not defined.',
+	            vm
+	          );
+	        }
+	      }
+	    }
+	    callHook(vm, 'beforeMount');
+	    vm._watcher = new Watcher(vm, function updateComponent () {
+	      vm._update(vm._render(), hydrating);
+	    }, noop);
+	    hydrating = false;
+	    // manually mounted instance, call mounted on self
+	    // mounted is called for render-created child components in its inserted hook
+	    if (vm.$vnode == null) {
+	      vm._isMounted = true;
+	      callHook(vm, 'mounted');
+	    }
+	    return vm
+	  };
+
+	  Vue.prototype._update = function (vnode, hydrating) {
+	    var vm = this;
+	    if (vm._isMounted) {
+	      callHook(vm, 'beforeUpdate');
+	    }
+	    var prevEl = vm.$el;
+	    var prevVnode = vm._vnode;
+	    var prevActiveInstance = activeInstance;
+	    activeInstance = vm;
+	    vm._vnode = vnode;
+	    // Vue.prototype.__patch__ is injected in entry points
+	    // based on the rendering backend used.
+	    if (!prevVnode) {
+	      // initial render
+	      vm.$el = vm.__patch__(
+	        vm.$el, vnode, hydrating, false /* removeOnly */,
+	        vm.$options._parentElm,
+	        vm.$options._refElm
+	      );
+	    } else {
+	      // updates
+	      vm.$el = vm.__patch__(prevVnode, vnode);
+	    }
+	    activeInstance = prevActiveInstance;
+	    // update __vue__ reference
+	    if (prevEl) {
+	      prevEl.__vue__ = null;
+	    }
+	    if (vm.$el) {
+	      vm.$el.__vue__ = vm;
+	    }
+	    // if parent is an HOC, update its $el as well
+	    if (vm.$vnode && vm.$parent && vm.$vnode === vm.$parent._vnode) {
+	      vm.$parent.$el = vm.$el;
+	    }
+	    // updated hook is called by the scheduler to ensure that children are
+	    // updated in a parent's updated hook.
+	  };
+
+	  Vue.prototype._updateFromParent = function (
+	    propsData,
+	    listeners,
+	    parentVnode,
+	    renderChildren
+	  ) {
+	    var vm = this;
+	    var hasChildren = !!(vm.$options._renderChildren || renderChildren);
+	    vm.$options._parentVnode = parentVnode;
+	    vm.$vnode = parentVnode; // update vm's placeholder node without re-render
+	    if (vm._vnode) { // update child tree's parent
+	      vm._vnode.parent = parentVnode;
+	    }
+	    vm.$options._renderChildren = renderChildren;
+	    // update props
+	    if (propsData && vm.$options.props) {
+	      observerState.shouldConvert = false;
+	      if (process.env.NODE_ENV !== 'production') {
+	        observerState.isSettingProps = true;
+	      }
+	      var propKeys = vm.$options._propKeys || [];
+	      for (var i = 0; i < propKeys.length; i++) {
+	        var key = propKeys[i];
+	        vm[key] = validateProp(key, vm.$options.props, propsData, vm);
+	      }
+	      observerState.shouldConvert = true;
+	      if (process.env.NODE_ENV !== 'production') {
+	        observerState.isSettingProps = false;
+	      }
+	      vm.$options.propsData = propsData;
+	    }
+	    // update listeners
+	    if (listeners) {
+	      var oldListeners = vm.$options._parentListeners;
+	      vm.$options._parentListeners = listeners;
+	      updateComponentListeners(vm, listeners, oldListeners);
+	    }
+	    // resolve slots + force update if has children
+	    if (hasChildren) {
+	      vm.$slots = resolveSlots(renderChildren, parentVnode.context);
+	      vm.$forceUpdate();
+	    }
+	  };
+
+	  Vue.prototype.$forceUpdate = function () {
+	    var vm = this;
+	    if (vm._watcher) {
+	      vm._watcher.update();
+	    }
+	  };
+
+	  Vue.prototype.$destroy = function () {
+	    var vm = this;
+	    if (vm._isBeingDestroyed) {
+	      return
+	    }
+	    callHook(vm, 'beforeDestroy');
+	    vm._isBeingDestroyed = true;
+	    // remove self from parent
+	    var parent = vm.$parent;
+	    if (parent && !parent._isBeingDestroyed && !vm.$options.abstract) {
+	      remove$1(parent.$children, vm);
+	    }
+	    // teardown watchers
+	    if (vm._watcher) {
+	      vm._watcher.teardown();
+	    }
+	    var i = vm._watchers.length;
+	    while (i--) {
+	      vm._watchers[i].teardown();
+	    }
+	    // remove reference from data ob
+	    // frozen object may not have observer.
+	    if (vm._data.__ob__) {
+	      vm._data.__ob__.vmCount--;
+	    }
+	    // call the last hook...
+	    vm._isDestroyed = true;
+	    callHook(vm, 'destroyed');
+	    // turn off all instance listeners.
+	    vm.$off();
+	    // remove __vue__ reference
+	    if (vm.$el) {
+	      vm.$el.__vue__ = null;
+	    }
+	    // invoke destroy hooks on current rendered tree
+	    vm.__patch__(vm._vnode, null);
+	  };
+	}
+
+	function callHook (vm, hook) {
+	  var handlers = vm.$options[hook];
+	  if (handlers) {
+	    for (var i = 0, j = handlers.length; i < j; i++) {
+	      handlers[i].call(vm);
+	    }
+	  }
+	  if (vm._hasHookEvent) {
+	    vm.$emit('hook:' + hook);
+	  }
+	}
+
+	/*  */
+
+
+	var queue = [];
+	var has$1 = {};
+	var circular = {};
+	var waiting = false;
+	var flushing = false;
+	var index = 0;
+
+	/**
+	 * Reset the scheduler's state.
+	 */
+	function resetSchedulerState () {
+	  queue.length = 0;
+	  has$1 = {};
+	  if (process.env.NODE_ENV !== 'production') {
+	    circular = {};
+	  }
+	  waiting = flushing = false;
+	}
+
+	/**
+	 * Flush both queues and run the watchers.
+	 */
+	function flushSchedulerQueue () {
+	  flushing = true;
+	  var watcher, id, vm;
+
+	  // Sort queue before flush.
+	  // This ensures that:
+	  // 1. Components are updated from parent to child. (because parent is always
+	  //    created before the child)
+	  // 2. A component's user watchers are run before its render watcher (because
+	  //    user watchers are created before the render watcher)
+	  // 3. If a component is destroyed during a parent component's watcher run,
+	  //    its watchers can be skipped.
+	  queue.sort(function (a, b) { return a.id - b.id; });
+
+	  // do not cache length because more watchers might be pushed
+	  // as we run existing watchers
+	  for (index = 0; index < queue.length; index++) {
+	    watcher = queue[index];
+	    id = watcher.id;
+	    has$1[id] = null;
+	    watcher.run();
+	    // in dev build, check and stop circular updates.
+	    if (process.env.NODE_ENV !== 'production' && has$1[id] != null) {
+	      circular[id] = (circular[id] || 0) + 1;
+	      if (circular[id] > config._maxUpdateCount) {
+	        warn(
+	          'You may have an infinite update loop ' + (
+	            watcher.user
+	              ? ("in watcher with expression \"" + (watcher.expression) + "\"")
+	              : "in a component render function."
+	          ),
+	          watcher.vm
+	        );
+	        break
+	      }
+	    }
+	  }
+
+	  // call updated hooks
+	  index = queue.length;
+	  while (index--) {
+	    watcher = queue[index];
+	    vm = watcher.vm;
+	    if (vm._watcher === watcher && vm._isMounted) {
+	      callHook(vm, 'updated');
+	    }
+	  }
+
+	  // devtool hook
+	  /* istanbul ignore if */
+	  if (devtools && config.devtools) {
+	    devtools.emit('flush');
+	  }
+
+	  resetSchedulerState();
+	}
+
+	/**
+	 * Push a watcher into the watcher queue.
+	 * Jobs with duplicate IDs will be skipped unless it's
+	 * pushed when the queue is being flushed.
+	 */
+	function queueWatcher (watcher) {
+	  var id = watcher.id;
+	  if (has$1[id] == null) {
+	    has$1[id] = true;
+	    if (!flushing) {
+	      queue.push(watcher);
+	    } else {
+	      // if already flushing, splice the watcher based on its id
+	      // if already past its id, it will be run next immediately.
+	      var i = queue.length - 1;
+	      while (i >= 0 && queue[i].id > watcher.id) {
+	        i--;
+	      }
+	      queue.splice(Math.max(i, index) + 1, 0, watcher);
+	    }
+	    // queue the flush
+	    if (!waiting) {
+	      waiting = true;
+	      nextTick(flushSchedulerQueue);
+	    }
+	  }
+	}
+
+	/*  */
+
+	var uid$2 = 0;
+
+	/**
+	 * A watcher parses an expression, collects dependencies,
+	 * and fires callback when the expression value changes.
+	 * This is used for both the $watch() api and directives.
+	 */
+	var Watcher = function Watcher (
+	  vm,
+	  expOrFn,
+	  cb,
+	  options
+	) {
+	  this.vm = vm;
+	  vm._watchers.push(this);
+	  // options
+	  if (options) {
+	    this.deep = !!options.deep;
+	    this.user = !!options.user;
+	    this.lazy = !!options.lazy;
+	    this.sync = !!options.sync;
+	  } else {
+	    this.deep = this.user = this.lazy = this.sync = false;
+	  }
+	  this.cb = cb;
+	  this.id = ++uid$2; // uid for batching
+	  this.active = true;
+	  this.dirty = this.lazy; // for lazy watchers
+	  this.deps = [];
+	  this.newDeps = [];
+	  this.depIds = new _Set();
+	  this.newDepIds = new _Set();
+	  this.expression = process.env.NODE_ENV !== 'production'
+	    ? expOrFn.toString()
+	    : '';
+	  // parse expression for getter
+	  if (typeof expOrFn === 'function') {
+	    this.getter = expOrFn;
+	  } else {
+	    this.getter = parsePath(expOrFn);
+	    if (!this.getter) {
+	      this.getter = function () {};
+	      process.env.NODE_ENV !== 'production' && warn(
+	        "Failed watching path: \"" + expOrFn + "\" " +
+	        'Watcher only accepts simple dot-delimited paths. ' +
+	        'For full control, use a function instead.',
+	        vm
+	      );
+	    }
+	  }
+	  this.value = this.lazy
+	    ? undefined
+	    : this.get();
+	};
+
+	/**
+	 * Evaluate the getter, and re-collect dependencies.
+	 */
+	Watcher.prototype.get = function get () {
+	  pushTarget(this);
+	  var value = this.getter.call(this.vm, this.vm);
+	  // "touch" every property so they are all tracked as
+	  // dependencies for deep watching
+	  if (this.deep) {
+	    traverse(value);
+	  }
+	  popTarget();
+	  this.cleanupDeps();
+	  return value
+	};
+
+	/**
+	 * Add a dependency to this directive.
+	 */
+	Watcher.prototype.addDep = function addDep (dep) {
+	  var id = dep.id;
+	  if (!this.newDepIds.has(id)) {
+	    this.newDepIds.add(id);
+	    this.newDeps.push(dep);
+	    if (!this.depIds.has(id)) {
+	      dep.addSub(this);
+	    }
+	  }
+	};
+
+	/**
+	 * Clean up for dependency collection.
+	 */
+	Watcher.prototype.cleanupDeps = function cleanupDeps () {
+	    var this$1 = this;
+
+	  var i = this.deps.length;
+	  while (i--) {
+	    var dep = this$1.deps[i];
+	    if (!this$1.newDepIds.has(dep.id)) {
+	      dep.removeSub(this$1);
+	    }
+	  }
+	  var tmp = this.depIds;
+	  this.depIds = this.newDepIds;
+	  this.newDepIds = tmp;
+	  this.newDepIds.clear();
+	  tmp = this.deps;
+	  this.deps = this.newDeps;
+	  this.newDeps = tmp;
+	  this.newDeps.length = 0;
+	};
+
+	/**
+	 * Subscriber interface.
+	 * Will be called when a dependency changes.
+	 */
+	Watcher.prototype.update = function update () {
+	  /* istanbul ignore else */
+	  if (this.lazy) {
+	    this.dirty = true;
+	  } else if (this.sync) {
+	    this.run();
+	  } else {
+	    queueWatcher(this);
+	  }
+	};
+
+	/**
+	 * Scheduler job interface.
+	 * Will be called by the scheduler.
+	 */
+	Watcher.prototype.run = function run () {
+	  if (this.active) {
+	    var value = this.get();
+	    if (
+	      value !== this.value ||
+	      // Deep watchers and watchers on Object/Arrays should fire even
+	      // when the value is the same, because the value may
+	      // have mutated.
+	      isObject(value) ||
+	      this.deep
+	    ) {
+	      // set new value
+	      var oldValue = this.value;
+	      this.value = value;
+	      if (this.user) {
+	        try {
+	          this.cb.call(this.vm, value, oldValue);
+	        } catch (e) {
+	          /* istanbul ignore else */
+	          if (config.errorHandler) {
+	            config.errorHandler.call(null, e, this.vm);
+	          } else {
+	            process.env.NODE_ENV !== 'production' && warn(
+	              ("Error in watcher \"" + (this.expression) + "\""),
+	              this.vm
+	            );
+	            throw e
+	          }
+	        }
+	      } else {
+	        this.cb.call(this.vm, value, oldValue);
+	      }
+	    }
+	  }
+	};
+
+	/**
+	 * Evaluate the value of the watcher.
+	 * This only gets called for lazy watchers.
+	 */
+	Watcher.prototype.evaluate = function evaluate () {
+	  this.value = this.get();
+	  this.dirty = false;
+	};
+
+	/**
+	 * Depend on all deps collected by this watcher.
+	 */
+	Watcher.prototype.depend = function depend () {
+	    var this$1 = this;
+
+	  var i = this.deps.length;
+	  while (i--) {
+	    this$1.deps[i].depend();
+	  }
+	};
+
+	/**
+	 * Remove self from all dependencies' subscriber list.
+	 */
+	Watcher.prototype.teardown = function teardown () {
+	    var this$1 = this;
+
+	  if (this.active) {
+	    // remove self from vm's watcher list
+	    // this is a somewhat expensive operation so we skip it
+	    // if the vm is being destroyed.
+	    if (!this.vm._isBeingDestroyed) {
+	      remove$1(this.vm._watchers, this);
+	    }
+	    var i = this.deps.length;
+	    while (i--) {
+	      this$1.deps[i].removeSub(this$1);
+	    }
+	    this.active = false;
+	  }
+	};
+
+	/**
+	 * Recursively traverse an object to evoke all converted
+	 * getters, so that every nested property inside the object
+	 * is collected as a "deep" dependency.
+	 */
+	var seenObjects = new _Set();
+	function traverse (val) {
+	  seenObjects.clear();
+	  _traverse(val, seenObjects);
+	}
+
+	function _traverse (val, seen) {
+	  var i, keys;
+	  var isA = Array.isArray(val);
+	  if ((!isA && !isObject(val)) || !Object.isExtensible(val)) {
+	    return
+	  }
+	  if (val.__ob__) {
+	    var depId = val.__ob__.dep.id;
+	    if (seen.has(depId)) {
+	      return
+	    }
+	    seen.add(depId);
+	  }
+	  if (isA) {
+	    i = val.length;
+	    while (i--) { _traverse(val[i], seen); }
+	  } else {
+	    keys = Object.keys(val);
+	    i = keys.length;
+	    while (i--) { _traverse(val[keys[i]], seen); }
+	  }
+	}
+
+	/*  */
+
+	function initState (vm) {
+	  vm._watchers = [];
+	  var opts = vm.$options;
+	  if (opts.props) { initProps(vm, opts.props); }
+	  if (opts.methods) { initMethods(vm, opts.methods); }
+	  if (opts.data) {
+	    initData(vm);
+	  } else {
+	    observe(vm._data = {}, true /* asRootData */);
+	  }
+	  if (opts.computed) { initComputed(vm, opts.computed); }
+	  if (opts.watch) { initWatch(vm, opts.watch); }
+	}
+
+	var isReservedProp = { key: 1, ref: 1, slot: 1 };
+
+	function initProps (vm, props) {
+	  var propsData = vm.$options.propsData || {};
+	  var keys = vm.$options._propKeys = Object.keys(props);
+	  var isRoot = !vm.$parent;
+	  // root instance props should be converted
+	  observerState.shouldConvert = isRoot;
+	  var loop = function ( i ) {
+	    var key = keys[i];
+	    /* istanbul ignore else */
+	    if (process.env.NODE_ENV !== 'production') {
+	      if (isReservedProp[key]) {
+	        warn(
+	          ("\"" + key + "\" is a reserved attribute and cannot be used as component prop."),
+	          vm
+	        );
+	      }
+	      defineReactive$$1(vm, key, validateProp(key, props, propsData, vm), function () {
+	        if (vm.$parent && !observerState.isSettingProps) {
+	          warn(
+	            "Avoid mutating a prop directly since the value will be " +
+	            "overwritten whenever the parent component re-renders. " +
+	            "Instead, use a data or computed property based on the prop's " +
+	            "value. Prop being mutated: \"" + key + "\"",
+	            vm
+	          );
+	        }
+	      });
+	    } else {
+	      defineReactive$$1(vm, key, validateProp(key, props, propsData, vm));
+	    }
+	  };
+
+	  for (var i = 0; i < keys.length; i++) loop( i );
+	  observerState.shouldConvert = true;
+	}
+
+	function initData (vm) {
+	  var data = vm.$options.data;
+	  data = vm._data = typeof data === 'function'
+	    ? data.call(vm)
+	    : data || {};
+	  if (!isPlainObject(data)) {
+	    data = {};
+	    process.env.NODE_ENV !== 'production' && warn(
+	      'data functions should return an object:\n' +
+	      'https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function',
+	      vm
+	    );
+	  }
+	  // proxy data on instance
+	  var keys = Object.keys(data);
+	  var props = vm.$options.props;
+	  var i = keys.length;
+	  while (i--) {
+	    if (props && hasOwn(props, keys[i])) {
+	      process.env.NODE_ENV !== 'production' && warn(
+	        "The data property \"" + (keys[i]) + "\" is already declared as a prop. " +
+	        "Use prop default value instead.",
+	        vm
+	      );
+	    } else {
+	      proxy(vm, keys[i]);
+	    }
+	  }
+	  // observe data
+	  observe(data, true /* asRootData */);
+	}
+
+	var computedSharedDefinition = {
+	  enumerable: true,
+	  configurable: true,
+	  get: noop,
+	  set: noop
+	};
+
+	function initComputed (vm, computed) {
+	  for (var key in computed) {
+	    /* istanbul ignore if */
+	    if (process.env.NODE_ENV !== 'production' && key in vm) {
+	      warn(
+	        "existing instance property \"" + key + "\" will be " +
+	        "overwritten by a computed property with the same name.",
+	        vm
+	      );
+	    }
+	    var userDef = computed[key];
+	    if (typeof userDef === 'function') {
+	      computedSharedDefinition.get = makeComputedGetter(userDef, vm);
+	      computedSharedDefinition.set = noop;
+	    } else {
+	      computedSharedDefinition.get = userDef.get
+	        ? userDef.cache !== false
+	          ? makeComputedGetter(userDef.get, vm)
+	          : bind$1(userDef.get, vm)
+	        : noop;
+	      computedSharedDefinition.set = userDef.set
+	        ? bind$1(userDef.set, vm)
+	        : noop;
+	    }
+	    Object.defineProperty(vm, key, computedSharedDefinition);
+	  }
+	}
+
+	function makeComputedGetter (getter, owner) {
+	  var watcher = new Watcher(owner, getter, noop, {
+	    lazy: true
+	  });
+	  return function computedGetter () {
+	    if (watcher.dirty) {
+	      watcher.evaluate();
+	    }
+	    if (Dep.target) {
+	      watcher.depend();
+	    }
+	    return watcher.value
+	  }
+	}
+
+	function initMethods (vm, methods) {
+	  for (var key in methods) {
+	    vm[key] = methods[key] == null ? noop : bind$1(methods[key], vm);
+	    if (process.env.NODE_ENV !== 'production' && methods[key] == null) {
+	      warn(
+	        "method \"" + key + "\" has an undefined value in the component definition. " +
+	        "Did you reference the function correctly?",
+	        vm
+	      );
+	    }
+	  }
+	}
+
+	function initWatch (vm, watch) {
+	  for (var key in watch) {
+	    var handler = watch[key];
+	    if (Array.isArray(handler)) {
+	      for (var i = 0; i < handler.length; i++) {
+	        createWatcher(vm, key, handler[i]);
+	      }
+	    } else {
+	      createWatcher(vm, key, handler);
+	    }
+	  }
+	}
+
+	function createWatcher (vm, key, handler) {
+	  var options;
+	  if (isPlainObject(handler)) {
+	    options = handler;
+	    handler = handler.handler;
+	  }
+	  if (typeof handler === 'string') {
+	    handler = vm[handler];
+	  }
+	  vm.$watch(key, handler, options);
+	}
+
+	function stateMixin (Vue) {
+	  // flow somehow has problems with directly declared definition object
+	  // when using Object.defineProperty, so we have to procedurally build up
+	  // the object here.
+	  var dataDef = {};
+	  dataDef.get = function () {
+	    return this._data
+	  };
+	  if (process.env.NODE_ENV !== 'production') {
+	    dataDef.set = function (newData) {
+	      warn(
+	        'Avoid replacing instance root $data. ' +
+	        'Use nested data properties instead.',
+	        this
+	      );
+	    };
+	  }
+	  Object.defineProperty(Vue.prototype, '$data', dataDef);
+
+	  Vue.prototype.$set = set$1;
+	  Vue.prototype.$delete = del;
+
+	  Vue.prototype.$watch = function (
+	    expOrFn,
+	    cb,
+	    options
+	  ) {
+	    var vm = this;
+	    options = options || {};
+	    options.user = true;
+	    var watcher = new Watcher(vm, expOrFn, cb, options);
+	    if (options.immediate) {
+	      cb.call(vm, watcher.value);
+	    }
+	    return function unwatchFn () {
+	      watcher.teardown();
+	    }
+	  };
+	}
+
+	function proxy (vm, key) {
+	  if (!isReserved(key)) {
+	    Object.defineProperty(vm, key, {
+	      configurable: true,
+	      enumerable: true,
+	      get: function proxyGetter () {
+	        return vm._data[key]
+	      },
+	      set: function proxySetter (val) {
+	        vm._data[key] = val;
+	      }
+	    });
+	  }
+	}
+
+	/*  */
+
 	var uid = 0;
 
 	function initMixin (Vue) {
@@ -3503,10 +3586,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    vm._self = vm;
 	    initLifecycle(vm);
 	    initEvents(vm);
+	    initRender(vm);
 	    callHook(vm, 'beforeCreate');
 	    initState(vm);
 	    callHook(vm, 'created');
-	    initRender(vm);
+	    if (vm.$options.el) {
+	      vm.$mount(vm.$options.el);
+	    }
 	  };
 	}
 
@@ -3699,6 +3785,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var patternTypes = [String, RegExp];
 
+	function getComponentName (opts) {
+	  return opts && (opts.Ctor.options.name || opts.tag)
+	}
+
 	function matches (pattern, name) {
 	  if (typeof pattern === 'string') {
 	    return pattern.split(',').indexOf(name) > -1
@@ -3707,22 +3797,64 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}
 
+	function pruneCache (cache, filter) {
+	  for (var key in cache) {
+	    var cachedNode = cache[key];
+	    if (cachedNode) {
+	      var name = getComponentName(cachedNode.componentOptions);
+	      if (name && !filter(name)) {
+	        pruneCacheEntry(cachedNode);
+	        cache[key] = null;
+	      }
+	    }
+	  }
+	}
+
+	function pruneCacheEntry (vnode) {
+	  if (vnode) {
+	    if (!vnode.componentInstance._inactive) {
+	      callHook(vnode.componentInstance, 'deactivated');
+	    }
+	    vnode.componentInstance.$destroy();
+	  }
+	}
+
 	var KeepAlive = {
 	  name: 'keep-alive',
 	  abstract: true,
+
 	  props: {
 	    include: patternTypes,
 	    exclude: patternTypes
 	  },
+
 	  created: function created () {
 	    this.cache = Object.create(null);
 	  },
+
+	  destroyed: function destroyed () {
+	    var this$1 = this;
+
+	    for (var key in this.cache) {
+	      pruneCacheEntry(this$1.cache[key]);
+	    }
+	  },
+
+	  watch: {
+	    include: function include (val) {
+	      pruneCache(this.cache, function (name) { return matches(val, name); });
+	    },
+	    exclude: function exclude (val) {
+	      pruneCache(this.cache, function (name) { return !matches(val, name); });
+	    }
+	  },
+
 	  render: function render () {
 	    var vnode = getFirstComponentChild(this.$slots.default);
-	    if (vnode && vnode.componentOptions) {
-	      var opts = vnode.componentOptions;
+	    var componentOptions = vnode && vnode.componentOptions;
+	    if (componentOptions) {
 	      // check pattern
-	      var name = opts.Ctor.options.name || opts.tag;
+	      var name = getComponentName(componentOptions);
 	      if (name && (
 	        (this.include && !matches(this.include, name)) ||
 	        (this.exclude && matches(this.exclude, name))
@@ -3732,25 +3864,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var key = vnode.key == null
 	        // same constructor may get registered as different local components
 	        // so cid alone is not enough (#3269)
-	        ? opts.Ctor.cid + (opts.tag ? ("::" + (opts.tag)) : '')
+	        ? componentOptions.Ctor.cid + (componentOptions.tag ? ("::" + (componentOptions.tag)) : '')
 	        : vnode.key;
 	      if (this.cache[key]) {
-	        vnode.child = this.cache[key].child;
+	        vnode.componentInstance = this.cache[key].componentInstance;
 	      } else {
 	        this.cache[key] = vnode;
 	      }
 	      vnode.data.keepAlive = true;
 	    }
 	    return vnode
-	  },
-	  destroyed: function destroyed () {
-	    var this$1 = this;
-
-	    for (var key in this.cache) {
-	      var vnode = this$1.cache[key];
-	      callHook(vnode.child, 'deactivated');
-	      vnode.child.$destroy();
-	    }
 	  }
 	};
 
@@ -3800,15 +3923,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  get: isServerRendering
 	});
 
-	Vue$2.version = '2.1.6';
+	Vue$2.version = '2.1.10';
 
 	/*  */
 
 	// attributes that should be using props for binding
 	var acceptValue = makeMap('input,textarea,option,select');
-	var mustUseProp = function (tag, attr) {
+	var mustUseProp = function (tag, type, attr) {
 	  return (
-	    (attr === 'value' && acceptValue(tag)) ||
+	    (attr === 'value' && acceptValue(tag)) && type !== 'button' ||
 	    (attr === 'selected' && tag === 'option') ||
 	    (attr === 'checked' && tag === 'input') ||
 	    (attr === 'muted' && tag === 'video')
@@ -3846,8 +3969,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var data = vnode.data;
 	  var parentNode = vnode;
 	  var childNode = vnode;
-	  while (childNode.child) {
-	    childNode = childNode.child._vnode;
+	  while (childNode.componentInstance) {
+	    childNode = childNode.componentInstance._vnode;
 	    if (childNode.data) {
 	      data = mergeClassData(childNode.data, data);
 	    }
@@ -3916,8 +4039,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var namespaceMap = {
 	  svg: 'http://www.w3.org/2000/svg',
-	  math: 'http://www.w3.org/1998/Math/MathML',
-	  xhtml: 'http://www.w3.org/1999/xhtml'
+	  math: 'http://www.w3.org/1998/Math/MathML'
 	};
 
 	var isHTMLTag = makeMap(
@@ -4100,7 +4222,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (!key) { return }
 
 	  var vm = vnode.context;
-	  var ref = vnode.child || vnode.elm;
+	  var ref = vnode.componentInstance || vnode.elm;
 	  var refs = vm.$refs;
 	  if (isRemoval) {
 	    if (Array.isArray(refs[key])) {
@@ -4187,16 +4309,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function createRmCb (childElm, listeners) {
 	    function remove$$1 () {
 	      if (--remove$$1.listeners === 0) {
-	        removeElement(childElm);
+	        removeNode(childElm);
 	      }
 	    }
 	    remove$$1.listeners = listeners;
 	    return remove$$1
 	  }
 
-	  function removeElement (el) {
+	  function removeNode (el) {
 	    var parent = nodeOps.parentNode(el);
-	    // element may have already been removed due to v-html
+	    // element may have already been removed due to v-html / v-text
 	    if (parent) {
 	      nodeOps.removeChild(parent, el);
 	    }
@@ -4220,7 +4342,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (
 	          !inPre &&
 	          !vnode.ns &&
-	          !(config.ignoredElements && config.ignoredElements.indexOf(tag) > -1) &&
+	          !(config.ignoredElements.length && config.ignoredElements.indexOf(tag) > -1) &&
 	          config.isUnknownElement(tag)
 	        ) {
 	          warn(
@@ -4260,7 +4382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function createComponent (vnode, insertedVnodeQueue, parentElm, refElm) {
 	    var i = vnode.data;
 	    if (isDef(i)) {
-	      var isReactivated = isDef(vnode.child) && i.keepAlive;
+	      var isReactivated = isDef(vnode.componentInstance) && i.keepAlive;
 	      if (isDef(i = i.hook) && isDef(i = i.init)) {
 	        i(vnode, false /* hydrating */, parentElm, refElm);
 	      }
@@ -4268,13 +4390,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // it should've created a child instance and mounted it. the child
 	      // component also has set the placeholder vnode's elm.
 	      // in that case we can just return the element and be done.
-	      if (isDef(vnode.child)) {
+	      if (isDef(vnode.componentInstance)) {
 	        initComponent(vnode, insertedVnodeQueue);
 	        if (isReactivated) {
 	          reactivateComponent(vnode, insertedVnodeQueue, parentElm, refElm);
 	        }
 	        return true
 	      }
+	    }
+	  }
+
+	  function initComponent (vnode, insertedVnodeQueue) {
+	    if (vnode.data.pendingInsert) {
+	      insertedVnodeQueue.push.apply(insertedVnodeQueue, vnode.data.pendingInsert);
+	    }
+	    vnode.elm = vnode.componentInstance.$el;
+	    if (isPatchable(vnode)) {
+	      invokeCreateHooks(vnode, insertedVnodeQueue);
+	      setScope(vnode);
+	    } else {
+	      // empty component root.
+	      // skip all element-related modules except for ref (#3455)
+	      registerRef(vnode);
+	      // make sure to invoke the insert hook
+	      insertedVnodeQueue.push(vnode);
 	    }
 	  }
 
@@ -4285,8 +4424,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // again. It's not ideal to involve module-specific logic in here but
 	    // there doesn't seem to be a better way to do it.
 	    var innerNode = vnode;
-	    while (innerNode.child) {
-	      innerNode = innerNode.child._vnode;
+	    while (innerNode.componentInstance) {
+	      innerNode = innerNode.componentInstance._vnode;
 	      if (isDef(i = innerNode.data) && isDef(i = i.transition)) {
 	        for (i = 0; i < cbs.activate.length; ++i) {
 	          cbs.activate[i](emptyNode, innerNode);
@@ -4321,8 +4460,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  function isPatchable (vnode) {
-	    while (vnode.child) {
-	      vnode = vnode.child._vnode;
+	    while (vnode.componentInstance) {
+	      vnode = vnode.componentInstance._vnode;
 	    }
 	    return isDef(vnode.tag)
 	  }
@@ -4335,23 +4474,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (isDef(i)) {
 	      if (i.create) { i.create(emptyNode, vnode); }
 	      if (i.insert) { insertedVnodeQueue.push(vnode); }
-	    }
-	  }
-
-	  function initComponent (vnode, insertedVnodeQueue) {
-	    if (vnode.data.pendingInsert) {
-	      insertedVnodeQueue.push.apply(insertedVnodeQueue, vnode.data.pendingInsert);
-	    }
-	    vnode.elm = vnode.child.$el;
-	    if (isPatchable(vnode)) {
-	      invokeCreateHooks(vnode, insertedVnodeQueue);
-	      setScope(vnode);
-	    } else {
-	      // empty component root.
-	      // skip all element-related modules except for ref (#3455)
-	      registerRef(vnode);
-	      // make sure to invoke the insert hook
-	      insertedVnodeQueue.push(vnode);
 	    }
 	  }
 
@@ -4398,7 +4520,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          removeAndInvokeRemoveHook(ch);
 	          invokeDestroyHook(ch);
 	        } else { // Text node
-	          nodeOps.removeChild(parentElm, ch.elm);
+	          removeNode(ch.elm);
 	        }
 	      }
 	    }
@@ -4416,7 +4538,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        rm.listeners += listeners;
 	      }
 	      // recursively invoke hooks on child component root node
-	      if (isDef(i = vnode.child) && isDef(i = i._vnode) && isDef(i.data)) {
+	      if (isDef(i = vnode.componentInstance) && isDef(i = i._vnode) && isDef(i.data)) {
 	        removeAndInvokeRemoveHook(i, rm);
 	      }
 	      for (i = 0; i < cbs.remove.length; ++i) {
@@ -4428,7 +4550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        rm();
 	      }
 	    } else {
-	      removeElement(vnode.elm);
+	      removeNode(vnode.elm);
 	    }
 	  }
 
@@ -4520,7 +4642,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        vnode.key === oldVnode.key &&
 	        (vnode.isCloned || vnode.isOnce)) {
 	      vnode.elm = oldVnode.elm;
-	      vnode.child = oldVnode.child;
+	      vnode.componentInstance = oldVnode.componentInstance;
 	      return
 	    }
 	    var i;
@@ -4585,7 +4707,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var children = vnode.children;
 	    if (isDef(data)) {
 	      if (isDef(i = data.hook) && isDef(i = i.init)) { i(vnode, true /* hydrating */); }
-	      if (isDef(i = vnode.child)) {
+	      if (isDef(i = vnode.componentInstance)) {
 	        // child component. it should have hydrated its own tree.
 	        initComponent(vnode, insertedVnodeQueue);
 	        return true
@@ -4628,6 +4750,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	        }
 	      }
+	    } else if (elm.data !== vnode.text) {
+	      elm.data = vnode.text;
 	    }
 	    return true
 	  }
@@ -4639,7 +4763,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        vnode.tag.toLowerCase() === (node.tagName && node.tagName.toLowerCase())
 	      )
 	    } else {
-	      return _toString(vnode.text) === node.data
+	      return node.nodeType === (vnode.isComment ? 8 : 3)
 	    }
 	  }
 
@@ -4649,7 +4773,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return
 	    }
 
-	    var elm, parent;
 	    var isInitialPatch = false;
 	    var insertedVnodeQueue = [];
 
@@ -4689,11 +4812,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	          // create an empty node and replace it
 	          oldVnode = emptyNodeAt(oldVnode);
 	        }
-
 	        // replacing existing element
-	        elm = oldVnode.elm;
-	        parent = nodeOps.parentNode(elm);
-	        createElm(vnode, insertedVnodeQueue, parent, nodeOps.nextSibling(elm));
+	        var oldElm = oldVnode.elm;
+	        var parentElm$1 = nodeOps.parentNode(oldElm);
+	        createElm(
+	          vnode,
+	          insertedVnodeQueue,
+	          // extremely rare edge case: do not insert if old element is in a
+	          // leaving transition. Only happens when combining transition +
+	          // keep-alive + HOCs. (#4590)
+	          oldElm._leaveCb ? null : parentElm$1,
+	          nodeOps.nextSibling(oldElm)
+	        );
 
 	        if (vnode.parent) {
 	          // component root element replaced.
@@ -4710,8 +4840,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	        }
 
-	        if (parent !== null) {
-	          removeVnodes(parent, [oldVnode], 0, 0);
+	        if (parentElm$1 !== null) {
+	          removeVnodes(parentElm$1, [oldVnode], 0, 0);
 	        } else if (isDef(oldVnode.tag)) {
 	          invokeDestroyHook(oldVnode);
 	        }
@@ -4741,6 +4871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _update (oldVnode, vnode) {
 	  var isCreate = oldVnode === emptyNode;
+	  var isDestroy = vnode === emptyNode;
 	  var oldDirs = normalizeDirectives$1(oldVnode.data.directives, oldVnode.context);
 	  var newDirs = normalizeDirectives$1(vnode.data.directives, vnode.context);
 
@@ -4792,7 +4923,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    for (key in oldDirs) {
 	      if (!newDirs[key]) {
 	        // no longer present, unbind
-	        callHook$1(oldDirs[key], 'unbind', oldVnode);
+	        callHook$1(oldDirs[key], 'unbind', oldVnode, oldVnode, isDestroy);
 	      }
 	    }
 	  }
@@ -4824,10 +4955,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return dir.rawName || ((dir.name) + "." + (Object.keys(dir.modifiers || {}).join('.')))
 	}
 
-	function callHook$1 (dir, hook, vnode, oldVnode) {
+	function callHook$1 (dir, hook, vnode, oldVnode, isDestroy) {
 	  var fn = dir.def && dir.def[hook];
 	  if (fn) {
-	    fn(vnode.elm, dir, vnode, oldVnode);
+	    fn(vnode.elm, dir, vnode, oldVnode, isDestroy);
 	  }
 	}
 
@@ -4938,23 +5069,34 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/*  */
 
-	var target;
+	var target$1;
 
-	function add$1 (event, handler, once, capture) {
+	function add$2 (
+	  event,
+	  handler,
+	  once,
+	  capture
+	) {
 	  if (once) {
 	    var oldHandler = handler;
+	    var _target = target$1; // save current target element in closure
 	    handler = function (ev) {
-	      remove$2(event, handler, capture);
+	      remove$3(event, handler, capture, _target);
 	      arguments.length === 1
 	        ? oldHandler(ev)
 	        : oldHandler.apply(null, arguments);
 	    };
 	  }
-	  target.addEventListener(event, handler, capture);
+	  target$1.addEventListener(event, handler, capture);
 	}
 
-	function remove$2 (event, handler, capture) {
-	  target.removeEventListener(event, handler, capture);
+	function remove$3 (
+	  event,
+	  handler,
+	  capture,
+	  _target
+	) {
+	  (_target || target$1).removeEventListener(event, handler, capture);
 	}
 
 	function updateDOMListeners (oldVnode, vnode) {
@@ -4963,8 +5105,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	  var on = vnode.data.on || {};
 	  var oldOn = oldVnode.data.on || {};
-	  target = vnode.elm;
-	  updateListeners(on, oldOn, add$1, remove$2, vnode.context);
+	  target$1 = vnode.elm;
+	  updateListeners(on, oldOn, add$2, remove$3, vnode.context);
 	}
 
 	var events = {
@@ -5001,16 +5143,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (vnode.children) { vnode.children.length = 0; }
 	      if (cur === oldProps[key]) { continue }
 	    }
+
 	    if (key === 'value') {
 	      // store value as _value as well since
 	      // non-string values will be stringified
 	      elm._value = cur;
 	      // avoid resetting cursor position when value is the same
 	      var strCur = cur == null ? '' : String(cur);
-	      if (!elm.composing && (
-	        (document.activeElement !== elm && elm.value !== strCur) ||
-	        isValueChanged(vnode, strCur)
-	      )) {
+	      if (shouldUpdateValue(elm, vnode, strCur)) {
 	        elm.value = strCur;
 	      }
 	    } else {
@@ -5019,7 +5159,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}
 
-	function isValueChanged (vnode, newVal) {
+	// check platforms/web/util/attrs.js acceptValue
+
+
+	function shouldUpdateValue (
+	  elm,
+	  vnode,
+	  checkVal
+	) {
+	  return (!elm.composing && (
+	    vnode.tag === 'option' ||
+	    isDirty(elm, checkVal) ||
+	    isInputChanged(vnode, checkVal)
+	  ))
+	}
+
+	function isDirty (elm, checkVal) {
+	  // return true when textbox (.number and .trim) loses focus and its value is not equal to the updated value
+	  return document.activeElement !== elm && elm.value !== checkVal
+	}
+
+	function isInputChanged (vnode, newVal) {
 	  var value = vnode.elm.value;
 	  var modifiers = vnode.elm._vModifiers; // injected by v-model runtime
 	  if ((modifiers && modifiers.number) || vnode.elm.type === 'number') {
@@ -5082,8 +5242,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  if (checkChild) {
 	    var childNode = vnode;
-	    while (childNode.child) {
-	      childNode = childNode.child._vnode;
+	    while (childNode.componentInstance) {
+	      childNode = childNode.componentInstance._vnode;
 	      if (childNode.data && (styleData = normalizeStyleData(childNode.data))) {
 	        extend(res, styleData);
 	      }
@@ -5257,7 +5417,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}
 
-	var raf = (inBrowser && window.requestAnimationFrame) || setTimeout;
+	// binding to window is necessary to make hot reload work in IE in strict mode
+	var raf = inBrowser && window.requestAnimationFrame
+	  ? window.requestAnimationFrame.bind(window)
+	  : setTimeout;
+
 	function nextFrame (fn) {
 	  raf(function () {
 	    raf(fn);
@@ -5397,8 +5561,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var css = data.css;
 	  var type = data.type;
 	  var enterClass = data.enterClass;
+	  var enterToClass = data.enterToClass;
 	  var enterActiveClass = data.enterActiveClass;
 	  var appearClass = data.appearClass;
+	  var appearToClass = data.appearToClass;
 	  var appearActiveClass = data.appearActiveClass;
 	  var beforeEnter = data.beforeEnter;
 	  var enter = data.enter;
@@ -5428,6 +5594,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var startClass = isAppear ? appearClass : enterClass;
 	  var activeClass = isAppear ? appearActiveClass : enterActiveClass;
+	  var toClass = isAppear ? appearToClass : enterToClass;
 	  var beforeEnterHook = isAppear ? (beforeAppear || beforeEnter) : beforeEnter;
 	  var enterHook = isAppear ? (typeof appear === 'function' ? appear : enter) : enter;
 	  var afterEnterHook = isAppear ? (afterAppear || afterEnter) : afterEnter;
@@ -5442,6 +5609,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var cb = el._enterCb = once(function () {
 	    if (expectsCSS) {
+	      removeTransitionClass(el, toClass);
 	      removeTransitionClass(el, activeClass);
 	    }
 	    if (cb.cancelled) {
@@ -5461,7 +5629,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var parent = el.parentNode;
 	      var pendingNode = parent && parent._pending && parent._pending[vnode.key];
 	      if (pendingNode &&
-	          pendingNode.context === vnode.context &&
 	          pendingNode.tag === vnode.tag &&
 	          pendingNode.elm._leaveCb) {
 	        pendingNode.elm._leaveCb();
@@ -5476,6 +5643,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    addTransitionClass(el, startClass);
 	    addTransitionClass(el, activeClass);
 	    nextFrame(function () {
+	      addTransitionClass(el, toClass);
 	      removeTransitionClass(el, startClass);
 	      if (!cb.cancelled && !userWantsControl) {
 	        whenTransitionEnds(el, type, cb);
@@ -5515,6 +5683,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var css = data.css;
 	  var type = data.type;
 	  var leaveClass = data.leaveClass;
+	  var leaveToClass = data.leaveToClass;
 	  var leaveActiveClass = data.leaveActiveClass;
 	  var beforeLeave = data.beforeLeave;
 	  var leave = data.leave;
@@ -5534,6 +5703,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      el.parentNode._pending[vnode.key] = null;
 	    }
 	    if (expectsCSS) {
+	      removeTransitionClass(el, leaveToClass);
 	      removeTransitionClass(el, leaveActiveClass);
 	    }
 	    if (cb.cancelled) {
@@ -5568,6 +5738,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      addTransitionClass(el, leaveClass);
 	      addTransitionClass(el, leaveActiveClass);
 	      nextFrame(function () {
+	        addTransitionClass(el, leaveToClass);
 	        removeTransitionClass(el, leaveClass);
 	        if (!cb.cancelled && !userWantsControl) {
 	          whenTransitionEnds(el, type, cb);
@@ -5603,6 +5774,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    enterClass: (name + "-enter"),
 	    leaveClass: (name + "-leave"),
 	    appearClass: (name + "-enter"),
+	    enterToClass: (name + "-enter-to"),
+	    leaveToClass: (name + "-leave-to"),
+	    appearToClass: (name + "-enter-to"),
 	    enterActiveClass: (name + "-enter-active"),
 	    leaveActiveClass: (name + "-leave-active"),
 	    appearActiveClass: (name + "-enter-active")
@@ -5792,8 +5966,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// recursively search for possible transition defined inside the component root
 	function locateNode (vnode) {
-	  return vnode.child && (!vnode.data || !vnode.data.transition)
-	    ? locateNode(vnode.child._vnode)
+	  return vnode.componentInstance && (!vnode.data || !vnode.data.transition)
+	    ? locateNode(vnode.componentInstance._vnode)
 	    : vnode
 	}
 
@@ -5814,6 +5988,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      el.style.display = value ? originalDisplay : 'none';
 	    }
 	  },
+
 	  update: function update (el, ref, vnode) {
 	    var value = ref.value;
 	    var oldValue = ref.oldValue;
@@ -5836,6 +6011,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else {
 	      el.style.display = value ? el.__vOriginalDisplay : 'none';
 	    }
+	  },
+
+	  unbind: function unbind (
+	    el,
+	    binding,
+	    vnode,
+	    oldVnode,
+	    isDestroy
+	  ) {
+	    if (!isDestroy) {
+	      el.style.display = el.__vOriginalDisplay;
+	    }
 	  }
 	};
 
@@ -5857,10 +6044,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  type: String,
 	  enterClass: String,
 	  leaveClass: String,
+	  enterToClass: String,
+	  leaveToClass: String,
 	  enterActiveClass: String,
 	  leaveActiveClass: String,
 	  appearClass: String,
-	  appearActiveClass: String
+	  appearActiveClass: String,
+	  appearToClass: String
 	};
 
 	// in case the child is also an abstract component, e.g. <keep-alive>
@@ -5904,10 +6094,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}
 
+	function isSameChild (child, oldChild) {
+	  return oldChild.key === child.key && oldChild.tag === child.tag
+	}
+
 	var Transition = {
 	  name: 'transition',
 	  props: transitionProps,
 	  abstract: true,
+
 	  render: function render (h) {
 	    var this$1 = this;
 
@@ -5963,9 +6158,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return placeholder(h, rawChild)
 	    }
 
-	    var key = child.key = child.key == null || child.isStatic
-	      ? ("__v" + (child.tag + this._uid) + "__")
-	      : child.key;
+	    // ensure a key that is unique to the vnode type and to this transition
+	    // component instance. This key will be used to remove pending leaving nodes
+	    // during entering.
+	    var id = "__transition-" + (this._uid) + "-";
+	    var key = child.key = child.key == null
+	      ? id + child.tag
+	      : isPrimitive(child.key)
+	        ? (String(child.key).indexOf(id) === 0 ? child.key : id + child.key)
+	        : child.key;
 	    var data = (child.data || (child.data = {})).transition = extractTransitionData(this);
 	    var oldRawChild = this._vnode;
 	    var oldChild = getRealChild(oldRawChild);
@@ -5976,11 +6177,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      child.data.show = true;
 	    }
 
-	    if (oldChild && oldChild.data && oldChild.key !== key) {
+	    if (oldChild && oldChild.data && !isSameChild(child, oldChild)) {
 	      // replace old child transition data with fresh one
 	      // important for dynamic transitions!
-	      var oldData = oldChild.data.transition = extend({}, data);
-
+	      var oldData = oldChild && (oldChild.data.transition = extend({}, data));
 	      // handle transition mode
 	      if (mode === 'out-in') {
 	        // return placeholder node and queue update when leave finishes
@@ -6191,6 +6391,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return this._mount(el, hydrating)
 	};
 
+	if (process.env.NODE_ENV !== 'production' &&
+	    inBrowser && typeof console !== 'undefined') {
+	  console[console.info ? 'info' : 'log'](
+	    "You are running Vue in development mode.\n" +
+	    "Make sure to turn on production mode when deploying for production.\n" +
+	    "See more tips at https://vuejs.org/guide/deployment.html"
+	  );
+	}
+
 	// devtools global hook
 	/* istanbul ignore next */
 	setTimeout(function () {
@@ -6201,8 +6410,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      process.env.NODE_ENV !== 'production' &&
 	      inBrowser && !isEdge && /Chrome\/\d+/.test(window.navigator.userAgent)
 	    ) {
-	      console.log(
-	        'Download the Vue Devtools for a better development experience:\n' +
+	      console[console.info ? 'info' : 'log'](
+	        'Download the Vue Devtools extension for a better development experience:\n' +
 	        'https://github.com/vuejs/vue-devtools'
 	      );
 	    }
@@ -33049,7 +33258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var convert = __webpack_require__(162),
-	    func = convert('merge', __webpack_require__(367));
+	    func = convert('merge', __webpack_require__(368));
 
 	func.placeholder = __webpack_require__(165);
 	module.exports = func;
@@ -33150,23 +33359,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	/**
-	 * This function is like `_.spread` except that it includes arguments after those spread.
+	 * A specialized version of `_.spread` which flattens the spread array into
+	 * the arguments of the invoked `func`.
 	 *
 	 * @private
 	 * @param {Function} func The function to spread arguments over.
 	 * @param {number} start The start position of the spread.
 	 * @returns {Function} Returns the new function.
 	 */
-	function spread(func, start) {
+	function flatSpread(func, start) {
 	  return function() {
 	    var length = arguments.length,
+	        lastIndex = length - 1,
 	        args = Array(length);
 
 	    while (length--) {
 	      args[length] = arguments[length];
 	    }
 	    var array = args[start],
-	        lastIndex = args.length - 1,
 	        otherArgs = args.slice(0, start);
 
 	    if (array) {
@@ -33398,7 +33608,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var data = mapping.methodSpread[name],
 	          start = data && data.start;
 
-	      return start  === undefined ? ary(func, n) : spread(func, start);
+	      return start  === undefined ? ary(func, n) : flatSpread(func, start);
 	    }
 	    return func;
 	  }
@@ -33568,8 +33778,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    each(aryMethodKeys, function(aryKey) {
 	      each(mapping.aryMethod[aryKey], function(otherName) {
 	        if (realName == otherName) {
-	          var spreadData = mapping.methodSpread[realName],
-	              afterRearg = spreadData && spreadData.afterRearg;
+	          var data = mapping.methodSpread[realName],
+	              afterRearg = data && data.afterRearg;
 
 	          result = afterRearg
 	            ? castFixed(realName, castRearg(realName, wrapped, aryKey), aryKey)
@@ -33825,7 +34035,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/** Used to map method names to iteratee rearg configs. */
 	exports.iterateeRearg = {
-	  'mapKeys': [1]
+	  'mapKeys': [1],
+	  'reduceRight': [1, 0]
 	};
 
 	/** Used to map method names to rearg configs. */
@@ -34045,15 +34256,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  'ary': __webpack_require__(167),
 	  'assign': __webpack_require__(236),
 	  'clone': __webpack_require__(258),
-	  'curry': __webpack_require__(324),
+	  'curry': __webpack_require__(325),
 	  'forEach': __webpack_require__(220),
 	  'isArray': __webpack_require__(206),
 	  'isFunction': __webpack_require__(175),
-	  'iteratee': __webpack_require__(325),
+	  'iteratee': __webpack_require__(326),
 	  'keys': __webpack_require__(253),
-	  'rearg': __webpack_require__(360),
+	  'rearg': __webpack_require__(361),
 	  'toInteger': __webpack_require__(232),
-	  'toPath': __webpack_require__(366)
+	  'toPath': __webpack_require__(367)
 	};
 
 
@@ -34181,7 +34392,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  thisArg = newData[2];
 	  partials = newData[3];
 	  holders = newData[4];
-	  arity = newData[9] = newData[9] == null
+	  arity = newData[9] = newData[9] === undefined
 	    ? (isBindKey ? 0 : func.length)
 	    : nativeMax(newData[9] - length, 0);
 
@@ -34424,8 +34635,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (value == null) {
 	    return value === undefined ? undefinedTag : nullTag;
 	  }
-	  value = Object(value);
-	  return (symToStringTag && symToStringTag in value)
+	  return (symToStringTag && symToStringTag in Object(value))
 	    ? getRawTag(value)
 	    : objectToString(value);
 	}
@@ -35358,9 +35568,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Shortcut fusion is an optimization to merge iteratee calls; this avoids
 	 * the creation of intermediate arrays and can greatly reduce the number of
 	 * iteratee executions. Sections of a chain sequence qualify for shortcut
-	 * fusion if the section is applied to an array of at least `200` elements
-	 * and any iteratees accept only one argument. The heuristic for whether a
-	 * section qualifies for shortcut fusion is subject to change.
+	 * fusion if the section is applied to an array and iteratees accept only
+	 * one argument. The heuristic for whether a section qualifies for shortcut
+	 * fusion is subject to change.
 	 *
 	 * Chaining is supported in custom builds as long as the `_#value` method is
 	 * directly or indirectly included in the build.
@@ -37347,13 +37557,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    cloneBuffer = __webpack_require__(293),
 	    copyArray = __webpack_require__(209),
 	    copySymbols = __webpack_require__(294),
-	    copySymbolsIn = __webpack_require__(297),
-	    getAllKeys = __webpack_require__(301),
-	    getAllKeysIn = __webpack_require__(303),
-	    getTag = __webpack_require__(304),
-	    initCloneArray = __webpack_require__(308),
-	    initCloneByTag = __webpack_require__(309),
-	    initCloneObject = __webpack_require__(323),
+	    copySymbolsIn = __webpack_require__(298),
+	    getAllKeys = __webpack_require__(302),
+	    getAllKeysIn = __webpack_require__(304),
+	    getTag = __webpack_require__(305),
+	    initCloneArray = __webpack_require__(309),
+	    initCloneByTag = __webpack_require__(310),
+	    initCloneObject = __webpack_require__(324),
 	    isArray = __webpack_require__(206),
 	    isBuffer = __webpack_require__(246),
 	    isObject = __webpack_require__(182),
@@ -38087,7 +38297,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	function hashHas(key) {
 	  var data = this.__data__;
-	  return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
+	  return nativeCreate ? (data[key] !== undefined) : hasOwnProperty.call(data, key);
 	}
 
 	module.exports = hashHas;
@@ -38457,8 +38667,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(256),
-	    stubArray = __webpack_require__(296);
+	var arrayFilter = __webpack_require__(296),
+	    stubArray = __webpack_require__(297);
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+
+	/** Built-in value references. */
+	var propertyIsEnumerable = objectProto.propertyIsEnumerable;
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
 	var nativeGetSymbols = Object.getOwnPropertySymbols;
@@ -38470,13 +38686,52 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Object} object The object to query.
 	 * @returns {Array} Returns the array of symbols.
 	 */
-	var getSymbols = nativeGetSymbols ? overArg(nativeGetSymbols, Object) : stubArray;
+	var getSymbols = !nativeGetSymbols ? stubArray : function(object) {
+	  if (object == null) {
+	    return [];
+	  }
+	  object = Object(object);
+	  return arrayFilter(nativeGetSymbols(object), function(symbol) {
+	    return propertyIsEnumerable.call(object, symbol);
+	  });
+	};
 
 	module.exports = getSymbols;
 
 
 /***/ },
 /* 296 */
+/***/ function(module, exports) {
+
+	/**
+	 * A specialized version of `_.filter` for arrays without support for
+	 * iteratee shorthands.
+	 *
+	 * @private
+	 * @param {Array} [array] The array to iterate over.
+	 * @param {Function} predicate The function invoked per iteration.
+	 * @returns {Array} Returns the new filtered array.
+	 */
+	function arrayFilter(array, predicate) {
+	  var index = -1,
+	      length = array == null ? 0 : array.length,
+	      resIndex = 0,
+	      result = [];
+
+	  while (++index < length) {
+	    var value = array[index];
+	    if (predicate(value, index, array)) {
+	      result[resIndex++] = value;
+	    }
+	  }
+	  return result;
+	}
+
+	module.exports = arrayFilter;
+
+
+/***/ },
+/* 297 */
 /***/ function(module, exports) {
 
 	/**
@@ -38505,11 +38760,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var copyObject = __webpack_require__(237),
-	    getSymbolsIn = __webpack_require__(298);
+	    getSymbolsIn = __webpack_require__(299);
 
 	/**
 	 * Copies own and inherited symbols of `source` to `object`.
@@ -38527,13 +38782,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayPush = __webpack_require__(299),
-	    getPrototype = __webpack_require__(300),
+	var arrayPush = __webpack_require__(300),
+	    getPrototype = __webpack_require__(301),
 	    getSymbols = __webpack_require__(295),
-	    stubArray = __webpack_require__(296);
+	    stubArray = __webpack_require__(297);
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
 	var nativeGetSymbols = Object.getOwnPropertySymbols;
@@ -38558,7 +38813,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports) {
 
 	/**
@@ -38584,7 +38839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var overArg = __webpack_require__(256);
@@ -38596,10 +38851,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetAllKeys = __webpack_require__(302),
+	var baseGetAllKeys = __webpack_require__(303),
 	    getSymbols = __webpack_require__(295),
 	    keys = __webpack_require__(241);
 
@@ -38618,10 +38873,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayPush = __webpack_require__(299),
+	var arrayPush = __webpack_require__(300),
 	    isArray = __webpack_require__(206);
 
 	/**
@@ -38644,11 +38899,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetAllKeys = __webpack_require__(302),
-	    getSymbolsIn = __webpack_require__(298),
+	var baseGetAllKeys = __webpack_require__(303),
+	    getSymbolsIn = __webpack_require__(299),
 	    keysIn = __webpack_require__(290);
 
 	/**
@@ -38667,13 +38922,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var DataView = __webpack_require__(305),
+	var DataView = __webpack_require__(306),
 	    Map = __webpack_require__(273),
-	    Promise = __webpack_require__(306),
-	    Set = __webpack_require__(307),
+	    Promise = __webpack_require__(307),
+	    Set = __webpack_require__(308),
 	    WeakMap = __webpack_require__(172),
 	    baseGetTag = __webpack_require__(176),
 	    toSource = __webpack_require__(185);
@@ -38731,7 +38986,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(173),
@@ -38744,7 +38999,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(173),
@@ -38757,7 +39012,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(173),
@@ -38770,7 +39025,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -38802,16 +39057,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var cloneArrayBuffer = __webpack_require__(310),
-	    cloneDataView = __webpack_require__(312),
-	    cloneMap = __webpack_require__(313),
-	    cloneRegExp = __webpack_require__(317),
-	    cloneSet = __webpack_require__(318),
-	    cloneSymbol = __webpack_require__(321),
-	    cloneTypedArray = __webpack_require__(322);
+	var cloneArrayBuffer = __webpack_require__(311),
+	    cloneDataView = __webpack_require__(313),
+	    cloneMap = __webpack_require__(314),
+	    cloneRegExp = __webpack_require__(318),
+	    cloneSet = __webpack_require__(319),
+	    cloneSymbol = __webpack_require__(322),
+	    cloneTypedArray = __webpack_require__(323);
 
 	/** `Object#toString` result references. */
 	var boolTag = '[object Boolean]',
@@ -38888,10 +39143,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Uint8Array = __webpack_require__(311);
+	var Uint8Array = __webpack_require__(312);
 
 	/**
 	 * Creates a clone of `arrayBuffer`.
@@ -38910,7 +39165,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var root = __webpack_require__(178);
@@ -38922,10 +39177,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var cloneArrayBuffer = __webpack_require__(310);
+	var cloneArrayBuffer = __webpack_require__(311);
 
 	/**
 	 * Creates a clone of `dataView`.
@@ -38944,12 +39199,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var addMapEntry = __webpack_require__(314),
-	    arrayReduce = __webpack_require__(315),
-	    mapToArray = __webpack_require__(316);
+	var addMapEntry = __webpack_require__(315),
+	    arrayReduce = __webpack_require__(316),
+	    mapToArray = __webpack_require__(317);
 
 	/** Used to compose bitmasks for cloning. */
 	var CLONE_DEEP_FLAG = 1;
@@ -38972,7 +39227,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports) {
 
 	/**
@@ -38993,7 +39248,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 315 */
+/* 316 */
 /***/ function(module, exports) {
 
 	/**
@@ -39025,7 +39280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 316 */
+/* 317 */
 /***/ function(module, exports) {
 
 	/**
@@ -39049,7 +39304,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports) {
 
 	/** Used to match `RegExp` flags from their coerced string values. */
@@ -39072,12 +39327,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 318 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var addSetEntry = __webpack_require__(319),
-	    arrayReduce = __webpack_require__(315),
-	    setToArray = __webpack_require__(320);
+	var addSetEntry = __webpack_require__(320),
+	    arrayReduce = __webpack_require__(316),
+	    setToArray = __webpack_require__(321);
 
 	/** Used to compose bitmasks for cloning. */
 	var CLONE_DEEP_FLAG = 1;
@@ -39100,7 +39355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 319 */
+/* 320 */
 /***/ function(module, exports) {
 
 	/**
@@ -39121,7 +39376,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 320 */
+/* 321 */
 /***/ function(module, exports) {
 
 	/**
@@ -39145,7 +39400,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 321 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Symbol = __webpack_require__(177);
@@ -39169,10 +39424,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 322 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var cloneArrayBuffer = __webpack_require__(310);
+	var cloneArrayBuffer = __webpack_require__(311);
 
 	/**
 	 * Creates a clone of `typedArray`.
@@ -39191,11 +39446,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 323 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseCreate = __webpack_require__(189),
-	    getPrototype = __webpack_require__(300),
+	    getPrototype = __webpack_require__(301),
 	    isPrototype = __webpack_require__(254);
 
 	/**
@@ -39215,7 +39470,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 324 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var createWrap = __webpack_require__(168);
@@ -39278,11 +39533,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 325 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseClone = __webpack_require__(259),
-	    baseIteratee = __webpack_require__(326);
+	    baseIteratee = __webpack_require__(327);
 
 	/** Used to compose bitmasks for cloning. */
 	var CLONE_DEEP_FLAG = 1;
@@ -39337,14 +39592,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 326 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseMatches = __webpack_require__(327),
-	    baseMatchesProperty = __webpack_require__(342),
+	var baseMatches = __webpack_require__(328),
+	    baseMatchesProperty = __webpack_require__(343),
 	    identity = __webpack_require__(170),
 	    isArray = __webpack_require__(206),
-	    property = __webpack_require__(357);
+	    property = __webpack_require__(358);
 
 	/**
 	 * The base implementation of `_.iteratee`.
@@ -39374,12 +39629,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsMatch = __webpack_require__(328),
-	    getMatchData = __webpack_require__(339),
-	    matchesStrictComparable = __webpack_require__(341);
+	var baseIsMatch = __webpack_require__(329),
+	    getMatchData = __webpack_require__(340),
+	    matchesStrictComparable = __webpack_require__(342);
 
 	/**
 	 * The base implementation of `_.matches` which doesn't clone `source`.
@@ -39402,11 +39657,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 328 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Stack = __webpack_require__(260),
-	    baseIsEqual = __webpack_require__(329);
+	    baseIsEqual = __webpack_require__(330);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1,
@@ -39470,11 +39725,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 329 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsEqualDeep = __webpack_require__(330),
-	    isObject = __webpack_require__(182),
+	var baseIsEqualDeep = __webpack_require__(331),
 	    isObjectLike = __webpack_require__(207);
 
 	/**
@@ -39495,7 +39749,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (value === other) {
 	    return true;
 	  }
-	  if (value == null || other == null || (!isObject(value) && !isObjectLike(other))) {
+	  if (value == null || other == null || (!isObjectLike(value) && !isObjectLike(other))) {
 	    return value !== value && other !== other;
 	  }
 	  return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack);
@@ -39505,14 +39759,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 330 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Stack = __webpack_require__(260),
-	    equalArrays = __webpack_require__(331),
-	    equalByTag = __webpack_require__(337),
-	    equalObjects = __webpack_require__(338),
-	    getTag = __webpack_require__(304),
+	    equalArrays = __webpack_require__(332),
+	    equalByTag = __webpack_require__(338),
+	    equalObjects = __webpack_require__(339),
+	    getTag = __webpack_require__(305),
 	    isArray = __webpack_require__(206),
 	    isBuffer = __webpack_require__(246),
 	    isTypedArray = __webpack_require__(248);
@@ -39548,17 +39802,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 	  var objIsArr = isArray(object),
 	      othIsArr = isArray(other),
-	      objTag = arrayTag,
-	      othTag = arrayTag;
+	      objTag = objIsArr ? arrayTag : getTag(object),
+	      othTag = othIsArr ? arrayTag : getTag(other);
 
-	  if (!objIsArr) {
-	    objTag = getTag(object);
-	    objTag = objTag == argsTag ? objectTag : objTag;
-	  }
-	  if (!othIsArr) {
-	    othTag = getTag(other);
-	    othTag = othTag == argsTag ? objectTag : othTag;
-	  }
+	  objTag = objTag == argsTag ? objectTag : objTag;
+	  othTag = othTag == argsTag ? objectTag : othTag;
+
 	  var objIsObj = objTag == objectTag,
 	      othIsObj = othTag == objectTag,
 	      isSameTag = objTag == othTag;
@@ -39599,12 +39848,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 331 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var SetCache = __webpack_require__(332),
-	    arraySome = __webpack_require__(335),
-	    cacheHas = __webpack_require__(336);
+	var SetCache = __webpack_require__(333),
+	    arraySome = __webpack_require__(336),
+	    cacheHas = __webpack_require__(337);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1,
@@ -39688,12 +39937,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 332 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var MapCache = __webpack_require__(274),
-	    setCacheAdd = __webpack_require__(333),
-	    setCacheHas = __webpack_require__(334);
+	    setCacheAdd = __webpack_require__(334),
+	    setCacheHas = __webpack_require__(335);
 
 	/**
 	 *
@@ -39721,7 +39970,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 333 */
+/* 334 */
 /***/ function(module, exports) {
 
 	/** Used to stand-in for `undefined` hash values. */
@@ -39746,7 +39995,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 334 */
+/* 335 */
 /***/ function(module, exports) {
 
 	/**
@@ -39766,7 +40015,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 335 */
+/* 336 */
 /***/ function(module, exports) {
 
 	/**
@@ -39795,7 +40044,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 336 */
+/* 337 */
 /***/ function(module, exports) {
 
 	/**
@@ -39814,15 +40063,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 337 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Symbol = __webpack_require__(177),
-	    Uint8Array = __webpack_require__(311),
+	    Uint8Array = __webpack_require__(312),
 	    eq = __webpack_require__(240),
-	    equalArrays = __webpack_require__(331),
-	    mapToArray = __webpack_require__(316),
-	    setToArray = __webpack_require__(320);
+	    equalArrays = __webpack_require__(332),
+	    mapToArray = __webpack_require__(317),
+	    setToArray = __webpack_require__(321);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1,
@@ -39932,10 +40181,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 338 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var keys = __webpack_require__(241);
+	var getAllKeys = __webpack_require__(302);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1;
@@ -39961,9 +40210,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 	  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
-	      objProps = keys(object),
+	      objProps = getAllKeys(object),
 	      objLength = objProps.length,
-	      othProps = keys(other),
+	      othProps = getAllKeys(other),
 	      othLength = othProps.length;
 
 	  if (objLength != othLength && !isPartial) {
@@ -40027,10 +40276,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 339 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isStrictComparable = __webpack_require__(340),
+	var isStrictComparable = __webpack_require__(341),
 	    keys = __webpack_require__(241);
 
 	/**
@@ -40057,7 +40306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 340 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isObject = __webpack_require__(182);
@@ -40078,7 +40327,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 341 */
+/* 342 */
 /***/ function(module, exports) {
 
 	/**
@@ -40104,16 +40353,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 342 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsEqual = __webpack_require__(329),
-	    get = __webpack_require__(343),
-	    hasIn = __webpack_require__(354),
-	    isKey = __webpack_require__(346),
-	    isStrictComparable = __webpack_require__(340),
-	    matchesStrictComparable = __webpack_require__(341),
-	    toKey = __webpack_require__(353);
+	var baseIsEqual = __webpack_require__(330),
+	    get = __webpack_require__(344),
+	    hasIn = __webpack_require__(355),
+	    isKey = __webpack_require__(347),
+	    isStrictComparable = __webpack_require__(341),
+	    matchesStrictComparable = __webpack_require__(342),
+	    toKey = __webpack_require__(354);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1,
@@ -40143,10 +40392,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 343 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGet = __webpack_require__(344);
+	var baseGet = __webpack_require__(345);
 
 	/**
 	 * Gets the value at `path` of `object`. If the resolved value is
@@ -40182,11 +40431,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 344 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var castPath = __webpack_require__(345),
-	    toKey = __webpack_require__(353);
+	var castPath = __webpack_require__(346),
+	    toKey = __webpack_require__(354);
 
 	/**
 	 * The base implementation of `_.get` without support for default values.
@@ -40212,13 +40461,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 345 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isArray = __webpack_require__(206),
-	    isKey = __webpack_require__(346),
-	    stringToPath = __webpack_require__(347),
-	    toString = __webpack_require__(350);
+	    isKey = __webpack_require__(347),
+	    stringToPath = __webpack_require__(348),
+	    toString = __webpack_require__(351);
 
 	/**
 	 * Casts `value` to a path array if it's not one.
@@ -40239,7 +40488,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 346 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isArray = __webpack_require__(206),
@@ -40274,10 +40523,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 347 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var memoizeCapped = __webpack_require__(348);
+	var memoizeCapped = __webpack_require__(349);
 
 	/** Used to match property names within property paths. */
 	var reLeadingDot = /^\./,
@@ -40308,10 +40557,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 348 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var memoize = __webpack_require__(349);
+	var memoize = __webpack_require__(350);
 
 	/** Used as the maximum memoize cache size. */
 	var MAX_MEMOIZE_SIZE = 500;
@@ -40340,7 +40589,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 349 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var MapCache = __webpack_require__(274);
@@ -40419,10 +40668,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 350 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseToString = __webpack_require__(351);
+	var baseToString = __webpack_require__(352);
 
 	/**
 	 * Converts `value` to a string. An empty string is returned for `null`
@@ -40453,11 +40702,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 351 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Symbol = __webpack_require__(177),
-	    arrayMap = __webpack_require__(352),
+	    arrayMap = __webpack_require__(353),
 	    isArray = __webpack_require__(206),
 	    isSymbol = __webpack_require__(235);
 
@@ -40496,7 +40745,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 352 */
+/* 353 */
 /***/ function(module, exports) {
 
 	/**
@@ -40523,7 +40772,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 353 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isSymbol = __webpack_require__(235);
@@ -40550,11 +40799,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 354 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseHasIn = __webpack_require__(355),
-	    hasPath = __webpack_require__(356);
+	var baseHasIn = __webpack_require__(356),
+	    hasPath = __webpack_require__(357);
 
 	/**
 	 * Checks if `path` is a direct or inherited property of `object`.
@@ -40590,7 +40839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 355 */
+/* 356 */
 /***/ function(module, exports) {
 
 	/**
@@ -40609,15 +40858,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 356 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var castPath = __webpack_require__(345),
+	var castPath = __webpack_require__(346),
 	    isArguments = __webpack_require__(244),
 	    isArray = __webpack_require__(206),
 	    isIndex = __webpack_require__(228),
 	    isLength = __webpack_require__(250),
-	    toKey = __webpack_require__(353);
+	    toKey = __webpack_require__(354);
 
 	/**
 	 * Checks if `path` exists on `object`.
@@ -40654,13 +40903,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 357 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseProperty = __webpack_require__(358),
-	    basePropertyDeep = __webpack_require__(359),
-	    isKey = __webpack_require__(346),
-	    toKey = __webpack_require__(353);
+	var baseProperty = __webpack_require__(359),
+	    basePropertyDeep = __webpack_require__(360),
+	    isKey = __webpack_require__(347),
+	    toKey = __webpack_require__(354);
 
 	/**
 	 * Creates a function that returns the value at `path` of a given object.
@@ -40692,7 +40941,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 358 */
+/* 359 */
 /***/ function(module, exports) {
 
 	/**
@@ -40712,10 +40961,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 359 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGet = __webpack_require__(344);
+	var baseGet = __webpack_require__(345);
 
 	/**
 	 * A specialized version of `baseProperty` which supports deep paths.
@@ -40734,11 +40983,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 360 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var createWrap = __webpack_require__(168),
-	    flatRest = __webpack_require__(361);
+	    flatRest = __webpack_require__(362);
 
 	/** Used to compose bitmasks for function metadata. */
 	var WRAP_REARG_FLAG = 256;
@@ -40773,11 +41022,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 361 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var flatten = __webpack_require__(362),
-	    overRest = __webpack_require__(365),
+	var flatten = __webpack_require__(363),
+	    overRest = __webpack_require__(366),
 	    setToString = __webpack_require__(215);
 
 	/**
@@ -40795,10 +41044,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 362 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseFlatten = __webpack_require__(363);
+	var baseFlatten = __webpack_require__(364);
 
 	/**
 	 * Flattens `array` a single level deep.
@@ -40823,11 +41072,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 363 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayPush = __webpack_require__(299),
-	    isFlattenable = __webpack_require__(364);
+	var arrayPush = __webpack_require__(300),
+	    isFlattenable = __webpack_require__(365);
 
 	/**
 	 * The base implementation of `_.flatten` with support for restricting flattening.
@@ -40867,7 +41116,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 364 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Symbol = __webpack_require__(177),
@@ -40893,7 +41142,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 365 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var apply = __webpack_require__(191);
@@ -40935,16 +41184,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 366 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayMap = __webpack_require__(352),
+	var arrayMap = __webpack_require__(353),
 	    copyArray = __webpack_require__(209),
 	    isArray = __webpack_require__(206),
 	    isSymbol = __webpack_require__(235),
-	    stringToPath = __webpack_require__(347),
-	    toKey = __webpack_require__(353),
-	    toString = __webpack_require__(350);
+	    stringToPath = __webpack_require__(348),
+	    toKey = __webpack_require__(354),
+	    toString = __webpack_require__(351);
 
 	/**
 	 * Converts `value` to a property path array.
@@ -40974,11 +41223,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 367 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseMerge = __webpack_require__(368),
-	    createAssigner = __webpack_require__(376);
+	var baseMerge = __webpack_require__(369),
+	    createAssigner = __webpack_require__(377);
 
 	/**
 	 * This method is like `_.assign` except that it recursively merges own and
@@ -41019,13 +41268,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 368 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Stack = __webpack_require__(260),
-	    assignMergeValue = __webpack_require__(369),
-	    baseFor = __webpack_require__(370),
-	    baseMergeDeep = __webpack_require__(372),
+	    assignMergeValue = __webpack_require__(370),
+	    baseFor = __webpack_require__(371),
+	    baseMergeDeep = __webpack_require__(373),
 	    isObject = __webpack_require__(182),
 	    keysIn = __webpack_require__(290);
 
@@ -41066,7 +41315,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 369 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseAssignValue = __webpack_require__(239),
@@ -41092,10 +41341,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 370 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createBaseFor = __webpack_require__(371);
+	var createBaseFor = __webpack_require__(372);
 
 	/**
 	 * The base implementation of `baseForOwn` which iterates over `object`
@@ -41114,7 +41363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 371 */
+/* 372 */
 /***/ function(module, exports) {
 
 	/**
@@ -41145,23 +41394,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 372 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assignMergeValue = __webpack_require__(369),
+	var assignMergeValue = __webpack_require__(370),
 	    cloneBuffer = __webpack_require__(293),
-	    cloneTypedArray = __webpack_require__(322),
+	    cloneTypedArray = __webpack_require__(323),
 	    copyArray = __webpack_require__(209),
-	    initCloneObject = __webpack_require__(323),
+	    initCloneObject = __webpack_require__(324),
 	    isArguments = __webpack_require__(244),
 	    isArray = __webpack_require__(206),
-	    isArrayLikeObject = __webpack_require__(373),
+	    isArrayLikeObject = __webpack_require__(374),
 	    isBuffer = __webpack_require__(246),
 	    isFunction = __webpack_require__(175),
 	    isObject = __webpack_require__(182),
-	    isPlainObject = __webpack_require__(374),
+	    isPlainObject = __webpack_require__(375),
 	    isTypedArray = __webpack_require__(248),
-	    toPlainObject = __webpack_require__(375);
+	    toPlainObject = __webpack_require__(376);
 
 	/**
 	 * A specialized version of `baseMerge` for arrays and objects which performs
@@ -41244,7 +41493,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 373 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isArrayLike = __webpack_require__(257),
@@ -41283,11 +41532,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 374 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseGetTag = __webpack_require__(176),
-	    getPrototype = __webpack_require__(300),
+	    getPrototype = __webpack_require__(301),
 	    isObjectLike = __webpack_require__(207);
 
 	/** `Object#toString` result references. */
@@ -41351,7 +41600,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 375 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var copyObject = __webpack_require__(237),
@@ -41389,11 +41638,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 376 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseRest = __webpack_require__(377),
-	    isIterateeCall = __webpack_require__(378);
+	var baseRest = __webpack_require__(378),
+	    isIterateeCall = __webpack_require__(379);
 
 	/**
 	 * Creates a function like `_.assign`.
@@ -41432,11 +41681,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 377 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var identity = __webpack_require__(170),
-	    overRest = __webpack_require__(365),
+	    overRest = __webpack_require__(366),
 	    setToString = __webpack_require__(215);
 
 	/**
@@ -41455,7 +41704,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 378 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var eq = __webpack_require__(240),
@@ -41491,7 +41740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 379 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41564,7 +41813,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 380 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41653,7 +41902,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 381 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41726,7 +41975,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 382 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41799,7 +42048,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 383 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41872,7 +42121,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 384 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41963,7 +42212,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 385 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41972,11 +42221,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _reactiveData = __webpack_require__(386);
+	var _reactiveData = __webpack_require__(387);
 
 	var _reactiveData2 = _interopRequireDefault(_reactiveData);
 
-	var _reactiveProp = __webpack_require__(390);
+	var _reactiveProp = __webpack_require__(391);
 
 	var _reactiveProp2 = _interopRequireDefault(_reactiveProp);
 
@@ -41988,12 +42237,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 386 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _stringify = __webpack_require__(387);
+	var _stringify = __webpack_require__(388);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -42045,35 +42294,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 387 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(388), __esModule: true };
-
-/***/ },
 /* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core  = __webpack_require__(389)
+	module.exports = { "default": __webpack_require__(389), __esModule: true };
+
+/***/ },
+/* 389 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var core  = __webpack_require__(390)
 	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
 	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
 	  return $JSON.stringify.apply($JSON, arguments);
 	};
 
 /***/ },
-/* 389 */
+/* 390 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 390 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _stringify = __webpack_require__(387);
+	var _stringify = __webpack_require__(388);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
