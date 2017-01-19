@@ -27,7 +27,7 @@
   "dependencies": {
     "babel-runtime": "^6.11.6",
     "chart.js": "^2.4.0",
-    "vue": "^2.1.6"
+    "vue": "^2.1.10"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
@@ -67,7 +67,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
-    "lodash": "^4.16.3",
+    "lodash": "^4.17.4",
     "lolex": "^1.4.0",
     "mocha": "^3.1.0",
     "nightwatch": "^0.9.8",
@@ -82,7 +82,7 @@
     "vue-html-loader": "^1.2.3",
     "vue-loader": "^10.0.2",
     "vue-style-loader": "^1.0.0",
-    "vue-template-compiler": "^2.1.6",
+    "vue-template-compiler": "^2.1.10",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
