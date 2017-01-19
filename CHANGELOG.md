@@ -1,5 +1,38 @@
 # Change Log
 
+## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
+
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.3...HEAD)
+
+**Fixed bugs:**
+
+- Compatibility with Vue 2.1.10 [\#30](https://github.com/apertureless/vue-chartjs/issues/30)
+
+## [v2.3.3](https://github.com/apertureless/vue-chartjs/tree/v2.3.3) (2017-01-19)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.2...v2.3.3)
+
+**Closed issues:**
+
+- How to create mixed chart types [\#29](https://github.com/apertureless/vue-chartjs/issues/29)
+- hello a q about reactivity [\#28](https://github.com/apertureless/vue-chartjs/issues/28)
+- chart do not render after build  [\#26](https://github.com/apertureless/vue-chartjs/issues/26)
+
+**Merged pull requests:**
+
+- 🐛 Fix \#30 type error [\#31](https://github.com/apertureless/vue-chartjs/pull/31) ([apertureless](https://github.com/apertureless))
+
+## [v2.3.2](https://github.com/apertureless/vue-chartjs/tree/v2.3.2) (2016-12-23)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.1...v2.3.2)
+
+**Implemented enhancements:**
+
+- Content Security Policy [\#22](https://github.com/apertureless/vue-chartjs/issues/22)
+
+**Merged pull requests:**
+
+- ✨ Add minimal release webpack config [\#27](https://github.com/apertureless/vue-chartjs/pull/27) ([apertureless](https://github.com/apertureless))
+- 📝 Update README [\#25](https://github.com/apertureless/vue-chartjs/pull/25) ([apertureless](https://github.com/apertureless))
+
 ## [v2.3.1](https://github.com/apertureless/vue-chartjs/tree/v2.3.1) (2016-12-20)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.0...v2.3.1)
 
