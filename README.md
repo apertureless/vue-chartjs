@@ -1,4 +1,6 @@
-# Vue-ChartJs
+<div align="center">
+  <img width="256" heigth="256" src="/assets/icon-square-big.svg" alt="vue-chartjs logo">
+</div>
 
 [![npm version](https://badge.fury.io/js/vue-chartjs.svg)](https://badge.fury.io/js/vue-chartjs)
 ![npm dependencies](https://david-dm.org/apertureless/vue-chartjs.svg)
@@ -8,7 +10,9 @@
 [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/vue-chartjs)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/apertureless/vue-chartjs/blob/master/LICENSE.txt)
 
-**Vue-Chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in vue. You can easily create reuseable chart components.
+# vue-chartjs
+
+**vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in vue. You can easily create reuseable chart components.
 
 ## Demo
 
