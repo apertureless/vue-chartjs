@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.11.6",
-    "chart.js": "^2.4.0",
+    "chart.js": "^2.5.0",
     "vue": "^2.1.10"
   },
   "devDependencies": {
