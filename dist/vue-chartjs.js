@@ -65,31 +65,31 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _Bar2 = _interopRequireDefault(_Bar);
 
-	var _Doughnut = __webpack_require__(380);
+	var _Doughnut = __webpack_require__(382);
 
 	var _Doughnut2 = _interopRequireDefault(_Doughnut);
 
-	var _Line = __webpack_require__(381);
+	var _Line = __webpack_require__(383);
 
 	var _Line2 = _interopRequireDefault(_Line);
 
-	var _Pie = __webpack_require__(382);
+	var _Pie = __webpack_require__(384);
 
 	var _Pie2 = _interopRequireDefault(_Pie);
 
-	var _PolarArea = __webpack_require__(383);
+	var _PolarArea = __webpack_require__(385);
 
 	var _PolarArea2 = _interopRequireDefault(_PolarArea);
 
-	var _Radar = __webpack_require__(384);
+	var _Radar = __webpack_require__(386);
 
 	var _Radar2 = _interopRequireDefault(_Radar);
 
-	var _Bubble = __webpack_require__(385);
+	var _Bubble = __webpack_require__(387);
 
 	var _Bubble2 = _interopRequireDefault(_Bubble);
 
-	var _index = __webpack_require__(386);
+	var _index = __webpack_require__(388);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -135,7 +135,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(160);
+	var _options = __webpack_require__(162);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6619,7 +6619,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	__webpack_require__(6)(Chart);
 	__webpack_require__(12)(Chart);
-	__webpack_require__(13)(Chart);
 	__webpack_require__(14)(Chart);
 	__webpack_require__(15)(Chart);
 	__webpack_require__(16)(Chart);
@@ -6632,35 +6631,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	__webpack_require__(23)(Chart);
 	__webpack_require__(24)(Chart);
 	__webpack_require__(25)(Chart);
-
 	__webpack_require__(26)(Chart);
 	__webpack_require__(27)(Chart);
+
 	__webpack_require__(28)(Chart);
 	__webpack_require__(29)(Chart);
-
 	__webpack_require__(30)(Chart);
 	__webpack_require__(31)(Chart);
+
 	__webpack_require__(32)(Chart);
 	__webpack_require__(33)(Chart);
 	__webpack_require__(34)(Chart);
 	__webpack_require__(35)(Chart);
+	__webpack_require__(36)(Chart);
+	__webpack_require__(37)(Chart);
 
 	// Controllers must be loaded after elements
 	// See Chart.core.datasetController.dataElementType
-	__webpack_require__(147)(Chart);
-	__webpack_require__(148)(Chart);
 	__webpack_require__(149)(Chart);
 	__webpack_require__(150)(Chart);
 	__webpack_require__(151)(Chart);
 	__webpack_require__(152)(Chart);
-
 	__webpack_require__(153)(Chart);
 	__webpack_require__(154)(Chart);
+
 	__webpack_require__(155)(Chart);
 	__webpack_require__(156)(Chart);
 	__webpack_require__(157)(Chart);
 	__webpack_require__(158)(Chart);
 	__webpack_require__(159)(Chart);
+	__webpack_require__(160)(Chart);
+	__webpack_require__(161)(Chart);
 
 	window.Chart = module.exports = Chart;
 
@@ -6970,6 +6971,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		helpers.almostEquals = function(x, y, epsilon) {
 			return Math.abs(x - y) < epsilon;
 		};
+		helpers.almostWhole = function(x, epsilon) {
+			var rounded = Math.round(x);
+			return (((rounded - epsilon) < x) && ((rounded + epsilon) > x));
+		};
 		helpers.max = function(array) {
 			return array.reduce(function(max, value) {
 				if (!isNaN(value)) {
@@ -7094,7 +7099,10 @@ return /******/ (function(modules) { // webpackBootstrap
 				pointBefore = i > 0 ? pointsWithTangents[i - 1] : null;
 				pointAfter = i < pointsLen - 1 ? pointsWithTangents[i + 1] : null;
 				if (pointAfter && !pointAfter.model.skip) {
-					pointCurrent.deltaK = (pointAfter.model.y - pointCurrent.model.y) / (pointAfter.model.x - pointCurrent.model.x);
+					var slopeDeltaX = (pointAfter.model.x - pointCurrent.model.x);
+
+					// In the case of two points that appear at the same x pixel, slopeDeltaX is 0
+					pointCurrent.deltaK = slopeDeltaX !== 0 ? (pointAfter.model.y - pointCurrent.model.y) / slopeDeltaX : 0;
 				}
 
 				if (!pointBefore || pointBefore.model.skip) {
@@ -7404,16 +7412,6 @@ return /******/ (function(modules) { // webpackBootstrap
 					return window.setTimeout(callback, 1000 / 60);
 				};
 		}());
-		helpers.cancelAnimFrame = (function() {
-			return window.cancelAnimationFrame ||
-				window.webkitCancelAnimationFrame ||
-				window.mozCancelAnimationFrame ||
-				window.oCancelAnimationFrame ||
-				window.msCancelAnimationFrame ||
-				function(callback) {
-					return window.clearTimeout(callback, 1000 / 60);
-				};
-		}());
 		// -- DOM methods
 		helpers.getRelativePosition = function(evt, chart) {
 			var mouseX, mouseY;
@@ -7469,23 +7467,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			} else {
 				node['on' + eventType] = helpers.noop;
 			}
-		};
-		helpers.bindEvents = function(chartInstance, arrayOfEvents, handler) {
-			// Create the events object if it's not already present
-			var events = chartInstance.events = chartInstance.events || {};
-
-			helpers.each(arrayOfEvents, function(eventName) {
-				events[eventName] = function() {
-					handler.apply(chartInstance, arguments);
-				};
-				helpers.addEvent(chartInstance.chart.canvas, eventName, events[eventName]);
-			});
-		};
-		helpers.unbindEvents = function(chartInstance, arrayOfEvents) {
-			var canvas = chartInstance.chart.canvas;
-			helpers.each(arrayOfEvents, function(handler, eventName) {
-				helpers.removeEvent(canvas, eventName, handler);
-			});
 		};
 
 		// Private helper function to convert max-width/max-height values that may be percentages into a number
@@ -7676,73 +7657,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 
 			return color(c);
-		};
-		helpers.addResizeListener = function(node, callback) {
-			var iframe = document.createElement('iframe');
-			iframe.className = 'chartjs-hidden-iframe';
-			iframe.style.cssText =
-				'display:block;'+
-				'overflow:hidden;'+
-				'border:0;'+
-				'margin:0;'+
-				'top:0;'+
-				'left:0;'+
-				'bottom:0;'+
-				'right:0;'+
-				'height:100%;'+
-				'width:100%;'+
-				'position:absolute;'+
-				'pointer-events:none;'+
-				'z-index:-1;';
-
-			// Prevent the iframe to gain focus on tab.
-			// https://github.com/chartjs/Chart.js/issues/3090
-			iframe.tabIndex = -1;
-
-			// Let's keep track of this added iframe and thus avoid DOM query when removing it.
-			var stub = node._chartjs = {
-				resizer: iframe,
-				ticking: false
-			};
-
-			// Throttle the callback notification until the next animation frame.
-			var notify = function() {
-				if (!stub.ticking) {
-					stub.ticking = true;
-					helpers.requestAnimFrame.call(window, function() {
-						if (stub.resizer) {
-							stub.ticking = false;
-							return callback();
-						}
-					});
-				}
-			};
-
-			// If the iframe is re-attached to the DOM, the resize listener is removed because the
-			// content is reloaded, so make sure to install the handler after the iframe is loaded.
-			// https://github.com/chartjs/Chart.js/issues/3521
-			helpers.addEvent(iframe, 'load', function() {
-				helpers.addEvent(iframe.contentWindow || iframe, 'resize', notify);
-
-				// The iframe size might have changed while loading, which can also
-				// happen if the size has been changed while detached from the DOM.
-				notify();
-			});
-
-			node.insertBefore(iframe, node.firstChild);
-		};
-		helpers.removeResizeListener = function(node) {
-			if (!node || !node._chartjs) {
-				return;
-			}
-
-			var iframe = node._chartjs.resizer;
-			if (iframe) {
-				iframe.parentNode.removeChild(iframe);
-				node._chartjs.resizer = null;
-			}
-
-			delete node._chartjs;
 		};
 		helpers.isArray = Array.isArray?
 			function(obj) {
@@ -9463,6 +9377,364 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// By default, select the browser (DOM) platform.
+	// @TODO Make possible to select another platform at build time.
+	var implementation = __webpack_require__(13);
+
+	module.exports = function(Chart) {
+		/**
+		 * @namespace Chart.platform
+		 * @see https://chartjs.gitbooks.io/proposals/content/Platform.html
+		 * @since 2.4.0
+		 */
+		Chart.platform = {
+			/**
+			 * Called at chart construction time, returns a context2d instance implementing
+			 * the [W3C Canvas 2D Context API standard]{@link https://www.w3.org/TR/2dcontext/}.
+			 * @param {*} item - The native item from which to acquire context (platform specific)
+			 * @param {Object} options - The chart options
+			 * @returns {CanvasRenderingContext2D} context2d instance
+			 */
+			acquireContext: function() {},
+
+			/**
+			 * Called at chart destruction time, releases any resources associated to the context
+			 * previously returned by the acquireContext() method.
+			 * @param {CanvasRenderingContext2D} context - The context2d instance
+			 * @returns {Boolean} true if the method succeeded, else false
+			 */
+			releaseContext: function() {},
+
+			/**
+			 * Registers the specified listener on the given chart.
+			 * @param {Chart} chart - Chart from which to listen for event
+			 * @param {String} type - The ({@link IEvent}) type to listen for
+			 * @param {Function} listener - Receives a notification (an object that implements
+			 * the {@link IEvent} interface) when an event of the specified type occurs.
+			 */
+			addEventListener: function() {},
+
+			/**
+			 * Removes the specified listener previously registered with addEventListener.
+			 * @param {Chart} chart -Chart from which to remove the listener
+			 * @param {String} type - The ({@link IEvent}) type to remove
+			 * @param {Function} listener - The listener function to remove from the event target.
+			 */
+			removeEventListener: function() {}
+		};
+
+		/**
+		 * @interface IPlatform
+		 * Allows abstracting platform dependencies away from the chart
+		 * @borrows Chart.platform.acquireContext as acquireContext
+		 * @borrows Chart.platform.releaseContext as releaseContext
+		 * @borrows Chart.platform.addEventListener as addEventListener
+		 * @borrows Chart.platform.removeEventListener as removeEventListener
+		 */
+
+		/**
+		 * @interface IEvent
+		 * @prop {String} type - The event type name, possible values are:
+		 * 'contextmenu', 'mouseenter', 'mousedown', 'mousemove', 'mouseup', 'mouseout',
+		 * 'click', 'dblclick', 'keydown', 'keypress', 'keyup' and 'resize'
+		 * @prop {*} native - The original native event (null for emulated events, e.g. 'resize')
+		 * @prop {Number} x - The mouse x position, relative to the canvas (null for incompatible events)
+		 * @prop {Number} y - The mouse y position, relative to the canvas (null for incompatible events)
+		 */
+
+		Chart.helpers.extend(Chart.platform, implementation(Chart));
+	};
+
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	// Chart.Platform implementation for targeting a web browser
+	module.exports = function(Chart) {
+		var helpers = Chart.helpers;
+
+		// DOM event types -> Chart.js event types.
+		// Note: only events with different types are mapped.
+		// https://developer.mozilla.org/en-US/docs/Web/Events
+		var eventTypeMap = {
+			// Touch events
+			touchstart: 'mousedown',
+			touchmove: 'mousemove',
+			touchend: 'mouseup',
+
+			// Pointer events
+			pointerenter: 'mouseenter',
+			pointerdown: 'mousedown',
+			pointermove: 'mousemove',
+			pointerup: 'mouseup',
+			pointerleave: 'mouseout',
+			pointerout: 'mouseout'
+		};
+
+		/**
+		 * The "used" size is the final value of a dimension property after all calculations have
+		 * been performed. This method uses the computed style of `element` but returns undefined
+		 * if the computed style is not expressed in pixels. That can happen in some cases where
+		 * `element` has a size relative to its parent and this last one is not yet displayed,
+		 * for example because of `display: none` on a parent node.
+		 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/used_value
+		 * @returns {Number} Size in pixels or undefined if unknown.
+		 */
+		function readUsedSize(element, property) {
+			var value = helpers.getStyle(element, property);
+			var matches = value && value.match(/(\d+)px/);
+			return matches? Number(matches[1]) : undefined;
+		}
+
+		/**
+		 * Initializes the canvas style and render size without modifying the canvas display size,
+		 * since responsiveness is handled by the controller.resize() method. The config is used
+		 * to determine the aspect ratio to apply in case no explicit height has been specified.
+		 */
+		function initCanvas(canvas, config) {
+			var style = canvas.style;
+
+			// NOTE(SB) canvas.getAttribute('width') !== canvas.width: in the first case it
+			// returns null or '' if no explicit value has been set to the canvas attribute.
+			var renderHeight = canvas.getAttribute('height');
+			var renderWidth = canvas.getAttribute('width');
+
+			// Chart.js modifies some canvas values that we want to restore on destroy
+			canvas._chartjs = {
+				initial: {
+					height: renderHeight,
+					width: renderWidth,
+					style: {
+						display: style.display,
+						height: style.height,
+						width: style.width
+					}
+				}
+			};
+
+			// Force canvas to display as block to avoid extra space caused by inline
+			// elements, which would interfere with the responsive resize process.
+			// https://github.com/chartjs/Chart.js/issues/2538
+			style.display = style.display || 'block';
+
+			if (renderWidth === null || renderWidth === '') {
+				var displayWidth = readUsedSize(canvas, 'width');
+				if (displayWidth !== undefined) {
+					canvas.width = displayWidth;
+				}
+			}
+
+			if (renderHeight === null || renderHeight === '') {
+				if (canvas.style.height === '') {
+					// If no explicit render height and style height, let's apply the aspect ratio,
+					// which one can be specified by the user but also by charts as default option
+					// (i.e. options.aspectRatio). If not specified, use canvas aspect ratio of 2.
+					canvas.height = canvas.width / (config.options.aspectRatio || 2);
+				} else {
+					var displayHeight = readUsedSize(canvas, 'height');
+					if (displayWidth !== undefined) {
+						canvas.height = displayHeight;
+					}
+				}
+			}
+
+			return canvas;
+		}
+
+		function createEvent(type, chart, x, y, native) {
+			return {
+				type: type,
+				chart: chart,
+				native: native || null,
+				x: x !== undefined? x : null,
+				y: y !== undefined? y : null,
+			};
+		}
+
+		function fromNativeEvent(event, chart) {
+			var type = eventTypeMap[event.type] || event.type;
+			var pos = helpers.getRelativePosition(event, chart);
+			return createEvent(type, chart, pos.x, pos.y, event);
+		}
+
+		function createResizer(handler) {
+			var iframe = document.createElement('iframe');
+			iframe.className = 'chartjs-hidden-iframe';
+			iframe.style.cssText =
+				'display:block;'+
+				'overflow:hidden;'+
+				'border:0;'+
+				'margin:0;'+
+				'top:0;'+
+				'left:0;'+
+				'bottom:0;'+
+				'right:0;'+
+				'height:100%;'+
+				'width:100%;'+
+				'position:absolute;'+
+				'pointer-events:none;'+
+				'z-index:-1;';
+
+			// Prevent the iframe to gain focus on tab.
+			// https://github.com/chartjs/Chart.js/issues/3090
+			iframe.tabIndex = -1;
+
+			// If the iframe is re-attached to the DOM, the resize listener is removed because the
+			// content is reloaded, so make sure to install the handler after the iframe is loaded.
+			// https://github.com/chartjs/Chart.js/issues/3521
+			helpers.addEvent(iframe, 'load', function() {
+				helpers.addEvent(iframe.contentWindow || iframe, 'resize', handler);
+
+				// The iframe size might have changed while loading, which can also
+				// happen if the size has been changed while detached from the DOM.
+				handler();
+			});
+
+			return iframe;
+		}
+
+		function addResizeListener(node, listener, chart) {
+			var stub = node._chartjs = {
+				ticking: false
+			};
+
+			// Throttle the callback notification until the next animation frame.
+			var notify = function() {
+				if (!stub.ticking) {
+					stub.ticking = true;
+					helpers.requestAnimFrame.call(window, function() {
+						if (stub.resizer) {
+							stub.ticking = false;
+							return listener(createEvent('resize', chart));
+						}
+					});
+				}
+			};
+
+			// Let's keep track of this added iframe and thus avoid DOM query when removing it.
+			stub.resizer = createResizer(notify);
+
+			node.insertBefore(stub.resizer, node.firstChild);
+		}
+
+		function removeResizeListener(node) {
+			if (!node || !node._chartjs) {
+				return;
+			}
+
+			var resizer = node._chartjs.resizer;
+			if (resizer) {
+				resizer.parentNode.removeChild(resizer);
+				node._chartjs.resizer = null;
+			}
+
+			delete node._chartjs;
+		}
+
+		return {
+			acquireContext: function(item, config) {
+				if (typeof item === 'string') {
+					item = document.getElementById(item);
+				} else if (item.length) {
+					// Support for array based queries (such as jQuery)
+					item = item[0];
+				}
+
+				if (item && item.canvas) {
+					// Support for any object associated to a canvas (including a context2d)
+					item = item.canvas;
+				}
+
+				if (item instanceof HTMLCanvasElement) {
+					// To prevent canvas fingerprinting, some add-ons undefine the getContext
+					// method, for example: https://github.com/kkapsner/CanvasBlocker
+					// https://github.com/chartjs/Chart.js/issues/2807
+					var context = item.getContext && item.getContext('2d');
+					if (context instanceof CanvasRenderingContext2D) {
+						initCanvas(item, config);
+						return context;
+					}
+				}
+
+				return null;
+			},
+
+			releaseContext: function(context) {
+				var canvas = context.canvas;
+				if (!canvas._chartjs) {
+					return;
+				}
+
+				var initial = canvas._chartjs.initial;
+				['height', 'width'].forEach(function(prop) {
+					var value = initial[prop];
+					if (value === undefined || value === null) {
+						canvas.removeAttribute(prop);
+					} else {
+						canvas.setAttribute(prop, value);
+					}
+				});
+
+				helpers.each(initial.style || {}, function(value, key) {
+					canvas.style[key] = value;
+				});
+
+				// The canvas render size might have been changed (and thus the state stack discarded),
+				// we can't use save() and restore() to restore the initial state. So make sure that at
+				// least the canvas context is reset to the default state by setting the canvas width.
+				// https://www.w3.org/TR/2011/WD-html5-20110525/the-canvas-element.html
+				canvas.width = canvas.width;
+
+				delete canvas._chartjs;
+			},
+
+			addEventListener: function(chart, type, listener) {
+				var canvas = chart.chart.canvas;
+				if (type === 'resize') {
+					// Note: the resize event is not supported on all browsers.
+					addResizeListener(canvas.parentNode, listener, chart.chart);
+					return;
+				}
+
+				var stub = listener._chartjs || (listener._chartjs = {});
+				var proxies = stub.proxies || (stub.proxies = {});
+				var proxy = proxies[chart.id + '_' + type] = function(event) {
+					listener(fromNativeEvent(event, chart.chart));
+				};
+
+				helpers.addEvent(canvas, type, proxy);
+			},
+
+			removeEventListener: function(chart, type, listener) {
+				var canvas = chart.chart.canvas;
+				if (type === 'resize') {
+					// Note: the resize event is not supported on all browsers.
+					removeResizeListener(canvas.parentNode, listener);
+					return;
+				}
+
+				var stub = listener._chartjs || {};
+				var proxies = stub.proxies || {};
+				var proxy = proxies[chart.id + '_' + type];
+				if (!proxy) {
+					return;
+				}
+
+				helpers.removeEvent(canvas, type, proxy);
+			}
+		};
+	};
+
+
+/***/ },
+/* 14 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9509,6 +9781,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				ctx.beginPath();
 				ctx.fillRect(x - size, y - size, 2 * size, 2 * size);
 				ctx.strokeRect(x - size, y - size, 2 * size, 2 * size);
+				break;
+			case 'rectRounded':
+				var offset = radius / Math.SQRT2;
+				var leftX = x - offset;
+				var topY = y - offset;
+				var sideSize = Math.SQRT2 * radius;
+				Chart.helpers.drawRoundedRectangle(ctx, leftX, topY, sideSize, sideSize, radius / 2);
+				ctx.fill();
 				break;
 			case 'rectRot':
 				size = 1 / Math.SQRT2 * radius;
@@ -9568,11 +9848,354 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			ctx.stroke();
 		};
+
+		helpers.clipArea = function(ctx, clipArea) {
+			ctx.save();
+			ctx.beginPath();
+			ctx.rect(clipArea.left, clipArea.top, clipArea.right - clipArea.left, clipArea.bottom - clipArea.top);
+			ctx.clip();
+		};
+
+		helpers.unclipArea = function(ctx) {
+			ctx.restore();
+		};
+
 	};
 
 
 /***/ },
-/* 13 */
+/* 15 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function(Chart) {
+
+		var helpers = Chart.helpers;
+
+		Chart.defaults.global.plugins = {};
+
+		/**
+		 * The plugin service singleton
+		 * @namespace Chart.plugins
+		 * @since 2.1.0
+		 */
+		Chart.plugins = {
+			/**
+			 * Globally registered plugins.
+			 * @private
+			 */
+			_plugins: [],
+
+			/**
+			 * This identifier is used to invalidate the descriptors cache attached to each chart
+			 * when a global plugin is registered or unregistered. In this case, the cache ID is
+			 * incremented and descriptors are regenerated during following API calls.
+			 * @private
+			 */
+			_cacheId: 0,
+
+			/**
+			 * Registers the given plugin(s) if not already registered.
+			 * @param {Array|Object} plugins plugin instance(s).
+			 */
+			register: function(plugins) {
+				var p = this._plugins;
+				([]).concat(plugins).forEach(function(plugin) {
+					if (p.indexOf(plugin) === -1) {
+						p.push(plugin);
+					}
+				});
+
+				this._cacheId++;
+			},
+
+			/**
+			 * Unregisters the given plugin(s) only if registered.
+			 * @param {Array|Object} plugins plugin instance(s).
+			 */
+			unregister: function(plugins) {
+				var p = this._plugins;
+				([]).concat(plugins).forEach(function(plugin) {
+					var idx = p.indexOf(plugin);
+					if (idx !== -1) {
+						p.splice(idx, 1);
+					}
+				});
+
+				this._cacheId++;
+			},
+
+			/**
+			 * Remove all registered plugins.
+			 * @since 2.1.5
+			 */
+			clear: function() {
+				this._plugins = [];
+				this._cacheId++;
+			},
+
+			/**
+			 * Returns the number of registered plugins?
+			 * @returns {Number}
+			 * @since 2.1.5
+			 */
+			count: function() {
+				return this._plugins.length;
+			},
+
+			/**
+			 * Returns all registered plugin instances.
+			 * @returns {Array} array of plugin objects.
+			 * @since 2.1.5
+			 */
+			getAll: function() {
+				return this._plugins;
+			},
+
+			/**
+			 * Calls enabled plugins for `chart` on the specified hook and with the given args.
+			 * This method immediately returns as soon as a plugin explicitly returns false. The
+			 * returned value can be used, for instance, to interrupt the current action.
+			 * @param {Object} chart - The chart instance for which plugins should be called.
+			 * @param {String} hook - The name of the plugin method to call (e.g. 'beforeUpdate').
+			 * @param {Array} [args] - Extra arguments to apply to the hook call.
+			 * @returns {Boolean} false if any of the plugins return false, else returns true.
+			 */
+			notify: function(chart, hook, args) {
+				var descriptors = this.descriptors(chart);
+				var ilen = descriptors.length;
+				var i, descriptor, plugin, params, method;
+
+				for (i=0; i<ilen; ++i) {
+					descriptor = descriptors[i];
+					plugin = descriptor.plugin;
+					method = plugin[hook];
+					if (typeof method === 'function') {
+						params = [chart].concat(args || []);
+						params.push(descriptor.options);
+						if (method.apply(plugin, params) === false) {
+							return false;
+						}
+					}
+				}
+
+				return true;
+			},
+
+			/**
+			 * Returns descriptors of enabled plugins for the given chart.
+			 * @returns {Array} [{ plugin, options }]
+			 * @private
+			 */
+			descriptors: function(chart) {
+				var cache = chart._plugins || (chart._plugins = {});
+				if (cache.id === this._cacheId) {
+					return cache.descriptors;
+				}
+
+				var plugins = [];
+				var descriptors = [];
+				var config = (chart && chart.config) || {};
+				var defaults = Chart.defaults.global.plugins;
+				var options = (config.options && config.options.plugins) || {};
+
+				this._plugins.concat(config.plugins || []).forEach(function(plugin) {
+					var idx = plugins.indexOf(plugin);
+					if (idx !== -1) {
+						return;
+					}
+
+					var id = plugin.id;
+					var opts = options[id];
+					if (opts === false) {
+						return;
+					}
+
+					if (opts === true) {
+						opts = helpers.clone(defaults[id]);
+					}
+
+					plugins.push(plugin);
+					descriptors.push({
+						plugin: plugin,
+						options: opts || {}
+					});
+				});
+
+				cache.descriptors = descriptors;
+				cache.id = this._cacheId;
+				return descriptors;
+			}
+		};
+
+		/**
+		 * Plugin extension hooks.
+		 * @interface IPlugin
+		 * @since 2.1.0
+		 */
+		/**
+		 * @method IPlugin#beforeInit
+		 * @desc Called before initializing `chart`.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Object} options - The plugin options.
+		 */
+		/**
+		 * @method IPlugin#afterInit
+		 * @desc Called after `chart` has been initialized and before the first update.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Object} options - The plugin options.
+		 */
+		/**
+		 * @method IPlugin#beforeUpdate
+		 * @desc Called before updating `chart`. If any plugin returns `false`, the update
+		 * is cancelled (and thus subsequent render(s)) until another `update` is triggered.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Object} options - The plugin options.
+		 * @returns {Boolean} `false` to cancel the chart update.
+		 */
+		/**
+		 * @method IPlugin#afterUpdate
+		 * @desc Called after `chart` has been updated and before rendering. Note that this
+		 * hook will not be called if the chart update has been previously cancelled.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Object} options - The plugin options.
+		 */
+		/**
+		 * @method IPlugin#beforeDatasetsUpdate
+	 	 * @desc Called before updating the `chart` datasets. If any plugin returns `false`,
+		 * the datasets update is cancelled until another `update` is triggered.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Object} options - The plugin options.
+		 * @returns {Boolean} false to cancel the datasets update.
+		 * @since version 2.1.5
+		 */
+		/**
+		 * @method IPlugin#afterDatasetsUpdate
+		 * @desc Called after the `chart` datasets have been updated. Note that this hook
+		 * will not be called if the datasets update has been previously cancelled.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Object} options - The plugin options.
+		 * @since version 2.1.5
+		 */
+		/**
+		 * @method IPlugin#beforeLayout
+		 * @desc Called before laying out `chart`. If any plugin returns `false`,
+		 * the layout update is cancelled until another `update` is triggered.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Object} options - The plugin options.
+		 * @returns {Boolean} `false` to cancel the chart layout.
+		 */
+		/**
+		 * @method IPlugin#afterLayout
+		 * @desc Called after the `chart` has been layed out. Note that this hook will not
+		 * be called if the layout update has been previously cancelled.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Object} options - The plugin options.
+		 */
+		/**
+		 * @method IPlugin#beforeRender
+		 * @desc Called before rendering `chart`. If any plugin returns `false`,
+		 * the rendering is cancelled until another `render` is triggered.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Object} options - The plugin options.
+		 * @returns {Boolean} `false` to cancel the chart rendering.
+		 */
+		/**
+		 * @method IPlugin#afterRender
+		 * @desc Called after the `chart` has been fully rendered (and animation completed). Note
+		 * that this hook will not be called if the rendering has been previously cancelled.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Object} options - The plugin options.
+		 */
+		/**
+		 * @method IPlugin#beforeDraw
+		 * @desc Called before drawing `chart` at every animation frame specified by the given
+		 * easing value. If any plugin returns `false`, the frame drawing is cancelled until
+		 * another `render` is triggered.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Number} easingValue - The current animation value, between 0.0 and 1.0.
+		 * @param {Object} options - The plugin options.
+		 * @returns {Boolean} `false` to cancel the chart drawing.
+		 */
+		/**
+		 * @method IPlugin#afterDraw
+		 * @desc Called after the `chart` has been drawn for the specific easing value. Note
+		 * that this hook will not be called if the drawing has been previously cancelled.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Number} easingValue - The current animation value, between 0.0 and 1.0.
+		 * @param {Object} options - The plugin options.
+		 */
+		/**
+		 * @method IPlugin#beforeDatasetsDraw
+	 	 * @desc Called before drawing the `chart` datasets. If any plugin returns `false`,
+		 * the datasets drawing is cancelled until another `render` is triggered.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Number} easingValue - The current animation value, between 0.0 and 1.0.
+		 * @param {Object} options - The plugin options.
+		 * @returns {Boolean} `false` to cancel the chart datasets drawing.
+		 */
+		/**
+		 * @method IPlugin#afterDatasetsDraw
+		 * @desc Called after the `chart` datasets have been drawn. Note that this hook
+		 * will not be called if the datasets drawing has been previously cancelled.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Number} easingValue - The current animation value, between 0.0 and 1.0.
+		 * @param {Object} options - The plugin options.
+		 */
+		/**
+		 * @method IPlugin#beforeEvent
+	 	 * @desc Called before processing the specified `event`. If any plugin returns `false`,
+		 * the event will be discarded.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {IEvent} event - The event object.
+		 * @param {Object} options - The plugin options.
+		 */
+		/**
+		 * @method IPlugin#afterEvent
+		 * @desc Called after the `event` has been consumed. Note that this hook
+		 * will not be called if the `event` has been previously discarded.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {IEvent} event - The event object.
+		 * @param {Object} options - The plugin options.
+		 */
+		/**
+		 * @method IPlugin#resize
+		 * @desc Called after the chart as been resized.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Number} size - The new canvas display size (eq. canvas.style width & height).
+		 * @param {Object} options - The plugin options.
+		 */
+		/**
+		 * @method IPlugin#destroy
+		 * @desc Called after the chart as been destroyed.
+		 * @param {Chart.Controller} chart - The chart instance.
+		 * @param {Object} options - The plugin options.
+		 */
+
+		/**
+		 * Provided for backward compatibility, use Chart.plugins instead
+		 * @namespace Chart.pluginService
+		 * @deprecated since version 2.1.5
+		 * @todo remove at version 3
+		 * @private
+		 */
+		Chart.pluginService = Chart.plugins;
+
+		/**
+		 * Provided for backward compatibility, inheriting from Chart.PlugingBase has no
+		 * effect, instead simply create/register plugins via plain JavaScript objects.
+		 * @interface Chart.PluginBase
+		 * @deprecated since version 2.5.0
+		 * @todo remove at version 3
+		 * @private
+		 */
+		Chart.PluginBase = helpers.inherits({});
+	};
+
+
+/***/ },
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9674,7 +10297,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 14 */
+/* 17 */
 /***/ function(module, exports) {
 
 	/* global window: false */
@@ -9819,7 +10442,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 15 */
+/* 18 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -9827,6 +10450,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = function(Chart) {
 
 		var helpers = Chart.helpers;
+		var plugins = Chart.plugins;
+		var platform = Chart.platform;
 
 		// Create a dictionary of chart types, to allow for extension of existing types
 		Chart.types = {};
@@ -9837,140 +10462,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		// Controllers available for dataset visualization eg. bar, line, slice, etc.
 		Chart.controllers = {};
-
-		/**
-		 * The "used" size is the final value of a dimension property after all calculations have
-		 * been performed. This method uses the computed style of `element` but returns undefined
-		 * if the computed style is not expressed in pixels. That can happen in some cases where
-		 * `element` has a size relative to its parent and this last one is not yet displayed,
-		 * for example because of `display: none` on a parent node.
-		 * TODO(SB) Move this method in the upcoming core.platform class.
-		 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/used_value
-		 * @returns {Number} Size in pixels or undefined if unknown.
-		 */
-		function readUsedSize(element, property) {
-			var value = helpers.getStyle(element, property);
-			var matches = value && value.match(/(\d+)px/);
-			return matches? Number(matches[1]) : undefined;
-		}
-
-		/**
-		 * Initializes the canvas style and render size without modifying the canvas display size,
-		 * since responsiveness is handled by the controller.resize() method. The config is used
-		 * to determine the aspect ratio to apply in case no explicit height has been specified.
-		 * TODO(SB) Move this method in the upcoming core.platform class.
-		 */
-		function initCanvas(canvas, config) {
-			var style = canvas.style;
-
-			// NOTE(SB) canvas.getAttribute('width') !== canvas.width: in the first case it
-			// returns null or '' if no explicit value has been set to the canvas attribute.
-			var renderHeight = canvas.getAttribute('height');
-			var renderWidth = canvas.getAttribute('width');
-
-			// Chart.js modifies some canvas values that we want to restore on destroy
-			canvas._chartjs = {
-				initial: {
-					height: renderHeight,
-					width: renderWidth,
-					style: {
-						display: style.display,
-						height: style.height,
-						width: style.width
-					}
-				}
-			};
-
-			// Force canvas to display as block to avoid extra space caused by inline
-			// elements, which would interfere with the responsive resize process.
-			// https://github.com/chartjs/Chart.js/issues/2538
-			style.display = style.display || 'block';
-
-			if (renderWidth === null || renderWidth === '') {
-				var displayWidth = readUsedSize(canvas, 'width');
-				if (displayWidth !== undefined) {
-					canvas.width = displayWidth;
-				}
-			}
-
-			if (renderHeight === null || renderHeight === '') {
-				if (canvas.style.height === '') {
-					// If no explicit render height and style height, let's apply the aspect ratio,
-					// which one can be specified by the user but also by charts as default option
-					// (i.e. options.aspectRatio). If not specified, use canvas aspect ratio of 2.
-					canvas.height = canvas.width / (config.options.aspectRatio || 2);
-				} else {
-					var displayHeight = readUsedSize(canvas, 'height');
-					if (displayWidth !== undefined) {
-						canvas.height = displayHeight;
-					}
-				}
-			}
-
-			return canvas;
-		}
-
-		/**
-		 * Restores the canvas initial state, such as render/display sizes and style.
-		 * TODO(SB) Move this method in the upcoming core.platform class.
-		 */
-		function releaseCanvas(canvas) {
-			if (!canvas._chartjs) {
-				return;
-			}
-
-			var initial = canvas._chartjs.initial;
-			['height', 'width'].forEach(function(prop) {
-				var value = initial[prop];
-				if (value === undefined || value === null) {
-					canvas.removeAttribute(prop);
-				} else {
-					canvas.setAttribute(prop, value);
-				}
-			});
-
-			helpers.each(initial.style || {}, function(value, key) {
-				canvas.style[key] = value;
-			});
-
-			// The canvas render size might have been changed (and thus the state stack discarded),
-			// we can't use save() and restore() to restore the initial state. So make sure that at
-			// least the canvas context is reset to the default state by setting the canvas width.
-			// https://www.w3.org/TR/2011/WD-html5-20110525/the-canvas-element.html
-			canvas.width = canvas.width;
-
-			delete canvas._chartjs;
-		}
-
-		/**
-		 * TODO(SB) Move this method in the upcoming core.platform class.
-		 */
-		function acquireContext(item, config) {
-			if (typeof item === 'string') {
-				item = document.getElementById(item);
-			} else if (item.length) {
-				// Support for array based queries (such as jQuery)
-				item = item[0];
-			}
-
-			if (item && item.canvas) {
-				// Support for any object associated to a canvas (including a context2d)
-				item = item.canvas;
-			}
-
-			if (item instanceof HTMLCanvasElement) {
-				// To prevent canvas fingerprinting, some add-ons undefine the getContext
-				// method, for example: https://github.com/kkapsner/CanvasBlocker
-				// https://github.com/chartjs/Chart.js/issues/2807
-				var context = item.getContext && item.getContext('2d');
-				if (context instanceof CanvasRenderingContext2D) {
-					initCanvas(item, config);
-					return context;
-				}
-			}
-
-			return null;
-		}
 
 		/**
 		 * Initializes the given config with global and chart default values.
@@ -9993,6 +10484,26 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		/**
+		 * Updates the config of the chart
+		 * @param chart {Chart.Controller} chart to update the options for
+		 */
+		function updateConfig(chart) {
+			var newOptions = chart.options;
+
+			// Update Scale(s) with options
+			if (newOptions.scale) {
+				chart.scale.options = newOptions.scale;
+			} else if (newOptions.scales) {
+				newOptions.scales.xAxes.concat(newOptions.scales.yAxes).forEach(function(scaleOptions) {
+					chart.scales[scaleOptions.id].options = scaleOptions;
+				});
+			}
+
+			// Tooltip
+			chart.tooltip._options = newOptions.tooltips;
+		}
+
+		/**
 		 * @class Chart.Controller
 		 * The main controller of a chart.
 		 */
@@ -10001,7 +10512,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			config = initConfig(config);
 
-			var context = acquireContext(item, config);
+			var context = platform.acquireContext(item, config);
 			var canvas = context && context.canvas;
 			var height = canvas && canvas.height;
 			var width = canvas && canvas.width;
@@ -10037,47 +10548,35 @@ return /******/ (function(modules) { // webpackBootstrap
 				return me;
 			}
 
-			helpers.retinaScale(instance);
-
-			// Responsiveness is currently based on the use of an iframe, however this method causes
-			// performance issues and could be troublesome when used with ad blockers. So make sure
-			// that the user is still able to create a chart without iframe when responsive is false.
-			// See https://github.com/chartjs/Chart.js/issues/2210
-			if (me.options.responsive) {
-				helpers.addResizeListener(canvas.parentNode, function() {
-					me.resize();
-				});
-
-				// Initial resize before chart draws (must be silent to preserve initial animations).
-				me.resize(true);
-			}
-
 			me.initialize();
+			me.update();
 
 			return me;
 		};
 
-		helpers.extend(Chart.Controller.prototype, /** @lends Chart.Controller */ {
+		helpers.extend(Chart.Controller.prototype, /** @lends Chart.Controller.prototype */ {
 			initialize: function() {
 				var me = this;
 
 				// Before init plugin notification
-				Chart.plugins.notify('beforeInit', [me]);
+				plugins.notify(me, 'beforeInit');
+
+				helpers.retinaScale(me.chart);
 
 				me.bindEvents();
 
-				// Make sure controllers are built first so that each dataset is bound to an axis before the scales
-				// are built
+				if (me.options.responsive) {
+					// Initial resize before chart draws (must be silent to preserve initial animations).
+					me.resize(true);
+				}
+
+				// Make sure scales have IDs and are built before we build any controllers.
 				me.ensureScalesHaveIDs();
-				me.buildOrUpdateControllers();
 				me.buildScales();
-				me.updateLayout();
-				me.resetElements();
 				me.initToolTip();
-				me.update();
 
 				// After init plugin notification
-				Chart.plugins.notify('afterInit', [me]);
+				plugins.notify(me, 'afterInit');
 
 				return me;
 			},
@@ -10116,16 +10615,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				helpers.retinaScale(chart);
 
-				// Notify any plugins about the resize
-				var newSize = {width: newWidth, height: newHeight};
-				Chart.plugins.notify('resize', [me, newSize]);
-
-				// Notify of resize
-				if (me.options.onResize) {
-					me.options.onResize(me, newSize);
-				}
-
 				if (!silent) {
+					// Notify any plugins about the resize
+					var newSize = {width: newWidth, height: newHeight};
+					plugins.notify(me, 'resize', [newSize]);
+
+					// Notify of resize
+					if (me.options.onResize) {
+						me.options.onResize(me, newSize);
+					}
+
 					me.stop();
 					me.update(me.options.responsiveAnimationDuration);
 				}
@@ -10201,10 +10700,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				Chart.scaleService.addScalesToLayout(this);
 			},
 
-			updateLayout: function() {
-				Chart.layoutService.update(this, this.chart.width, this.chart.height);
-			},
-
 			buildOrUpdateControllers: function() {
 				var me = this;
 				var types = [];
@@ -10240,7 +10735,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			/**
 			 * Reset the elements of all datasets
-			 * @method resetElements
 			 * @private
 			 */
 			resetElements: function() {
@@ -10252,7 +10746,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			/**
 			* Resets the chart back to it's state before the initial animation
-			* @method reset
 			*/
 			reset: function() {
 				this.resetElements();
@@ -10261,7 +10754,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			update: function(animationDuration, lazy) {
 				var me = this;
-				Chart.plugins.notify('beforeUpdate', [me]);
+
+				updateConfig(me);
+
+				if (plugins.notify(me, 'beforeUpdate') === false) {
+					return;
+				}
 
 				// In case the entire data object changed
 				me.tooltip._data = me.data;
@@ -10274,10 +10772,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					me.getDatasetMeta(datasetIndex).controller.buildOrUpdateElements();
 				}, me);
 
-				Chart.layoutService.update(me, me.chart.width, me.chart.height);
-
-				// Apply changes to the datasets that require the scales to have been calculated i.e BorderColor changes
-				Chart.plugins.notify('afterScaleUpdate', [me]);
+				me.updateLayout();
 
 				// Can only reset the new controllers after the scales have been updated
 				helpers.each(newControllers, function(controller) {
@@ -10287,7 +10782,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				me.updateDatasets();
 
 				// Do this before render so that any plugins that need final scale updates can use it
-				Chart.plugins.notify('afterUpdate', [me]);
+				plugins.notify(me, 'afterUpdate');
 
 				if (me._bufferedRender) {
 					me._bufferedRequest = {
@@ -10300,51 +10795,64 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 
 			/**
-			 * @method beforeDatasetsUpdate
-			 * @description Called before all datasets are updated. If a plugin returns false,
-			 * the datasets update will be cancelled until another chart update is triggered.
-			 * @param {Object} instance the chart instance being updated.
-			 * @returns {Boolean} false to cancel the datasets update.
-			 * @memberof Chart.PluginBase
-			 * @since version 2.1.5
-			 * @instance
+			 * Updates the chart layout unless a plugin returns `false` to the `beforeLayout`
+			 * hook, in which case, plugins will not be called on `afterLayout`.
+			 * @private
 			 */
+			updateLayout: function() {
+				var me = this;
+
+				if (plugins.notify(me, 'beforeLayout') === false) {
+					return;
+				}
+
+				Chart.layoutService.update(this, this.chart.width, this.chart.height);
+
+				/**
+				 * Provided for backward compatibility, use `afterLayout` instead.
+				 * @method IPlugin#afterScaleUpdate
+				 * @deprecated since version 2.5.0
+				 * @todo remove at version 3
+				 */
+				plugins.notify(me, 'afterScaleUpdate');
+				plugins.notify(me, 'afterLayout');
+			},
 
 			/**
-			 * @method afterDatasetsUpdate
-			 * @description Called after all datasets have been updated. Note that this
-			 * extension will not be called if the datasets update has been cancelled.
-			 * @param {Object} instance the chart instance being updated.
-			 * @memberof Chart.PluginBase
-			 * @since version 2.1.5
-			 * @instance
-			 */
-
-			/**
-			 * Updates all datasets unless a plugin returns false to the beforeDatasetsUpdate
-			 * extension, in which case no datasets will be updated and the afterDatasetsUpdate
-			 * notification will be skipped.
-			 * @protected
-			 * @instance
+			 * Updates all datasets unless a plugin returns `false` to the `beforeDatasetsUpdate`
+			 * hook, in which case, plugins will not be called on `afterDatasetsUpdate`.
+			 * @private
 			 */
 			updateDatasets: function() {
 				var me = this;
-				var i, ilen;
 
-				if (Chart.plugins.notify('beforeDatasetsUpdate', [me])) {
-					for (i = 0, ilen = me.data.datasets.length; i < ilen; ++i) {
-						me.getDatasetMeta(i).controller.update();
-					}
-
-					Chart.plugins.notify('afterDatasetsUpdate', [me]);
+				if (plugins.notify(me, 'beforeDatasetsUpdate') === false) {
+					return;
 				}
+
+				for (var i = 0, ilen = me.data.datasets.length; i < ilen; ++i) {
+					me.getDatasetMeta(i).controller.update();
+				}
+
+				plugins.notify(me, 'afterDatasetsUpdate');
 			},
 
 			render: function(duration, lazy) {
 				var me = this;
-				Chart.plugins.notify('beforeRender', [me]);
+
+				if (plugins.notify(me, 'beforeRender') === false) {
+					return;
+				}
 
 				var animationOptions = me.options.animation;
+				var onComplete = function() {
+					plugins.notify(me, 'afterRender');
+					var callback = animationOptions && animationOptions.onComplete;
+					if (callback && callback.call) {
+						callback.call(me);
+					}
+				};
+
 				if (animationOptions && ((typeof duration !== 'undefined' && duration !== 0) || (typeof duration === 'undefined' && animationOptions.duration !== 0))) {
 					var animation = new Chart.Animation();
 					animation.numSteps = (duration || animationOptions.duration) / 16.66; // 60 fps
@@ -10361,48 +10869,67 @@ return /******/ (function(modules) { // webpackBootstrap
 
 					// user events
 					animation.onAnimationProgress = animationOptions.onProgress;
-					animation.onAnimationComplete = animationOptions.onComplete;
+					animation.onAnimationComplete = onComplete;
 
 					Chart.animationService.addAnimation(me, animation, duration, lazy);
 				} else {
 					me.draw();
-					if (animationOptions && animationOptions.onComplete && animationOptions.onComplete.call) {
-						animationOptions.onComplete.call(me);
-					}
+					onComplete();
 				}
+
 				return me;
 			},
 
-			draw: function(ease) {
+			draw: function(easingValue) {
 				var me = this;
-				var easingDecimal = ease || 1;
+
 				me.clear();
 
-				Chart.plugins.notify('beforeDraw', [me, easingDecimal]);
+				if (easingValue === undefined || easingValue === null) {
+					easingValue = 1;
+				}
+
+				if (plugins.notify(me, 'beforeDraw', [easingValue]) === false) {
+					return;
+				}
 
 				// Draw all the scales
 				helpers.each(me.boxes, function(box) {
 					box.draw(me.chartArea);
 				}, me);
+
 				if (me.scale) {
 					me.scale.draw();
 				}
 
-				Chart.plugins.notify('beforeDatasetsDraw', [me, easingDecimal]);
+				me.drawDatasets(easingValue);
+
+				// Finally draw the tooltip
+				me.tooltip.transition(easingValue).draw();
+
+				plugins.notify(me, 'afterDraw', [easingValue]);
+			},
+
+			/**
+			 * Draws all datasets unless a plugin returns `false` to the `beforeDatasetsDraw`
+			 * hook, in which case, plugins will not be called on `afterDatasetsDraw`.
+			 * @private
+			 */
+			drawDatasets: function(easingValue) {
+				var me = this;
+
+				if (plugins.notify(me, 'beforeDatasetsDraw', [easingValue]) === false) {
+					return;
+				}
 
 				// Draw each dataset via its respective controller (reversed to support proper line stacking)
 				helpers.each(me.data.datasets, function(dataset, datasetIndex) {
 					if (me.isDatasetVisible(datasetIndex)) {
-						me.getDatasetMeta(datasetIndex).controller.draw(ease);
+						me.getDatasetMeta(datasetIndex).controller.draw(easingValue);
 					}
 				}, me, true);
 
-				Chart.plugins.notify('afterDatasetsDraw', [me, easingDecimal]);
-
-				// Finally draw the tooltip
-				me.tooltip.transition(easingDecimal).draw();
-
-				Chart.plugins.notify('afterDraw', [me, easingDecimal]);
+				plugins.notify(me, 'afterDatasetsDraw', [easingValue]);
 			},
 
 			// Get the single element that was clicked on
@@ -10429,7 +10956,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 
 			getDatasetAtEvent: function(e) {
-				return Chart.Interaction.modes.dataset(this, e);
+				return Chart.Interaction.modes.dataset(this, e, {intersect: true});
 			},
 
 			getDatasetMeta: function(datasetIndex) {
@@ -10494,15 +11021,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 
 				if (canvas) {
-					helpers.unbindEvents(me, me.events);
-					helpers.removeResizeListener(canvas.parentNode);
+					me.unbindEvents();
 					helpers.clear(me.chart);
-					releaseCanvas(canvas);
+					platform.releaseContext(me.chart.ctx);
 					me.chart.canvas = null;
 					me.chart.ctx = null;
 				}
 
-				Chart.plugins.notify('destroy', [me]);
+				plugins.notify(me, 'destroy');
 
 				delete Chart.instances[me.id];
 			},
@@ -10522,10 +11048,48 @@ return /******/ (function(modules) { // webpackBootstrap
 				me.tooltip.initialize();
 			},
 
+			/**
+			 * @private
+			 */
 			bindEvents: function() {
 				var me = this;
-				helpers.bindEvents(me, me.options.events, function(evt) {
-					me.eventHandler(evt);
+				var listeners = me._listeners = {};
+				var listener = function() {
+					me.eventHandler.apply(me, arguments);
+				};
+
+				helpers.each(me.options.events, function(type) {
+					platform.addEventListener(me, type, listener);
+					listeners[type] = listener;
+				});
+
+				// Responsiveness is currently based on the use of an iframe, however this method causes
+				// performance issues and could be troublesome when used with ad blockers. So make sure
+				// that the user is still able to create a chart without iframe when responsive is false.
+				// See https://github.com/chartjs/Chart.js/issues/2210
+				if (me.options.responsive) {
+					listener = function() {
+						me.resize();
+					};
+
+					platform.addEventListener(me, 'resize', listener);
+					listeners.resize = listener;
+				}
+			},
+
+			/**
+			 * @private
+			 */
+			unbindEvents: function() {
+				var me = this;
+				var listeners = me._listeners;
+				if (!listeners) {
+					return;
+				}
+
+				delete me._listeners;
+				helpers.each(listeners, function(listener, type) {
+					platform.removeEventListener(me, type, listener);
 				});
 			},
 
@@ -10541,19 +11105,25 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 			},
 
+			/**
+			 * @private
+			 */
 			eventHandler: function(e) {
 				var me = this;
-				var legend = me.legend;
 				var tooltip = me.tooltip;
-				var hoverOptions = me.options.hover;
+
+				if (plugins.notify(me, 'beforeEvent', [e]) === false) {
+					return;
+				}
 
 				// Buffer any update calls so that renders do not occur
 				me._bufferedRender = true;
 				me._bufferedRequest = null;
 
 				var changed = me.handleEvent(e);
-				changed |= legend && legend.handleEvent(e);
 				changed |= tooltip && tooltip.handleEvent(e);
+
+				plugins.notify(me, 'afterEvent', [e]);
 
 				var bufferedRequest = me._bufferedRequest;
 				if (bufferedRequest) {
@@ -10565,7 +11135,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 					// We only need to render at this point. Updating will cause scales to be
 					// recomputed generating flicker & using more memory than necessary.
-					me.render(hoverOptions.animationDuration, true);
+					me.render(me.options.hover.animationDuration, true);
 				}
 
 				me._bufferedRender = false;
@@ -10577,7 +11147,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			/**
 			 * Handle an event
 			 * @private
-			 * param e {Event} the event to handle
+			 * @param {IEvent} event the event to handle
 			 * @return {Boolean} true if the chart needs to re-render
 			 */
 			handleEvent: function(e) {
@@ -10597,12 +11167,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				// On Hover hook
 				if (hoverOptions.onHover) {
-					hoverOptions.onHover.call(me, me.active);
+					// Need to call with native event here to not break backwards compatibility
+					hoverOptions.onHover.call(me, e.native, me.active);
 				}
 
 				if (e.type === 'mouseup' || e.type === 'click') {
 					if (options.onClick) {
-						options.onClick.call(me, e, me.active);
+						// Use e.native here for backwards compatibility
+						options.onClick.call(me, e.native, me.active);
 					}
 				}
 
@@ -10628,7 +11200,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 16 */
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -10943,7 +11515,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 17 */
+/* 20 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -11096,15 +11668,36 @@ return /******/ (function(modules) { // webpackBootstrap
 					minBoxSizes.push({
 						horizontal: isHorizontal,
 						minSize: minSize,
-						box: box
+						box: box,
 					});
 				}
 
 				helpers.each(leftBoxes.concat(rightBoxes, topBoxes, bottomBoxes), getMinimumBoxSize);
 
+				// If a horizontal box has padding, we move the left boxes over to avoid ugly charts (see issue #2478)
+				var maxHorizontalLeftPadding = 0;
+				var maxHorizontalRightPadding = 0;
+				var maxVerticalTopPadding = 0;
+				var maxVerticalBottomPadding = 0;
+
+				helpers.each(topBoxes.concat(bottomBoxes), function(horizontalBox) {
+					if (horizontalBox.getPadding) {
+						var boxPadding = horizontalBox.getPadding();
+						maxHorizontalLeftPadding = Math.max(maxHorizontalLeftPadding, boxPadding.left);
+						maxHorizontalRightPadding = Math.max(maxHorizontalRightPadding, boxPadding.right);
+					}
+				});
+
+				helpers.each(leftBoxes.concat(rightBoxes), function(verticalBox) {
+					if (verticalBox.getPadding) {
+						var boxPadding = verticalBox.getPadding();
+						maxVerticalTopPadding = Math.max(maxVerticalTopPadding, boxPadding.top);
+						maxVerticalBottomPadding = Math.max(maxVerticalBottomPadding, boxPadding.bottom);
+					}
+				});
+
 				// At this point, maxChartAreaHeight and maxChartAreaWidth are the size the chart area could
 				// be if the axes are drawn at their minimum sizes.
-
 				// Steps 5 & 6
 				var totalLeftBoxesWidth = leftPadding;
 				var totalRightBoxesWidth = rightPadding;
@@ -11120,8 +11713,8 @@ return /******/ (function(modules) { // webpackBootstrap
 					if (minBoxSize) {
 						if (box.isHorizontal()) {
 							var scaleMargin = {
-								left: totalLeftBoxesWidth,
-								right: totalRightBoxesWidth,
+								left: Math.max(totalLeftBoxesWidth, maxHorizontalLeftPadding),
+								right: Math.max(totalRightBoxesWidth, maxHorizontalRightPadding),
 								top: 0,
 								bottom: 0
 							};
@@ -11199,6 +11792,15 @@ return /******/ (function(modules) { // webpackBootstrap
 					totalBottomBoxesHeight += box.height;
 				});
 
+				// We may be adding some padding to account for rotated x axis labels
+				var leftPaddingAddition = Math.max(maxHorizontalLeftPadding - totalLeftBoxesWidth, 0);
+				totalLeftBoxesWidth += leftPaddingAddition;
+				totalRightBoxesWidth += Math.max(maxHorizontalRightPadding - totalRightBoxesWidth, 0);
+
+				var topPaddingAddition = Math.max(maxVerticalTopPadding - totalTopBoxesHeight, 0);
+				totalTopBoxesHeight += topPaddingAddition;
+				totalBottomBoxesHeight += Math.max(maxVerticalBottomPadding - totalBottomBoxesHeight, 0);
+
 				// Figure out if our chart area changed. This would occur if the dataset layout label rotation
 				// changed due to the application of the margins in step 6. Since we can only get bigger, this is safe to do
 				// without calling `fit` again
@@ -11231,8 +11833,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 
 				// Step 7 - Position the boxes
-				var left = leftPadding;
-				var top = topPadding;
+				var left = leftPadding + leftPaddingAddition;
+				var top = topPadding + topPaddingAddition;
 
 				function placeBox(box) {
 					if (box.isHorizontal()) {
@@ -11288,7 +11890,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 18 */
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -11334,142 +11936,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 19 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = function(Chart) {
-
-		var noop = Chart.helpers.noop;
-
-		/**
-		 * The plugin service singleton
-		 * @namespace Chart.plugins
-		 * @since 2.1.0
-		 */
-		Chart.plugins = {
-			_plugins: [],
-
-			/**
-			 * Registers the given plugin(s) if not already registered.
-			 * @param {Array|Object} plugins plugin instance(s).
-			 */
-			register: function(plugins) {
-				var p = this._plugins;
-				([]).concat(plugins).forEach(function(plugin) {
-					if (p.indexOf(plugin) === -1) {
-						p.push(plugin);
-					}
-				});
-			},
-
-			/**
-			 * Unregisters the given plugin(s) only if registered.
-			 * @param {Array|Object} plugins plugin instance(s).
-			 */
-			unregister: function(plugins) {
-				var p = this._plugins;
-				([]).concat(plugins).forEach(function(plugin) {
-					var idx = p.indexOf(plugin);
-					if (idx !== -1) {
-						p.splice(idx, 1);
-					}
-				});
-			},
-
-			/**
-			 * Remove all registered plugins.
-			 * @since 2.1.5
-			 */
-			clear: function() {
-				this._plugins = [];
-			},
-
-			/**
-			 * Returns the number of registered plugins?
-			 * @returns {Number}
-			 * @since 2.1.5
-			 */
-			count: function() {
-				return this._plugins.length;
-			},
-
-			/**
-			 * Returns all registered plugin instances.
-			 * @returns {Array} array of plugin objects.
-			 * @since 2.1.5
-			 */
-			getAll: function() {
-				return this._plugins;
-			},
-
-			/**
-			 * Calls registered plugins on the specified extension, with the given args. This
-			 * method immediately returns as soon as a plugin explicitly returns false. The
-			 * returned value can be used, for instance, to interrupt the current action.
-			 * @param {String} extension the name of the plugin method to call (e.g. 'beforeUpdate').
-			 * @param {Array} [args] extra arguments to apply to the extension call.
-			 * @returns {Boolean} false if any of the plugins return false, else returns true.
-			 */
-			notify: function(extension, args) {
-				var plugins = this._plugins;
-				var ilen = plugins.length;
-				var i, plugin;
-
-				for (i=0; i<ilen; ++i) {
-					plugin = plugins[i];
-					if (typeof plugin[extension] === 'function') {
-						if (plugin[extension].apply(plugin, args || []) === false) {
-							return false;
-						}
-					}
-				}
-
-				return true;
-			}
-		};
-
-		/**
-		 * Plugin extension methods.
-		 * @interface Chart.PluginBase
-		 * @since 2.1.0
-		 */
-		Chart.PluginBase = Chart.Element.extend({
-			// Called at start of chart init
-			beforeInit: noop,
-
-			// Called at end of chart init
-			afterInit: noop,
-
-			// Called at start of update
-			beforeUpdate: noop,
-
-			// Called at end of update
-			afterUpdate: noop,
-
-			// Called at start of draw
-			beforeDraw: noop,
-
-			// Called at end of draw
-			afterDraw: noop,
-
-			// Called during destroy
-			destroy: noop
-		});
-
-		/**
-		 * Provided for backward compatibility, use Chart.plugins instead
-		 * @namespace Chart.pluginService
-		 * @deprecated since version 2.1.5
-		 * @todo remove me at version 3
-		 */
-		Chart.pluginService = Chart.plugins;
-	};
-
-
-/***/ },
-/* 20 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -11541,8 +12008,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 					// If min, max and stepSize is set and they make an evenly spaced scale use it.
 					if (generationOptions.min && generationOptions.max && generationOptions.stepSize) {
-						var minMaxDeltaDivisibleByStepSize = ((generationOptions.max - generationOptions.min) % generationOptions.stepSize) === 0;
-						if (minMaxDeltaDivisibleByStepSize) {
+						// If very close to our whole number, use it.
+						if (helpers.almostWhole((generationOptions.max - generationOptions.min) / generationOptions.stepSize, spacing / 1000)) {
 							niceMin = generationOptions.min;
 							niceMax = generationOptions.max;
 						}
@@ -11583,27 +12050,33 @@ return /******/ (function(modules) { // webpackBootstrap
 					// the graph
 					var tickVal = getValueOrDefault(generationOptions.min, Math.pow(10, Math.floor(helpers.log10(dataRange.min))));
 
-					while (tickVal < dataRange.max) {
+					var endExp = Math.floor(helpers.log10(dataRange.max));
+					var endSignificand = Math.ceil(dataRange.max / Math.pow(10, endExp));
+					var exp;
+					var significand;
+
+					if (tickVal === 0) {
+						exp = Math.floor(helpers.log10(dataRange.minNotZero));
+						significand = Math.floor(dataRange.minNotZero / Math.pow(10, exp));
+
+						ticks.push(tickVal);
+						tickVal = significand * Math.pow(10, exp);
+					} else {
+						exp = Math.floor(helpers.log10(tickVal));
+						significand = Math.floor(tickVal / Math.pow(10, exp));
+					}
+
+					do {
 						ticks.push(tickVal);
 
-						var exp;
-						var significand;
-
-						if (tickVal === 0) {
-							exp = Math.floor(helpers.log10(dataRange.minNotZero));
-							significand = Math.round(dataRange.minNotZero / Math.pow(10, exp));
-						} else {
-							exp = Math.floor(helpers.log10(tickVal));
-							significand = Math.floor(tickVal / Math.pow(10, exp)) + 1;
-						}
-
+						++significand;
 						if (significand === 10) {
 							significand = 1;
 							++exp;
 						}
 
 						tickVal = significand * Math.pow(10, exp);
-					}
+					} while (exp < endExp || (exp === endExp && significand < endSignificand));
 
 					var lastTick = getValueOrDefault(generationOptions.max, tickVal);
 					ticks.push(lastTick);
@@ -11677,7 +12150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 21 */
+/* 23 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -11721,7 +12194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				minRotation: 0,
 				maxRotation: 50,
 				mirror: false,
-				padding: 10,
+				padding: 0,
 				reverse: false,
 				display: true,
 				autoSkip: true,
@@ -11732,9 +12205,45 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 		};
 
-		Chart.Scale = Chart.Element.extend({
+		function computeTextSize(context, tick, font) {
+			return helpers.isArray(tick) ?
+				helpers.longestText(context, font, tick) :
+				context.measureText(tick).width;
+		}
 
-			// These methods are ordered by lifecycle. Utilities then follow.
+		function parseFontOptions(options) {
+			var getValueOrDefault = helpers.getValueOrDefault;
+			var globalDefaults = Chart.defaults.global;
+			var size = getValueOrDefault(options.fontSize, globalDefaults.defaultFontSize);
+			var style = getValueOrDefault(options.fontStyle, globalDefaults.defaultFontStyle);
+			var family = getValueOrDefault(options.fontFamily, globalDefaults.defaultFontFamily);
+
+			return {
+				size: size,
+				style: style,
+				family: family,
+				font: helpers.fontString(size, style, family)
+			};
+		}
+
+		Chart.Scale = Chart.Element.extend({
+			/**
+			 * Get the padding needed for the scale
+			 * @method getPadding
+			 * @private
+			 * @returns {Padding} the necessary padding
+			 */
+			getPadding: function() {
+				var me = this;
+				return {
+					left: me.paddingLeft || 0,
+					top: me.paddingTop || 0,
+					right: me.paddingRight || 0,
+					bottom: me.paddingBottom || 0
+				};
+			},
+
+			// These methods are ordered by lifecyle. Utilities then follow.
 			// Any function defined here is inherited by all scale types.
 			// Any function can be extended by the scale type
 
@@ -11756,6 +12265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					top: 0,
 					bottom: 0
 				}, margins);
+				me.longestTextCache = me.longestTextCache || {};
 
 				// Dimensions
 				me.beforeSetDimensions();
@@ -11864,72 +12374,42 @@ return /******/ (function(modules) { // webpackBootstrap
 			calculateTickRotation: function() {
 				var me = this;
 				var context = me.ctx;
-				var globalDefaults = Chart.defaults.global;
-				var optionTicks = me.options.ticks;
+				var tickOpts = me.options.ticks;
 
 				// Get the width of each grid by calculating the difference
 				// between x offsets between 0 and 1.
-				var tickFontSize = helpers.getValueOrDefault(optionTicks.fontSize, globalDefaults.defaultFontSize);
-				var tickFontStyle = helpers.getValueOrDefault(optionTicks.fontStyle, globalDefaults.defaultFontStyle);
-				var tickFontFamily = helpers.getValueOrDefault(optionTicks.fontFamily, globalDefaults.defaultFontFamily);
-				var tickLabelFont = helpers.fontString(tickFontSize, tickFontStyle, tickFontFamily);
-				context.font = tickLabelFont;
+				var tickFont = parseFontOptions(tickOpts);
+				context.font = tickFont.font;
 
-				var firstWidth = context.measureText(me.ticks[0]).width;
-				var lastWidth = context.measureText(me.ticks[me.ticks.length - 1]).width;
-				var firstRotated;
+				var labelRotation = tickOpts.minRotation || 0;
 
-				me.labelRotation = optionTicks.minRotation || 0;
-				me.paddingRight = 0;
-				me.paddingLeft = 0;
+				if (me.options.display && me.isHorizontal()) {
+					var originalLabelWidth = helpers.longestText(context, tickFont.font, me.ticks, me.longestTextCache);
+					var labelWidth = originalLabelWidth;
+					var cosRotation;
+					var sinRotation;
 
-				if (me.options.display) {
-					if (me.isHorizontal()) {
-						me.paddingRight = lastWidth / 2 + 3;
-						me.paddingLeft = firstWidth / 2 + 3;
+					// Allow 3 pixels x2 padding either side for label readability
+					var tickWidth = me.getPixelForTick(1) - me.getPixelForTick(0) - 6;
 
-						if (!me.longestTextCache) {
-							me.longestTextCache = {};
+					// Max label rotation can be set or default to 90 - also act as a loop counter
+					while (labelWidth > tickWidth && labelRotation < tickOpts.maxRotation) {
+						var angleRadians = helpers.toRadians(labelRotation);
+						cosRotation = Math.cos(angleRadians);
+						sinRotation = Math.sin(angleRadians);
+
+						if (sinRotation * originalLabelWidth > me.maxHeight) {
+							// go back one step
+							labelRotation--;
+							break;
 						}
-						var originalLabelWidth = helpers.longestText(context, tickLabelFont, me.ticks, me.longestTextCache);
-						var labelWidth = originalLabelWidth;
-						var cosRotation;
-						var sinRotation;
 
-						// Allow 3 pixels x2 padding either side for label readability
-						// only the index matters for a dataset scale, but we want a consistent interface between scales
-						var tickWidth = me.getPixelForTick(1) - me.getPixelForTick(0) - 6;
-
-						// Max label rotation can be set or default to 90 - also act as a loop counter
-						while (labelWidth > tickWidth && me.labelRotation < optionTicks.maxRotation) {
-							cosRotation = Math.cos(helpers.toRadians(me.labelRotation));
-							sinRotation = Math.sin(helpers.toRadians(me.labelRotation));
-
-							firstRotated = cosRotation * firstWidth;
-
-							// We're right aligning the text now.
-							if (firstRotated + tickFontSize / 2 > me.yLabelWidth) {
-								me.paddingLeft = firstRotated + tickFontSize / 2;
-							}
-
-							me.paddingRight = tickFontSize / 2;
-
-							if (sinRotation * originalLabelWidth > me.maxHeight) {
-								// go back one step
-								me.labelRotation--;
-								break;
-							}
-
-							me.labelRotation++;
-							labelWidth = cosRotation * originalLabelWidth;
-						}
+						labelRotation++;
+						labelWidth = cosRotation * originalLabelWidth;
 					}
 				}
 
-				if (me.margins) {
-					me.paddingLeft = Math.max(me.paddingLeft - me.margins.left, 0);
-					me.paddingRight = Math.max(me.paddingRight - me.margins.right, 0);
-				}
+				me.labelRotation = labelRotation;
 			},
 			afterCalculateTickRotation: function() {
 				helpers.callCallback(this.options.afterCalculateTickRotation, [this]);
@@ -11949,20 +12429,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				};
 
 				var opts = me.options;
-				var globalDefaults = Chart.defaults.global;
 				var tickOpts = opts.ticks;
 				var scaleLabelOpts = opts.scaleLabel;
 				var gridLineOpts = opts.gridLines;
 				var display = opts.display;
 				var isHorizontal = me.isHorizontal();
 
-				var tickFontSize = helpers.getValueOrDefault(tickOpts.fontSize, globalDefaults.defaultFontSize);
-				var tickFontStyle = helpers.getValueOrDefault(tickOpts.fontStyle, globalDefaults.defaultFontStyle);
-				var tickFontFamily = helpers.getValueOrDefault(tickOpts.fontFamily, globalDefaults.defaultFontFamily);
-				var tickLabelFont = helpers.fontString(tickFontSize, tickFontStyle, tickFontFamily);
-
-				var scaleLabelFontSize = helpers.getValueOrDefault(scaleLabelOpts.fontSize, globalDefaults.defaultFontSize);
-
+				var tickFont = parseFontOptions(tickOpts);
+				var scaleLabelFontSize = parseFontOptions(scaleLabelOpts).size * 1.5;
 				var tickMarkLength = opts.gridLines.tickMarkLength;
 
 				// Width
@@ -11983,78 +12457,84 @@ return /******/ (function(modules) { // webpackBootstrap
 				// Are we showing a title for the scale?
 				if (scaleLabelOpts.display && display) {
 					if (isHorizontal) {
-						minSize.height += (scaleLabelFontSize * 1.5);
+						minSize.height += scaleLabelFontSize;
 					} else {
-						minSize.width += (scaleLabelFontSize * 1.5);
+						minSize.width += scaleLabelFontSize;
 					}
 				}
 
+				// Don't bother fitting the ticks if we are not showing them
 				if (tickOpts.display && display) {
-					// Don't bother fitting the ticks if we are not showing them
-					if (!me.longestTextCache) {
-						me.longestTextCache = {};
-					}
-
-					var largestTextWidth = helpers.longestText(me.ctx, tickLabelFont, me.ticks, me.longestTextCache);
+					var largestTextWidth = helpers.longestText(me.ctx, tickFont.font, me.ticks, me.longestTextCache);
 					var tallestLabelHeightInLines = helpers.numberOfLabelLines(me.ticks);
-					var lineSpace = tickFontSize * 0.5;
+					var lineSpace = tickFont.size * 0.5;
 
 					if (isHorizontal) {
 						// A horizontal axis is more constrained by the height.
 						me.longestLabelWidth = largestTextWidth;
 
+						var angleRadians = helpers.toRadians(me.labelRotation);
+						var cosRotation = Math.cos(angleRadians);
+						var sinRotation = Math.sin(angleRadians);
+
 						// TODO - improve this calculation
-						var labelHeight = (Math.sin(helpers.toRadians(me.labelRotation)) * me.longestLabelWidth) + (tickFontSize * tallestLabelHeightInLines) + (lineSpace * tallestLabelHeightInLines);
+						var labelHeight = (sinRotation * largestTextWidth)
+							+ (tickFont.size * tallestLabelHeightInLines)
+							+ (lineSpace * tallestLabelHeightInLines);
 
 						minSize.height = Math.min(me.maxHeight, minSize.height + labelHeight);
-						me.ctx.font = tickLabelFont;
+						me.ctx.font = tickFont.font;
 
-						var firstLabelWidth = me.ctx.measureText(me.ticks[0]).width;
-						var lastLabelWidth = me.ctx.measureText(me.ticks[me.ticks.length - 1]).width;
+						var firstTick = me.ticks[0];
+						var firstLabelWidth = computeTextSize(me.ctx, firstTick, tickFont.font);
+
+						var lastTick = me.ticks[me.ticks.length - 1];
+						var lastLabelWidth = computeTextSize(me.ctx, lastTick, tickFont.font);
 
 						// Ensure that our ticks are always inside the canvas. When rotated, ticks are right aligned which means that the right padding is dominated
 						// by the font height
-						var cosRotation = Math.cos(helpers.toRadians(me.labelRotation));
-						var sinRotation = Math.sin(helpers.toRadians(me.labelRotation));
-						me.paddingLeft = me.labelRotation !== 0 ? (cosRotation * firstLabelWidth) + 3 : firstLabelWidth / 2 + 3; // add 3 px to move away from canvas edges
-						me.paddingRight = me.labelRotation !== 0 ? (sinRotation * (tickFontSize / 2)) + 3 : lastLabelWidth / 2 + 3; // when rotated
+						if (me.labelRotation !== 0) {
+							me.paddingLeft = opts.position === 'bottom'? (cosRotation * firstLabelWidth) + 3: (cosRotation * lineSpace) + 3; // add 3 px to move away from canvas edges
+							me.paddingRight = opts.position === 'bottom'? (cosRotation * lineSpace) + 3: (cosRotation * lastLabelWidth) + 3;
+						} else {
+							me.paddingLeft = firstLabelWidth / 2 + 3; // add 3 px to move away from canvas edges
+							me.paddingRight = lastLabelWidth / 2 + 3;
+						}
 					} else {
 						// A vertical axis is more constrained by the width. Labels are the dominant factor here, so get that length first
-						var maxLabelWidth = me.maxWidth - minSize.width;
-
 						// Account for padding
-						var mirror = tickOpts.mirror;
-						if (!mirror) {
-							largestTextWidth += me.options.ticks.padding;
-						} else {
-							// If mirrored text is on the inside so don't expand
+
+						if (tickOpts.mirror) {
 							largestTextWidth = 0;
-						}
-
-						if (largestTextWidth < maxLabelWidth) {
-							// We don't need all the room
-							minSize.width += largestTextWidth;
 						} else {
-							// Expand to max size
-							minSize.width = me.maxWidth;
+							largestTextWidth += me.options.ticks.padding;
 						}
-
-						me.paddingTop = tickFontSize / 2;
-						me.paddingBottom = tickFontSize / 2;
+						minSize.width += largestTextWidth;
+						me.paddingTop = tickFont.size / 2;
+						me.paddingBottom = tickFont.size / 2;
 					}
 				}
 
+				me.handleMargins();
+
+				me.width = minSize.width;
+				me.height = minSize.height;
+			},
+
+			/**
+			 * Handle margins and padding interactions
+			 * @private
+			 */
+			handleMargins: function() {
+				var me = this;
 				if (me.margins) {
 					me.paddingLeft = Math.max(me.paddingLeft - me.margins.left, 0);
 					me.paddingTop = Math.max(me.paddingTop - me.margins.top, 0);
 					me.paddingRight = Math.max(me.paddingRight - me.margins.right, 0);
 					me.paddingBottom = Math.max(me.paddingBottom - me.margins.bottom, 0);
 				}
-
-				me.width = minSize.width;
-				me.height = minSize.height;
-
 			},
+
 			afterFit: function() {
 				helpers.callCallback(this.options.afterFit, [this]);
 			},
@@ -12134,15 +12614,18 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 
 			getBasePixel: function() {
+				return this.getPixelForValue(this.getBaseValue());
+			},
+
+			getBaseValue: function() {
 				var me = this;
 				var min = me.min;
 				var max = me.max;
 
-				return me.getPixelForValue(
-					me.beginAtZero? 0:
+				return me.beginAtZero ? 0:
 					min < 0 && max < 0? max :
 					min > 0 && max > 0? min :
-					0);
+					0;
 			},
 
 			// Actually draw the scale on the canvas
@@ -12172,19 +12655,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 
 				var tickFontColor = helpers.getValueOrDefault(optionTicks.fontColor, globalDefaults.defaultFontColor);
-				var tickFontSize = helpers.getValueOrDefault(optionTicks.fontSize, globalDefaults.defaultFontSize);
-				var tickFontStyle = helpers.getValueOrDefault(optionTicks.fontStyle, globalDefaults.defaultFontStyle);
-				var tickFontFamily = helpers.getValueOrDefault(optionTicks.fontFamily, globalDefaults.defaultFontFamily);
-				var tickLabelFont = helpers.fontString(tickFontSize, tickFontStyle, tickFontFamily);
-				var tl = gridLines.tickMarkLength;
+				var tickFont = parseFontOptions(optionTicks);
+
+				var tl = gridLines.drawTicks ? gridLines.tickMarkLength : 0;
 				var borderDash = helpers.getValueOrDefault(gridLines.borderDash, globalDefaults.borderDash);
 				var borderDashOffset = helpers.getValueOrDefault(gridLines.borderDashOffset, globalDefaults.borderDashOffset);
 
 				var scaleLabelFontColor = helpers.getValueOrDefault(scaleLabel.fontColor, globalDefaults.defaultFontColor);
-				var scaleLabelFontSize = helpers.getValueOrDefault(scaleLabel.fontSize, globalDefaults.defaultFontSize);
-				var scaleLabelFontStyle = helpers.getValueOrDefault(scaleLabel.fontStyle, globalDefaults.defaultFontStyle);
-				var scaleLabelFontFamily = helpers.getValueOrDefault(scaleLabel.fontFamily, globalDefaults.defaultFontFamily);
-				var scaleLabelFont = helpers.fontString(scaleLabelFontSize, scaleLabelFontStyle, scaleLabelFontFamily);
+				var scaleLabelFont = parseFontOptions(scaleLabel);
 
 				var labelRotationRadians = helpers.toRadians(me.labelRotation);
 				var cosRotation = Math.cos(labelRotationRadians);
@@ -12260,15 +12738,21 @@ return /******/ (function(modules) { // webpackBootstrap
 					var textBaseline = 'middle';
 
 					if (isHorizontal) {
-						if (!isRotated) {
-							textBaseline = options.position === 'top' ? 'bottom' : 'top';
-						}
 
-						textAlign = isRotated ? 'right' : 'center';
+						if (options.position === 'bottom') {
+							// bottom
+							textBaseline = !isRotated? 'top':'middle';
+							textAlign = !isRotated? 'center': 'right';
+							labelY = me.top + tl;
+						} else {
+							// top
+							textBaseline = !isRotated? 'bottom':'middle';
+							textAlign = !isRotated? 'center': 'left';
+							labelY = me.bottom - tl;
+						}
 
 						var xLineValue = me.getPixelForTick(index) + helpers.aliasPixel(lineWidth); // xvalues for grid lines
 						labelX = me.getPixelForTick(index, gridLines.offsetGridLines) + optionTicks.labelOffset; // x values for optionTicks (need to consider offsetLabel option)
-						labelY = (isRotated) ? me.top + 12 : options.position === 'top' ? me.bottom - tl : me.top + tl;
 
 						tx1 = tx2 = x1 = x2 = xLineValue;
 						ty1 = yTickStart;
@@ -12276,22 +12760,19 @@ return /******/ (function(modules) { // webpackBootstrap
 						y1 = chartArea.top;
 						y2 = chartArea.bottom;
 					} else {
-						if (options.position === 'left') {
-							if (optionTicks.mirror) {
-								labelX = me.right + optionTicks.padding;
-								textAlign = 'left';
-							} else {
-								labelX = me.right - optionTicks.padding;
-								textAlign = 'right';
-							}
-						// right side
-						} else if (optionTicks.mirror) {
-							labelX = me.left - optionTicks.padding;
-							textAlign = 'right';
+						var isLeft = options.position === 'left';
+						var tickPadding = optionTicks.padding;
+						var labelXOffset;
+
+						if (optionTicks.mirror) {
+							textAlign = isLeft ? 'left' : 'right';
+							labelXOffset = tickPadding;
 						} else {
-							labelX = me.left + optionTicks.padding;
-							textAlign = 'left';
+							textAlign = isLeft ? 'right' : 'left';
+							labelXOffset = tl + tickPadding;
 						}
+
+						labelX = isLeft ? me.right - labelXOffset : me.left + labelXOffset;
 
 						var yLineValue = me.getPixelForTick(index); // xvalues for grid lines
 						yLineValue += helpers.aliasPixel(lineWidth);
@@ -12357,17 +12838,17 @@ return /******/ (function(modules) { // webpackBootstrap
 						context.save();
 						context.translate(itemToDraw.labelX, itemToDraw.labelY);
 						context.rotate(itemToDraw.rotation);
-						context.font = tickLabelFont;
+						context.font = tickFont.font;
 						context.textBaseline = itemToDraw.textBaseline;
 						context.textAlign = itemToDraw.textAlign;
 
 						var label = itemToDraw.label;
 						if (helpers.isArray(label)) {
-							for (var i = 0, y = -(label.length - 1)*tickFontSize*0.75; i < label.length; ++i) {
+							for (var i = 0, y = 0; i < label.length; ++i) {
 								// We just make sure the multiline element is a string here..
 								context.fillText('' + label[i], 0, y);
 								// apply same lineSpacing as calculated @ L#320
-								y += (tickFontSize * 1.5);
+								y += (tickFont.size * 1.5);
 							}
 						} else {
 							context.fillText(label, 0, 0);
@@ -12384,10 +12865,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 					if (isHorizontal) {
 						scaleLabelX = me.left + ((me.right - me.left) / 2); // midpoint of the width
-						scaleLabelY = options.position === 'bottom' ? me.bottom - (scaleLabelFontSize / 2) : me.top + (scaleLabelFontSize / 2);
+						scaleLabelY = options.position === 'bottom' ? me.bottom - (scaleLabelFont.size / 2) : me.top + (scaleLabelFont.size / 2);
 					} else {
 						var isLeft = options.position === 'left';
-						scaleLabelX = isLeft ? me.left + (scaleLabelFontSize / 2) : me.right - (scaleLabelFontSize / 2);
+						scaleLabelX = isLeft ? me.left + (scaleLabelFont.size / 2) : me.right - (scaleLabelFont.size / 2);
 						scaleLabelY = me.top + ((me.bottom - me.top) / 2);
 						rotation = isLeft ? -0.5 * Math.PI : 0.5 * Math.PI;
 					}
@@ -12398,7 +12879,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					context.textAlign = 'center';
 					context.textBaseline = 'middle';
 					context.fillStyle = scaleLabelFontColor; // render in correct colour
-					context.font = scaleLabelFont;
+					context.font = scaleLabelFont.font;
 					context.fillText(scaleLabel.labelString, 0, 0);
 					context.restore();
 				}
@@ -12434,7 +12915,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 22 */
+/* 24 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12461,7 +12942,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			initialize: function(config) {
 				var me = this;
 				helpers.extend(me, config);
-				me.options = helpers.configMerge(Chart.defaults.global.title, config.options);
 
 				// Contains hit boxes for each dataset (in dataset order)
 				me.legendHitBoxes = [];
@@ -12469,12 +12949,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			// These methods are ordered by lifecycle. Utilities then follow.
 
-			beforeUpdate: function() {
-				var chartOpts = this.chart.options;
-				if (chartOpts && chartOpts.title) {
-					this.options = helpers.configMerge(Chart.defaults.global.title, chartOpts.title);
-				}
-			},
+			beforeUpdate: noop,
 			update: function(maxWidth, maxHeight, margins) {
 				var me = this;
 
@@ -12626,20 +13101,39 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 		});
 
+		function createNewTitleBlockAndAttach(chartInstance, titleOpts) {
+			var title = new Chart.Title({
+				ctx: chartInstance.chart.ctx,
+				options: titleOpts,
+				chart: chartInstance
+			});
+			chartInstance.titleBlock = title;
+			Chart.layoutService.addBox(chartInstance, title);
+		}
+
 		// Register the title plugin
 		Chart.plugins.register({
 			beforeInit: function(chartInstance) {
-				var opts = chartInstance.options;
-				var titleOpts = opts.title;
+				var titleOpts = chartInstance.options.title;
 
 				if (titleOpts) {
-					chartInstance.titleBlock = new Chart.Title({
-						ctx: chartInstance.chart.ctx,
-						options: titleOpts,
-						chart: chartInstance
-					});
+					createNewTitleBlockAndAttach(chartInstance, titleOpts);
+				}
+			},
+			beforeUpdate: function(chartInstance) {
+				var titleOpts = chartInstance.options.title;
 
-					Chart.layoutService.addBox(chartInstance, chartInstance.titleBlock);
+				if (titleOpts) {
+					titleOpts = helpers.configMerge(Chart.defaults.global.title, titleOpts);
+
+					if (chartInstance.titleBlock) {
+						chartInstance.titleBlock.options = titleOpts;
+					} else {
+						createNewTitleBlockAndAttach(chartInstance, titleOpts);
+					}
+				} else {
+					Chart.layoutService.removeBox(chartInstance, chartInstance.titleBlock);
+					delete chartInstance.titleBlock;
 				}
 			}
 		});
@@ -12647,7 +13141,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 23 */
+/* 25 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12814,10 +13308,20 @@ return /******/ (function(modules) { // webpackBootstrap
 			beforeBuildLabels: noop,
 			buildLabels: function() {
 				var me = this;
-				me.legendItems = me.options.labels.generateLabels.call(me, me.chart);
-				if (me.options.reverse) {
-					me.legendItems.reverse();
+				var labelOpts = me.options.labels;
+				var legendItems = labelOpts.generateLabels.call(me, me.chart);
+
+				if (labelOpts.filter) {
+					legendItems = legendItems.filter(function(item) {
+						return labelOpts.filter(item, me.chart.data);
+					});
 				}
+
+				if (me.options.reverse) {
+					legendItems.reverse();
+				}
+
+				me.legendItems = legendItems;
 			},
 			afterBuildLabels: noop,
 
@@ -13056,7 +13560,7 @@ return /******/ (function(modules) { // webpackBootstrap
 							}
 						} else if (y + itemHeight > me.bottom) {
 							x = cursor.x = x + me.columnWidths[cursor.line] + labelOpts.padding;
-							y = cursor.y = me.top;
+							y = cursor.y = me.top + labelOpts.padding;
 							cursor.line++;
 						}
 
@@ -13081,7 +13585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			/**
 			 * Handle an event
 			 * @private
-			 * @param e {Event} the event to handle
+			 * @param {IEvent} event - The event to handle
 			 * @return {Boolean} true if a change occured
 			 */
 			handleEvent: function(e) {
@@ -13102,9 +13606,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					return;
 				}
 
-				var position = helpers.getRelativePosition(e, me.chart.chart),
-					x = position.x,
-					y = position.y;
+				// Chart event already has relative position in it
+				var x = e.x,
+					y = e.y;
 
 				if (x >= me.left && x <= me.right && y >= me.top && y <= me.bottom) {
 					// See if we are touching one of the dataset boxes
@@ -13115,11 +13619,13 @@ return /******/ (function(modules) { // webpackBootstrap
 						if (x >= hitBox.left && x <= hitBox.left + hitBox.width && y >= hitBox.top && y <= hitBox.top + hitBox.height) {
 							// Touching an element
 							if (type === 'click') {
-								opts.onClick.call(me, e, me.legendItems[i]);
+								// use e.native for backwards compatibility
+								opts.onClick.call(me, e.native, me.legendItems[i]);
 								changed = true;
 								break;
 							} else if (type === 'mousemove') {
-								opts.onHover.call(me, e, me.legendItems[i]);
+								// use e.native for backwards compatibility
+								opts.onHover.call(me, e.native, me.legendItems[i]);
 								changed = true;
 								break;
 							}
@@ -13131,20 +13637,45 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 		});
 
+		function createNewLegendAndAttach(chartInstance, legendOpts) {
+			var legend = new Chart.Legend({
+				ctx: chartInstance.chart.ctx,
+				options: legendOpts,
+				chart: chartInstance
+			});
+			chartInstance.legend = legend;
+			Chart.layoutService.addBox(chartInstance, legend);
+		}
+
 		// Register the legend plugin
 		Chart.plugins.register({
 			beforeInit: function(chartInstance) {
-				var opts = chartInstance.options;
-				var legendOpts = opts.legend;
+				var legendOpts = chartInstance.options.legend;
 
 				if (legendOpts) {
-					chartInstance.legend = new Chart.Legend({
-						ctx: chartInstance.chart.ctx,
-						options: legendOpts,
-						chart: chartInstance
-					});
+					createNewLegendAndAttach(chartInstance, legendOpts);
+				}
+			},
+			beforeUpdate: function(chartInstance) {
+				var legendOpts = chartInstance.options.legend;
 
-					Chart.layoutService.addBox(chartInstance, chartInstance.legend);
+				if (legendOpts) {
+					legendOpts = helpers.configMerge(Chart.defaults.global.legend, legendOpts);
+
+					if (chartInstance.legend) {
+						chartInstance.legend.options = legendOpts;
+					} else {
+						createNewLegendAndAttach(chartInstance, legendOpts);
+					}
+				} else {
+					Chart.layoutService.removeBox(chartInstance, chartInstance.legend);
+					delete chartInstance.legend;
+				}
+			},
+			afterEvent: function(chartInstance, e) {
+				var legend = chartInstance.legend;
+				if (legend) {
+					legend.handleEvent(e);
 				}
 			}
 		});
@@ -13152,13 +13683,30 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 24 */
+/* 26 */
 /***/ function(module, exports) {
 
 	'use strict';
 
 	module.exports = function(Chart) {
 		var helpers = Chart.helpers;
+
+		/**
+		 * Helper function to get relative position for an event
+		 * @param {Event|IEvent} event - The event to get the position for
+		 * @param {Chart} chart - The chart
+		 * @returns {Point} the event position
+		 */
+		function getRelativePosition(e, chart) {
+			if (e.native) {
+				return {
+					x: e.x,
+					y: e.y
+				};
+			}
+
+			return helpers.getRelativePosition(e, chart);
+		}
 
 		/**
 		 * Helper function to traverse all of the visible elements in the chart
@@ -13239,7 +13787,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		function indexMode(chart, e, options) {
-			var position = helpers.getRelativePosition(e, chart.chart);
+			var position = getRelativePosition(e, chart.chart);
 			var distanceMetric = function(pt1, pt2) {
 				return Math.abs(pt1.x - pt2.x);
 			};
@@ -13275,14 +13823,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		 */
 
 		/**
-		 * @namespace Chart.Interaction
 		 * Contains interaction related functions
+		 * @namespace Chart.Interaction
 		 */
 		Chart.Interaction = {
 			// Helper function for different modes
 			modes: {
 				single: function(chart, e) {
-					var position = helpers.getRelativePosition(e, chart.chart);
+					var position = getRelativePosition(e, chart.chart);
 					var elements = [];
 
 					parseVisibleItems(chart, function(element) {
@@ -13323,7 +13871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 				 */
 				dataset: function(chart, e, options) {
-					var position = helpers.getRelativePosition(e, chart.chart);
+					var position = getRelativePosition(e, chart.chart);
 					var items = options.intersect ? getIntersectItems(chart, position) : getNearestItems(chart, position, false);
 
 					if (items.length > 0) {
@@ -13350,7 +13898,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 				 */
 				point: function(chart, e) {
-					var position = helpers.getRelativePosition(e, chart.chart);
+					var position = getRelativePosition(e, chart.chart);
 					return getIntersectItems(chart, position);
 				},
 
@@ -13363,7 +13911,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 				 */
 				nearest: function(chart, e, options) {
-					var position = helpers.getRelativePosition(e, chart.chart);
+					var position = getRelativePosition(e, chart.chart);
 					var nearestItems = getNearestItems(chart, position, options.intersect);
 
 					// We have multiple items at the same distance from the event. Now sort by smallest
@@ -13395,7 +13943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 				 */
 				x: function(chart, e, options) {
-					var position = helpers.getRelativePosition(e, chart.chart);
+					var position = getRelativePosition(e, chart.chart);
 					var items = [];
 					var intersectsItem = false;
 
@@ -13426,7 +13974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 				 */
 				y: function(chart, e, options) {
-					var position = helpers.getRelativePosition(e, chart.chart);
+					var position = getRelativePosition(e, chart.chart);
 					var items = [];
 					var intersectsItem = false;
 
@@ -13453,7 +14001,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 25 */
+/* 27 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14221,7 +14769,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			/**
 			 * Handle an event
 			 * @private
-			 * @param e {Event} the event to handle
+			 * @param {IEvent} event - The event to handle
 			 * @returns {Boolean} true if the tooltip changed
 			 */
 			handleEvent: function(e) {
@@ -14243,7 +14791,10 @@ return /******/ (function(modules) { // webpackBootstrap
 				me._lastActive = me._active;
 
 				if (options.enabled || options.custom) {
-					me._eventPosition = helpers.getRelativePosition(e, me._chart);
+					me._eventPosition = {
+						x: e.x,
+						y: e.y
+					};
 
 					var model = me._model;
 					me.update(true);
@@ -14336,7 +14887,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 26 */
+/* 28 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14446,7 +14997,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14636,7 +15187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 28 */
+/* 30 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14697,13 +15248,17 @@ return /******/ (function(modules) { // webpackBootstrap
 					padding: vm.radius + vm.borderWidth
 				};
 			},
-			draw: function() {
+			draw: function(chartArea) {
 				var vm = this._view;
+				var model = this._model;
 				var ctx = this._chart.ctx;
 				var pointStyle = vm.pointStyle;
 				var radius = vm.radius;
 				var x = vm.x;
 				var y = vm.y;
+				var color = Chart.helpers.color;
+				var errMargin = 1.01; // 1.01 is margin for Accumulated error. (Especially Edge, IE.)
+				var ratio = 0;
 
 				if (vm.skip) {
 					return;
@@ -14713,6 +15268,24 @@ return /******/ (function(modules) { // webpackBootstrap
 				ctx.lineWidth = helpers.getValueOrDefault(vm.borderWidth, globalOpts.elements.point.borderWidth);
 				ctx.fillStyle = vm.backgroundColor || defaultColor;
 
+				// Cliping for Points.
+				// going out from inner charArea?
+				if ((chartArea !== undefined) && ((model.x < chartArea.left) || (chartArea.right*errMargin < model.x) || (model.y < chartArea.top) || (chartArea.bottom*errMargin < model.y))) {
+					// Point fade out
+					if (model.x < chartArea.left) {
+						ratio = (x - model.x) / (chartArea.left - model.x);
+					} else if (chartArea.right*errMargin < model.x) {
+						ratio = (model.x - x) / (model.x - chartArea.right);
+					} else if (model.y < chartArea.top) {
+						ratio = (y - model.y) / (chartArea.top - model.y);
+					} else if (chartArea.bottom*errMargin < model.y) {
+						ratio = (model.y - y) / (model.y - chartArea.bottom);
+					}
+					ratio = Math.round(ratio*100) / 100;
+					ctx.strokeStyle = color(ctx.strokeStyle).alpha(ratio).rgbString();
+					ctx.fillStyle = color(ctx.fillStyle).alpha(ratio).rgbString();
+				}
+
 				Chart.canvasHelpers.drawPoint(ctx, pointStyle, radius, x, y);
 			}
 		});
@@ -14720,7 +15293,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 29 */
+/* 31 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14778,39 +15351,71 @@ return /******/ (function(modules) { // webpackBootstrap
 			draw: function() {
 				var ctx = this._chart.ctx;
 				var vm = this._view;
+				var left, right, top, bottom, signX, signY, borderSkipped;
+				var borderWidth = vm.borderWidth;
 
-				var halfWidth = vm.width / 2,
-					leftX = vm.x - halfWidth,
-					rightX = vm.x + halfWidth,
-					top = vm.base - (vm.base - vm.y),
-					halfStroke = vm.borderWidth / 2;
+				if (!vm.horizontal) {
+					// bar
+					left = vm.x - vm.width / 2;
+					right = vm.x + vm.width / 2;
+					top = vm.y;
+					bottom = vm.base;
+					signX = 1;
+					signY = bottom > top? 1: -1;
+					borderSkipped = vm.borderSkipped || 'bottom';
+				} else {
+					// horizontal bar
+					left = vm.base;
+					right = vm.x;
+					top = vm.y - vm.height / 2;
+					bottom = vm.y + vm.height / 2;
+					signX = right > left? 1: -1;
+					signY = 1;
+					borderSkipped = vm.borderSkipped || 'left';
+				}
 
 				// Canvas doesn't allow us to stroke inside the width so we can
 				// adjust the sizes to fit if we're setting a stroke on the line
-				if (vm.borderWidth) {
-					leftX += halfStroke;
-					rightX -= halfStroke;
-					top += halfStroke;
+				if (borderWidth) {
+					// borderWidth shold be less than bar width and bar height.
+					var barSize = Math.min(Math.abs(left - right), Math.abs(top - bottom));
+					borderWidth = borderWidth > barSize? barSize: borderWidth;
+					var halfStroke = borderWidth / 2;
+					// Adjust borderWidth when bar top position is near vm.base(zero).
+					var borderLeft = left + (borderSkipped !== 'left'? halfStroke * signX: 0);
+					var borderRight = right + (borderSkipped !== 'right'? -halfStroke * signX: 0);
+					var borderTop = top + (borderSkipped !== 'top'? halfStroke * signY: 0);
+					var borderBottom = bottom + (borderSkipped !== 'bottom'? -halfStroke * signY: 0);
+					// not become a vertical line?
+					if (borderLeft !== borderRight) {
+						top = borderTop;
+						bottom = borderBottom;
+					}
+					// not become a horizontal line?
+					if (borderTop !== borderBottom) {
+						left = borderLeft;
+						right = borderRight;
+					}
 				}
 
 				ctx.beginPath();
 				ctx.fillStyle = vm.backgroundColor;
 				ctx.strokeStyle = vm.borderColor;
-				ctx.lineWidth = vm.borderWidth;
+				ctx.lineWidth = borderWidth;
 
 				// Corner points, from bottom-left to bottom-right clockwise
 				// | 1 2 |
 				// | 0 3 |
 				var corners = [
-					[leftX, vm.base],
-					[leftX, top],
-					[rightX, top],
-					[rightX, vm.base]
+					[left, bottom],
+					[left, top],
+					[right, top],
+					[right, bottom]
 				];
 
 				// Find first (starting) corner with fallback to 'bottom'
 				var borders = ['bottom', 'left', 'top', 'right'];
-				var startCorner = borders.indexOf(vm.borderSkipped, 0);
+				var startCorner = borders.indexOf(borderSkipped, 0);
 				if (startCorner === -1) {
 					startCorner = 0;
 				}
@@ -14829,7 +15434,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 
 				ctx.fill();
-				if (vm.borderWidth) {
+				if (borderWidth) {
 					ctx.stroke();
 				}
 			},
@@ -14902,7 +15507,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 30 */
+/* 32 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15006,7 +15611,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 31 */
+/* 33 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15065,10 +15670,10 @@ return /******/ (function(modules) { // webpackBootstrap
 				var data = me.chart.data;
 				var isHorizontal = me.isHorizontal();
 
-				if ((data.xLabels && isHorizontal) || (data.yLabels && !isHorizontal)) {
+				if (data.yLabels && !isHorizontal) {
 					return me.getRightValue(data.datasets[datasetIndex].data[index]);
 				}
-				return me.ticks[index];
+				return me.ticks[index - me.minIndex];
 			},
 
 			// Used to get data value locations.  Value can either be an index or a numerical value
@@ -15084,9 +15689,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 
 				if (me.isHorizontal()) {
-					var innerWidth = me.width - (me.paddingLeft + me.paddingRight);
-					var valueWidth = innerWidth / offsetAmt;
-					var widthOffset = (valueWidth * (index - me.minIndex)) + me.paddingLeft;
+					var valueWidth = me.width / offsetAmt;
+					var widthOffset = (valueWidth * (index - me.minIndex));
 
 					if (me.options.gridLines.offsetGridLines && includeOffset || me.maxIndex === me.minIndex && includeOffset) {
 						widthOffset += (valueWidth / 2);
@@ -15094,9 +15698,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 					return me.left + Math.round(widthOffset);
 				}
-				var innerHeight = me.height - (me.paddingTop + me.paddingBottom);
-				var valueHeight = innerHeight / offsetAmt;
-				var heightOffset = (valueHeight * (index - me.minIndex)) + me.paddingTop;
+				var valueHeight = me.height / offsetAmt;
+				var heightOffset = (valueHeight * (index - me.minIndex));
 
 				if (me.options.gridLines.offsetGridLines && includeOffset) {
 					heightOffset += (valueHeight / 2);
@@ -15112,15 +15715,13 @@ return /******/ (function(modules) { // webpackBootstrap
 				var value;
 				var offsetAmt = Math.max((me.ticks.length - ((me.options.gridLines.offsetGridLines) ? 0 : 1)), 1);
 				var horz = me.isHorizontal();
-				var innerDimension = horz ? me.width - (me.paddingLeft + me.paddingRight) : me.height - (me.paddingTop + me.paddingBottom);
-				var valueDimension = innerDimension / offsetAmt;
+				var valueDimension = (horz ? me.width : me.height) / offsetAmt;
 
 				pixel -= horz ? me.left : me.top;
 
 				if (me.options.gridLines.offsetGridLines) {
 					pixel -= (valueDimension / 2);
 				}
-				pixel -= horz ? me.paddingLeft : me.paddingTop;
 
 				if (pixel <= 0) {
 					value = 0;
@@ -15141,7 +15742,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 32 */
+/* 34 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15174,21 +15775,43 @@ return /******/ (function(modules) { // webpackBootstrap
 				me.min = null;
 				me.max = null;
 
-				if (opts.stacked) {
-					var valuesPerType = {};
+				var hasStacks = opts.stacked;
+				if (hasStacks === undefined) {
+					helpers.each(datasets, function(dataset, datasetIndex) {
+						if (hasStacks) {
+							return;
+						}
+
+						var meta = chart.getDatasetMeta(datasetIndex);
+						if (chart.isDatasetVisible(datasetIndex) && IDMatches(meta) &&
+							meta.stack !== undefined) {
+							hasStacks = true;
+						}
+					});
+				}
+
+				if (opts.stacked || hasStacks) {
+					var valuesPerStack = {};
 
 					helpers.each(datasets, function(dataset, datasetIndex) {
 						var meta = chart.getDatasetMeta(datasetIndex);
-						if (valuesPerType[meta.type] === undefined) {
-							valuesPerType[meta.type] = {
+						var key = [
+							meta.type,
+							// we have a separate stack for stack=undefined datasets when the opts.stacked is undefined
+							((opts.stacked === undefined && meta.stack === undefined) ? datasetIndex : ''),
+							meta.stack
+						].join('.');
+
+						if (valuesPerStack[key] === undefined) {
+							valuesPerStack[key] = {
 								positiveValues: [],
 								negativeValues: []
 							};
 						}
 
 						// Store these per type
-						var positiveValues = valuesPerType[meta.type].positiveValues;
-						var negativeValues = valuesPerType[meta.type].negativeValues;
+						var positiveValues = valuesPerStack[key].positiveValues;
+						var negativeValues = valuesPerStack[key].negativeValues;
 
 						if (chart.isDatasetVisible(datasetIndex) && IDMatches(meta)) {
 							helpers.each(dataset.data, function(rawValue, index) {
@@ -15211,7 +15834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						}
 					});
 
-					helpers.each(valuesPerType, function(valuesForType) {
+					helpers.each(valuesPerStack, function(valuesForType) {
 						var values = valuesForType.positiveValues.concat(valuesForType.negativeValues);
 						var minVal = helpers.min(values);
 						var maxVal = helpers.max(values);
@@ -15278,31 +15901,25 @@ return /******/ (function(modules) { // webpackBootstrap
 				// This must be called after fit has been run so that
 				// this.left, this.top, this.right, and this.bottom have been defined
 				var me = this;
-				var paddingLeft = me.paddingLeft;
-				var paddingBottom = me.paddingBottom;
 				var start = me.start;
 
 				var rightValue = +me.getRightValue(value);
 				var pixel;
-				var innerDimension;
 				var range = me.end - start;
 
 				if (me.isHorizontal()) {
-					innerDimension = me.width - (paddingLeft + me.paddingRight);
-					pixel = me.left + (innerDimension / range * (rightValue - start));
-					return Math.round(pixel + paddingLeft);
+					pixel = me.left + (me.width / range * (rightValue - start));
+					return Math.round(pixel);
 				}
-				innerDimension = me.height - (me.paddingTop + paddingBottom);
-				pixel = (me.bottom - paddingBottom) - (innerDimension / range * (rightValue - start));
+
+				pixel = me.bottom - (me.height / range * (rightValue - start));
 				return Math.round(pixel);
 			},
 			getValueForPixel: function(pixel) {
 				var me = this;
 				var isHorizontal = me.isHorizontal();
-				var paddingLeft = me.paddingLeft;
-				var paddingBottom = me.paddingBottom;
-				var innerDimension = isHorizontal ? me.width - (paddingLeft + me.paddingRight) : me.height - (me.paddingTop + paddingBottom);
-				var offset = (isHorizontal ? pixel - me.left - paddingLeft : me.bottom - paddingBottom - pixel) / innerDimension;
+				var innerDimension = isHorizontal ? me.width : me.height;
+				var offset = (isHorizontal ? pixel - me.left : me.bottom - pixel) / innerDimension;
 				return me.start + ((me.end - me.start) * offset);
 			},
 			getPixelForTick: function(index) {
@@ -15315,7 +15932,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15352,18 +15969,40 @@ return /******/ (function(modules) { // webpackBootstrap
 				me.max = null;
 				me.minNotZero = null;
 
-				if (opts.stacked) {
-					var valuesPerType = {};
+				var hasStacks = opts.stacked;
+				if (hasStacks === undefined) {
+					helpers.each(datasets, function(dataset, datasetIndex) {
+						if (hasStacks) {
+							return;
+						}
+
+						var meta = chart.getDatasetMeta(datasetIndex);
+						if (chart.isDatasetVisible(datasetIndex) && IDMatches(meta) &&
+							meta.stack !== undefined) {
+							hasStacks = true;
+						}
+					});
+				}
+
+				if (opts.stacked || hasStacks) {
+					var valuesPerStack = {};
 
 					helpers.each(datasets, function(dataset, datasetIndex) {
 						var meta = chart.getDatasetMeta(datasetIndex);
+						var key = [
+							meta.type,
+							// we have a separate stack for stack=undefined datasets when the opts.stacked is undefined
+							((opts.stacked === undefined && meta.stack === undefined) ? datasetIndex : ''),
+							meta.stack
+						].join('.');
+
 						if (chart.isDatasetVisible(datasetIndex) && IDMatches(meta)) {
-							if (valuesPerType[meta.type] === undefined) {
-								valuesPerType[meta.type] = [];
+							if (valuesPerStack[key] === undefined) {
+								valuesPerStack[key] = [];
 							}
 
 							helpers.each(dataset.data, function(rawValue, index) {
-								var values = valuesPerType[meta.type];
+								var values = valuesPerStack[key];
 								var value = +me.getRightValue(rawValue);
 								if (isNaN(value) || meta.data[index].hidden) {
 									return;
@@ -15381,7 +16020,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						}
 					});
 
-					helpers.each(valuesPerType, function(valuesForType) {
+					helpers.each(valuesPerStack, function(valuesForType) {
 						var minVal = helpers.min(valuesForType);
 						var maxVal = helpers.max(valuesForType);
 						me.min = me.min === null ? minVal : Math.min(me.min, minVal);
@@ -15482,46 +16121,42 @@ return /******/ (function(modules) { // webpackBootstrap
 				var start = me.start;
 				var newVal = +me.getRightValue(value);
 				var range;
-				var paddingTop = me.paddingTop;
-				var paddingBottom = me.paddingBottom;
-				var paddingLeft = me.paddingLeft;
 				var opts = me.options;
 				var tickOpts = opts.ticks;
 
 				if (me.isHorizontal()) {
 					range = helpers.log10(me.end) - helpers.log10(start); // todo: if start === 0
 					if (newVal === 0) {
-						pixel = me.left + paddingLeft;
+						pixel = me.left;
 					} else {
-						innerDimension = me.width - (paddingLeft + me.paddingRight);
+						innerDimension = me.width;
 						pixel = me.left + (innerDimension / range * (helpers.log10(newVal) - helpers.log10(start)));
-						pixel += paddingLeft;
 					}
 				} else {
 					// Bottom - top since pixels increase downward on a screen
-					innerDimension = me.height - (paddingTop + paddingBottom);
+					innerDimension = me.height;
 					if (start === 0 && !tickOpts.reverse) {
 						range = helpers.log10(me.end) - helpers.log10(me.minNotZero);
 						if (newVal === start) {
-							pixel = me.bottom - paddingBottom;
+							pixel = me.bottom;
 						} else if (newVal === me.minNotZero) {
-							pixel = me.bottom - paddingBottom - innerDimension * 0.02;
+							pixel = me.bottom - innerDimension * 0.02;
 						} else {
-							pixel = me.bottom - paddingBottom - innerDimension * 0.02 - (innerDimension * 0.98/ range * (helpers.log10(newVal)-helpers.log10(me.minNotZero)));
+							pixel = me.bottom - innerDimension * 0.02 - (innerDimension * 0.98/ range * (helpers.log10(newVal)-helpers.log10(me.minNotZero)));
 						}
 					} else if (me.end === 0 && tickOpts.reverse) {
 						range = helpers.log10(me.start) - helpers.log10(me.minNotZero);
 						if (newVal === me.end) {
-							pixel = me.top + paddingTop;
+							pixel = me.top;
 						} else if (newVal === me.minNotZero) {
-							pixel = me.top + paddingTop + innerDimension * 0.02;
+							pixel = me.top + innerDimension * 0.02;
 						} else {
-							pixel = me.top + paddingTop + innerDimension * 0.02 + (innerDimension * 0.98/ range * (helpers.log10(newVal)-helpers.log10(me.minNotZero)));
+							pixel = me.top + innerDimension * 0.02 + (innerDimension * 0.98/ range * (helpers.log10(newVal)-helpers.log10(me.minNotZero)));
 						}
 					} else {
 						range = helpers.log10(me.end) - helpers.log10(start);
-						innerDimension = me.height - (paddingTop + paddingBottom);
-						pixel = (me.bottom - paddingBottom) - (innerDimension / range * (helpers.log10(newVal) - helpers.log10(start)));
+						innerDimension = me.height;
+						pixel = me.bottom - (innerDimension / range * (helpers.log10(newVal) - helpers.log10(start)));
 					}
 				}
 				return pixel;
@@ -15532,11 +16167,11 @@ return /******/ (function(modules) { // webpackBootstrap
 				var value, innerDimension;
 
 				if (me.isHorizontal()) {
-					innerDimension = me.width - (me.paddingLeft + me.paddingRight);
-					value = me.start * Math.pow(10, (pixel - me.left - me.paddingLeft) * range / innerDimension);
+					innerDimension = me.width;
+					value = me.start * Math.pow(10, (pixel - me.left) * range / innerDimension);
 				} else {  // todo: if start === 0
-					innerDimension = me.height - (me.paddingTop + me.paddingBottom);
-					value = Math.pow(10, (me.bottom - me.paddingBottom - pixel) * range / innerDimension) / me.start;
+					innerDimension = me.height;
+					value = Math.pow(10, (me.bottom - pixel) * range / innerDimension) / me.start;
 				}
 				return value;
 			}
@@ -15547,7 +16182,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15599,10 +16234,266 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 		};
 
+		function getValueCount(scale) {
+			return !scale.options.lineArc ? scale.chart.data.labels.length : 0;
+		}
+
+		function getPointLabelFontOptions(scale) {
+			var pointLabelOptions = scale.options.pointLabels;
+			var fontSize = helpers.getValueOrDefault(pointLabelOptions.fontSize, globalDefaults.defaultFontSize);
+			var fontStyle = helpers.getValueOrDefault(pointLabelOptions.fontStyle, globalDefaults.defaultFontStyle);
+			var fontFamily = helpers.getValueOrDefault(pointLabelOptions.fontFamily, globalDefaults.defaultFontFamily);
+			var font = helpers.fontString(fontSize, fontStyle, fontFamily);
+
+			return {
+				size: fontSize,
+				style: fontStyle,
+				family: fontFamily,
+				font: font
+			};
+		}
+
+		function measureLabelSize(ctx, fontSize, label) {
+			if (helpers.isArray(label)) {
+				return {
+					w: helpers.longestText(ctx, ctx.font, label),
+					h: (label.length * fontSize) + ((label.length - 1) * 1.5 * fontSize)
+				};
+			}
+
+			return {
+				w: ctx.measureText(label).width,
+				h: fontSize
+			};
+		}
+
+		function determineLimits(angle, pos, size, min, max) {
+			if (angle === min || angle === max) {
+				return {
+					start: pos - (size / 2),
+					end: pos + (size / 2)
+				};
+			} else if (angle < min || angle > max) {
+				return {
+					start: pos - size - 5,
+					end: pos
+				};
+			}
+
+			return {
+				start: pos,
+				end: pos + size + 5
+			};
+		}
+
+		/**
+		 * Helper function to fit a radial linear scale with point labels
+		 */
+		function fitWithPointLabels(scale) {
+			/*
+			 * Right, this is really confusing and there is a lot of maths going on here
+			 * The gist of the problem is here: https://gist.github.com/nnnick/696cc9c55f4b0beb8fe9
+			 *
+			 * Reaction: https://dl.dropboxusercontent.com/u/34601363/toomuchscience.gif
+			 *
+			 * Solution:
+			 *
+			 * We assume the radius of the polygon is half the size of the canvas at first
+			 * at each index we check if the text overlaps.
+			 *
+			 * Where it does, we store that angle and that index.
+			 *
+			 * After finding the largest index and angle we calculate how much we need to remove
+			 * from the shape radius to move the point inwards by that x.
+			 *
+			 * We average the left and right distances to get the maximum shape radius that can fit in the box
+			 * along with labels.
+			 *
+			 * Once we have that, we can find the centre point for the chart, by taking the x text protrusion
+			 * on each side, removing that from the size, halving it and adding the left x protrusion width.
+			 *
+			 * This will mean we have a shape fitted to the canvas, as large as it can be with the labels
+			 * and position it in the most space efficient manner
+			 *
+			 * https://dl.dropboxusercontent.com/u/34601363/yeahscience.gif
+			 */
+
+			var plFont = getPointLabelFontOptions(scale);
+
+			// Get maximum radius of the polygon. Either half the height (minus the text width) or half the width.
+			// Use this to calculate the offset + change. - Make sure L/R protrusion is at least 0 to stop issues with centre points
+			var largestPossibleRadius = Math.min(scale.height / 2, scale.width / 2);
+			var furthestLimits = {
+				l: scale.width,
+				r: 0,
+				t: scale.height,
+				b: 0
+			};
+			var furthestAngles = {};
+			var i;
+			var textSize;
+			var pointPosition;
+
+			scale.ctx.font = plFont.font;
+			scale._pointLabelSizes = [];
+
+			var valueCount = getValueCount(scale);
+			for (i = 0; i < valueCount; i++) {
+				pointPosition = scale.getPointPosition(i, largestPossibleRadius);
+				textSize = measureLabelSize(scale.ctx, plFont.size, scale.pointLabels[i] || '');
+				scale._pointLabelSizes[i] = textSize;
+
+				// Add quarter circle to make degree 0 mean top of circle
+				var angleRadians = scale.getIndexAngle(i);
+				var angle = helpers.toDegrees(angleRadians) % 360;
+				var hLimits = determineLimits(angle, pointPosition.x, textSize.w, 0, 180);
+				var vLimits = determineLimits(angle, pointPosition.y, textSize.h, 90, 270);
+
+				if (hLimits.start < furthestLimits.l) {
+					furthestLimits.l = hLimits.start;
+					furthestAngles.l = angleRadians;
+				}
+
+				if (hLimits.end > furthestLimits.r) {
+					furthestLimits.r = hLimits.end;
+					furthestAngles.r = angleRadians;
+				}
+
+				if (vLimits.start < furthestLimits.t) {
+					furthestLimits.t = vLimits.start;
+					furthestAngles.t = angleRadians;
+				}
+
+				if (vLimits.end > furthestLimits.b) {
+					furthestLimits.b = vLimits.end;
+					furthestAngles.b = angleRadians;
+				}
+			}
+
+			scale.setReductions(largestPossibleRadius, furthestLimits, furthestAngles);
+		}
+
+		/**
+		 * Helper function to fit a radial linear scale with no point labels
+		 */
+		function fit(scale) {
+			var largestPossibleRadius = Math.min(scale.height / 2, scale.width / 2);
+			scale.drawingArea = Math.round(largestPossibleRadius);
+			scale.setCenterPoint(0, 0, 0, 0);
+		}
+
+		function getTextAlignForAngle(angle) {
+			if (angle === 0 || angle === 180) {
+				return 'center';
+			} else if (angle < 180) {
+				return 'left';
+			}
+
+			return 'right';
+		}
+
+		function fillText(ctx, text, position, fontSize) {
+			if (helpers.isArray(text)) {
+				var y = position.y;
+				var spacing = 1.5 * fontSize;
+
+				for (var i = 0; i < text.length; ++i) {
+					ctx.fillText(text[i], position.x, y);
+					y+= spacing;
+				}
+			} else {
+				ctx.fillText(text, position.x, position.y);
+			}
+		}
+
+		function adjustPointPositionForLabelHeight(angle, textSize, position) {
+			if (angle === 90 || angle === 270) {
+				position.y -= (textSize.h / 2);
+			} else if (angle > 270 || angle < 90) {
+				position.y -= textSize.h;
+			}
+		}
+
+		function drawPointLabels(scale) {
+			var ctx = scale.ctx;
+			var getValueOrDefault = helpers.getValueOrDefault;
+			var opts = scale.options;
+			var angleLineOpts = opts.angleLines;
+			var pointLabelOpts = opts.pointLabels;
+
+			ctx.lineWidth = angleLineOpts.lineWidth;
+			ctx.strokeStyle = angleLineOpts.color;
+
+			var outerDistance = scale.getDistanceFromCenterForValue(opts.reverse ? scale.min : scale.max);
+
+			// Point Label Font
+			var plFont = getPointLabelFontOptions(scale);
+
+			ctx.textBaseline = 'top';
+
+			for (var i = getValueCount(scale) - 1; i >= 0; i--) {
+				if (angleLineOpts.display) {
+					var outerPosition = scale.getPointPosition(i, outerDistance);
+					ctx.beginPath();
+					ctx.moveTo(scale.xCenter, scale.yCenter);
+					ctx.lineTo(outerPosition.x, outerPosition.y);
+					ctx.stroke();
+					ctx.closePath();
+				}
+				// Extra 3px out for some label spacing
+				var pointLabelPosition = scale.getPointPosition(i, outerDistance + 5);
+
+				// Keep this in loop since we may support array properties here
+				var pointLabelFontColor = getValueOrDefault(pointLabelOpts.fontColor, globalDefaults.defaultFontColor);
+				ctx.font = plFont.font;
+				ctx.fillStyle = pointLabelFontColor;
+
+				var angleRadians = scale.getIndexAngle(i);
+				var angle = helpers.toDegrees(angleRadians);
+				ctx.textAlign = getTextAlignForAngle(angle);
+				adjustPointPositionForLabelHeight(angle, scale._pointLabelSizes[i], pointLabelPosition);
+				fillText(ctx, scale.pointLabels[i] || '', pointLabelPosition, plFont.size);
+			}
+		}
+
+		function drawRadiusLine(scale, gridLineOpts, radius, index) {
+			var ctx = scale.ctx;
+			ctx.strokeStyle = helpers.getValueAtIndexOrDefault(gridLineOpts.color, index - 1);
+			ctx.lineWidth = helpers.getValueAtIndexOrDefault(gridLineOpts.lineWidth, index - 1);
+
+			if (scale.options.lineArc) {
+				// Draw circular arcs between the points
+				ctx.beginPath();
+				ctx.arc(scale.xCenter, scale.yCenter, radius, 0, Math.PI * 2);
+				ctx.closePath();
+				ctx.stroke();
+			} else {
+				// Draw straight lines connecting each index
+				var valueCount = getValueCount(scale);
+
+				if (valueCount === 0) {
+					return;
+				}
+
+				ctx.beginPath();
+				var pointPosition = scale.getPointPosition(0, radius);
+				ctx.moveTo(pointPosition.x, pointPosition.y);
+
+				for (var i = 1; i < valueCount; i++) {
+					pointPosition = scale.getPointPosition(i, radius);
+					ctx.lineTo(pointPosition.x, pointPosition.y);
+				}
+
+				ctx.closePath();
+				ctx.stroke();
+			}
+		}
+
+		function numberOrZero(param) {
+			return helpers.isNumber(param) ? param : 0;
+		}
+
 		var LinearRadialScale = Chart.LinearScaleBase.extend({
-			getValueCount: function() {
-				return this.chart.data.labels.length;
-			},
 			setDimensions: function() {
 				var me = this;
 				var opts = me.options;
@@ -15620,9 +16511,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			determineDataLimits: function() {
 				var me = this;
 				var chart = me.chart;
-				me.min = null;
-				me.max = null;
-
+				var min = Number.POSITIVE_INFINITY;
+				var max = Number.NEGATIVE_INFINITY;
 
 				helpers.each(chart.data.datasets, function(dataset, datasetIndex) {
 					if (chart.isDatasetVisible(datasetIndex)) {
@@ -15634,20 +16524,14 @@ return /******/ (function(modules) { // webpackBootstrap
 								return;
 							}
 
-							if (me.min === null) {
-								me.min = value;
-							} else if (value < me.min) {
-								me.min = value;
-							}
-
-							if (me.max === null) {
-								me.max = value;
-							} else if (value > me.max) {
-								me.max = value;
-							}
+							min = Math.min(value, min);
+							max = Math.max(value, max);
 						});
 					}
 				});
+
+				me.min = (min === Number.POSITIVE_INFINITY ? 0 : min);
+				me.max = (max === Number.NEGATIVE_INFINITY ? 0 : max);
 
 				// Common base implementation to handle ticks.min, ticks.max, ticks.beginAtZero
 				me.handleTickRangeOptions();
@@ -15668,122 +16552,46 @@ return /******/ (function(modules) { // webpackBootstrap
 				return +this.getRightValue(this.chart.data.datasets[datasetIndex].data[index]);
 			},
 			fit: function() {
-				/*
-				 * Right, this is really confusing and there is a lot of maths going on here
-				 * The gist of the problem is here: https://gist.github.com/nnnick/696cc9c55f4b0beb8fe9
-				 *
-				 * Reaction: https://dl.dropboxusercontent.com/u/34601363/toomuchscience.gif
-				 *
-				 * Solution:
-				 *
-				 * We assume the radius of the polygon is half the size of the canvas at first
-				 * at each index we check if the text overlaps.
-				 *
-				 * Where it does, we store that angle and that index.
-				 *
-				 * After finding the largest index and angle we calculate how much we need to remove
-				 * from the shape radius to move the point inwards by that x.
-				 *
-				 * We average the left and right distances to get the maximum shape radius that can fit in the box
-				 * along with labels.
-				 *
-				 * Once we have that, we can find the centre point for the chart, by taking the x text protrusion
-				 * on each side, removing that from the size, halving it and adding the left x protrusion width.
-				 *
-				 * This will mean we have a shape fitted to the canvas, as large as it can be with the labels
-				 * and position it in the most space efficient manner
-				 *
-				 * https://dl.dropboxusercontent.com/u/34601363/yeahscience.gif
-				 */
-
-				var pointLabels = this.options.pointLabels;
-				var pointLabelFontSize = helpers.getValueOrDefault(pointLabels.fontSize, globalDefaults.defaultFontSize);
-				var pointLabeFontStyle = helpers.getValueOrDefault(pointLabels.fontStyle, globalDefaults.defaultFontStyle);
-				var pointLabeFontFamily = helpers.getValueOrDefault(pointLabels.fontFamily, globalDefaults.defaultFontFamily);
-				var pointLabeFont = helpers.fontString(pointLabelFontSize, pointLabeFontStyle, pointLabeFontFamily);
-
-				// Get maximum radius of the polygon. Either half the height (minus the text width) or half the width.
-				// Use this to calculate the offset + change. - Make sure L/R protrusion is at least 0 to stop issues with centre points
-				var largestPossibleRadius = helpers.min([(this.height / 2 - pointLabelFontSize - 5), this.width / 2]),
-					pointPosition,
-					i,
-					textWidth,
-					halfTextWidth,
-					furthestRight = this.width,
-					furthestRightIndex,
-					furthestRightAngle,
-					furthestLeft = 0,
-					furthestLeftIndex,
-					furthestLeftAngle,
-					xProtrusionLeft,
-					xProtrusionRight,
-					radiusReductionRight,
-					radiusReductionLeft;
-				this.ctx.font = pointLabeFont;
-
-				for (i = 0; i < this.getValueCount(); i++) {
-					// 5px to space the text slightly out - similar to what we do in the draw function.
-					pointPosition = this.getPointPosition(i, largestPossibleRadius);
-					textWidth = this.ctx.measureText(this.pointLabels[i] ? this.pointLabels[i] : '').width + 5;
-
-					// Add quarter circle to make degree 0 mean top of circle
-					var angleRadians = this.getIndexAngle(i) + (Math.PI / 2);
-					var angle = (angleRadians * 360 / (2 * Math.PI)) % 360;
-
-					if (angle === 0 || angle === 180) {
-						// At angle 0 and 180, we're at exactly the top/bottom
-						// of the radar chart, so text will be aligned centrally, so we'll half it and compare
-						// w/left and right text sizes
-						halfTextWidth = textWidth / 2;
-						if (pointPosition.x + halfTextWidth > furthestRight) {
-							furthestRight = pointPosition.x + halfTextWidth;
-							furthestRightIndex = i;
-						}
-						if (pointPosition.x - halfTextWidth < furthestLeft) {
-							furthestLeft = pointPosition.x - halfTextWidth;
-							furthestLeftIndex = i;
-						}
-					} else if (angle < 180) {
-						// Less than half the values means we'll left align the text
-						if (pointPosition.x + textWidth > furthestRight) {
-							furthestRight = pointPosition.x + textWidth;
-							furthestRightIndex = i;
-						}
-					// More than half the values means we'll right align the text
-					} else if (pointPosition.x - textWidth < furthestLeft) {
-						furthestLeft = pointPosition.x - textWidth;
-						furthestLeftIndex = i;
-					}
+				if (this.options.lineArc) {
+					fit(this);
+				} else {
+					fitWithPointLabels(this);
 				}
-
-				xProtrusionLeft = furthestLeft;
-				xProtrusionRight = Math.ceil(furthestRight - this.width);
-
-				furthestRightAngle = this.getIndexAngle(furthestRightIndex);
-				furthestLeftAngle = this.getIndexAngle(furthestLeftIndex);
-
-				radiusReductionRight = xProtrusionRight / Math.sin(furthestRightAngle + Math.PI / 2);
-				radiusReductionLeft = xProtrusionLeft / Math.sin(furthestLeftAngle + Math.PI / 2);
-
-				// Ensure we actually need to reduce the size of the chart
-				radiusReductionRight = (helpers.isNumber(radiusReductionRight)) ? radiusReductionRight : 0;
-				radiusReductionLeft = (helpers.isNumber(radiusReductionLeft)) ? radiusReductionLeft : 0;
-
-				this.drawingArea = Math.round(largestPossibleRadius - (radiusReductionLeft + radiusReductionRight) / 2);
-				this.setCenterPoint(radiusReductionLeft, radiusReductionRight);
 			},
-			setCenterPoint: function(leftMovement, rightMovement) {
+			/**
+			 * Set radius reductions and determine new radius and center point
+			 * @private
+			 */
+			setReductions: function(largestPossibleRadius, furthestLimits, furthestAngles) {
+				var me = this;
+				var radiusReductionLeft = furthestLimits.l / Math.sin(furthestAngles.l);
+				var radiusReductionRight = Math.max(furthestLimits.r - me.width, 0) / Math.sin(furthestAngles.r);
+				var radiusReductionTop = -furthestLimits.t / Math.cos(furthestAngles.t);
+				var radiusReductionBottom = -Math.max(furthestLimits.b - me.height, 0) / Math.cos(furthestAngles.b);
+
+				radiusReductionLeft = numberOrZero(radiusReductionLeft);
+				radiusReductionRight = numberOrZero(radiusReductionRight);
+				radiusReductionTop = numberOrZero(radiusReductionTop);
+				radiusReductionBottom = numberOrZero(radiusReductionBottom);
+
+				me.drawingArea = Math.min(
+					Math.round(largestPossibleRadius - (radiusReductionLeft + radiusReductionRight) / 2),
+					Math.round(largestPossibleRadius - (radiusReductionTop + radiusReductionBottom) / 2));
+				me.setCenterPoint(radiusReductionLeft, radiusReductionRight, radiusReductionTop, radiusReductionBottom);
+			},
+			setCenterPoint: function(leftMovement, rightMovement, topMovement, bottomMovement) {
 				var me = this;
 				var maxRight = me.width - rightMovement - me.drawingArea,
-					maxLeft = leftMovement + me.drawingArea;
+					maxLeft = leftMovement + me.drawingArea,
+					maxTop = topMovement + me.drawingArea,
+					maxBottom = me.height - bottomMovement - me.drawingArea;
 
 				me.xCenter = Math.round(((maxLeft + maxRight) / 2) + me.left);
-				// Always vertically in the centre as the text height doesn't change
-				me.yCenter = Math.round((me.height / 2) + me.top);
+				me.yCenter = Math.round(((maxTop + maxBottom) / 2) + me.top);
 			},
 
 			getIndexAngle: function(index) {
-				var angleMultiplier = (Math.PI * 2) / this.getValueCount();
+				var angleMultiplier = (Math.PI * 2) / getValueCount(this);
 				var startAngle = this.chart.options && this.chart.options.startAngle ?
 					this.chart.options.startAngle :
 					0;
@@ -15791,7 +16599,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var startAngleRadians = startAngle * Math.PI * 2 / 360;
 
 				// Start from the top instead of right, so remove a quarter of the circle
-				return index * angleMultiplier - (Math.PI / 2) + startAngleRadians;
+				return index * angleMultiplier + startAngleRadians;
 			},
 			getDistanceFromCenterForValue: function(value) {
 				var me = this;
@@ -15809,7 +16617,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 			getPointPosition: function(index, distanceFromCenter) {
 				var me = this;
-				var thisAngle = me.getIndexAngle(index);
+				var thisAngle = me.getIndexAngle(index) - (Math.PI / 2);
 				return {
 					x: Math.round(Math.cos(thisAngle) * distanceFromCenter) + me.xCenter,
 					y: Math.round(Math.sin(thisAngle) * distanceFromCenter) + me.yCenter
@@ -15836,8 +16644,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				var opts = me.options;
 				var gridLineOpts = opts.gridLines;
 				var tickOpts = opts.ticks;
-				var angleLineOpts = opts.angleLines;
-				var pointLabelOpts = opts.pointLabels;
 				var getValueOrDefault = helpers.getValueOrDefault;
 
 				if (opts.display) {
@@ -15857,29 +16663,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 							// Draw circular lines around the scale
 							if (gridLineOpts.display && index !== 0) {
-								ctx.strokeStyle = helpers.getValueAtIndexOrDefault(gridLineOpts.color, index - 1);
-								ctx.lineWidth = helpers.getValueAtIndexOrDefault(gridLineOpts.lineWidth, index - 1);
-
-								if (opts.lineArc) {
-									// Draw circular arcs between the points
-									ctx.beginPath();
-									ctx.arc(me.xCenter, me.yCenter, yCenterOffset, 0, Math.PI * 2);
-									ctx.closePath();
-									ctx.stroke();
-								} else {
-									// Draw straight lines connecting each index
-									ctx.beginPath();
-									for (var i = 0; i < me.getValueCount(); i++) {
-										var pointPosition = me.getPointPosition(i, yCenterOffset);
-										if (i === 0) {
-											ctx.moveTo(pointPosition.x, pointPosition.y);
-										} else {
-											ctx.lineTo(pointPosition.x, pointPosition.y);
-										}
-									}
-									ctx.closePath();
-									ctx.stroke();
-								}
+								drawRadiusLine(me, gridLineOpts, yCenterOffset, index);
 							}
 
 							if (tickOpts.display) {
@@ -15906,59 +16690,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					});
 
 					if (!opts.lineArc) {
-						ctx.lineWidth = angleLineOpts.lineWidth;
-						ctx.strokeStyle = angleLineOpts.color;
-
-						var outerDistance = me.getDistanceFromCenterForValue(opts.reverse ? me.min : me.max);
-
-						// Point Label Font
-						var pointLabelFontSize = getValueOrDefault(pointLabelOpts.fontSize, globalDefaults.defaultFontSize);
-						var pointLabeFontStyle = getValueOrDefault(pointLabelOpts.fontStyle, globalDefaults.defaultFontStyle);
-						var pointLabeFontFamily = getValueOrDefault(pointLabelOpts.fontFamily, globalDefaults.defaultFontFamily);
-						var pointLabeFont = helpers.fontString(pointLabelFontSize, pointLabeFontStyle, pointLabeFontFamily);
-
-						for (var i = me.getValueCount() - 1; i >= 0; i--) {
-							if (angleLineOpts.display) {
-								var outerPosition = me.getPointPosition(i, outerDistance);
-								ctx.beginPath();
-								ctx.moveTo(me.xCenter, me.yCenter);
-								ctx.lineTo(outerPosition.x, outerPosition.y);
-								ctx.stroke();
-								ctx.closePath();
-							}
-							// Extra 3px out for some label spacing
-							var pointLabelPosition = me.getPointPosition(i, outerDistance + 5);
-
-							// Keep this in loop since we may support array properties here
-							var pointLabelFontColor = getValueOrDefault(pointLabelOpts.fontColor, globalDefaults.defaultFontColor);
-							ctx.font = pointLabeFont;
-							ctx.fillStyle = pointLabelFontColor;
-
-							var pointLabels = me.pointLabels;
-
-							// Add quarter circle to make degree 0 mean top of circle
-							var angleRadians = this.getIndexAngle(i) + (Math.PI / 2);
-							var angle = (angleRadians * 360 / (2 * Math.PI)) % 360;
-
-							if (angle === 0 || angle === 180) {
-								ctx.textAlign = 'center';
-							} else if (angle < 180) {
-								ctx.textAlign = 'left';
-							} else {
-								ctx.textAlign = 'right';
-							}
-
-							// Set the correct text baseline based on outer positioning
-							if (angle === 90 || angle === 270) {
-								ctx.textBaseline = 'middle';
-							} else if (angle > 270 || angle < 90) {
-								ctx.textBaseline = 'bottom';
-							} else {
-								ctx.textBaseline = 'top';
-							}
-
-							ctx.fillText(pointLabels[i] ? pointLabels[i] : '', pointLabelPosition.x, pointLabelPosition.y);
-						}
+						drawPointLabels(me);
 					}
 				}
 			}
@@ -15969,13 +16701,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* global window: false */
 	'use strict';
 
-	var moment = __webpack_require__(36);
+	var moment = __webpack_require__(38);
 	moment = typeof(moment) === 'function' ? moment : window.moment;
 
 	module.exports = function(Chart) {
@@ -16214,7 +16946,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					me.unitScale = helpers.getValueOrDefault(me.options.time.unitStepSize, 1);
 				} else {
 					// Determine the smallest needed unit of the time
-					var innerWidth = me.isHorizontal() ? me.width - (me.paddingLeft + me.paddingRight) : me.height - (me.paddingTop + me.paddingBottom);
+					var innerWidth = me.isHorizontal() ? me.width : me.height;
 
 					// Crude approximation of what the label length might be
 					var tempFirstLabel = me.tickFormatFunction(me.firstTick, 0, []);
@@ -16298,7 +17030,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				me.ticks.push(me.firstTick.clone());
 
 				// For every unit in between the first and last moment, create a moment and add it to the ticks tick
-				for (var i = 1; i <= me.scaleSizeInUnits; ++i) {
+				for (var i = me.unitScale; i <= me.scaleSizeInUnits; i += me.unitScale) {
 					var newTick = roundedStart.clone().add(i, me.tickUnit);
 
 					// Are we greater than the max time
@@ -16306,9 +17038,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						break;
 					}
 
-					if (i % me.unitScale === 0) {
-						me.ticks.push(newTick);
-					}
+					me.ticks.push(newTick);
 				}
 
 				// Always show the right tick
@@ -16334,9 +17064,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			getLabelForIndex: function(index, datasetIndex) {
 				var me = this;
 				var label = me.chart.data.labels && index < me.chart.data.labels.length ? me.chart.data.labels[index] : '';
+				var value = me.chart.data.datasets[datasetIndex].data[index];
 
-				if (typeof me.chart.data.datasets[datasetIndex].data[0] === 'object') {
-					label = me.getRightValue(me.chart.data.datasets[datasetIndex].data[index]);
+				if (value !== null && typeof value === 'object') {
+					label = me.getRightValue(value);
 				}
 
 				// Format nicely
@@ -16383,14 +17114,11 @@ return /******/ (function(modules) { // webpackBootstrap
 					var decimal = offset !== 0 ? offset / me.scaleSizeInUnits : offset;
 
 					if (me.isHorizontal()) {
-						var innerWidth = me.width - (me.paddingLeft + me.paddingRight);
-						var valueOffset = (innerWidth * decimal) + me.paddingLeft;
-
+						var valueOffset = (me.width * decimal);
 						return me.left + Math.round(valueOffset);
 					}
-					var innerHeight = me.height - (me.paddingTop + me.paddingBottom);
-					var heightOffset = (innerHeight * decimal) + me.paddingTop;
 
+					var heightOffset = (me.height * decimal);
 					return me.top + Math.round(heightOffset);
 				}
 			},
@@ -16399,8 +17127,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 			getValueForPixel: function(pixel) {
 				var me = this;
-				var innerDimension = me.isHorizontal() ? me.width - (me.paddingLeft + me.paddingRight) : me.height - (me.paddingTop + me.paddingBottom);
-				var offset = (pixel - (me.isHorizontal() ? me.left + me.paddingLeft : me.top + me.paddingTop)) / innerDimension;
+				var innerDimension = me.isHorizontal() ? me.width : me.height;
+				var offset = (pixel - (me.isHorizontal() ? me.left : me.top)) / innerDimension;
 				offset *= me.scaleSizeInUnits;
 				return me.firstTick.clone().add(moment.duration(offset, me.tickUnit).asSeconds(), 'seconds');
 			},
@@ -16435,7 +17163,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -18252,7 +18980,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            module && module.exports) {
 	        try {
 	            oldLocale = globalLocale._abbr;
-	            __webpack_require__(38)("./" + name);
+	            __webpack_require__(40)("./" + name);
 	            // because defineLocale currently also sets the global locale, we
 	            // want to undo that for lazy loaded locales
 	            getSetGlobalLocale(oldLocale);
@@ -20740,10 +21468,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	})));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)(module)))
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -20759,226 +21487,226 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 39,
-		"./af.js": 39,
-		"./ar": 40,
-		"./ar-dz": 41,
-		"./ar-dz.js": 41,
-		"./ar-ly": 42,
-		"./ar-ly.js": 42,
-		"./ar-ma": 43,
-		"./ar-ma.js": 43,
-		"./ar-sa": 44,
-		"./ar-sa.js": 44,
-		"./ar-tn": 45,
-		"./ar-tn.js": 45,
-		"./ar.js": 40,
-		"./az": 46,
-		"./az.js": 46,
-		"./be": 47,
-		"./be.js": 47,
-		"./bg": 48,
-		"./bg.js": 48,
-		"./bn": 49,
-		"./bn.js": 49,
-		"./bo": 50,
-		"./bo.js": 50,
-		"./br": 51,
-		"./br.js": 51,
-		"./bs": 52,
-		"./bs.js": 52,
-		"./ca": 53,
-		"./ca.js": 53,
-		"./cs": 54,
-		"./cs.js": 54,
-		"./cv": 55,
-		"./cv.js": 55,
-		"./cy": 56,
-		"./cy.js": 56,
-		"./da": 57,
-		"./da.js": 57,
-		"./de": 58,
-		"./de-at": 59,
-		"./de-at.js": 59,
-		"./de.js": 58,
-		"./dv": 60,
-		"./dv.js": 60,
-		"./el": 61,
-		"./el.js": 61,
-		"./en-au": 62,
-		"./en-au.js": 62,
-		"./en-ca": 63,
-		"./en-ca.js": 63,
-		"./en-gb": 64,
-		"./en-gb.js": 64,
-		"./en-ie": 65,
-		"./en-ie.js": 65,
-		"./en-nz": 66,
-		"./en-nz.js": 66,
-		"./eo": 67,
-		"./eo.js": 67,
-		"./es": 68,
-		"./es-do": 69,
-		"./es-do.js": 69,
-		"./es.js": 68,
-		"./et": 70,
-		"./et.js": 70,
-		"./eu": 71,
-		"./eu.js": 71,
-		"./fa": 72,
-		"./fa.js": 72,
-		"./fi": 73,
-		"./fi.js": 73,
-		"./fo": 74,
-		"./fo.js": 74,
-		"./fr": 75,
-		"./fr-ca": 76,
-		"./fr-ca.js": 76,
-		"./fr-ch": 77,
-		"./fr-ch.js": 77,
-		"./fr.js": 75,
-		"./fy": 78,
-		"./fy.js": 78,
-		"./gd": 79,
-		"./gd.js": 79,
-		"./gl": 80,
-		"./gl.js": 80,
-		"./he": 81,
-		"./he.js": 81,
-		"./hi": 82,
-		"./hi.js": 82,
-		"./hr": 83,
-		"./hr.js": 83,
-		"./hu": 84,
-		"./hu.js": 84,
-		"./hy-am": 85,
-		"./hy-am.js": 85,
-		"./id": 86,
-		"./id.js": 86,
-		"./is": 87,
-		"./is.js": 87,
-		"./it": 88,
-		"./it.js": 88,
-		"./ja": 89,
-		"./ja.js": 89,
-		"./jv": 90,
-		"./jv.js": 90,
-		"./ka": 91,
-		"./ka.js": 91,
-		"./kk": 92,
-		"./kk.js": 92,
-		"./km": 93,
-		"./km.js": 93,
-		"./ko": 94,
-		"./ko.js": 94,
-		"./ky": 95,
-		"./ky.js": 95,
-		"./lb": 96,
-		"./lb.js": 96,
-		"./lo": 97,
-		"./lo.js": 97,
-		"./lt": 98,
-		"./lt.js": 98,
-		"./lv": 99,
-		"./lv.js": 99,
-		"./me": 100,
-		"./me.js": 100,
-		"./mi": 101,
-		"./mi.js": 101,
-		"./mk": 102,
-		"./mk.js": 102,
-		"./ml": 103,
-		"./ml.js": 103,
-		"./mr": 104,
-		"./mr.js": 104,
-		"./ms": 105,
-		"./ms-my": 106,
-		"./ms-my.js": 106,
-		"./ms.js": 105,
-		"./my": 107,
-		"./my.js": 107,
-		"./nb": 108,
-		"./nb.js": 108,
-		"./ne": 109,
-		"./ne.js": 109,
-		"./nl": 110,
-		"./nl-be": 111,
-		"./nl-be.js": 111,
-		"./nl.js": 110,
-		"./nn": 112,
-		"./nn.js": 112,
-		"./pa-in": 113,
-		"./pa-in.js": 113,
-		"./pl": 114,
-		"./pl.js": 114,
-		"./pt": 115,
-		"./pt-br": 116,
-		"./pt-br.js": 116,
-		"./pt.js": 115,
-		"./ro": 117,
-		"./ro.js": 117,
-		"./ru": 118,
-		"./ru.js": 118,
-		"./se": 119,
-		"./se.js": 119,
-		"./si": 120,
-		"./si.js": 120,
-		"./sk": 121,
-		"./sk.js": 121,
-		"./sl": 122,
-		"./sl.js": 122,
-		"./sq": 123,
-		"./sq.js": 123,
-		"./sr": 124,
-		"./sr-cyrl": 125,
-		"./sr-cyrl.js": 125,
-		"./sr.js": 124,
-		"./ss": 126,
-		"./ss.js": 126,
-		"./sv": 127,
-		"./sv.js": 127,
-		"./sw": 128,
-		"./sw.js": 128,
-		"./ta": 129,
-		"./ta.js": 129,
-		"./te": 130,
-		"./te.js": 130,
-		"./tet": 131,
-		"./tet.js": 131,
-		"./th": 132,
-		"./th.js": 132,
-		"./tl-ph": 133,
-		"./tl-ph.js": 133,
-		"./tlh": 134,
-		"./tlh.js": 134,
-		"./tr": 135,
-		"./tr.js": 135,
-		"./tzl": 136,
-		"./tzl.js": 136,
-		"./tzm": 137,
-		"./tzm-latn": 138,
-		"./tzm-latn.js": 138,
-		"./tzm.js": 137,
-		"./uk": 139,
-		"./uk.js": 139,
-		"./uz": 140,
-		"./uz.js": 140,
-		"./vi": 141,
-		"./vi.js": 141,
-		"./x-pseudo": 142,
-		"./x-pseudo.js": 142,
-		"./yo": 143,
-		"./yo.js": 143,
-		"./zh-cn": 144,
-		"./zh-cn.js": 144,
-		"./zh-hk": 145,
-		"./zh-hk.js": 145,
-		"./zh-tw": 146,
-		"./zh-tw.js": 146
+		"./af": 41,
+		"./af.js": 41,
+		"./ar": 42,
+		"./ar-dz": 43,
+		"./ar-dz.js": 43,
+		"./ar-ly": 44,
+		"./ar-ly.js": 44,
+		"./ar-ma": 45,
+		"./ar-ma.js": 45,
+		"./ar-sa": 46,
+		"./ar-sa.js": 46,
+		"./ar-tn": 47,
+		"./ar-tn.js": 47,
+		"./ar.js": 42,
+		"./az": 48,
+		"./az.js": 48,
+		"./be": 49,
+		"./be.js": 49,
+		"./bg": 50,
+		"./bg.js": 50,
+		"./bn": 51,
+		"./bn.js": 51,
+		"./bo": 52,
+		"./bo.js": 52,
+		"./br": 53,
+		"./br.js": 53,
+		"./bs": 54,
+		"./bs.js": 54,
+		"./ca": 55,
+		"./ca.js": 55,
+		"./cs": 56,
+		"./cs.js": 56,
+		"./cv": 57,
+		"./cv.js": 57,
+		"./cy": 58,
+		"./cy.js": 58,
+		"./da": 59,
+		"./da.js": 59,
+		"./de": 60,
+		"./de-at": 61,
+		"./de-at.js": 61,
+		"./de.js": 60,
+		"./dv": 62,
+		"./dv.js": 62,
+		"./el": 63,
+		"./el.js": 63,
+		"./en-au": 64,
+		"./en-au.js": 64,
+		"./en-ca": 65,
+		"./en-ca.js": 65,
+		"./en-gb": 66,
+		"./en-gb.js": 66,
+		"./en-ie": 67,
+		"./en-ie.js": 67,
+		"./en-nz": 68,
+		"./en-nz.js": 68,
+		"./eo": 69,
+		"./eo.js": 69,
+		"./es": 70,
+		"./es-do": 71,
+		"./es-do.js": 71,
+		"./es.js": 70,
+		"./et": 72,
+		"./et.js": 72,
+		"./eu": 73,
+		"./eu.js": 73,
+		"./fa": 74,
+		"./fa.js": 74,
+		"./fi": 75,
+		"./fi.js": 75,
+		"./fo": 76,
+		"./fo.js": 76,
+		"./fr": 77,
+		"./fr-ca": 78,
+		"./fr-ca.js": 78,
+		"./fr-ch": 79,
+		"./fr-ch.js": 79,
+		"./fr.js": 77,
+		"./fy": 80,
+		"./fy.js": 80,
+		"./gd": 81,
+		"./gd.js": 81,
+		"./gl": 82,
+		"./gl.js": 82,
+		"./he": 83,
+		"./he.js": 83,
+		"./hi": 84,
+		"./hi.js": 84,
+		"./hr": 85,
+		"./hr.js": 85,
+		"./hu": 86,
+		"./hu.js": 86,
+		"./hy-am": 87,
+		"./hy-am.js": 87,
+		"./id": 88,
+		"./id.js": 88,
+		"./is": 89,
+		"./is.js": 89,
+		"./it": 90,
+		"./it.js": 90,
+		"./ja": 91,
+		"./ja.js": 91,
+		"./jv": 92,
+		"./jv.js": 92,
+		"./ka": 93,
+		"./ka.js": 93,
+		"./kk": 94,
+		"./kk.js": 94,
+		"./km": 95,
+		"./km.js": 95,
+		"./ko": 96,
+		"./ko.js": 96,
+		"./ky": 97,
+		"./ky.js": 97,
+		"./lb": 98,
+		"./lb.js": 98,
+		"./lo": 99,
+		"./lo.js": 99,
+		"./lt": 100,
+		"./lt.js": 100,
+		"./lv": 101,
+		"./lv.js": 101,
+		"./me": 102,
+		"./me.js": 102,
+		"./mi": 103,
+		"./mi.js": 103,
+		"./mk": 104,
+		"./mk.js": 104,
+		"./ml": 105,
+		"./ml.js": 105,
+		"./mr": 106,
+		"./mr.js": 106,
+		"./ms": 107,
+		"./ms-my": 108,
+		"./ms-my.js": 108,
+		"./ms.js": 107,
+		"./my": 109,
+		"./my.js": 109,
+		"./nb": 110,
+		"./nb.js": 110,
+		"./ne": 111,
+		"./ne.js": 111,
+		"./nl": 112,
+		"./nl-be": 113,
+		"./nl-be.js": 113,
+		"./nl.js": 112,
+		"./nn": 114,
+		"./nn.js": 114,
+		"./pa-in": 115,
+		"./pa-in.js": 115,
+		"./pl": 116,
+		"./pl.js": 116,
+		"./pt": 117,
+		"./pt-br": 118,
+		"./pt-br.js": 118,
+		"./pt.js": 117,
+		"./ro": 119,
+		"./ro.js": 119,
+		"./ru": 120,
+		"./ru.js": 120,
+		"./se": 121,
+		"./se.js": 121,
+		"./si": 122,
+		"./si.js": 122,
+		"./sk": 123,
+		"./sk.js": 123,
+		"./sl": 124,
+		"./sl.js": 124,
+		"./sq": 125,
+		"./sq.js": 125,
+		"./sr": 126,
+		"./sr-cyrl": 127,
+		"./sr-cyrl.js": 127,
+		"./sr.js": 126,
+		"./ss": 128,
+		"./ss.js": 128,
+		"./sv": 129,
+		"./sv.js": 129,
+		"./sw": 130,
+		"./sw.js": 130,
+		"./ta": 131,
+		"./ta.js": 131,
+		"./te": 132,
+		"./te.js": 132,
+		"./tet": 133,
+		"./tet.js": 133,
+		"./th": 134,
+		"./th.js": 134,
+		"./tl-ph": 135,
+		"./tl-ph.js": 135,
+		"./tlh": 136,
+		"./tlh.js": 136,
+		"./tr": 137,
+		"./tr.js": 137,
+		"./tzl": 138,
+		"./tzl.js": 138,
+		"./tzm": 139,
+		"./tzm-latn": 140,
+		"./tzm-latn.js": 140,
+		"./tzm.js": 139,
+		"./uk": 141,
+		"./uk.js": 141,
+		"./uz": 142,
+		"./uz.js": 142,
+		"./vi": 143,
+		"./vi.js": 143,
+		"./x-pseudo": 144,
+		"./x-pseudo.js": 144,
+		"./yo": 145,
+		"./yo.js": 145,
+		"./zh-cn": 146,
+		"./zh-cn.js": 146,
+		"./zh-hk": 147,
+		"./zh-hk.js": 147,
+		"./zh-tw": 148,
+		"./zh-tw.js": 148
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -20991,11 +21719,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 38;
+	webpackContext.id = 40;
 
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21003,7 +21731,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Werner Mollentze : https://github.com/wernerm
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21073,7 +21801,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 40 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21083,7 +21811,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : forabi https://github.com/forabi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21220,7 +21948,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 41 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21228,7 +21956,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Noureddine LOUAHEDJ : https://github.com/noureddineme
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21284,7 +22012,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 42 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21292,7 +22020,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ali Hmer: https://github.com/kikoanis
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21415,7 +22143,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 43 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21424,7 +22152,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21480,7 +22208,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 44 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21488,7 +22216,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21590,7 +22318,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 45 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21598,7 +22326,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nader Toukabri : https://github.com/naderio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21654,7 +22382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21662,7 +22390,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : topchiyev : https://github.com/topchiyev
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21764,7 +22492,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 47 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21774,7 +22502,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21903,7 +22631,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 48 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21911,7 +22639,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krasen Borisov : https://github.com/kraz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21998,7 +22726,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 49 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22006,7 +22734,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22122,7 +22850,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 50 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22130,7 +22858,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22246,7 +22974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 51 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22254,7 +22982,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22359,7 +23087,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 52 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22368,7 +23096,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on (hr) translation by Bojan Marković
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22507,7 +23235,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 53 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22515,7 +23243,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22593,7 +23321,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 54 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22601,7 +23329,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22770,7 +23498,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 55 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22778,7 +23506,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22838,7 +23566,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 56 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22847,7 +23575,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : https://github.com/ryangreaves
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22924,7 +23652,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 57 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22932,7 +23660,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22989,7 +23717,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 58 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22999,7 +23727,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23072,7 +23800,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 59 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23083,7 +23811,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23156,7 +23884,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 60 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23164,7 +23892,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jawish Hameed : https://github.com/jawish
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23261,7 +23989,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 61 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23269,7 +23997,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Aggelos Karalias : https://github.com/mehiel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23364,7 +24092,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 62 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23372,7 +24100,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jared Morse : https://github.com/jarcoal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23436,7 +24164,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 63 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23444,7 +24172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23504,7 +24232,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 64 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23512,7 +24240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23576,7 +24304,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 65 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23584,7 +24312,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Cartlidge : https://github.com/chriscartlidge
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23648,7 +24376,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 66 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23656,7 +24384,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Luke McGregor : https://github.com/lukemcgregor
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23720,7 +24448,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 67 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23730,7 +24458,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23798,7 +24526,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 68 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23806,7 +24534,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Julio Napurí : https://github.com/julionc
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23884,14 +24612,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 69 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Spanish (Dominican Republic) [es-do]
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23969,7 +24697,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 70 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23978,7 +24706,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24054,7 +24782,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 71 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24062,7 +24790,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24125,7 +24853,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 72 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24133,7 +24861,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24237,7 +24965,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 73 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24245,7 +24973,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24349,7 +25077,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 74 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24357,7 +25085,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24414,7 +25142,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 75 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24422,7 +25150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : John Fischer : https://github.com/jfroffice
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24483,7 +25211,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 76 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24491,7 +25219,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24548,7 +25276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 77 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24556,7 +25284,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Gaspard Bucher : https://github.com/gaspard
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24617,7 +25345,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 78 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24625,7 +25353,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24695,7 +25423,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 79 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24703,7 +25431,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jon Ashdown : https://github.com/jonashdown
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24776,7 +25504,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 80 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24784,7 +25512,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24858,7 +25586,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 81 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24868,7 +25596,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tal Ater : https://github.com/TalAter
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24962,7 +25690,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 82 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24970,7 +25698,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25091,7 +25819,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 83 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25099,7 +25827,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bojan Marković : https://github.com/bmarkovic
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25241,7 +25969,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 84 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25249,7 +25977,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Adam Brunner : https://github.com/adambrunner
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25355,7 +26083,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 85 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25363,7 +26091,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Armendarabyan : https://github.com/armendarabyan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25455,7 +26183,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 86 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25464,7 +26192,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25543,7 +26271,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 87 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25551,7 +26279,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25675,7 +26403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 88 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25684,7 +26412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25750,7 +26478,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 89 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25758,7 +26486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : LI Long : https://github.com/baryon
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25831,7 +26559,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 90 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25840,7 +26568,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25919,7 +26647,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 91 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25927,7 +26655,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26013,7 +26741,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 92 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26021,7 +26749,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26105,7 +26833,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 93 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26113,7 +26841,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26168,7 +26896,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 94 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26177,7 +26905,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jeeeyul Lee <jeeeyul@gmail.com>
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26238,7 +26966,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 95 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26246,7 +26974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chyngyz Arystan uulu : https://github.com/chyngyz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26331,7 +27059,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 96 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26340,7 +27068,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : David Raison : https://github.com/kwisatz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26473,7 +27201,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 97 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26481,7 +27209,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ryan Hart : https://github.com/ryanhart2
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26548,7 +27276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 98 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26556,7 +27284,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26670,7 +27398,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 99 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26679,7 +27407,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jānis Elmeris : https://github.com/JanisE
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26772,7 +27500,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 100 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26780,7 +27508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26888,7 +27616,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 101 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26896,7 +27624,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : John Corrigan <robbiecloset@gmail.com> : https://github.com/johnideal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26957,7 +27685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 102 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26965,7 +27693,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Borislav Mickov : https://github.com/B0k0
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27052,7 +27780,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 103 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27060,7 +27788,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Floyd Pink : https://github.com/floydpink
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27138,7 +27866,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 104 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27147,7 +27875,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Vivek Athalye : https://github.com/vnathalye
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27302,7 +28030,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 105 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27310,7 +28038,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27389,7 +28117,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 106 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27398,7 +28126,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27477,7 +28205,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 107 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27487,7 +28215,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tin Aung Lin : https://github.com/thanyawzinmin
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27578,7 +28306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 108 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27587,7 +28315,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27646,7 +28374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 109 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27654,7 +28382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : suvash : https://github.com/suvash
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27774,7 +28502,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 110 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27783,7 +28511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jacob Middag : https://github.com/middagj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27865,7 +28593,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 111 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27874,7 +28602,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jacob Middag : https://github.com/middagj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27956,7 +28684,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 112 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27964,7 +28692,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : https://github.com/mechuwind
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28021,7 +28749,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 113 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28029,7 +28757,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Harpreet Singh : https://github.com/harpreetkhalsagtbit
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28150,7 +28878,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 114 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28158,7 +28886,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Rafal Hirsz : https://github.com/evoL
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28260,7 +28988,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 115 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28268,7 +28996,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jefferson : https://github.com/jalex79
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28330,7 +29058,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 116 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28338,7 +29066,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28396,7 +29124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 117 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28405,7 +29133,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Valentin Agachi : https://github.com/avaly
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28476,7 +29204,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 118 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28486,7 +29214,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Коренберг Марк : https://github.com/socketpair
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28664,7 +29392,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 119 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28672,7 +29400,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Bård Rolstad Henriksen : https://github.com/karamell
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28730,7 +29458,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 120 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28738,7 +29466,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28806,7 +29534,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 121 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28815,7 +29543,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on work of petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28961,7 +29689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 122 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28969,7 +29697,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -29128,7 +29856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 123 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -29138,7 +29866,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Oerd Cukalla : https://github.com/oerd
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -29203,7 +29931,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 124 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -29211,7 +29939,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -29318,7 +30046,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 125 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -29326,7 +30054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -29433,7 +30161,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 126 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -29441,7 +30169,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -29527,7 +30255,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 127 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -29535,7 +30263,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jens Alm : https://github.com/ulmus
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -29601,7 +30329,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 128 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -29609,7 +30337,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Fahad Kassim : https://github.com/fadsel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -29665,7 +30393,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 129 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -29673,7 +30401,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -29800,7 +30528,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 130 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -29808,7 +30536,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krishna Chaitanya Thota : https://github.com/kcthota
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -29894,7 +30622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 131 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -29903,7 +30631,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Onorio De J. Afonso : https://github.com/marobo
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -29967,7 +30695,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 132 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -29975,7 +30703,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30039,7 +30767,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 133 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30047,7 +30775,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dan Hagman : https://github.com/hagmandan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30106,7 +30834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 134 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30114,7 +30842,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dominika Kruk : https://github.com/amaranthrose
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30231,7 +30959,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 135 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30240,7 +30968,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30326,7 +31054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 136 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30335,7 +31063,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Iustì Canun
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30422,7 +31150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 137 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30430,7 +31158,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30485,7 +31213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 138 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30493,7 +31221,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30548,7 +31276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 139 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30557,7 +31285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30699,7 +31427,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 140 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30707,7 +31435,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sardor Muminov : https://github.com/muminoff
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30762,7 +31490,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 141 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30770,7 +31498,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bang Nguyen : https://github.com/bangnk
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30846,7 +31574,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 142 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30854,7 +31582,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Andrew Hood : https://github.com/andrewhood125
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30919,7 +31647,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 143 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30927,7 +31655,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Atolagbe Abisoye : https://github.com/andela-batolagbe
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -30984,7 +31712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 144 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -30993,7 +31721,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Zeno Zeng : https://github.com/zenozeng
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -31116,7 +31844,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 145 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -31126,7 +31854,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Konstantin : https://github.com/skfd
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -31226,7 +31954,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 146 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -31235,7 +31963,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Lam : https://github.com/hehachris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(36)) :
+	    true ? factory(__webpack_require__(38)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -31335,7 +32063,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 147 */
+/* 149 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31375,21 +32103,33 @@ return /******/ (function(modules) { // webpackBootstrap
 			initialize: function(chart, datasetIndex) {
 				Chart.DatasetController.prototype.initialize.call(this, chart, datasetIndex);
 
+				var me = this;
+				var meta = me.getMeta();
+				var dataset = me.getDataset();
+
+				meta.stack = dataset.stack;
 				// Use this to indicate that this is a bar dataset.
-				this.getMeta().bar = true;
+				meta.bar = true;
 			},
 
-			// Get the number of datasets that display bars. We use this to correctly calculate the bar width
-			getBarCount: function() {
+			// Correctly calculate the bar width accounting for stacks and the fact that not all bars are visible
+			getStackCount: function() {
 				var me = this;
-				var barCount = 0;
+				var meta = me.getMeta();
+				var yScale = me.getScaleForId(meta.yAxisID);
+
+				var stacks = [];
 				helpers.each(me.chart.data.datasets, function(dataset, datasetIndex) {
-					var meta = me.chart.getDatasetMeta(datasetIndex);
-					if (meta.bar && me.chart.isDatasetVisible(datasetIndex)) {
-						++barCount;
+					var dsMeta = me.chart.getDatasetMeta(datasetIndex);
+					if (dsMeta.bar && me.chart.isDatasetVisible(datasetIndex) &&
+						(yScale.options.stacked === false ||
+						(yScale.options.stacked === true && stacks.indexOf(dsMeta.stack) === -1) ||
+						(yScale.options.stacked === undefined && (dsMeta.stack === undefined || stacks.indexOf(dsMeta.stack) === -1)))) {
+						stacks.push(dsMeta.stack);
 					}
 				}, me);
-				return barCount;
+
+				return stacks.length;
 			},
 
 			update: function(reset) {
@@ -31414,7 +32154,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				rectangle._datasetIndex = me.index;
 				rectangle._index = index;
 
-				var ruler = me.getRuler(index);
+				var ruler = me.getRuler(index); // The index argument for compatible
 				rectangle._model = {
 					x: me.calculateBarX(index, me.index, ruler),
 					y: reset ? scaleBase : me.calculateBarY(index, me.index),
@@ -31424,6 +32164,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					datasetLabel: dataset.label,
 
 					// Appearance
+					horizontal: false,
 					base: reset ? scaleBase : me.calculateBarBase(me.index, index),
 					width: me.calculateBarWidth(ruler),
 					backgroundColor: custom.backgroundColor ? custom.backgroundColor : helpers.getValueAtIndexOrDefault(dataset.backgroundColor, index, rectangleElementOptions.backgroundColor),
@@ -31439,9 +32180,11 @@ return /******/ (function(modules) { // webpackBootstrap
 				var me = this;
 				var meta = me.getMeta();
 				var yScale = me.getScaleForId(meta.yAxisID);
-				var base = 0;
+				var base = yScale.getBaseValue();
+				var original = base;
 
-				if (yScale.options.stacked) {
+				if ((yScale.options.stacked === true) ||
+					(yScale.options.stacked === undefined && meta.stack !== undefined)) {
 					var chart = me.chart;
 					var datasets = chart.data.datasets;
 					var value = Number(datasets[datasetIndex].data[index]);
@@ -31449,9 +32192,10 @@ return /******/ (function(modules) { // webpackBootstrap
 					for (var i = 0; i < datasetIndex; i++) {
 						var currentDs = datasets[i];
 						var currentDsMeta = chart.getDatasetMeta(i);
-						if (currentDsMeta.bar && currentDsMeta.yAxisID === yScale.id && chart.isDatasetVisible(i)) {
+						if (currentDsMeta.bar && currentDsMeta.yAxisID === yScale.id && chart.isDatasetVisible(i) &&
+							meta.stack === currentDsMeta.stack) {
 							var currentVal = Number(currentDs.data[index]);
-							base += value < 0 ? Math.min(currentVal, 0) : Math.max(currentVal, 0);
+							base += value < 0 ? Math.min(currentVal, original) : Math.max(currentVal, original);
 						}
 					}
 
@@ -31461,34 +32205,22 @@ return /******/ (function(modules) { // webpackBootstrap
 				return yScale.getBasePixel();
 			},
 
-			getRuler: function(index) {
+			getRuler: function() {
 				var me = this;
 				var meta = me.getMeta();
 				var xScale = me.getScaleForId(meta.xAxisID);
-				var datasetCount = me.getBarCount();
+				var stackCount = me.getStackCount();
 
-				var tickWidth;
-
-				if (xScale.options.type === 'category') {
-					tickWidth = xScale.getPixelForTick(index + 1) - xScale.getPixelForTick(index);
-				} else {
-					// Average width
-					tickWidth = xScale.width / xScale.ticks.length;
-				}
+				var tickWidth = xScale.width / xScale.ticks.length;
 				var categoryWidth = tickWidth * xScale.options.categoryPercentage;
 				var categorySpacing = (tickWidth - (tickWidth * xScale.options.categoryPercentage)) / 2;
-				var fullBarWidth = categoryWidth / datasetCount;
-
-				if (xScale.ticks.length !== me.chart.data.labels.length) {
-					var perc = xScale.ticks.length / me.chart.data.labels.length;
-					fullBarWidth = fullBarWidth * perc;
-				}
+				var fullBarWidth = categoryWidth / stackCount;
 
 				var barWidth = fullBarWidth * xScale.options.barPercentage;
 				var barSpacing = fullBarWidth - (fullBarWidth * xScale.options.barPercentage);
 
 				return {
-					datasetCount: datasetCount,
+					stackCount: stackCount,
 					tickWidth: tickWidth,
 					categoryWidth: categoryWidth,
 					categorySpacing: categorySpacing,
@@ -31499,46 +32231,50 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 
 			calculateBarWidth: function(ruler) {
-				var xScale = this.getScaleForId(this.getMeta().xAxisID);
+				var me = this;
+				var meta = me.getMeta();
+				var xScale = me.getScaleForId(meta.xAxisID);
 				if (xScale.options.barThickness) {
 					return xScale.options.barThickness;
 				}
-				return xScale.options.stacked ? ruler.categoryWidth : ruler.barWidth;
+				return ruler.barWidth;
 			},
 
-			// Get bar index from the given dataset index accounting for the fact that not all bars are visible
-			getBarIndex: function(datasetIndex) {
-				var barIndex = 0;
-				var meta, j;
+			// Get stack index from the given dataset index accounting for stacks and the fact that not all bars are visible
+			getStackIndex: function(datasetIndex) {
+				var me = this;
+				var meta = me.chart.getDatasetMeta(datasetIndex);
+				var yScale = me.getScaleForId(meta.yAxisID);
+				var dsMeta, j;
+				var stacks = [meta.stack];
 
 				for (j = 0; j < datasetIndex; ++j) {
-					meta = this.chart.getDatasetMeta(j);
-					if (meta.bar && this.chart.isDatasetVisible(j)) {
-						++barIndex;
+					dsMeta = this.chart.getDatasetMeta(j);
+					if (dsMeta.bar && this.chart.isDatasetVisible(j) &&
+						(yScale.options.stacked === false ||
+						(yScale.options.stacked === true && stacks.indexOf(dsMeta.stack) === -1) ||
+						(yScale.options.stacked === undefined && (dsMeta.stack === undefined || stacks.indexOf(dsMeta.stack) === -1)))) {
+						stacks.push(dsMeta.stack);
 					}
 				}
 
-				return barIndex;
+				return stacks.length - 1;
 			},
 
 			calculateBarX: function(index, datasetIndex, ruler) {
 				var me = this;
 				var meta = me.getMeta();
 				var xScale = me.getScaleForId(meta.xAxisID);
-				var barIndex = me.getBarIndex(datasetIndex);
+				var stackIndex = me.getStackIndex(datasetIndex);
 				var leftTick = xScale.getPixelForValue(null, index, datasetIndex, me.chart.isCombo);
 				leftTick -= me.chart.isCombo ? (ruler.tickWidth / 2) : 0;
-
-				if (xScale.options.stacked) {
-					return leftTick + (ruler.categoryWidth / 2) + ruler.categorySpacing;
-				}
 
 				return leftTick +
 					(ruler.barWidth / 2) +
 					ruler.categorySpacing +
-					(ruler.barWidth * barIndex) +
+					(ruler.barWidth * stackIndex) +
 					(ruler.barSpacing / 2) +
-					(ruler.barSpacing * barIndex);
+					(ruler.barSpacing * stackIndex);
 			},
 
 			calculateBarY: function(index, datasetIndex) {
@@ -31547,15 +32283,17 @@ return /******/ (function(modules) { // webpackBootstrap
 				var yScale = me.getScaleForId(meta.yAxisID);
 				var value = Number(me.getDataset().data[index]);
 
-				if (yScale.options.stacked) {
-
-					var sumPos = 0,
-						sumNeg = 0;
+				if (yScale.options.stacked ||
+					(yScale.options.stacked === undefined && meta.stack !== undefined)) {
+					var base = yScale.getBaseValue();
+					var sumPos = base,
+						sumNeg = base;
 
 					for (var i = 0; i < datasetIndex; i++) {
 						var ds = me.chart.data.datasets[i];
 						var dsMeta = me.chart.getDatasetMeta(i);
-						if (dsMeta.bar && dsMeta.yAxisID === yScale.id && me.chart.isDatasetVisible(i)) {
+						if (dsMeta.bar && dsMeta.yAxisID === yScale.id && me.chart.isDatasetVisible(i) &&
+							meta.stack === dsMeta.stack) {
 							var stackedVal = Number(ds.data[index]);
 							if (stackedVal < 0) {
 								sumNeg += stackedVal || 0;
@@ -31581,12 +32319,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				var dataset = me.getDataset();
 				var i, len;
 
+				Chart.canvasHelpers.clipArea(me.chart.chart.ctx, me.chart.chartArea);
 				for (i = 0, len = metaData.length; i < len; ++i) {
 					var d = dataset.data[i];
 					if (d !== null && d !== undefined && !isNaN(d)) {
 						metaData[i].transition(easingDecimal).draw();
 					}
 				}
+				Chart.canvasHelpers.unclipArea(me.chart.chart.ctx);
 			},
 
 			setHoverStyle: function(rectangle) {
@@ -31671,6 +32411,27 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 		Chart.controllers.horizontalBar = Chart.controllers.bar.extend({
+
+			// Correctly calculate the bar width accounting for stacks and the fact that not all bars are visible
+			getStackCount: function() {
+				var me = this;
+				var meta = me.getMeta();
+				var xScale = me.getScaleForId(meta.xAxisID);
+
+				var stacks = [];
+				helpers.each(me.chart.data.datasets, function(dataset, datasetIndex) {
+					var dsMeta = me.chart.getDatasetMeta(datasetIndex);
+					if (dsMeta.bar && me.chart.isDatasetVisible(datasetIndex) &&
+						(xScale.options.stacked === false ||
+						(xScale.options.stacked === true && stacks.indexOf(dsMeta.stack) === -1) ||
+						(xScale.options.stacked === undefined && (dsMeta.stack === undefined || stacks.indexOf(dsMeta.stack) === -1)))) {
+						stacks.push(dsMeta.stack);
+					}
+				}, me);
+
+				return stacks.length;
+			},
+
 			updateElement: function(rectangle, index, reset) {
 				var me = this;
 				var meta = me.getMeta();
@@ -31686,7 +32447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				rectangle._datasetIndex = me.index;
 				rectangle._index = index;
 
-				var ruler = me.getRuler(index);
+				var ruler = me.getRuler(index); // The index argument for compatible
 				rectangle._model = {
 					x: reset ? scaleBase : me.calculateBarX(index, me.index),
 					y: me.calculateBarY(index, me.index, ruler),
@@ -31696,68 +32457,13 @@ return /******/ (function(modules) { // webpackBootstrap
 					datasetLabel: dataset.label,
 
 					// Appearance
+					horizontal: true,
 					base: reset ? scaleBase : me.calculateBarBase(me.index, index),
 					height: me.calculateBarHeight(ruler),
 					backgroundColor: custom.backgroundColor ? custom.backgroundColor : helpers.getValueAtIndexOrDefault(dataset.backgroundColor, index, rectangleElementOptions.backgroundColor),
 					borderSkipped: custom.borderSkipped ? custom.borderSkipped : rectangleElementOptions.borderSkipped,
 					borderColor: custom.borderColor ? custom.borderColor : helpers.getValueAtIndexOrDefault(dataset.borderColor, index, rectangleElementOptions.borderColor),
 					borderWidth: custom.borderWidth ? custom.borderWidth : helpers.getValueAtIndexOrDefault(dataset.borderWidth, index, rectangleElementOptions.borderWidth)
-				};
-				rectangle.draw = function() {
-					var ctx = this._chart.ctx;
-					var vm = this._view;
-
-					var halfHeight = vm.height / 2,
-						topY = vm.y - halfHeight,
-						bottomY = vm.y + halfHeight,
-						right = vm.base - (vm.base - vm.x),
-						halfStroke = vm.borderWidth / 2;
-
-					// Canvas doesn't allow us to stroke inside the width so we can
-					// adjust the sizes to fit if we're setting a stroke on the line
-					if (vm.borderWidth) {
-						topY += halfStroke;
-						bottomY -= halfStroke;
-						right += halfStroke;
-					}
-
-					ctx.beginPath();
-
-					ctx.fillStyle = vm.backgroundColor;
-					ctx.strokeStyle = vm.borderColor;
-					ctx.lineWidth = vm.borderWidth;
-
-					// Corner points, from bottom-left to bottom-right clockwise
-					// | 1 2 |
-					// | 0 3 |
-					var corners = [
-						[vm.base, bottomY],
-						[vm.base, topY],
-						[right, topY],
-						[right, bottomY]
-					];
-
-					// Find first (starting) corner with fallback to 'bottom'
-					var borders = ['bottom', 'left', 'top', 'right'];
-					var startCorner = borders.indexOf(vm.borderSkipped, 0);
-					if (startCorner === -1) {
-						startCorner = 0;
-					}
-
-					function cornerAt(cornerIndex) {
-						return corners[(startCorner + cornerIndex) % 4];
-					}
-
-					// Draw rectangle from 'startCorner'
-					ctx.moveTo.apply(ctx, cornerAt(0));
-					for (var i = 1; i < 4; i++) {
-						ctx.lineTo.apply(ctx, cornerAt(i));
-					}
-
-					ctx.fill();
-					if (vm.borderWidth) {
-						ctx.stroke();
-					}
 				};
 
 				rectangle.pivot();
@@ -31767,9 +32473,11 @@ return /******/ (function(modules) { // webpackBootstrap
 				var me = this;
 				var meta = me.getMeta();
 				var xScale = me.getScaleForId(meta.xAxisID);
-				var base = 0;
+				var base = xScale.getBaseValue();
+				var originalBase = base;
 
-				if (xScale.options.stacked) {
+				if (xScale.options.stacked ||
+					(xScale.options.stacked === undefined && meta.stack !== undefined)) {
 					var chart = me.chart;
 					var datasets = chart.data.datasets;
 					var value = Number(datasets[datasetIndex].data[index]);
@@ -31777,9 +32485,10 @@ return /******/ (function(modules) { // webpackBootstrap
 					for (var i = 0; i < datasetIndex; i++) {
 						var currentDs = datasets[i];
 						var currentDsMeta = chart.getDatasetMeta(i);
-						if (currentDsMeta.bar && currentDsMeta.xAxisID === xScale.id && chart.isDatasetVisible(i)) {
+						if (currentDsMeta.bar && currentDsMeta.xAxisID === xScale.id && chart.isDatasetVisible(i) &&
+							meta.stack === currentDsMeta.stack) {
 							var currentVal = Number(currentDs.data[index]);
-							base += value < 0 ? Math.min(currentVal, 0) : Math.max(currentVal, 0);
+							base += value < 0 ? Math.min(currentVal, originalBase) : Math.max(currentVal, originalBase);
 						}
 					}
 
@@ -31789,33 +32498,22 @@ return /******/ (function(modules) { // webpackBootstrap
 				return xScale.getBasePixel();
 			},
 
-			getRuler: function(index) {
+			getRuler: function() {
 				var me = this;
 				var meta = me.getMeta();
 				var yScale = me.getScaleForId(meta.yAxisID);
-				var datasetCount = me.getBarCount();
+				var stackCount = me.getStackCount();
 
-				var tickHeight;
-				if (yScale.options.type === 'category') {
-					tickHeight = yScale.getPixelForTick(index + 1) - yScale.getPixelForTick(index);
-				} else {
-					// Average width
-					tickHeight = yScale.width / yScale.ticks.length;
-				}
+				var tickHeight = yScale.height / yScale.ticks.length;
 				var categoryHeight = tickHeight * yScale.options.categoryPercentage;
 				var categorySpacing = (tickHeight - (tickHeight * yScale.options.categoryPercentage)) / 2;
-				var fullBarHeight = categoryHeight / datasetCount;
-
-				if (yScale.ticks.length !== me.chart.data.labels.length) {
-					var perc = yScale.ticks.length / me.chart.data.labels.length;
-					fullBarHeight = fullBarHeight * perc;
-				}
+				var fullBarHeight = categoryHeight / stackCount;
 
 				var barHeight = fullBarHeight * yScale.options.barPercentage;
 				var barSpacing = fullBarHeight - (fullBarHeight * yScale.options.barPercentage);
 
 				return {
-					datasetCount: datasetCount,
+					stackCount: stackCount,
 					tickHeight: tickHeight,
 					categoryHeight: categoryHeight,
 					categorySpacing: categorySpacing,
@@ -31827,11 +32525,33 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			calculateBarHeight: function(ruler) {
 				var me = this;
-				var yScale = me.getScaleForId(me.getMeta().yAxisID);
+				var meta = me.getMeta();
+				var yScale = me.getScaleForId(meta.yAxisID);
 				if (yScale.options.barThickness) {
 					return yScale.options.barThickness;
 				}
-				return yScale.options.stacked ? ruler.categoryHeight : ruler.barHeight;
+				return ruler.barHeight;
+			},
+
+			// Get stack index from the given dataset index accounting for stacks and the fact that not all bars are visible
+			getStackIndex: function(datasetIndex) {
+				var me = this;
+				var meta = me.chart.getDatasetMeta(datasetIndex);
+				var xScale = me.getScaleForId(meta.xAxisID);
+				var dsMeta, j;
+				var stacks = [meta.stack];
+
+				for (j = 0; j < datasetIndex; ++j) {
+					dsMeta = this.chart.getDatasetMeta(j);
+					if (dsMeta.bar && this.chart.isDatasetVisible(j) &&
+						(xScale.options.stacked === false ||
+						(xScale.options.stacked === true && stacks.indexOf(dsMeta.stack) === -1) ||
+						(xScale.options.stacked === undefined && (dsMeta.stack === undefined || stacks.indexOf(dsMeta.stack) === -1)))) {
+						stacks.push(dsMeta.stack);
+					}
+				}
+
+				return stacks.length - 1;
 			},
 
 			calculateBarX: function(index, datasetIndex) {
@@ -31840,15 +32560,17 @@ return /******/ (function(modules) { // webpackBootstrap
 				var xScale = me.getScaleForId(meta.xAxisID);
 				var value = Number(me.getDataset().data[index]);
 
-				if (xScale.options.stacked) {
-
-					var sumPos = 0,
-						sumNeg = 0;
+				if (xScale.options.stacked ||
+					(xScale.options.stacked === undefined && meta.stack !== undefined)) {
+					var base = xScale.getBaseValue();
+					var sumPos = base,
+						sumNeg = base;
 
 					for (var i = 0; i < datasetIndex; i++) {
 						var ds = me.chart.data.datasets[i];
 						var dsMeta = me.chart.getDatasetMeta(i);
-						if (dsMeta.bar && dsMeta.xAxisID === xScale.id && me.chart.isDatasetVisible(i)) {
+						if (dsMeta.bar && dsMeta.xAxisID === xScale.id && me.chart.isDatasetVisible(i) &&
+							meta.stack === dsMeta.stack) {
 							var stackedVal = Number(ds.data[index]);
 							if (stackedVal < 0) {
 								sumNeg += stackedVal || 0;
@@ -31871,27 +32593,23 @@ return /******/ (function(modules) { // webpackBootstrap
 				var me = this;
 				var meta = me.getMeta();
 				var yScale = me.getScaleForId(meta.yAxisID);
-				var barIndex = me.getBarIndex(datasetIndex);
+				var stackIndex = me.getStackIndex(datasetIndex);
 				var topTick = yScale.getPixelForValue(null, index, datasetIndex, me.chart.isCombo);
 				topTick -= me.chart.isCombo ? (ruler.tickHeight / 2) : 0;
-
-				if (yScale.options.stacked) {
-					return topTick + (ruler.categoryHeight / 2) + ruler.categorySpacing;
-				}
 
 				return topTick +
 					(ruler.barHeight / 2) +
 					ruler.categorySpacing +
-					(ruler.barHeight * barIndex) +
+					(ruler.barHeight * stackIndex) +
 					(ruler.barSpacing / 2) +
-					(ruler.barSpacing * barIndex);
+					(ruler.barSpacing * stackIndex);
 			}
 		});
 	};
 
 
 /***/ },
-/* 148 */
+/* 150 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32019,7 +32737,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 149 */
+/* 151 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32207,7 +32925,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				chart.borderWidth = me.getMaxBorderWidth(meta.data);
 				chart.outerRadius = Math.max((minSize - chart.borderWidth) / 2, 0);
-				chart.innerRadius = Math.max(cutoutPercentage ? (chart.outerRadius / 100) * (cutoutPercentage) : 1, 0);
+				chart.innerRadius = Math.max(cutoutPercentage ? (chart.outerRadius / 100) * (cutoutPercentage) : 0, 0);
 				chart.radiusLength = (chart.outerRadius - chart.innerRadius) / chart.getVisibleDatasetCount();
 				chart.offsetX = offset.x * chart.outerRadius;
 				chart.offsetY = offset.y * chart.outerRadius;
@@ -32215,7 +32933,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				meta.total = me.calculateTotal();
 
 				me.outerRadius = chart.outerRadius - (chart.radiusLength * me.getRingIndex(me.index));
-				me.innerRadius = me.outerRadius - chart.radiusLength;
+				me.innerRadius = Math.max(me.outerRadius - chart.radiusLength, 0);
 
 				helpers.each(meta.data, function(arc, index) {
 					me.updateElement(arc, index, reset);
@@ -32328,7 +33046,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 150 */
+/* 152 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32472,11 +33190,11 @@ return /******/ (function(modules) { // webpackBootstrap
 				var dataset = this.getDataset();
 				var custom = point.custom || {};
 
-				if (custom.borderWidth) {
+				if (!isNaN(custom.borderWidth)) {
 					borderWidth = custom.borderWidth;
-				} else if (dataset.pointBorderWidth) {
+				} else if (!isNaN(dataset.pointBorderWidth)) {
 					borderWidth = helpers.getValueAtIndexOrDefault(dataset.pointBorderWidth, index, borderWidth);
-				} else if (dataset.borderWidth) {
+				} else if (!isNaN(dataset.borderWidth)) {
 					borderWidth = dataset.borderWidth;
 				}
 
@@ -32625,14 +33343,16 @@ return /******/ (function(modules) { // webpackBootstrap
 					points[i].transition(easingDecimal);
 				}
 
+				Chart.canvasHelpers.clipArea(me.chart.chart.ctx, me.chart.chartArea);
 				// Transition and Draw the line
 				if (lineEnabled(me.getDataset(), me.chart.options)) {
 					meta.dataset.transition(easingDecimal).draw();
 				}
+				Chart.canvasHelpers.unclipArea(me.chart.chart.ctx);
 
 				// Draw the points
 				for (i=0, ilen=points.length; i<ilen; ++i) {
-					points[i].draw();
+					points[i].draw(me.chart.chartArea);
 				}
 			},
 
@@ -32671,7 +33391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 151 */
+/* 153 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32892,7 +33612,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 152 */
+/* 154 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32992,7 +33712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						y: reset ? scale.yCenter : pointPosition.y,
 
 						// Appearance
-						tension: custom.tension ? custom.tension : helpers.getValueOrDefault(dataset.tension, me.chart.options.elements.line.tension),
+						tension: custom.tension ? custom.tension : helpers.getValueOrDefault(dataset.lineTension, me.chart.options.elements.line.tension),
 						radius: custom.radius ? custom.radius : helpers.getValueAtIndexOrDefault(dataset.pointRadius, index, pointElementOptions.radius),
 						backgroundColor: custom.backgroundColor ? custom.backgroundColor : helpers.getValueAtIndexOrDefault(dataset.pointBackgroundColor, index, pointElementOptions.backgroundColor),
 						borderColor: custom.borderColor ? custom.borderColor : helpers.getValueAtIndexOrDefault(dataset.pointBorderColor, index, pointElementOptions.borderColor),
@@ -33079,7 +33799,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 153 */
+/* 155 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33096,7 +33816,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 154 */
+/* 156 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33112,7 +33832,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 155 */
+/* 157 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33129,7 +33849,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 156 */
+/* 158 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33146,7 +33866,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 157 */
+/* 159 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33163,7 +33883,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 158 */
+/* 160 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33180,7 +33900,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 159 */
+/* 161 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33233,7 +33953,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 160 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33243,7 +33963,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.mergeOptions = mergeOptions;
 
-	var _merge = __webpack_require__(161);
+	var _merge = __webpack_require__(163);
 
 	var _merge2 = _interopRequireDefault(_merge);
 
@@ -33254,22 +33974,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 161 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var convert = __webpack_require__(162),
-	    func = convert('merge', __webpack_require__(368));
+	var convert = __webpack_require__(164),
+	    func = convert('merge', __webpack_require__(370));
 
-	func.placeholder = __webpack_require__(165);
+	func.placeholder = __webpack_require__(167);
 	module.exports = func;
 
 
 /***/ },
-/* 162 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseConvert = __webpack_require__(163),
-	    util = __webpack_require__(166);
+	var baseConvert = __webpack_require__(165),
+	    util = __webpack_require__(168);
 
 	/**
 	 * Converts `func` of `name` to an immutable auto-curried iteratee-first data-last
@@ -33289,11 +34009,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 163 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mapping = __webpack_require__(164),
-	    fallbackHolder = __webpack_require__(165);
+	var mapping = __webpack_require__(166),
+	    fallbackHolder = __webpack_require__(167);
 
 	/** Built-in value reference. */
 	var push = Array.prototype.push;
@@ -33863,7 +34583,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 164 */
+/* 166 */
 /***/ function(module, exports) {
 
 	/** Used to map aliases to their real names. */
@@ -34237,7 +34957,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 165 */
+/* 167 */
 /***/ function(module, exports) {
 
 	/**
@@ -34249,30 +34969,30 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 166 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  'ary': __webpack_require__(167),
-	  'assign': __webpack_require__(236),
-	  'clone': __webpack_require__(258),
-	  'curry': __webpack_require__(325),
-	  'forEach': __webpack_require__(220),
-	  'isArray': __webpack_require__(206),
-	  'isFunction': __webpack_require__(175),
-	  'iteratee': __webpack_require__(326),
-	  'keys': __webpack_require__(253),
-	  'rearg': __webpack_require__(361),
-	  'toInteger': __webpack_require__(232),
-	  'toPath': __webpack_require__(367)
+	  'ary': __webpack_require__(169),
+	  'assign': __webpack_require__(238),
+	  'clone': __webpack_require__(260),
+	  'curry': __webpack_require__(327),
+	  'forEach': __webpack_require__(222),
+	  'isArray': __webpack_require__(208),
+	  'isFunction': __webpack_require__(177),
+	  'iteratee': __webpack_require__(328),
+	  'keys': __webpack_require__(255),
+	  'rearg': __webpack_require__(363),
+	  'toInteger': __webpack_require__(234),
+	  'toPath': __webpack_require__(369)
 	};
 
 
 /***/ },
-/* 167 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createWrap = __webpack_require__(168);
+	var createWrap = __webpack_require__(170);
 
 	/** Used to compose bitmasks for function metadata. */
 	var WRAP_ARY_FLAG = 128;
@@ -34304,19 +35024,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 168 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseSetData = __webpack_require__(169),
-	    createBind = __webpack_require__(187),
-	    createCurry = __webpack_require__(190),
-	    createHybrid = __webpack_require__(192),
-	    createPartial = __webpack_require__(230),
-	    getData = __webpack_require__(200),
-	    mergeData = __webpack_require__(231),
-	    setData = __webpack_require__(210),
-	    setWrapToString = __webpack_require__(212),
-	    toInteger = __webpack_require__(232);
+	var baseSetData = __webpack_require__(171),
+	    createBind = __webpack_require__(189),
+	    createCurry = __webpack_require__(192),
+	    createHybrid = __webpack_require__(194),
+	    createPartial = __webpack_require__(232),
+	    getData = __webpack_require__(202),
+	    mergeData = __webpack_require__(233),
+	    setData = __webpack_require__(212),
+	    setWrapToString = __webpack_require__(214),
+	    toInteger = __webpack_require__(234);
 
 	/** Error message constants. */
 	var FUNC_ERROR_TEXT = 'Expected a function';
@@ -34416,11 +35136,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 169 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var identity = __webpack_require__(170),
-	    metaMap = __webpack_require__(171);
+	var identity = __webpack_require__(172),
+	    metaMap = __webpack_require__(173);
 
 	/**
 	 * The base implementation of `setData` without support for hot loop shorting.
@@ -34439,7 +35159,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 170 */
+/* 172 */
 /***/ function(module, exports) {
 
 	/**
@@ -34466,10 +35186,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 171 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var WeakMap = __webpack_require__(172);
+	var WeakMap = __webpack_require__(174);
 
 	/** Used to store function metadata. */
 	var metaMap = WeakMap && new WeakMap;
@@ -34478,11 +35198,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 172 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(173),
-	    root = __webpack_require__(178);
+	var getNative = __webpack_require__(175),
+	    root = __webpack_require__(180);
 
 	/* Built-in method references that are verified to be native. */
 	var WeakMap = getNative(root, 'WeakMap');
@@ -34491,11 +35211,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 173 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsNative = __webpack_require__(174),
-	    getValue = __webpack_require__(186);
+	var baseIsNative = __webpack_require__(176),
+	    getValue = __webpack_require__(188);
 
 	/**
 	 * Gets the native function at `key` of `object`.
@@ -34514,13 +35234,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 174 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(175),
-	    isMasked = __webpack_require__(183),
-	    isObject = __webpack_require__(182),
-	    toSource = __webpack_require__(185);
+	var isFunction = __webpack_require__(177),
+	    isMasked = __webpack_require__(185),
+	    isObject = __webpack_require__(184),
+	    toSource = __webpack_require__(187);
 
 	/**
 	 * Used to match `RegExp`
@@ -34567,11 +35287,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 175 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(176),
-	    isObject = __webpack_require__(182);
+	var baseGetTag = __webpack_require__(178),
+	    isObject = __webpack_require__(184);
 
 	/** `Object#toString` result references. */
 	var asyncTag = '[object AsyncFunction]',
@@ -34610,12 +35330,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 176 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(177),
-	    getRawTag = __webpack_require__(180),
-	    objectToString = __webpack_require__(181);
+	var Symbol = __webpack_require__(179),
+	    getRawTag = __webpack_require__(182),
+	    objectToString = __webpack_require__(183);
 
 	/** `Object#toString` result references. */
 	var nullTag = '[object Null]',
@@ -34644,10 +35364,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 177 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(178);
+	var root = __webpack_require__(180);
 
 	/** Built-in value references. */
 	var Symbol = root.Symbol;
@@ -34656,10 +35376,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 178 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var freeGlobal = __webpack_require__(179);
+	var freeGlobal = __webpack_require__(181);
 
 	/** Detect free variable `self`. */
 	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -34671,7 +35391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 179 */
+/* 181 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -34682,10 +35402,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 180 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(177);
+	var Symbol = __webpack_require__(179);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -34734,7 +35454,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 181 */
+/* 183 */
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -34762,7 +35482,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 182 */
+/* 184 */
 /***/ function(module, exports) {
 
 	/**
@@ -34799,10 +35519,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 183 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var coreJsData = __webpack_require__(184);
+	var coreJsData = __webpack_require__(186);
 
 	/** Used to detect methods masquerading as native. */
 	var maskSrcKey = (function() {
@@ -34825,10 +35545,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 184 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(178);
+	var root = __webpack_require__(180);
 
 	/** Used to detect overreaching core-js shims. */
 	var coreJsData = root['__core-js_shared__'];
@@ -34837,7 +35557,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 185 */
+/* 187 */
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -34869,7 +35589,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 186 */
+/* 188 */
 /***/ function(module, exports) {
 
 	/**
@@ -34888,11 +35608,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 187 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createCtor = __webpack_require__(188),
-	    root = __webpack_require__(178);
+	var createCtor = __webpack_require__(190),
+	    root = __webpack_require__(180);
 
 	/** Used to compose bitmasks for function metadata. */
 	var WRAP_BIND_FLAG = 1;
@@ -34922,11 +35642,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 188 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseCreate = __webpack_require__(189),
-	    isObject = __webpack_require__(182);
+	var baseCreate = __webpack_require__(191),
+	    isObject = __webpack_require__(184);
 
 	/**
 	 * Creates a function that produces an instance of `Ctor` regardless of
@@ -34965,10 +35685,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 189 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(182);
+	var isObject = __webpack_require__(184);
 
 	/** Built-in value references. */
 	var objectCreate = Object.create;
@@ -35001,16 +35721,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 190 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var apply = __webpack_require__(191),
-	    createCtor = __webpack_require__(188),
-	    createHybrid = __webpack_require__(192),
-	    createRecurry = __webpack_require__(196),
-	    getHolder = __webpack_require__(226),
-	    replaceHolders = __webpack_require__(229),
-	    root = __webpack_require__(178);
+	var apply = __webpack_require__(193),
+	    createCtor = __webpack_require__(190),
+	    createHybrid = __webpack_require__(194),
+	    createRecurry = __webpack_require__(198),
+	    getHolder = __webpack_require__(228),
+	    replaceHolders = __webpack_require__(231),
+	    root = __webpack_require__(180);
 
 	/**
 	 * Creates a function that wraps `func` to enable currying.
@@ -35053,7 +35773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 191 */
+/* 193 */
 /***/ function(module, exports) {
 
 	/**
@@ -35080,18 +35800,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 192 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var composeArgs = __webpack_require__(193),
-	    composeArgsRight = __webpack_require__(194),
-	    countHolders = __webpack_require__(195),
-	    createCtor = __webpack_require__(188),
-	    createRecurry = __webpack_require__(196),
-	    getHolder = __webpack_require__(226),
-	    reorder = __webpack_require__(227),
-	    replaceHolders = __webpack_require__(229),
-	    root = __webpack_require__(178);
+	var composeArgs = __webpack_require__(195),
+	    composeArgsRight = __webpack_require__(196),
+	    countHolders = __webpack_require__(197),
+	    createCtor = __webpack_require__(190),
+	    createRecurry = __webpack_require__(198),
+	    getHolder = __webpack_require__(228),
+	    reorder = __webpack_require__(229),
+	    replaceHolders = __webpack_require__(231),
+	    root = __webpack_require__(180);
 
 	/** Used to compose bitmasks for function metadata. */
 	var WRAP_BIND_FLAG = 1,
@@ -35178,7 +35898,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 193 */
+/* 195 */
 /***/ function(module, exports) {
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
@@ -35223,7 +35943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 194 */
+/* 196 */
 /***/ function(module, exports) {
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
@@ -35270,7 +35990,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 195 */
+/* 197 */
 /***/ function(module, exports) {
 
 	/**
@@ -35297,12 +36017,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 196 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isLaziable = __webpack_require__(197),
-	    setData = __webpack_require__(210),
-	    setWrapToString = __webpack_require__(212);
+	var isLaziable = __webpack_require__(199),
+	    setData = __webpack_require__(212),
+	    setWrapToString = __webpack_require__(214);
 
 	/** Used to compose bitmasks for function metadata. */
 	var WRAP_BIND_FLAG = 1,
@@ -35359,13 +36079,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 197 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var LazyWrapper = __webpack_require__(198),
-	    getData = __webpack_require__(200),
-	    getFuncName = __webpack_require__(202),
-	    lodash = __webpack_require__(204);
+	var LazyWrapper = __webpack_require__(200),
+	    getData = __webpack_require__(202),
+	    getFuncName = __webpack_require__(204),
+	    lodash = __webpack_require__(206);
 
 	/**
 	 * Checks if `func` has a lazy counterpart.
@@ -35393,11 +36113,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 198 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseCreate = __webpack_require__(189),
-	    baseLodash = __webpack_require__(199);
+	var baseCreate = __webpack_require__(191),
+	    baseLodash = __webpack_require__(201);
 
 	/** Used as references for the maximum length and index of an array. */
 	var MAX_ARRAY_LENGTH = 4294967295;
@@ -35427,7 +36147,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 199 */
+/* 201 */
 /***/ function(module, exports) {
 
 	/**
@@ -35443,11 +36163,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 200 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var metaMap = __webpack_require__(171),
-	    noop = __webpack_require__(201);
+	var metaMap = __webpack_require__(173),
+	    noop = __webpack_require__(203);
 
 	/**
 	 * Gets metadata for `func`.
@@ -35464,7 +36184,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 201 */
+/* 203 */
 /***/ function(module, exports) {
 
 	/**
@@ -35487,10 +36207,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 202 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var realNames = __webpack_require__(203);
+	var realNames = __webpack_require__(205);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -35524,7 +36244,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 203 */
+/* 205 */
 /***/ function(module, exports) {
 
 	/** Used to lookup unminified function names. */
@@ -35534,15 +36254,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 204 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var LazyWrapper = __webpack_require__(198),
-	    LodashWrapper = __webpack_require__(205),
-	    baseLodash = __webpack_require__(199),
-	    isArray = __webpack_require__(206),
-	    isObjectLike = __webpack_require__(207),
-	    wrapperClone = __webpack_require__(208);
+	var LazyWrapper = __webpack_require__(200),
+	    LodashWrapper = __webpack_require__(207),
+	    baseLodash = __webpack_require__(201),
+	    isArray = __webpack_require__(208),
+	    isObjectLike = __webpack_require__(209),
+	    wrapperClone = __webpack_require__(210);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -35687,11 +36407,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 205 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseCreate = __webpack_require__(189),
-	    baseLodash = __webpack_require__(199);
+	var baseCreate = __webpack_require__(191),
+	    baseLodash = __webpack_require__(201);
 
 	/**
 	 * The base constructor for creating `lodash` wrapper objects.
@@ -35715,7 +36435,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 206 */
+/* 208 */
 /***/ function(module, exports) {
 
 	/**
@@ -35747,7 +36467,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 207 */
+/* 209 */
 /***/ function(module, exports) {
 
 	/**
@@ -35782,12 +36502,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 208 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var LazyWrapper = __webpack_require__(198),
-	    LodashWrapper = __webpack_require__(205),
-	    copyArray = __webpack_require__(209);
+	var LazyWrapper = __webpack_require__(200),
+	    LodashWrapper = __webpack_require__(207),
+	    copyArray = __webpack_require__(211);
 
 	/**
 	 * Creates a clone of `wrapper`.
@@ -35811,7 +36531,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 209 */
+/* 211 */
 /***/ function(module, exports) {
 
 	/**
@@ -35837,11 +36557,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 210 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseSetData = __webpack_require__(169),
-	    shortOut = __webpack_require__(211);
+	var baseSetData = __webpack_require__(171),
+	    shortOut = __webpack_require__(213);
 
 	/**
 	 * Sets metadata for `func`.
@@ -35863,7 +36583,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 211 */
+/* 213 */
 /***/ function(module, exports) {
 
 	/** Used to detect hot functions by number of calls within a span of milliseconds. */
@@ -35906,13 +36626,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 212 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getWrapDetails = __webpack_require__(213),
-	    insertWrapDetails = __webpack_require__(214),
-	    setToString = __webpack_require__(215),
-	    updateWrapDetails = __webpack_require__(219);
+	var getWrapDetails = __webpack_require__(215),
+	    insertWrapDetails = __webpack_require__(216),
+	    setToString = __webpack_require__(217),
+	    updateWrapDetails = __webpack_require__(221);
 
 	/**
 	 * Sets the `toString` method of `wrapper` to mimic the source of `reference`
@@ -35933,7 +36653,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 213 */
+/* 215 */
 /***/ function(module, exports) {
 
 	/** Used to match wrap detail comments. */
@@ -35956,7 +36676,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 214 */
+/* 216 */
 /***/ function(module, exports) {
 
 	/** Used to match wrap detail comments. */
@@ -35985,11 +36705,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 215 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseSetToString = __webpack_require__(216),
-	    shortOut = __webpack_require__(211);
+	var baseSetToString = __webpack_require__(218),
+	    shortOut = __webpack_require__(213);
 
 	/**
 	 * Sets the `toString` method of `func` to return `string`.
@@ -36005,12 +36725,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 216 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var constant = __webpack_require__(217),
-	    defineProperty = __webpack_require__(218),
-	    identity = __webpack_require__(170);
+	var constant = __webpack_require__(219),
+	    defineProperty = __webpack_require__(220),
+	    identity = __webpack_require__(172);
 
 	/**
 	 * The base implementation of `setToString` without support for hot loop shorting.
@@ -36033,7 +36753,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 217 */
+/* 219 */
 /***/ function(module, exports) {
 
 	/**
@@ -36065,10 +36785,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 218 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(173);
+	var getNative = __webpack_require__(175);
 
 	var defineProperty = (function() {
 	  try {
@@ -36082,11 +36802,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 219 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayEach = __webpack_require__(220),
-	    arrayIncludes = __webpack_require__(221);
+	var arrayEach = __webpack_require__(222),
+	    arrayIncludes = __webpack_require__(223);
 
 	/** Used to compose bitmasks for function metadata. */
 	var WRAP_BIND_FLAG = 1,
@@ -36134,7 +36854,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 220 */
+/* 222 */
 /***/ function(module, exports) {
 
 	/**
@@ -36162,10 +36882,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 221 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIndexOf = __webpack_require__(222);
+	var baseIndexOf = __webpack_require__(224);
 
 	/**
 	 * A specialized version of `_.includes` for arrays without support for
@@ -36185,12 +36905,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 222 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseFindIndex = __webpack_require__(223),
-	    baseIsNaN = __webpack_require__(224),
-	    strictIndexOf = __webpack_require__(225);
+	var baseFindIndex = __webpack_require__(225),
+	    baseIsNaN = __webpack_require__(226),
+	    strictIndexOf = __webpack_require__(227);
 
 	/**
 	 * The base implementation of `_.indexOf` without `fromIndex` bounds checks.
@@ -36211,7 +36931,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 223 */
+/* 225 */
 /***/ function(module, exports) {
 
 	/**
@@ -36241,7 +36961,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 224 */
+/* 226 */
 /***/ function(module, exports) {
 
 	/**
@@ -36259,7 +36979,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 225 */
+/* 227 */
 /***/ function(module, exports) {
 
 	/**
@@ -36288,7 +37008,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 226 */
+/* 228 */
 /***/ function(module, exports) {
 
 	/**
@@ -36307,11 +37027,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 227 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var copyArray = __webpack_require__(209),
-	    isIndex = __webpack_require__(228);
+	var copyArray = __webpack_require__(211),
+	    isIndex = __webpack_require__(230);
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
 	var nativeMin = Math.min;
@@ -36342,7 +37062,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 228 */
+/* 230 */
 /***/ function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
@@ -36370,7 +37090,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 229 */
+/* 231 */
 /***/ function(module, exports) {
 
 	/** Used as the internal argument placeholder. */
@@ -36405,12 +37125,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 230 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var apply = __webpack_require__(191),
-	    createCtor = __webpack_require__(188),
-	    root = __webpack_require__(178);
+	var apply = __webpack_require__(193),
+	    createCtor = __webpack_require__(190),
+	    root = __webpack_require__(180);
 
 	/** Used to compose bitmasks for function metadata. */
 	var WRAP_BIND_FLAG = 1;
@@ -36454,12 +37174,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 231 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var composeArgs = __webpack_require__(193),
-	    composeArgsRight = __webpack_require__(194),
-	    replaceHolders = __webpack_require__(229);
+	var composeArgs = __webpack_require__(195),
+	    composeArgsRight = __webpack_require__(196),
+	    replaceHolders = __webpack_require__(231);
 
 	/** Used as the internal argument placeholder. */
 	var PLACEHOLDER = '__lodash_placeholder__';
@@ -36550,10 +37270,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 232 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var toFinite = __webpack_require__(233);
+	var toFinite = __webpack_require__(235);
 
 	/**
 	 * Converts `value` to an integer.
@@ -36592,10 +37312,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 233 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var toNumber = __webpack_require__(234);
+	var toNumber = __webpack_require__(236);
 
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0,
@@ -36640,11 +37360,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 234 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(182),
-	    isSymbol = __webpack_require__(235);
+	var isObject = __webpack_require__(184),
+	    isSymbol = __webpack_require__(237);
 
 	/** Used as references for various `Number` constants. */
 	var NAN = 0 / 0;
@@ -36712,11 +37432,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 235 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(176),
-	    isObjectLike = __webpack_require__(207);
+	var baseGetTag = __webpack_require__(178),
+	    isObjectLike = __webpack_require__(209);
 
 	/** `Object#toString` result references. */
 	var symbolTag = '[object Symbol]';
@@ -36747,11 +37467,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 236 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var copyObject = __webpack_require__(237),
-	    keys = __webpack_require__(241);
+	var copyObject = __webpack_require__(239),
+	    keys = __webpack_require__(243);
 
 	/**
 	 * The base implementation of `_.assign` without support for multiple sources
@@ -36770,11 +37490,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 237 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assignValue = __webpack_require__(238),
-	    baseAssignValue = __webpack_require__(239);
+	var assignValue = __webpack_require__(240),
+	    baseAssignValue = __webpack_require__(241);
 
 	/**
 	 * Copies properties of `source` to `object`.
@@ -36816,11 +37536,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 238 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseAssignValue = __webpack_require__(239),
-	    eq = __webpack_require__(240);
+	var baseAssignValue = __webpack_require__(241),
+	    eq = __webpack_require__(242);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -36850,10 +37570,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 239 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var defineProperty = __webpack_require__(218);
+	var defineProperty = __webpack_require__(220);
 
 	/**
 	 * The base implementation of `assignValue` and `assignMergeValue` without
@@ -36881,7 +37601,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 240 */
+/* 242 */
 /***/ function(module, exports) {
 
 	/**
@@ -36924,12 +37644,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 241 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayLikeKeys = __webpack_require__(242),
-	    baseKeys = __webpack_require__(253),
-	    isArrayLike = __webpack_require__(257);
+	var arrayLikeKeys = __webpack_require__(244),
+	    baseKeys = __webpack_require__(255),
+	    isArrayLike = __webpack_require__(259);
 
 	/**
 	 * Creates an array of the own enumerable property names of `object`.
@@ -36967,15 +37687,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 242 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseTimes = __webpack_require__(243),
-	    isArguments = __webpack_require__(244),
-	    isArray = __webpack_require__(206),
-	    isBuffer = __webpack_require__(246),
-	    isIndex = __webpack_require__(228),
-	    isTypedArray = __webpack_require__(248);
+	var baseTimes = __webpack_require__(245),
+	    isArguments = __webpack_require__(246),
+	    isArray = __webpack_require__(208),
+	    isBuffer = __webpack_require__(248),
+	    isIndex = __webpack_require__(230),
+	    isTypedArray = __webpack_require__(250);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -37022,7 +37742,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 243 */
+/* 245 */
 /***/ function(module, exports) {
 
 	/**
@@ -37048,11 +37768,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 244 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsArguments = __webpack_require__(245),
-	    isObjectLike = __webpack_require__(207);
+	var baseIsArguments = __webpack_require__(247),
+	    isObjectLike = __webpack_require__(209);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -37090,11 +37810,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 245 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(176),
-	    isObjectLike = __webpack_require__(207);
+	var baseGetTag = __webpack_require__(178),
+	    isObjectLike = __webpack_require__(209);
 
 	/** `Object#toString` result references. */
 	var argsTag = '[object Arguments]';
@@ -37114,11 +37834,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 246 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(178),
-	    stubFalse = __webpack_require__(247);
+	/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(180),
+	    stubFalse = __webpack_require__(249);
 
 	/** Detect free variable `exports`. */
 	var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -37156,10 +37876,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = isBuffer;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)(module)))
 
 /***/ },
-/* 247 */
+/* 249 */
 /***/ function(module, exports) {
 
 	/**
@@ -37183,12 +37903,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 248 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsTypedArray = __webpack_require__(249),
-	    baseUnary = __webpack_require__(251),
-	    nodeUtil = __webpack_require__(252);
+	var baseIsTypedArray = __webpack_require__(251),
+	    baseUnary = __webpack_require__(253),
+	    nodeUtil = __webpack_require__(254);
 
 	/* Node.js helper references. */
 	var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -37216,12 +37936,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 249 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(176),
-	    isLength = __webpack_require__(250),
-	    isObjectLike = __webpack_require__(207);
+	var baseGetTag = __webpack_require__(178),
+	    isLength = __webpack_require__(252),
+	    isObjectLike = __webpack_require__(209);
 
 	/** `Object#toString` result references. */
 	var argsTag = '[object Arguments]',
@@ -37282,7 +38002,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 250 */
+/* 252 */
 /***/ function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
@@ -37323,7 +38043,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 251 */
+/* 253 */
 /***/ function(module, exports) {
 
 	/**
@@ -37343,10 +38063,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 252 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(179);
+	/* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(181);
 
 	/** Detect free variable `exports`. */
 	var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -37369,14 +38089,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = nodeUtil;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)(module)))
 
 /***/ },
-/* 253 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isPrototype = __webpack_require__(254),
-	    nativeKeys = __webpack_require__(255);
+	var isPrototype = __webpack_require__(256),
+	    nativeKeys = __webpack_require__(257);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -37408,7 +38128,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 254 */
+/* 256 */
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -37432,10 +38152,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 255 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(256);
+	var overArg = __webpack_require__(258);
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
 	var nativeKeys = overArg(Object.keys, Object);
@@ -37444,7 +38164,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 256 */
+/* 258 */
 /***/ function(module, exports) {
 
 	/**
@@ -37465,11 +38185,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 257 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(175),
-	    isLength = __webpack_require__(250);
+	var isFunction = __webpack_require__(177),
+	    isLength = __webpack_require__(252);
 
 	/**
 	 * Checks if `value` is array-like. A value is considered array-like if it's
@@ -37504,10 +38224,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 258 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseClone = __webpack_require__(259);
+	var baseClone = __webpack_require__(261);
 
 	/** Used to compose bitmasks for cloning. */
 	var CLONE_SYMBOLS_FLAG = 4;
@@ -37546,28 +38266,28 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 259 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Stack = __webpack_require__(260),
-	    arrayEach = __webpack_require__(220),
-	    assignValue = __webpack_require__(238),
-	    baseAssign = __webpack_require__(236),
-	    baseAssignIn = __webpack_require__(289),
-	    cloneBuffer = __webpack_require__(293),
-	    copyArray = __webpack_require__(209),
-	    copySymbols = __webpack_require__(294),
-	    copySymbolsIn = __webpack_require__(298),
-	    getAllKeys = __webpack_require__(302),
-	    getAllKeysIn = __webpack_require__(304),
-	    getTag = __webpack_require__(305),
-	    initCloneArray = __webpack_require__(309),
-	    initCloneByTag = __webpack_require__(310),
-	    initCloneObject = __webpack_require__(324),
-	    isArray = __webpack_require__(206),
-	    isBuffer = __webpack_require__(246),
-	    isObject = __webpack_require__(182),
-	    keys = __webpack_require__(241);
+	var Stack = __webpack_require__(262),
+	    arrayEach = __webpack_require__(222),
+	    assignValue = __webpack_require__(240),
+	    baseAssign = __webpack_require__(238),
+	    baseAssignIn = __webpack_require__(291),
+	    cloneBuffer = __webpack_require__(295),
+	    copyArray = __webpack_require__(211),
+	    copySymbols = __webpack_require__(296),
+	    copySymbolsIn = __webpack_require__(300),
+	    getAllKeys = __webpack_require__(304),
+	    getAllKeysIn = __webpack_require__(306),
+	    getTag = __webpack_require__(307),
+	    initCloneArray = __webpack_require__(311),
+	    initCloneByTag = __webpack_require__(312),
+	    initCloneObject = __webpack_require__(326),
+	    isArray = __webpack_require__(208),
+	    isBuffer = __webpack_require__(248),
+	    isObject = __webpack_require__(184),
+	    keys = __webpack_require__(243);
 
 	/** Used to compose bitmasks for cloning. */
 	var CLONE_DEEP_FLAG = 1,
@@ -37705,15 +38425,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 260 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ListCache = __webpack_require__(261),
-	    stackClear = __webpack_require__(268),
-	    stackDelete = __webpack_require__(269),
-	    stackGet = __webpack_require__(270),
-	    stackHas = __webpack_require__(271),
-	    stackSet = __webpack_require__(272);
+	var ListCache = __webpack_require__(263),
+	    stackClear = __webpack_require__(270),
+	    stackDelete = __webpack_require__(271),
+	    stackGet = __webpack_require__(272),
+	    stackHas = __webpack_require__(273),
+	    stackSet = __webpack_require__(274);
 
 	/**
 	 * Creates a stack cache object to store key-value pairs.
@@ -37738,14 +38458,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 261 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var listCacheClear = __webpack_require__(262),
-	    listCacheDelete = __webpack_require__(263),
-	    listCacheGet = __webpack_require__(265),
-	    listCacheHas = __webpack_require__(266),
-	    listCacheSet = __webpack_require__(267);
+	var listCacheClear = __webpack_require__(264),
+	    listCacheDelete = __webpack_require__(265),
+	    listCacheGet = __webpack_require__(267),
+	    listCacheHas = __webpack_require__(268),
+	    listCacheSet = __webpack_require__(269);
 
 	/**
 	 * Creates an list cache object.
@@ -37776,7 +38496,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 262 */
+/* 264 */
 /***/ function(module, exports) {
 
 	/**
@@ -37795,10 +38515,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 263 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(264);
+	var assocIndexOf = __webpack_require__(266);
 
 	/** Used for built-in method references. */
 	var arrayProto = Array.prototype;
@@ -37836,10 +38556,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 264 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var eq = __webpack_require__(240);
+	var eq = __webpack_require__(242);
 
 	/**
 	 * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -37863,10 +38583,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 265 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(264);
+	var assocIndexOf = __webpack_require__(266);
 
 	/**
 	 * Gets the list cache value for `key`.
@@ -37888,10 +38608,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 266 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(264);
+	var assocIndexOf = __webpack_require__(266);
 
 	/**
 	 * Checks if a list cache value for `key` exists.
@@ -37910,10 +38630,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 267 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(264);
+	var assocIndexOf = __webpack_require__(266);
 
 	/**
 	 * Sets the list cache `key` to `value`.
@@ -37942,10 +38662,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 268 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ListCache = __webpack_require__(261);
+	var ListCache = __webpack_require__(263);
 
 	/**
 	 * Removes all key-value entries from the stack.
@@ -37963,7 +38683,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 269 */
+/* 271 */
 /***/ function(module, exports) {
 
 	/**
@@ -37987,7 +38707,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 270 */
+/* 272 */
 /***/ function(module, exports) {
 
 	/**
@@ -38007,7 +38727,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 271 */
+/* 273 */
 /***/ function(module, exports) {
 
 	/**
@@ -38027,12 +38747,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 272 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ListCache = __webpack_require__(261),
-	    Map = __webpack_require__(273),
-	    MapCache = __webpack_require__(274);
+	var ListCache = __webpack_require__(263),
+	    Map = __webpack_require__(275),
+	    MapCache = __webpack_require__(276);
 
 	/** Used as the size to enable large array optimizations. */
 	var LARGE_ARRAY_SIZE = 200;
@@ -38067,11 +38787,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 273 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(173),
-	    root = __webpack_require__(178);
+	var getNative = __webpack_require__(175),
+	    root = __webpack_require__(180);
 
 	/* Built-in method references that are verified to be native. */
 	var Map = getNative(root, 'Map');
@@ -38080,14 +38800,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 274 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mapCacheClear = __webpack_require__(275),
-	    mapCacheDelete = __webpack_require__(283),
-	    mapCacheGet = __webpack_require__(286),
-	    mapCacheHas = __webpack_require__(287),
-	    mapCacheSet = __webpack_require__(288);
+	var mapCacheClear = __webpack_require__(277),
+	    mapCacheDelete = __webpack_require__(285),
+	    mapCacheGet = __webpack_require__(288),
+	    mapCacheHas = __webpack_require__(289),
+	    mapCacheSet = __webpack_require__(290);
 
 	/**
 	 * Creates a map cache object to store key-value pairs.
@@ -38118,12 +38838,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 275 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Hash = __webpack_require__(276),
-	    ListCache = __webpack_require__(261),
-	    Map = __webpack_require__(273);
+	var Hash = __webpack_require__(278),
+	    ListCache = __webpack_require__(263),
+	    Map = __webpack_require__(275);
 
 	/**
 	 * Removes all key-value entries from the map.
@@ -38145,14 +38865,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 276 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var hashClear = __webpack_require__(277),
-	    hashDelete = __webpack_require__(279),
-	    hashGet = __webpack_require__(280),
-	    hashHas = __webpack_require__(281),
-	    hashSet = __webpack_require__(282);
+	var hashClear = __webpack_require__(279),
+	    hashDelete = __webpack_require__(281),
+	    hashGet = __webpack_require__(282),
+	    hashHas = __webpack_require__(283),
+	    hashSet = __webpack_require__(284);
 
 	/**
 	 * Creates a hash object.
@@ -38183,10 +38903,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 277 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(278);
+	var nativeCreate = __webpack_require__(280);
 
 	/**
 	 * Removes all key-value entries from the hash.
@@ -38204,10 +38924,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 278 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(173);
+	var getNative = __webpack_require__(175);
 
 	/* Built-in method references that are verified to be native. */
 	var nativeCreate = getNative(Object, 'create');
@@ -38216,7 +38936,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 279 */
+/* 281 */
 /***/ function(module, exports) {
 
 	/**
@@ -38239,10 +38959,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 280 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(278);
+	var nativeCreate = __webpack_require__(280);
 
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -38275,10 +38995,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 281 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(278);
+	var nativeCreate = __webpack_require__(280);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -38304,10 +39024,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 282 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(278);
+	var nativeCreate = __webpack_require__(280);
 
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -38333,10 +39053,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 283 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(284);
+	var getMapData = __webpack_require__(286);
 
 	/**
 	 * Removes `key` and its value from the map.
@@ -38357,10 +39077,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 284 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isKeyable = __webpack_require__(285);
+	var isKeyable = __webpack_require__(287);
 
 	/**
 	 * Gets the data for `map`.
@@ -38381,7 +39101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 285 */
+/* 287 */
 /***/ function(module, exports) {
 
 	/**
@@ -38402,10 +39122,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 286 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(284);
+	var getMapData = __webpack_require__(286);
 
 	/**
 	 * Gets the map value for `key`.
@@ -38424,10 +39144,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 287 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(284);
+	var getMapData = __webpack_require__(286);
 
 	/**
 	 * Checks if a map value for `key` exists.
@@ -38446,10 +39166,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 288 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(284);
+	var getMapData = __webpack_require__(286);
 
 	/**
 	 * Sets the map `key` to `value`.
@@ -38474,11 +39194,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 289 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var copyObject = __webpack_require__(237),
-	    keysIn = __webpack_require__(290);
+	var copyObject = __webpack_require__(239),
+	    keysIn = __webpack_require__(292);
 
 	/**
 	 * The base implementation of `_.assignIn` without support for multiple sources
@@ -38497,12 +39217,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 290 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayLikeKeys = __webpack_require__(242),
-	    baseKeysIn = __webpack_require__(291),
-	    isArrayLike = __webpack_require__(257);
+	var arrayLikeKeys = __webpack_require__(244),
+	    baseKeysIn = __webpack_require__(293),
+	    isArrayLike = __webpack_require__(259);
 
 	/**
 	 * Creates an array of the own and inherited enumerable property names of `object`.
@@ -38535,12 +39255,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 291 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(182),
-	    isPrototype = __webpack_require__(254),
-	    nativeKeysIn = __webpack_require__(292);
+	var isObject = __webpack_require__(184),
+	    isPrototype = __webpack_require__(256),
+	    nativeKeysIn = __webpack_require__(294);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -38574,7 +39294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 292 */
+/* 294 */
 /***/ function(module, exports) {
 
 	/**
@@ -38600,10 +39320,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 293 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(178);
+	/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(180);
 
 	/** Detect free variable `exports`. */
 	var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -38639,14 +39359,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = cloneBuffer;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)(module)))
 
 /***/ },
-/* 294 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var copyObject = __webpack_require__(237),
-	    getSymbols = __webpack_require__(295);
+	var copyObject = __webpack_require__(239),
+	    getSymbols = __webpack_require__(297);
 
 	/**
 	 * Copies own symbols of `source` to `object`.
@@ -38664,11 +39384,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 295 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayFilter = __webpack_require__(296),
-	    stubArray = __webpack_require__(297);
+	var arrayFilter = __webpack_require__(298),
+	    stubArray = __webpack_require__(299);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -38700,7 +39420,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 296 */
+/* 298 */
 /***/ function(module, exports) {
 
 	/**
@@ -38731,7 +39451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 297 */
+/* 299 */
 /***/ function(module, exports) {
 
 	/**
@@ -38760,11 +39480,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 298 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var copyObject = __webpack_require__(237),
-	    getSymbolsIn = __webpack_require__(299);
+	var copyObject = __webpack_require__(239),
+	    getSymbolsIn = __webpack_require__(301);
 
 	/**
 	 * Copies own and inherited symbols of `source` to `object`.
@@ -38782,13 +39502,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 299 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayPush = __webpack_require__(300),
-	    getPrototype = __webpack_require__(301),
-	    getSymbols = __webpack_require__(295),
-	    stubArray = __webpack_require__(297);
+	var arrayPush = __webpack_require__(302),
+	    getPrototype = __webpack_require__(303),
+	    getSymbols = __webpack_require__(297),
+	    stubArray = __webpack_require__(299);
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
 	var nativeGetSymbols = Object.getOwnPropertySymbols;
@@ -38813,7 +39533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 300 */
+/* 302 */
 /***/ function(module, exports) {
 
 	/**
@@ -38839,10 +39559,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 301 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(256);
+	var overArg = __webpack_require__(258);
 
 	/** Built-in value references. */
 	var getPrototype = overArg(Object.getPrototypeOf, Object);
@@ -38851,12 +39571,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 302 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetAllKeys = __webpack_require__(303),
-	    getSymbols = __webpack_require__(295),
-	    keys = __webpack_require__(241);
+	var baseGetAllKeys = __webpack_require__(305),
+	    getSymbols = __webpack_require__(297),
+	    keys = __webpack_require__(243);
 
 	/**
 	 * Creates an array of own enumerable property names and symbols of `object`.
@@ -38873,11 +39593,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 303 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayPush = __webpack_require__(300),
-	    isArray = __webpack_require__(206);
+	var arrayPush = __webpack_require__(302),
+	    isArray = __webpack_require__(208);
 
 	/**
 	 * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -38899,12 +39619,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 304 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetAllKeys = __webpack_require__(303),
-	    getSymbolsIn = __webpack_require__(299),
-	    keysIn = __webpack_require__(290);
+	var baseGetAllKeys = __webpack_require__(305),
+	    getSymbolsIn = __webpack_require__(301),
+	    keysIn = __webpack_require__(292);
 
 	/**
 	 * Creates an array of own and inherited enumerable property names and
@@ -38922,16 +39642,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 305 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var DataView = __webpack_require__(306),
-	    Map = __webpack_require__(273),
-	    Promise = __webpack_require__(307),
-	    Set = __webpack_require__(308),
-	    WeakMap = __webpack_require__(172),
-	    baseGetTag = __webpack_require__(176),
-	    toSource = __webpack_require__(185);
+	var DataView = __webpack_require__(308),
+	    Map = __webpack_require__(275),
+	    Promise = __webpack_require__(309),
+	    Set = __webpack_require__(310),
+	    WeakMap = __webpack_require__(174),
+	    baseGetTag = __webpack_require__(178),
+	    toSource = __webpack_require__(187);
 
 	/** `Object#toString` result references. */
 	var mapTag = '[object Map]',
@@ -38986,11 +39706,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 306 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(173),
-	    root = __webpack_require__(178);
+	var getNative = __webpack_require__(175),
+	    root = __webpack_require__(180);
 
 	/* Built-in method references that are verified to be native. */
 	var DataView = getNative(root, 'DataView');
@@ -38999,11 +39719,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 307 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(173),
-	    root = __webpack_require__(178);
+	var getNative = __webpack_require__(175),
+	    root = __webpack_require__(180);
 
 	/* Built-in method references that are verified to be native. */
 	var Promise = getNative(root, 'Promise');
@@ -39012,11 +39732,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 308 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getNative = __webpack_require__(173),
-	    root = __webpack_require__(178);
+	var getNative = __webpack_require__(175),
+	    root = __webpack_require__(180);
 
 	/* Built-in method references that are verified to be native. */
 	var Set = getNative(root, 'Set');
@@ -39025,7 +39745,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 309 */
+/* 311 */
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -39057,16 +39777,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 310 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var cloneArrayBuffer = __webpack_require__(311),
-	    cloneDataView = __webpack_require__(313),
-	    cloneMap = __webpack_require__(314),
-	    cloneRegExp = __webpack_require__(318),
-	    cloneSet = __webpack_require__(319),
-	    cloneSymbol = __webpack_require__(322),
-	    cloneTypedArray = __webpack_require__(323);
+	var cloneArrayBuffer = __webpack_require__(313),
+	    cloneDataView = __webpack_require__(315),
+	    cloneMap = __webpack_require__(316),
+	    cloneRegExp = __webpack_require__(320),
+	    cloneSet = __webpack_require__(321),
+	    cloneSymbol = __webpack_require__(324),
+	    cloneTypedArray = __webpack_require__(325);
 
 	/** `Object#toString` result references. */
 	var boolTag = '[object Boolean]',
@@ -39143,10 +39863,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 311 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Uint8Array = __webpack_require__(312);
+	var Uint8Array = __webpack_require__(314);
 
 	/**
 	 * Creates a clone of `arrayBuffer`.
@@ -39165,10 +39885,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 312 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(178);
+	var root = __webpack_require__(180);
 
 	/** Built-in value references. */
 	var Uint8Array = root.Uint8Array;
@@ -39177,10 +39897,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 313 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var cloneArrayBuffer = __webpack_require__(311);
+	var cloneArrayBuffer = __webpack_require__(313);
 
 	/**
 	 * Creates a clone of `dataView`.
@@ -39199,12 +39919,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 314 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var addMapEntry = __webpack_require__(315),
-	    arrayReduce = __webpack_require__(316),
-	    mapToArray = __webpack_require__(317);
+	var addMapEntry = __webpack_require__(317),
+	    arrayReduce = __webpack_require__(318),
+	    mapToArray = __webpack_require__(319);
 
 	/** Used to compose bitmasks for cloning. */
 	var CLONE_DEEP_FLAG = 1;
@@ -39227,7 +39947,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 315 */
+/* 317 */
 /***/ function(module, exports) {
 
 	/**
@@ -39248,7 +39968,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 316 */
+/* 318 */
 /***/ function(module, exports) {
 
 	/**
@@ -39280,7 +40000,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 317 */
+/* 319 */
 /***/ function(module, exports) {
 
 	/**
@@ -39304,7 +40024,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 318 */
+/* 320 */
 /***/ function(module, exports) {
 
 	/** Used to match `RegExp` flags from their coerced string values. */
@@ -39327,12 +40047,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 319 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var addSetEntry = __webpack_require__(320),
-	    arrayReduce = __webpack_require__(316),
-	    setToArray = __webpack_require__(321);
+	var addSetEntry = __webpack_require__(322),
+	    arrayReduce = __webpack_require__(318),
+	    setToArray = __webpack_require__(323);
 
 	/** Used to compose bitmasks for cloning. */
 	var CLONE_DEEP_FLAG = 1;
@@ -39355,7 +40075,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 320 */
+/* 322 */
 /***/ function(module, exports) {
 
 	/**
@@ -39376,7 +40096,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 321 */
+/* 323 */
 /***/ function(module, exports) {
 
 	/**
@@ -39400,10 +40120,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 322 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(177);
+	var Symbol = __webpack_require__(179);
 
 	/** Used to convert symbols to primitives and strings. */
 	var symbolProto = Symbol ? Symbol.prototype : undefined,
@@ -39424,10 +40144,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 323 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var cloneArrayBuffer = __webpack_require__(311);
+	var cloneArrayBuffer = __webpack_require__(313);
 
 	/**
 	 * Creates a clone of `typedArray`.
@@ -39446,12 +40166,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 324 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseCreate = __webpack_require__(189),
-	    getPrototype = __webpack_require__(301),
-	    isPrototype = __webpack_require__(254);
+	var baseCreate = __webpack_require__(191),
+	    getPrototype = __webpack_require__(303),
+	    isPrototype = __webpack_require__(256);
 
 	/**
 	 * Initializes an object clone.
@@ -39470,10 +40190,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 325 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createWrap = __webpack_require__(168);
+	var createWrap = __webpack_require__(170);
 
 	/** Used to compose bitmasks for function metadata. */
 	var WRAP_CURRY_FLAG = 8;
@@ -39533,11 +40253,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 326 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseClone = __webpack_require__(259),
-	    baseIteratee = __webpack_require__(327);
+	var baseClone = __webpack_require__(261),
+	    baseIteratee = __webpack_require__(329);
 
 	/** Used to compose bitmasks for cloning. */
 	var CLONE_DEEP_FLAG = 1;
@@ -39592,14 +40312,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 327 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseMatches = __webpack_require__(328),
-	    baseMatchesProperty = __webpack_require__(343),
-	    identity = __webpack_require__(170),
-	    isArray = __webpack_require__(206),
-	    property = __webpack_require__(358);
+	var baseMatches = __webpack_require__(330),
+	    baseMatchesProperty = __webpack_require__(345),
+	    identity = __webpack_require__(172),
+	    isArray = __webpack_require__(208),
+	    property = __webpack_require__(360);
 
 	/**
 	 * The base implementation of `_.iteratee`.
@@ -39629,12 +40349,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 328 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsMatch = __webpack_require__(329),
-	    getMatchData = __webpack_require__(340),
-	    matchesStrictComparable = __webpack_require__(342);
+	var baseIsMatch = __webpack_require__(331),
+	    getMatchData = __webpack_require__(342),
+	    matchesStrictComparable = __webpack_require__(344);
 
 	/**
 	 * The base implementation of `_.matches` which doesn't clone `source`.
@@ -39657,11 +40377,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 329 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Stack = __webpack_require__(260),
-	    baseIsEqual = __webpack_require__(330);
+	var Stack = __webpack_require__(262),
+	    baseIsEqual = __webpack_require__(332);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1,
@@ -39725,11 +40445,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 330 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsEqualDeep = __webpack_require__(331),
-	    isObjectLike = __webpack_require__(207);
+	var baseIsEqualDeep = __webpack_require__(333),
+	    isObjectLike = __webpack_require__(209);
 
 	/**
 	 * The base implementation of `_.isEqual` which supports partial comparisons
@@ -39759,17 +40479,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 331 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Stack = __webpack_require__(260),
-	    equalArrays = __webpack_require__(332),
-	    equalByTag = __webpack_require__(338),
-	    equalObjects = __webpack_require__(339),
-	    getTag = __webpack_require__(305),
-	    isArray = __webpack_require__(206),
-	    isBuffer = __webpack_require__(246),
-	    isTypedArray = __webpack_require__(248);
+	var Stack = __webpack_require__(262),
+	    equalArrays = __webpack_require__(334),
+	    equalByTag = __webpack_require__(340),
+	    equalObjects = __webpack_require__(341),
+	    getTag = __webpack_require__(307),
+	    isArray = __webpack_require__(208),
+	    isBuffer = __webpack_require__(248),
+	    isTypedArray = __webpack_require__(250);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1;
@@ -39848,12 +40568,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 332 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var SetCache = __webpack_require__(333),
-	    arraySome = __webpack_require__(336),
-	    cacheHas = __webpack_require__(337);
+	var SetCache = __webpack_require__(335),
+	    arraySome = __webpack_require__(338),
+	    cacheHas = __webpack_require__(339);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1,
@@ -39937,12 +40657,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 333 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var MapCache = __webpack_require__(274),
-	    setCacheAdd = __webpack_require__(334),
-	    setCacheHas = __webpack_require__(335);
+	var MapCache = __webpack_require__(276),
+	    setCacheAdd = __webpack_require__(336),
+	    setCacheHas = __webpack_require__(337);
 
 	/**
 	 *
@@ -39970,7 +40690,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 334 */
+/* 336 */
 /***/ function(module, exports) {
 
 	/** Used to stand-in for `undefined` hash values. */
@@ -39995,7 +40715,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 335 */
+/* 337 */
 /***/ function(module, exports) {
 
 	/**
@@ -40015,7 +40735,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 336 */
+/* 338 */
 /***/ function(module, exports) {
 
 	/**
@@ -40044,7 +40764,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 337 */
+/* 339 */
 /***/ function(module, exports) {
 
 	/**
@@ -40063,15 +40783,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 338 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(177),
-	    Uint8Array = __webpack_require__(312),
-	    eq = __webpack_require__(240),
-	    equalArrays = __webpack_require__(332),
-	    mapToArray = __webpack_require__(317),
-	    setToArray = __webpack_require__(321);
+	var Symbol = __webpack_require__(179),
+	    Uint8Array = __webpack_require__(314),
+	    eq = __webpack_require__(242),
+	    equalArrays = __webpack_require__(334),
+	    mapToArray = __webpack_require__(319),
+	    setToArray = __webpack_require__(323);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1,
@@ -40181,10 +40901,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 339 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getAllKeys = __webpack_require__(302);
+	var getAllKeys = __webpack_require__(304);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1;
@@ -40276,11 +40996,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 340 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isStrictComparable = __webpack_require__(341),
-	    keys = __webpack_require__(241);
+	var isStrictComparable = __webpack_require__(343),
+	    keys = __webpack_require__(243);
 
 	/**
 	 * Gets the property names, values, and compare flags of `object`.
@@ -40306,10 +41026,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 341 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(182);
+	var isObject = __webpack_require__(184);
 
 	/**
 	 * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -40327,7 +41047,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 342 */
+/* 344 */
 /***/ function(module, exports) {
 
 	/**
@@ -40353,16 +41073,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 343 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseIsEqual = __webpack_require__(330),
-	    get = __webpack_require__(344),
-	    hasIn = __webpack_require__(355),
-	    isKey = __webpack_require__(347),
-	    isStrictComparable = __webpack_require__(341),
-	    matchesStrictComparable = __webpack_require__(342),
-	    toKey = __webpack_require__(354);
+	var baseIsEqual = __webpack_require__(332),
+	    get = __webpack_require__(346),
+	    hasIn = __webpack_require__(357),
+	    isKey = __webpack_require__(349),
+	    isStrictComparable = __webpack_require__(343),
+	    matchesStrictComparable = __webpack_require__(344),
+	    toKey = __webpack_require__(356);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1,
@@ -40392,10 +41112,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 344 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGet = __webpack_require__(345);
+	var baseGet = __webpack_require__(347);
 
 	/**
 	 * Gets the value at `path` of `object`. If the resolved value is
@@ -40431,11 +41151,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 345 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var castPath = __webpack_require__(346),
-	    toKey = __webpack_require__(354);
+	var castPath = __webpack_require__(348),
+	    toKey = __webpack_require__(356);
 
 	/**
 	 * The base implementation of `_.get` without support for default values.
@@ -40461,13 +41181,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 346 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArray = __webpack_require__(206),
-	    isKey = __webpack_require__(347),
-	    stringToPath = __webpack_require__(348),
-	    toString = __webpack_require__(351);
+	var isArray = __webpack_require__(208),
+	    isKey = __webpack_require__(349),
+	    stringToPath = __webpack_require__(350),
+	    toString = __webpack_require__(353);
 
 	/**
 	 * Casts `value` to a path array if it's not one.
@@ -40488,11 +41208,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 347 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArray = __webpack_require__(206),
-	    isSymbol = __webpack_require__(235);
+	var isArray = __webpack_require__(208),
+	    isSymbol = __webpack_require__(237);
 
 	/** Used to match property names within property paths. */
 	var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -40523,10 +41243,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 348 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var memoizeCapped = __webpack_require__(349);
+	var memoizeCapped = __webpack_require__(351);
 
 	/** Used to match property names within property paths. */
 	var reLeadingDot = /^\./,
@@ -40557,10 +41277,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 349 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var memoize = __webpack_require__(350);
+	var memoize = __webpack_require__(352);
 
 	/** Used as the maximum memoize cache size. */
 	var MAX_MEMOIZE_SIZE = 500;
@@ -40589,10 +41309,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 350 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var MapCache = __webpack_require__(274);
+	var MapCache = __webpack_require__(276);
 
 	/** Error message constants. */
 	var FUNC_ERROR_TEXT = 'Expected a function';
@@ -40668,10 +41388,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 351 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseToString = __webpack_require__(352);
+	var baseToString = __webpack_require__(354);
 
 	/**
 	 * Converts `value` to a string. An empty string is returned for `null`
@@ -40702,13 +41422,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 352 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(177),
-	    arrayMap = __webpack_require__(353),
-	    isArray = __webpack_require__(206),
-	    isSymbol = __webpack_require__(235);
+	var Symbol = __webpack_require__(179),
+	    arrayMap = __webpack_require__(355),
+	    isArray = __webpack_require__(208),
+	    isSymbol = __webpack_require__(237);
 
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -40745,7 +41465,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 353 */
+/* 355 */
 /***/ function(module, exports) {
 
 	/**
@@ -40772,10 +41492,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 354 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isSymbol = __webpack_require__(235);
+	var isSymbol = __webpack_require__(237);
 
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -40799,11 +41519,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 355 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseHasIn = __webpack_require__(356),
-	    hasPath = __webpack_require__(357);
+	var baseHasIn = __webpack_require__(358),
+	    hasPath = __webpack_require__(359);
 
 	/**
 	 * Checks if `path` is a direct or inherited property of `object`.
@@ -40839,7 +41559,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 356 */
+/* 358 */
 /***/ function(module, exports) {
 
 	/**
@@ -40858,15 +41578,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 357 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var castPath = __webpack_require__(346),
-	    isArguments = __webpack_require__(244),
-	    isArray = __webpack_require__(206),
-	    isIndex = __webpack_require__(228),
-	    isLength = __webpack_require__(250),
-	    toKey = __webpack_require__(354);
+	var castPath = __webpack_require__(348),
+	    isArguments = __webpack_require__(246),
+	    isArray = __webpack_require__(208),
+	    isIndex = __webpack_require__(230),
+	    isLength = __webpack_require__(252),
+	    toKey = __webpack_require__(356);
 
 	/**
 	 * Checks if `path` exists on `object`.
@@ -40903,13 +41623,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 358 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseProperty = __webpack_require__(359),
-	    basePropertyDeep = __webpack_require__(360),
-	    isKey = __webpack_require__(347),
-	    toKey = __webpack_require__(354);
+	var baseProperty = __webpack_require__(361),
+	    basePropertyDeep = __webpack_require__(362),
+	    isKey = __webpack_require__(349),
+	    toKey = __webpack_require__(356);
 
 	/**
 	 * Creates a function that returns the value at `path` of a given object.
@@ -40941,7 +41661,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 359 */
+/* 361 */
 /***/ function(module, exports) {
 
 	/**
@@ -40961,10 +41681,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 360 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGet = __webpack_require__(345);
+	var baseGet = __webpack_require__(347);
 
 	/**
 	 * A specialized version of `baseProperty` which supports deep paths.
@@ -40983,11 +41703,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 361 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createWrap = __webpack_require__(168),
-	    flatRest = __webpack_require__(362);
+	var createWrap = __webpack_require__(170),
+	    flatRest = __webpack_require__(364);
 
 	/** Used to compose bitmasks for function metadata. */
 	var WRAP_REARG_FLAG = 256;
@@ -41022,12 +41742,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 362 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var flatten = __webpack_require__(363),
-	    overRest = __webpack_require__(366),
-	    setToString = __webpack_require__(215);
+	var flatten = __webpack_require__(365),
+	    overRest = __webpack_require__(368),
+	    setToString = __webpack_require__(217);
 
 	/**
 	 * A specialized version of `baseRest` which flattens the rest array.
@@ -41044,10 +41764,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 363 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseFlatten = __webpack_require__(364);
+	var baseFlatten = __webpack_require__(366);
 
 	/**
 	 * Flattens `array` a single level deep.
@@ -41072,11 +41792,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 364 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayPush = __webpack_require__(300),
-	    isFlattenable = __webpack_require__(365);
+	var arrayPush = __webpack_require__(302),
+	    isFlattenable = __webpack_require__(367);
 
 	/**
 	 * The base implementation of `_.flatten` with support for restricting flattening.
@@ -41116,12 +41836,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 365 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(177),
-	    isArguments = __webpack_require__(244),
-	    isArray = __webpack_require__(206);
+	var Symbol = __webpack_require__(179),
+	    isArguments = __webpack_require__(246),
+	    isArray = __webpack_require__(208);
 
 	/** Built-in value references. */
 	var spreadableSymbol = Symbol ? Symbol.isConcatSpreadable : undefined;
@@ -41142,10 +41862,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 366 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var apply = __webpack_require__(191);
+	var apply = __webpack_require__(193);
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
 	var nativeMax = Math.max;
@@ -41184,16 +41904,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 367 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayMap = __webpack_require__(353),
-	    copyArray = __webpack_require__(209),
-	    isArray = __webpack_require__(206),
-	    isSymbol = __webpack_require__(235),
-	    stringToPath = __webpack_require__(348),
-	    toKey = __webpack_require__(354),
-	    toString = __webpack_require__(351);
+	var arrayMap = __webpack_require__(355),
+	    copyArray = __webpack_require__(211),
+	    isArray = __webpack_require__(208),
+	    isSymbol = __webpack_require__(237),
+	    stringToPath = __webpack_require__(350),
+	    toKey = __webpack_require__(356),
+	    toString = __webpack_require__(353);
 
 	/**
 	 * Converts `value` to a property path array.
@@ -41223,11 +41943,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 368 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseMerge = __webpack_require__(369),
-	    createAssigner = __webpack_require__(377);
+	var baseMerge = __webpack_require__(371),
+	    createAssigner = __webpack_require__(379);
 
 	/**
 	 * This method is like `_.assign` except that it recursively merges own and
@@ -41268,15 +41988,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 369 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Stack = __webpack_require__(260),
-	    assignMergeValue = __webpack_require__(370),
-	    baseFor = __webpack_require__(371),
-	    baseMergeDeep = __webpack_require__(373),
-	    isObject = __webpack_require__(182),
-	    keysIn = __webpack_require__(290);
+	var Stack = __webpack_require__(262),
+	    assignMergeValue = __webpack_require__(372),
+	    baseFor = __webpack_require__(373),
+	    baseMergeDeep = __webpack_require__(375),
+	    isObject = __webpack_require__(184),
+	    keysIn = __webpack_require__(292);
 
 	/**
 	 * The base implementation of `_.merge` without support for multiple sources.
@@ -41315,11 +42035,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 370 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseAssignValue = __webpack_require__(239),
-	    eq = __webpack_require__(240);
+	var baseAssignValue = __webpack_require__(241),
+	    eq = __webpack_require__(242);
 
 	/**
 	 * This function is like `assignValue` except that it doesn't assign
@@ -41341,10 +42061,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 371 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createBaseFor = __webpack_require__(372);
+	var createBaseFor = __webpack_require__(374);
 
 	/**
 	 * The base implementation of `baseForOwn` which iterates over `object`
@@ -41363,7 +42083,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 372 */
+/* 374 */
 /***/ function(module, exports) {
 
 	/**
@@ -41394,23 +42114,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 373 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assignMergeValue = __webpack_require__(370),
-	    cloneBuffer = __webpack_require__(293),
-	    cloneTypedArray = __webpack_require__(323),
-	    copyArray = __webpack_require__(209),
-	    initCloneObject = __webpack_require__(324),
-	    isArguments = __webpack_require__(244),
-	    isArray = __webpack_require__(206),
-	    isArrayLikeObject = __webpack_require__(374),
-	    isBuffer = __webpack_require__(246),
-	    isFunction = __webpack_require__(175),
-	    isObject = __webpack_require__(182),
-	    isPlainObject = __webpack_require__(375),
-	    isTypedArray = __webpack_require__(248),
-	    toPlainObject = __webpack_require__(376);
+	var assignMergeValue = __webpack_require__(372),
+	    cloneBuffer = __webpack_require__(295),
+	    cloneTypedArray = __webpack_require__(325),
+	    copyArray = __webpack_require__(211),
+	    initCloneObject = __webpack_require__(326),
+	    isArguments = __webpack_require__(246),
+	    isArray = __webpack_require__(208),
+	    isArrayLikeObject = __webpack_require__(376),
+	    isBuffer = __webpack_require__(248),
+	    isFunction = __webpack_require__(177),
+	    isObject = __webpack_require__(184),
+	    isPlainObject = __webpack_require__(377),
+	    isTypedArray = __webpack_require__(250),
+	    toPlainObject = __webpack_require__(378);
 
 	/**
 	 * A specialized version of `baseMerge` for arrays and objects which performs
@@ -41493,11 +42213,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 374 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArrayLike = __webpack_require__(257),
-	    isObjectLike = __webpack_require__(207);
+	var isArrayLike = __webpack_require__(259),
+	    isObjectLike = __webpack_require__(209);
 
 	/**
 	 * This method is like `_.isArrayLike` except that it also checks if `value`
@@ -41532,12 +42252,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 375 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(176),
-	    getPrototype = __webpack_require__(301),
-	    isObjectLike = __webpack_require__(207);
+	var baseGetTag = __webpack_require__(178),
+	    getPrototype = __webpack_require__(303),
+	    isObjectLike = __webpack_require__(209);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -41600,11 +42320,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 376 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var copyObject = __webpack_require__(237),
-	    keysIn = __webpack_require__(290);
+	var copyObject = __webpack_require__(239),
+	    keysIn = __webpack_require__(292);
 
 	/**
 	 * Converts `value` to a plain object flattening inherited enumerable string
@@ -41638,11 +42358,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 377 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseRest = __webpack_require__(378),
-	    isIterateeCall = __webpack_require__(379);
+	var baseRest = __webpack_require__(380),
+	    isIterateeCall = __webpack_require__(381);
 
 	/**
 	 * Creates a function like `_.assign`.
@@ -41681,12 +42401,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 378 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var identity = __webpack_require__(170),
-	    overRest = __webpack_require__(366),
-	    setToString = __webpack_require__(215);
+	var identity = __webpack_require__(172),
+	    overRest = __webpack_require__(368),
+	    setToString = __webpack_require__(217);
 
 	/**
 	 * The base implementation of `_.rest` which doesn't validate or coerce arguments.
@@ -41704,13 +42424,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 379 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var eq = __webpack_require__(240),
-	    isArrayLike = __webpack_require__(257),
-	    isIndex = __webpack_require__(228),
-	    isObject = __webpack_require__(182);
+	var eq = __webpack_require__(242),
+	    isArrayLike = __webpack_require__(259),
+	    isIndex = __webpack_require__(230),
+	    isObject = __webpack_require__(184);
 
 	/**
 	 * Checks if the given arguments are from an iteratee call.
@@ -41740,7 +42460,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 380 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41757,7 +42477,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(160);
+	var _options = __webpack_require__(162);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41813,7 +42533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 381 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41830,7 +42550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(160);
+	var _options = __webpack_require__(162);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41902,7 +42622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 382 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41919,7 +42639,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(160);
+	var _options = __webpack_require__(162);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41975,7 +42695,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 383 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41992,7 +42712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(160);
+	var _options = __webpack_require__(162);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42048,7 +42768,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 384 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42065,7 +42785,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(160);
+	var _options = __webpack_require__(162);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42121,7 +42841,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 385 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42138,7 +42858,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(160);
+	var _options = __webpack_require__(162);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42212,7 +42932,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 386 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42221,11 +42941,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _reactiveData = __webpack_require__(387);
+	var _reactiveData = __webpack_require__(389);
 
 	var _reactiveData2 = _interopRequireDefault(_reactiveData);
 
-	var _reactiveProp = __webpack_require__(391);
+	var _reactiveProp = __webpack_require__(393);
 
 	var _reactiveProp2 = _interopRequireDefault(_reactiveProp);
 
@@ -42237,12 +42957,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 387 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _stringify = __webpack_require__(388);
+	var _stringify = __webpack_require__(390);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -42294,35 +43014,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 388 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(389), __esModule: true };
+	module.exports = { "default": __webpack_require__(391), __esModule: true };
 
 /***/ },
-/* 389 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core  = __webpack_require__(390)
+	var core  = __webpack_require__(392)
 	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
 	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
 	  return $JSON.stringify.apply($JSON, arguments);
 	};
 
 /***/ },
-/* 390 */
+/* 392 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 391 */
+/* 393 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _stringify = __webpack_require__(388);
+	var _stringify = __webpack_require__(390);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
