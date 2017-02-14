@@ -11,25 +11,33 @@ module.exports = {
         if (oldData) {
           let chart = this._chart
 
-          let newDataLabels = newData.datasets.map((dataset) => {
+          // Get new and old DataSet Labels
+          let newDatasetLabels = newData.datasets.map((dataset) => {
             return dataset.label
           })
 
-          let oldDataLabels = oldData.datasets.map((dataset) => {
+          let oldDatasetLabels = oldData.datasets.map((dataset) => {
             return dataset.label
           })
 
-          if (JSON.stringify(newDataLabels) === JSON.stringify(oldDataLabels)) {
+          // Stringify 'em for easier compare
+          const oldLabels = JSON.stringify(oldDatasetLabels)
+          const newLabels = JSON.stringify(newDatasetLabels)
+
+          // Check if Labels are equal and if dataset length is equal
+          if (newLabels === oldLabels && oldData.datasets.length === newData.datasets.length) {
             newData.datasets.forEach((dataset, i) => {
               chart.data.datasets[i].data = dataset.data
             })
+
             chart.data.labels = newData.labels
             chart.update()
           } else {
+            chart.destroy()
             this.renderChart(this.chartData, this.options)
           }
         }
       }
     }
-  }
+  },
 }
