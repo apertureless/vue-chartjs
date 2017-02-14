@@ -42978,37 +42978,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	  watch: {
 	    'chartData': {
 	      handler: function handler(newData, oldData) {
+	        var _this = this;
+
 	        if (oldData) {
-	          var chart = this._chart;
+	          (function () {
+	            var chart = _this._chart;
 
-	          var newDataLabels = newData.datasets.map(function (dataset) {
-	            return dataset.label;
-	          });
+	            var newDatasetLabels = newData.datasets.map(function (dataset) {
+	              return dataset.label;
+	            });
 
-	          var oldDataLabels = oldData.datasets.map(function (dataset) {
-	            return dataset.label;
-	          });
+	            var oldDatasetLabels = oldData.datasets.map(function (dataset) {
+	              return dataset.label;
+	            });
 
-	          if ((0, _stringify2.default)(newDataLabels) === (0, _stringify2.default)(oldDataLabels)) {
-	            this.forceUpdate(newData, chart);
-	          } else {
-	            this.forceRender();
-	          }
+	            var oldLabels = (0, _stringify2.default)(oldDatasetLabels);
+	            var newLabels = (0, _stringify2.default)(newDatasetLabels);
+
+	            if (newLabels === oldLabels && oldData.datasets.length === newData.datasets.length) {
+	              newData.datasets.forEach(function (dataset, i) {
+	                chart.data.datasets[i].data = dataset.data;
+	              });
+
+	              chart.data.labels = newData.labels;
+	              chart.update();
+	            } else {
+	              chart.destroy();
+	              _this.renderChart(_this.chartData, _this.options);
+	            }
+	          })();
 	        }
 	      }
-	    }
-	  },
-	  methods: {
-	    forceUpdate: function forceUpdate(newData, chart) {
-	      newData.datasets.forEach(function (dataset, i) {
-	        chart.data.datasets[i].data = dataset.data;
-	      });
-
-	      chart.data.labels = newData.labels;
-	      chart.update();
-	    },
-	    forceRender: function forceRender() {
-	      this.renderChart(this.chartData, this.options);
 	    }
 	  }
 	};
@@ -43064,21 +43064,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	          (function () {
 	            var chart = _this._chart;
 
-	            var newDataLabels = newData.datasets.map(function (dataset) {
+	            var newDatasetLabels = newData.datasets.map(function (dataset) {
 	              return dataset.label;
 	            });
 
-	            var oldDataLabels = oldData.datasets.map(function (dataset) {
+	            var oldDatasetLabels = oldData.datasets.map(function (dataset) {
 	              return dataset.label;
 	            });
 
-	            if ((0, _stringify2.default)(newDataLabels) === (0, _stringify2.default)(oldDataLabels)) {
+	            var oldLabels = (0, _stringify2.default)(oldDatasetLabels);
+	            var newLabels = (0, _stringify2.default)(newDatasetLabels);
+
+	            if (newLabels === oldLabels && oldData.datasets.length === newData.datasets.length) {
 	              newData.datasets.forEach(function (dataset, i) {
 	                chart.data.datasets[i].data = dataset.data;
 	              });
+
 	              chart.data.labels = newData.labels;
 	              chart.update();
 	            } else {
+	              chart.destroy();
 	              _this.renderChart(_this.chartData, _this.options);
 	            }
 	          })();
