@@ -2,10 +2,30 @@
 
 ## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
 
-[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.3...HEAD)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.5...HEAD)
 
-**Fixed bugs:**
+**Closed issues:**
 
+- barchart 如何横向显示条形图 [\#37](https://github.com/apertureless/vue-chartjs/issues/37)
+
+## [v2.3.5](https://github.com/apertureless/vue-chartjs/tree/v2.3.5) (2017-02-14)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.4...v2.3.5)
+
+**Closed issues:**
+
+- Destory chart instance in reactiveMixins on render [\#35](https://github.com/apertureless/vue-chartjs/issues/35)
+- Rerendering doughtnut chart not working [\#33](https://github.com/apertureless/vue-chartjs/issues/33)
+
+**Merged pull requests:**
+
+- 🔨 Change reactiveMixins to fix \#35 [\#36](https://github.com/apertureless/vue-chartjs/pull/36) ([apertureless](https://github.com/apertureless))
+
+## [v2.3.4](https://github.com/apertureless/vue-chartjs/tree/v2.3.4) (2017-02-11)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.3...v2.3.4)
+
+**Closed issues:**
+
+- Update Chart.js docs to include link to vue-chartjs [\#32](https://github.com/apertureless/vue-chartjs/issues/32)
 - Compatibility with Vue 2.1.10 [\#30](https://github.com/apertureless/vue-chartjs/issues/30)
 
 ## [v2.3.3](https://github.com/apertureless/vue-chartjs/tree/v2.3.3) (2017-01-19)
@@ -24,7 +44,7 @@
 ## [v2.3.2](https://github.com/apertureless/vue-chartjs/tree/v2.3.2) (2016-12-23)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.1...v2.3.2)
 
-**Implemented enhancements:**
+**Closed issues:**
 
 - Content Security Policy [\#22](https://github.com/apertureless/vue-chartjs/issues/22)
 
@@ -36,13 +56,10 @@
 ## [v2.3.1](https://github.com/apertureless/vue-chartjs/tree/v2.3.1) (2016-12-20)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.0...v2.3.1)
 
-**Fixed bugs:**
-
-- Issues after using gulp-- production [\#19](https://github.com/apertureless/vue-chartjs/issues/19)
-
 **Closed issues:**
 
 - Error in rendering [\#21](https://github.com/apertureless/vue-chartjs/issues/21)
+- Issues after using gulp-- production [\#19](https://github.com/apertureless/vue-chartjs/issues/19)
 
 **Merged pull requests:**
 
@@ -59,8 +76,9 @@
 ## [v2.2.1](https://github.com/apertureless/vue-chartjs/tree/v2.2.1) (2016-12-07)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.2.0...v2.2.1)
 
-**Fixed bugs:**
+**Closed issues:**
 
+- Chart height definition inside the component [\#18](https://github.com/apertureless/vue-chartjs/issues/18)
 - Uncaught TypeError: Cannot read property 'draw' of null [\#15](https://github.com/apertureless/vue-chartjs/issues/15)
 
 **Merged pull requests:**
@@ -72,6 +90,7 @@
 
 **Closed issues:**
 
+- The page is blank？ [\#13](https://github.com/apertureless/vue-chartjs/issues/13)
 - question:syntax with vue-loader [\#12](https://github.com/apertureless/vue-chartjs/issues/12)
 - Rerender when data has changed [\#10](https://github.com/apertureless/vue-chartjs/issues/10)
 
@@ -89,13 +108,10 @@
 ## [v1.1.3](https://github.com/apertureless/vue-chartjs/tree/v1.1.3) (2016-09-08)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.2...v1.1.3)
 
-**Implemented enhancements:**
-
-- Add test [\#1](https://github.com/apertureless/vue-chartjs/issues/1)
-
-**Fixed bugs:**
+**Closed issues:**
 
 - Passing chart size \(width / height\) as prop doesnt resize the chart [\#8](https://github.com/apertureless/vue-chartjs/issues/8)
+- Add test [\#1](https://github.com/apertureless/vue-chartjs/issues/1)
 
 **Merged pull requests:**
 
@@ -104,7 +120,7 @@
 ## [1.1.2](https://github.com/apertureless/vue-chartjs/tree/1.1.2) (2016-09-07)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.1...1.1.2)
 
-**Implemented enhancements:**
+**Closed issues:**
 
 - Change name of the render method to ensure compatiblity with Vue 2.0 [\#4](https://github.com/apertureless/vue-chartjs/issues/4)
 
@@ -114,7 +130,7 @@
 ## [1.1.0](https://github.com/apertureless/vue-chartjs/tree/1.1.0) (2016-08-21)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.0.3...1.1.0)
 
-**Implemented enhancements:**
+**Closed issues:**
 
 - Use Vue.util.mergeOptions to merge default options with user's options [\#5](https://github.com/apertureless/vue-chartjs/issues/5)
 
@@ -125,9 +141,12 @@
 ## [1.0.3](https://github.com/apertureless/vue-chartjs/tree/1.0.3) (2016-08-20)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.0.2...1.0.3)
 
-**Implemented enhancements:**
+**Closed issues:**
 
 - Publish on NPM [\#2](https://github.com/apertureless/vue-chartjs/issues/2)
+
+**Merged pull requests:**
+
 - Properly destroy chartjs objects [\#3](https://github.com/apertureless/vue-chartjs/pull/3) ([LinusBorg](https://github.com/LinusBorg))
 
 ## [1.0.2](https://github.com/apertureless/vue-chartjs/tree/1.0.2) (2016-07-27)
