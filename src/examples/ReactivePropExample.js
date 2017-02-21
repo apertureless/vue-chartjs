@@ -1,8 +1,8 @@
 import BarChart from '../BaseCharts/Bar'
-import reactiveData from '../mixins/reactiveProp'
+import reactiveProp from '../mixins/reactiveProp'
 
 export default BarChart.extend({
-  mixins: [reactiveData],
+  mixins: [reactiveProp],
 
   mounted () {
     this.renderChart(this.chartData)
