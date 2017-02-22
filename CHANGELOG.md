@@ -2,11 +2,26 @@
 
 ## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
 
-[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.5...HEAD)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.6...HEAD)
 
 **Closed issues:**
 
+- Colors of dynamically added bars in bar graph are the default color instead of specified color [\#42](https://github.com/apertureless/vue-chartjs/issues/42)
+
+## [v2.3.6](https://github.com/apertureless/vue-chartjs/tree/v2.3.6) (2017-02-22)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.5...v2.3.6)
+
+**Closed issues:**
+
+- Please update1.1.3 chartjs to 2.5.0 [\#40](https://github.com/apertureless/vue-chartjs/issues/40)
+- Vue-chartjs components creating a second Vue runtime [\#39](https://github.com/apertureless/vue-chartjs/issues/39)
+- Since last update bar chart will no longer stack [\#38](https://github.com/apertureless/vue-chartjs/issues/38)
 - barchart 如何横向显示条形图 [\#37](https://github.com/apertureless/vue-chartjs/issues/37)
+- Animation with reactivity [\#34](https://github.com/apertureless/vue-chartjs/issues/34)
+
+**Merged pull requests:**
+
+- 🐛 Fix reactiveMixins issue \#42 [\#43](https://github.com/apertureless/vue-chartjs/pull/43) ([apertureless](https://github.com/apertureless))
 
 ## [v2.3.5](https://github.com/apertureless/vue-chartjs/tree/v2.3.5) (2017-02-14)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.4...v2.3.5)
