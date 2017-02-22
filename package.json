@@ -1,6 +1,6 @@
 {
   "name": "vue-chartjs",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "description": "vue.js wrapper for chart.js",
   "author": "Jakub Juszczak <jakub@nextindex.de>",
   "repository": {
@@ -15,6 +15,9 @@
     "Charts"
   ],
   "main": "dist/vue-chartjs.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
