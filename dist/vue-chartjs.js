@@ -42997,7 +42997,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            if (newLabels === oldLabels && oldData.datasets.length === newData.datasets.length) {
 	              newData.datasets.forEach(function (dataset, i) {
-	                chart.data.datasets[i].data = dataset.data;
+	                chart.data.datasets[i] = dataset;
 	              });
 
 	              chart.data.labels = newData.labels;
@@ -43077,7 +43077,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            if (newLabels === oldLabels && oldData.datasets.length === newData.datasets.length) {
 	              newData.datasets.forEach(function (dataset, i) {
-	                chart.data.datasets[i].data = dataset.data;
+	                chart.data.datasets[i] = dataset;
 	              });
 
 	              chart.data.labels = newData.labels;
