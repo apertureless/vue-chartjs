@@ -19,13 +19,13 @@
 
 ### Compatibility
 
-- v1 later
+- v1 later `@legacy`
   - Vue.js 1.x
 - v2 later
   - Vue.js 2.x
 
 After the final release of vue.js 2, you also get the v2 per default if you install vue-chartjs over npm.
-No need for the @next tag anymore. If you want the v1 you need to define the version.
+No need for the @next tag anymore. If you want the v1 you need to define the version or use the legacy tag.
 If you're looking for v1 check this [branch](https://github.com/apertureless/vue-chartjs/tree/release/1.1.3)
 
 ## Install
