@@ -27,7 +27,7 @@ module.exports = {
           // Check if Labels are equal and if dataset length is equal
           if (newLabels === oldLabels && oldData.datasets.length === newData.datasets.length) {
             newData.datasets.forEach((dataset, i) => {
-              chart.data.datasets[i].data = dataset.data
+              chart.data.datasets[i] = dataset
             })
 
             chart.data.labels = newData.labels
