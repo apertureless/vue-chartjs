@@ -9,6 +9,6 @@
 
 
 ### Environment
-- OS: Write here
-- NPM Version: Write here
-
+- vue.js version: <version here>
+- vue-chart.js version: <version here>
+- npm version: <version here>
