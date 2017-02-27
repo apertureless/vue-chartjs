@@ -1,4 +1,5 @@
 self.$config = {
+  title: 'vue-chartjs docs',
   plugins: [
     evanyou()
   ],
