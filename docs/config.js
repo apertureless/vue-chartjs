@@ -1,0 +1,3 @@
+self.$config = {
+  // config...
+}
