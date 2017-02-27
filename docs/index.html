@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>📊 Vue-ChartJs</title>
-  </head>
-  <body>
-    <div id="app">
-      <app></app>
-    </div>
-    <script src="dist/vue-chartjs.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <title>./docs</title>
+  <link rel="stylesheet" href="https://unpkg.com/docute@2/dist/docute.css">
+</head>
+<body>
+  <!-- don't remove this part start -->
+  <div id="app"></div>
+  <script src="https://unpkg.com/docute-evanyou"></script>
+  <script src="./config.js"></script>
+  <script src="https://unpkg.com/docute@2/dist/docute.js"></script>
+  <!-- don't remove this part end -->
+
+  <!-- Google Analytics -->
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-92766713-1', 'auto');
+  ga('send', 'pageview');
+  docute.router.afterEach(function (to) {
+    ga('set', 'page', to.fullPath);
+    ga('send', 'pageview');
+  });
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  <!-- End Google Analytics -->
+</body>
 </html>
