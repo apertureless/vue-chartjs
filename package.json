@@ -1,6 +1,6 @@
 {
   "name": "vue-chartjs",
-  "version": "2.3.8",
+  "version": "2.3.9",
   "description": "vue.js wrapper for chart.js",
   "author": "Jakub Juszczak <jakub@nextindex.de>",
   "repository": {
@@ -14,8 +14,9 @@
     "Wrapper",
     "Charts"
   ],
-  "main": "dist/vue-chartjs.js",
+  "main": "src/index.js",
   "files": [
+    "src",
     "dist"
   ],
   "scripts": {
@@ -28,11 +29,11 @@
     "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js"
   },
   "dependencies": {
-    "babel-runtime": "^6.23.0",
     "chart.js": "^2.5.0",
     "vue": "^2.2.1"
   },
   "devDependencies": {
+    "babel-runtime": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-plugin-transform-runtime": "^6.23.0",
