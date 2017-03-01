@@ -13,9 +13,10 @@
 
 **vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in vue. You can easily create reuseable chart components.
 
-## Demo
+## Demo & Docs
 
-[Demo](https://apertureless.github.io/vue-chartjs/)
+- [Demo](http://demo.vue-chartjs.org/)
+- [Docs](http://www.vue-chartjs.org/)
 
 ### Compatibility
 
