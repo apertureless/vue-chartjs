@@ -2,11 +2,30 @@
 
 ## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
 
-[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.6...HEAD)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.8...HEAD)
 
 **Closed issues:**
 
+- Add src folder to package.json "files" and make main "src/index.js" [\#49](https://github.com/apertureless/vue-chartjs/issues/49)
+- Unable to refresh [\#41](https://github.com/apertureless/vue-chartjs/issues/41)
+
+**Merged pull requests:**
+
+- 🐛 Fix \#49 [\#50](https://github.com/apertureless/vue-chartjs/pull/50) ([apertureless](https://github.com/apertureless))
+
+## [v2.3.8](https://github.com/apertureless/vue-chartjs/tree/v2.3.8) (2017-03-01)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.6...v2.3.8)
+
+**Closed issues:**
+
+- Mixins don't seem to trigger a refresh of the chart [\#44](https://github.com/apertureless/vue-chartjs/issues/44)
 - Colors of dynamically added bars in bar graph are the default color instead of specified color [\#42](https://github.com/apertureless/vue-chartjs/issues/42)
+
+**Merged pull requests:**
+
+- Feature/documentation [\#47](https://github.com/apertureless/vue-chartjs/pull/47) ([apertureless](https://github.com/apertureless))
+- ⬆️ Update dependencies [\#46](https://github.com/apertureless/vue-chartjs/pull/46) ([apertureless](https://github.com/apertureless))
+- 📝 Update github issue template [\#45](https://github.com/apertureless/vue-chartjs/pull/45) ([apertureless](https://github.com/apertureless))
 
 ## [v2.3.6](https://github.com/apertureless/vue-chartjs/tree/v2.3.6) (2017-02-22)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.5...v2.3.6)
