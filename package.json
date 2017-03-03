@@ -1,11 +1,33 @@
 {
   "name": "vue-chartjs",
-  "version": "2.3.9",
+  "version": "2.4.0",
   "description": "vue.js wrapper for chart.js",
-  "author": "Jakub Juszczak <jakub@nextindex.de>",
+  "author": "Jakub Juszczak <jakub@posteo.de>",
+  "homepage": "http://vue-chartjs.org",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Thorsten Lünborg",
+      "web": "https://github.com/LinusBorg"
+    },
+    {
+      "name": "Juan Carlos Alonso",
+      "web": "https://github.com/jcalonso"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "Jakub Juszczak",
+      "email": "jakub@posteo.de",
+      "web": "http://www.jakubjuszczak.de"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:apertureless/vue-chartjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apertureless/vue-chartjs/issues"
   },
   "keywords": [
     "ChartJs",
@@ -92,6 +114,14 @@
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
     "webpack-merge": "^1.1.1"
+  },
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
   },
   "browserify": {
     "transform": [
