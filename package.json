@@ -15,6 +15,7 @@
     "Charts"
   ],
   "main": "src/index.js",
+  "unpkg": "dist/vue-chartjs.js",
   "files": [
     "src",
     "dist"
