@@ -278,3 +278,27 @@ Sometimes you need more control over chart.js. Thats why you can access the char
 ### Bubble
 
 ![Bubble](assets/bubble.png)
+
+## Webpack & Bundling tools
+There are now two version the main entry point is `src/index.js` which is the ES6 source, unbundled.
+If you're using webpack it is recommended to use this one. Because the bundled umd version has vue.js and chart.js bundled into it.
+
+However if you have problems o you can import the dist file
+
+```
+import VueCharts from 'vue-chartjs/dist/vue-chartjs'
+// or
+import { Line } from 'vue-chartjs/dist/vue-chartjs'
+```
+
+Or you can set an alias.
+
+### Browserify
+
+In order for a browserify user to transpile the code, they would need to install `babelify` and `babel-preset-es2015` and add a .babelrc file in the root of their project with the following code:
+
+```
+{
+"presets": ["es2015"]
+}
+```
