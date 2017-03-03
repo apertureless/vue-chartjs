@@ -1,8 +1,14 @@
 # Change Log
 
-## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
+## [v2.4.0](https://github.com/apertureless/vue-chartjs/tree/v2.4.0) (2017-03-03)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.9...v2.4.0)
 
-[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.8...HEAD)
+**Merged pull requests:**
+
+- Added browserify support [\#51](https://github.com/apertureless/vue-chartjs/pull/51) ([craigh411](https://github.com/craigh411))
+
+## [v2.3.9](https://github.com/apertureless/vue-chartjs/tree/v2.3.9) (2017-03-01)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.8...v2.3.9)
 
 **Closed issues:**
 
@@ -18,7 +24,6 @@
 
 **Closed issues:**
 
-- Mixins don't seem to trigger a refresh of the chart [\#44](https://github.com/apertureless/vue-chartjs/issues/44)
 - Colors of dynamically added bars in bar graph are the default color instead of specified color [\#42](https://github.com/apertureless/vue-chartjs/issues/42)
 
 **Merged pull requests:**
