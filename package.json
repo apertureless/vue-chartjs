@@ -92,5 +92,10 @@
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
     "webpack-merge": "^1.1.1"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
   }
 }
