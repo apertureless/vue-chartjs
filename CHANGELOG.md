@@ -1,5 +1,18 @@
 # Change Log
 
+## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
+
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.4.1...HEAD)
+
+**Closed issues:**
+
+- UglifyJs is not happy with versions after 2.3.8 [\#54](https://github.com/apertureless/vue-chartjs/issues/54)
+- Why "main"  in Package.json is "src/index.js" and not "dist/vue-chartjs.js" [\#53](https://github.com/apertureless/vue-chartjs/issues/53)
+- Adding static data and dynamic data at the same time.  [\#52](https://github.com/apertureless/vue-chartjs/issues/52)
+
+## [v2.4.1](https://github.com/apertureless/vue-chartjs/tree/v2.4.1) (2017-03-04)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.4.0...v2.4.1)
+
 ## [v2.4.0](https://github.com/apertureless/vue-chartjs/tree/v2.4.0) (2017-03-03)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.9...v2.4.0)
 
