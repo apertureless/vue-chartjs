@@ -177,29 +177,20 @@ export default Line.extend({
 })
 ```
 
-## Webpack & Bundling tools
-There are now two version the main entry point is `src/index.js` which is the ES6 source, unbundled.
-If you're using webpack it is recommended to use this one. Because the bundled umd version has vue.js and chart.js bundled into it.
+## Webpack, Browserify and dist files.
 
-However if you have problems o you can import the dist file
+If you use `import VueCharts from 'vue-chartjs'` you will mostly import the UMD build of vue-chart.js
+This is because of compatibility reasons. This approach however has a downside: vue.js and chart.js are bundled into the file.
+And you end up with two vue instances.
 
-```
-import VueCharts from 'vue-chartjs/dist/vue-chartjs'
-// or
-import { Line } from 'vue-chartjs/dist/vue-chartjs'
-```
-
-Or you can set an alias.
-
-### Browserify
-
-In order for a browserify user to transpile the code, they would need to install `babelify` and `babel-preset-es2015` and add a .babelrc file in the root of their project with the following code:
+If you're using webpack 2 however, it will automatically import the transpiled ES sources.
+If you know what you're doing you can import directly from the transpiled es sources:
 
 ```
-{
-"presets": ["es2015"]
-}
+import { Line } from 'vue-chartjs/es'
 ```
+
+
 ## Available Charts
 
 ### Bar Chart

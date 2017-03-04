@@ -279,19 +279,18 @@ Sometimes you need more control over chart.js. Thats why you can access the char
 
 ![Bubble](assets/bubble.png)
 
-## Webpack & Bundling tools
-There are now two version the main entry point is `src/index.js` which is the ES6 source, unbundled.
-If you're using webpack it is recommended to use this one. Because the bundled umd version has vue.js and chart.js bundled into it.
+## Webpack, Browserify and dist files.
 
-However if you have problems o you can import the dist file
+If you use `import VueCharts from 'vue-chartjs'` you will mostly import the UMD build of vue-chart.js
+This is because of compatibility reasons. This approach however has a downside: vue.js and chart.js are bundled into the file.
+And you end up with two vue instances.
+
+If you're using webpack 2 or rollup however, it will automatically import the transpiled ES sources.
+If you know what you're doing you can import directly from the transpiled es sources:
 
 ```
-import VueCharts from 'vue-chartjs/dist/vue-chartjs'
-// or
-import { Line } from 'vue-chartjs/dist/vue-chartjs'
+import { Line } from 'vue-chartjs/es'
 ```
-
-Or you can set an alias.
 
 ### Browserify
 
