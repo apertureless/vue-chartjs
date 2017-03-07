@@ -59,37 +59,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.mixins = exports.Bubble = exports.Radar = exports.PolarArea = exports.Pie = exports.Line = exports.Doughnut = exports.Bar = exports.VueCharts = undefined;
+	exports.mixins = exports.Bubble = exports.Radar = exports.PolarArea = exports.Pie = exports.Line = exports.Doughnut = exports.HorizontalBar = exports.Bar = exports.VueCharts = undefined;
 
 	var _Bar = __webpack_require__(1);
 
 	var _Bar2 = _interopRequireDefault(_Bar);
 
-	var _Doughnut = __webpack_require__(382);
+	var _HorizontalBar = __webpack_require__(382);
+
+	var _HorizontalBar2 = _interopRequireDefault(_HorizontalBar);
+
+	var _Doughnut = __webpack_require__(383);
 
 	var _Doughnut2 = _interopRequireDefault(_Doughnut);
 
-	var _Line = __webpack_require__(383);
+	var _Line = __webpack_require__(384);
 
 	var _Line2 = _interopRequireDefault(_Line);
 
-	var _Pie = __webpack_require__(384);
+	var _Pie = __webpack_require__(385);
 
 	var _Pie2 = _interopRequireDefault(_Pie);
 
-	var _PolarArea = __webpack_require__(385);
+	var _PolarArea = __webpack_require__(386);
 
 	var _PolarArea2 = _interopRequireDefault(_PolarArea);
 
-	var _Radar = __webpack_require__(386);
+	var _Radar = __webpack_require__(387);
 
 	var _Radar2 = _interopRequireDefault(_Radar);
 
-	var _Bubble = __webpack_require__(387);
+	var _Bubble = __webpack_require__(388);
 
 	var _Bubble2 = _interopRequireDefault(_Bubble);
 
-	var _index = __webpack_require__(388);
+	var _index = __webpack_require__(389);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -97,6 +101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var VueCharts = {
 	  Bar: _Bar2.default,
+	  HorizontalBar: _HorizontalBar2.default,
 	  Doughnut: _Doughnut2.default,
 	  Line: _Line2.default,
 	  Pie: _Pie2.default,
@@ -109,6 +114,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = VueCharts;
 	exports.VueCharts = VueCharts;
 	exports.Bar = _Bar2.default;
+	exports.HorizontalBar = _HorizontalBar2.default;
 	exports.Doughnut = _Doughnut2.default;
 	exports.Line = _Line2.default;
 	exports.Pie = _Pie2.default;
@@ -195,7 +201,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    renderChart: function renderChart(data, options, type) {
 	      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
 	      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
-	        type: type || 'bar',
+	        type: 'bar',
 	        data: data,
 	        options: chartOptions
 	      });
@@ -8214,6 +8220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			return new Color(obj);
 		}
 
+		this.valid = false;
 		this.values = {
 			rgb: [0, 0, 0],
 			hsl: [0, 0, 0],
@@ -8233,8 +8240,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.setValues('hsl', vals);
 			} else if (vals = string.getHwb(obj)) {
 				this.setValues('hwb', vals);
-			} else {
-				throw new Error('Unable to parse color from string "' + obj + '"');
 			}
 		} else if (typeof obj === 'object') {
 			vals = obj;
@@ -8248,13 +8253,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.setValues('hwb', vals);
 			} else if (vals.c !== undefined || vals.cyan !== undefined) {
 				this.setValues('cmyk', vals);
-			} else {
-				throw new Error('Unable to parse color from object ' + JSON.stringify(obj));
 			}
 		}
 	};
 
 	Color.prototype = {
+		isValid: function () {
+			return this.valid;
+		},
 		rgb: function () {
 			return this.setSpace('rgb', arguments);
 		},
@@ -8597,6 +8603,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		var maxes = this.maxes;
 		var alpha = 1;
 		var i;
+
+		this.valid = true;
 
 		if (space === 'alpha') {
 			alpha = vals;
@@ -42990,6 +42998,96 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  props: {
 	    chartId: {
+	      default: 'horizontalbar-chart',
+	      type: String
+	    },
+	    width: {
+	      default: 400,
+	      type: Number
+	    },
+	    height: {
+	      default: 400,
+	      type: Number
+	    }
+	  },
+
+	  data: function data() {
+	    return {
+	      defaultOptions: {
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              beginAtZero: true
+	            },
+	            gridLines: {
+	              display: false
+	            }
+	          }],
+	          xAxes: [{
+	            gridLines: {
+	              display: false
+	            },
+	            categoryPercentage: 0.5,
+	            barPercentage: 0.2
+	          }]
+	        }
+	      }
+	    };
+	  },
+
+
+	  methods: {
+	    renderChart: function renderChart(data, options, type) {
+	      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
+	      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
+	        type: 'horizontalBar',
+	        data: data,
+	        options: chartOptions
+	      });
+	      this._chart.generateLegend();
+	    }
+	  },
+	  beforeDestroy: function beforeDestroy() {
+	    this._chart.destroy();
+	  }
+	});
+
+/***/ },
+/* 383 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vue = __webpack_require__(2);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	var _chart = __webpack_require__(4);
+
+	var _chart2 = _interopRequireDefault(_chart);
+
+	var _options = __webpack_require__(162);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _vue2.default.extend({
+	  render: function render(createElement) {
+	    return createElement('div', [createElement('canvas', {
+	      attrs: {
+	        id: this.chartId,
+	        width: this.width,
+	        height: this.height
+	      },
+	      ref: 'canvas'
+	    })]);
+	  },
+
+	  props: {
+	    chartId: {
 	      default: 'doughnut-chart',
 	      type: String
 	    },
@@ -43028,7 +43126,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 383 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43117,7 +43215,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 384 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43190,7 +43288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 385 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43263,7 +43361,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 386 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43336,7 +43434,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 387 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43427,7 +43525,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 388 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43436,11 +43534,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _reactiveData = __webpack_require__(389);
+	var _reactiveData = __webpack_require__(390);
 
 	var _reactiveData2 = _interopRequireDefault(_reactiveData);
 
-	var _reactiveProp = __webpack_require__(393);
+	var _reactiveProp = __webpack_require__(394);
 
 	var _reactiveProp2 = _interopRequireDefault(_reactiveProp);
 
@@ -43452,12 +43550,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 389 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _stringify = __webpack_require__(390);
+	var _stringify = __webpack_require__(391);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -43505,35 +43603,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 390 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(391), __esModule: true };
-
-/***/ },
 /* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core  = __webpack_require__(392)
+	module.exports = { "default": __webpack_require__(392), __esModule: true };
+
+/***/ },
+/* 392 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var core  = __webpack_require__(393)
 	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
 	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
 	  return $JSON.stringify.apply($JSON, arguments);
 	};
 
 /***/ },
-/* 392 */
+/* 393 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 393 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _stringify = __webpack_require__(390);
+	var _stringify = __webpack_require__(391);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 

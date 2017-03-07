@@ -1,4 +1,5 @@
 import Bar from './BaseCharts/Bar'
+import HorizontalBar from './BaseCharts/HorizontalBar'
 import Doughnut from './BaseCharts/Doughnut'
 import Line from './BaseCharts/Line'
 import Pie from './BaseCharts/Pie'
@@ -9,6 +10,7 @@ import mixins from './mixins/index.js'
 
 const VueCharts = {
   Bar,
+  HorizontalBar,
   Doughnut,
   Line,
   Pie,
@@ -23,6 +25,7 @@ export default VueCharts
 export {
   VueCharts,
   Bar,
+  HorizontalBar,
   Doughnut,
   Line,
   Pie,
