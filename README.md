@@ -118,7 +118,7 @@ However you can simply implement this by your own or use one of the two mixins w
 Both are included in the `mixins` module.
 
 The mixins automatically create `chartData` as a prop or data. And add a watcher. If data has changed, the chart will update.
-However keep in mind the limitations of vue and javascript for mutations on arrays and objects. More info [here](http://localhost:8080/#/home?id=reactive-data)
+However keep in mind the limitations of vue and javascript for mutations on arrays and objects. More info [here](http://vue-chartjs.org/#/home?id=reactive-data)
 
 ```javascript
 // MonthlyIncome.js
