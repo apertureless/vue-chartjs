@@ -1,14 +1,17 @@
 # Change Log
 
-## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
-
-[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.4.1...HEAD)
+## [v2.5.0](https://github.com/apertureless/vue-chartjs/tree/v2.5.0) (2017-03-08)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.4.1...v2.5.0)
 
 **Closed issues:**
 
 - UglifyJs is not happy with versions after 2.3.8 [\#54](https://github.com/apertureless/vue-chartjs/issues/54)
 - Why "main"  in Package.json is "src/index.js" and not "dist/vue-chartjs.js" [\#53](https://github.com/apertureless/vue-chartjs/issues/53)
 - Adding static data and dynamic data at the same time.  [\#52](https://github.com/apertureless/vue-chartjs/issues/52)
+
+**Merged pull requests:**
+
+- separate HorizontalBar component added [\#56](https://github.com/apertureless/vue-chartjs/pull/56) ([imbashamba](https://github.com/imbashamba))
 
 ## [v2.4.1](https://github.com/apertureless/vue-chartjs/tree/v2.4.1) (2017-03-04)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.4.0...v2.4.1)
