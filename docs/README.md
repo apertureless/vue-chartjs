@@ -239,6 +239,18 @@ export default Line.extend({
 </style>
 ```
 
+<p class="warning">
+  ⚠ Attention: If you mutate your data in a parent component and pass it to your child chart component keep in mind the javascript limitiations.
+  More info in this [issue#44](https://github.com/apertureless/vue-chartjs/issues/44)
+</p>
+
+### Limitations
+  <ul>
+    <li>[Caveats](https://vuejs.org/v2/guide/list.html#Caveats)</li>
+    <li>[Change-Detection-Caveats](https://vuejs.org/v2/guide/reactivity.html#Change-Detection-Caveats)</li>
+    <li>[vm.$watch](https://vuejs.org/v2/api/#vm-watch)</li>
+  </ul>
+
 ## Chart.js object
 
 Sometimes you need more control over chart.js. Thats why you can access the chart.js instance over `this._chart`
