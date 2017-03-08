@@ -247,11 +247,7 @@ Sometimes you need more control over chart.js. Thats why you can access the char
 
 ### Bar Chart
 <p class="tip">
-  The bar chart has an **optional** third parameter, which is the type.
-  The default type is `bar` but you can pass `horizontalBar` if you want horizontal bars.
-
-  `renderChart (data, options, type) {}`
-
+  There are two versions of the Bar chart. `{Bar}` and `{HorizontalBar}`
 </p>
 
 ![Bar](assets/bar.png)
