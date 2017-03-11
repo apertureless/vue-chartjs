@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "chart.js": "^2.5.0",
+    "lodash": "^4.17.4",
     "vue": "^2.2.1"
   },
   "devDependencies": {
@@ -101,7 +102,6 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
-    "lodash": "^4.17.4",
     "lolex": "^1.4.0",
     "mocha": "^3.1.0",
     "nightwatch": "^0.9.8",
