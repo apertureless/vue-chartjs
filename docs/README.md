@@ -15,7 +15,7 @@ If you are working with Vue.js 2+ simple run:
 
 `yarn add vue-chartjs -S`
 
-If you are using vue 1.x please use the `legancy` tag. However the vue 1 version is not maintained anymore.
+If you are using vue 1.x please use the `legacy` tag. However the vue 1 version is not maintained anymore.
 
 `yarn add vue-chartjs@legacy -S`
 
