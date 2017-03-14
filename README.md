@@ -12,6 +12,8 @@
 
 # vue-chartjs
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/apertureless/vue-chartjs.svg)](https://greenkeeper.io/)
+
 **vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in vue. You can easily create reuseable chart components.
 
 ## Demo & Docs
