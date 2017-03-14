@@ -1,5 +1,28 @@
 # Change Log
 
+## [v2.5.2](https://github.com/apertureless/vue-chartjs/tree/v2.5.2) (2017-03-14)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.1...v2.5.2)
+
+**Closed issues:**
+
+- TypeError: child.\_updateFromParent is not a function [\#62](https://github.com/apertureless/vue-chartjs/issues/62)
+- child.\_updateFromParent is not a function [\#59](https://github.com/apertureless/vue-chartjs/issues/59)
+- dependency was not found [\#58](https://github.com/apertureless/vue-chartjs/issues/58)
+
+**Merged pull requests:**
+
+- Develop [\#63](https://github.com/apertureless/vue-chartjs/pull/63) ([apertureless](https://github.com/apertureless))
+- Fix typo for legacy tag [\#61](https://github.com/apertureless/vue-chartjs/pull/61) ([kylestev](https://github.com/kylestev))
+
+## [v2.5.1](https://github.com/apertureless/vue-chartjs/tree/v2.5.1) (2017-03-11)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.0...v2.5.1)
+
+**Closed issues:**
+
+- Lines are looking weird. [\#57](https://github.com/apertureless/vue-chartjs/issues/57)
+- Working with objects [\#48](https://github.com/apertureless/vue-chartjs/issues/48)
+- Mixins don't seem to trigger a refresh of the chart [\#44](https://github.com/apertureless/vue-chartjs/issues/44)
+
 ## [v2.5.0](https://github.com/apertureless/vue-chartjs/tree/v2.5.0) (2017-03-08)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.4.1...v2.5.0)
 
