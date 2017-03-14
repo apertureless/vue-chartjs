@@ -1,6 +1,6 @@
 {
   "name": "vue-chartjs",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "vue.js wrapper for chart.js",
   "author": "Jakub Juszczak <jakub@posteo.de>",
   "homepage": "http://vue-chartjs.org",
@@ -59,7 +59,7 @@
   "dependencies": {
     "chart.js": "^2.5.0",
     "lodash": "^4.17.4",
-    "vue": "^2.2.1"
+    "vue": "^2.2.4"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
@@ -116,7 +116,7 @@
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^11.1.4",
     "vue-style-loader": "^2.0.3",
-    "vue-template-compiler": "^2.2.1",
+    "vue-template-compiler": "^2.2.4",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
