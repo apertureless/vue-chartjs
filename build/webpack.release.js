@@ -12,7 +12,8 @@ module.exports = {
   output: {
     filename: './dist/[name].js',
     library: 'VueChartJs',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     preLoaders: [
