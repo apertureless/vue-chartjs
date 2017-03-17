@@ -37,7 +37,8 @@
     "Charts"
   ],
   "main": "dist/vue-chartjs.js",
-  "unpkg": "dist/vue-chartjs.js",
+  "unpkg": "dist/vue-chartjs.min.js",
+  "browser": "dist/vue-chartjs.min.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
   "files": [
@@ -53,7 +54,7 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js",
+    "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js",
     "prepublish": "yarn run lint && yarn run test && yarn run build"
   },
   "dependencies": {
