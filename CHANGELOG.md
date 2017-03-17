@@ -1,5 +1,25 @@
 # Change Log
 
+## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
+
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.3...HEAD)
+
+**Closed issues:**
+
+- How to use without babel/webpack? [\#66](https://github.com/apertureless/vue-chartjs/issues/66)
+- The vue-chartjs/src entry point is still creating a new vue instance. [\#55](https://github.com/apertureless/vue-chartjs/issues/55)
+
+**Merged pull requests:**
+
+- Update dependencies to enable Greenkeeper 🌴 [\#65](https://github.com/apertureless/vue-chartjs/pull/65) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+
+## [v2.5.3](https://github.com/apertureless/vue-chartjs/tree/v2.5.3) (2017-03-17)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.2...v2.5.3)
+
+**Closed issues:**
+
+- Cannot modify styling using options [\#60](https://github.com/apertureless/vue-chartjs/issues/60)
+
 ## [v2.5.2](https://github.com/apertureless/vue-chartjs/tree/v2.5.2) (2017-03-14)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.1...v2.5.2)
 
