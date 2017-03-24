@@ -2,10 +2,32 @@
 
 ## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
 
-[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.3...HEAD)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.5...HEAD)
 
 **Closed issues:**
 
+- An in-range update of vue is breaking the build 🚨 [\#76](https://github.com/apertureless/vue-chartjs/issues/76)
+- An in-range update of vue-template-compiler is breaking the build 🚨 [\#75](https://github.com/apertureless/vue-chartjs/issues/75)
+
+## [v2.5.5](https://github.com/apertureless/vue-chartjs/tree/v2.5.5) (2017-03-24)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.4...v2.5.5)
+
+**Closed issues:**
+
+- Access chartjs methods [\#71](https://github.com/apertureless/vue-chartjs/issues/71)
+- Pass Reactive data into Scatterplot  [\#69](https://github.com/apertureless/vue-chartjs/issues/69)
+
+**Merged pull requests:**
+
+- Removed -s flag from yarn command in docs [\#73](https://github.com/apertureless/vue-chartjs/pull/73) ([mika76](https://github.com/mika76))
+
+## [v2.5.4](https://github.com/apertureless/vue-chartjs/tree/v2.5.4) (2017-03-19)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.3...v2.5.4)
+
+**Closed issues:**
+
+- An in-range update of eslint-config-standard is breaking the build 🚨 [\#68](https://github.com/apertureless/vue-chartjs/issues/68)
+- Using data from vuex to populate a line graph [\#67](https://github.com/apertureless/vue-chartjs/issues/67)
 - How to use without babel/webpack? [\#66](https://github.com/apertureless/vue-chartjs/issues/66)
 - The vue-chartjs/src entry point is still creating a new vue instance. [\#55](https://github.com/apertureless/vue-chartjs/issues/55)
 
