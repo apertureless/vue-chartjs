@@ -56,7 +56,7 @@
     "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js",
     "prepublish": "yarn run lint && yarn run test && yarn run build"
   },
-  "dependencies": {
+  "peerDependencies": {
     "chart.js": "^2.5.0",
     "lodash": "^4.17.4",
     "vue": "^2.2.6"
@@ -70,6 +70,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-runtime": "^6.23.0",
     "chai": "^3.5.0",
+    "chart.js": "^2.5.0",
     "chromedriver": "^2.28.0",
     "connect-history-api-fallback": "^1.1.0",
     "cross-env": "^3.2.4",
@@ -102,6 +103,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.30",
     "karma-webpack": "1.8.1",
+    "lodash": "^4.17.4",
     "lolex": "^1.6.0",
     "mocha": "^3.1.0",
     "nightwatch": "^0.9.14",
@@ -112,6 +114,7 @@
     "sinon": "^2.1.0",
     "sinon-chai": "^2.9.0",
     "url-loader": "^0.5.8",
+    "vue": "^2.2.6",
     "vue-hot-reload-api": "^2.0.11",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^11.3.4",
