@@ -70,7 +70,7 @@ There are some basic props defined in the BaseCharts. Because you `extend()` the
 |---|---|
 | width | chart width |
 | height | chart height |
-| id | id of the canvas |
+| chart-id | id of the canvas |
 
 
 ## Examples
