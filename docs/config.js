@@ -1,8 +1,10 @@
+const langs = [
+  {title: 'English', path: '/home', matchPath: /^\/(home|changelog)/},
+  {title: 'Deutsch', path: '/de/', matchPath: /^\/de/}
+]
+
 docute.init({
   title: 'vue-chartjs docs',
-  plugins: [
-    evanyou()
-  ],
   landing: true,
   landing: '_landing.html',
   repo: 'apertureless/vue-chartjs',
@@ -17,6 +19,17 @@ docute.init({
       {
         title: 'Changelog', path: '/changelog', source: 'https://raw.githubusercontent.com/apertureless/vue-chartjs/develop/CHANGELOG.md'
       },
+      {
+        title: 'Languages', type: 'dropdown', items: langs
+      }
+    ],
+    'de': [
+      {
+        title: 'Startseite', path: '/de/'
+      }
     ]
-  }
+  },
+  plugins: [
+    evanyou()
+  ],
 })
