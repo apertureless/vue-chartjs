@@ -56,9 +56,11 @@
     "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js",
     "prepublish": "yarn run lint && yarn run test && yarn run build"
   },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
   "peerDependencies": {
     "chart.js": "^2.5.0",
-    "lodash": "^4.17.4",
     "vue": "^2.2.6"
   },
   "devDependencies": {
@@ -103,7 +105,6 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.30",
     "karma-webpack": "1.8.1",
-    "lodash": "^4.17.4",
     "lolex": "^1.6.0",
     "mocha": "^3.1.0",
     "nightwatch": "^0.9.14",
