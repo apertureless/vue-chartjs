@@ -17,7 +17,6 @@ module.exports = {
   },
   externals: {
     'vue': 'vue',
-    'lodash': 'lodash',
     'chart.js': 'chart.js'
   },
   module: {
