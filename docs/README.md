@@ -287,25 +287,33 @@ Sometimes you need more control over chart.js. Thats why you can access the char
 
 ![Bubble](assets/bubble.png)
 
-## Webpack, Browserify and dist files.
 
-If you use `import VueCharts from 'vue-chartjs'` you will mostly import the UMD build of vue-chart.js
-This is because of compatibility reasons. This approach however has a downside: vue.js and chart.js are bundled into the file.
-And you end up with two vue instances.
+## Explanation of Different Builds
+There are three different entry points. It depends on which build setup do you have. The dependencies are bundled or required as a peerDependency.
 
-If you're using webpack 2 or rollup however, it will automatically import the transpiled ES sources.
-If you know what you're doing you can import directly from the transpiled es sources:
+- Browser
+- Browserify / Webpack 1
+- Webpack 2
 
-```
-import { Line } from 'vue-chartjs/es'
-```
 
-### Browserify
+| Build | Chart.js | Vue.js |
+|---|---|---|
+| vue-chartjs.full.js | Bundled | Bundled |
+| vue-chartjs.full.min.js |  Bundled | Bundled  |
+| vue-chartjs.js | peerDependency | peerDependency  |
+| vue-chartjs.min.js | peerDependency  | peerDependency  |
+| es/index* |  peerDependency | peerDependency  |
 
-In order for a browserify user to transpile the code, they would need to install `babelify` and `babel-preset-es2015` and add a .babelrc file in the root of their project with the following code:
+### Borwser
+You can use `vue-chartjs` directly in the browser without any build setup. Like in this [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010). For this case, please use the `vue-chartjs.full.min.js` which is the minified version. It has Vue.js and Chart.js bundled into it. And bundled to a UMD Module. So you only need that one file.
 
-```
-{
-"presets": ["es2015"]
-}
-```
+
+### Browserify / Webpack 1
+
+If you're using Gulp, Browserify or Webpack 1 the entry is `vue-chartjs.js` which is __transpiled__ and __bundled__ UMD Module.
+
+However Vue.js and Chart.js are `deerDependencies` so you have to install them seperately. In most projects you will have `Vue.js` already installed anyways. This way, you can have different versions of Vue.js and Chart.js then in this package.
+
+### Webpack 2
+If you're using Webpack 2 it will automatically use the `jsnext:main` / `module` entry point. Which is `es/index.js`
+It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way you three shaking will work.  Like in the bundled version, `Vue.js` and `Chart.js` are `peerDependencies` and need to be installed.
