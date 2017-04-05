@@ -15,6 +15,10 @@ module.exports = {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
+  externals: {
+    'vue': 'vue',
+    'chart.js': 'chart.js'
+  },
   module: {
     preLoaders: [
       {
