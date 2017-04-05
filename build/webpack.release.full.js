@@ -17,14 +17,10 @@ module.exports = {
     'vue-chartjs': './src/index.js'
   },
   output: {
-    filename: './dist/[name].js',
+    filename: './dist/[name].full.js',
     library: 'VueChartJs',
     libraryTarget: 'umd',
     umdNamedDefine: true
-  },
-  externals: {
-    'vue': 'vue',
-    'chart.js': 'chart.js'
   },
   module: {
     preLoaders: [
