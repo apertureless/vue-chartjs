@@ -32,7 +32,40 @@ If you're looking for v1 check this [branch](https://github.com/apertureless/vue
 
 ## Install
 
-Simply run `npm install vue-chartjs`
+Simply run `yarn add vue-chartjs chart.js`
+
+Or if you want to use it directly in the browser add `https://unpkg.com/vue-chartjs@2.6.0/dist/vue-chartjs.full.min.js` to your scripts. See [Codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010)
+
+## Explanation of Different Builds
+There are three different entry points. It depends on which build setup do you have. The dependencies are bundled or required as a peerDependency.
+
+- Browser
+- Browserify / Webpack 1
+- Webpack 2
+
+
+| Build | Chart.js | Vue.js |
+|---|---|---|
+| vue-chartjs.full.js | Bundled | Bundled |
+| vue-chartjs.full.min.js |  Bundled | Bundled  |
+| vue-chartjs.js | peerDependency | peerDependency  |
+| vue-chartjs.min.js | peerDependency  | peerDependency  |
+| es/index* |  peerDependency | peerDependency  |
+
+### Borwser
+You can use `vue-chartjs` directly in the browser without any build setup. Like in this [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010). For this case, please use the `vue-chartjs.full.min.js` which is the minified version. It has Vue.js and Chart.js bundled into it. And bundled to a UMD Module. So you only need that one file.
+
+
+### Browserify / Webpack 1
+
+If you're using Gulp, Browserify or Webpack 1 the entry is `vue-chartjs.js` which is __transpiled__ and __bundled__ UMD Module.
+
+However Vue.js and Chart.js are `deerDependencies` so you have to install them seperately. In most projects you will have `Vue.js` already installed anyways. This way, you can have different versions of Vue.js and Chart.js then in this package.
+
+### Webpack 2
+If you're using Webpack 2 it will automatically use the `jsnext:main` / `module` entry point. Which is `es/index.js`
+It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way you three shaking will work.  Like in the bundled version, `Vue.js` and `Chart.js` are `peerDependencies` and need to be installed.
+
 
 ## How to use
 
@@ -177,20 +210,6 @@ export default Line.extend({
   }
 })
 ```
-
-## Webpack, Browserify and dist files.
-
-If you use `import VueCharts from 'vue-chartjs'` you will mostly import the UMD build of vue-chart.js
-This is because of compatibility reasons. This approach however has a downside: vue.js and chart.js are bundled into the file.
-And you end up with two vue instances.
-
-If you're using webpack 2 however, it will automatically import the transpiled ES sources.
-If you know what you're doing you can import directly from the transpiled es sources:
-
-```
-import { Line } from 'vue-chartjs/es'
-```
-
 
 ## Available Charts
 
