@@ -7,8 +7,10 @@ import PolarArea from './BaseCharts/PolarArea'
 import Radar from './BaseCharts/Radar'
 import Bubble from './BaseCharts/Bubble'
 import mixins from './mixins/index.js'
+import npmCfg from '../package.json'
 
 const VueCharts = {
+  version: npmCfg.version,
   Bar,
   HorizontalBar,
   Doughnut,
