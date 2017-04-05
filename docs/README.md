@@ -304,7 +304,7 @@ There are three different entry points. It depends on which build setup do you h
 | vue-chartjs.min.js | peerDependency  | peerDependency  |
 | es/index* |  peerDependency | peerDependency  |
 
-### Borwser
+### Browser
 You can use `vue-chartjs` directly in the browser without any build setup. Like in this [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010). For this case, please use the `vue-chartjs.full.min.js` which is the minified version. It has Vue.js and Chart.js bundled into it. And bundled to a UMD Module. So you only need that one file.
 
 
