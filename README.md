@@ -34,7 +34,12 @@ If you're looking for v1 check this [branch](https://github.com/apertureless/vue
 
 Simply run `yarn add vue-chartjs chart.js`
 
-Or if you want to use it directly in the browser add `https://unpkg.com/vue-chartjs@2.6.0/dist/vue-chartjs.full.min.js` to your scripts. See [Codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010)
+Or if you want to use it directly in the browser add
+
+```html
+<script src="https://unpkg.com/vue-chartjs@2.6.0/dist/vue-chartjs.full.min.js"></script>
+```
+to your scripts. See [Codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010)
 
 ## Explanation of Different Builds
 There are three different entry points. It depends on which build setup do you have. The dependencies are bundled or required as a peerDependency.
