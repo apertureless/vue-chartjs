@@ -1,13 +1,42 @@
 # Change Log
 
-## [Unreleased](https://github.com/apertureless/vue-chartjs/tree/HEAD)
-
-[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.5...HEAD)
+## [v2.6.0](https://github.com/apertureless/vue-chartjs/tree/v2.6.0) (2017-04-09)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.0-rc1...v2.6.0)
 
 **Closed issues:**
 
+- how to export to image or pdf [\#89](https://github.com/apertureless/vue-chartjs/issues/89)
+- 🙏🏻 Testing 2.6.0-rc1 [\#88](https://github.com/apertureless/vue-chartjs/issues/88)
+- Adding annotation plugin functionality [\#86](https://github.com/apertureless/vue-chartjs/issues/86)
+
+## [v2.6.0-rc1](https://github.com/apertureless/vue-chartjs/tree/v2.6.0-rc1) (2017-04-05)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.6...v2.6.0-rc1)
+
+**Closed issues:**
+
+- Overwrite prop [\#85](https://github.com/apertureless/vue-chartjs/issues/85)
+
+**Merged pull requests:**
+
+- Update release build to not include externals. [\#84](https://github.com/apertureless/vue-chartjs/pull/84) ([gcoguiec](https://github.com/gcoguiec))
+
+## [v2.5.6](https://github.com/apertureless/vue-chartjs/tree/v2.5.6) (2017-03-29)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.5...v2.5.6)
+
+**Closed issues:**
+
+- Can not render two lines at the same time [\#83](https://github.com/apertureless/vue-chartjs/issues/83)
+- Suggestion: Chart not re-rendering on window resize [\#82](https://github.com/apertureless/vue-chartjs/issues/82)
+- How can you change legend label colour? [\#81](https://github.com/apertureless/vue-chartjs/issues/81)
+- Doughnut with text in the middle [\#80](https://github.com/apertureless/vue-chartjs/issues/80)
+- Set chart width without affecting labels [\#79](https://github.com/apertureless/vue-chartjs/issues/79)
+- Loading data from server and displaying [\#78](https://github.com/apertureless/vue-chartjs/issues/78)
+- Why separate .js files in the examples? [\#77](https://github.com/apertureless/vue-chartjs/issues/77)
 - An in-range update of vue is breaking the build 🚨 [\#76](https://github.com/apertureless/vue-chartjs/issues/76)
 - An in-range update of vue-template-compiler is breaking the build 🚨 [\#75](https://github.com/apertureless/vue-chartjs/issues/75)
+- Uncaught TypeError: Cannot read property 'chartId' of undefined [\#74](https://github.com/apertureless/vue-chartjs/issues/74)
+- TypeError: child.\_updateFromParent is not a function [\#72](https://github.com/apertureless/vue-chartjs/issues/72)
+- Styling componement's surrounding \<div\> [\#70](https://github.com/apertureless/vue-chartjs/issues/70)
 
 ## [v2.5.5](https://github.com/apertureless/vue-chartjs/tree/v2.5.5) (2017-03-24)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.4...v2.5.5)
