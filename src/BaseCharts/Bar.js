@@ -61,7 +61,7 @@ export default Vue.extend({
   },
 
   methods: {
-    renderChart (data, options, type) {
+    renderChart (data, options) {
       let chartOptions = mergeOptions(this.defaultOptions, options)
       this._chart = new Chart(
         this.$refs.canvas.getContext('2d'), {
