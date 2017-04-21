@@ -1,5 +1,16 @@
 # Change Log
 
+## [v2.6.1](https://github.com/apertureless/vue-chartjs/tree/v2.6.1) (2017-04-21)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.0...v2.6.1)
+
+**Closed issues:**
+
+- Not understanding options [\#93](https://github.com/apertureless/vue-chartjs/issues/93)
+- A Gotcha on component creation. [\#92](https://github.com/apertureless/vue-chartjs/issues/92)
+- Error when building: 'This dependency was not found: chartjs' [\#91](https://github.com/apertureless/vue-chartjs/issues/91)
+- Chart does not render inside conditional [\#90](https://github.com/apertureless/vue-chartjs/issues/90)
+- Unable to add to material-vue layout [\#87](https://github.com/apertureless/vue-chartjs/issues/87)
+
 ## [v2.6.0](https://github.com/apertureless/vue-chartjs/tree/v2.6.0) (2017-04-09)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.0-rc1...v2.6.0)
 
