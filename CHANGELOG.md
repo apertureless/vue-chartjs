@@ -1,5 +1,12 @@
 # Change Log
 
+## [v2.6.2](https://github.com/apertureless/vue-chartjs/tree/v2.6.2) (2017-04-29)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.1...v2.6.2)
+
+**Merged pull requests:**
+
+- ⬆️ Update dev dependencies [\#96](https://github.com/apertureless/vue-chartjs/pull/96) ([apertureless](https://github.com/apertureless))
+
 ## [v2.6.1](https://github.com/apertureless/vue-chartjs/tree/v2.6.1) (2017-04-21)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.0...v2.6.1)
 
