@@ -9,6 +9,7 @@
 [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/vue-chartjs)
 [![Gitter chat](https://img.shields.io/gitter/room/TechnologyAdvice/Stardust.svg)](https://gitter.im/vue-chartjs/Lobby)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/apertureless/vue-chartjs/blob/master/LICENSE.txt)
+[![CDNJS version](https://img.shields.io/cdnjs/v/vue-chartjs.svg)](https://cdnjs.com/libraries/vue-chartjs)
 
 # vue-chartjs
 
