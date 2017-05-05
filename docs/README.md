@@ -316,4 +316,4 @@ However Vue.js and Chart.js are `deerDependencies` so you have to install them s
 
 ### Webpack 2
 If you're using Webpack 2 it will automatically use the `jsnext:main` / `module` entry point. Which is `es/index.js`
-It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way you three shaking will work.  Like in the bundled version, `Vue.js` and `Chart.js` are `peerDependencies` and need to be installed.
+It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way your tree shaking will work.  Like in the bundled version, `Vue.js` and `Chart.js` are `peerDependencies` and need to be installed.
