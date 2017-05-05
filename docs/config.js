@@ -1,6 +1,7 @@
 const langs = [
   {title: 'English', path: '/home', matchPath: /^\/(home|changelog)/},
-  {title: 'Deutsch', path: '/de/', matchPath: /^\/de/}
+  {title: 'Deutsch', path: '/de/', matchPath: /^\/de/},
+  {title: '日本語', path: '/ja/', matchPath: /^\/ja/}
 ]
 
 docute.init({
