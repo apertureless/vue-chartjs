@@ -5670,9 +5670,9 @@ vue-html-loader@^1.2.4:
     loader-utils "^1.0.2"
     object-assign "^4.1.0"
 
-vue-loader@^12.0.2:
-  version "12.0.2"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-12.0.2.tgz#f539036b1e0e9516b474a8fd1b5f533145248406"
+vue-loader@^12.0.4:
+  version "12.0.4"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-12.0.4.tgz#bc9385326e3fd6538606454977baa91eacc6e6fd"
   dependencies:
     consolidate "^0.14.0"
     hash-sum "^1.0.2"
@@ -5695,9 +5695,9 @@ vue-style-loader@^3.0.0, vue-style-loader@^3.0.1:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.3.0.tgz#a89a17064b68e182569da51ebbedd71ce57f93bf"
+vue-template-compiler@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.3.3.tgz#b5bab9ec57309c906b82a78c81a02179dbc2f470"
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
@@ -5706,9 +5706,9 @@ vue-template-es2015-compiler@^1.2.2:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.4.0.tgz#7b88853ca4bf8d84ae54ab9e56771de271e60198"
 
-vue@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.3.0.tgz#bc44db0488c5245c788304c7683efe7b4c862d82"
+vue@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.3.3.tgz#d1eaa8fde5240735a4563e74f2c7fead9cbb064c"
 
 watchpack@^0.2.1:
   version "0.2.9"
