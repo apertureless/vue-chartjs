@@ -4,7 +4,6 @@ module.exports = {
       required: true
     }
   },
-
   watch: {
     'chartData': {
       handler (newData, oldData) {
