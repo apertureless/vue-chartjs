@@ -29,17 +29,17 @@ module.exports = {
               // Get new and old dataset keys
               const oldDatasetKeys = Object.keys(oldData.datasets[i])
               const newDatasetKeys = Object.keys(dataset)
-              
+
               // Get keys that aren't present in the new data
               const deletionKeys = oldDatasetKeys.filter((key) => {
                 return key !== '_meta' && newDatasetKeys.indexOf(key) === -1
               })
-              
+
               // Remove outdated key-value pairs
               deletionKeys.forEach((deletionKey) => {
                 delete chart.data.datasets[i][deletionKey]
               })
-              
+
               // Update attributes individually to avoid re-rendering the entire chart
               for (const attribute in dataset) {
                 if (dataset.hasOwnProperty(attribute)) {
