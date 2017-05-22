@@ -112,7 +112,7 @@ If you want to overwrite the width and height:
 ```
 
 <p class="warning">
-  Please keep in mind, that you have to set `responsive: false` to be able to set a fix `width` and `height.
+  Please keep in mind, that you have to set `responsive: false` to be able to set a fix `width` and `height`.
 </p>
 
 ### Chart with local data
