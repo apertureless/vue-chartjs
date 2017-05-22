@@ -13,7 +13,7 @@ chart.jsの基本ロジックを抽象化していますが、公開されたcha
 ## インストール
 Vue.jsの Version2以上を使用している場合は簡単にインストールできます。:
 
-`yarn add vue-chartjs`
+`yarn add vue-chartjs chart.js`
 
 Vue.jsの Version 1.xを使用している場合は`legacy`タグを使用してください。しかし、vueのバージョン1はもうメンテナンスされません。
 

@@ -13,7 +13,7 @@ It abstracts the basic logic but exposes the chart.js object to give you the mos
 ## Installation
 If you are working with Vue.js 2+ simple run:
 
-`yarn add vue-chartjs`
+`yarn add vue-chartjs chart.js`
 
 If you are using vue 1.x please use the `legacy` tag. However the vue 1 version is not maintained anymore.
 
