@@ -67,7 +67,7 @@ Você pode usar o `vue-chartjs` diretamente no seu browser sem qualquer configur
 
 Se você estiver usando Gulb, Browserify ou Webpack 1 a opção é `vue-chartjs.js`, que é __transpiled__ e __bundled__ no modelo UMD.
 
-Porém, Vue.js e Chart.js são `deerDependencies`, então você precisa instalá-los seperadamente. Na maioria dos projetos você terá o `Vue.js` instalado de qualquer maneira. Dessa forma, você pode ter diferentes versões do Vue.js e do Chart.j nesse pacote.
+Porém, Vue.js e Chart.js são `peerDependencies`, então você precisa instalá-los seperadamente. Na maioria dos projetos você terá o `Vue.js` instalado de qualquer maneira. Dessa forma, você pode ter diferentes versões do Vue.js e do Chart.j nesse pacote.
 
 
 ### Webpack 2
