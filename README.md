@@ -122,7 +122,7 @@ You can overwrite the default chart options. Just pass the options object as a s
 import { Line } from 'vue-chartjs'
 
 export default Line.extend({
-  props: ["data", "options"],
+  props: ['data', 'options'],
   mounted () {
     this.renderChart(this.data, this.options)
   }
@@ -165,7 +165,7 @@ import { Line, mixins } from 'vue-chartjs'
 
 export default Line.extend({
   mixins: [mixins.reactiveProp],
-  props: ["chartData", "options"],
+  props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
@@ -183,7 +183,7 @@ import VueCharts from 'vue-chartjs'
 
 export default VueCharts.Line.extend({
   mixins: [VueCharts.mixins.reactiveProp],
-  props: ["chartData", "options"],
+  props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
@@ -196,7 +196,7 @@ import { Line, mixins } from 'vue-chartjs'
 
 export default Line.extend({
   mixins: [mixins.reactiveProp],
-  props: ["chartData", "options"],
+  props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
@@ -210,7 +210,7 @@ const { reactiveProp } = mixins
 
 export default Line.extend({
   mixins: [reactiveProp],
-  props: ["chartData", "options"],
+  props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
