@@ -1,5 +1,46 @@
 # Change Log
 
+## [v2.6.4](https://github.com/apertureless/vue-chartjs/tree/v2.6.4) (2017-06-04)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.3...v2.6.4)
+
+**Closed issues:**
+
+- Transition leave-active-class not working [\#117](https://github.com/apertureless/vue-chartjs/issues/117)
+- chartOptions reactivity [\#116](https://github.com/apertureless/vue-chartjs/issues/116)
+- Cannot switch off legend [\#114](https://github.com/apertureless/vue-chartjs/issues/114)
+- run error on my mac pro [\#113](https://github.com/apertureless/vue-chartjs/issues/113)
+- Update install instructions in docs [\#112](https://github.com/apertureless/vue-chartjs/issues/112)
+- Typo in docs [\#111](https://github.com/apertureless/vue-chartjs/issues/111)
+- Charts are given a fixed width, even when they are set to be responsive [\#108](https://github.com/apertureless/vue-chartjs/issues/108)
+- Use Reactive Data with \<script\> version of vue-chartjs [\#107](https://github.com/apertureless/vue-chartjs/issues/107)
+
+**Merged pull requests:**
+
+- Fix typo in docs [\#115](https://github.com/apertureless/vue-chartjs/pull/115) ([euledge](https://github.com/euledge))
+- :memo: Add pt-br readme support [\#110](https://github.com/apertureless/vue-chartjs/pull/110) ([kimuraz](https://github.com/kimuraz))
+- Fix reactive mixins animation re-rendering issue. [\#109](https://github.com/apertureless/vue-chartjs/pull/109) ([MuseofMoose](https://github.com/MuseofMoose))
+
+## [v2.6.3](https://github.com/apertureless/vue-chartjs/tree/v2.6.3) (2017-05-14)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.2...v2.6.3)
+
+**Closed issues:**
+
+- Reactivity of Options [\#106](https://github.com/apertureless/vue-chartjs/issues/106)
+- Do not use built-in or reserved HTML elements as component id: MenuItem [\#104](https://github.com/apertureless/vue-chartjs/issues/104)
+- Is it possible to use with axios? [\#103](https://github.com/apertureless/vue-chartjs/issues/103)
+- How to change momentjs locale for time scale? [\#101](https://github.com/apertureless/vue-chartjs/issues/101)
+- It seems that the reactiveProp couldn't let the chart update itself [\#99](https://github.com/apertureless/vue-chartjs/issues/99)
+- Why do I need both vue-chartjs chart.js? [\#98](https://github.com/apertureless/vue-chartjs/issues/98)
+- vue-chartjs not working with lodash-webpack-plugin installed [\#97](https://github.com/apertureless/vue-chartjs/issues/97)
+- multi lines with same options [\#95](https://github.com/apertureless/vue-chartjs/issues/95)
+- Zoom And Pan Options in Vue Charts [\#94](https://github.com/apertureless/vue-chartjs/issues/94)
+
+**Merged pull requests:**
+
+- Update README.md [\#105](https://github.com/apertureless/vue-chartjs/pull/105) ([guilherfp](https://github.com/guilherfp))
+- translated README.md into Japanese [\#102](https://github.com/apertureless/vue-chartjs/pull/102) ([euledge](https://github.com/euledge))
+- add CDNJS version badge in README.md [\#100](https://github.com/apertureless/vue-chartjs/pull/100) ([extend1994](https://github.com/extend1994))
+
 ## [v2.6.2](https://github.com/apertureless/vue-chartjs/tree/v2.6.2) (2017-04-29)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.1...v2.6.2)
 
@@ -80,7 +121,7 @@
 
 **Merged pull requests:**
 
-- Update dependencies to enable Greenkeeper 🌴 [\#65](https://github.com/apertureless/vue-chartjs/pull/65) ([greenkeeper[bot]](https://github.com/integration/greenkeeper))
+- Update dependencies to enable Greenkeeper 🌴 [\#65](https://github.com/apertureless/vue-chartjs/pull/65) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 
 ## [v2.5.3](https://github.com/apertureless/vue-chartjs/tree/v2.5.3) (2017-03-17)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.2...v2.5.3)
