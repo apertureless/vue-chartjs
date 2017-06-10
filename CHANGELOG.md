@@ -1,5 +1,8 @@
 # Change Log
 
+## [v2.6.5](https://github.com/apertureless/vue-chartjs/tree/v2.6.5) (2017-06-10)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.4...v2.6.5)
+
 ## [v2.6.4](https://github.com/apertureless/vue-chartjs/tree/v2.6.4) (2017-06-04)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.3...v2.6.4)
 
@@ -30,7 +33,6 @@
 - Is it possible to use with axios? [\#103](https://github.com/apertureless/vue-chartjs/issues/103)
 - How to change momentjs locale for time scale? [\#101](https://github.com/apertureless/vue-chartjs/issues/101)
 - It seems that the reactiveProp couldn't let the chart update itself [\#99](https://github.com/apertureless/vue-chartjs/issues/99)
-- Why do I need both vue-chartjs chart.js? [\#98](https://github.com/apertureless/vue-chartjs/issues/98)
 - vue-chartjs not working with lodash-webpack-plugin installed [\#97](https://github.com/apertureless/vue-chartjs/issues/97)
 - multi lines with same options [\#95](https://github.com/apertureless/vue-chartjs/issues/95)
 - Zoom And Pan Options in Vue Charts [\#94](https://github.com/apertureless/vue-chartjs/issues/94)
