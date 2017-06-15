@@ -27,7 +27,7 @@
 - v2 later
   - Vue.js 2.x
 
-After the final release of vue.js 2, you also get the v2 per default if you install vue-chartjs over npm.
+After the final release of vue.js 2, you also get the v2 by default if you install vue-chartjs over npm.
 No need for the @next tag anymore. If you want the v1 you need to define the version or use the legacy tag.
 If you're looking for v1 check this [branch](https://github.com/apertureless/vue-chartjs/tree/release/1.1.3)
 
@@ -149,7 +149,7 @@ export default {
 ## Reactivity
 
 Chart.js does not update or re-render the chart if new data is passed.
-However you can simply implement this by your own or use one of the two mixins which are included.
+However you can simply implement this on your own or use one of the two mixins which are included.
 
 - `reactiveProp`
 - `reactiveData`
@@ -269,7 +269,7 @@ npm run e2e
 npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Contributing
 
