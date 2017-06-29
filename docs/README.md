@@ -134,7 +134,7 @@ export default Bar.extend({
         ]
       }
     }
-  }
+  },
   mounted () {
     this.renderChart(this.datacollection, {responsive: true, maintainAspectRatio: false})
   }
