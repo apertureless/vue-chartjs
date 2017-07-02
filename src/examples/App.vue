@@ -4,6 +4,8 @@
     <bar-example></bar-example>
     <h1 style="text-align:center;margin:40px 0;">Barchart with reactive mixing for live data</h1>
     <reactive-example></reactive-example>
+    <h1 style="text-align:center;margin:40px 0;">Barchart with reactive mixing for live data as props</h1>
+    <reactive-prop-example :chart-data="dataPoints"></reactive-prop-example>
     <h1 style="text-align:center;margin:40px 0;">Linechart</h1>
     <line-example></line-example>
     <h1 style="text-align:center;margin:40px 0;">Doughnutchart</h1>
@@ -41,6 +43,31 @@
       BubbleExample,
       ReactiveExample,
       ReactivePropExample
+    },
+    data () {
+      return {
+        dataPoints: null
+      }
+    },
+    mounted () {
+      this.fillData()
+    },
+    methods: {
+      getRandomInt () {
+        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      },
+      fillData () {
+        this.dataPoints = {
+          labels: ['January' + this.getRandomInt(), 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          datasets: [
+            {
+              label: 'Data One',
+              backgroundColor: '#f87979',
+              data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
+            }
+          ]
+        }
+      }
     }
   }
 </script>
