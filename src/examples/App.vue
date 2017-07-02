@@ -18,6 +18,8 @@
     <polar-area-example></polar-area-example>
     <h1 style="text-align:center;margin:40px 0;">Bubblechart</h1>
     <bubble-example></bubble-example>
+    <h1 style="text-align:center;margin:40px 0;">Scatter Chart</h1>
+    <scatter-example></scatter-example>
   </div>
 </template>
 
@@ -31,6 +33,7 @@
   import BubbleExample from './BubbleExample'
   import ReactiveExample from './ReactiveExample'
   import ReactivePropExample from './ReactivePropExample'
+  import ScatterExample from './ScatterExample'
 
   export default {
     components: {
@@ -42,7 +45,8 @@
       PolarAreaExample,
       BubbleExample,
       ReactiveExample,
-      ReactivePropExample
+      ReactivePropExample,
+      ScatterExample
     },
     data () {
       return {
