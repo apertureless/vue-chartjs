@@ -54,6 +54,8 @@ module.exports = {
             chart.destroy()
             this.renderChart(this.chartData, this.options)
           }
+        } else {
+          this.renderChart(this.chartData, this.options)
         }
       }
     }
