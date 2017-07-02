@@ -5,6 +5,6 @@ export default BarChart.extend({
   mixins: [reactiveProp],
 
   mounted () {
-    this.renderChart(this.chartData)
+    this.renderChart(this.chartData, {responsive: true, maintainAspectRatio: false})
   }
 })

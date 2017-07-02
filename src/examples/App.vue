@@ -50,7 +50,9 @@
       }
     },
     mounted () {
-      this.fillData()
+      setInterval(() => {
+        this.fillData()
+      }, 2000)
     },
     methods: {
       getRandomInt () {
