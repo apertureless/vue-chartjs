@@ -287,6 +287,12 @@ Sometimes you need more control over chart.js. Thats why you can access the char
 
 ![Bubble](assets/bubble.png)
 
+### Scatter
+
+This chart has a different data structure then the others. Right now the reactive Mixins are not working for this chart type.
+
+![Scatter](assets/scatter.png)
+
 
 ## Explanation of Different Builds
 There are three different entry points. It depends on which build setup do you have. The dependencies are bundled or required as a peerDependency.
