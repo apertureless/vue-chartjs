@@ -247,6 +247,10 @@ export default Line.extend({
 
 ![Bubble](assets/bubble.png)
 
+### Scatter
+
+![Scatter](assets/scatter.png)
+
 ## Build Setup
 
 ``` bash
