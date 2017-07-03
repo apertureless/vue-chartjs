@@ -56,18 +56,23 @@ export default Vue.extend({
             barPercentage: 0.2
           }]
         }
-      }
+      },
+      plugins: []
     }
   },
 
   methods: {
+    addPlugin (plugin) {
+      this.plugins.push(plugin)
+    },
     renderChart (data, options) {
       let chartOptions = mergeOptions(this.defaultOptions, options)
       this._chart = new Chart(
         this.$refs.canvas.getContext('2d'), {
           type: 'bar',
           data: data,
-          options: chartOptions
+          options: chartOptions,
+          plugins: this.plugins
         }
       )
       this._chart.generateLegend()
