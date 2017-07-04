@@ -60,4 +60,24 @@ describe('RadarChart', () => {
       done()
     })
   })
+
+  it('should add an inline plugin to the array', () => {
+    const testPlugin = {
+      id: 'test'
+    }
+
+    const vm = new Vue({
+      render: function (createElement) {
+        return createElement(
+          RadarChart
+        )
+      },
+      components: { RadarChart }
+    }).$mount(el)
+
+    expect(vm.$children[0].plugins).to.exist
+    vm.$children[0].addPlugin(testPlugin)
+
+    expect(vm.$children[0].plugins.length).to.equal(1)
+  })
 })
