@@ -221,31 +221,31 @@ export default Line.extend({
 
 ### Gráfico de Barra
 
-![Barra](assets/bar.png)
+![Barra](../assets/bar.png)
 
 ### Gráfico de Linha
 
-![Linha](assets/line.png)
+![Linha](../assets/line.png)
 
 ### Donut
 
-![Donut](assets/doughnut.png)
+![Donut](../assets/doughnut.png)
 
 ### Pizza
 
-![Pizza](assets/pie.png)
+![Pizza](../assets/pie.png)
 
 ### Radar
 
-![Radar](assets/radar.png)
+![Radar](../assets/radar.png)
 
 ### Área Polar
 
-![Área Polar](assets/polar.png)
+![Área Polar](../assets/polar.png)
 
 ### Bolha
 
-![Bolha](assets/bubble.png)
+![Bolha](../assets/bubble.png)
 
 ## Configurações de Build
 

@@ -262,30 +262,30 @@ Sometimes you need more control over chart.js. Thats why you can access the char
   There are two versions of the Bar chart. `{Bar}` and `{HorizontalBar}`
 </p>
 
-![Bar](assets/bar.png)
+![Bar](../assets/bar.png)
 ### Line Chart
 
-![Line](assets/line.png)
+![Line](../assets/line.png)
 
 ### Doughnut
 
-![Doughnut](assets/doughnut.png)
+![Doughnut](../assets/doughnut.png)
 
 ### Pie
 
-![Pie](assets/pie.png)
+![Pie](../assets/pie.png)
 
 ### Radar
 
-![Pie](assets/radar.png)
+![Pie](../assets/radar.png)
 
 ### Polar Area
 
-![Pie](assets/polar.png)
+![Pie](../assets/polar.png)
 
 ### Bubble
 
-![Bubble](assets/bubble.png)
+![Bubble](../assets/bubble.png)
 
 ## Webpack, Browserify and dist files.
 
