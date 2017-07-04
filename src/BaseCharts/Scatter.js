@@ -69,6 +69,8 @@ export default Vue.extend({
     }
   },
   beforeDestroy () {
-    this._chart.destroy()
+    if (this._chart) {
+      this._chart.destroy()
+    }
   }
 })
