@@ -1,5 +1,34 @@
 # Change Log
 
+## [v2.7.0](https://github.com/apertureless/vue-chartjs/tree/v2.7.0) (2017-07-04)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.5...v2.7.0)
+
+**Closed issues:**
+
+- Reactive Data Tutorial [\#132](https://github.com/apertureless/vue-chartjs/issues/132)
+- Using inline plugins [\#130](https://github.com/apertureless/vue-chartjs/issues/130)
+- Scatter Chart [\#129](https://github.com/apertureless/vue-chartjs/issues/129)
+- Generating Chart after clicking submit button [\#128](https://github.com/apertureless/vue-chartjs/issues/128)
+- Ticks not working with reactive props [\#127](https://github.com/apertureless/vue-chartjs/issues/127)
+- Error in callback for watcher "chartData": "TypeError: Cannot read property 'data' of undefined" [\#126](https://github.com/apertureless/vue-chartjs/issues/126)
+- Passing the data from vue to chartjs [\#125](https://github.com/apertureless/vue-chartjs/issues/125)
+- Combination of Bar and Line Chart  [\#123](https://github.com/apertureless/vue-chartjs/issues/123)
+- Reactive data example not working [\#122](https://github.com/apertureless/vue-chartjs/issues/122)
+- vue-chartjs height was 0 when i set v-show [\#120](https://github.com/apertureless/vue-chartjs/issues/120)
+- Bar chart, barPercentage in X axis [\#119](https://github.com/apertureless/vue-chartjs/issues/119)
+- update event not firing on data change [\#118](https://github.com/apertureless/vue-chartjs/issues/118)
+
+**Merged pull requests:**
+
+- ✅ Update tests for addPlugin method [\#140](https://github.com/apertureless/vue-chartjs/pull/140) ([apertureless](https://github.com/apertureless))
+- Fix beforeDestory when renderChart was not called [\#139](https://github.com/apertureless/vue-chartjs/pull/139) ([ZhangYiJiang](https://github.com/ZhangYiJiang))
+- Add support for inline plugins [\#137](https://github.com/apertureless/vue-chartjs/pull/137) ([kurbar](https://github.com/kurbar))
+- Feature/scatter chart [\#136](https://github.com/apertureless/vue-chartjs/pull/136) ([apertureless](https://github.com/apertureless))
+- 🐛 Fix \#122 reactive mixin [\#135](https://github.com/apertureless/vue-chartjs/pull/135) ([apertureless](https://github.com/apertureless))
+- 📝 Add resources & tutorials to docs [\#133](https://github.com/apertureless/vue-chartjs/pull/133) ([apertureless](https://github.com/apertureless))
+- fix a typo in an example [\#131](https://github.com/apertureless/vue-chartjs/pull/131) ([JobV](https://github.com/JobV))
+- Update README [\#121](https://github.com/apertureless/vue-chartjs/pull/121) ([stoykostanchev](https://github.com/stoykostanchev))
+
 ## [v2.6.5](https://github.com/apertureless/vue-chartjs/tree/v2.6.5) (2017-06-10)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.4...v2.6.5)
 
