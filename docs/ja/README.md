@@ -264,30 +264,30 @@ export default Line.extend({
   棒グラフには `{Bar}` と `{HorizontalBar}` の2つのバージョンがあります。
 </p>
 
-![Bar](assets/bar.png)
+![Bar](../assets/bar.png)
 ### 折れ線グラフ
 
-![Line](assets/line.png)
+![Line](../assets/line.png)
 
 ### ドーナツチャート
 
-![Doughnut](assets/doughnut.png)
+![Doughnut](../assets/doughnut.png)
 
 ### パイチャート
 
-![Pie](assets/pie.png)
+![Pie](../assets/pie.png)
 
 ### レーダーチャート
 
-![Pie](assets/radar.png)
+![Pie](../assets/radar.png)
 
 ### 鶏頭図
 
-![Pie](assets/polar.png)
+![Pie](../assets/polar.png)
 
 ### バブルチャート
 
-![Bubble](assets/bubble.png)
+![Bubble](../assets/bubble.png)
 
 
 ## ビルド方法の違い
