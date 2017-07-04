@@ -255,6 +255,26 @@ export default Line.extend({
 
 Sometimes you need more control over chart.js. Thats why you can access the chart.js instance over `this._chart`
 
+## Inline plugins
+
+In Chart.js you can define global and inline plugins. Global plugins are working without problems with `vue-chartjs` like in the [chart.js docs](http://www.chartjs.org/docs/latest/developers/plugins.html) described.
+
+If you want to add inline plugins, `vue-chartjs` exposes a helper method called `addPlugin()`
+You should call `addPlugin()` before the `renderChart()` method.
+
+### Example
+
+```javascript
+mounted () {
+  this.addPlugin({
+    id: 'my-plugin',
+    beforeInit: function (chart) {
+      ....
+    }
+  })
+}
+```
+
 ## Available Charts
 
 ### Bar Chart
