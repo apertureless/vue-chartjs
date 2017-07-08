@@ -59,7 +59,6 @@ export default Vue.extend({
           plugins: this.plugins
         }
       )
-      this._chart.generateLegend()
     }
   },
   beforeDestroy () {
