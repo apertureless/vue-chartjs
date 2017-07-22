@@ -3,7 +3,6 @@ import Scatter from '../BaseCharts/Scatter'
 export default Scatter.extend({
   mounted () {
     this.renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [{
         label: 'Scatter Dataset 1',
         fill: false,
