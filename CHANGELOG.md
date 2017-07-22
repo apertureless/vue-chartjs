@@ -1,5 +1,35 @@
 # Change Log
 
+## [v2.7.2](https://github.com/apertureless/vue-chartjs/tree/v2.7.2) (2017-07-22)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.7.1...v2.7.2)
+
+**Closed issues:**
+
+- Accessibility - Add unique titles to frames [\#150](https://github.com/apertureless/vue-chartjs/issues/150)
+- update\(\) not refreshing chart [\#148](https://github.com/apertureless/vue-chartjs/issues/148)
+- Custome label y axis [\#147](https://github.com/apertureless/vue-chartjs/issues/147)
+- Access specific points on the canvas and labels for styling [\#146](https://github.com/apertureless/vue-chartjs/issues/146)
+- legendCallback\(\) doesn't render a custom legend [\#144](https://github.com/apertureless/vue-chartjs/issues/144)
+- where can i get the demo sources code? thanks [\#143](https://github.com/apertureless/vue-chartjs/issues/143)
+- Props not works as expected, updating of value doesn't work [\#138](https://github.com/apertureless/vue-chartjs/issues/138)
+
+**Merged pull requests:**
+
+- ⬆️ Update dependency vue to 2.4.2 [\#154](https://github.com/apertureless/vue-chartjs/pull/154) ([apertureless](https://github.com/apertureless))
+- Remove useless labels [\#153](https://github.com/apertureless/vue-chartjs/pull/153) ([clarkdo](https://github.com/clarkdo))
+- :pencil2: Remove generateLegend\(\)  from initialization codes [\#145](https://github.com/apertureless/vue-chartjs/pull/145) ([k-rumi](https://github.com/k-rumi))
+
+## [v2.7.1](https://github.com/apertureless/vue-chartjs/tree/v2.7.1) (2017-07-05)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.7.0...v2.7.1)
+
+**Closed issues:**
+
+- Default backgroundColor needed [\#142](https://github.com/apertureless/vue-chartjs/issues/142)
+
+**Merged pull requests:**
+
+- Fix links to images in translated documents [\#141](https://github.com/apertureless/vue-chartjs/pull/141) ([k-rumi](https://github.com/k-rumi))
+
 ## [v2.7.0](https://github.com/apertureless/vue-chartjs/tree/v2.7.0) (2017-07-04)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.5...v2.7.0)
 
