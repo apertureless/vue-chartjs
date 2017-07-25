@@ -29,7 +29,7 @@
 
 After the final release of vue.js 2, you also get the v2 by default if you install vue-chartjs over npm.
 No need for the @next tag anymore. If you want the v1 you need to define the version or use the legacy tag.
-If you're looking for v1 check this [branch](https://github.com/apertureless/vue-chartjs/tree/release/1.1.3)
+If you're looking for v1 check this [branch](https://github.com/apertureless/vue-chartjs/tree/release/1.x)
 
 ## Install
 
