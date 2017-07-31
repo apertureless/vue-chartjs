@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="Chart">
-      <h1 style="text-align:center;">Barchart</h1> <button @click="increaseHeight()">Increase</button>
-      <bar-example :styles="myStyles"></bar-example>
+      <h1 style="text-align:center;">Barchart</h1>
+      <bar-example></bar-example>
     </div>
 
     <div class="Chart">
