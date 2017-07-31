@@ -5,7 +5,10 @@ import { mergeOptions } from '../helpers/options'
 export default Vue.extend({
   render: function (createElement) {
     return createElement(
-      'div',
+      'div', {
+        style: this.styles,
+        class: this.cssClasses
+      },
       [
         createElement(
           'canvas', {
@@ -33,6 +36,20 @@ export default Vue.extend({
     height: {
       default: 400,
       type: Number
+    },
+    cssClasses: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: Object,
+      default () {
+        return {
+          width: '100%',
+          height: '200%',
+          position: 'relative'
+        }
+      }
     }
   },
 

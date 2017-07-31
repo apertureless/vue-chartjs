@@ -71,7 +71,8 @@ There are some basic props defined in the BaseCharts. Because you `extend()` the
 | width | chart width |
 | height | chart height |
 | chart-id | id of the canvas |
-
+| css-classes | String with css classes for the surrounding div |
+| styles | Object with css styles for the surrounding div container |
 
 ## Examples
 
@@ -176,7 +177,8 @@ export default Line.extend({
   mixins: [reactiveProp],
   props: ['options'],
   mounted () {
-    // this.chartData is created in the mixin
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
     this.renderChart(this.chartData, this.options)
   }
 })
