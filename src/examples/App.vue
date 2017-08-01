@@ -79,7 +79,8 @@
     },
     data () {
       return {
-        dataPoints: null
+        dataPoints: null,
+        height: 20
       }
     },
     mounted () {
@@ -88,6 +89,9 @@
       }, 2000)
     },
     methods: {
+      increaseHeight () {
+        this.height += 10
+      },
       getRandomInt () {
         return Math.floor(Math.random() * (50 - 5 + 1)) + 5
       },
@@ -101,6 +105,14 @@
               data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
             }
           ]
+        }
+      }
+    },
+    computed: {
+      myStyles () {
+        return {
+          height: `${this.height}px`,
+          position: 'relative'
         }
       }
     }
