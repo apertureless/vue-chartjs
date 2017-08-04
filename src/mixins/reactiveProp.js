@@ -47,8 +47,16 @@ module.exports = {
                 }
               }
             })
-
-            chart.data.labels = newData.labels
+             
+            if (newData.hasOwnProperty('labels')) {
+              chart.data.labels = newData.labels
+            }
+            if (newData.hasOwnProperty('xLabels')) {
+              chart.data.xLabels = newData.xLabels
+            }
+            if (newData.hasOwnProperty('yLabels')) {
+              chart.data.yLabels = newData.yLabels
+            }
             chart.update()
           } else {
             chart.destroy()
