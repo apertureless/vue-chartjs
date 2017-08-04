@@ -3,7 +3,8 @@ const langs = [
   {title: 'Deutsch', path: '/de/', matchPath: /^\/de/},
   {title: '日本語', path: '/ja/', matchPath: /^\/ja/},
   {title: 'Português do Brasil', path: '/pt-br/', matchPath: /^\/pt-br/},
-  {title: '中文(简体)', path: '/zh-cn/', matchPath: /^\/zh-cn/}
+  {title: '中文(简体)', path: '/zh-cn/', matchPath: /^\/zh-cn/},
+  {title: 'Русский', path: '/ru/', matchPath: /^\/ru/}
 ]
 
 docute.init({
@@ -38,7 +39,7 @@ docute.init({
       apiKey: 'b3544f7387612693644777553675d56a',
       indexName: 'vue-chartjs',
       // algolia docsearch allows you to search with tag filter
-      tags: ['en', 'de', 'ja', 'pt-br'],
+      tags: ['en', 'de', 'ja', 'pt-br', 'ru'],
       // this plugin does require a url too
       // where docsearch fetches contents
       url: 'https://vue-chartjs.org'
