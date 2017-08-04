@@ -38,7 +38,7 @@ Simply run `yarn add vue-chartjs chart.js`
 Or if you want to use it directly in the browser add
 
 ```html
-<script src="https://unpkg.com/vue-chartjs@2.6.0/dist/vue-chartjs.full.min.js"></script>
+<script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.full.min.js"></script>
 ```
 to your scripts. See [Codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010)
 
