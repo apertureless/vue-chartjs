@@ -1,5 +1,53 @@
 # Change Log
 
+## [v2.8.2](https://github.com/apertureless/vue-chartjs/tree/v2.8.2) (2017-08-12)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.1...v2.8.2)
+
+**Closed issues:**
+
+- UNMET PEER DEPENDENCY [\#167](https://github.com/apertureless/vue-chartjs/issues/167)
+- Base Charts' height: 200% [\#164](https://github.com/apertureless/vue-chartjs/issues/164)
+
+**Merged pull requests:**
+
+- Add support for xLabels and yLabels [\#166](https://github.com/apertureless/vue-chartjs/pull/166) ([dsbert](https://github.com/dsbert))
+- Update README.md [\#165](https://github.com/apertureless/vue-chartjs/pull/165) ([mikeybeck](https://github.com/mikeybeck))
+
+## [v2.8.1](https://github.com/apertureless/vue-chartjs/tree/v2.8.1) (2017-08-05)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.0...v2.8.1)
+
+**Merged pull requests:**
+
+- Add Russian documentation [\#163](https://github.com/apertureless/vue-chartjs/pull/163) ([dood-](https://github.com/dood-))
+
+## [v2.8.0](https://github.com/apertureless/vue-chartjs/tree/v2.8.0) (2017-08-04)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v1.2.0...v2.8.0)
+
+**Closed issues:**
+
+- Update README CDN link [\#161](https://github.com/apertureless/vue-chartjs/issues/161)
+- Options being ignored [\#160](https://github.com/apertureless/vue-chartjs/issues/160)
+- Fails to dynamically change height. [\#158](https://github.com/apertureless/vue-chartjs/issues/158)
+- Chart doesn't load in bootstrap tab [\#157](https://github.com/apertureless/vue-chartjs/issues/157)
+- Add scatter chart to vue-chatjs@legacy [\#155](https://github.com/apertureless/vue-chartjs/issues/155)
+- \[Error\] Get error when $destroy is started. [\#149](https://github.com/apertureless/vue-chartjs/issues/149)
+
+**Merged pull requests:**
+
+- Feature/dynamic styles [\#162](https://github.com/apertureless/vue-chartjs/pull/162) ([apertureless](https://github.com/apertureless))
+- Add Chinese simplified docs support. [\#159](https://github.com/apertureless/vue-chartjs/pull/159) ([Mooooooon](https://github.com/Mooooooon))
+
+## [v1.2.0](https://github.com/apertureless/vue-chartjs/tree/v1.2.0) (2017-07-25)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.7.2...v1.2.0)
+
+**Closed issues:**
+
+- this.$refs doesn't seem to have expected canvas property [\#156](https://github.com/apertureless/vue-chartjs/issues/156)
+
+**Merged pull requests:**
+
+- Before destroy fix [\#152](https://github.com/apertureless/vue-chartjs/pull/152) ([DenisLapi](https://github.com/DenisLapi))
+
 ## [v2.7.2](https://github.com/apertureless/vue-chartjs/tree/v2.7.2) (2017-07-22)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.7.1...v2.7.2)
 
