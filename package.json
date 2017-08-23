@@ -57,7 +57,7 @@
     "prepublish": "yarn run lint && yarn run test && yarn run build"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash-es": "^4.17.4"
   },
   "peerDependencies": {
     "chart.js": "^2.6.0",
