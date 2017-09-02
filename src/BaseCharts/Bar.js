@@ -41,14 +41,7 @@ export default Vue.extend({
       default: ''
     },
     styles: {
-      type: Object,
-      default () {
-        return {
-          width: '100%',
-          height: '100%',
-          position: 'relative'
-        }
-      }
+      type: Object
     }
   },
   data () {
