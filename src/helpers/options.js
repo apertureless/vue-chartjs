@@ -1,5 +1,4 @@
-import merge from 'lodash.merge'
-
 export function mergeOptions (obj, src) {
-  return merge(obj, src)
+  let mutableObj = Object.assign({}, obj)
+  return Object.assign(mutableObj, src)
 }
