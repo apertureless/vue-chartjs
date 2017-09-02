@@ -1,8 +1,7 @@
-import Vue from 'vue'
 import Chart from 'chart.js'
 import { mergeOptions } from '../helpers/options'
 
-export default Vue.extend({
+export default {
   render: function (createElement) {
     return createElement(
       'div', {
@@ -90,4 +89,4 @@ export default Vue.extend({
       this._chart.destroy()
     }
   }
-})
+}
