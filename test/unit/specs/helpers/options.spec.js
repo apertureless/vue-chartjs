@@ -15,16 +15,40 @@ describe('mergeOptions.js', () => {
     c: 'c'
   }
 
+  const an = {
+    a: {
+      a: 'a'
+    },
+    b: {
+      b: 'a'
+    }
+  }
+
+  const bn = {
+    a: {
+      a: 'a'
+    },
+    b: {
+      b: 'b'
+    }
+  }
+
   it('should replace old a and b if a and b are new', () => {
-    let ab = mergeOptions(a, b)
+    const ab = mergeOptions(a, b)
     expect(ab).to.have.property('a').and.to.equal('b')
     expect(ab).to.have.property('b').and.to.equal('b')
   })
 
   it('should add c if c is new', () => {
-    let ac = mergeOptions(a, c)
+    const ac = mergeOptions(a, c)
     expect(ac).to.have.property('a').and.to.equal('a')
     expect(ac).to.have.property('b').and.to.equal('a')
     expect(ac).to.have.property('c').and.to.equal('c')
+  })
+
+  it('should replace old a and b if a and b are new in nested objects', () => {
+    const ab = mergeOptions(an, bn)
+    expect(ab).to.have.deep.property('a.a').and.to.equal('a')
+    expect(ab).to.have.deep.property('b.b').and.to.equal('b')
   })
 })
