@@ -1,5 +1,29 @@
 # Change Log
 
+## [v2.8.3](https://github.com/apertureless/vue-chartjs/tree/v2.8.3) (2017-09-06)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.2...v2.8.3)
+
+**Closed issues:**
+
+- Rounded corner for Bar chart [\#185](https://github.com/apertureless/vue-chartjs/issues/185)
+- Access canvas object from parents [\#184](https://github.com/apertureless/vue-chartjs/issues/184)
+- Issue with DonutChart in Safari [\#183](https://github.com/apertureless/vue-chartjs/issues/183)
+- Responsive Width, Fixed Height [\#180](https://github.com/apertureless/vue-chartjs/issues/180)
+- Entire Lodash Library Is Loaded!! 200kb chunk!  [\#179](https://github.com/apertureless/vue-chartjs/issues/179)
+- height changed unexpectedly after re-rendering [\#178](https://github.com/apertureless/vue-chartjs/issues/178)
+- Default height no longer working in 2.8 [\#176](https://github.com/apertureless/vue-chartjs/issues/176)
+- how to get click on point in bar chart? [\#175](https://github.com/apertureless/vue-chartjs/issues/175)
+- clean install of from npm cannot be used in gulp / browserify [\#174](https://github.com/apertureless/vue-chartjs/issues/174)
+- tooltip callbacks possible? [\#173](https://github.com/apertureless/vue-chartjs/issues/173)
+- Computed object won't populate chart [\#170](https://github.com/apertureless/vue-chartjs/issues/170)
+- Error in nextTick: "RangeError: Maximum call stack size exceeded" [\#169](https://github.com/apertureless/vue-chartjs/issues/169)
+- Standalone chartjs build \(don't include moment.js\) [\#124](https://github.com/apertureless/vue-chartjs/issues/124)
+
+**Merged pull requests:**
+
+- 🔥 Remove default styles object as it causes problems [\#187](https://github.com/apertureless/vue-chartjs/pull/187) ([apertureless](https://github.com/apertureless))
+- remvove lodash merge [\#186](https://github.com/apertureless/vue-chartjs/pull/186) ([apertureless](https://github.com/apertureless))
+
 ## [v2.8.2](https://github.com/apertureless/vue-chartjs/tree/v2.8.2) (2017-08-12)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.1...v2.8.2)
 
