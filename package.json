@@ -56,7 +56,9 @@
     "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js && webpack --progress --hide-modules --config  ./build/webpack.release.full.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.full.min.js",
     "prepublish": "yarn run lint && yarn run test && yarn run build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "deepmerge": "^1.5.1"
+  },
   "peerDependencies": {
     "chart.js": "^2.6.0",
     "vue": "^2.4.2"
