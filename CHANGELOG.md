@@ -1,5 +1,19 @@
 # Change Log
 
+## [v2.8.4](https://github.com/apertureless/vue-chartjs/tree/v2.8.4) (2017-09-08)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.3...v2.8.4)
+
+**Closed issues:**
+
+- Regression in 2.8.3 [\#190](https://github.com/apertureless/vue-chartjs/issues/190)
+- Why default Chart.js styles are overridden? [\#189](https://github.com/apertureless/vue-chartjs/issues/189)
+- Legend or other options not working in reactiveProps [\#188](https://github.com/apertureless/vue-chartjs/issues/188)
+- Changes to yAxisID property does not re-render chart [\#177](https://github.com/apertureless/vue-chartjs/issues/177)
+
+**Merged pull requests:**
+
+- Replace Object.assign with deepmerge [\#191](https://github.com/apertureless/vue-chartjs/pull/191) ([apertureless](https://github.com/apertureless))
+
 ## [v2.8.3](https://github.com/apertureless/vue-chartjs/tree/v2.8.3) (2017-09-06)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.2...v2.8.3)
 
