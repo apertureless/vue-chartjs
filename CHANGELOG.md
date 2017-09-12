@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.8.5](https://github.com/apertureless/vue-chartjs/tree/v2.8.5) (2017-09-12)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.4...v2.8.5)
+
+**Closed issues:**
+
+- TypeError: Cannot convert undefined or null to object [\#193](https://github.com/apertureless/vue-chartjs/issues/193)
+- Chart error since the addition of deepmerge in build 2.8.4 [\#192](https://github.com/apertureless/vue-chartjs/issues/192)
+
 ## [v2.8.4](https://github.com/apertureless/vue-chartjs/tree/v2.8.4) (2017-09-08)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.3...v2.8.4)
 
