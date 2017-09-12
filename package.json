@@ -57,7 +57,7 @@
     "prepublish": "yarn run lint && yarn run test && yarn run build"
   },
   "dependencies": {
-    "deepmerge": "^1.5.1"
+    "lodash.merge": "^4.6.0"
   },
   "peerDependencies": {
     "chart.js": "^2.6.0",

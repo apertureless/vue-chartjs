@@ -41,8 +41,8 @@ describe('mergeOptions.js', () => {
 
   it('should add c if c is new', () => {
     const ac = mergeOptions(a, c)
-    expect(ac).to.have.property('a').and.to.equal('a')
-    expect(ac).to.have.property('b').and.to.equal('a')
+    expect(ac).to.have.property('a').and.to.equal('b')
+    expect(ac).to.have.property('b').and.to.equal('b')
     expect(ac).to.have.property('c').and.to.equal('c')
   })
 
