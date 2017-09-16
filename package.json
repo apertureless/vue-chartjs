@@ -60,8 +60,8 @@
     "lodash.merge": "^4.6.0"
   },
   "peerDependencies": {
-    "chart.js": "^2.6.0",
-    "vue": "^2.4.2"
+    "chart.js": "^2.7.0",
+    "vue": "^2.4.4"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -73,7 +73,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-runtime": "^6.23.0",
     "chai": "^3.5.0",
-    "chart.js": "^2.6.0",
+    "chart.js": "^2.7.0",
     "chromedriver": "^2.28.0",
     "connect-history-api-fallback": "^1.1.0",
     "cross-env": "^3.2.4",
@@ -118,7 +118,7 @@
     "sinon": "^2.1.0",
     "sinon-chai": "^2.9.0",
     "url-loader": "^0.5.8",
-    "vue": "^2.4.2",
+    "vue": "^2.4.4",
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^12.2.2",
