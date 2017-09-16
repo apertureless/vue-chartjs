@@ -1,7 +1,7 @@
 import Scatter from '../BaseCharts/Scatter'
 
 export default {
-  extends: {...Scatter},
+  extends: Scatter,
   mounted () {
     this.renderChart({
       datasets: [{

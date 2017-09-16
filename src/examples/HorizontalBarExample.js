@@ -1,7 +1,7 @@
 import HorizontalBarChart from '../BaseCharts/HorizontalBar'
 
 export default {
-  extends: {...HorizontalBarChart},
+  extends: HorizontalBarChart,
   mounted () {
     this.renderChart({
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],

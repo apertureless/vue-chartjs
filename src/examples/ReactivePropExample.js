@@ -2,7 +2,7 @@ import BarChart from '../BaseCharts/Bar'
 import reactiveProp from '../mixins/reactiveProp'
 
 export default {
-  extends: {...BarChart},
+  extends: BarChart,
   mixins: [reactiveProp],
 
   mounted () {

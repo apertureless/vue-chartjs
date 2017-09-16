@@ -1,7 +1,7 @@
 import PieChart from '../BaseCharts/Pie'
 
 export default {
-  extends: {...PieChart},
+  extends: PieChart,
   mounted () {
     this.renderChart({
       labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
