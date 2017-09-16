@@ -23,7 +23,6 @@ module.exports = {
     umdNamedDefine: true
   },
   externals: {
-    'vue': 'vue',
     'chart.js': 'chart.js'
   },
   module: {
