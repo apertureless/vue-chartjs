@@ -40,7 +40,7 @@ Or if you want to use it directly in the browser add
 ```html
 <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.full.min.js"></script>
 ```
-to your scripts. See [Codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010)
+to your scripts. See [Codepen](https://codepen.io/apertureless/pen/zEvvWM)
 
 ## Explanation of Different Builds
 There are three different entry points. It depends on which build setup do you have. The dependencies are bundled or required as a peerDependency.
@@ -49,33 +49,52 @@ There are three different entry points. It depends on which build setup do you h
 - Browserify / Webpack 1
 - Webpack 2
 
-
-| Build | Chart.js | Vue.js |
+| Build | Chart.js |
 |---|---|---|
-| vue-chartjs.full.js | Bundled | Bundled |
-| vue-chartjs.full.min.js |  Bundled | Bundled  |
-| vue-chartjs.js | peerDependency | peerDependency  |
-| vue-chartjs.min.js | peerDependency  | peerDependency  |
-| es/index* |  peerDependency | peerDependency  |
+| vue-chartjs.full.js | Bundled |
+| vue-chartjs.full.min.js |  Bundled |
+| vue-chartjs.js | peerDependency |
+| vue-chartjs.min.js | peerDependency  |
+| es/index* |  peerDependency |
 
 ### Browser
-You can use `vue-chartjs` directly in the browser without any build setup. Like in this [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010). For this case, please use the `vue-chartjs.full.min.js` which is the minified version. It has Vue.js and Chart.js bundled into it. And bundled to a UMD Module. So you only need that one file.
+You can use `vue-chartjs` directly in the browser without any build setup. Like in this [codepen](https://codepen.io/apertureless/pen/zEvvWM). For this case, please use the `vue-chartjs.full.min.js` which is the minified version. It has Chart.js bundled into it. And bundled to a UMD Module. So you only need that one file.
+
+You can then simply register your component:
+
+```js
+Vue.component('line-chart', {
+  extends: VueChartJs.Line,
+  mounted () {
+    this.renderChart({
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+        {
+          label: 'Data One',
+          backgroundColor: '#f87979',
+          data: [40, 39, 10, 40, 39, 80, 40]
+        }
+      ]
+    }, {responsive: true, maintainAspectRatio: false})
+  }
+})
+```
 
 
 ### Browserify / Webpack 1
 
 If you're using Gulp, Browserify or Webpack 1 the entry is `vue-chartjs.js` which is __transpiled__ and __bundled__ UMD Module.
 
-However Vue.js and Chart.js are `peerDependencies` so you have to install them separately. In most projects you will have `Vue.js` already installed anyways. This way, you can have different versions of Vue.js and Chart.js then in this package.
+However Chart.js is a `peerDependencies` so you have to install it separately. In most projects This way, you can have different versions of Chart.js then in this package.
 
 ### Webpack 2
 If you're using Webpack 2 it will automatically use the `jsnext:main` / `module` entry point. Which is `es/index.js`
-It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way you three shaking will work.  Like in the bundled version, `Vue.js` and `Chart.js` are `peerDependencies` and need to be installed.
+It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way you three shaking will work.  Like in the bundled version, `Chart.js` is a `peerDependencies` and need to be installed.
 
 
 ## How to use
 
-You need to import the base chart class and extend it. This gives much more flexibility when working with different data. You can pass the data over props or vue-resource.
+You need to import the component and then either use `extends` or `mixins` and add it.
 
 You can import the whole package or each module individual.
 
@@ -90,7 +109,8 @@ Just create your own component.
 // CommitChart.js
 import { Bar } from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart({
@@ -104,7 +124,7 @@ export default Bar.extend({
       ]
     })
   }
-})
+}
 ```
 
 Then simply import and use your own extended component and use it like a normal vue component
@@ -118,15 +138,16 @@ import CommitChart from 'path/to/component/CommitChart'
 You can overwrite the default chart options. Just pass the options object as a second paramenter to the render method
 
 ```javascript
-// MonthlyIncome.js
+// MonthlyIncome.vue
 import { Line } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   props: ['data', 'options'],
   mounted () {
     this.renderChart(this.data, this.options)
   }
-})
+}
 ```
 
 Use it in your vue app
@@ -163,13 +184,14 @@ However keep in mind the limitations of vue and javascript for mutations on arra
 // MonthlyIncome.js
 import { Line, mixins } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [mixins.reactiveProp],
   props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 
 ```
 
@@ -181,26 +203,28 @@ Some ways to import them:
 // Load complete module with all charts
 import VueCharts from 'vue-chartjs'
 
-export default VueCharts.Line.extend({
+export default {
+  extends: VueCharts.Line,
   mixins: [VueCharts.mixins.reactiveProp],
   props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 ```javascript
 // Load speperate modules
 import { Line, mixins } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [mixins.reactiveProp],
   props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 ```javascript
@@ -208,13 +232,14 @@ export default Line.extend({
 import { Line, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [reactiveProp],
   props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 ## Available Charts
