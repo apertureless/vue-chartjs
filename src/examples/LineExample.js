@@ -1,7 +1,7 @@
-import LineChart from '../BaseCharts/Line'
+import Line from '../BaseCharts/Line'
 
 export default {
-  extends: LineChart,
+  extends: Line,
   mounted () {
     this.renderChart({
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],

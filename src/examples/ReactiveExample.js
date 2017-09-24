@@ -1,8 +1,8 @@
-import BarChart from '../BaseCharts/Bar'
+import Bar from '../BaseCharts/Bar'
 import reactiveData from '../mixins/reactiveData'
 
 export default {
-  extends: BarChart,
+  extends: Bar,
   mixins: [reactiveData],
   data () {
     return {

@@ -1,7 +1,7 @@
-import BubbleChart from '../BaseCharts/Bubble'
+import Bubble from '../BaseCharts/Bubble'
 
 export default {
-  extends: BubbleChart,
+  extends: Bubble,
   mounted () {
     this.renderChart({
       datasets: [
