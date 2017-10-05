@@ -1,5 +1,5 @@
 ---
-search: fr
+search: fr-fr
 ---
 
 # vue-chartjs
