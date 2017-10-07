@@ -17,7 +17,7 @@ search: ru
 
 # vue-chartjs
 
-**vue-chartjs** обертка для [Chart.js](https://github.com/chartjs/Chart.js) в vue. Вы можете с легкостью создавать многоразовые компоненты диаграмм.
+**vue-chartjs** это обертка для [Chart.js](https://github.com/chartjs/Chart.js) в vue. Вы можете с легкостью создавать многоразовые компоненты диаграмм.
 
 ## Демо & Документация
 
@@ -31,7 +31,7 @@ search: ru
 - v2 later
   - Vue.js 2.x
 
-После филнального выпуска vue.js 2, вы получите v2 по умолчанию, если установите vue-chartjs через npm.
+После финального выпуска vue.js 2, вы получите v2 по умолчанию, если установите vue-chartjs через npm.
 Больше нет необходимости в @next теге. Если вы нуждаетесь в v1, вам необходимо указать версию или использовать legacy тег.
 Если вы ищите v1, проверьте эту [ветку](https://github.com/apertureless/vue-chartjs/tree/release/1.x).
 
@@ -39,12 +39,12 @@ search: ru
 
 Просто выполните `yarn add vue-chartjs chart.js`
 
-В случаи если вы хотите использовать библиотеку прямо в браузере, добавьте
+В случае если вы хотите использовать библиотеку прямо в браузере, добавьте
 
 ```html
 <script src="https://unpkg.com/vue-chartjs@2.6.0/dist/vue-chartjs.full.min.js"></script>
 ```
-в ваши скрипты. Смотрите [Codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010)
+в ваши скрипты. Смотрите пример на [Codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010)
 
 ## Описание различий сборок
 
@@ -64,14 +64,14 @@ search: ru
 | es/index* |  peerDependency | peerDependency  |
 
 ### Браузер
-Вы можете использовать `vue-chartjs` прямо в браузере без установки каких-либо сборок. Пример на [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010). В этом случаи, пожалуйста, используйте `vue-chartjs.full.min.js`. Это минифицированноая версиея библиотеки, содержащая Vue.js и Chart.js в себе, с возможностью подключения при помощи UMD Module. Таким образом, вам необходим лишь один файл.
+Вы можете использовать `vue-chartjs` прямо в браузере без установки каких-либо сборок. Пример на [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010). В этом случае, пожалуйста, используйте `vue-chartjs.full.min.js`. Это минифицированная версия библиотеки, содержащая Vue.js и Chart.js в себе, с возможностью подключения при помощи UMD Module. Таким образом, вам необходим лишь один файл.
 
 
 ### Browserify / Webpack 1
 
 Если вы используете Gulp, Browserify или Webpack 1, входная точка находится в `vue-chartjs.js`. Она __транслируется__ и __собирается__ при помощи UMD Module.
 
-Однако Vue.js и Chart.js является `peerDependencies`, поэтому вы можете устанавливать их отдельно. В большинстве проектов вы в любом случаи будете иметь установленный `Vue.js`. В этом случаи, вы можете иметь различные версии Vue.js и Chart.js.
+Однако Vue.js и Chart.js являются `peerDependencies`, поэтому вы можете устанавливать их отдельно. В большинстве проектов вы в любом случае будете иметь установленный `Vue.js`. В этом случае, вы можете иметь различные версии Vue.js и Chart.js.
 
 ### Webpack 2
 Если вы используете Webpack 2, он будет автоматически использовать `jsnext:main` / `module` в качестве входной точки, которая расположена в `es/index.js`.
@@ -155,7 +155,7 @@ export default {
 ## Реактивность
 
 Chart.js не обновляет и не перерисовывает диаграмму при передаче новых данных.
-Впрочем, вы можете реализовать это самостоятельно или использовав один из двух подключенных миксинов:
+Впрочем, вы можете реализовать это самостоятельно или использовать один из двух подключенных миксинов:
 
 - `reactiveProp`
 - `reactiveData`
@@ -163,7 +163,7 @@ Chart.js не обновляет и не перерисовывает диагр
 Оба включены в `mixins` модуль.
 
 Миксины автоматически создают `chartData` в виде prop или data. И добавляют watcher. Если данные были измененны, график обновится.
-Но помните про ограничение vue и javascript на изменений массивов и объектов. Больше информации можно получить [здесь](http://vue-chartjs.org/#/home?id=reactive-data)
+Но помните про ограничения vue и javascript на изменение массивов и объектов. Больше информации можно получить [здесь](http://vue-chartjs.org/#/home?id=reactive-data)
 
 ```javascript
 // MonthlyIncome.js
@@ -279,7 +279,7 @@ npm run e2e
 npm test
 ```
 
-Для детальных объяснений того, как это работает, перейдите в [руководство](http://vuejs-templates.github.io/webpack/) и [документацию для vue-loader](http://vuejs.github.io/vue-loader).
+Для получения детальных объяснений того, как это работает, перейдите в [руководство](http://vuejs-templates.github.io/webpack/) и [документацию для vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Contributing
 
