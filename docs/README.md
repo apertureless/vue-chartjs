@@ -3,26 +3,26 @@ search: en
 ---
 
 # vue-chartjs
-**vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in vue. You can easily create reuseable chart components.
+**vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in Vue. You can easily create reusable chart components.
 
 ## Introduction
-`vue-chartjs` let you use chart.js without much hassle inside vue. It's perfect for people who need simple charts up and running as fast as possible.
+`vue-chartjs` lets you use Chart.js without much hassle inside Vue. It's perfect for people who need simple charts up and running as fast as possible.
 
-It abstracts the basic logic but exposes the chart.js object to give you the most possible flexibility.
+It abstracts the basic logic but exposes the Chart.js object to give you maximal flexibility.
 
 ## Installation
 If you are working with Vue.js 2+ simple run:
 
 `yarn add vue-chartjs chart.js`
 
-If you are using vue 1.x please use the `legacy` tag. However the vue 1 version is not maintained anymore.
+If you are using vue 1.x please use the `legacy` tag. However the Vue 1 version is not maintained anymore.
 
 `yarn add vue-chartjs@legacy`
 
 ## Quick Start
 
-You need to import the base chart and extend it. This gives much more flexibility when working with different data.
-You can encapsulate your components and use props to pass data or you can directly imput them inside the component. However this way, your component is not reuseable.
+You need to import the base chart and extend it. This gives more flexibility when working with different data.
+You can encapsulate your components and use props to pass data or you can input them directly inside the component. However your component is not reusable this way.
 
 You can import the whole package or each module individual.
 
@@ -38,7 +38,7 @@ export default Bar.extend({
 })
 ```
 
-You can pass the `renderChart()` method, two arguments:
+You can pass two arguments to the `renderChart()` method:
 
 - Data object
 - Options object
@@ -80,7 +80,7 @@ Here are some exmaples
 
 ### Chart with props
 
-You can create the data and options props to pass data to the chart.
+You can create data and options props to pass data to the chart.
 
 ```javascript
 // LineChart.js
@@ -100,7 +100,7 @@ After you add your component you can use it:
  <line-chart :data="{your data object}" :options="{your options}"></line-chart>
 ```
 
-If you want to overwrite the width and height:
+If you want to overwrite width and height:
 
 ```html
  <line-chart
@@ -113,7 +113,7 @@ If you want to overwrite the width and height:
 ```
 
 <p class="warning">
-  Please keep in mind, that you have to set `responsive: false` to be able to set a fix `width` and `height`.
+  Please keep in mind, that you have to set `responsive: false` to be able to set a fixed `width` and `height`.
 </p>
 
 ### Chart with local data
@@ -142,21 +142,20 @@ export default Bar.extend({
 })
 ```
 
-### Reusebale Components
+### Reusable Components
 
-If you want to keep your chart components reuseable, it's the best to add a wrapper to them. This way the chart component is only responsable for the pure data representation and the wrapper component for the logic behind it. There are many different usecases and it is different if you're running a Single Page Application or integrate it in for example laravel.
+If you want to keep your chart components reusable, it's the best to add a wrapper to them. This way the chart component is only responsible for the pure data representation and the wrapper component for the logic behind it. There are many different use cases and it is different if you're running a single page application or integrate it in for example laravel.
 
 ## Reactive Data
 
-Chart.js does not provide a live update if you change the datasets. However `vue-chartjs` provides two mixins to achive this.
+Chart.js does not provide a live update if you change the datasets. However `vue-chartjs` provides two mixins to achieve this.
 
 - `reactiveProp`
 - `reactiveData`
 
-Both mixins to actually the same. Most of the time you will use `reactiveProp`. It extends the logic of your chart component and automatically creates a prop names `chartData` and add a `vue watch` on this prop. On data change, it will either call `update()` if only the data inside the datasets has changed or `renderChart()` if new datasets were added.
+Both mixins do actually achieve the same. Most of the time you will use `reactiveProp`. It extends the logic of your chart component and automatically creates a prop named `chartData` and adds a `vue watch` on this prop. On data change, it will either call `update()` if only the data inside the datasets has changed or `renderChart()` if new datasets were added.
 
-`reactiveData` simply creates a local chartData variable which is not a prop! And add a watcher.
-This is only usefull, if you need single purpose charts and make an API call inside your chart component.
+`reactiveData` simply creates a local chartData variable which is not a prop! and adds a watcher. This is only useful, if you need single purpose charts and make an API call inside your chart component.
 
 ```javascript
 data () {
@@ -242,7 +241,7 @@ export default Line.extend({
 ```
 
 <p class="warning">
-  ⚠ Attention: If you mutate your data in a parent component and pass it to your child chart component keep in mind the javascript limitiations.
+  ⚠ Attention: If you mutate your data in a parent component and pass it to your child chart component keep the javascript limitations in mind.
   More info in this [issue#44](https://github.com/apertureless/vue-chartjs/issues/44)
 </p>
 
@@ -255,11 +254,11 @@ export default Line.extend({
 
 ## Chart.js object
 
-Sometimes you need more control over chart.js. Thats why you can access the chart.js instance over `this._chart`
+Sometimes you need more control over Chart.js. That's why you can access the Chart.js instance over `this._chart`.
 
 ## Inline plugins
 
-In Chart.js you can define global and inline plugins. Global plugins are working without problems with `vue-chartjs` like in the [chart.js docs](http://www.chartjs.org/docs/latest/developers/plugins.html) described.
+In Chart.js you can define global and inline plugins. Global plugins are working without problems with `vue-chartjs` like in the [Chart.js docs](http://www.chartjs.org/docs/latest/developers/plugins.html) described.
 
 If you want to add inline plugins, `vue-chartjs` exposes a helper method called `addPlugin()`
 You should call `addPlugin()` before the `renderChart()` method.
@@ -281,7 +280,7 @@ mounted () {
 
 ### Bar Chart
 <p class="tip">
-  There are two versions of the Bar chart. `{Bar}` and `{HorizontalBar}`
+  There are two versions of the Bar chart: `{Bar}` and `{HorizontalBar}`
 </p>
 
 ![Bar](assets/bar.png)
@@ -311,13 +310,13 @@ mounted () {
 
 ### Scatter
 
-This chart has a different data structure then the others. Right now the reactive Mixins are not working for this chart type.
+This chart has a different data structure then the others. Right now the reactive mixins are not working for this chart type.
 
 ![Scatter](assets/scatter.png)
 
 
 ## Explanation of Different Builds
-There are three different entry points. It depends on which build setup do you have. The dependencies are bundled or required as a peerDependency.
+There are three different entry points. It depends on your build setup. The dependencies are bundled or required as a peerDependency.
 
 - Browser
 - Browserify / Webpack 1
@@ -333,22 +332,21 @@ There are three different entry points. It depends on which build setup do you h
 | es/index* |  peerDependency | peerDependency  |
 
 ### Browser
-You can use `vue-chartjs` directly in the browser without any build setup. Like in this [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010). For this case, please use the `vue-chartjs.full.min.js` which is the minified version. It has Vue.js and Chart.js bundled into it. And bundled to a UMD Module. So you only need that one file.
+You can use `vue-chartjs` directly in the browser without any build setup, like in this [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010). In this case, please use the `vue-chartjs.full.min.js` which is the minified version. It has Vue.js and Chart.js bundled into it and is bundled to a UMD module, so you only need that one file.
 
 
 ### Browserify / Webpack 1
 
 If you're using Gulp, Browserify or Webpack 1 the entry is `vue-chartjs.js` which is __transpiled__ and __bundled__ UMD Module.
 
-However Vue.js and Chart.js are `peerDependencies` so you have to install them seperately. In most projects you will have `Vue.js` already installed anyways. This way, you can have different versions of Vue.js and Chart.js then in this package.
+However Vue.js and Chart.js are `peerDependencies` so you have to install them separately. In most projects you will have Vue.js already installed anyways. This way, you can have different versions of Vue.js and Chart.js then in this package.
 
 ### Webpack 2
-If you're using Webpack 2 it will automatically use the `jsnext:main` / `module` entry point. Which is `es/index.js`
-It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way your tree shaking will work.  Like in the bundled version, `Vue.js` and `Chart.js` are `peerDependencies` and need to be installed.
+If you're using Webpack 2 it will automatically use the `jsnext:main` / `module` entry point, which is `es/index.js`. It is a __transpiled__ es version of the source and is not __bundled__ to a module. This way your tree shaking will work.  Like in the bundled version, Vue.js and Chart.js are `peerDependencies` and need to be installed.
 
 ## Resources
 
-You can find here some Resources like tutorials on how to use `vue-chartjs`
+You can find here some resources like tutorials on how to use `vue-chartjs`
 
 - [Using vue-chartjs with WordPress](https://medium.com/@apertureless/wordpress-vue-and-chart-js-6b61493e289f)
 - [Create stunning Charts with Vue and Chart.js](https://hackernoon.com/creating-stunning-charts-with-vue-js-and-chart-js-28af584adc0a)
