@@ -1,0 +1,5 @@
+exclude_paths:
+- "dist/"
+- "test/"
+- "es/"
+- "src/examples/"
