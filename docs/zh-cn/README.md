@@ -257,7 +257,7 @@ export default {
 
 ## Chart.js 对象
 
-有时你需要更多的调整 chart.js。你可以访问 `this._chart` 实例。
+有时你需要更多的调整 chart.js。你可以访问 `this.$data._chart` 实例。
 
 ## 内联插件
 

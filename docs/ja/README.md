@@ -259,7 +259,7 @@ export default {
 
 ## Chart.js オブジェクト
 
-場合によっては、chart.jsをより詳細に制御する必要があります。Chart.jsインスタンスには `this._chart` を使ってアクセスします。
+場合によっては、chart.jsをより詳細に制御する必要があります。Chart.jsインスタンスには `this.$data._chart` を使ってアクセスします。
 
 ## 利用可能なグラフ
 

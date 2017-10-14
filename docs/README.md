@@ -258,7 +258,7 @@ export default {
 
 ## Chart.js object
 
-Sometimes you need more control over Chart.js. That's why you can access the Chart.js instance over `this._chart`.
+Sometimes you need more control over Chart.js. That's why you can access the Chart.js instance over `this.$data._chart`.
 
 ## Inline plugins
 
