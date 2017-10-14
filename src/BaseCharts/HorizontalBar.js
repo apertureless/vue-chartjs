@@ -47,6 +47,7 @@ export default {
 
   data () {
     return {
+      _chart: null,
       defaultOptions: {
         scales: {
           yAxes: [{
@@ -76,7 +77,7 @@ export default {
     },
     renderChart (data, options, type) {
       let chartOptions = mergeOptions(this.defaultOptions, options)
-      this._chart = new Chart(
+      this.$data._chart = new Chart(
         this.$refs.canvas.getContext('2d'), {
           type: 'horizontalBar',
           data: data,
@@ -87,8 +88,8 @@ export default {
     }
   },
   beforeDestroy () {
-    if (this._chart) {
-      this._chart.destroy()
+    if (this.$data._chart) {
+      this.$data._chart.destroy()
     }
   }
 }
