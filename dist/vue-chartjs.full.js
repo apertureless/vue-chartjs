@@ -57,7 +57,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -70,43 +70,43 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _Bar2 = _interopRequireDefault(_Bar);
 
-	var _HorizontalBar = __webpack_require__(199);
+	var _HorizontalBar = __webpack_require__(178);
 
 	var _HorizontalBar2 = _interopRequireDefault(_HorizontalBar);
 
-	var _Doughnut = __webpack_require__(200);
+	var _Doughnut = __webpack_require__(179);
 
 	var _Doughnut2 = _interopRequireDefault(_Doughnut);
 
-	var _Line = __webpack_require__(201);
+	var _Line = __webpack_require__(180);
 
 	var _Line2 = _interopRequireDefault(_Line);
 
-	var _Pie = __webpack_require__(202);
+	var _Pie = __webpack_require__(181);
 
 	var _Pie2 = _interopRequireDefault(_Pie);
 
-	var _PolarArea = __webpack_require__(203);
+	var _PolarArea = __webpack_require__(182);
 
 	var _PolarArea2 = _interopRequireDefault(_PolarArea);
 
-	var _Radar = __webpack_require__(204);
+	var _Radar = __webpack_require__(183);
 
 	var _Radar2 = _interopRequireDefault(_Radar);
 
-	var _Bubble = __webpack_require__(205);
+	var _Bubble = __webpack_require__(184);
 
 	var _Bubble2 = _interopRequireDefault(_Bubble);
 
-	var _Scatter = __webpack_require__(206);
+	var _Scatter = __webpack_require__(185);
 
 	var _Scatter2 = _interopRequireDefault(_Scatter);
 
-	var _index = __webpack_require__(207);
+	var _index = __webpack_require__(186);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _package = __webpack_require__(216);
+	var _package = __webpack_require__(226);
 
 	var _package2 = _interopRequireDefault(_package);
 
@@ -139,9 +139,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Scatter = _Scatter2.default;
 	exports.mixins = _index2.default;
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -153,7 +153,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(161);
+	var _options = __webpack_require__(176);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -194,6 +194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  data: function data() {
 	    return {
+	      _chart: null,
 	      defaultOptions: {
 	        scales: {
 	          yAxes: [{
@@ -224,7 +225,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    renderChart: function renderChart(data, options) {
 	      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-	      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
+	      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
 	        type: 'bar',
 	        data: data,
 	        options: chartOptions,
@@ -233,87 +234,136 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  beforeDestroy: function beforeDestroy() {
-	    if (this._chart) {
-	      this._chart.destroy();
+	    if (this.$data._chart) {
+	      this.$data._chart.destroy();
 	    }
 	  }
 	};
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * @namespace Chart
 	 */
 	var Chart = __webpack_require__(3)();
 
-	__webpack_require__(4)(Chart);
-	__webpack_require__(10)(Chart);
-	__webpack_require__(12)(Chart);
-	__webpack_require__(13)(Chart);
-	__webpack_require__(14)(Chart);
-	__webpack_require__(15)(Chart);
-	__webpack_require__(16)(Chart);
-	__webpack_require__(17)(Chart);
-	__webpack_require__(18)(Chart);
-	__webpack_require__(19)(Chart);
-	__webpack_require__(20)(Chart);
-	__webpack_require__(21)(Chart);
-	__webpack_require__(22)(Chart);
-	__webpack_require__(23)(Chart);
+	Chart.helpers = __webpack_require__(5);
 
-	__webpack_require__(24)(Chart);
-	__webpack_require__(25)(Chart);
+	// @todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!
+	__webpack_require__(10)(Chart);
+
+	Chart.defaults = __webpack_require__(4);
+	Chart.Element = __webpack_require__(16);
+	Chart.elements = __webpack_require__(17);
+	Chart.Interaction = __webpack_require__(22);
+	Chart.platform = __webpack_require__(23);
+
 	__webpack_require__(26)(Chart);
 	__webpack_require__(27)(Chart);
-
 	__webpack_require__(28)(Chart);
 	__webpack_require__(29)(Chart);
 	__webpack_require__(30)(Chart);
 	__webpack_require__(31)(Chart);
 	__webpack_require__(32)(Chart);
-	__webpack_require__(33)(Chart);
+	__webpack_require__(34)(Chart);
+
+	__webpack_require__(35)(Chart);
+	__webpack_require__(36)(Chart);
+	__webpack_require__(37)(Chart);
+	__webpack_require__(38)(Chart);
+	__webpack_require__(39)(Chart);
+	__webpack_require__(40)(Chart);
 
 	// Controllers must be loaded after elements
 	// See Chart.core.datasetController.dataElementType
-	__webpack_require__(145)(Chart);
-	__webpack_require__(146)(Chart);
-	__webpack_require__(147)(Chart);
-	__webpack_require__(148)(Chart);
-	__webpack_require__(149)(Chart);
-	__webpack_require__(150)(Chart);
+	__webpack_require__(159)(Chart);
+	__webpack_require__(160)(Chart);
+	__webpack_require__(161)(Chart);
+	__webpack_require__(162)(Chart);
+	__webpack_require__(163)(Chart);
+	__webpack_require__(164)(Chart);
+	__webpack_require__(165)(Chart);
 
-	__webpack_require__(151)(Chart);
-	__webpack_require__(152)(Chart);
-	__webpack_require__(153)(Chart);
-	__webpack_require__(154)(Chart);
-	__webpack_require__(155)(Chart);
-	__webpack_require__(156)(Chart);
-	__webpack_require__(157)(Chart);
+	__webpack_require__(166)(Chart);
+	__webpack_require__(167)(Chart);
+	__webpack_require__(168)(Chart);
+	__webpack_require__(169)(Chart);
+	__webpack_require__(170)(Chart);
+	__webpack_require__(171)(Chart);
+	__webpack_require__(172)(Chart);
 
 	// Loading built-it plugins
 	var plugins = [];
 
 	plugins.push(
-	    __webpack_require__(158)(Chart),
-	    __webpack_require__(159)(Chart),
-	    __webpack_require__(160)(Chart)
+		__webpack_require__(173)(Chart),
+		__webpack_require__(174)(Chart),
+		__webpack_require__(175)(Chart)
 	);
 
 	Chart.plugins.register(plugins);
+
+	Chart.platform.initialize();
 
 	module.exports = Chart;
 	if (typeof window !== 'undefined') {
 		window.Chart = Chart;
 	}
 
+	// DEPRECATIONS
 
-/***/ },
+	/**
+	 * Provided for backward compatibility, use Chart.helpers.canvas instead.
+	 * @namespace Chart.canvasHelpers
+	 * @deprecated since version 2.6.0
+	 * @todo remove at version 3
+	 * @private
+	 */
+	Chart.canvasHelpers = Chart.helpers.canvas;
+
+
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var defaults = __webpack_require__(4);
+
+	defaults._set('global', {
+		responsive: true,
+		responsiveAnimationDuration: 0,
+		maintainAspectRatio: true,
+		events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
+		hover: {
+			onHover: null,
+			mode: 'nearest',
+			intersect: true,
+			animationDuration: 400
+		},
+		onClick: null,
+		defaultColor: 'rgba(0,0,0,0.1)',
+		defaultFontColor: '#666',
+		defaultFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+		defaultFontSize: 12,
+		defaultFontStyle: 'normal',
+		showLines: true,
+
+		// Element defaults defined in element extensions
+		elements: {},
+
+		// Layout options such as padding
+		layout: {
+			padding: {
+				top: 0,
+				right: 0,
+				bottom: 0,
+				left: 0
+			}
+		}
+	});
 
 	module.exports = function() {
 
@@ -323,104 +373,939 @@ return /******/ (function(modules) { // webpackBootstrap
 			return this;
 		};
 
-		// Globally expose the defaults to allow for user updating/changing
-		Chart.defaults = {
-			global: {
-				responsive: true,
-				responsiveAnimationDuration: 0,
-				maintainAspectRatio: true,
-				events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
-				hover: {
-					onHover: null,
-					mode: 'nearest',
-					intersect: true,
-					animationDuration: 400
-				},
-				onClick: null,
-				defaultColor: 'rgba(0,0,0,0.1)',
-				defaultFontColor: '#666',
-				defaultFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-				defaultFontSize: 12,
-				defaultFontStyle: 'normal',
-				showLines: true,
-
-				// Element defaults defined in element extensions
-				elements: {},
-
-				// Legend callback string
-				legendCallback: function(chart) {
-					var text = [];
-					text.push('<ul class="' + chart.id + '-legend">');
-					for (var i = 0; i < chart.data.datasets.length; i++) {
-						text.push('<li><span style="background-color:' + chart.data.datasets[i].backgroundColor + '"></span>');
-						if (chart.data.datasets[i].label) {
-							text.push(chart.data.datasets[i].label);
-						}
-						text.push('</li>');
-					}
-					text.push('</ul>');
-
-					return text.join('');
-				}
-			}
-		};
-
 		Chart.Chart = Chart;
 
 		return Chart;
 	};
 
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var helpers = __webpack_require__(5);
+
+	module.exports = {
+		/**
+		 * @private
+		 */
+		_set: function(scope, values) {
+			return helpers.merge(this[scope] || (this[scope] = {}), values);
+		}
+	};
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(6);
+	module.exports.easing = __webpack_require__(7);
+	module.exports.canvas = __webpack_require__(8);
+	module.exports.options = __webpack_require__(9);
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	/**
+	 * @namespace Chart.helpers
+	 */
+	var helpers = {
+		/**
+		 * An empty function that can be used, for example, for optional callback.
+		 */
+		noop: function() {},
+
+		/**
+		 * Returns a unique id, sequentially generated from a global variable.
+		 * @returns {Number}
+		 * @function
+		 */
+		uid: (function() {
+			var id = 0;
+			return function() {
+				return id++;
+			};
+		}()),
+
+		/**
+		 * Returns true if `value` is neither null nor undefined, else returns false.
+		 * @param {*} value - The value to test.
+		 * @returns {Boolean}
+		 * @since 2.7.0
+		 */
+		isNullOrUndef: function(value) {
+			return value === null || typeof value === 'undefined';
+		},
+
+		/**
+		 * Returns true if `value` is an array, else returns false.
+		 * @param {*} value - The value to test.
+		 * @returns {Boolean}
+		 * @function
+		 */
+		isArray: Array.isArray ? Array.isArray : function(value) {
+			return Object.prototype.toString.call(value) === '[object Array]';
+		},
+
+		/**
+		 * Returns true if `value` is an object (excluding null), else returns false.
+		 * @param {*} value - The value to test.
+		 * @returns {Boolean}
+		 * @since 2.7.0
+		 */
+		isObject: function(value) {
+			return value !== null && Object.prototype.toString.call(value) === '[object Object]';
+		},
+
+		/**
+		 * Returns `value` if defined, else returns `defaultValue`.
+		 * @param {*} value - The value to return if defined.
+		 * @param {*} defaultValue - The value to return if `value` is undefined.
+		 * @returns {*}
+		 */
+		valueOrDefault: function(value, defaultValue) {
+			return typeof value === 'undefined' ? defaultValue : value;
+		},
+
+		/**
+		 * Returns value at the given `index` in array if defined, else returns `defaultValue`.
+		 * @param {Array} value - The array to lookup for value at `index`.
+		 * @param {Number} index - The index in `value` to lookup for value.
+		 * @param {*} defaultValue - The value to return if `value[index]` is undefined.
+		 * @returns {*}
+		 */
+		valueAtIndexOrDefault: function(value, index, defaultValue) {
+			return helpers.valueOrDefault(helpers.isArray(value) ? value[index] : value, defaultValue);
+		},
+
+		/**
+		 * Calls `fn` with the given `args` in the scope defined by `thisArg` and returns the
+		 * value returned by `fn`. If `fn` is not a function, this method returns undefined.
+		 * @param {Function} fn - The function to call.
+		 * @param {Array|undefined|null} args - The arguments with which `fn` should be called.
+		 * @param {Object} [thisArg] - The value of `this` provided for the call to `fn`.
+		 * @returns {*}
+		 */
+		callback: function(fn, args, thisArg) {
+			if (fn && typeof fn.call === 'function') {
+				return fn.apply(thisArg, args);
+			}
+		},
+
+		/**
+		 * Note(SB) for performance sake, this method should only be used when loopable type
+		 * is unknown or in none intensive code (not called often and small loopable). Else
+		 * it's preferable to use a regular for() loop and save extra function calls.
+		 * @param {Object|Array} loopable - The object or array to be iterated.
+		 * @param {Function} fn - The function to call for each item.
+		 * @param {Object} [thisArg] - The value of `this` provided for the call to `fn`.
+		 * @param {Boolean} [reverse] - If true, iterates backward on the loopable.
+		 */
+		each: function(loopable, fn, thisArg, reverse) {
+			var i, len, keys;
+			if (helpers.isArray(loopable)) {
+				len = loopable.length;
+				if (reverse) {
+					for (i = len - 1; i >= 0; i--) {
+						fn.call(thisArg, loopable[i], i);
+					}
+				} else {
+					for (i = 0; i < len; i++) {
+						fn.call(thisArg, loopable[i], i);
+					}
+				}
+			} else if (helpers.isObject(loopable)) {
+				keys = Object.keys(loopable);
+				len = keys.length;
+				for (i = 0; i < len; i++) {
+					fn.call(thisArg, loopable[keys[i]], keys[i]);
+				}
+			}
+		},
+
+		/**
+		 * Returns true if the `a0` and `a1` arrays have the same content, else returns false.
+		 * @see http://stackoverflow.com/a/14853974
+		 * @param {Array} a0 - The array to compare
+		 * @param {Array} a1 - The array to compare
+		 * @returns {Boolean}
+		 */
+		arrayEquals: function(a0, a1) {
+			var i, ilen, v0, v1;
+
+			if (!a0 || !a1 || a0.length !== a1.length) {
+				return false;
+			}
+
+			for (i = 0, ilen = a0.length; i < ilen; ++i) {
+				v0 = a0[i];
+				v1 = a1[i];
+
+				if (v0 instanceof Array && v1 instanceof Array) {
+					if (!helpers.arrayEquals(v0, v1)) {
+						return false;
+					}
+				} else if (v0 !== v1) {
+					// NOTE: two different object instances will never be equal: {x:20} != {x:20}
+					return false;
+				}
+			}
+
+			return true;
+		},
+
+		/**
+		 * Returns a deep copy of `source` without keeping references on objects and arrays.
+		 * @param {*} source - The value to clone.
+		 * @returns {*}
+		 */
+		clone: function(source) {
+			if (helpers.isArray(source)) {
+				return source.map(helpers.clone);
+			}
+
+			if (helpers.isObject(source)) {
+				var target = {};
+				var keys = Object.keys(source);
+				var klen = keys.length;
+				var k = 0;
+
+				for (; k < klen; ++k) {
+					target[keys[k]] = helpers.clone(source[keys[k]]);
+				}
+
+				return target;
+			}
+
+			return source;
+		},
+
+		/**
+		 * The default merger when Chart.helpers.merge is called without merger option.
+		 * Note(SB): this method is also used by configMerge and scaleMerge as fallback.
+		 * @private
+		 */
+		_merger: function(key, target, source, options) {
+			var tval = target[key];
+			var sval = source[key];
+
+			if (helpers.isObject(tval) && helpers.isObject(sval)) {
+				helpers.merge(tval, sval, options);
+			} else {
+				target[key] = helpers.clone(sval);
+			}
+		},
+
+		/**
+		 * Merges source[key] in target[key] only if target[key] is undefined.
+		 * @private
+		 */
+		_mergerIf: function(key, target, source) {
+			var tval = target[key];
+			var sval = source[key];
+
+			if (helpers.isObject(tval) && helpers.isObject(sval)) {
+				helpers.mergeIf(tval, sval);
+			} else if (!target.hasOwnProperty(key)) {
+				target[key] = helpers.clone(sval);
+			}
+		},
+
+		/**
+		 * Recursively deep copies `source` properties into `target` with the given `options`.
+		 * IMPORTANT: `target` is not cloned and will be updated with `source` properties.
+		 * @param {Object} target - The target object in which all sources are merged into.
+		 * @param {Object|Array(Object)} source - Object(s) to merge into `target`.
+		 * @param {Object} [options] - Merging options:
+		 * @param {Function} [options.merger] - The merge method (key, target, source, options)
+		 * @returns {Object} The `target` object.
+		 */
+		merge: function(target, source, options) {
+			var sources = helpers.isArray(source) ? source : [source];
+			var ilen = sources.length;
+			var merge, i, keys, klen, k;
+
+			if (!helpers.isObject(target)) {
+				return target;
+			}
+
+			options = options || {};
+			merge = options.merger || helpers._merger;
+
+			for (i = 0; i < ilen; ++i) {
+				source = sources[i];
+				if (!helpers.isObject(source)) {
+					continue;
+				}
+
+				keys = Object.keys(source);
+				for (k = 0, klen = keys.length; k < klen; ++k) {
+					merge(keys[k], target, source, options);
+				}
+			}
+
+			return target;
+		},
+
+		/**
+		 * Recursively deep copies `source` properties into `target` *only* if not defined in target.
+		 * IMPORTANT: `target` is not cloned and will be updated with `source` properties.
+		 * @param {Object} target - The target object in which all sources are merged into.
+		 * @param {Object|Array(Object)} source - Object(s) to merge into `target`.
+		 * @returns {Object} The `target` object.
+		 */
+		mergeIf: function(target, source) {
+			return helpers.merge(target, source, {merger: helpers._mergerIf});
+		}
+	};
+
+	module.exports = helpers;
+
+	// DEPRECATIONS
+
+	/**
+	 * Provided for backward compatibility, use Chart.helpers.callback instead.
+	 * @function Chart.helpers.callCallback
+	 * @deprecated since version 2.6.0
+	 * @todo remove at version 3
+	 * @private
+	 */
+	helpers.callCallback = helpers.callback;
+
+	/**
+	 * Provided for backward compatibility, use Array.prototype.indexOf instead.
+	 * Array.prototype.indexOf compatibility: Chrome, Opera, Safari, FF1.5+, IE9+
+	 * @function Chart.helpers.indexOf
+	 * @deprecated since version 2.7.0
+	 * @todo remove at version 3
+	 * @private
+	 */
+	helpers.indexOf = function(array, item, fromIndex) {
+		return Array.prototype.indexOf.call(array, item, fromIndex);
+	};
+
+	/**
+	 * Provided for backward compatibility, use Chart.helpers.valueOrDefault instead.
+	 * @function Chart.helpers.getValueOrDefault
+	 * @deprecated since version 2.7.0
+	 * @todo remove at version 3
+	 * @private
+	 */
+	helpers.getValueOrDefault = helpers.valueOrDefault;
+
+	/**
+	 * Provided for backward compatibility, use Chart.helpers.valueAtIndexOrDefault instead.
+	 * @function Chart.helpers.getValueAtIndexOrDefault
+	 * @deprecated since version 2.7.0
+	 * @todo remove at version 3
+	 * @private
+	 */
+	helpers.getValueAtIndexOrDefault = helpers.valueAtIndexOrDefault;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var helpers = __webpack_require__(6);
+
+	/**
+	 * Easing functions adapted from Robert Penner's easing equations.
+	 * @namespace Chart.helpers.easingEffects
+	 * @see http://www.robertpenner.com/easing/
+	 */
+	var effects = {
+		linear: function(t) {
+			return t;
+		},
+
+		easeInQuad: function(t) {
+			return t * t;
+		},
+
+		easeOutQuad: function(t) {
+			return -t * (t - 2);
+		},
+
+		easeInOutQuad: function(t) {
+			if ((t /= 0.5) < 1) {
+				return 0.5 * t * t;
+			}
+			return -0.5 * ((--t) * (t - 2) - 1);
+		},
+
+		easeInCubic: function(t) {
+			return t * t * t;
+		},
+
+		easeOutCubic: function(t) {
+			return (t = t - 1) * t * t + 1;
+		},
+
+		easeInOutCubic: function(t) {
+			if ((t /= 0.5) < 1) {
+				return 0.5 * t * t * t;
+			}
+			return 0.5 * ((t -= 2) * t * t + 2);
+		},
+
+		easeInQuart: function(t) {
+			return t * t * t * t;
+		},
+
+		easeOutQuart: function(t) {
+			return -((t = t - 1) * t * t * t - 1);
+		},
+
+		easeInOutQuart: function(t) {
+			if ((t /= 0.5) < 1) {
+				return 0.5 * t * t * t * t;
+			}
+			return -0.5 * ((t -= 2) * t * t * t - 2);
+		},
+
+		easeInQuint: function(t) {
+			return t * t * t * t * t;
+		},
+
+		easeOutQuint: function(t) {
+			return (t = t - 1) * t * t * t * t + 1;
+		},
+
+		easeInOutQuint: function(t) {
+			if ((t /= 0.5) < 1) {
+				return 0.5 * t * t * t * t * t;
+			}
+			return 0.5 * ((t -= 2) * t * t * t * t + 2);
+		},
+
+		easeInSine: function(t) {
+			return -Math.cos(t * (Math.PI / 2)) + 1;
+		},
+
+		easeOutSine: function(t) {
+			return Math.sin(t * (Math.PI / 2));
+		},
+
+		easeInOutSine: function(t) {
+			return -0.5 * (Math.cos(Math.PI * t) - 1);
+		},
+
+		easeInExpo: function(t) {
+			return (t === 0) ? 0 : Math.pow(2, 10 * (t - 1));
+		},
+
+		easeOutExpo: function(t) {
+			return (t === 1) ? 1 : -Math.pow(2, -10 * t) + 1;
+		},
+
+		easeInOutExpo: function(t) {
+			if (t === 0) {
+				return 0;
+			}
+			if (t === 1) {
+				return 1;
+			}
+			if ((t /= 0.5) < 1) {
+				return 0.5 * Math.pow(2, 10 * (t - 1));
+			}
+			return 0.5 * (-Math.pow(2, -10 * --t) + 2);
+		},
+
+		easeInCirc: function(t) {
+			if (t >= 1) {
+				return t;
+			}
+			return -(Math.sqrt(1 - t * t) - 1);
+		},
+
+		easeOutCirc: function(t) {
+			return Math.sqrt(1 - (t = t - 1) * t);
+		},
+
+		easeInOutCirc: function(t) {
+			if ((t /= 0.5) < 1) {
+				return -0.5 * (Math.sqrt(1 - t * t) - 1);
+			}
+			return 0.5 * (Math.sqrt(1 - (t -= 2) * t) + 1);
+		},
+
+		easeInElastic: function(t) {
+			var s = 1.70158;
+			var p = 0;
+			var a = 1;
+			if (t === 0) {
+				return 0;
+			}
+			if (t === 1) {
+				return 1;
+			}
+			if (!p) {
+				p = 0.3;
+			}
+			if (a < 1) {
+				a = 1;
+				s = p / 4;
+			} else {
+				s = p / (2 * Math.PI) * Math.asin(1 / a);
+			}
+			return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
+		},
+
+		easeOutElastic: function(t) {
+			var s = 1.70158;
+			var p = 0;
+			var a = 1;
+			if (t === 0) {
+				return 0;
+			}
+			if (t === 1) {
+				return 1;
+			}
+			if (!p) {
+				p = 0.3;
+			}
+			if (a < 1) {
+				a = 1;
+				s = p / 4;
+			} else {
+				s = p / (2 * Math.PI) * Math.asin(1 / a);
+			}
+			return a * Math.pow(2, -10 * t) * Math.sin((t - s) * (2 * Math.PI) / p) + 1;
+		},
+
+		easeInOutElastic: function(t) {
+			var s = 1.70158;
+			var p = 0;
+			var a = 1;
+			if (t === 0) {
+				return 0;
+			}
+			if ((t /= 0.5) === 2) {
+				return 1;
+			}
+			if (!p) {
+				p = 0.45;
+			}
+			if (a < 1) {
+				a = 1;
+				s = p / 4;
+			} else {
+				s = p / (2 * Math.PI) * Math.asin(1 / a);
+			}
+			if (t < 1) {
+				return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
+			}
+			return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p) * 0.5 + 1;
+		},
+		easeInBack: function(t) {
+			var s = 1.70158;
+			return t * t * ((s + 1) * t - s);
+		},
+
+		easeOutBack: function(t) {
+			var s = 1.70158;
+			return (t = t - 1) * t * ((s + 1) * t + s) + 1;
+		},
+
+		easeInOutBack: function(t) {
+			var s = 1.70158;
+			if ((t /= 0.5) < 1) {
+				return 0.5 * (t * t * (((s *= (1.525)) + 1) * t - s));
+			}
+			return 0.5 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
+		},
+
+		easeInBounce: function(t) {
+			return 1 - effects.easeOutBounce(1 - t);
+		},
+
+		easeOutBounce: function(t) {
+			if (t < (1 / 2.75)) {
+				return 7.5625 * t * t;
+			}
+			if (t < (2 / 2.75)) {
+				return 7.5625 * (t -= (1.5 / 2.75)) * t + 0.75;
+			}
+			if (t < (2.5 / 2.75)) {
+				return 7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375;
+			}
+			return 7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375;
+		},
+
+		easeInOutBounce: function(t) {
+			if (t < 0.5) {
+				return effects.easeInBounce(t * 2) * 0.5;
+			}
+			return effects.easeOutBounce(t * 2 - 1) * 0.5 + 0.5;
+		}
+	};
+
+	module.exports = {
+		effects: effects
+	};
+
+	// DEPRECATIONS
+
+	/**
+	 * Provided for backward compatibility, use Chart.helpers.easing.effects instead.
+	 * @function Chart.helpers.easingEffects
+	 * @deprecated since version 2.7.0
+	 * @todo remove at version 3
+	 * @private
+	 */
+	helpers.easingEffects = effects;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var helpers = __webpack_require__(6);
+
+	/**
+	 * @namespace Chart.helpers.canvas
+	 */
+	var exports = module.exports = {
+		/**
+		 * Clears the entire canvas associated to the given `chart`.
+		 * @param {Chart} chart - The chart for which to clear the canvas.
+		 */
+		clear: function(chart) {
+			chart.ctx.clearRect(0, 0, chart.width, chart.height);
+		},
+
+		/**
+		 * Creates a "path" for a rectangle with rounded corners at position (x, y) with a
+		 * given size (width, height) and the same `radius` for all corners.
+		 * @param {CanvasRenderingContext2D} ctx - The canvas 2D Context.
+		 * @param {Number} x - The x axis of the coordinate for the rectangle starting point.
+		 * @param {Number} y - The y axis of the coordinate for the rectangle starting point.
+		 * @param {Number} width - The rectangle's width.
+		 * @param {Number} height - The rectangle's height.
+		 * @param {Number} radius - The rounded amount (in pixels) for the four corners.
+		 * @todo handle `radius` as top-left, top-right, bottom-right, bottom-left array/object?
+		 */
+		roundedRect: function(ctx, x, y, width, height, radius) {
+			if (radius) {
+				var rx = Math.min(radius, width / 2);
+				var ry = Math.min(radius, height / 2);
+
+				ctx.moveTo(x + rx, y);
+				ctx.lineTo(x + width - rx, y);
+				ctx.quadraticCurveTo(x + width, y, x + width, y + ry);
+				ctx.lineTo(x + width, y + height - ry);
+				ctx.quadraticCurveTo(x + width, y + height, x + width - rx, y + height);
+				ctx.lineTo(x + rx, y + height);
+				ctx.quadraticCurveTo(x, y + height, x, y + height - ry);
+				ctx.lineTo(x, y + ry);
+				ctx.quadraticCurveTo(x, y, x + rx, y);
+			} else {
+				ctx.rect(x, y, width, height);
+			}
+		},
+
+		drawPoint: function(ctx, style, radius, x, y) {
+			var type, edgeLength, xOffset, yOffset, height, size;
+
+			if (typeof style === 'object') {
+				type = style.toString();
+				if (type === '[object HTMLImageElement]' || type === '[object HTMLCanvasElement]') {
+					ctx.drawImage(style, x - style.width / 2, y - style.height / 2, style.width, style.height);
+					return;
+				}
+			}
+
+			if (isNaN(radius) || radius <= 0) {
+				return;
+			}
+
+			switch (style) {
+			// Default includes circle
+			default:
+				ctx.beginPath();
+				ctx.arc(x, y, radius, 0, Math.PI * 2);
+				ctx.closePath();
+				ctx.fill();
+				break;
+			case 'triangle':
+				ctx.beginPath();
+				edgeLength = 3 * radius / Math.sqrt(3);
+				height = edgeLength * Math.sqrt(3) / 2;
+				ctx.moveTo(x - edgeLength / 2, y + height / 3);
+				ctx.lineTo(x + edgeLength / 2, y + height / 3);
+				ctx.lineTo(x, y - 2 * height / 3);
+				ctx.closePath();
+				ctx.fill();
+				break;
+			case 'rect':
+				size = 1 / Math.SQRT2 * radius;
+				ctx.beginPath();
+				ctx.fillRect(x - size, y - size, 2 * size, 2 * size);
+				ctx.strokeRect(x - size, y - size, 2 * size, 2 * size);
+				break;
+			case 'rectRounded':
+				var offset = radius / Math.SQRT2;
+				var leftX = x - offset;
+				var topY = y - offset;
+				var sideSize = Math.SQRT2 * radius;
+				ctx.beginPath();
+				this.roundedRect(ctx, leftX, topY, sideSize, sideSize, radius / 2);
+				ctx.closePath();
+				ctx.fill();
+				break;
+			case 'rectRot':
+				size = 1 / Math.SQRT2 * radius;
+				ctx.beginPath();
+				ctx.moveTo(x - size, y);
+				ctx.lineTo(x, y + size);
+				ctx.lineTo(x + size, y);
+				ctx.lineTo(x, y - size);
+				ctx.closePath();
+				ctx.fill();
+				break;
+			case 'cross':
+				ctx.beginPath();
+				ctx.moveTo(x, y + radius);
+				ctx.lineTo(x, y - radius);
+				ctx.moveTo(x - radius, y);
+				ctx.lineTo(x + radius, y);
+				ctx.closePath();
+				break;
+			case 'crossRot':
+				ctx.beginPath();
+				xOffset = Math.cos(Math.PI / 4) * radius;
+				yOffset = Math.sin(Math.PI / 4) * radius;
+				ctx.moveTo(x - xOffset, y - yOffset);
+				ctx.lineTo(x + xOffset, y + yOffset);
+				ctx.moveTo(x - xOffset, y + yOffset);
+				ctx.lineTo(x + xOffset, y - yOffset);
+				ctx.closePath();
+				break;
+			case 'star':
+				ctx.beginPath();
+				ctx.moveTo(x, y + radius);
+				ctx.lineTo(x, y - radius);
+				ctx.moveTo(x - radius, y);
+				ctx.lineTo(x + radius, y);
+				xOffset = Math.cos(Math.PI / 4) * radius;
+				yOffset = Math.sin(Math.PI / 4) * radius;
+				ctx.moveTo(x - xOffset, y - yOffset);
+				ctx.lineTo(x + xOffset, y + yOffset);
+				ctx.moveTo(x - xOffset, y + yOffset);
+				ctx.lineTo(x + xOffset, y - yOffset);
+				ctx.closePath();
+				break;
+			case 'line':
+				ctx.beginPath();
+				ctx.moveTo(x - radius, y);
+				ctx.lineTo(x + radius, y);
+				ctx.closePath();
+				break;
+			case 'dash':
+				ctx.beginPath();
+				ctx.moveTo(x, y);
+				ctx.lineTo(x + radius, y);
+				ctx.closePath();
+				break;
+			}
+
+			ctx.stroke();
+		},
+
+		clipArea: function(ctx, area) {
+			ctx.save();
+			ctx.beginPath();
+			ctx.rect(area.left, area.top, area.right - area.left, area.bottom - area.top);
+			ctx.clip();
+		},
+
+		unclipArea: function(ctx) {
+			ctx.restore();
+		},
+
+		lineTo: function(ctx, previous, target, flip) {
+			if (target.steppedLine) {
+				if ((target.steppedLine === 'after' && !flip) || (target.steppedLine !== 'after' && flip)) {
+					ctx.lineTo(previous.x, target.y);
+				} else {
+					ctx.lineTo(target.x, previous.y);
+				}
+				ctx.lineTo(target.x, target.y);
+				return;
+			}
+
+			if (!target.tension) {
+				ctx.lineTo(target.x, target.y);
+				return;
+			}
+
+			ctx.bezierCurveTo(
+				flip ? previous.controlPointPreviousX : previous.controlPointNextX,
+				flip ? previous.controlPointPreviousY : previous.controlPointNextY,
+				flip ? target.controlPointNextX : target.controlPointPreviousX,
+				flip ? target.controlPointNextY : target.controlPointPreviousY,
+				target.x,
+				target.y);
+		}
+	};
+
+	// DEPRECATIONS
+
+	/**
+	 * Provided for backward compatibility, use Chart.helpers.canvas.clear instead.
+	 * @namespace Chart.helpers.clear
+	 * @deprecated since version 2.7.0
+	 * @todo remove at version 3
+	 * @private
+	 */
+	helpers.clear = exports.clear;
+
+	/**
+	 * Provided for backward compatibility, use Chart.helpers.canvas.roundedRect instead.
+	 * @namespace Chart.helpers.drawRoundedRectangle
+	 * @deprecated since version 2.7.0
+	 * @todo remove at version 3
+	 * @private
+	 */
+	helpers.drawRoundedRectangle = function(ctx) {
+		ctx.beginPath();
+		exports.roundedRect.apply(exports, arguments);
+		ctx.closePath();
+	};
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var helpers = __webpack_require__(6);
+
+	/**
+	 * @alias Chart.helpers.options
+	 * @namespace
+	 */
+	module.exports = {
+		/**
+		 * Converts the given line height `value` in pixels for a specific font `size`.
+		 * @param {Number|String} value - The lineHeight to parse (eg. 1.6, '14px', '75%', '1.6em').
+		 * @param {Number} size - The font size (in pixels) used to resolve relative `value`.
+		 * @returns {Number} The effective line height in pixels (size * 1.2 if value is invalid).
+		 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+		 * @since 2.7.0
+		 */
+		toLineHeight: function(value, size) {
+			var matches = ('' + value).match(/^(normal|(\d+(?:\.\d+)?)(px|em|%)?)$/);
+			if (!matches || matches[1] === 'normal') {
+				return size * 1.2;
+			}
+
+			value = +matches[2];
+
+			switch (matches[3]) {
+			case 'px':
+				return value;
+			case '%':
+				value /= 100;
+				break;
+			default:
+				break;
+			}
+
+			return size * value;
+		},
+
+		/**
+		 * Converts the given value into a padding object with pre-computed width/height.
+		 * @param {Number|Object} value - If a number, set the value to all TRBL component,
+		 *  else, if and object, use defined properties and sets undefined ones to 0.
+		 * @returns {Object} The padding values (top, right, bottom, left, width, height)
+		 * @since 2.7.0
+		 */
+		toPadding: function(value) {
+			var t, r, b, l;
+
+			if (helpers.isObject(value)) {
+				t = +value.top || 0;
+				r = +value.right || 0;
+				b = +value.bottom || 0;
+				l = +value.left || 0;
+			} else {
+				t = r = b = l = +value || 0;
+			}
+
+			return {
+				top: t,
+				right: r,
+				bottom: b,
+				left: l,
+				height: t + b,
+				width: l + r
+			};
+		},
+
+		/**
+		 * Evaluates the given `inputs` sequentially and returns the first defined value.
+		 * @param {Array[]} inputs - An array of values, falling back to the last value.
+		 * @param {Object} [context] - If defined and the current value is a function, the value
+		 * is called with `context` as first argument and the result becomes the new input.
+		 * @param {Number} [index] - If defined and the current value is an array, the value
+		 * at `index` become the new input.
+		 * @since 2.7.0
+		 */
+		resolve: function(inputs, context, index) {
+			var i, ilen, value;
+
+			for (i = 0, ilen = inputs.length; i < ilen; ++i) {
+				value = inputs[i];
+				if (value === undefined) {
+					continue;
+				}
+				if (context !== undefined && typeof value === 'function') {
+					value = value(context);
+				}
+				if (index !== undefined && helpers.isArray(value)) {
+					value = value[index];
+				}
+				if (value !== undefined) {
+					return value;
+				}
+			}
+		}
+	};
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* global window: false */
 	/* global document: false */
 	'use strict';
 
-	var color = __webpack_require__(5);
+	var color = __webpack_require__(11);
+	var defaults = __webpack_require__(4);
+	var helpers = __webpack_require__(5);
 
 	module.exports = function(Chart) {
-		// Global Chart helpers object for utility methods and classes
-		var helpers = Chart.helpers = {};
 
 		// -- Basic js utility methods
-		helpers.each = function(loopable, callback, self, reverse) {
-			// Check to see if null or undefined firstly.
-			var i, len;
-			if (helpers.isArray(loopable)) {
-				len = loopable.length;
-				if (reverse) {
-					for (i = len - 1; i >= 0; i--) {
-						callback.call(self, loopable[i], i);
-					}
-				} else {
-					for (i = 0; i < len; i++) {
-						callback.call(self, loopable[i], i);
-					}
-				}
-			} else if (typeof loopable === 'object') {
-				var keys = Object.keys(loopable);
-				len = keys.length;
-				for (i = 0; i < len; i++) {
-					callback.call(self, loopable[keys[i]], keys[i]);
-				}
-			}
-		};
-		helpers.clone = function(obj) {
-			var objClone = {};
-			helpers.each(obj, function(value, key) {
-				if (helpers.isArray(value)) {
-					objClone[key] = value.slice(0);
-				} else if (typeof value === 'object' && value !== null) {
-					objClone[key] = helpers.clone(value);
-				} else {
-					objClone[key] = value;
-				}
-			});
-			return objClone;
-		};
+
 		helpers.extend = function(base) {
 			var setFn = function(value, key) {
 				base[key] = value;
@@ -430,102 +1315,61 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 			return base;
 		};
-		// Need a special merge function to chart configs since they are now grouped
-		helpers.configMerge = function(_base) {
-			var base = helpers.clone(_base);
-			helpers.each(Array.prototype.slice.call(arguments, 1), function(extension) {
-				helpers.each(extension, function(value, key) {
-					var baseHasProperty = base.hasOwnProperty(key);
-					var baseVal = baseHasProperty ? base[key] : {};
+
+		helpers.configMerge = function(/* objects ... */) {
+			return helpers.merge(helpers.clone(arguments[0]), [].slice.call(arguments, 1), {
+				merger: function(key, target, source, options) {
+					var tval = target[key] || {};
+					var sval = source[key];
 
 					if (key === 'scales') {
-						// Scale config merging is complex. Add our own function here for that
-						base[key] = helpers.scaleMerge(baseVal, value);
+						// scale config merging is complex. Add our own function here for that
+						target[key] = helpers.scaleMerge(tval, sval);
 					} else if (key === 'scale') {
-						// Used in polar area & radar charts since there is only one scale
-						base[key] = helpers.configMerge(baseVal, Chart.scaleService.getScaleDefaults(value.type), value);
-					} else if (baseHasProperty
-							&& typeof baseVal === 'object'
-							&& !helpers.isArray(baseVal)
-							&& baseVal !== null
-							&& typeof value === 'object'
-							&& !helpers.isArray(value)) {
-						// If we are overwriting an object with an object, do a merge of the properties.
-						base[key] = helpers.configMerge(baseVal, value);
+						// used in polar area & radar charts since there is only one scale
+						target[key] = helpers.merge(tval, [Chart.scaleService.getScaleDefaults(sval.type), sval]);
 					} else {
-						// can just overwrite the value in this case
-						base[key] = value;
+						helpers._merger(key, target, source, options);
 					}
-				});
+				}
 			});
-
-			return base;
 		};
-		helpers.scaleMerge = function(_base, extension) {
-			var base = helpers.clone(_base);
 
-			helpers.each(extension, function(value, key) {
-				if (key === 'xAxes' || key === 'yAxes') {
-					// These properties are arrays of items
-					if (base.hasOwnProperty(key)) {
-						helpers.each(value, function(valueObj, index) {
-							var axisType = helpers.getValueOrDefault(valueObj.type, key === 'xAxes' ? 'category' : 'linear');
-							var axisDefaults = Chart.scaleService.getScaleDefaults(axisType);
-							if (index >= base[key].length || !base[key][index].type) {
-								base[key].push(helpers.configMerge(axisDefaults, valueObj));
-							} else if (valueObj.type && valueObj.type !== base[key][index].type) {
-								// Type changed. Bring in the new defaults before we bring in valueObj so that valueObj can override the correct scale defaults
-								base[key][index] = helpers.configMerge(base[key][index], axisDefaults, valueObj);
-							} else {
-								// Type is the same
-								base[key][index] = helpers.configMerge(base[key][index], valueObj);
+		helpers.scaleMerge = function(/* objects ... */) {
+			return helpers.merge(helpers.clone(arguments[0]), [].slice.call(arguments, 1), {
+				merger: function(key, target, source, options) {
+					if (key === 'xAxes' || key === 'yAxes') {
+						var slen = source[key].length;
+						var i, type, scale;
+
+						if (!target[key]) {
+							target[key] = [];
+						}
+
+						for (i = 0; i < slen; ++i) {
+							scale = source[key][i];
+							type = helpers.valueOrDefault(scale.type, key === 'xAxes' ? 'category' : 'linear');
+
+							if (i >= target[key].length) {
+								target[key].push({});
 							}
-						});
-					} else {
-						base[key] = [];
-						helpers.each(value, function(valueObj) {
-							var axisType = helpers.getValueOrDefault(valueObj.type, key === 'xAxes' ? 'category' : 'linear');
-							base[key].push(helpers.configMerge(Chart.scaleService.getScaleDefaults(axisType), valueObj));
-						});
-					}
-				} else if (base.hasOwnProperty(key) && typeof base[key] === 'object' && base[key] !== null && typeof value === 'object') {
-					// If we are overwriting an object with an object, do a merge of the properties.
-					base[key] = helpers.configMerge(base[key], value);
 
-				} else {
-					// can just overwrite the value in this case
-					base[key] = value;
+							if (!target[key][i].type || (scale.type && scale.type !== target[key][i].type)) {
+								// new/untyped scale or type changed: let's apply the new defaults
+								// then merge source scale to correctly overwrite the defaults.
+								helpers.merge(target[key][i], [Chart.scaleService.getScaleDefaults(type), scale]);
+							} else {
+								// scales type are the same
+								helpers.merge(target[key][i], scale);
+							}
+						}
+					} else {
+						helpers._merger(key, target, source, options);
+					}
 				}
 			});
-
-			return base;
 		};
-		helpers.getValueAtIndexOrDefault = function(value, index, defaultValue) {
-			if (value === undefined || value === null) {
-				return defaultValue;
-			}
 
-			if (helpers.isArray(value)) {
-				return index < value.length ? value[index] : defaultValue;
-			}
-
-			return value;
-		};
-		helpers.getValueOrDefault = function(value, defaultValue) {
-			return value === undefined ? defaultValue : value;
-		};
-		helpers.indexOf = Array.prototype.indexOf?
-			function(array, item) {
-				return array.indexOf(item);
-			}:
-			function(array, item) {
-				for (var i = 0, ilen = array.length; i < ilen; ++i) {
-					if (array[i] === item) {
-						return i;
-					}
-				}
-				return -1;
-			};
 		helpers.where = function(collection, filterCallback) {
 			if (helpers.isArray(collection) && Array.prototype.filter) {
 				return collection.filter(filterCallback);
@@ -540,12 +1384,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			return filtered;
 		};
-		helpers.findIndex = Array.prototype.findIndex?
+		helpers.findIndex = Array.prototype.findIndex ?
 			function(array, callback, scope) {
 				return array.findIndex(callback, scope);
 			} :
 			function(array, callback, scope) {
-				scope = scope === undefined? array : scope;
+				scope = scope === undefined ? array : scope;
 				for (var i = 0, ilen = array.length; i < ilen; ++i) {
 					if (callback.call(scope, array[i], i, array)) {
 						return i;
@@ -555,7 +1399,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			};
 		helpers.findNextWhere = function(arrayToSearch, filterCallback, startIndex) {
 			// Default to start of the array
-			if (startIndex === undefined || startIndex === null) {
+			if (helpers.isNullOrUndef(startIndex)) {
 				startIndex = -1;
 			}
 			for (var i = startIndex + 1; i < arrayToSearch.length; i++) {
@@ -567,7 +1411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 		helpers.findPreviousWhere = function(arrayToSearch, filterCallback, startIndex) {
 			// Default to end of the array
-			if (startIndex === undefined || startIndex === null) {
+			if (helpers.isNullOrUndef(startIndex)) {
 				startIndex = arrayToSearch.length;
 			}
 			for (var i = startIndex - 1; i >= 0; i--) {
@@ -600,13 +1444,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			return ChartElement;
 		};
-		helpers.noop = function() {};
-		helpers.uid = (function() {
-			var id = 0;
-			return function() {
-				return id++;
-			};
-		}());
 		// -- Math methods
 		helpers.isNumber = function(n) {
 			return !isNaN(parseFloat(n)) && isFinite(n);
@@ -634,7 +1471,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				return min;
 			}, Number.POSITIVE_INFINITY);
 		};
-		helpers.sign = Math.sign?
+		helpers.sign = Math.sign ?
 			function(x) {
 				return Math.sign(x);
 			} :
@@ -645,7 +1482,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 				return x > 0 ? 1 : -1;
 			};
-		helpers.log10 = Math.log10?
+		helpers.log10 = Math.log10 ?
 			function(x) {
 				return Math.log10(x);
 			} :
@@ -660,9 +1497,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 		// Gets the angle from vertical upright to the point about a centre.
 		helpers.getAngleFromPoint = function(centrePoint, anglePoint) {
-			var distanceFromXCenter = anglePoint.x - centrePoint.x,
-				distanceFromYCenter = anglePoint.y - centrePoint.y,
-				radialDistanceFromCenter = Math.sqrt(distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
+			var distanceFromXCenter = anglePoint.x - centrePoint.x;
+			var distanceFromYCenter = anglePoint.y - centrePoint.y;
+			var radialDistanceFromCenter = Math.sqrt(distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
 
 			var angle = Math.atan2(distanceFromYCenter, distanceFromXCenter);
 
@@ -687,9 +1524,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			// This function must also respect "skipped" points
 
-			var previous = firstPoint.skip ? middlePoint : firstPoint,
-				current = middlePoint,
-				next = afterPoint.skip ? middlePoint : afterPoint;
+			var previous = firstPoint.skip ? middlePoint : firstPoint;
+			var current = middlePoint;
+			var next = afterPoint.skip ? middlePoint : afterPoint;
 
 			var d01 = Math.sqrt(Math.pow(current.x - previous.x, 2) + Math.pow(current.y - previous.y, 2));
 			var d12 = Math.sqrt(Math.pow(next.x - current.x, 2) + Math.pow(next.y - current.y, 2));
@@ -847,203 +1684,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			return niceFraction * Math.pow(10, exponent);
 		};
-		// Easing functions adapted from Robert Penner's easing equations
-		// http://www.robertpenner.com/easing/
-		var easingEffects = helpers.easingEffects = {
-			linear: function(t) {
-				return t;
-			},
-			easeInQuad: function(t) {
-				return t * t;
-			},
-			easeOutQuad: function(t) {
-				return -1 * t * (t - 2);
-			},
-			easeInOutQuad: function(t) {
-				if ((t /= 1 / 2) < 1) {
-					return 1 / 2 * t * t;
-				}
-				return -1 / 2 * ((--t) * (t - 2) - 1);
-			},
-			easeInCubic: function(t) {
-				return t * t * t;
-			},
-			easeOutCubic: function(t) {
-				return 1 * ((t = t / 1 - 1) * t * t + 1);
-			},
-			easeInOutCubic: function(t) {
-				if ((t /= 1 / 2) < 1) {
-					return 1 / 2 * t * t * t;
-				}
-				return 1 / 2 * ((t -= 2) * t * t + 2);
-			},
-			easeInQuart: function(t) {
-				return t * t * t * t;
-			},
-			easeOutQuart: function(t) {
-				return -1 * ((t = t / 1 - 1) * t * t * t - 1);
-			},
-			easeInOutQuart: function(t) {
-				if ((t /= 1 / 2) < 1) {
-					return 1 / 2 * t * t * t * t;
-				}
-				return -1 / 2 * ((t -= 2) * t * t * t - 2);
-			},
-			easeInQuint: function(t) {
-				return 1 * (t /= 1) * t * t * t * t;
-			},
-			easeOutQuint: function(t) {
-				return 1 * ((t = t / 1 - 1) * t * t * t * t + 1);
-			},
-			easeInOutQuint: function(t) {
-				if ((t /= 1 / 2) < 1) {
-					return 1 / 2 * t * t * t * t * t;
-				}
-				return 1 / 2 * ((t -= 2) * t * t * t * t + 2);
-			},
-			easeInSine: function(t) {
-				return -1 * Math.cos(t / 1 * (Math.PI / 2)) + 1;
-			},
-			easeOutSine: function(t) {
-				return 1 * Math.sin(t / 1 * (Math.PI / 2));
-			},
-			easeInOutSine: function(t) {
-				return -1 / 2 * (Math.cos(Math.PI * t / 1) - 1);
-			},
-			easeInExpo: function(t) {
-				return (t === 0) ? 1 : 1 * Math.pow(2, 10 * (t / 1 - 1));
-			},
-			easeOutExpo: function(t) {
-				return (t === 1) ? 1 : 1 * (-Math.pow(2, -10 * t / 1) + 1);
-			},
-			easeInOutExpo: function(t) {
-				if (t === 0) {
-					return 0;
-				}
-				if (t === 1) {
-					return 1;
-				}
-				if ((t /= 1 / 2) < 1) {
-					return 1 / 2 * Math.pow(2, 10 * (t - 1));
-				}
-				return 1 / 2 * (-Math.pow(2, -10 * --t) + 2);
-			},
-			easeInCirc: function(t) {
-				if (t >= 1) {
-					return t;
-				}
-				return -1 * (Math.sqrt(1 - (t /= 1) * t) - 1);
-			},
-			easeOutCirc: function(t) {
-				return 1 * Math.sqrt(1 - (t = t / 1 - 1) * t);
-			},
-			easeInOutCirc: function(t) {
-				if ((t /= 1 / 2) < 1) {
-					return -1 / 2 * (Math.sqrt(1 - t * t) - 1);
-				}
-				return 1 / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1);
-			},
-			easeInElastic: function(t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0) {
-					return 0;
-				}
-				if ((t /= 1) === 1) {
-					return 1;
-				}
-				if (!p) {
-					p = 1 * 0.3;
-				}
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else {
-					s = p / (2 * Math.PI) * Math.asin(1 / a);
-				}
-				return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
-			},
-			easeOutElastic: function(t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0) {
-					return 0;
-				}
-				if ((t /= 1) === 1) {
-					return 1;
-				}
-				if (!p) {
-					p = 1 * 0.3;
-				}
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else {
-					s = p / (2 * Math.PI) * Math.asin(1 / a);
-				}
-				return a * Math.pow(2, -10 * t) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) + 1;
-			},
-			easeInOutElastic: function(t) {
-				var s = 1.70158;
-				var p = 0;
-				var a = 1;
-				if (t === 0) {
-					return 0;
-				}
-				if ((t /= 1 / 2) === 2) {
-					return 1;
-				}
-				if (!p) {
-					p = 1 * (0.3 * 1.5);
-				}
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else {
-					s = p / (2 * Math.PI) * Math.asin(1 / a);
-				}
-				if (t < 1) {
-					return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
-				}
-				return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) * 0.5 + 1;
-			},
-			easeInBack: function(t) {
-				var s = 1.70158;
-				return 1 * (t /= 1) * t * ((s + 1) * t - s);
-			},
-			easeOutBack: function(t) {
-				var s = 1.70158;
-				return 1 * ((t = t / 1 - 1) * t * ((s + 1) * t + s) + 1);
-			},
-			easeInOutBack: function(t) {
-				var s = 1.70158;
-				if ((t /= 1 / 2) < 1) {
-					return 1 / 2 * (t * t * (((s *= (1.525)) + 1) * t - s));
-				}
-				return 1 / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
-			},
-			easeInBounce: function(t) {
-				return 1 - easingEffects.easeOutBounce(1 - t);
-			},
-			easeOutBounce: function(t) {
-				if ((t /= 1) < (1 / 2.75)) {
-					return 1 * (7.5625 * t * t);
-				} else if (t < (2 / 2.75)) {
-					return 1 * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75);
-				} else if (t < (2.5 / 2.75)) {
-					return 1 * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375);
-				}
-				return 1 * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375);
-			},
-			easeInOutBounce: function(t) {
-				if (t < 1 / 2) {
-					return easingEffects.easeInBounce(t * 2) * 0.5;
-				}
-				return easingEffects.easeOutBounce(t * 2 - 1) * 0.5 + 1 * 0.5;
-			}
-		};
 		// Request animation polyfill - http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 		helpers.requestAnimFrame = (function() {
 			if (typeof window === 'undefined') {
@@ -1063,9 +1703,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		// -- DOM methods
 		helpers.getRelativePosition = function(evt, chart) {
 			var mouseX, mouseY;
-			var e = evt.originalEvent || evt,
-				canvas = evt.currentTarget || evt.srcElement,
-				boundingRect = canvas.getBoundingClientRect();
+			var e = evt.originalEvent || evt;
+			var canvas = evt.currentTarget || evt.srcElement;
+			var boundingRect = canvas.getBoundingClientRect();
 
 			var touches = e.touches;
 			if (touches && touches.length > 0) {
@@ -1098,29 +1738,11 @@ return /******/ (function(modules) { // webpackBootstrap
 			};
 
 		};
-		helpers.addEvent = function(node, eventType, method) {
-			if (node.addEventListener) {
-				node.addEventListener(eventType, method);
-			} else if (node.attachEvent) {
-				node.attachEvent('on' + eventType, method);
-			} else {
-				node['on' + eventType] = method;
-			}
-		};
-		helpers.removeEvent = function(node, eventType, handler) {
-			if (node.removeEventListener) {
-				node.removeEventListener(eventType, handler, false);
-			} else if (node.detachEvent) {
-				node.detachEvent('on' + eventType, handler);
-			} else {
-				node['on' + eventType] = helpers.noop;
-			}
-		};
 
 		// Private helper function to convert max-width/max-height values that may be percentages into a number
 		function parseMaxStyle(styleValue, node, parentProperty) {
 			var valueInPixels;
-			if (typeof(styleValue) === 'string') {
+			if (typeof styleValue === 'string') {
 				valueInPixels = parseInt(styleValue, 10);
 
 				if (styleValue.indexOf('%') !== -1) {
@@ -1158,8 +1780,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			if (hasCNode || hasCContainer) {
 				return Math.min(
-					hasCNode? parseMaxStyle(constrainedNode, domNode, percentageProperty) : infinity,
-					hasCContainer? parseMaxStyle(constrainedContainer, parentNode, percentageProperty) : infinity);
+					hasCNode ? parseMaxStyle(constrainedNode, domNode, percentageProperty) : infinity,
+					hasCContainer ? parseMaxStyle(constrainedContainer, parentNode, percentageProperty) : infinity);
 			}
 
 			return 'none';
@@ -1174,27 +1796,35 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 		helpers.getMaximumWidth = function(domNode) {
 			var container = domNode.parentNode;
+			if (!container) {
+				return domNode.clientWidth;
+			}
+
 			var paddingLeft = parseInt(helpers.getStyle(container, 'padding-left'), 10);
 			var paddingRight = parseInt(helpers.getStyle(container, 'padding-right'), 10);
 			var w = container.clientWidth - paddingLeft - paddingRight;
 			var cw = helpers.getConstraintWidth(domNode);
-			return isNaN(cw)? w : Math.min(w, cw);
+			return isNaN(cw) ? w : Math.min(w, cw);
 		};
 		helpers.getMaximumHeight = function(domNode) {
 			var container = domNode.parentNode;
+			if (!container) {
+				return domNode.clientHeight;
+			}
+
 			var paddingTop = parseInt(helpers.getStyle(container, 'padding-top'), 10);
 			var paddingBottom = parseInt(helpers.getStyle(container, 'padding-bottom'), 10);
 			var h = container.clientHeight - paddingTop - paddingBottom;
 			var ch = helpers.getConstraintHeight(domNode);
-			return isNaN(ch)? h : Math.min(h, ch);
+			return isNaN(ch) ? h : Math.min(h, ch);
 		};
 		helpers.getStyle = function(el, property) {
 			return el.currentStyle ?
 				el.currentStyle[property] :
 				document.defaultView.getComputedStyle(el, null).getPropertyValue(property);
 		};
-		helpers.retinaScale = function(chart) {
-			var pixelRatio = chart.currentDevicePixelRatio = window.devicePixelRatio || 1;
+		helpers.retinaScale = function(chart, forceRatio) {
+			var pixelRatio = chart.currentDevicePixelRatio = forceRatio || window.devicePixelRatio || 1;
 			if (pixelRatio === 1) {
 				return;
 			}
@@ -1214,9 +1844,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			canvas.style.width = width + 'px';
 		};
 		// -- Canvas methods
-		helpers.clear = function(chart) {
-			chart.ctx.clearRect(0, 0, chart.width, chart.height);
-		};
 		helpers.fontString = function(pixelSize, fontStyle, fontFamily) {
 			return fontStyle + ' ' + pixelSize + 'px ' + fontFamily;
 		};
@@ -1280,21 +1907,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			});
 			return numberOfLines;
 		};
-		helpers.drawRoundedRectangle = function(ctx, x, y, width, height, radius) {
-			ctx.beginPath();
-			ctx.moveTo(x + radius, y);
-			ctx.lineTo(x + width - radius, y);
-			ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-			ctx.lineTo(x + width, y + height - radius);
-			ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-			ctx.lineTo(x + radius, y + height);
-			ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-			ctx.lineTo(x, y + radius);
-			ctx.quadraticCurveTo(x, y, x + radius, y);
-			ctx.closePath();
-		};
 
-		helpers.color = !color?
+		helpers.color = !color ?
 			function(value) {
 				console.error('Color.js not found!');
 				return value;
@@ -1302,72 +1916,28 @@ return /******/ (function(modules) { // webpackBootstrap
 			function(value) {
 				/* global CanvasGradient */
 				if (value instanceof CanvasGradient) {
-					value = Chart.defaults.global.defaultColor;
+					value = defaults.global.defaultColor;
 				}
 
 				return color(value);
 			};
 
-		helpers.isArray = Array.isArray?
-			function(obj) {
-				return Array.isArray(obj);
-			} :
-			function(obj) {
-				return Object.prototype.toString.call(obj) === '[object Array]';
-			};
-		// ! @see http://stackoverflow.com/a/14853974
-		helpers.arrayEquals = function(a0, a1) {
-			var i, ilen, v0, v1;
-
-			if (!a0 || !a1 || a0.length !== a1.length) {
-				return false;
-			}
-
-			for (i = 0, ilen=a0.length; i < ilen; ++i) {
-				v0 = a0[i];
-				v1 = a1[i];
-
-				if (v0 instanceof Array && v1 instanceof Array) {
-					if (!helpers.arrayEquals(v0, v1)) {
-						return false;
-					}
-				} else if (v0 !== v1) {
-					// NOTE: two different object instances will never be equal: {x:20} != {x:20}
-					return false;
-				}
-			}
-
-			return true;
-		};
-		helpers.callback = function(fn, args, thisArg) {
-			if (fn && typeof fn.call === 'function') {
-				fn.apply(thisArg, args);
-			}
-		};
 		helpers.getHoverColor = function(colorValue) {
 			/* global CanvasPattern */
 			return (colorValue instanceof CanvasPattern) ?
 				colorValue :
 				helpers.color(colorValue).saturate(0.5).darken(0.1).rgbString();
 		};
-
-		/**
-		 * Provided for backward compatibility, use Chart.helpers#callback instead.
-		 * @function Chart.helpers#callCallback
-		 * @deprecated since version 2.6.0
-		 * @todo remove at version 3
-		 */
-		helpers.callCallback = helpers.callback;
 	};
 
 
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* MIT license */
-	var convert = __webpack_require__(6);
-	var string = __webpack_require__(8);
+	var convert = __webpack_require__(12);
+	var string = __webpack_require__(14);
 
 	var Color = function (obj) {
 		if (obj instanceof Color) {
@@ -1852,11 +2422,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Color;
 
 
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var conversions = __webpack_require__(7);
+	var conversions = __webpack_require__(13);
 
 	var convert = function() {
 	   return new Converter();
@@ -1949,9 +2519,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = convert;
 
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
 
 	/* MIT license */
 
@@ -2653,12 +3223,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* MIT license */
-	var colorNames = __webpack_require__(9);
+	var colorNames = __webpack_require__(15);
 
 	module.exports = {
 	   getRgba: getRgba,
@@ -2683,10 +3253,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	   if (!string) {
 	      return;
 	   }
-	   var abbr =  /^#([a-fA-F0-9]{3})$/,
-	       hex =  /^#([a-fA-F0-9]{6})$/,
-	       rgba = /^rgba?\(\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)$/,
-	       per = /^rgba?\(\s*([+-]?[\d\.]+)\%\s*,\s*([+-]?[\d\.]+)\%\s*,\s*([+-]?[\d\.]+)\%\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)$/,
+	   var abbr =  /^#([a-fA-F0-9]{3})$/i,
+	       hex =  /^#([a-fA-F0-9]{6})$/i,
+	       rgba = /^rgba?\(\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)$/i,
+	       per = /^rgba?\(\s*([+-]?[\d\.]+)\%\s*,\s*([+-]?[\d\.]+)\%\s*,\s*([+-]?[\d\.]+)\%\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)$/i,
 	       keyword = /(\w+)/;
 
 	   var rgb = [0, 0, 0],
@@ -2880,9 +3450,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+	'use strict'
 
 	module.exports = {
 		"aliceblue": [240, 248, 255],
@@ -3035,662 +3607,1594 @@ return /******/ (function(modules) { // webpackBootstrap
 		"yellowgreen": [154, 205, 50]
 	};
 
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	// By default, select the browser (DOM) platform.
-	// @TODO Make possible to select another platform at build time.
-	var implementation = __webpack_require__(11);
+	var color = __webpack_require__(11);
+	var helpers = __webpack_require__(5);
 
-	module.exports = function(Chart) {
-		/**
-		 * @namespace Chart.platform
-		 * @see https://chartjs.gitbooks.io/proposals/content/Platform.html
-		 * @since 2.4.0
-		 */
-		Chart.platform = {
-			/**
-			 * Called at chart construction time, returns a context2d instance implementing
-			 * the [W3C Canvas 2D Context API standard]{@link https://www.w3.org/TR/2dcontext/}.
-			 * @param {*} item - The native item from which to acquire context (platform specific)
-			 * @param {Object} options - The chart options
-			 * @returns {CanvasRenderingContext2D} context2d instance
-			 */
-			acquireContext: function() {},
+	function interpolate(start, view, model, ease) {
+		var keys = Object.keys(model);
+		var i, ilen, key, actual, origin, target, type, c0, c1;
 
-			/**
-			 * Called at chart destruction time, releases any resources associated to the context
-			 * previously returned by the acquireContext() method.
-			 * @param {CanvasRenderingContext2D} context - The context2d instance
-			 * @returns {Boolean} true if the method succeeded, else false
-			 */
-			releaseContext: function() {},
+		for (i = 0, ilen = keys.length; i < ilen; ++i) {
+			key = keys[i];
 
-			/**
-			 * Registers the specified listener on the given chart.
-			 * @param {Chart} chart - Chart from which to listen for event
-			 * @param {String} type - The ({@link IEvent}) type to listen for
-			 * @param {Function} listener - Receives a notification (an object that implements
-			 * the {@link IEvent} interface) when an event of the specified type occurs.
-			 */
-			addEventListener: function() {},
+			target = model[key];
 
-			/**
-			 * Removes the specified listener previously registered with addEventListener.
-			 * @param {Chart} chart -Chart from which to remove the listener
-			 * @param {String} type - The ({@link IEvent}) type to remove
-			 * @param {Function} listener - The listener function to remove from the event target.
-			 */
-			removeEventListener: function() {}
-		};
-
-		/**
-		 * @interface IPlatform
-		 * Allows abstracting platform dependencies away from the chart
-		 * @borrows Chart.platform.acquireContext as acquireContext
-		 * @borrows Chart.platform.releaseContext as releaseContext
-		 * @borrows Chart.platform.addEventListener as addEventListener
-		 * @borrows Chart.platform.removeEventListener as removeEventListener
-		 */
-
-		/**
-		 * @interface IEvent
-		 * @prop {String} type - The event type name, possible values are:
-		 * 'contextmenu', 'mouseenter', 'mousedown', 'mousemove', 'mouseup', 'mouseout',
-		 * 'click', 'dblclick', 'keydown', 'keypress', 'keyup' and 'resize'
-		 * @prop {*} native - The original native event (null for emulated events, e.g. 'resize')
-		 * @prop {Number} x - The mouse x position, relative to the canvas (null for incompatible events)
-		 * @prop {Number} y - The mouse y position, relative to the canvas (null for incompatible events)
-		 */
-
-		Chart.helpers.extend(Chart.platform, implementation(Chart));
-	};
-
-
-/***/ },
-/* 11 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	// Chart.Platform implementation for targeting a web browser
-	module.exports = function(Chart) {
-		var helpers = Chart.helpers;
-
-		// DOM event types -> Chart.js event types.
-		// Note: only events with different types are mapped.
-		// https://developer.mozilla.org/en-US/docs/Web/Events
-		var eventTypeMap = {
-			// Touch events
-			touchstart: 'mousedown',
-			touchmove: 'mousemove',
-			touchend: 'mouseup',
-
-			// Pointer events
-			pointerenter: 'mouseenter',
-			pointerdown: 'mousedown',
-			pointermove: 'mousemove',
-			pointerup: 'mouseup',
-			pointerleave: 'mouseout',
-			pointerout: 'mouseout'
-		};
-
-		/**
-		 * The "used" size is the final value of a dimension property after all calculations have
-		 * been performed. This method uses the computed style of `element` but returns undefined
-		 * if the computed style is not expressed in pixels. That can happen in some cases where
-		 * `element` has a size relative to its parent and this last one is not yet displayed,
-		 * for example because of `display: none` on a parent node.
-		 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/used_value
-		 * @returns {Number} Size in pixels or undefined if unknown.
-		 */
-		function readUsedSize(element, property) {
-			var value = helpers.getStyle(element, property);
-			var matches = value && value.match(/^(\d+)(\.\d+)?px$/);
-			return matches? Number(matches[1]) : undefined;
-		}
-
-		/**
-		 * Initializes the canvas style and render size without modifying the canvas display size,
-		 * since responsiveness is handled by the controller.resize() method. The config is used
-		 * to determine the aspect ratio to apply in case no explicit height has been specified.
-		 */
-		function initCanvas(canvas, config) {
-			var style = canvas.style;
-
-			// NOTE(SB) canvas.getAttribute('width') !== canvas.width: in the first case it
-			// returns null or '' if no explicit value has been set to the canvas attribute.
-			var renderHeight = canvas.getAttribute('height');
-			var renderWidth = canvas.getAttribute('width');
-
-			// Chart.js modifies some canvas values that we want to restore on destroy
-			canvas._chartjs = {
-				initial: {
-					height: renderHeight,
-					width: renderWidth,
-					style: {
-						display: style.display,
-						height: style.height,
-						width: style.width
-					}
-				}
-			};
-
-			// Force canvas to display as block to avoid extra space caused by inline
-			// elements, which would interfere with the responsive resize process.
-			// https://github.com/chartjs/Chart.js/issues/2538
-			style.display = style.display || 'block';
-
-			if (renderWidth === null || renderWidth === '') {
-				var displayWidth = readUsedSize(canvas, 'width');
-				if (displayWidth !== undefined) {
-					canvas.width = displayWidth;
-				}
+			// if a value is added to the model after pivot() has been called, the view
+			// doesn't contain it, so let's initialize the view to the target value.
+			if (!view.hasOwnProperty(key)) {
+				view[key] = target;
 			}
 
-			if (renderHeight === null || renderHeight === '') {
-				if (canvas.style.height === '') {
-					// If no explicit render height and style height, let's apply the aspect ratio,
-					// which one can be specified by the user but also by charts as default option
-					// (i.e. options.aspectRatio). If not specified, use canvas aspect ratio of 2.
-					canvas.height = canvas.width / (config.options.aspectRatio || 2);
-				} else {
-					var displayHeight = readUsedSize(canvas, 'height');
-					if (displayWidth !== undefined) {
-						canvas.height = displayHeight;
-					}
-				}
+			actual = view[key];
+
+			if (actual === target || key[0] === '_') {
+				continue;
 			}
 
-			return canvas;
-		}
+			if (!start.hasOwnProperty(key)) {
+				start[key] = actual;
+			}
 
-		function createEvent(type, chart, x, y, nativeEvent) {
-			return {
-				type: type,
-				chart: chart,
-				native: nativeEvent || null,
-				x: x !== undefined? x : null,
-				y: y !== undefined? y : null,
-			};
-		}
+			origin = start[key];
 
-		function fromNativeEvent(event, chart) {
-			var type = eventTypeMap[event.type] || event.type;
-			var pos = helpers.getRelativePosition(event, chart);
-			return createEvent(type, chart, pos.x, pos.y, event);
-		}
+			type = typeof target;
 
-		function createResizer(handler) {
-			var iframe = document.createElement('iframe');
-			iframe.className = 'chartjs-hidden-iframe';
-			iframe.style.cssText =
-				'display:block;'+
-				'overflow:hidden;'+
-				'border:0;'+
-				'margin:0;'+
-				'top:0;'+
-				'left:0;'+
-				'bottom:0;'+
-				'right:0;'+
-				'height:100%;'+
-				'width:100%;'+
-				'position:absolute;'+
-				'pointer-events:none;'+
-				'z-index:-1;';
-
-			// Prevent the iframe to gain focus on tab.
-			// https://github.com/chartjs/Chart.js/issues/3090
-			iframe.tabIndex = -1;
-
-			// If the iframe is re-attached to the DOM, the resize listener is removed because the
-			// content is reloaded, so make sure to install the handler after the iframe is loaded.
-			// https://github.com/chartjs/Chart.js/issues/3521
-			helpers.addEvent(iframe, 'load', function() {
-				helpers.addEvent(iframe.contentWindow || iframe, 'resize', handler);
-
-				// The iframe size might have changed while loading, which can also
-				// happen if the size has been changed while detached from the DOM.
-				handler();
-			});
-
-			return iframe;
-		}
-
-		function addResizeListener(node, listener, chart) {
-			var stub = node._chartjs = {
-				ticking: false
-			};
-
-			// Throttle the callback notification until the next animation frame.
-			var notify = function() {
-				if (!stub.ticking) {
-					stub.ticking = true;
-					helpers.requestAnimFrame.call(window, function() {
-						if (stub.resizer) {
-							stub.ticking = false;
-							return listener(createEvent('resize', chart));
+			if (type === typeof origin) {
+				if (type === 'string') {
+					c0 = color(origin);
+					if (c0.valid) {
+						c1 = color(target);
+						if (c1.valid) {
+							view[key] = c1.mix(c0, ease).rgbString();
+							continue;
 						}
-					});
-				}
-			};
-
-			// Let's keep track of this added iframe and thus avoid DOM query when removing it.
-			stub.resizer = createResizer(notify);
-
-			node.insertBefore(stub.resizer, node.firstChild);
-		}
-
-		function removeResizeListener(node) {
-			if (!node || !node._chartjs) {
-				return;
-			}
-
-			var resizer = node._chartjs.resizer;
-			if (resizer) {
-				resizer.parentNode.removeChild(resizer);
-				node._chartjs.resizer = null;
-			}
-
-			delete node._chartjs;
-		}
-
-		return {
-			acquireContext: function(item, config) {
-				if (typeof item === 'string') {
-					item = document.getElementById(item);
-				} else if (item.length) {
-					// Support for array based queries (such as jQuery)
-					item = item[0];
-				}
-
-				if (item && item.canvas) {
-					// Support for any object associated to a canvas (including a context2d)
-					item = item.canvas;
-				}
-
-				// To prevent canvas fingerprinting, some add-ons undefine the getContext
-				// method, for example: https://github.com/kkapsner/CanvasBlocker
-				// https://github.com/chartjs/Chart.js/issues/2807
-				var context = item && item.getContext && item.getContext('2d');
-
-				// `instanceof HTMLCanvasElement/CanvasRenderingContext2D` fails when the item is
-				// inside an iframe or when running in a protected environment. We could guess the
-				// types from their toString() value but let's keep things flexible and assume it's
-				// a sufficient condition if the item has a context2D which has item as `canvas`.
-				// https://github.com/chartjs/Chart.js/issues/3887
-				// https://github.com/chartjs/Chart.js/issues/4102
-				// https://github.com/chartjs/Chart.js/issues/4152
-				if (context && context.canvas === item) {
-					initCanvas(item, config);
-					return context;
-				}
-
-				return null;
-			},
-
-			releaseContext: function(context) {
-				var canvas = context.canvas;
-				if (!canvas._chartjs) {
-					return;
-				}
-
-				var initial = canvas._chartjs.initial;
-				['height', 'width'].forEach(function(prop) {
-					var value = initial[prop];
-					if (value === undefined || value === null) {
-						canvas.removeAttribute(prop);
-					} else {
-						canvas.setAttribute(prop, value);
 					}
-				});
-
-				helpers.each(initial.style || {}, function(value, key) {
-					canvas.style[key] = value;
-				});
-
-				// The canvas render size might have been changed (and thus the state stack discarded),
-				// we can't use save() and restore() to restore the initial state. So make sure that at
-				// least the canvas context is reset to the default state by setting the canvas width.
-				// https://www.w3.org/TR/2011/WD-html5-20110525/the-canvas-element.html
-				canvas.width = canvas.width;
-
-				delete canvas._chartjs;
-			},
-
-			addEventListener: function(chart, type, listener) {
-				var canvas = chart.canvas;
-				if (type === 'resize') {
-					// Note: the resize event is not supported on all browsers.
-					addResizeListener(canvas.parentNode, listener, chart);
-					return;
+				} else if (type === 'number' && isFinite(origin) && isFinite(target)) {
+					view[key] = origin + (target - origin) * ease;
+					continue;
 				}
-
-				var stub = listener._chartjs || (listener._chartjs = {});
-				var proxies = stub.proxies || (stub.proxies = {});
-				var proxy = proxies[chart.id + '_' + type] = function(event) {
-					listener(fromNativeEvent(event, chart));
-				};
-
-				helpers.addEvent(canvas, type, proxy);
-			},
-
-			removeEventListener: function(chart, type, listener) {
-				var canvas = chart.canvas;
-				if (type === 'resize') {
-					// Note: the resize event is not supported on all browsers.
-					removeResizeListener(canvas.parentNode, listener);
-					return;
-				}
-
-				var stub = listener._chartjs || {};
-				var proxies = stub.proxies || {};
-				var proxy = proxies[chart.id + '_' + type];
-				if (!proxy) {
-					return;
-				}
-
-				helpers.removeEvent(canvas, type, proxy);
 			}
-		};
+
+			view[key] = target;
+		}
+	}
+
+	var Element = function(configuration) {
+		helpers.extend(this, configuration);
+		this.initialize.apply(this, arguments);
 	};
 
+	helpers.extend(Element.prototype, {
 
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
+		initialize: function() {
+			this.hidden = false;
+		},
+
+		pivot: function() {
+			var me = this;
+			if (!me._view) {
+				me._view = helpers.clone(me._model);
+			}
+			me._start = {};
+			return me;
+		},
+
+		transition: function(ease) {
+			var me = this;
+			var model = me._model;
+			var start = me._start;
+			var view = me._view;
+
+			// No animation -> No Transition
+			if (!model || ease === 1) {
+				me._view = model;
+				me._start = null;
+				return me;
+			}
+
+			if (!view) {
+				view = me._view = {};
+			}
+
+			if (!start) {
+				start = me._start = {};
+			}
+
+			interpolate(start, view, model, ease);
+
+			return me;
+		},
+
+		tooltipPosition: function() {
+			return {
+				x: this._model.x,
+				y: this._model.y
+			};
+		},
+
+		hasValue: function() {
+			return helpers.isNumber(this._model.x) && helpers.isNumber(this._model.y);
+		}
+	});
+
+	Element.extend = helpers.inherits;
+
+	module.exports = Element;
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
-		// Global Chart canvas helpers object for drawing items to canvas
-		var helpers = Chart.canvasHelpers = {};
+	module.exports = {};
+	module.exports.Arc = __webpack_require__(18);
+	module.exports.Line = __webpack_require__(19);
+	module.exports.Point = __webpack_require__(20);
+	module.exports.Rectangle = __webpack_require__(21);
 
-		helpers.drawPoint = function(ctx, pointStyle, radius, x, y) {
-			var type, edgeLength, xOffset, yOffset, height, size;
 
-			if (typeof pointStyle === 'object') {
-				type = pointStyle.toString();
-				if (type === '[object HTMLImageElement]' || type === '[object HTMLCanvasElement]') {
-					ctx.drawImage(pointStyle, x - pointStyle.width / 2, y - pointStyle.height / 2, pointStyle.width, pointStyle.height);
-					return;
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var defaults = __webpack_require__(4);
+	var Element = __webpack_require__(16);
+	var helpers = __webpack_require__(5);
+
+	defaults._set('global', {
+		elements: {
+			arc: {
+				backgroundColor: defaults.global.defaultColor,
+				borderColor: '#fff',
+				borderWidth: 2
+			}
+		}
+	});
+
+	module.exports = Element.extend({
+		inLabelRange: function(mouseX) {
+			var vm = this._view;
+
+			if (vm) {
+				return (Math.pow(mouseX - vm.x, 2) < Math.pow(vm.radius + vm.hoverRadius, 2));
+			}
+			return false;
+		},
+
+		inRange: function(chartX, chartY) {
+			var vm = this._view;
+
+			if (vm) {
+				var pointRelativePosition = helpers.getAngleFromPoint(vm, {x: chartX, y: chartY});
+				var	angle = pointRelativePosition.angle;
+				var distance = pointRelativePosition.distance;
+
+				// Sanitise angle range
+				var startAngle = vm.startAngle;
+				var endAngle = vm.endAngle;
+				while (endAngle < startAngle) {
+					endAngle += 2.0 * Math.PI;
 				}
+				while (angle > endAngle) {
+					angle -= 2.0 * Math.PI;
+				}
+				while (angle < startAngle) {
+					angle += 2.0 * Math.PI;
+				}
+
+				// Check if within the range of the open/close angle
+				var betweenAngles = (angle >= startAngle && angle <= endAngle);
+				var withinRadius = (distance >= vm.innerRadius && distance <= vm.outerRadius);
+
+				return (betweenAngles && withinRadius);
+			}
+			return false;
+		},
+
+		getCenterPoint: function() {
+			var vm = this._view;
+			var halfAngle = (vm.startAngle + vm.endAngle) / 2;
+			var halfRadius = (vm.innerRadius + vm.outerRadius) / 2;
+			return {
+				x: vm.x + Math.cos(halfAngle) * halfRadius,
+				y: vm.y + Math.sin(halfAngle) * halfRadius
+			};
+		},
+
+		getArea: function() {
+			var vm = this._view;
+			return Math.PI * ((vm.endAngle - vm.startAngle) / (2 * Math.PI)) * (Math.pow(vm.outerRadius, 2) - Math.pow(vm.innerRadius, 2));
+		},
+
+		tooltipPosition: function() {
+			var vm = this._view;
+			var centreAngle = vm.startAngle + ((vm.endAngle - vm.startAngle) / 2);
+			var rangeFromCentre = (vm.outerRadius - vm.innerRadius) / 2 + vm.innerRadius;
+
+			return {
+				x: vm.x + (Math.cos(centreAngle) * rangeFromCentre),
+				y: vm.y + (Math.sin(centreAngle) * rangeFromCentre)
+			};
+		},
+
+		draw: function() {
+			var ctx = this._chart.ctx;
+			var vm = this._view;
+			var sA = vm.startAngle;
+			var eA = vm.endAngle;
+
+			ctx.beginPath();
+
+			ctx.arc(vm.x, vm.y, vm.outerRadius, sA, eA);
+			ctx.arc(vm.x, vm.y, vm.innerRadius, eA, sA, true);
+
+			ctx.closePath();
+			ctx.strokeStyle = vm.borderColor;
+			ctx.lineWidth = vm.borderWidth;
+
+			ctx.fillStyle = vm.backgroundColor;
+
+			ctx.fill();
+			ctx.lineJoin = 'bevel';
+
+			if (vm.borderWidth) {
+				ctx.stroke();
+			}
+		}
+	});
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var defaults = __webpack_require__(4);
+	var Element = __webpack_require__(16);
+	var helpers = __webpack_require__(5);
+
+	var globalDefaults = defaults.global;
+
+	defaults._set('global', {
+		elements: {
+			line: {
+				tension: 0.4,
+				backgroundColor: globalDefaults.defaultColor,
+				borderWidth: 3,
+				borderColor: globalDefaults.defaultColor,
+				borderCapStyle: 'butt',
+				borderDash: [],
+				borderDashOffset: 0.0,
+				borderJoinStyle: 'miter',
+				capBezierPoints: true,
+				fill: true, // do we fill in the area between the line and its base axis
+			}
+		}
+	});
+
+	module.exports = Element.extend({
+		draw: function() {
+			var me = this;
+			var vm = me._view;
+			var ctx = me._chart.ctx;
+			var spanGaps = vm.spanGaps;
+			var points = me._children.slice(); // clone array
+			var globalOptionLineElements = globalDefaults.elements.line;
+			var lastDrawnIndex = -1;
+			var index, current, previous, currentVM;
+
+			// If we are looping, adding the first point again
+			if (me._loop && points.length) {
+				points.push(points[0]);
 			}
 
-			if (isNaN(radius) || radius <= 0) {
-				return;
+			ctx.save();
+
+			// Stroke Line Options
+			ctx.lineCap = vm.borderCapStyle || globalOptionLineElements.borderCapStyle;
+
+			// IE 9 and 10 do not support line dash
+			if (ctx.setLineDash) {
+				ctx.setLineDash(vm.borderDash || globalOptionLineElements.borderDash);
 			}
 
-			switch (pointStyle) {
-			// Default includes circle
-			default:
-				ctx.beginPath();
-				ctx.arc(x, y, radius, 0, Math.PI * 2);
-				ctx.closePath();
-				ctx.fill();
-				break;
-			case 'triangle':
-				ctx.beginPath();
-				edgeLength = 3 * radius / Math.sqrt(3);
-				height = edgeLength * Math.sqrt(3) / 2;
-				ctx.moveTo(x - edgeLength / 2, y + height / 3);
-				ctx.lineTo(x + edgeLength / 2, y + height / 3);
-				ctx.lineTo(x, y - 2 * height / 3);
-				ctx.closePath();
-				ctx.fill();
-				break;
-			case 'rect':
-				size = 1 / Math.SQRT2 * radius;
-				ctx.beginPath();
-				ctx.fillRect(x - size, y - size, 2 * size, 2 * size);
-				ctx.strokeRect(x - size, y - size, 2 * size, 2 * size);
-				break;
-			case 'rectRounded':
-				var offset = radius / Math.SQRT2;
-				var leftX = x - offset;
-				var topY = y - offset;
-				var sideSize = Math.SQRT2 * radius;
-				Chart.helpers.drawRoundedRectangle(ctx, leftX, topY, sideSize, sideSize, radius / 2);
-				ctx.fill();
-				break;
-			case 'rectRot':
-				size = 1 / Math.SQRT2 * radius;
-				ctx.beginPath();
-				ctx.moveTo(x - size, y);
-				ctx.lineTo(x, y + size);
-				ctx.lineTo(x + size, y);
-				ctx.lineTo(x, y - size);
-				ctx.closePath();
-				ctx.fill();
-				break;
-			case 'cross':
-				ctx.beginPath();
-				ctx.moveTo(x, y + radius);
-				ctx.lineTo(x, y - radius);
-				ctx.moveTo(x - radius, y);
-				ctx.lineTo(x + radius, y);
-				ctx.closePath();
-				break;
-			case 'crossRot':
-				ctx.beginPath();
-				xOffset = Math.cos(Math.PI / 4) * radius;
-				yOffset = Math.sin(Math.PI / 4) * radius;
-				ctx.moveTo(x - xOffset, y - yOffset);
-				ctx.lineTo(x + xOffset, y + yOffset);
-				ctx.moveTo(x - xOffset, y + yOffset);
-				ctx.lineTo(x + xOffset, y - yOffset);
-				ctx.closePath();
-				break;
-			case 'star':
-				ctx.beginPath();
-				ctx.moveTo(x, y + radius);
-				ctx.lineTo(x, y - radius);
-				ctx.moveTo(x - radius, y);
-				ctx.lineTo(x + radius, y);
-				xOffset = Math.cos(Math.PI / 4) * radius;
-				yOffset = Math.sin(Math.PI / 4) * radius;
-				ctx.moveTo(x - xOffset, y - yOffset);
-				ctx.lineTo(x + xOffset, y + yOffset);
-				ctx.moveTo(x - xOffset, y + yOffset);
-				ctx.lineTo(x + xOffset, y - yOffset);
-				ctx.closePath();
-				break;
-			case 'line':
-				ctx.beginPath();
-				ctx.moveTo(x - radius, y);
-				ctx.lineTo(x + radius, y);
-				ctx.closePath();
-				break;
-			case 'dash':
-				ctx.beginPath();
-				ctx.moveTo(x, y);
-				ctx.lineTo(x + radius, y);
-				ctx.closePath();
-				break;
+			ctx.lineDashOffset = vm.borderDashOffset || globalOptionLineElements.borderDashOffset;
+			ctx.lineJoin = vm.borderJoinStyle || globalOptionLineElements.borderJoinStyle;
+			ctx.lineWidth = vm.borderWidth || globalOptionLineElements.borderWidth;
+			ctx.strokeStyle = vm.borderColor || globalDefaults.defaultColor;
+
+			// Stroke Line
+			ctx.beginPath();
+			lastDrawnIndex = -1;
+
+			for (index = 0; index < points.length; ++index) {
+				current = points[index];
+				previous = helpers.previousItem(points, index);
+				currentVM = current._view;
+
+				// First point moves to it's starting position no matter what
+				if (index === 0) {
+					if (!currentVM.skip) {
+						ctx.moveTo(currentVM.x, currentVM.y);
+						lastDrawnIndex = index;
+					}
+				} else {
+					previous = lastDrawnIndex === -1 ? previous : points[lastDrawnIndex];
+
+					if (!currentVM.skip) {
+						if ((lastDrawnIndex !== (index - 1) && !spanGaps) || lastDrawnIndex === -1) {
+							// There was a gap and this is the first point after the gap
+							ctx.moveTo(currentVM.x, currentVM.y);
+						} else {
+							// Line to next point
+							helpers.canvas.lineTo(ctx, previous._view, current._view);
+						}
+						lastDrawnIndex = index;
+					}
+				}
 			}
 
 			ctx.stroke();
-		};
-
-		helpers.clipArea = function(ctx, clipArea) {
-			ctx.save();
-			ctx.beginPath();
-			ctx.rect(clipArea.left, clipArea.top, clipArea.right - clipArea.left, clipArea.bottom - clipArea.top);
-			ctx.clip();
-		};
-
-		helpers.unclipArea = function(ctx) {
 			ctx.restore();
-		};
-
-		helpers.lineTo = function(ctx, previous, target, flip) {
-			if (target.steppedLine) {
-				if (target.steppedLine === 'after') {
-					ctx.lineTo(previous.x, target.y);
-				} else {
-					ctx.lineTo(target.x, previous.y);
-				}
-				ctx.lineTo(target.x, target.y);
-				return;
-			}
-
-			if (!target.tension) {
-				ctx.lineTo(target.x, target.y);
-				return;
-			}
-
-			ctx.bezierCurveTo(
-				flip? previous.controlPointPreviousX : previous.controlPointNextX,
-				flip? previous.controlPointPreviousY : previous.controlPointNextY,
-				flip? target.controlPointNextX : target.controlPointPreviousX,
-				flip? target.controlPointNextY : target.controlPointPreviousY,
-				target.x,
-				target.y);
-		};
-
-		Chart.helpers.canvas = helpers;
-	};
+		}
+	});
 
 
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var color = __webpack_require__(5);
+	var defaults = __webpack_require__(4);
+	var Element = __webpack_require__(16);
+	var helpers = __webpack_require__(5);
 
-	module.exports = function(Chart) {
+	var defaultColor = defaults.global.defaultColor;
 
-		var helpers = Chart.helpers;
-
-		function interpolate(start, view, model, ease) {
-			var keys = Object.keys(model);
-			var i, ilen, key, actual, origin, target, type, c0, c1;
-
-			for (i=0, ilen=keys.length; i<ilen; ++i) {
-				key = keys[i];
-
-				target = model[key];
-
-				// if a value is added to the model after pivot() has been called, the view
-				// doesn't contain it, so let's initialize the view to the target value.
-				if (!view.hasOwnProperty(key)) {
-					view[key] = target;
-				}
-
-				actual = view[key];
-
-				if (actual === target || key[0] === '_') {
-					continue;
-				}
-
-				if (!start.hasOwnProperty(key)) {
-					start[key] = actual;
-				}
-
-				origin = start[key];
-
-				type = typeof(target);
-
-				if (type === typeof(origin)) {
-					if (type === 'string') {
-						c0 = color(origin);
-						if (c0.valid) {
-							c1 = color(target);
-							if (c1.valid) {
-								view[key] = c1.mix(c0, ease).rgbString();
-								continue;
-							}
-						}
-					} else if (type === 'number' && isFinite(origin) && isFinite(target)) {
-						view[key] = origin + (target - origin) * ease;
-						continue;
-					}
-				}
-
-				view[key] = target;
+	defaults._set('global', {
+		elements: {
+			point: {
+				radius: 3,
+				pointStyle: 'circle',
+				backgroundColor: defaultColor,
+				borderColor: defaultColor,
+				borderWidth: 1,
+				// Hover
+				hitRadius: 1,
+				hoverRadius: 4,
+				hoverBorderWidth: 1
 			}
 		}
+	});
 
-		Chart.elements = {};
+	function xRange(mouseX) {
+		var vm = this._view;
+		return vm ? (Math.pow(mouseX - vm.x, 2) < Math.pow(vm.radius + vm.hitRadius, 2)) : false;
+	}
 
-		Chart.Element = function(configuration) {
-			helpers.extend(this, configuration);
-			this.initialize.apply(this, arguments);
+	function yRange(mouseY) {
+		var vm = this._view;
+		return vm ? (Math.pow(mouseY - vm.y, 2) < Math.pow(vm.radius + vm.hitRadius, 2)) : false;
+	}
+
+	module.exports = Element.extend({
+		inRange: function(mouseX, mouseY) {
+			var vm = this._view;
+			return vm ? ((Math.pow(mouseX - vm.x, 2) + Math.pow(mouseY - vm.y, 2)) < Math.pow(vm.hitRadius + vm.radius, 2)) : false;
+		},
+
+		inLabelRange: xRange,
+		inXRange: xRange,
+		inYRange: yRange,
+
+		getCenterPoint: function() {
+			var vm = this._view;
+			return {
+				x: vm.x,
+				y: vm.y
+			};
+		},
+
+		getArea: function() {
+			return Math.PI * Math.pow(this._view.radius, 2);
+		},
+
+		tooltipPosition: function() {
+			var vm = this._view;
+			return {
+				x: vm.x,
+				y: vm.y,
+				padding: vm.radius + vm.borderWidth
+			};
+		},
+
+		draw: function(chartArea) {
+			var vm = this._view;
+			var model = this._model;
+			var ctx = this._chart.ctx;
+			var pointStyle = vm.pointStyle;
+			var radius = vm.radius;
+			var x = vm.x;
+			var y = vm.y;
+			var color = helpers.color;
+			var errMargin = 1.01; // 1.01 is margin for Accumulated error. (Especially Edge, IE.)
+			var ratio = 0;
+
+			if (vm.skip) {
+				return;
+			}
+
+			ctx.strokeStyle = vm.borderColor || defaultColor;
+			ctx.lineWidth = helpers.valueOrDefault(vm.borderWidth, defaults.global.elements.point.borderWidth);
+			ctx.fillStyle = vm.backgroundColor || defaultColor;
+
+			// Cliping for Points.
+			// going out from inner charArea?
+			if ((chartArea !== undefined) && ((model.x < chartArea.left) || (chartArea.right * errMargin < model.x) || (model.y < chartArea.top) || (chartArea.bottom * errMargin < model.y))) {
+				// Point fade out
+				if (model.x < chartArea.left) {
+					ratio = (x - model.x) / (chartArea.left - model.x);
+				} else if (chartArea.right * errMargin < model.x) {
+					ratio = (model.x - x) / (model.x - chartArea.right);
+				} else if (model.y < chartArea.top) {
+					ratio = (y - model.y) / (chartArea.top - model.y);
+				} else if (chartArea.bottom * errMargin < model.y) {
+					ratio = (model.y - y) / (model.y - chartArea.bottom);
+				}
+				ratio = Math.round(ratio * 100) / 100;
+				ctx.strokeStyle = color(ctx.strokeStyle).alpha(ratio).rgbString();
+				ctx.fillStyle = color(ctx.fillStyle).alpha(ratio).rgbString();
+			}
+
+			helpers.canvas.drawPoint(ctx, pointStyle, radius, x, y);
+		}
+	});
+
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var defaults = __webpack_require__(4);
+	var Element = __webpack_require__(16);
+
+	defaults._set('global', {
+		elements: {
+			rectangle: {
+				backgroundColor: defaults.global.defaultColor,
+				borderColor: defaults.global.defaultColor,
+				borderSkipped: 'bottom',
+				borderWidth: 0
+			}
+		}
+	});
+
+	function isVertical(bar) {
+		return bar._view.width !== undefined;
+	}
+
+	/**
+	 * Helper function to get the bounds of the bar regardless of the orientation
+	 * @param bar {Chart.Element.Rectangle} the bar
+	 * @return {Bounds} bounds of the bar
+	 * @private
+	 */
+	function getBarBounds(bar) {
+		var vm = bar._view;
+		var x1, x2, y1, y2;
+
+		if (isVertical(bar)) {
+			// vertical
+			var halfWidth = vm.width / 2;
+			x1 = vm.x - halfWidth;
+			x2 = vm.x + halfWidth;
+			y1 = Math.min(vm.y, vm.base);
+			y2 = Math.max(vm.y, vm.base);
+		} else {
+			// horizontal bar
+			var halfHeight = vm.height / 2;
+			x1 = Math.min(vm.x, vm.base);
+			x2 = Math.max(vm.x, vm.base);
+			y1 = vm.y - halfHeight;
+			y2 = vm.y + halfHeight;
+		}
+
+		return {
+			left: x1,
+			top: y1,
+			right: x2,
+			bottom: y2
 		};
+	}
 
-		helpers.extend(Chart.Element.prototype, {
+	module.exports = Element.extend({
+		draw: function() {
+			var ctx = this._chart.ctx;
+			var vm = this._view;
+			var left, right, top, bottom, signX, signY, borderSkipped;
+			var borderWidth = vm.borderWidth;
 
-			initialize: function() {
-				this.hidden = false;
-			},
+			if (!vm.horizontal) {
+				// bar
+				left = vm.x - vm.width / 2;
+				right = vm.x + vm.width / 2;
+				top = vm.y;
+				bottom = vm.base;
+				signX = 1;
+				signY = bottom > top ? 1 : -1;
+				borderSkipped = vm.borderSkipped || 'bottom';
+			} else {
+				// horizontal bar
+				left = vm.base;
+				right = vm.x;
+				top = vm.y - vm.height / 2;
+				bottom = vm.y + vm.height / 2;
+				signX = right > left ? 1 : -1;
+				signY = 1;
+				borderSkipped = vm.borderSkipped || 'left';
+			}
 
-			pivot: function() {
-				var me = this;
-				if (!me._view) {
-					me._view = helpers.clone(me._model);
+			// Canvas doesn't allow us to stroke inside the width so we can
+			// adjust the sizes to fit if we're setting a stroke on the line
+			if (borderWidth) {
+				// borderWidth shold be less than bar width and bar height.
+				var barSize = Math.min(Math.abs(left - right), Math.abs(top - bottom));
+				borderWidth = borderWidth > barSize ? barSize : borderWidth;
+				var halfStroke = borderWidth / 2;
+				// Adjust borderWidth when bar top position is near vm.base(zero).
+				var borderLeft = left + (borderSkipped !== 'left' ? halfStroke * signX : 0);
+				var borderRight = right + (borderSkipped !== 'right' ? -halfStroke * signX : 0);
+				var borderTop = top + (borderSkipped !== 'top' ? halfStroke * signY : 0);
+				var borderBottom = bottom + (borderSkipped !== 'bottom' ? -halfStroke * signY : 0);
+				// not become a vertical line?
+				if (borderLeft !== borderRight) {
+					top = borderTop;
+					bottom = borderBottom;
 				}
-				me._start = {};
-				return me;
-			},
-
-			transition: function(ease) {
-				var me = this;
-				var model = me._model;
-				var start = me._start;
-				var view = me._view;
-
-				// No animation -> No Transition
-				if (!model || ease === 1) {
-					me._view = model;
-					me._start = null;
-					return me;
+				// not become a horizontal line?
+				if (borderTop !== borderBottom) {
+					left = borderLeft;
+					right = borderRight;
 				}
+			}
 
-				if (!view) {
-					view = me._view = {};
+			ctx.beginPath();
+			ctx.fillStyle = vm.backgroundColor;
+			ctx.strokeStyle = vm.borderColor;
+			ctx.lineWidth = borderWidth;
+
+			// Corner points, from bottom-left to bottom-right clockwise
+			// | 1 2 |
+			// | 0 3 |
+			var corners = [
+				[left, bottom],
+				[left, top],
+				[right, top],
+				[right, bottom]
+			];
+
+			// Find first (starting) corner with fallback to 'bottom'
+			var borders = ['bottom', 'left', 'top', 'right'];
+			var startCorner = borders.indexOf(borderSkipped, 0);
+			if (startCorner === -1) {
+				startCorner = 0;
+			}
+
+			function cornerAt(index) {
+				return corners[(startCorner + index) % 4];
+			}
+
+			// Draw rectangle from 'startCorner'
+			var corner = cornerAt(0);
+			ctx.moveTo(corner[0], corner[1]);
+
+			for (var i = 1; i < 4; i++) {
+				corner = cornerAt(i);
+				ctx.lineTo(corner[0], corner[1]);
+			}
+
+			ctx.fill();
+			if (borderWidth) {
+				ctx.stroke();
+			}
+		},
+
+		height: function() {
+			var vm = this._view;
+			return vm.base - vm.y;
+		},
+
+		inRange: function(mouseX, mouseY) {
+			var inRange = false;
+
+			if (this._view) {
+				var bounds = getBarBounds(this);
+				inRange = mouseX >= bounds.left && mouseX <= bounds.right && mouseY >= bounds.top && mouseY <= bounds.bottom;
+			}
+
+			return inRange;
+		},
+
+		inLabelRange: function(mouseX, mouseY) {
+			var me = this;
+			if (!me._view) {
+				return false;
+			}
+
+			var inRange = false;
+			var bounds = getBarBounds(me);
+
+			if (isVertical(me)) {
+				inRange = mouseX >= bounds.left && mouseX <= bounds.right;
+			} else {
+				inRange = mouseY >= bounds.top && mouseY <= bounds.bottom;
+			}
+
+			return inRange;
+		},
+
+		inXRange: function(mouseX) {
+			var bounds = getBarBounds(this);
+			return mouseX >= bounds.left && mouseX <= bounds.right;
+		},
+
+		inYRange: function(mouseY) {
+			var bounds = getBarBounds(this);
+			return mouseY >= bounds.top && mouseY <= bounds.bottom;
+		},
+
+		getCenterPoint: function() {
+			var vm = this._view;
+			var x, y;
+			if (isVertical(this)) {
+				x = vm.x;
+				y = (vm.y + vm.base) / 2;
+			} else {
+				x = (vm.x + vm.base) / 2;
+				y = vm.y;
+			}
+
+			return {x: x, y: y};
+		},
+
+		getArea: function() {
+			var vm = this._view;
+			return vm.width * Math.abs(vm.y - vm.base);
+		},
+
+		tooltipPosition: function() {
+			var vm = this._view;
+			return {
+				x: vm.x,
+				y: vm.y
+			};
+		}
+	});
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var helpers = __webpack_require__(5);
+
+	/**
+	 * Helper function to get relative position for an event
+	 * @param {Event|IEvent} event - The event to get the position for
+	 * @param {Chart} chart - The chart
+	 * @returns {Point} the event position
+	 */
+	function getRelativePosition(e, chart) {
+		if (e.native) {
+			return {
+				x: e.x,
+				y: e.y
+			};
+		}
+
+		return helpers.getRelativePosition(e, chart);
+	}
+
+	/**
+	 * Helper function to traverse all of the visible elements in the chart
+	 * @param chart {chart} the chart
+	 * @param handler {Function} the callback to execute for each visible item
+	 */
+	function parseVisibleItems(chart, handler) {
+		var datasets = chart.data.datasets;
+		var meta, i, j, ilen, jlen;
+
+		for (i = 0, ilen = datasets.length; i < ilen; ++i) {
+			if (!chart.isDatasetVisible(i)) {
+				continue;
+			}
+
+			meta = chart.getDatasetMeta(i);
+			for (j = 0, jlen = meta.data.length; j < jlen; ++j) {
+				var element = meta.data[j];
+				if (!element._view.skip) {
+					handler(element);
 				}
+			}
+		}
+	}
 
-				if (!start) {
-					start = me._start = {};
-				}
+	/**
+	 * Helper function to get the items that intersect the event position
+	 * @param items {ChartElement[]} elements to filter
+	 * @param position {Point} the point to be nearest to
+	 * @return {ChartElement[]} the nearest items
+	 */
+	function getIntersectItems(chart, position) {
+		var elements = [];
 
-				interpolate(start, view, model, ease);
-
-				return me;
-			},
-
-			tooltipPosition: function() {
-				return {
-					x: this._model.x,
-					y: this._model.y
-				};
-			},
-
-			hasValue: function() {
-				return helpers.isNumber(this._model.x) && helpers.isNumber(this._model.y);
+		parseVisibleItems(chart, function(element) {
+			if (element.inRange(position.x, position.y)) {
+				elements.push(element);
 			}
 		});
 
-		Chart.Element.extend = helpers.inherits;
+		return elements;
+	}
+
+	/**
+	 * Helper function to get the items nearest to the event position considering all visible items in teh chart
+	 * @param chart {Chart} the chart to look at elements from
+	 * @param position {Point} the point to be nearest to
+	 * @param intersect {Boolean} if true, only consider items that intersect the position
+	 * @param distanceMetric {Function} function to provide the distance between points
+	 * @return {ChartElement[]} the nearest items
+	 */
+	function getNearestItems(chart, position, intersect, distanceMetric) {
+		var minDistance = Number.POSITIVE_INFINITY;
+		var nearestItems = [];
+
+		parseVisibleItems(chart, function(element) {
+			if (intersect && !element.inRange(position.x, position.y)) {
+				return;
+			}
+
+			var center = element.getCenterPoint();
+			var distance = distanceMetric(position, center);
+
+			if (distance < minDistance) {
+				nearestItems = [element];
+				minDistance = distance;
+			} else if (distance === minDistance) {
+				// Can have multiple items at the same distance in which case we sort by size
+				nearestItems.push(element);
+			}
+		});
+
+		return nearestItems;
+	}
+
+	/**
+	 * Get a distance metric function for two points based on the
+	 * axis mode setting
+	 * @param {String} axis the axis mode. x|y|xy
+	 */
+	function getDistanceMetricForAxis(axis) {
+		var useX = axis.indexOf('x') !== -1;
+		var useY = axis.indexOf('y') !== -1;
+
+		return function(pt1, pt2) {
+			var deltaX = useX ? Math.abs(pt1.x - pt2.x) : 0;
+			var deltaY = useY ? Math.abs(pt1.y - pt2.y) : 0;
+			return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+		};
+	}
+
+	function indexMode(chart, e, options) {
+		var position = getRelativePosition(e, chart);
+		// Default axis for index mode is 'x' to match old behaviour
+		options.axis = options.axis || 'x';
+		var distanceMetric = getDistanceMetricForAxis(options.axis);
+		var items = options.intersect ? getIntersectItems(chart, position) : getNearestItems(chart, position, false, distanceMetric);
+		var elements = [];
+
+		if (!items.length) {
+			return [];
+		}
+
+		chart.data.datasets.forEach(function(dataset, datasetIndex) {
+			if (chart.isDatasetVisible(datasetIndex)) {
+				var meta = chart.getDatasetMeta(datasetIndex);
+				var element = meta.data[items[0]._index];
+
+				// don't count items that are skipped (null data)
+				if (element && !element._view.skip) {
+					elements.push(element);
+				}
+			}
+		});
+
+		return elements;
+	}
+
+	/**
+	 * @interface IInteractionOptions
+	 */
+	/**
+	 * If true, only consider items that intersect the point
+	 * @name IInterfaceOptions#boolean
+	 * @type Boolean
+	 */
+
+	/**
+	 * Contains interaction related functions
+	 * @namespace Chart.Interaction
+	 */
+	module.exports = {
+		// Helper function for different modes
+		modes: {
+			single: function(chart, e) {
+				var position = getRelativePosition(e, chart);
+				var elements = [];
+
+				parseVisibleItems(chart, function(element) {
+					if (element.inRange(position.x, position.y)) {
+						elements.push(element);
+						return elements;
+					}
+				});
+
+				return elements.slice(0, 1);
+			},
+
+			/**
+			 * @function Chart.Interaction.modes.label
+			 * @deprecated since version 2.4.0
+			 * @todo remove at version 3
+			 * @private
+			 */
+			label: indexMode,
+
+			/**
+			 * Returns items at the same index. If the options.intersect parameter is true, we only return items if we intersect something
+			 * If the options.intersect mode is false, we find the nearest item and return the items at the same index as that item
+			 * @function Chart.Interaction.modes.index
+			 * @since v2.4.0
+			 * @param chart {chart} the chart we are returning items from
+			 * @param e {Event} the event we are find things at
+			 * @param options {IInteractionOptions} options to use during interaction
+			 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
+			 */
+			index: indexMode,
+
+			/**
+			 * Returns items in the same dataset. If the options.intersect parameter is true, we only return items if we intersect something
+			 * If the options.intersect is false, we find the nearest item and return the items in that dataset
+			 * @function Chart.Interaction.modes.dataset
+			 * @param chart {chart} the chart we are returning items from
+			 * @param e {Event} the event we are find things at
+			 * @param options {IInteractionOptions} options to use during interaction
+			 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
+			 */
+			dataset: function(chart, e, options) {
+				var position = getRelativePosition(e, chart);
+				options.axis = options.axis || 'xy';
+				var distanceMetric = getDistanceMetricForAxis(options.axis);
+				var items = options.intersect ? getIntersectItems(chart, position) : getNearestItems(chart, position, false, distanceMetric);
+
+				if (items.length > 0) {
+					items = chart.getDatasetMeta(items[0]._datasetIndex).data;
+				}
+
+				return items;
+			},
+
+			/**
+			 * @function Chart.Interaction.modes.x-axis
+			 * @deprecated since version 2.4.0. Use index mode and intersect == true
+			 * @todo remove at version 3
+			 * @private
+			 */
+			'x-axis': function(chart, e) {
+				return indexMode(chart, e, {intersect: true});
+			},
+
+			/**
+			 * Point mode returns all elements that hit test based on the event position
+			 * of the event
+			 * @function Chart.Interaction.modes.intersect
+			 * @param chart {chart} the chart we are returning items from
+			 * @param e {Event} the event we are find things at
+			 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
+			 */
+			point: function(chart, e) {
+				var position = getRelativePosition(e, chart);
+				return getIntersectItems(chart, position);
+			},
+
+			/**
+			 * nearest mode returns the element closest to the point
+			 * @function Chart.Interaction.modes.intersect
+			 * @param chart {chart} the chart we are returning items from
+			 * @param e {Event} the event we are find things at
+			 * @param options {IInteractionOptions} options to use
+			 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
+			 */
+			nearest: function(chart, e, options) {
+				var position = getRelativePosition(e, chart);
+				options.axis = options.axis || 'xy';
+				var distanceMetric = getDistanceMetricForAxis(options.axis);
+				var nearestItems = getNearestItems(chart, position, options.intersect, distanceMetric);
+
+				// We have multiple items at the same distance from the event. Now sort by smallest
+				if (nearestItems.length > 1) {
+					nearestItems.sort(function(a, b) {
+						var sizeA = a.getArea();
+						var sizeB = b.getArea();
+						var ret = sizeA - sizeB;
+
+						if (ret === 0) {
+							// if equal sort by dataset index
+							ret = a._datasetIndex - b._datasetIndex;
+						}
+
+						return ret;
+					});
+				}
+
+				// Return only 1 item
+				return nearestItems.slice(0, 1);
+			},
+
+			/**
+			 * x mode returns the elements that hit-test at the current x coordinate
+			 * @function Chart.Interaction.modes.x
+			 * @param chart {chart} the chart we are returning items from
+			 * @param e {Event} the event we are find things at
+			 * @param options {IInteractionOptions} options to use
+			 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
+			 */
+			x: function(chart, e, options) {
+				var position = getRelativePosition(e, chart);
+				var items = [];
+				var intersectsItem = false;
+
+				parseVisibleItems(chart, function(element) {
+					if (element.inXRange(position.x)) {
+						items.push(element);
+					}
+
+					if (element.inRange(position.x, position.y)) {
+						intersectsItem = true;
+					}
+				});
+
+				// If we want to trigger on an intersect and we don't have any items
+				// that intersect the position, return nothing
+				if (options.intersect && !intersectsItem) {
+					items = [];
+				}
+				return items;
+			},
+
+			/**
+			 * y mode returns the elements that hit-test at the current y coordinate
+			 * @function Chart.Interaction.modes.y
+			 * @param chart {chart} the chart we are returning items from
+			 * @param e {Event} the event we are find things at
+			 * @param options {IInteractionOptions} options to use
+			 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
+			 */
+			y: function(chart, e, options) {
+				var position = getRelativePosition(e, chart);
+				var items = [];
+				var intersectsItem = false;
+
+				parseVisibleItems(chart, function(element) {
+					if (element.inYRange(position.y)) {
+						items.push(element);
+					}
+
+					if (element.inRange(position.x, position.y)) {
+						intersectsItem = true;
+					}
+				});
+
+				// If we want to trigger on an intersect and we don't have any items
+				// that intersect the position, return nothing
+				if (options.intersect && !intersectsItem) {
+					items = [];
+				}
+				return items;
+			}
+		}
 	};
 
 
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	var helpers = __webpack_require__(5);
+	var basic = __webpack_require__(24);
+	var dom = __webpack_require__(25);
+
+	// @TODO Make possible to select another platform at build time.
+	var implementation = dom._enabled ? dom : basic;
+
+	/**
+	 * @namespace Chart.platform
+	 * @see https://chartjs.gitbooks.io/proposals/content/Platform.html
+	 * @since 2.4.0
+	 */
+	module.exports = helpers.extend({
+		/**
+		 * @since 2.7.0
+		 */
+		initialize: function() {},
+
+		/**
+		 * Called at chart construction time, returns a context2d instance implementing
+		 * the [W3C Canvas 2D Context API standard]{@link https://www.w3.org/TR/2dcontext/}.
+		 * @param {*} item - The native item from which to acquire context (platform specific)
+		 * @param {Object} options - The chart options
+		 * @returns {CanvasRenderingContext2D} context2d instance
+		 */
+		acquireContext: function() {},
+
+		/**
+		 * Called at chart destruction time, releases any resources associated to the context
+		 * previously returned by the acquireContext() method.
+		 * @param {CanvasRenderingContext2D} context - The context2d instance
+		 * @returns {Boolean} true if the method succeeded, else false
+		 */
+		releaseContext: function() {},
+
+		/**
+		 * Registers the specified listener on the given chart.
+		 * @param {Chart} chart - Chart from which to listen for event
+		 * @param {String} type - The ({@link IEvent}) type to listen for
+		 * @param {Function} listener - Receives a notification (an object that implements
+		 * the {@link IEvent} interface) when an event of the specified type occurs.
+		 */
+		addEventListener: function() {},
+
+		/**
+		 * Removes the specified listener previously registered with addEventListener.
+		 * @param {Chart} chart -Chart from which to remove the listener
+		 * @param {String} type - The ({@link IEvent}) type to remove
+		 * @param {Function} listener - The listener function to remove from the event target.
+		 */
+		removeEventListener: function() {}
+
+	}, implementation);
+
+	/**
+	 * @interface IPlatform
+	 * Allows abstracting platform dependencies away from the chart
+	 * @borrows Chart.platform.acquireContext as acquireContext
+	 * @borrows Chart.platform.releaseContext as releaseContext
+	 * @borrows Chart.platform.addEventListener as addEventListener
+	 * @borrows Chart.platform.removeEventListener as removeEventListener
+	 */
+
+	/**
+	 * @interface IEvent
+	 * @prop {String} type - The event type name, possible values are:
+	 * 'contextmenu', 'mouseenter', 'mousedown', 'mousemove', 'mouseup', 'mouseout',
+	 * 'click', 'dblclick', 'keydown', 'keypress', 'keyup' and 'resize'
+	 * @prop {*} native - The original native event (null for emulated events, e.g. 'resize')
+	 * @prop {Number} x - The mouse x position, relative to the canvas (null for incompatible events)
+	 * @prop {Number} y - The mouse y position, relative to the canvas (null for incompatible events)
+	 */
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports) {
+
+	/**
+	 * Platform fallback implementation (minimal).
+	 * @see https://github.com/chartjs/Chart.js/pull/4591#issuecomment-319575939
+	 */
+
+	module.exports = {
+		acquireContext: function(item) {
+			if (item && item.canvas) {
+				// Support for any object associated to a canvas (including a context2d)
+				item = item.canvas;
+			}
+
+			return item && item.getContext('2d') || null;
+		}
+	};
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * Chart.Platform implementation for targeting a web browser
+	 */
+
+	'use strict';
+
+	var helpers = __webpack_require__(5);
+
+	var EXPANDO_KEY = '$chartjs';
+	var CSS_PREFIX = 'chartjs-';
+	var CSS_RENDER_MONITOR = CSS_PREFIX + 'render-monitor';
+	var CSS_RENDER_ANIMATION = CSS_PREFIX + 'render-animation';
+	var ANIMATION_START_EVENTS = ['animationstart', 'webkitAnimationStart'];
+
+	/**
+	 * DOM event types -> Chart.js event types.
+	 * Note: only events with different types are mapped.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/Events
+	 */
+	var EVENT_TYPES = {
+		touchstart: 'mousedown',
+		touchmove: 'mousemove',
+		touchend: 'mouseup',
+		pointerenter: 'mouseenter',
+		pointerdown: 'mousedown',
+		pointermove: 'mousemove',
+		pointerup: 'mouseup',
+		pointerleave: 'mouseout',
+		pointerout: 'mouseout'
+	};
+
+	/**
+	 * The "used" size is the final value of a dimension property after all calculations have
+	 * been performed. This method uses the computed style of `element` but returns undefined
+	 * if the computed style is not expressed in pixels. That can happen in some cases where
+	 * `element` has a size relative to its parent and this last one is not yet displayed,
+	 * for example because of `display: none` on a parent node.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/used_value
+	 * @returns {Number} Size in pixels or undefined if unknown.
+	 */
+	function readUsedSize(element, property) {
+		var value = helpers.getStyle(element, property);
+		var matches = value && value.match(/^(\d+)(\.\d+)?px$/);
+		return matches ? Number(matches[1]) : undefined;
+	}
+
+	/**
+	 * Initializes the canvas style and render size without modifying the canvas display size,
+	 * since responsiveness is handled by the controller.resize() method. The config is used
+	 * to determine the aspect ratio to apply in case no explicit height has been specified.
+	 */
+	function initCanvas(canvas, config) {
+		var style = canvas.style;
+
+		// NOTE(SB) canvas.getAttribute('width') !== canvas.width: in the first case it
+		// returns null or '' if no explicit value has been set to the canvas attribute.
+		var renderHeight = canvas.getAttribute('height');
+		var renderWidth = canvas.getAttribute('width');
+
+		// Chart.js modifies some canvas values that we want to restore on destroy
+		canvas[EXPANDO_KEY] = {
+			initial: {
+				height: renderHeight,
+				width: renderWidth,
+				style: {
+					display: style.display,
+					height: style.height,
+					width: style.width
+				}
+			}
+		};
+
+		// Force canvas to display as block to avoid extra space caused by inline
+		// elements, which would interfere with the responsive resize process.
+		// https://github.com/chartjs/Chart.js/issues/2538
+		style.display = style.display || 'block';
+
+		if (renderWidth === null || renderWidth === '') {
+			var displayWidth = readUsedSize(canvas, 'width');
+			if (displayWidth !== undefined) {
+				canvas.width = displayWidth;
+			}
+		}
+
+		if (renderHeight === null || renderHeight === '') {
+			if (canvas.style.height === '') {
+				// If no explicit render height and style height, let's apply the aspect ratio,
+				// which one can be specified by the user but also by charts as default option
+				// (i.e. options.aspectRatio). If not specified, use canvas aspect ratio of 2.
+				canvas.height = canvas.width / (config.options.aspectRatio || 2);
+			} else {
+				var displayHeight = readUsedSize(canvas, 'height');
+				if (displayWidth !== undefined) {
+					canvas.height = displayHeight;
+				}
+			}
+		}
+
+		return canvas;
+	}
+
+	/**
+	 * Detects support for options object argument in addEventListener.
+	 * https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Safely_detecting_option_support
+	 * @private
+	 */
+	var supportsEventListenerOptions = (function() {
+		var supports = false;
+		try {
+			var options = Object.defineProperty({}, 'passive', {
+				get: function() {
+					supports = true;
+				}
+			});
+			window.addEventListener('e', null, options);
+		} catch (e) {
+			// continue regardless of error
+		}
+		return supports;
+	}());
+
+	// Default passive to true as expected by Chrome for 'touchstart' and 'touchend' events.
+	// https://github.com/chartjs/Chart.js/issues/4287
+	var eventListenerOptions = supportsEventListenerOptions ? {passive: true} : false;
+
+	function addEventListener(node, type, listener) {
+		node.addEventListener(type, listener, eventListenerOptions);
+	}
+
+	function removeEventListener(node, type, listener) {
+		node.removeEventListener(type, listener, eventListenerOptions);
+	}
+
+	function createEvent(type, chart, x, y, nativeEvent) {
+		return {
+			type: type,
+			chart: chart,
+			native: nativeEvent || null,
+			x: x !== undefined ? x : null,
+			y: y !== undefined ? y : null,
+		};
+	}
+
+	function fromNativeEvent(event, chart) {
+		var type = EVENT_TYPES[event.type] || event.type;
+		var pos = helpers.getRelativePosition(event, chart);
+		return createEvent(type, chart, pos.x, pos.y, event);
+	}
+
+	function throttled(fn, thisArg) {
+		var ticking = false;
+		var args = [];
+
+		return function() {
+			args = Array.prototype.slice.call(arguments);
+			thisArg = thisArg || this;
+
+			if (!ticking) {
+				ticking = true;
+				helpers.requestAnimFrame.call(window, function() {
+					ticking = false;
+					fn.apply(thisArg, args);
+				});
+			}
+		};
+	}
+
+	// Implementation based on https://github.com/marcj/css-element-queries
+	function createResizer(handler) {
+		var resizer = document.createElement('div');
+		var cls = CSS_PREFIX + 'size-monitor';
+		var maxSize = 1000000;
+		var style =
+			'position:absolute;' +
+			'left:0;' +
+			'top:0;' +
+			'right:0;' +
+			'bottom:0;' +
+			'overflow:hidden;' +
+			'pointer-events:none;' +
+			'visibility:hidden;' +
+			'z-index:-1;';
+
+		resizer.style.cssText = style;
+		resizer.className = cls;
+		resizer.innerHTML =
+			'<div class="' + cls + '-expand" style="' + style + '">' +
+				'<div style="' +
+					'position:absolute;' +
+					'width:' + maxSize + 'px;' +
+					'height:' + maxSize + 'px;' +
+					'left:0;' +
+					'top:0">' +
+				'</div>' +
+			'</div>' +
+			'<div class="' + cls + '-shrink" style="' + style + '">' +
+				'<div style="' +
+					'position:absolute;' +
+					'width:200%;' +
+					'height:200%;' +
+					'left:0; ' +
+					'top:0">' +
+				'</div>' +
+			'</div>';
+
+		var expand = resizer.childNodes[0];
+		var shrink = resizer.childNodes[1];
+
+		resizer._reset = function() {
+			expand.scrollLeft = maxSize;
+			expand.scrollTop = maxSize;
+			shrink.scrollLeft = maxSize;
+			shrink.scrollTop = maxSize;
+		};
+		var onScroll = function() {
+			resizer._reset();
+			handler();
+		};
+
+		addEventListener(expand, 'scroll', onScroll.bind(expand, 'expand'));
+		addEventListener(shrink, 'scroll', onScroll.bind(shrink, 'shrink'));
+
+		return resizer;
+	}
+
+	// https://davidwalsh.name/detect-node-insertion
+	function watchForRender(node, handler) {
+		var expando = node[EXPANDO_KEY] || (node[EXPANDO_KEY] = {});
+		var proxy = expando.renderProxy = function(e) {
+			if (e.animationName === CSS_RENDER_ANIMATION) {
+				handler();
+			}
+		};
+
+		helpers.each(ANIMATION_START_EVENTS, function(type) {
+			addEventListener(node, type, proxy);
+		});
+
+		node.classList.add(CSS_RENDER_MONITOR);
+	}
+
+	function unwatchForRender(node) {
+		var expando = node[EXPANDO_KEY] || {};
+		var proxy = expando.renderProxy;
+
+		if (proxy) {
+			helpers.each(ANIMATION_START_EVENTS, function(type) {
+				removeEventListener(node, type, proxy);
+			});
+
+			delete expando.renderProxy;
+		}
+
+		node.classList.remove(CSS_RENDER_MONITOR);
+	}
+
+	function addResizeListener(node, listener, chart) {
+		var expando = node[EXPANDO_KEY] || (node[EXPANDO_KEY] = {});
+
+		// Let's keep track of this added resizer and thus avoid DOM query when removing it.
+		var resizer = expando.resizer = createResizer(throttled(function() {
+			if (expando.resizer) {
+				return listener(createEvent('resize', chart));
+			}
+		}));
+
+		// The resizer needs to be attached to the node parent, so we first need to be
+		// sure that `node` is attached to the DOM before injecting the resizer element.
+		watchForRender(node, function() {
+			if (expando.resizer) {
+				var container = node.parentNode;
+				if (container && container !== resizer.parentNode) {
+					container.insertBefore(resizer, container.firstChild);
+				}
+
+				// The container size might have changed, let's reset the resizer state.
+				resizer._reset();
+			}
+		});
+	}
+
+	function removeResizeListener(node) {
+		var expando = node[EXPANDO_KEY] || {};
+		var resizer = expando.resizer;
+
+		delete expando.resizer;
+		unwatchForRender(node);
+
+		if (resizer && resizer.parentNode) {
+			resizer.parentNode.removeChild(resizer);
+		}
+	}
+
+	function injectCSS(platform, css) {
+		// http://stackoverflow.com/q/3922139
+		var style = platform._style || document.createElement('style');
+		if (!platform._style) {
+			platform._style = style;
+			css = '/* Chart.js */\n' + css;
+			style.setAttribute('type', 'text/css');
+			document.getElementsByTagName('head')[0].appendChild(style);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+
+	module.exports = {
+		/**
+		 * This property holds whether this platform is enabled for the current environment.
+		 * Currently used by platform.js to select the proper implementation.
+		 * @private
+		 */
+		_enabled: typeof window !== 'undefined' && typeof document !== 'undefined',
+
+		initialize: function() {
+			var keyframes = 'from{opacity:0.99}to{opacity:1}';
+
+			injectCSS(this,
+				// DOM rendering detection
+				// https://davidwalsh.name/detect-node-insertion
+				'@-webkit-keyframes ' + CSS_RENDER_ANIMATION + '{' + keyframes + '}' +
+				'@keyframes ' + CSS_RENDER_ANIMATION + '{' + keyframes + '}' +
+				'.' + CSS_RENDER_MONITOR + '{' +
+					'-webkit-animation:' + CSS_RENDER_ANIMATION + ' 0.001s;' +
+					'animation:' + CSS_RENDER_ANIMATION + ' 0.001s;' +
+				'}'
+			);
+		},
+
+		acquireContext: function(item, config) {
+			if (typeof item === 'string') {
+				item = document.getElementById(item);
+			} else if (item.length) {
+				// Support for array based queries (such as jQuery)
+				item = item[0];
+			}
+
+			if (item && item.canvas) {
+				// Support for any object associated to a canvas (including a context2d)
+				item = item.canvas;
+			}
+
+			// To prevent canvas fingerprinting, some add-ons undefine the getContext
+			// method, for example: https://github.com/kkapsner/CanvasBlocker
+			// https://github.com/chartjs/Chart.js/issues/2807
+			var context = item && item.getContext && item.getContext('2d');
+
+			// `instanceof HTMLCanvasElement/CanvasRenderingContext2D` fails when the item is
+			// inside an iframe or when running in a protected environment. We could guess the
+			// types from their toString() value but let's keep things flexible and assume it's
+			// a sufficient condition if the item has a context2D which has item as `canvas`.
+			// https://github.com/chartjs/Chart.js/issues/3887
+			// https://github.com/chartjs/Chart.js/issues/4102
+			// https://github.com/chartjs/Chart.js/issues/4152
+			if (context && context.canvas === item) {
+				initCanvas(item, config);
+				return context;
+			}
+
+			return null;
+		},
+
+		releaseContext: function(context) {
+			var canvas = context.canvas;
+			if (!canvas[EXPANDO_KEY]) {
+				return;
+			}
+
+			var initial = canvas[EXPANDO_KEY].initial;
+			['height', 'width'].forEach(function(prop) {
+				var value = initial[prop];
+				if (helpers.isNullOrUndef(value)) {
+					canvas.removeAttribute(prop);
+				} else {
+					canvas.setAttribute(prop, value);
+				}
+			});
+
+			helpers.each(initial.style || {}, function(value, key) {
+				canvas.style[key] = value;
+			});
+
+			// The canvas render size might have been changed (and thus the state stack discarded),
+			// we can't use save() and restore() to restore the initial state. So make sure that at
+			// least the canvas context is reset to the default state by setting the canvas width.
+			// https://www.w3.org/TR/2011/WD-html5-20110525/the-canvas-element.html
+			canvas.width = canvas.width;
+
+			delete canvas[EXPANDO_KEY];
+		},
+
+		addEventListener: function(chart, type, listener) {
+			var canvas = chart.canvas;
+			if (type === 'resize') {
+				// Note: the resize event is not supported on all browsers.
+				addResizeListener(canvas, listener, chart);
+				return;
+			}
+
+			var expando = listener[EXPANDO_KEY] || (listener[EXPANDO_KEY] = {});
+			var proxies = expando.proxies || (expando.proxies = {});
+			var proxy = proxies[chart.id + '_' + type] = function(event) {
+				listener(fromNativeEvent(event, chart));
+			};
+
+			addEventListener(canvas, type, proxy);
+		},
+
+		removeEventListener: function(chart, type, listener) {
+			var canvas = chart.canvas;
+			if (type === 'resize') {
+				// Note: the resize event is not supported on all browsers.
+				removeResizeListener(canvas, listener);
+				return;
+			}
+
+			var expando = listener[EXPANDO_KEY] || {};
+			var proxies = expando.proxies || {};
+			var proxy = proxies[chart.id + '_' + type];
+			if (!proxy) {
+				return;
+			}
+
+			removeEventListener(canvas, type, proxy);
+		}
+	};
+
+	// DEPRECATIONS
+
+	/**
+	 * Provided for backward compatibility, use EventTarget.addEventListener instead.
+	 * EventTarget.addEventListener compatibility: Chrome, Opera 7, Safari, FF1.5+, IE9+
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+	 * @function Chart.helpers.addEvent
+	 * @deprecated since version 2.7.0
+	 * @todo remove at version 3
+	 * @private
+	 */
+	helpers.addEvent = addEventListener;
+
+	/**
+	 * Provided for backward compatibility, use EventTarget.removeEventListener instead.
+	 * EventTarget.removeEventListener compatibility: Chrome, Opera 7, Safari, FF1.5+, IE9+
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
+	 * @function Chart.helpers.removeEvent
+	 * @deprecated since version 2.7.0
+	 * @todo remove at version 3
+	 * @private
+	 */
+	helpers.removeEvent = removeEventListener;
+
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var defaults = __webpack_require__(4);
+	var Element = __webpack_require__(16);
+	var helpers = __webpack_require__(5);
+
+	defaults._set('global', {
+		plugins: {}
+	});
+
 	module.exports = function(Chart) {
-
-		var helpers = Chart.helpers;
-
-		Chart.defaults.global.plugins = {};
 
 		/**
 		 * The plugin service singleton
@@ -3784,7 +5288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var ilen = descriptors.length;
 				var i, descriptor, plugin, params, method;
 
-				for (i=0; i<ilen; ++i) {
+				for (i = 0; i < ilen; ++i) {
 					descriptor = descriptors[i];
 					plugin = descriptor.plugin;
 					method = plugin[hook];
@@ -3814,7 +5318,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				var plugins = [];
 				var descriptors = [];
 				var config = (chart && chart.config) || {};
-				var defaults = Chart.defaults.global.plugins;
 				var options = (config.options && config.options.plugins) || {};
 
 				this._plugins.concat(config.plugins || []).forEach(function(plugin) {
@@ -3830,7 +5333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					}
 
 					if (opts === true) {
-						opts = helpers.clone(defaults[id]);
+						opts = helpers.clone(defaults.global.plugins[id]);
 					}
 
 					plugins.push(plugin);
@@ -3901,8 +5404,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		 * returns `false`, the datasets update is cancelled until another `update` is triggered.
 		 * @param {Chart} chart - The chart instance.
 		 * @param {Object} args - The call arguments.
-		 * @param {Object} args.index - The dataset index.
-		 * @param {Number} args.meta - The dataset metadata.
+		 * @param {Number} args.index - The dataset index.
+		 * @param {Object} args.meta - The dataset metadata.
 		 * @param {Object} options - The plugin options.
 		 * @returns {Boolean} `false` to cancel the chart datasets drawing.
 		 */
@@ -3912,8 +5415,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		 * that this hook will not be called if the datasets update has been previously cancelled.
 		 * @param {Chart} chart - The chart instance.
 		 * @param {Object} args - The call arguments.
-		 * @param {Object} args.index - The dataset index.
-		 * @param {Number} args.meta - The dataset metadata.
+		 * @param {Number} args.index - The dataset index.
+		 * @param {Object} args.meta - The dataset metadata.
 		 * @param {Object} options - The plugin options.
 		 */
 		/**
@@ -3988,8 +5491,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		 * is cancelled until another `render` is triggered.
 		 * @param {Chart} chart - The chart instance.
 		 * @param {Object} args - The call arguments.
-		 * @param {Object} args.index - The dataset index.
-		 * @param {Number} args.meta - The dataset metadata.
+		 * @param {Number} args.index - The dataset index.
+		 * @param {Object} args.meta - The dataset metadata.
 		 * @param {Number} args.easingValue - The current animation value, between 0.0 and 1.0.
 		 * @param {Object} options - The plugin options.
 		 * @returns {Boolean} `false` to cancel the chart datasets drawing.
@@ -4001,8 +5504,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		 * if the datasets drawing has been previously cancelled.
 		 * @param {Chart} chart - The chart instance.
 		 * @param {Object} args - The call arguments.
-		 * @param {Object} args.index - The dataset index.
-		 * @param {Number} args.meta - The dataset metadata.
+		 * @param {Number} args.index - The dataset index.
+		 * @param {Object} args.meta - The dataset metadata.
 		 * @param {Number} args.easingValue - The current animation value, between 0.0 and 1.0.
 		 * @param {Object} options - The plugin options.
 		 */
@@ -4053,29 +5556,33 @@ return /******/ (function(modules) { // webpackBootstrap
 		 * @todo remove at version 3
 		 * @private
 		 */
-		Chart.PluginBase = Chart.Element.extend({});
+		Chart.PluginBase = Element.extend({});
 	};
 
 
-/***/ },
-/* 15 */
-/***/ function(module, exports) {
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* global window: false */
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var Element = __webpack_require__(16);
+	var helpers = __webpack_require__(5);
 
-		var helpers = Chart.helpers;
-
-		Chart.defaults.global.animation = {
+	defaults._set('global', {
+		animation: {
 			duration: 1000,
 			easing: 'easeOutQuart',
 			onProgress: helpers.noop,
 			onComplete: helpers.noop
-		};
+		}
+	});
 
-		Chart.Animation = Chart.Element.extend({
+	module.exports = function(Chart) {
+
+		Chart.Animation = Element.extend({
 			chart: null, // the animation associated chart instance
 			currentStep: 0, // the current animation step
 			numSteps: 60, // default number of steps
@@ -4108,7 +5615,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					chart.animating = true;
 				}
 
-				for (i=0, ilen=animations.length; i < ilen; ++i) {
+				for (i = 0, ilen = animations.length; i < ilen; ++i) {
 					if (animations[i].chart === chart) {
 						animations[i] = animation;
 						return;
@@ -4231,17 +5738,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var helpers = __webpack_require__(5);
+	var Interaction = __webpack_require__(22);
+	var platform = __webpack_require__(23);
 
-		var helpers = Chart.helpers;
+	module.exports = function(Chart) {
 		var plugins = Chart.plugins;
-		var platform = Chart.platform;
 
 		// Create a dictionary of chart types, to allow for extension of existing types
 		Chart.types = {};
@@ -4266,8 +5775,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			data.labels = data.labels || [];
 
 			config.options = helpers.configMerge(
-				Chart.defaults.global,
-				Chart.defaults[config.type],
+				defaults.global,
+				defaults[config.type],
 				config.options || {});
 
 			return config;
@@ -4317,7 +5826,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				me.config = config;
 				me.width = width;
 				me.height = height;
-				me.aspectRatio = height? width / height : null;
+				me.aspectRatio = height ? width / height : null;
 				me.options = config.options;
 				me._bufferedRender = false;
 
@@ -4330,7 +5839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				 * @private
 				 */
 				me.chart = me;
-				me.controller = me;  // chart.chart.controller #inception
+				me.controller = me; // chart.chart.controller #inception
 
 				// Add the chart instance to the global namespace
 				Chart.instances[me.id] = me;
@@ -4367,7 +5876,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				// Before init plugin notification
 				plugins.notify(me, 'beforeInit');
 
-				helpers.retinaScale(me);
+				helpers.retinaScale(me, me.options.devicePixelRatio);
 
 				me.bindEvents();
 
@@ -4388,7 +5897,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 
 			clear: function() {
-				helpers.clear(this);
+				helpers.canvas.clear(this);
 				return this;
 			},
 
@@ -4406,8 +5915,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				// the canvas render width and height will be casted to integers so make sure that
 				// the canvas display style uses the same integer values to avoid blurring effect.
-				var newWidth = Math.floor(helpers.getMaximumWidth(canvas));
-				var newHeight = Math.floor(aspectRatio? newWidth / aspectRatio : helpers.getMaximumHeight(canvas));
+
+				// Set to 0 instead of canvas.size because the size defaults to 300x150 if the element is collased
+				var newWidth = Math.max(0, Math.floor(helpers.getMaximumWidth(canvas)));
+				var newHeight = Math.max(0, Math.floor(aspectRatio ? newWidth / aspectRatio : helpers.getMaximumHeight(canvas)));
 
 				if (me.width === newWidth && me.height === newHeight) {
 					return;
@@ -4418,7 +5929,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				canvas.style.width = newWidth + 'px';
 				canvas.style.height = newHeight + 'px';
 
-				helpers.retinaScale(me);
+				helpers.retinaScale(me, options.devicePixelRatio);
 
 				if (!silent) {
 					// Notify any plugins about the resize
@@ -4484,7 +5995,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				helpers.each(items, function(item) {
 					var scaleOptions = item.options;
-					var scaleType = helpers.getValueOrDefault(scaleOptions.type, item.dtype);
+					var scaleType = helpers.valueOrDefault(scaleOptions.type, item.dtype);
 					var scaleClass = Chart.scaleService.getScaleConstructor(scaleType);
 					if (!scaleClass) {
 						return;
@@ -4502,6 +6013,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					});
 
 					scales[scale.id] = scale;
+					scale.mergeTicksOptions();
 
 					// TODO(SB): I think we should be able to remove this custom case (options.scale)
 					// and consider it as a regular scale part of the "scales"" map only! This would
@@ -4521,9 +6033,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				helpers.each(me.data.datasets, function(dataset, datasetIndex) {
 					var meta = me.getDatasetMeta(datasetIndex);
-					if (!meta.type) {
-						meta.type = dataset.type || me.config.type;
+					var type = dataset.type || me.config.type;
+
+					if (meta.type && meta.type !== type) {
+						me.destroyDatasetMeta(datasetIndex);
+						meta = me.getDatasetMeta(datasetIndex);
 					}
+					meta.type = type;
 
 					types.push(meta.type);
 
@@ -4539,15 +6055,6 @@ return /******/ (function(modules) { // webpackBootstrap
 						newControllers.push(meta.controller);
 					}
 				}, me);
-
-				if (types.length > 1) {
-					for (var i = 1; i < types.length; i++) {
-						if (types[i] !== types[i - 1]) {
-							me.isCombo = true;
-							break;
-						}
-					}
-				}
 
 				return newControllers;
 			},
@@ -4571,8 +6078,16 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.tooltip.initialize();
 			},
 
-			update: function(animationDuration, lazy) {
+			update: function(config) {
 				var me = this;
+
+				if (!config || typeof config !== 'object') {
+					// backwards compatibility
+					config = {
+						duration: config,
+						lazy: arguments[1]
+					};
+				}
 
 				updateConfig(me);
 
@@ -4605,11 +6120,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				if (me._bufferedRender) {
 					me._bufferedRequest = {
-						lazy: lazy,
-						duration: animationDuration
+						duration: config.duration,
+						easing: config.easing,
+						lazy: config.lazy
 					};
 				} else {
-					me.render(animationDuration, lazy);
+					me.render(config);
 				}
 			},
 
@@ -4679,8 +6195,19 @@ return /******/ (function(modules) { // webpackBootstrap
 				plugins.notify(me, 'afterDatasetUpdate', [args]);
 			},
 
-			render: function(duration, lazy) {
+			render: function(config) {
 				var me = this;
+
+				if (!config || typeof config !== 'object') {
+					// backwards compatibility
+					config = {
+						duration: config,
+						lazy: arguments[1]
+					};
+				}
+
+				var duration = config.duration;
+				var lazy = config.lazy;
 
 				if (plugins.notify(me, 'beforeRender') === false) {
 					return;
@@ -4695,10 +6222,10 @@ return /******/ (function(modules) { // webpackBootstrap
 				if (animationOptions && ((typeof duration !== 'undefined' && duration !== 0) || (typeof duration === 'undefined' && animationOptions.duration !== 0))) {
 					var animation = new Chart.Animation({
 						numSteps: (duration || animationOptions.duration) / 16.66, // 60 fps
-						easing: animationOptions.easing,
+						easing: config.easing || animationOptions.easing,
 
 						render: function(chart, animationObject) {
-							var easingFunction = helpers.easingEffects[animationObject.easing];
+							var easingFunction = helpers.easing.effects[animationObject.easing];
 							var currentStep = animationObject.currentStep;
 							var stepDecimal = currentStep / animationObject.numSteps;
 
@@ -4725,7 +6252,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				me.clear();
 
-				if (easingValue === undefined || easingValue === null) {
+				if (helpers.isNullOrUndef(easingValue)) {
 					easingValue = 1;
 				}
 
@@ -4758,7 +6285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			transition: function(easingValue) {
 				var me = this;
 
-				for (var i=0, ilen=(me.data.datasets || []).length; i<ilen; ++i) {
+				for (var i = 0, ilen = (me.data.datasets || []).length; i < ilen; ++i) {
 					if (me.isDatasetVisible(i)) {
 						me.getDatasetMeta(i).controller.transition(easingValue);
 					}
@@ -4780,7 +6307,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 
 				// Draw datasets reversed to support proper line stacking
-				for (var i=(me.data.datasets || []).length - 1; i >= 0; --i) {
+				for (var i = (me.data.datasets || []).length - 1; i >= 0; --i) {
 					if (me.isDatasetVisible(i)) {
 						me.drawDataset(i, easingValue);
 					}
@@ -4815,19 +6342,19 @@ return /******/ (function(modules) { // webpackBootstrap
 			// Get the single element that was clicked on
 			// @return : An object containing the dataset index and element index of the matching element. Also contains the rectangle that was draw
 			getElementAtEvent: function(e) {
-				return Chart.Interaction.modes.single(this, e);
+				return Interaction.modes.single(this, e);
 			},
 
 			getElementsAtEvent: function(e) {
-				return Chart.Interaction.modes.label(this, e, {intersect: true});
+				return Interaction.modes.label(this, e, {intersect: true});
 			},
 
 			getElementsAtXAxis: function(e) {
-				return Chart.Interaction.modes['x-axis'](this, e, {intersect: true});
+				return Interaction.modes['x-axis'](this, e, {intersect: true});
 			},
 
 			getElementsAtEventForMode: function(e, mode, options) {
-				var method = Chart.Interaction.modes[mode];
+				var method = Interaction.modes[mode];
 				if (typeof method === 'function') {
 					return method(this, e, options);
 				}
@@ -4836,7 +6363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 
 			getDatasetAtEvent: function(e) {
-				return Chart.Interaction.modes.dataset(this, e, {intersect: true});
+				return Interaction.modes.dataset(this, e, {intersect: true});
 			},
 
 			getDatasetMeta: function(datasetIndex) {
@@ -4864,7 +6391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			getVisibleDatasetCount: function() {
 				var count = 0;
-				for (var i = 0, ilen = this.data.datasets.length; i<ilen; ++i) {
+				for (var i = 0, ilen = this.data.datasets.length; i < ilen; ++i) {
 					if (this.isDatasetVisible(i)) {
 						count++;
 					}
@@ -4877,32 +6404,42 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				// meta.hidden is a per chart dataset hidden flag override with 3 states: if true or false,
 				// the dataset.hidden value is ignored, else if null, the dataset hidden state is returned.
-				return typeof meta.hidden === 'boolean'? !meta.hidden : !this.data.datasets[datasetIndex].hidden;
+				return typeof meta.hidden === 'boolean' ? !meta.hidden : !this.data.datasets[datasetIndex].hidden;
 			},
 
 			generateLegend: function() {
 				return this.options.legendCallback(this);
 			},
 
+			/**
+			 * @private
+			 */
+			destroyDatasetMeta: function(datasetIndex) {
+				var id = this.id;
+				var dataset = this.data.datasets[datasetIndex];
+				var meta = dataset._meta && dataset._meta[id];
+
+				if (meta) {
+					meta.controller.destroy();
+					delete dataset._meta[id];
+				}
+			},
+
 			destroy: function() {
 				var me = this;
 				var canvas = me.canvas;
-				var meta, i, ilen;
+				var i, ilen;
 
 				me.stop();
 
 				// dataset controllers need to cleanup associated data
 				for (i = 0, ilen = me.data.datasets.length; i < ilen; ++i) {
-					meta = me.getDatasetMeta(i);
-					if (meta.controller) {
-						meta.controller.destroy();
-						meta.controller = null;
-					}
+					me.destroyDatasetMeta(i);
 				}
 
 				if (canvas) {
 					me.unbindEvents();
-					helpers.clear(me);
+					helpers.canvas.clear(me);
 					platform.releaseContext(me.ctx);
 					me.canvas = null;
 					me.ctx = null;
@@ -4921,11 +6458,10 @@ return /******/ (function(modules) { // webpackBootstrap
 				var me = this;
 				me.tooltip = new Chart.Tooltip({
 					_chart: me,
-					_chartInstance: me,            // deprecated, backward compatibility
+					_chartInstance: me, // deprecated, backward compatibility
 					_data: me.data,
 					_options: me.options.tooltips
 				}, me);
-				me.tooltip.initialize();
 			},
 
 			/**
@@ -4943,9 +6479,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					listeners[type] = listener;
 				});
 
-				// Responsiveness is currently based on the use of an iframe, however this method causes
-				// performance issues and could be troublesome when used with ad blockers. So make sure
-				// that the user is still able to create a chart without iframe when responsive is false.
+				// Elements used to detect size change should not be injected for non responsive charts.
 				// See https://github.com/chartjs/Chart.js/issues/2210
 				if (me.options.responsive) {
 					listener = function() {
@@ -4974,10 +6508,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 
 			updateHoverStyle: function(elements, mode, enabled) {
-				var method = enabled? 'setHoverStyle' : 'removeHoverStyle';
+				var method = enabled ? 'setHoverStyle' : 'removeHoverStyle';
 				var element, i, ilen;
 
-				for (i=0, ilen=elements.length; i<ilen; ++i) {
+				for (i = 0, ilen = elements.length; i < ilen; ++i) {
 					element = elements[i];
 					if (element) {
 						this.getDatasetMeta(element._datasetIndex).controller[method](element);
@@ -5008,7 +6542,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var bufferedRequest = me._bufferedRequest;
 				if (bufferedRequest) {
 					// If we have an update that was triggered, we need to do a normal render
-					me.render(bufferedRequest.duration, bufferedRequest.lazy);
+					me.render(bufferedRequest);
 				} else if (changed && !me.animating) {
 					// If entering, leaving, or changing elements, animate the change via pivot
 					me.stop();
@@ -5045,11 +6579,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					me.active = me.getElementsAtEventForMode(e, hoverOptions.mode, hoverOptions);
 				}
 
-				// On Hover hook
-				if (hoverOptions.onHover) {
-					// Need to call with native event here to not break backwards compatibility
-					hoverOptions.onHover.call(me, e.native, me.active);
-				}
+				// Invoke onHover hook
+				// Need to call with native event here to not break backwards compatibility
+				helpers.callback(options.onHover || options.hover.onHover, [e.native, me.active], me);
 
 				if (e.type === 'mouseup' || e.type === 'click') {
 					if (options.onClick) {
@@ -5088,15 +6620,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 17 */
-/***/ function(module, exports) {
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var helpers = __webpack_require__(5);
 
-		var helpers = Chart.helpers;
+	module.exports = function(Chart) {
 
 		var arrayEvents = ['push', 'pop', 'shift', 'splice', 'unshift'];
 
@@ -5264,7 +6796,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var metaData = meta.data;
 				var i, ilen;
 
-				for (i=0, ilen=data.length; i<ilen; ++i) {
+				for (i = 0, ilen = data.length; i < ilen; ++i) {
 					metaData[i] = metaData[i] || me.createMetaData(i);
 				}
 
@@ -5308,7 +6840,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var ilen = elements.length;
 				var i = 0;
 
-				for (; i<ilen; ++i) {
+				for (; i < ilen; ++i) {
 					elements[i].transition(easingValue);
 				}
 
@@ -5327,17 +6859,17 @@ return /******/ (function(modules) { // webpackBootstrap
 					meta.dataset.draw();
 				}
 
-				for (; i<ilen; ++i) {
+				for (; i < ilen; ++i) {
 					elements[i].draw();
 				}
 			},
 
 			removeHoverStyle: function(element, elementOpts) {
-				var dataset = this.chart.data.datasets[element._datasetIndex],
-					index = element._index,
-					custom = element.custom || {},
-					valueOrDefault = helpers.getValueAtIndexOrDefault,
-					model = element._model;
+				var dataset = this.chart.data.datasets[element._datasetIndex];
+				var index = element._index;
+				var custom = element.custom || {};
+				var valueOrDefault = helpers.valueAtIndexOrDefault;
+				var model = element._model;
 
 				model.backgroundColor = custom.backgroundColor ? custom.backgroundColor : valueOrDefault(dataset.backgroundColor, index, elementOpts.backgroundColor);
 				model.borderColor = custom.borderColor ? custom.borderColor : valueOrDefault(dataset.borderColor, index, elementOpts.borderColor);
@@ -5345,12 +6877,12 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 
 			setHoverStyle: function(element) {
-				var dataset = this.chart.data.datasets[element._datasetIndex],
-					index = element._index,
-					custom = element.custom || {},
-					valueOrDefault = helpers.getValueAtIndexOrDefault,
-					getHoverColor = helpers.getHoverColor,
-					model = element._model;
+				var dataset = this.chart.data.datasets[element._datasetIndex];
+				var index = element._index;
+				var custom = element.custom || {};
+				var valueOrDefault = helpers.valueAtIndexOrDefault;
+				var getHoverColor = helpers.getHoverColor;
+				var model = element._model;
 
 				model.backgroundColor = custom.hoverBackgroundColor ? custom.hoverBackgroundColor : valueOrDefault(dataset.hoverBackgroundColor, index, getHoverColor(model.backgroundColor));
 				model.borderColor = custom.hoverBorderColor ? custom.hoverBorderColor : valueOrDefault(dataset.hoverBorderColor, index, getHoverColor(model.borderColor));
@@ -5378,7 +6910,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			 * @private
 			 */
 			insertElements: function(start, count) {
-				for (var i=0; i<count; ++i) {
+				for (var i = 0; i < count; ++i) {
 					this.addElementAndReset(start + i);
 				}
 			},
@@ -5387,7 +6919,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			 * @private
 			 */
 			onDataPush: function() {
-				this.insertElements(this.getDataset().data.length-1, arguments.length);
+				this.insertElements(this.getDataset().data.length - 1, arguments.length);
 			},
 
 			/**
@@ -5424,15 +6956,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 18 */
-/***/ function(module, exports) {
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var helpers = __webpack_require__(5);
 
-		var helpers = Chart.helpers;
+	module.exports = function(Chart) {
 
 		function filterByPosition(array, position) {
 			return helpers.where(array, function(v) {
@@ -5505,7 +7037,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			 * @param {Object} layoutItem - the item to remove from the layout
 			 */
 			removeBox: function(chart, layoutItem) {
-				var index = chart.boxes? chart.boxes.indexOf(layoutItem) : -1;
+				var index = chart.boxes ? chart.boxes.indexOf(layoutItem) : -1;
 				if (index !== -1) {
 					chart.boxes.splice(index, 1);
 				}
@@ -5523,7 +7055,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var i = 0;
 				var prop;
 
-				for (; i<ilen; ++i) {
+				for (; i < ilen; ++i) {
 					prop = props[i];
 					if (options.hasOwnProperty(prop)) {
 						item[prop] = options[prop];
@@ -5543,26 +7075,12 @@ return /******/ (function(modules) { // webpackBootstrap
 					return;
 				}
 
-				var layoutOptions = chart.options.layout;
-				var padding = layoutOptions ? layoutOptions.padding : null;
-
-				var leftPadding = 0;
-				var rightPadding = 0;
-				var topPadding = 0;
-				var bottomPadding = 0;
-
-				if (!isNaN(padding)) {
-					// options.layout.padding is a number. assign to all
-					leftPadding = padding;
-					rightPadding = padding;
-					topPadding = padding;
-					bottomPadding = padding;
-				} else {
-					leftPadding = padding.left || 0;
-					rightPadding = padding.right || 0;
-					topPadding = padding.top || 0;
-					bottomPadding = padding.bottom || 0;
-				}
+				var layoutOptions = chart.options.layout || {};
+				var padding = helpers.options.toPadding(layoutOptions.padding);
+				var leftPadding = padding.left;
+				var rightPadding = padding.right;
+				var topPadding = padding.top;
+				var bottomPadding = padding.bottom;
 
 				var leftBoxes = filterByPosition(chart.boxes, 'left');
 				var rightBoxes = filterByPosition(chart.boxes, 'right');
@@ -5866,15 +7384,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 19 */
-/***/ function(module, exports) {
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var helpers = __webpack_require__(5);
 
-		var helpers = Chart.helpers;
+	module.exports = function(Chart) {
 
 		Chart.scaleService = {
 			// Scale registration object. Extensions can register new scale types (such as log or DB scales) and then
@@ -5885,21 +7404,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			// Scale config defaults
 			defaults: {},
-			registerScaleType: function(type, scaleConstructor, defaults) {
+			registerScaleType: function(type, scaleConstructor, scaleDefaults) {
 				this.constructors[type] = scaleConstructor;
-				this.defaults[type] = helpers.clone(defaults);
+				this.defaults[type] = helpers.clone(scaleDefaults);
 			},
 			getScaleConstructor: function(type) {
 				return this.constructors.hasOwnProperty(type) ? this.constructors[type] : undefined;
 			},
 			getScaleDefaults: function(type) {
 				// Return the scale defaults merged with the global settings so that we always use the latest ones
-				return this.defaults.hasOwnProperty(type) ? helpers.scaleMerge(Chart.defaults.scale, this.defaults[type]) : {};
+				return this.defaults.hasOwnProperty(type) ? helpers.merge({}, [defaults.scale, this.defaults[type]]) : {};
 			},
 			updateScaleDefaults: function(type, additions) {
-				var defaults = this.defaults;
-				if (defaults.hasOwnProperty(type)) {
-					defaults[type] = helpers.extend(defaults[type], additions);
+				var me = this;
+				if (me.defaults.hasOwnProperty(type)) {
+					me.defaults[type] = helpers.extend(me.defaults[type], additions);
 				}
 			},
 			addScalesToLayout: function(chart) {
@@ -5916,277 +7435,102 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 20 */
-/***/ function(module, exports) {
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var Element = __webpack_require__(16);
+	var helpers = __webpack_require__(5);
+	var Ticks = __webpack_require__(33);
 
-		var helpers = Chart.helpers;
+	defaults._set('scale', {
+		display: true,
+		position: 'left',
+		offset: false,
 
-		/**
-		 * Namespace to hold static tick generation functions
-		 * @namespace Chart.Ticks
-		 */
-		Chart.Ticks = {
-			/**
-			 * Namespace to hold generators for different types of ticks
-			 * @namespace Chart.Ticks.generators
-			 */
-			generators: {
-				/**
-				 * Interface for the options provided to the numeric tick generator
-				 * @interface INumericTickGenerationOptions
-				 */
-				/**
-				 * The maximum number of ticks to display
-				 * @name INumericTickGenerationOptions#maxTicks
-				 * @type Number
-				 */
-				/**
-				 * The distance between each tick.
-				 * @name INumericTickGenerationOptions#stepSize
-				 * @type Number
-				 * @optional
-				 */
-				/**
-				 * Forced minimum for the ticks. If not specified, the minimum of the data range is used to calculate the tick minimum
-				 * @name INumericTickGenerationOptions#min
-				 * @type Number
-				 * @optional
-				 */
-				/**
-				 * The maximum value of the ticks. If not specified, the maximum of the data range is used to calculate the tick maximum
-				 * @name INumericTickGenerationOptions#max
-				 * @type Number
-				 * @optional
-				 */
-
-				/**
-				 * Generate a set of linear ticks
-				 * @method Chart.Ticks.generators.linear
-				 * @param generationOptions {INumericTickGenerationOptions} the options used to generate the ticks
-				 * @param dataRange {IRange} the range of the data
-				 * @returns {Array<Number>} array of tick values
-				 */
-				linear: function(generationOptions, dataRange) {
-					var ticks = [];
-					// To get a "nice" value for the tick spacing, we will use the appropriately named
-					// "nice number" algorithm. See http://stackoverflow.com/questions/8506881/nice-label-algorithm-for-charts-with-minimum-ticks
-					// for details.
-
-					var spacing;
-					if (generationOptions.stepSize && generationOptions.stepSize > 0) {
-						spacing = generationOptions.stepSize;
-					} else {
-						var niceRange = helpers.niceNum(dataRange.max - dataRange.min, false);
-						spacing = helpers.niceNum(niceRange / (generationOptions.maxTicks - 1), true);
-					}
-					var niceMin = Math.floor(dataRange.min / spacing) * spacing;
-					var niceMax = Math.ceil(dataRange.max / spacing) * spacing;
-
-					// If min, max and stepSize is set and they make an evenly spaced scale use it.
-					if (generationOptions.min && generationOptions.max && generationOptions.stepSize) {
-						// If very close to our whole number, use it.
-						if (helpers.almostWhole((generationOptions.max - generationOptions.min) / generationOptions.stepSize, spacing / 1000)) {
-							niceMin = generationOptions.min;
-							niceMax = generationOptions.max;
-						}
-					}
-
-					var numSpaces = (niceMax - niceMin) / spacing;
-					// If very close to our rounded value, use it.
-					if (helpers.almostEquals(numSpaces, Math.round(numSpaces), spacing / 1000)) {
-						numSpaces = Math.round(numSpaces);
-					} else {
-						numSpaces = Math.ceil(numSpaces);
-					}
-
-					// Put the values into the ticks array
-					ticks.push(generationOptions.min !== undefined ? generationOptions.min : niceMin);
-					for (var j = 1; j < numSpaces; ++j) {
-						ticks.push(niceMin + (j * spacing));
-					}
-					ticks.push(generationOptions.max !== undefined ? generationOptions.max : niceMax);
-
-					return ticks;
-				},
-
-				/**
-				 * Generate a set of logarithmic ticks
-				 * @method Chart.Ticks.generators.logarithmic
-				 * @param generationOptions {INumericTickGenerationOptions} the options used to generate the ticks
-				 * @param dataRange {IRange} the range of the data
-				 * @returns {Array<Number>} array of tick values
-				 */
-				logarithmic: function(generationOptions, dataRange) {
-					var ticks = [];
-					var getValueOrDefault = helpers.getValueOrDefault;
-
-					// Figure out what the max number of ticks we can support it is based on the size of
-					// the axis area. For now, we say that the minimum tick spacing in pixels must be 50
-					// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on
-					// the graph
-					var tickVal = getValueOrDefault(generationOptions.min, Math.pow(10, Math.floor(helpers.log10(dataRange.min))));
-
-					var endExp = Math.floor(helpers.log10(dataRange.max));
-					var endSignificand = Math.ceil(dataRange.max / Math.pow(10, endExp));
-					var exp;
-					var significand;
-
-					if (tickVal === 0) {
-						exp = Math.floor(helpers.log10(dataRange.minNotZero));
-						significand = Math.floor(dataRange.minNotZero / Math.pow(10, exp));
-
-						ticks.push(tickVal);
-						tickVal = significand * Math.pow(10, exp);
-					} else {
-						exp = Math.floor(helpers.log10(tickVal));
-						significand = Math.floor(tickVal / Math.pow(10, exp));
-					}
-
-					do {
-						ticks.push(tickVal);
-
-						++significand;
-						if (significand === 10) {
-							significand = 1;
-							++exp;
-						}
-
-						tickVal = significand * Math.pow(10, exp);
-					} while (exp < endExp || (exp === endExp && significand < endSignificand));
-
-					var lastTick = getValueOrDefault(generationOptions.max, tickVal);
-					ticks.push(lastTick);
-
-					return ticks;
-				}
-			},
-
-			/**
-			 * Namespace to hold formatters for different types of ticks
-			 * @namespace Chart.Ticks.formatters
-			 */
-			formatters: {
-				/**
-				 * Formatter for value labels
-				 * @method Chart.Ticks.formatters.values
-				 * @param value the value to display
-				 * @return {String|Array} the label to display
-				 */
-				values: function(value) {
-					return helpers.isArray(value) ? value : '' + value;
-				},
-
-				/**
-				 * Formatter for linear numeric ticks
-				 * @method Chart.Ticks.formatters.linear
-				 * @param tickValue {Number} the value to be formatted
-				 * @param index {Number} the position of the tickValue parameter in the ticks array
-				 * @param ticks {Array<Number>} the list of ticks being converted
-				 * @return {String} string representation of the tickValue parameter
-				 */
-				linear: function(tickValue, index, ticks) {
-					// If we have lots of ticks, don't use the ones
-					var delta = ticks.length > 3 ? ticks[2] - ticks[1] : ticks[1] - ticks[0];
-
-					// If we have a number like 2.5 as the delta, figure out how many decimal places we need
-					if (Math.abs(delta) > 1) {
-						if (tickValue !== Math.floor(tickValue)) {
-							// not an integer
-							delta = tickValue - Math.floor(tickValue);
-						}
-					}
-
-					var logDelta = helpers.log10(Math.abs(delta));
-					var tickString = '';
-
-					if (tickValue !== 0) {
-						var numDecimal = -1 * Math.floor(logDelta);
-						numDecimal = Math.max(Math.min(numDecimal, 20), 0); // toFixed has a max of 20 decimal places
-						tickString = tickValue.toFixed(numDecimal);
-					} else {
-						tickString = '0'; // never show decimal places for 0
-					}
-
-					return tickString;
-				},
-
-				logarithmic: function(tickValue, index, ticks) {
-					var remain = tickValue / (Math.pow(10, Math.floor(helpers.log10(tickValue))));
-
-					if (tickValue === 0) {
-						return '0';
-					} else if (remain === 1 || remain === 2 || remain === 5 || index === 0 || index === ticks.length - 1) {
-						return tickValue.toExponential();
-					}
-					return '';
-				}
-			}
-		};
-	};
-
-
-/***/ },
-/* 21 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = function(Chart) {
-
-		var helpers = Chart.helpers;
-
-		Chart.defaults.scale = {
+		// grid line settings
+		gridLines: {
 			display: true,
-			position: 'left',
+			color: 'rgba(0, 0, 0, 0.1)',
+			lineWidth: 1,
+			drawBorder: true,
+			drawOnChartArea: true,
+			drawTicks: true,
+			tickMarkLength: 10,
+			zeroLineWidth: 1,
+			zeroLineColor: 'rgba(0,0,0,0.25)',
+			zeroLineBorderDash: [],
+			zeroLineBorderDashOffset: 0.0,
+			offsetGridLines: false,
+			borderDash: [],
+			borderDashOffset: 0.0
+		},
 
-			// grid line settings
-			gridLines: {
-				display: true,
-				color: 'rgba(0, 0, 0, 0.1)',
-				lineWidth: 1,
-				drawBorder: true,
-				drawOnChartArea: true,
-				drawTicks: true,
-				tickMarkLength: 10,
-				zeroLineWidth: 1,
-				zeroLineColor: 'rgba(0,0,0,0.25)',
-				zeroLineBorderDash: [],
-				zeroLineBorderDashOffset: 0.0,
-				offsetGridLines: false,
-				borderDash: [],
-				borderDashOffset: 0.0
-			},
+		// scale label
+		scaleLabel: {
+			// display property
+			display: false,
 
-			// scale label
-			scaleLabel: {
-				// actual label
-				labelString: '',
+			// actual label
+			labelString: '',
 
-				// display property
-				display: false
-			},
+			// line height
+			lineHeight: 1.2,
 
-			// label settings
-			ticks: {
-				beginAtZero: false,
-				minRotation: 0,
-				maxRotation: 50,
-				mirror: false,
-				padding: 0,
-				reverse: false,
-				display: true,
-				autoSkip: true,
-				autoSkipPadding: 0,
-				labelOffset: 0,
-				// We pass through arrays to be rendered as multiline labels, we convert Others to strings here.
-				callback: Chart.Ticks.formatters.values
+			// top/bottom padding
+			padding: {
+				top: 4,
+				bottom: 4
 			}
-		};
+		},
+
+		// label settings
+		ticks: {
+			beginAtZero: false,
+			minRotation: 0,
+			maxRotation: 50,
+			mirror: false,
+			padding: 0,
+			reverse: false,
+			display: true,
+			autoSkip: true,
+			autoSkipPadding: 0,
+			labelOffset: 0,
+			// We pass through arrays to be rendered as multiline labels, we convert Others to strings here.
+			callback: Ticks.formatters.values,
+			minor: {},
+			major: {}
+		}
+	});
+
+	function labelsFromTicks(ticks) {
+		var labels = [];
+		var i, ilen;
+
+		for (i = 0, ilen = ticks.length; i < ilen; ++i) {
+			labels.push(ticks[i].label);
+		}
+
+		return labels;
+	}
+
+	function getLineValue(scale, index, offsetGridLines) {
+		var lineValue = scale.getPixelForTick(index);
+
+		if (offsetGridLines) {
+			if (index === 0) {
+				lineValue -= (scale.getPixelForTick(1) - lineValue) / 2;
+			} else {
+				lineValue -= (lineValue - scale.getPixelForTick(index - 1)) / 2;
+			}
+		}
+		return lineValue;
+	}
+
+	module.exports = function(Chart) {
 
 		function computeTextSize(context, tick, font) {
 			return helpers.isArray(tick) ?
@@ -6195,11 +7539,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		function parseFontOptions(options) {
-			var getValueOrDefault = helpers.getValueOrDefault;
-			var globalDefaults = Chart.defaults.global;
-			var size = getValueOrDefault(options.fontSize, globalDefaults.defaultFontSize);
-			var style = getValueOrDefault(options.fontStyle, globalDefaults.defaultFontStyle);
-			var family = getValueOrDefault(options.fontFamily, globalDefaults.defaultFontFamily);
+			var valueOrDefault = helpers.valueOrDefault;
+			var globalDefaults = defaults.global;
+			var size = valueOrDefault(options.fontSize, globalDefaults.defaultFontSize);
+			var style = valueOrDefault(options.fontStyle, globalDefaults.defaultFontStyle);
+			var family = valueOrDefault(options.fontFamily, globalDefaults.defaultFontFamily);
 
 			return {
 				size: size,
@@ -6209,7 +7553,13 @@ return /******/ (function(modules) { // webpackBootstrap
 			};
 		}
 
-		Chart.Scale = Chart.Element.extend({
+		function parseLineHeight(options) {
+			return helpers.options.toLineHeight(
+				helpers.valueOrDefault(options.lineHeight, 1.2),
+				helpers.valueOrDefault(options.fontSize, defaults.global.defaultFontSize));
+		}
+
+		Chart.Scale = Element.extend({
 			/**
 			 * Get the padding needed for the scale
 			 * @method getPadding
@@ -6226,15 +7576,47 @@ return /******/ (function(modules) { // webpackBootstrap
 				};
 			},
 
+			/**
+			 * Returns the scale tick objects ({label, major})
+			 * @since 2.7
+			 */
+			getTicks: function() {
+				return this._ticks;
+			},
+
 			// These methods are ordered by lifecyle. Utilities then follow.
 			// Any function defined here is inherited by all scale types.
 			// Any function can be extended by the scale type
 
+			mergeTicksOptions: function() {
+				var ticks = this.options.ticks;
+				if (ticks.minor === false) {
+					ticks.minor = {
+						display: false
+					};
+				}
+				if (ticks.major === false) {
+					ticks.major = {
+						display: false
+					};
+				}
+				for (var key in ticks) {
+					if (key !== 'major' && key !== 'minor') {
+						if (typeof ticks.minor[key] === 'undefined') {
+							ticks.minor[key] = ticks[key];
+						}
+						if (typeof ticks.major[key] === 'undefined') {
+							ticks.major[key] = ticks[key];
+						}
+					}
+				}
+			},
 			beforeUpdate: function() {
 				helpers.callback(this.options.beforeUpdate, [this]);
 			},
 			update: function(maxWidth, maxHeight, margins) {
 				var me = this;
+				var i, ilen, labels, label, ticks, tick;
 
 				// Update Lifecycle - Probably don't want to ever extend or overwrite this function ;)
 				me.beforeUpdate();
@@ -6260,14 +7642,49 @@ return /******/ (function(modules) { // webpackBootstrap
 				me.determineDataLimits();
 				me.afterDataLimits();
 
-				// Ticks
+				// Ticks - `this.ticks` is now DEPRECATED!
+				// Internal ticks are now stored as objects in the PRIVATE `this._ticks` member
+				// and must not be accessed directly from outside this class. `this.ticks` being
+				// around for long time and not marked as private, we can't change its structure
+				// without unexpected breaking changes. If you need to access the scale ticks,
+				// use scale.getTicks() instead.
+
 				me.beforeBuildTicks();
-				me.buildTicks();
+
+				// New implementations should return an array of objects but for BACKWARD COMPAT,
+				// we still support no return (`this.ticks` internally set by calling this method).
+				ticks = me.buildTicks() || [];
+
 				me.afterBuildTicks();
 
 				me.beforeTickToLabelConversion();
-				me.convertTicksToLabels();
+
+				// New implementations should return the formatted tick labels but for BACKWARD
+				// COMPAT, we still support no return (`this.ticks` internally changed by calling
+				// this method and supposed to contain only string values).
+				labels = me.convertTicksToLabels(ticks) || me.ticks;
+
 				me.afterTickToLabelConversion();
+
+				me.ticks = labels;   // BACKWARD COMPATIBILITY
+
+				// IMPORTANT: from this point, we consider that `this.ticks` will NEVER change!
+
+				// BACKWARD COMPAT: synchronize `_ticks` with labels (so potentially `this.ticks`)
+				for (i = 0, ilen = labels.length; i < ilen; ++i) {
+					label = labels[i];
+					tick = ticks[i];
+					if (!tick) {
+						ticks.push(tick = {
+							label: label,
+							major: false
+						});
+					} else {
+						tick.label = label;
+					}
+				}
+
+				me._ticks = ticks;
 
 				// Tick Rotation
 				me.beforeCalculateTickRotation();
@@ -6343,7 +7760,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var me = this;
 				// Convert ticks to strings
 				var tickOpts = me.options.ticks;
-				me.ticks = me.ticks.map(tickOpts.userCallback || tickOpts.callback);
+				me.ticks = me.ticks.map(tickOpts.userCallback || tickOpts.callback, this);
 			},
 			afterTickToLabelConversion: function() {
 				helpers.callback(this.options.afterTickToLabelConversion, [this]);
@@ -6358,6 +7775,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var me = this;
 				var context = me.ctx;
 				var tickOpts = me.options.ticks;
+				var labels = labelsFromTicks(me._ticks);
 
 				// Get the width of each grid by calculating the difference
 				// between x offsets between 0 and 1.
@@ -6366,11 +7784,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				var labelRotation = tickOpts.minRotation || 0;
 
-				if (me.options.display && me.isHorizontal()) {
-					var originalLabelWidth = helpers.longestText(context, tickFont.font, me.ticks, me.longestTextCache);
+				if (labels.length && me.options.display && me.isHorizontal()) {
+					var originalLabelWidth = helpers.longestText(context, tickFont.font, labels, me.longestTextCache);
 					var labelWidth = originalLabelWidth;
-					var cosRotation;
-					var sinRotation;
+					var cosRotation, sinRotation;
 
 					// Allow 3 pixels x2 padding either side for label readability
 					var tickWidth = me.getPixelForTick(1) - me.getPixelForTick(0) - 6;
@@ -6411,6 +7828,8 @@ return /******/ (function(modules) { // webpackBootstrap
 					height: 0
 				};
 
+				var labels = labelsFromTicks(me._ticks);
+
 				var opts = me.options;
 				var tickOpts = opts.ticks;
 				var scaleLabelOpts = opts.scaleLabel;
@@ -6419,7 +7838,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				var isHorizontal = me.isHorizontal();
 
 				var tickFont = parseFontOptions(tickOpts);
-				var scaleLabelFontSize = parseFontOptions(scaleLabelOpts).size * 1.5;
 				var tickMarkLength = opts.gridLines.tickMarkLength;
 
 				// Width
@@ -6439,18 +7857,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				// Are we showing a title for the scale?
 				if (scaleLabelOpts.display && display) {
+					var scaleLabelLineHeight = parseLineHeight(scaleLabelOpts);
+					var scaleLabelPadding = helpers.options.toPadding(scaleLabelOpts.padding);
+					var deltaHeight = scaleLabelLineHeight + scaleLabelPadding.height;
+
 					if (isHorizontal) {
-						minSize.height += scaleLabelFontSize;
+						minSize.height += deltaHeight;
 					} else {
-						minSize.width += scaleLabelFontSize;
+						minSize.width += deltaHeight;
 					}
 				}
 
 				// Don't bother fitting the ticks if we are not showing them
 				if (tickOpts.display && display) {
-					var largestTextWidth = helpers.longestText(me.ctx, tickFont.font, me.ticks, me.longestTextCache);
-					var tallestLabelHeightInLines = helpers.numberOfLabelLines(me.ticks);
+					var largestTextWidth = helpers.longestText(me.ctx, tickFont.font, labels, me.longestTextCache);
+					var tallestLabelHeightInLines = helpers.numberOfLabelLines(labels);
 					var lineSpace = tickFont.size * 0.5;
+					var tickPadding = me.options.ticks.padding;
 
 					if (isHorizontal) {
 						// A horizontal axis is more constrained by the height.
@@ -6463,36 +7886,37 @@ return /******/ (function(modules) { // webpackBootstrap
 						// TODO - improve this calculation
 						var labelHeight = (sinRotation * largestTextWidth)
 							+ (tickFont.size * tallestLabelHeightInLines)
-							+ (lineSpace * tallestLabelHeightInLines);
+							+ (lineSpace * (tallestLabelHeightInLines - 1))
+							+ lineSpace; // padding
 
-						minSize.height = Math.min(me.maxHeight, minSize.height + labelHeight);
+						minSize.height = Math.min(me.maxHeight, minSize.height + labelHeight + tickPadding);
+
 						me.ctx.font = tickFont.font;
+						var firstLabelWidth = computeTextSize(me.ctx, labels[0], tickFont.font);
+						var lastLabelWidth = computeTextSize(me.ctx, labels[labels.length - 1], tickFont.font);
 
-						var firstTick = me.ticks[0];
-						var firstLabelWidth = computeTextSize(me.ctx, firstTick, tickFont.font);
-
-						var lastTick = me.ticks[me.ticks.length - 1];
-						var lastLabelWidth = computeTextSize(me.ctx, lastTick, tickFont.font);
-
-						// Ensure that our ticks are always inside the canvas. When rotated, ticks are right aligned which means that the right padding is dominated
-						// by the font height
+						// Ensure that our ticks are always inside the canvas. When rotated, ticks are right aligned
+						// which means that the right padding is dominated by the font height
 						if (me.labelRotation !== 0) {
-							me.paddingLeft = opts.position === 'bottom'? (cosRotation * firstLabelWidth) + 3: (cosRotation * lineSpace) + 3; // add 3 px to move away from canvas edges
-							me.paddingRight = opts.position === 'bottom'? (cosRotation * lineSpace) + 3: (cosRotation * lastLabelWidth) + 3;
+							me.paddingLeft = opts.position === 'bottom' ? (cosRotation * firstLabelWidth) + 3 : (cosRotation * lineSpace) + 3; // add 3 px to move away from canvas edges
+							me.paddingRight = opts.position === 'bottom' ? (cosRotation * lineSpace) + 3 : (cosRotation * lastLabelWidth) + 3;
 						} else {
 							me.paddingLeft = firstLabelWidth / 2 + 3; // add 3 px to move away from canvas edges
 							me.paddingRight = lastLabelWidth / 2 + 3;
 						}
 					} else {
-						// A vertical axis is more constrained by the width. Labels are the dominant factor here, so get that length first
-						// Account for padding
-
+						// A vertical axis is more constrained by the width. Labels are the
+						// dominant factor here, so get that length first and account for padding
 						if (tickOpts.mirror) {
 							largestTextWidth = 0;
 						} else {
-							largestTextWidth += me.options.ticks.padding;
+							// use lineSpace for consistency with horizontal axis
+							// tickPadding is not implemented for horizontal
+							largestTextWidth += tickPadding + lineSpace;
 						}
+
 						minSize.width = Math.min(me.maxWidth, minSize.width + largestTextWidth);
+
 						me.paddingTop = tickFont.size / 2;
 						me.paddingBottom = tickFont.size / 2;
 					}
@@ -6533,19 +7957,22 @@ return /******/ (function(modules) { // webpackBootstrap
 			// Get the correct value. NaN bad inputs, If the value type is object get the x or y based on whether we are horizontal or not
 			getRightValue: function(rawValue) {
 				// Null and undefined values first
-				if (rawValue === null || typeof(rawValue) === 'undefined') {
+				if (helpers.isNullOrUndef(rawValue)) {
 					return NaN;
 				}
 				// isNaN(object) returns true, so make sure NaN is checking for a number; Discard Infinite values
-				if (typeof(rawValue) === 'number' && !isFinite(rawValue)) {
+				if (typeof rawValue === 'number' && !isFinite(rawValue)) {
 					return NaN;
 				}
 				// If it is in fact an object, dive in one more level
-				if (typeof(rawValue) === 'object') {
-					if ((rawValue instanceof Date) || (rawValue.isValid)) {
-						return rawValue;
+				if (rawValue) {
+					if (this.isHorizontal()) {
+						if (rawValue.x !== undefined) {
+							return this.getRightValue(rawValue.x);
+						}
+					} else if (rawValue.y !== undefined) {
+						return this.getRightValue(rawValue.y);
 					}
-					return this.getRightValue(this.isHorizontal() ? rawValue.x : rawValue.y);
 				}
 
 				// Value is good, return it
@@ -6563,14 +7990,15 @@ return /******/ (function(modules) { // webpackBootstrap
 			getValueForPixel: helpers.noop,
 
 			// Used for tick location, should
-			getPixelForTick: function(index, includeOffset) {
+			getPixelForTick: function(index) {
 				var me = this;
+				var offset = me.options.offset;
 				if (me.isHorizontal()) {
 					var innerWidth = me.width - (me.paddingLeft + me.paddingRight);
-					var tickWidth = innerWidth / Math.max((me.ticks.length - ((me.options.gridLines.offsetGridLines) ? 0 : 1)), 1);
+					var tickWidth = innerWidth / Math.max((me._ticks.length - (offset ? 0 : 1)), 1);
 					var pixel = (tickWidth * index) + me.paddingLeft;
 
-					if (includeOffset) {
+					if (offset) {
 						pixel += tickWidth / 2;
 					}
 
@@ -6579,11 +8007,11 @@ return /******/ (function(modules) { // webpackBootstrap
 					return finalVal;
 				}
 				var innerHeight = me.height - (me.paddingTop + me.paddingBottom);
-				return me.top + (index * (innerHeight / (me.ticks.length - 1)));
+				return me.top + (index * (innerHeight / (me._ticks.length - 1)));
 			},
 
 			// Utility for getting the pixel location of a percentage of scale
-			getPixelForDecimal: function(decimal /* , includeOffset*/) {
+			getPixelForDecimal: function(decimal) {
 				var me = this;
 				if (me.isHorizontal()) {
 					var innerWidth = me.width - (me.paddingLeft + me.paddingRight);
@@ -6605,10 +8033,60 @@ return /******/ (function(modules) { // webpackBootstrap
 				var min = me.min;
 				var max = me.max;
 
-				return me.beginAtZero ? 0:
-					min < 0 && max < 0? max :
-					min > 0 && max > 0? min :
+				return me.beginAtZero ? 0 :
+					min < 0 && max < 0 ? max :
+					min > 0 && max > 0 ? min :
 					0;
+			},
+
+			/**
+			 * Returns a subset of ticks to be plotted to avoid overlapping labels.
+			 * @private
+			 */
+			_autoSkip: function(ticks) {
+				var skipRatio;
+				var me = this;
+				var isHorizontal = me.isHorizontal();
+				var optionTicks = me.options.ticks.minor;
+				var tickCount = ticks.length;
+				var labelRotationRadians = helpers.toRadians(me.labelRotation);
+				var cosRotation = Math.cos(labelRotationRadians);
+				var longestRotatedLabel = me.longestLabelWidth * cosRotation;
+				var result = [];
+				var i, tick, shouldSkip;
+
+				// figure out the maximum number of gridlines to show
+				var maxTicks;
+				if (optionTicks.maxTicksLimit) {
+					maxTicks = optionTicks.maxTicksLimit;
+				}
+
+				if (isHorizontal) {
+					skipRatio = false;
+
+					if ((longestRotatedLabel + optionTicks.autoSkipPadding) * tickCount > (me.width - (me.paddingLeft + me.paddingRight))) {
+						skipRatio = 1 + Math.floor(((longestRotatedLabel + optionTicks.autoSkipPadding) * tickCount) / (me.width - (me.paddingLeft + me.paddingRight)));
+					}
+
+					// if they defined a max number of optionTicks,
+					// increase skipRatio until that number is met
+					if (maxTicks && tickCount > maxTicks) {
+						skipRatio = Math.max(skipRatio, Math.floor(tickCount / maxTicks));
+					}
+				}
+
+				for (i = 0; i < tickCount; i++) {
+					tick = ticks[i];
+
+					// Since we always show the last tick,we need may need to hide the last shown one before
+					shouldSkip = (skipRatio > 1 && i % skipRatio > 0) || (i % skipRatio === 0 && i + skipRatio >= tickCount);
+					if (shouldSkip && i !== tickCount - 1 || helpers.isNullOrUndef(tick.label)) {
+						// leave tick in place but make sure it's not displayed (#4635)
+						delete tick.label;
+					}
+					result.push(tick);
+				}
+				return result;
 			},
 
 			// Actually draw the scale on the canvas
@@ -6621,117 +8099,84 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 
 				var context = me.ctx;
-				var globalDefaults = Chart.defaults.global;
-				var optionTicks = options.ticks;
+				var globalDefaults = defaults.global;
+				var optionTicks = options.ticks.minor;
+				var optionMajorTicks = options.ticks.major || optionTicks;
 				var gridLines = options.gridLines;
 				var scaleLabel = options.scaleLabel;
 
 				var isRotated = me.labelRotation !== 0;
-				var skipRatio;
-				var useAutoskipper = optionTicks.autoSkip;
 				var isHorizontal = me.isHorizontal();
 
-				// figure out the maximum number of gridlines to show
-				var maxTicks;
-				if (optionTicks.maxTicksLimit) {
-					maxTicks = optionTicks.maxTicksLimit;
-				}
-
-				var tickFontColor = helpers.getValueOrDefault(optionTicks.fontColor, globalDefaults.defaultFontColor);
+				var ticks = optionTicks.autoSkip ? me._autoSkip(me.getTicks()) : me.getTicks();
+				var tickFontColor = helpers.valueOrDefault(optionTicks.fontColor, globalDefaults.defaultFontColor);
 				var tickFont = parseFontOptions(optionTicks);
+				var majorTickFontColor = helpers.valueOrDefault(optionMajorTicks.fontColor, globalDefaults.defaultFontColor);
+				var majorTickFont = parseFontOptions(optionMajorTicks);
 
 				var tl = gridLines.drawTicks ? gridLines.tickMarkLength : 0;
 
-				var scaleLabelFontColor = helpers.getValueOrDefault(scaleLabel.fontColor, globalDefaults.defaultFontColor);
+				var scaleLabelFontColor = helpers.valueOrDefault(scaleLabel.fontColor, globalDefaults.defaultFontColor);
 				var scaleLabelFont = parseFontOptions(scaleLabel);
-
+				var scaleLabelPadding = helpers.options.toPadding(scaleLabel.padding);
 				var labelRotationRadians = helpers.toRadians(me.labelRotation);
-				var cosRotation = Math.cos(labelRotationRadians);
-				var longestRotatedLabel = me.longestLabelWidth * cosRotation;
-
-				// Make sure we draw text in the correct color and font
-				context.fillStyle = tickFontColor;
 
 				var itemsToDraw = [];
-
-				if (isHorizontal) {
-					skipRatio = false;
-
-					if ((longestRotatedLabel + optionTicks.autoSkipPadding) * me.ticks.length > (me.width - (me.paddingLeft + me.paddingRight))) {
-						skipRatio = 1 + Math.floor(((longestRotatedLabel + optionTicks.autoSkipPadding) * me.ticks.length) / (me.width - (me.paddingLeft + me.paddingRight)));
-					}
-
-					// if they defined a max number of optionTicks,
-					// increase skipRatio until that number is met
-					if (maxTicks && me.ticks.length > maxTicks) {
-						while (!skipRatio || me.ticks.length / (skipRatio || 1) > maxTicks) {
-							if (!skipRatio) {
-								skipRatio = 1;
-							}
-							skipRatio += 1;
-						}
-					}
-
-					if (!useAutoskipper) {
-						skipRatio = false;
-					}
-				}
-
 
 				var xTickStart = options.position === 'right' ? me.left : me.right - tl;
 				var xTickEnd = options.position === 'right' ? me.left + tl : me.right;
 				var yTickStart = options.position === 'bottom' ? me.top : me.bottom - tl;
 				var yTickEnd = options.position === 'bottom' ? me.top + tl : me.bottom;
 
-				helpers.each(me.ticks, function(label, index) {
-					// If the callback returned a null or undefined value, do not draw this line
-					if (label === undefined || label === null) {
+				helpers.each(ticks, function(tick, index) {
+					// autoskipper skipped this tick (#4635)
+					if (tick.label === undefined) {
 						return;
 					}
 
-					var isLastTick = me.ticks.length === index + 1;
-
-					// Since we always show the last tick,we need may need to hide the last shown one before
-					var shouldSkip = (skipRatio > 1 && index % skipRatio > 0) || (index % skipRatio === 0 && index + skipRatio >= me.ticks.length);
-					if (shouldSkip && !isLastTick || (label === undefined || label === null)) {
-						return;
-					}
-
+					var label = tick.label;
 					var lineWidth, lineColor, borderDash, borderDashOffset;
-					if (index === (typeof me.zeroLineIndex !== 'undefined' ? me.zeroLineIndex : 0)) {
+					if (index === me.zeroLineIndex && options.offset === gridLines.offsetGridLines) {
 						// Draw the first index specially
 						lineWidth = gridLines.zeroLineWidth;
 						lineColor = gridLines.zeroLineColor;
 						borderDash = gridLines.zeroLineBorderDash;
 						borderDashOffset = gridLines.zeroLineBorderDashOffset;
 					} else {
-						lineWidth = helpers.getValueAtIndexOrDefault(gridLines.lineWidth, index);
-						lineColor = helpers.getValueAtIndexOrDefault(gridLines.color, index);
-						borderDash = helpers.getValueOrDefault(gridLines.borderDash, globalDefaults.borderDash);
-						borderDashOffset = helpers.getValueOrDefault(gridLines.borderDashOffset, globalDefaults.borderDashOffset);
+						lineWidth = helpers.valueAtIndexOrDefault(gridLines.lineWidth, index);
+						lineColor = helpers.valueAtIndexOrDefault(gridLines.color, index);
+						borderDash = helpers.valueOrDefault(gridLines.borderDash, globalDefaults.borderDash);
+						borderDashOffset = helpers.valueOrDefault(gridLines.borderDashOffset, globalDefaults.borderDashOffset);
 					}
 
 					// Common properties
 					var tx1, ty1, tx2, ty2, x1, y1, x2, y2, labelX, labelY;
 					var textAlign = 'middle';
 					var textBaseline = 'middle';
+					var tickPadding = optionTicks.padding;
 
 					if (isHorizontal) {
+						var labelYOffset = tl + tickPadding;
 
 						if (options.position === 'bottom') {
 							// bottom
-							textBaseline = !isRotated? 'top':'middle';
-							textAlign = !isRotated? 'center': 'right';
-							labelY = me.top + tl;
+							textBaseline = !isRotated ? 'top' : 'middle';
+							textAlign = !isRotated ? 'center' : 'right';
+							labelY = me.top + labelYOffset;
 						} else {
 							// top
-							textBaseline = !isRotated? 'bottom':'middle';
-							textAlign = !isRotated? 'center': 'left';
-							labelY = me.bottom - tl;
+							textBaseline = !isRotated ? 'bottom' : 'middle';
+							textAlign = !isRotated ? 'center' : 'left';
+							labelY = me.bottom - labelYOffset;
 						}
 
-						var xLineValue = me.getPixelForTick(index) + helpers.aliasPixel(lineWidth); // xvalues for grid lines
-						labelX = me.getPixelForTick(index, gridLines.offsetGridLines) + optionTicks.labelOffset; // x values for optionTicks (need to consider offsetLabel option)
+						var xLineValue = getLineValue(me, index, gridLines.offsetGridLines && ticks.length > 1);
+						if (xLineValue < me.left) {
+							lineColor = 'rgba(0,0,0,0)';
+						}
+						xLineValue += helpers.aliasPixel(lineWidth);
+
+						labelX = me.getPixelForTick(index) + optionTicks.labelOffset; // x values for optionTicks (need to consider offsetLabel option)
 
 						tx1 = tx2 = x1 = x2 = xLineValue;
 						ty1 = yTickStart;
@@ -6740,7 +8185,6 @@ return /******/ (function(modules) { // webpackBootstrap
 						y2 = chartArea.bottom;
 					} else {
 						var isLeft = options.position === 'left';
-						var tickPadding = optionTicks.padding;
 						var labelXOffset;
 
 						if (optionTicks.mirror) {
@@ -6753,9 +8197,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 						labelX = isLeft ? me.right - labelXOffset : me.left + labelXOffset;
 
-						var yLineValue = me.getPixelForTick(index); // xvalues for grid lines
+						var yLineValue = getLineValue(me, index, gridLines.offsetGridLines && ticks.length > 1);
+						if (yLineValue < me.top) {
+							lineColor = 'rgba(0,0,0,0)';
+						}
 						yLineValue += helpers.aliasPixel(lineWidth);
-						labelY = me.getPixelForTick(index, gridLines.offsetGridLines);
+
+						labelY = me.getPixelForTick(index) + optionTicks.labelOffset;
 
 						tx1 = xTickStart;
 						tx2 = xTickEnd;
@@ -6781,6 +8229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						glBorderDashOffset: borderDashOffset,
 						rotation: -1 * labelRotationRadians,
 						label: label,
+						major: tick.major,
 						textBaseline: textBaseline,
 						textAlign: textAlign
 					});
@@ -6814,10 +8263,12 @@ return /******/ (function(modules) { // webpackBootstrap
 					}
 
 					if (optionTicks.display) {
+						// Make sure we draw text in the correct color and font
 						context.save();
 						context.translate(itemToDraw.labelX, itemToDraw.labelY);
 						context.rotate(itemToDraw.rotation);
-						context.font = tickFont.font;
+						context.font = itemToDraw.major ? majorTickFont.font : tickFont.font;
+						context.fillStyle = itemToDraw.major ? majorTickFontColor : tickFontColor;
 						context.textBaseline = itemToDraw.textBaseline;
 						context.textAlign = itemToDraw.textAlign;
 
@@ -6841,13 +8292,18 @@ return /******/ (function(modules) { // webpackBootstrap
 					var scaleLabelX;
 					var scaleLabelY;
 					var rotation = 0;
+					var halfLineHeight = parseLineHeight(scaleLabel) / 2;
 
 					if (isHorizontal) {
 						scaleLabelX = me.left + ((me.right - me.left) / 2); // midpoint of the width
-						scaleLabelY = options.position === 'bottom' ? me.bottom - (scaleLabelFont.size / 2) : me.top + (scaleLabelFont.size / 2);
+						scaleLabelY = options.position === 'bottom'
+							? me.bottom - halfLineHeight - scaleLabelPadding.bottom
+							: me.top + halfLineHeight + scaleLabelPadding.top;
 					} else {
 						var isLeft = options.position === 'left';
-						scaleLabelX = isLeft ? me.left + (scaleLabelFont.size / 2) : me.right - (scaleLabelFont.size / 2);
+						scaleLabelX = isLeft
+							? me.left + halfLineHeight + scaleLabelPadding.top
+							: me.right - halfLineHeight - scaleLabelPadding.top;
 						scaleLabelY = me.top + ((me.bottom - me.top) / 2);
 						rotation = isLeft ? -0.5 * Math.PI : 0.5 * Math.PI;
 					}
@@ -6865,12 +8321,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				if (gridLines.drawBorder) {
 					// Draw the line at the edge of the axis
-					context.lineWidth = helpers.getValueAtIndexOrDefault(gridLines.lineWidth, 0);
-					context.strokeStyle = helpers.getValueAtIndexOrDefault(gridLines.color, 0);
-					var x1 = me.left,
-						x2 = me.right,
-						y1 = me.top,
-						y2 = me.bottom;
+					context.lineWidth = helpers.valueAtIndexOrDefault(gridLines.lineWidth, 0);
+					context.strokeStyle = helpers.valueAtIndexOrDefault(gridLines.color, 0);
+					var x1 = me.left;
+					var x2 = me.right;
+					var y1 = me.top;
+					var y2 = me.bottom;
 
 					var aliasPixel = helpers.aliasPixel(context.lineWidth);
 					if (isHorizontal) {
@@ -6893,347 +8349,228 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 22 */
-/***/ function(module, exports) {
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
-		var helpers = Chart.helpers;
+	var helpers = __webpack_require__(5);
 
+	/**
+	 * Namespace to hold static tick generation functions
+	 * @namespace Chart.Ticks
+	 */
+	module.exports = {
 		/**
-		 * Helper function to get relative position for an event
-		 * @param {Event|IEvent} event - The event to get the position for
-		 * @param {Chart} chart - The chart
-		 * @returns {Point} the event position
+		 * Namespace to hold generators for different types of ticks
+		 * @namespace Chart.Ticks.generators
 		 */
-		function getRelativePosition(e, chart) {
-			if (e.native) {
-				return {
-					x: e.x,
-					y: e.y
-				};
+		generators: {
+			/**
+			 * Interface for the options provided to the numeric tick generator
+			 * @interface INumericTickGenerationOptions
+			 */
+			/**
+			 * The maximum number of ticks to display
+			 * @name INumericTickGenerationOptions#maxTicks
+			 * @type Number
+			 */
+			/**
+			 * The distance between each tick.
+			 * @name INumericTickGenerationOptions#stepSize
+			 * @type Number
+			 * @optional
+			 */
+			/**
+			 * Forced minimum for the ticks. If not specified, the minimum of the data range is used to calculate the tick minimum
+			 * @name INumericTickGenerationOptions#min
+			 * @type Number
+			 * @optional
+			 */
+			/**
+			 * The maximum value of the ticks. If not specified, the maximum of the data range is used to calculate the tick maximum
+			 * @name INumericTickGenerationOptions#max
+			 * @type Number
+			 * @optional
+			 */
+
+			/**
+			 * Generate a set of linear ticks
+			 * @method Chart.Ticks.generators.linear
+			 * @param generationOptions {INumericTickGenerationOptions} the options used to generate the ticks
+			 * @param dataRange {IRange} the range of the data
+			 * @returns {Array<Number>} array of tick values
+			 */
+			linear: function(generationOptions, dataRange) {
+				var ticks = [];
+				// To get a "nice" value for the tick spacing, we will use the appropriately named
+				// "nice number" algorithm. See http://stackoverflow.com/questions/8506881/nice-label-algorithm-for-charts-with-minimum-ticks
+				// for details.
+
+				var spacing;
+				if (generationOptions.stepSize && generationOptions.stepSize > 0) {
+					spacing = generationOptions.stepSize;
+				} else {
+					var niceRange = helpers.niceNum(dataRange.max - dataRange.min, false);
+					spacing = helpers.niceNum(niceRange / (generationOptions.maxTicks - 1), true);
+				}
+				var niceMin = Math.floor(dataRange.min / spacing) * spacing;
+				var niceMax = Math.ceil(dataRange.max / spacing) * spacing;
+
+				// If min, max and stepSize is set and they make an evenly spaced scale use it.
+				if (generationOptions.min && generationOptions.max && generationOptions.stepSize) {
+					// If very close to our whole number, use it.
+					if (helpers.almostWhole((generationOptions.max - generationOptions.min) / generationOptions.stepSize, spacing / 1000)) {
+						niceMin = generationOptions.min;
+						niceMax = generationOptions.max;
+					}
+				}
+
+				var numSpaces = (niceMax - niceMin) / spacing;
+				// If very close to our rounded value, use it.
+				if (helpers.almostEquals(numSpaces, Math.round(numSpaces), spacing / 1000)) {
+					numSpaces = Math.round(numSpaces);
+				} else {
+					numSpaces = Math.ceil(numSpaces);
+				}
+
+				// Put the values into the ticks array
+				ticks.push(generationOptions.min !== undefined ? generationOptions.min : niceMin);
+				for (var j = 1; j < numSpaces; ++j) {
+					ticks.push(niceMin + (j * spacing));
+				}
+				ticks.push(generationOptions.max !== undefined ? generationOptions.max : niceMax);
+
+				return ticks;
+			},
+
+			/**
+			 * Generate a set of logarithmic ticks
+			 * @method Chart.Ticks.generators.logarithmic
+			 * @param generationOptions {INumericTickGenerationOptions} the options used to generate the ticks
+			 * @param dataRange {IRange} the range of the data
+			 * @returns {Array<Number>} array of tick values
+			 */
+			logarithmic: function(generationOptions, dataRange) {
+				var ticks = [];
+				var valueOrDefault = helpers.valueOrDefault;
+
+				// Figure out what the max number of ticks we can support it is based on the size of
+				// the axis area. For now, we say that the minimum tick spacing in pixels must be 50
+				// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on
+				// the graph
+				var tickVal = valueOrDefault(generationOptions.min, Math.pow(10, Math.floor(helpers.log10(dataRange.min))));
+
+				var endExp = Math.floor(helpers.log10(dataRange.max));
+				var endSignificand = Math.ceil(dataRange.max / Math.pow(10, endExp));
+				var exp, significand;
+
+				if (tickVal === 0) {
+					exp = Math.floor(helpers.log10(dataRange.minNotZero));
+					significand = Math.floor(dataRange.minNotZero / Math.pow(10, exp));
+
+					ticks.push(tickVal);
+					tickVal = significand * Math.pow(10, exp);
+				} else {
+					exp = Math.floor(helpers.log10(tickVal));
+					significand = Math.floor(tickVal / Math.pow(10, exp));
+				}
+
+				do {
+					ticks.push(tickVal);
+
+					++significand;
+					if (significand === 10) {
+						significand = 1;
+						++exp;
+					}
+
+					tickVal = significand * Math.pow(10, exp);
+				} while (exp < endExp || (exp === endExp && significand < endSignificand));
+
+				var lastTick = valueOrDefault(generationOptions.max, tickVal);
+				ticks.push(lastTick);
+
+				return ticks;
 			}
-
-			return helpers.getRelativePosition(e, chart);
-		}
+		},
 
 		/**
-		 * Helper function to traverse all of the visible elements in the chart
-		 * @param chart {chart} the chart
-		 * @param handler {Function} the callback to execute for each visible item
+		 * Namespace to hold formatters for different types of ticks
+		 * @namespace Chart.Ticks.formatters
 		 */
-		function parseVisibleItems(chart, handler) {
-			var datasets = chart.data.datasets;
-			var meta, i, j, ilen, jlen;
+		formatters: {
+			/**
+			 * Formatter for value labels
+			 * @method Chart.Ticks.formatters.values
+			 * @param value the value to display
+			 * @return {String|Array} the label to display
+			 */
+			values: function(value) {
+				return helpers.isArray(value) ? value : '' + value;
+			},
 
-			for (i = 0, ilen = datasets.length; i < ilen; ++i) {
-				if (!chart.isDatasetVisible(i)) {
-					continue;
-				}
+			/**
+			 * Formatter for linear numeric ticks
+			 * @method Chart.Ticks.formatters.linear
+			 * @param tickValue {Number} the value to be formatted
+			 * @param index {Number} the position of the tickValue parameter in the ticks array
+			 * @param ticks {Array<Number>} the list of ticks being converted
+			 * @return {String} string representation of the tickValue parameter
+			 */
+			linear: function(tickValue, index, ticks) {
+				// If we have lots of ticks, don't use the ones
+				var delta = ticks.length > 3 ? ticks[2] - ticks[1] : ticks[1] - ticks[0];
 
-				meta = chart.getDatasetMeta(i);
-				for (j = 0, jlen = meta.data.length; j < jlen; ++j) {
-					var element = meta.data[j];
-					if (!element._view.skip) {
-						handler(element);
+				// If we have a number like 2.5 as the delta, figure out how many decimal places we need
+				if (Math.abs(delta) > 1) {
+					if (tickValue !== Math.floor(tickValue)) {
+						// not an integer
+						delta = tickValue - Math.floor(tickValue);
 					}
 				}
+
+				var logDelta = helpers.log10(Math.abs(delta));
+				var tickString = '';
+
+				if (tickValue !== 0) {
+					var numDecimal = -1 * Math.floor(logDelta);
+					numDecimal = Math.max(Math.min(numDecimal, 20), 0); // toFixed has a max of 20 decimal places
+					tickString = tickValue.toFixed(numDecimal);
+				} else {
+					tickString = '0'; // never show decimal places for 0
+				}
+
+				return tickString;
+			},
+
+			logarithmic: function(tickValue, index, ticks) {
+				var remain = tickValue / (Math.pow(10, Math.floor(helpers.log10(tickValue))));
+
+				if (tickValue === 0) {
+					return '0';
+				} else if (remain === 1 || remain === 2 || remain === 5 || index === 0 || index === ticks.length - 1) {
+					return tickValue.toExponential();
+				}
+				return '';
 			}
 		}
-
-		/**
-		 * Helper function to get the items that intersect the event position
-		 * @param items {ChartElement[]} elements to filter
-		 * @param position {Point} the point to be nearest to
-		 * @return {ChartElement[]} the nearest items
-		 */
-		function getIntersectItems(chart, position) {
-			var elements = [];
-
-			parseVisibleItems(chart, function(element) {
-				if (element.inRange(position.x, position.y)) {
-					elements.push(element);
-				}
-			});
-
-			return elements;
-		}
-
-		/**
-		 * Helper function to get the items nearest to the event position considering all visible items in teh chart
-		 * @param chart {Chart} the chart to look at elements from
-		 * @param position {Point} the point to be nearest to
-		 * @param intersect {Boolean} if true, only consider items that intersect the position
-		 * @param distanceMetric {Function} Optional function to provide the distance between
-		 * @return {ChartElement[]} the nearest items
-		 */
-		function getNearestItems(chart, position, intersect, distanceMetric) {
-			var minDistance = Number.POSITIVE_INFINITY;
-			var nearestItems = [];
-
-			if (!distanceMetric) {
-				distanceMetric = helpers.distanceBetweenPoints;
-			}
-
-			parseVisibleItems(chart, function(element) {
-				if (intersect && !element.inRange(position.x, position.y)) {
-					return;
-				}
-
-				var center = element.getCenterPoint();
-				var distance = distanceMetric(position, center);
-
-				if (distance < minDistance) {
-					nearestItems = [element];
-					minDistance = distance;
-				} else if (distance === minDistance) {
-					// Can have multiple items at the same distance in which case we sort by size
-					nearestItems.push(element);
-				}
-			});
-
-			return nearestItems;
-		}
-
-		function indexMode(chart, e, options) {
-			var position = getRelativePosition(e, chart);
-			var distanceMetric = function(pt1, pt2) {
-				return Math.abs(pt1.x - pt2.x);
-			};
-			var items = options.intersect ? getIntersectItems(chart, position) : getNearestItems(chart, position, false, distanceMetric);
-			var elements = [];
-
-			if (!items.length) {
-				return [];
-			}
-
-			chart.data.datasets.forEach(function(dataset, datasetIndex) {
-				if (chart.isDatasetVisible(datasetIndex)) {
-					var meta = chart.getDatasetMeta(datasetIndex),
-						element = meta.data[items[0]._index];
-
-					// don't count items that are skipped (null data)
-					if (element && !element._view.skip) {
-						elements.push(element);
-					}
-				}
-			});
-
-			return elements;
-		}
-
-		/**
-		 * @interface IInteractionOptions
-		 */
-		/**
-		 * If true, only consider items that intersect the point
-		 * @name IInterfaceOptions#boolean
-		 * @type Boolean
-		 */
-
-		/**
-		 * Contains interaction related functions
-		 * @namespace Chart.Interaction
-		 */
-		Chart.Interaction = {
-			// Helper function for different modes
-			modes: {
-				single: function(chart, e) {
-					var position = getRelativePosition(e, chart);
-					var elements = [];
-
-					parseVisibleItems(chart, function(element) {
-						if (element.inRange(position.x, position.y)) {
-							elements.push(element);
-							return elements;
-						}
-					});
-
-					return elements.slice(0, 1);
-				},
-
-				/**
-				 * @function Chart.Interaction.modes.label
-				 * @deprecated since version 2.4.0
-		 		 * @todo remove at version 3
-				 * @private
-				 */
-				label: indexMode,
-
-				/**
-				 * Returns items at the same index. If the options.intersect parameter is true, we only return items if we intersect something
-				 * If the options.intersect mode is false, we find the nearest item and return the items at the same index as that item
-				 * @function Chart.Interaction.modes.index
-				 * @since v2.4.0
-				 * @param chart {chart} the chart we are returning items from
-				 * @param e {Event} the event we are find things at
-				 * @param options {IInteractionOptions} options to use during interaction
-				 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
-				 */
-				index: indexMode,
-
-				/**
-				 * Returns items in the same dataset. If the options.intersect parameter is true, we only return items if we intersect something
-				 * If the options.intersect is false, we find the nearest item and return the items in that dataset
-				 * @function Chart.Interaction.modes.dataset
-				 * @param chart {chart} the chart we are returning items from
-				 * @param e {Event} the event we are find things at
-				 * @param options {IInteractionOptions} options to use during interaction
-				 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
-				 */
-				dataset: function(chart, e, options) {
-					var position = getRelativePosition(e, chart);
-					var items = options.intersect ? getIntersectItems(chart, position) : getNearestItems(chart, position, false);
-
-					if (items.length > 0) {
-						items = chart.getDatasetMeta(items[0]._datasetIndex).data;
-					}
-
-					return items;
-				},
-
-				/**
-				 * @function Chart.Interaction.modes.x-axis
-				 * @deprecated since version 2.4.0. Use index mode and intersect == true
-				 * @todo remove at version 3
-				 * @private
-				 */
-				'x-axis': function(chart, e) {
-					return indexMode(chart, e, true);
-				},
-
-				/**
-				 * Point mode returns all elements that hit test based on the event position
-				 * of the event
-				 * @function Chart.Interaction.modes.intersect
-				 * @param chart {chart} the chart we are returning items from
-				 * @param e {Event} the event we are find things at
-				 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
-				 */
-				point: function(chart, e) {
-					var position = getRelativePosition(e, chart);
-					return getIntersectItems(chart, position);
-				},
-
-				/**
-				 * nearest mode returns the element closest to the point
-				 * @function Chart.Interaction.modes.intersect
-				 * @param chart {chart} the chart we are returning items from
-				 * @param e {Event} the event we are find things at
-				 * @param options {IInteractionOptions} options to use
-				 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
-				 */
-				nearest: function(chart, e, options) {
-					var position = getRelativePosition(e, chart);
-					var nearestItems = getNearestItems(chart, position, options.intersect);
-
-					// We have multiple items at the same distance from the event. Now sort by smallest
-					if (nearestItems.length > 1) {
-						nearestItems.sort(function(a, b) {
-							var sizeA = a.getArea();
-							var sizeB = b.getArea();
-							var ret = sizeA - sizeB;
-
-							if (ret === 0) {
-								// if equal sort by dataset index
-								ret = a._datasetIndex - b._datasetIndex;
-							}
-
-							return ret;
-						});
-					}
-
-					// Return only 1 item
-					return nearestItems.slice(0, 1);
-				},
-
-				/**
-				 * x mode returns the elements that hit-test at the current x coordinate
-				 * @function Chart.Interaction.modes.x
-				 * @param chart {chart} the chart we are returning items from
-				 * @param e {Event} the event we are find things at
-				 * @param options {IInteractionOptions} options to use
-				 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
-				 */
-				x: function(chart, e, options) {
-					var position = getRelativePosition(e, chart);
-					var items = [];
-					var intersectsItem = false;
-
-					parseVisibleItems(chart, function(element) {
-						if (element.inXRange(position.x)) {
-							items.push(element);
-						}
-
-						if (element.inRange(position.x, position.y)) {
-							intersectsItem = true;
-						}
-					});
-
-					// If we want to trigger on an intersect and we don't have any items
-					// that intersect the position, return nothing
-					if (options.intersect && !intersectsItem) {
-						items = [];
-					}
-					return items;
-				},
-
-				/**
-				 * y mode returns the elements that hit-test at the current y coordinate
-				 * @function Chart.Interaction.modes.y
-				 * @param chart {chart} the chart we are returning items from
-				 * @param e {Event} the event we are find things at
-				 * @param options {IInteractionOptions} options to use
-				 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
-				 */
-				y: function(chart, e, options) {
-					var position = getRelativePosition(e, chart);
-					var items = [];
-					var intersectsItem = false;
-
-					parseVisibleItems(chart, function(element) {
-						if (element.inYRange(position.y)) {
-							items.push(element);
-						}
-
-						if (element.inRange(position.x, position.y)) {
-							intersectsItem = true;
-						}
-					});
-
-					// If we want to trigger on an intersect and we don't have any items
-					// that intersect the position, return nothing
-					if (options.intersect && !intersectsItem) {
-						items = [];
-					}
-					return items;
-				}
-			}
-		};
 	};
 
 
-/***/ },
-/* 23 */
-/***/ function(module, exports) {
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var Element = __webpack_require__(16);
+	var helpers = __webpack_require__(5);
 
-		var helpers = Chart.helpers;
-
-		/**
-	 	 * Helper method to merge the opacity into a color
-	 	 */
-		function mergeOpacity(colorString, opacity) {
-			var color = helpers.color(colorString);
-			return color.alpha(opacity * color.alpha()).rgbaString();
-		}
-
-		Chart.defaults.global.tooltips = {
+	defaults._set('global', {
+		tooltips: {
 			enabled: true,
 			custom: null,
 			mode: 'nearest',
@@ -7308,6 +8645,9 @@ return /******/ (function(modules) { // webpackBootstrap
 						backgroundColor: view.backgroundColor
 					};
 				},
+				labelTextColor: function() {
+					return this._options.bodyFontColor;
+				},
 				afterLabel: helpers.noop,
 
 				// Args are: (tooltipItems, data)
@@ -7318,7 +8658,18 @@ return /******/ (function(modules) { // webpackBootstrap
 				footer: helpers.noop,
 				afterFooter: helpers.noop
 			}
-		};
+		}
+	});
+
+	module.exports = function(Chart) {
+
+		/**
+	 	 * Helper method to merge the opacity into a color
+	 	 */
+		function mergeOpacity(colorString, opacity) {
+			var color = helpers.color(colorString);
+			return color.alpha(opacity * color.alpha()).rgbaString();
+		}
 
 		// Helper to push or concat based on if the 2nd parameter is an array or not
 		function pushOrConcat(base, toPush) {
@@ -7340,8 +8691,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		function createTooltipItem(element) {
 			var xScale = element._xScale;
 			var yScale = element._yScale || element._scale; // handle radar || polarArea charts
-			var index = element._index,
-				datasetIndex = element._datasetIndex;
+			var index = element._index;
+			var datasetIndex = element._datasetIndex;
 
 			return {
 				xLabel: xScale ? xScale.getLabelForIndex(index, datasetIndex) : '',
@@ -7358,8 +8709,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		 * @param tooltipOpts {Object} the tooltip options
 		 */
 		function getBaseModel(tooltipOpts) {
-			var globalDefaults = Chart.defaults.global;
-			var getValueOrDefault = helpers.getValueOrDefault;
+			var globalDefaults = defaults.global;
+			var valueOrDefault = helpers.valueOrDefault;
 
 			return {
 				// Positioning
@@ -7370,26 +8721,26 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				// Body
 				bodyFontColor: tooltipOpts.bodyFontColor,
-				_bodyFontFamily: getValueOrDefault(tooltipOpts.bodyFontFamily, globalDefaults.defaultFontFamily),
-				_bodyFontStyle: getValueOrDefault(tooltipOpts.bodyFontStyle, globalDefaults.defaultFontStyle),
+				_bodyFontFamily: valueOrDefault(tooltipOpts.bodyFontFamily, globalDefaults.defaultFontFamily),
+				_bodyFontStyle: valueOrDefault(tooltipOpts.bodyFontStyle, globalDefaults.defaultFontStyle),
 				_bodyAlign: tooltipOpts.bodyAlign,
-				bodyFontSize: getValueOrDefault(tooltipOpts.bodyFontSize, globalDefaults.defaultFontSize),
+				bodyFontSize: valueOrDefault(tooltipOpts.bodyFontSize, globalDefaults.defaultFontSize),
 				bodySpacing: tooltipOpts.bodySpacing,
 
 				// Title
 				titleFontColor: tooltipOpts.titleFontColor,
-				_titleFontFamily: getValueOrDefault(tooltipOpts.titleFontFamily, globalDefaults.defaultFontFamily),
-				_titleFontStyle: getValueOrDefault(tooltipOpts.titleFontStyle, globalDefaults.defaultFontStyle),
-				titleFontSize: getValueOrDefault(tooltipOpts.titleFontSize, globalDefaults.defaultFontSize),
+				_titleFontFamily: valueOrDefault(tooltipOpts.titleFontFamily, globalDefaults.defaultFontFamily),
+				_titleFontStyle: valueOrDefault(tooltipOpts.titleFontStyle, globalDefaults.defaultFontStyle),
+				titleFontSize: valueOrDefault(tooltipOpts.titleFontSize, globalDefaults.defaultFontSize),
 				_titleAlign: tooltipOpts.titleAlign,
 				titleSpacing: tooltipOpts.titleSpacing,
 				titleMarginBottom: tooltipOpts.titleMarginBottom,
 
 				// Footer
 				footerFontColor: tooltipOpts.footerFontColor,
-				_footerFontFamily: getValueOrDefault(tooltipOpts.footerFontFamily, globalDefaults.defaultFontFamily),
-				_footerFontStyle: getValueOrDefault(tooltipOpts.footerFontStyle, globalDefaults.defaultFontStyle),
-				footerFontSize: getValueOrDefault(tooltipOpts.footerFontSize, globalDefaults.defaultFontSize),
+				_footerFontFamily: valueOrDefault(tooltipOpts.footerFontFamily, globalDefaults.defaultFontFamily),
+				_footerFontStyle: valueOrDefault(tooltipOpts.footerFontStyle, globalDefaults.defaultFontStyle),
+				footerFontSize: valueOrDefault(tooltipOpts.footerFontSize, globalDefaults.defaultFontSize),
 				_footerAlign: tooltipOpts.footerAlign,
 				footerSpacing: tooltipOpts.footerSpacing,
 				footerMarginTop: tooltipOpts.footerMarginTop,
@@ -7424,9 +8775,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			var titleLineCount = model.title.length;
 			var footerLineCount = model.footer.length;
-			var titleFontSize = model.titleFontSize,
-				bodyFontSize = model.bodyFontSize,
-				footerFontSize = model.footerFontSize;
+			var titleFontSize = model.titleFontSize;
+			var bodyFontSize = model.bodyFontSize;
+			var footerFontSize = model.footerFontSize;
 
 			height += titleLineCount * titleFontSize; // Title Lines
 			height += titleLineCount ? (titleLineCount - 1) * model.titleSpacing : 0; // Title Line Spacing
@@ -7555,13 +8906,13 @@ return /******/ (function(modules) { // webpackBootstrap
 			var x = vm.x;
 			var y = vm.y;
 
-			var caretSize = vm.caretSize,
-				caretPadding = vm.caretPadding,
-				cornerRadius = vm.cornerRadius,
-				xAlign = alignment.xAlign,
-				yAlign = alignment.yAlign,
-				paddingAndSize = caretSize + caretPadding,
-				radiusAndPadding = cornerRadius + caretPadding;
+			var caretSize = vm.caretSize;
+			var caretPadding = vm.caretPadding;
+			var cornerRadius = vm.cornerRadius;
+			var xAlign = alignment.xAlign;
+			var yAlign = alignment.yAlign;
+			var paddingAndSize = caretSize + caretPadding;
+			var radiusAndPadding = cornerRadius + caretPadding;
 
 			if (xAlign === 'right') {
 				x -= size.width;
@@ -7595,7 +8946,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			};
 		}
 
-		Chart.Tooltip = Chart.Element.extend({
+		Chart.Tooltip = Element.extend({
 			initialize: function() {
 				this._model = getBaseModel(this._options);
 			},
@@ -7607,9 +8958,9 @@ return /******/ (function(modules) { // webpackBootstrap
 				var opts = me._options;
 				var callbacks = opts.callbacks;
 
-				var beforeTitle = callbacks.beforeTitle.apply(me, arguments),
-					title = callbacks.title.apply(me, arguments),
-					afterTitle = callbacks.afterTitle.apply(me, arguments);
+				var beforeTitle = callbacks.beforeTitle.apply(me, arguments);
+				var title = callbacks.title.apply(me, arguments);
+				var afterTitle = callbacks.afterTitle.apply(me, arguments);
 
 				var lines = [];
 				lines = pushOrConcat(lines, beforeTitle);
@@ -7708,6 +9059,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					model.opacity = 1;
 
 					var labelColors = [];
+					var labelTextColors = [];
 					tooltipPosition = Chart.Tooltip.positioners[opts.position](active, me._eventPosition);
 
 					var tooltipItems = [];
@@ -7732,7 +9084,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					// Determine colors for boxes
 					helpers.each(tooltipItems, function(tooltipItem) {
 						labelColors.push(opts.callbacks.labelColor.call(me, tooltipItem, me._chart));
+						labelTextColors.push(opts.callbacks.labelTextColor.call(me, tooltipItem, me._chart));
 					});
+
 
 					// Build the Text Lines
 					model.title = me.getTitle(tooltipItems, data);
@@ -7746,6 +9100,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					model.y = Math.round(tooltipPosition.y);
 					model.caretPadding = opts.caretPadding;
 					model.labelColors = labelColors;
+					model.labelTextColors = labelTextColors;
 
 					// data points
 					model.dataPoints = tooltipItems;
@@ -7788,16 +9143,15 @@ return /******/ (function(modules) { // webpackBootstrap
 				ctx.lineTo(caretPosition.x3, caretPosition.y3);
 			},
 			getCaretPosition: function(tooltipPoint, size, vm) {
-				var x1, x2, x3;
-				var y1, y2, y3;
+				var x1, x2, x3, y1, y2, y3;
 				var caretSize = vm.caretSize;
 				var cornerRadius = vm.cornerRadius;
-				var xAlign = vm.xAlign,
-					yAlign = vm.yAlign;
-				var ptX = tooltipPoint.x,
-					ptY = tooltipPoint.y;
-				var width = size.width,
-					height = size.height;
+				var xAlign = vm.xAlign;
+				var yAlign = vm.yAlign;
+				var ptX = tooltipPoint.x;
+				var ptY = tooltipPoint.y;
+				var width = size.width;
+				var height = size.height;
 
 				if (yAlign === 'center') {
 					y2 = ptY + (height / 2);
@@ -7854,8 +9208,8 @@ return /******/ (function(modules) { // webpackBootstrap
 					ctx.textAlign = vm._titleAlign;
 					ctx.textBaseline = 'top';
 
-					var titleFontSize = vm.titleFontSize,
-						titleSpacing = vm.titleSpacing;
+					var titleFontSize = vm.titleFontSize;
+					var titleSpacing = vm.titleSpacing;
 
 					ctx.fillStyle = mergeOpacity(vm.titleFontColor, opacity);
 					ctx.font = helpers.fontString(titleFontSize, vm._titleFontStyle, vm._titleFontFamily);
@@ -7878,9 +9232,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				ctx.textAlign = vm._bodyAlign;
 				ctx.textBaseline = 'top';
-
-				var textColor = mergeOpacity(vm.bodyFontColor, opacity);
-				ctx.fillStyle = textColor;
 				ctx.font = helpers.fontString(bodyFontSize, vm._bodyFontStyle, vm._bodyFontFamily);
 
 				// Before Body
@@ -7908,13 +9259,14 @@ return /******/ (function(modules) { // webpackBootstrap
 							ctx.fillRect(pt.x, pt.y, bodyFontSize, bodyFontSize);
 
 							// Border
+							ctx.lineWidth = 1;
 							ctx.strokeStyle = mergeOpacity(vm.labelColors[i].borderColor, opacity);
 							ctx.strokeRect(pt.x, pt.y, bodyFontSize, bodyFontSize);
 
 							// Inner square
 							ctx.fillStyle = mergeOpacity(vm.labelColors[i].backgroundColor, opacity);
 							ctx.fillRect(pt.x + 1, pt.y + 1, bodyFontSize - 2, bodyFontSize - 2);
-
+							var textColor = mergeOpacity(vm.labelTextColors[i], opacity);
 							ctx.fillStyle = textColor;
 						}
 
@@ -8127,10 +9479,9 @@ return /******/ (function(modules) { // webpackBootstrap
 			nearest: function(elements, eventPosition) {
 				var x = eventPosition.x;
 				var y = eventPosition.y;
-
-				var nearestElement;
 				var minDistance = Number.POSITIVE_INFINITY;
-				var i, len;
+				var i, len, nearestElement;
+
 				for (i = 0, len = elements.length; i < len; ++i) {
 					var el = elements[i];
 					if (el && el.hasValue()) {
@@ -8159,541 +9510,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 24 */
-/***/ function(module, exports) {
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
-
-		var helpers = Chart.helpers,
-			globalOpts = Chart.defaults.global;
-
-		globalOpts.elements.arc = {
-			backgroundColor: globalOpts.defaultColor,
-			borderColor: '#fff',
-			borderWidth: 2
-		};
-
-		Chart.elements.Arc = Chart.Element.extend({
-			inLabelRange: function(mouseX) {
-				var vm = this._view;
-
-				if (vm) {
-					return (Math.pow(mouseX - vm.x, 2) < Math.pow(vm.radius + vm.hoverRadius, 2));
-				}
-				return false;
-			},
-			inRange: function(chartX, chartY) {
-				var vm = this._view;
-
-				if (vm) {
-					var pointRelativePosition = helpers.getAngleFromPoint(vm, {
-							x: chartX,
-							y: chartY
-						}),
-						angle = pointRelativePosition.angle,
-						distance = pointRelativePosition.distance;
-
-					// Sanitise angle range
-					var startAngle = vm.startAngle;
-					var endAngle = vm.endAngle;
-					while (endAngle < startAngle) {
-						endAngle += 2.0 * Math.PI;
-					}
-					while (angle > endAngle) {
-						angle -= 2.0 * Math.PI;
-					}
-					while (angle < startAngle) {
-						angle += 2.0 * Math.PI;
-					}
-
-					// Check if within the range of the open/close angle
-					var betweenAngles = (angle >= startAngle && angle <= endAngle),
-						withinRadius = (distance >= vm.innerRadius && distance <= vm.outerRadius);
-
-					return (betweenAngles && withinRadius);
-				}
-				return false;
-			},
-			getCenterPoint: function() {
-				var vm = this._view;
-				var halfAngle = (vm.startAngle + vm.endAngle) / 2;
-				var halfRadius = (vm.innerRadius + vm.outerRadius) / 2;
-				return {
-					x: vm.x + Math.cos(halfAngle) * halfRadius,
-					y: vm.y + Math.sin(halfAngle) * halfRadius
-				};
-			},
-			getArea: function() {
-				var vm = this._view;
-				return Math.PI * ((vm.endAngle - vm.startAngle) / (2 * Math.PI)) * (Math.pow(vm.outerRadius, 2) - Math.pow(vm.innerRadius, 2));
-			},
-			tooltipPosition: function() {
-				var vm = this._view;
-
-				var centreAngle = vm.startAngle + ((vm.endAngle - vm.startAngle) / 2),
-					rangeFromCentre = (vm.outerRadius - vm.innerRadius) / 2 + vm.innerRadius;
-				return {
-					x: vm.x + (Math.cos(centreAngle) * rangeFromCentre),
-					y: vm.y + (Math.sin(centreAngle) * rangeFromCentre)
-				};
-			},
-			draw: function() {
-
-				var ctx = this._chart.ctx,
-					vm = this._view,
-					sA = vm.startAngle,
-					eA = vm.endAngle;
-
-				ctx.beginPath();
-
-				ctx.arc(vm.x, vm.y, vm.outerRadius, sA, eA);
-				ctx.arc(vm.x, vm.y, vm.innerRadius, eA, sA, true);
-
-				ctx.closePath();
-				ctx.strokeStyle = vm.borderColor;
-				ctx.lineWidth = vm.borderWidth;
-
-				ctx.fillStyle = vm.backgroundColor;
-
-				ctx.fill();
-				ctx.lineJoin = 'bevel';
-
-				if (vm.borderWidth) {
-					ctx.stroke();
-				}
-			}
-		});
-	};
-
-
-/***/ },
-/* 25 */
-/***/ function(module, exports) {
-
-	'use strict';
+	var helpers = __webpack_require__(5);
+	var Ticks = __webpack_require__(33);
 
 	module.exports = function(Chart) {
 
-		var helpers = Chart.helpers;
-		var globalDefaults = Chart.defaults.global;
-
-		Chart.defaults.global.elements.line = {
-			tension: 0.4,
-			backgroundColor: globalDefaults.defaultColor,
-			borderWidth: 3,
-			borderColor: globalDefaults.defaultColor,
-			borderCapStyle: 'butt',
-			borderDash: [],
-			borderDashOffset: 0.0,
-			borderJoinStyle: 'miter',
-			capBezierPoints: true,
-			fill: true, // do we fill in the area between the line and its base axis
-		};
-
-		Chart.elements.Line = Chart.Element.extend({
-			draw: function() {
-				var me = this;
-				var vm = me._view;
-				var ctx = me._chart.ctx;
-				var spanGaps = vm.spanGaps;
-				var points = me._children.slice(); // clone array
-				var globalOptionLineElements = globalDefaults.elements.line;
-				var lastDrawnIndex = -1;
-				var index, current, previous, currentVM;
-
-				// If we are looping, adding the first point again
-				if (me._loop && points.length) {
-					points.push(points[0]);
-				}
-
-				ctx.save();
-
-				// Stroke Line Options
-				ctx.lineCap = vm.borderCapStyle || globalOptionLineElements.borderCapStyle;
-
-				// IE 9 and 10 do not support line dash
-				if (ctx.setLineDash) {
-					ctx.setLineDash(vm.borderDash || globalOptionLineElements.borderDash);
-				}
-
-				ctx.lineDashOffset = vm.borderDashOffset || globalOptionLineElements.borderDashOffset;
-				ctx.lineJoin = vm.borderJoinStyle || globalOptionLineElements.borderJoinStyle;
-				ctx.lineWidth = vm.borderWidth || globalOptionLineElements.borderWidth;
-				ctx.strokeStyle = vm.borderColor || globalDefaults.defaultColor;
-
-				// Stroke Line
-				ctx.beginPath();
-				lastDrawnIndex = -1;
-
-				for (index = 0; index < points.length; ++index) {
-					current = points[index];
-					previous = helpers.previousItem(points, index);
-					currentVM = current._view;
-
-					// First point moves to it's starting position no matter what
-					if (index === 0) {
-						if (!currentVM.skip) {
-							ctx.moveTo(currentVM.x, currentVM.y);
-							lastDrawnIndex = index;
-						}
-					} else {
-						previous = lastDrawnIndex === -1 ? previous : points[lastDrawnIndex];
-
-						if (!currentVM.skip) {
-							if ((lastDrawnIndex !== (index - 1) && !spanGaps) || lastDrawnIndex === -1) {
-								// There was a gap and this is the first point after the gap
-								ctx.moveTo(currentVM.x, currentVM.y);
-							} else {
-								// Line to next point
-								helpers.canvas.lineTo(ctx, previous._view, current._view);
-							}
-							lastDrawnIndex = index;
-						}
-					}
-				}
-
-				ctx.stroke();
-				ctx.restore();
-			}
-		});
-	};
-
-
-/***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = function(Chart) {
-
-		var helpers = Chart.helpers,
-			globalOpts = Chart.defaults.global,
-			defaultColor = globalOpts.defaultColor;
-
-		globalOpts.elements.point = {
-			radius: 3,
-			pointStyle: 'circle',
-			backgroundColor: defaultColor,
-			borderWidth: 1,
-			borderColor: defaultColor,
-			// Hover
-			hitRadius: 1,
-			hoverRadius: 4,
-			hoverBorderWidth: 1
-		};
-
-		function xRange(mouseX) {
-			var vm = this._view;
-			return vm ? (Math.pow(mouseX - vm.x, 2) < Math.pow(vm.radius + vm.hitRadius, 2)) : false;
-		}
-
-		function yRange(mouseY) {
-			var vm = this._view;
-			return vm ? (Math.pow(mouseY - vm.y, 2) < Math.pow(vm.radius + vm.hitRadius, 2)) : false;
-		}
-
-		Chart.elements.Point = Chart.Element.extend({
-			inRange: function(mouseX, mouseY) {
-				var vm = this._view;
-				return vm ? ((Math.pow(mouseX - vm.x, 2) + Math.pow(mouseY - vm.y, 2)) < Math.pow(vm.hitRadius + vm.radius, 2)) : false;
-			},
-
-			inLabelRange: xRange,
-			inXRange: xRange,
-			inYRange: yRange,
-
-			getCenterPoint: function() {
-				var vm = this._view;
-				return {
-					x: vm.x,
-					y: vm.y
-				};
-			},
-			getArea: function() {
-				return Math.PI * Math.pow(this._view.radius, 2);
-			},
-			tooltipPosition: function() {
-				var vm = this._view;
-				return {
-					x: vm.x,
-					y: vm.y,
-					padding: vm.radius + vm.borderWidth
-				};
-			},
-			draw: function(chartArea) {
-				var vm = this._view;
-				var model = this._model;
-				var ctx = this._chart.ctx;
-				var pointStyle = vm.pointStyle;
-				var radius = vm.radius;
-				var x = vm.x;
-				var y = vm.y;
-				var color = Chart.helpers.color;
-				var errMargin = 1.01; // 1.01 is margin for Accumulated error. (Especially Edge, IE.)
-				var ratio = 0;
-
-				if (vm.skip) {
-					return;
-				}
-
-				ctx.strokeStyle = vm.borderColor || defaultColor;
-				ctx.lineWidth = helpers.getValueOrDefault(vm.borderWidth, globalOpts.elements.point.borderWidth);
-				ctx.fillStyle = vm.backgroundColor || defaultColor;
-
-				// Cliping for Points.
-				// going out from inner charArea?
-				if ((chartArea !== undefined) && ((model.x < chartArea.left) || (chartArea.right*errMargin < model.x) || (model.y < chartArea.top) || (chartArea.bottom*errMargin < model.y))) {
-					// Point fade out
-					if (model.x < chartArea.left) {
-						ratio = (x - model.x) / (chartArea.left - model.x);
-					} else if (chartArea.right*errMargin < model.x) {
-						ratio = (model.x - x) / (model.x - chartArea.right);
-					} else if (model.y < chartArea.top) {
-						ratio = (y - model.y) / (chartArea.top - model.y);
-					} else if (chartArea.bottom*errMargin < model.y) {
-						ratio = (model.y - y) / (model.y - chartArea.bottom);
-					}
-					ratio = Math.round(ratio*100) / 100;
-					ctx.strokeStyle = color(ctx.strokeStyle).alpha(ratio).rgbString();
-					ctx.fillStyle = color(ctx.fillStyle).alpha(ratio).rgbString();
-				}
-
-				Chart.canvasHelpers.drawPoint(ctx, pointStyle, radius, x, y);
-			}
-		});
-	};
-
-
-/***/ },
-/* 27 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = function(Chart) {
-
-		var globalOpts = Chart.defaults.global;
-
-		globalOpts.elements.rectangle = {
-			backgroundColor: globalOpts.defaultColor,
-			borderWidth: 0,
-			borderColor: globalOpts.defaultColor,
-			borderSkipped: 'bottom'
-		};
-
-		function isVertical(bar) {
-			return bar._view.width !== undefined;
-		}
-
-		/**
-		 * Helper function to get the bounds of the bar regardless of the orientation
-		 * @private
-		 * @param bar {Chart.Element.Rectangle} the bar
-		 * @return {Bounds} bounds of the bar
-		 */
-		function getBarBounds(bar) {
-			var vm = bar._view;
-			var x1, x2, y1, y2;
-
-			if (isVertical(bar)) {
-				// vertical
-				var halfWidth = vm.width / 2;
-				x1 = vm.x - halfWidth;
-				x2 = vm.x + halfWidth;
-				y1 = Math.min(vm.y, vm.base);
-				y2 = Math.max(vm.y, vm.base);
-			} else {
-				// horizontal bar
-				var halfHeight = vm.height / 2;
-				x1 = Math.min(vm.x, vm.base);
-				x2 = Math.max(vm.x, vm.base);
-				y1 = vm.y - halfHeight;
-				y2 = vm.y + halfHeight;
-			}
-
-			return {
-				left: x1,
-				top: y1,
-				right: x2,
-				bottom: y2
-			};
-		}
-
-		Chart.elements.Rectangle = Chart.Element.extend({
-			draw: function() {
-				var ctx = this._chart.ctx;
-				var vm = this._view;
-				var left, right, top, bottom, signX, signY, borderSkipped;
-				var borderWidth = vm.borderWidth;
-
-				if (!vm.horizontal) {
-					// bar
-					left = vm.x - vm.width / 2;
-					right = vm.x + vm.width / 2;
-					top = vm.y;
-					bottom = vm.base;
-					signX = 1;
-					signY = bottom > top? 1: -1;
-					borderSkipped = vm.borderSkipped || 'bottom';
-				} else {
-					// horizontal bar
-					left = vm.base;
-					right = vm.x;
-					top = vm.y - vm.height / 2;
-					bottom = vm.y + vm.height / 2;
-					signX = right > left? 1: -1;
-					signY = 1;
-					borderSkipped = vm.borderSkipped || 'left';
-				}
-
-				// Canvas doesn't allow us to stroke inside the width so we can
-				// adjust the sizes to fit if we're setting a stroke on the line
-				if (borderWidth) {
-					// borderWidth shold be less than bar width and bar height.
-					var barSize = Math.min(Math.abs(left - right), Math.abs(top - bottom));
-					borderWidth = borderWidth > barSize? barSize: borderWidth;
-					var halfStroke = borderWidth / 2;
-					// Adjust borderWidth when bar top position is near vm.base(zero).
-					var borderLeft = left + (borderSkipped !== 'left'? halfStroke * signX: 0);
-					var borderRight = right + (borderSkipped !== 'right'? -halfStroke * signX: 0);
-					var borderTop = top + (borderSkipped !== 'top'? halfStroke * signY: 0);
-					var borderBottom = bottom + (borderSkipped !== 'bottom'? -halfStroke * signY: 0);
-					// not become a vertical line?
-					if (borderLeft !== borderRight) {
-						top = borderTop;
-						bottom = borderBottom;
-					}
-					// not become a horizontal line?
-					if (borderTop !== borderBottom) {
-						left = borderLeft;
-						right = borderRight;
-					}
-				}
-
-				ctx.beginPath();
-				ctx.fillStyle = vm.backgroundColor;
-				ctx.strokeStyle = vm.borderColor;
-				ctx.lineWidth = borderWidth;
-
-				// Corner points, from bottom-left to bottom-right clockwise
-				// | 1 2 |
-				// | 0 3 |
-				var corners = [
-					[left, bottom],
-					[left, top],
-					[right, top],
-					[right, bottom]
-				];
-
-				// Find first (starting) corner with fallback to 'bottom'
-				var borders = ['bottom', 'left', 'top', 'right'];
-				var startCorner = borders.indexOf(borderSkipped, 0);
-				if (startCorner === -1) {
-					startCorner = 0;
-				}
-
-				function cornerAt(index) {
-					return corners[(startCorner + index) % 4];
-				}
-
-				// Draw rectangle from 'startCorner'
-				var corner = cornerAt(0);
-				ctx.moveTo(corner[0], corner[1]);
-
-				for (var i = 1; i < 4; i++) {
-					corner = cornerAt(i);
-					ctx.lineTo(corner[0], corner[1]);
-				}
-
-				ctx.fill();
-				if (borderWidth) {
-					ctx.stroke();
-				}
-			},
-			height: function() {
-				var vm = this._view;
-				return vm.base - vm.y;
-			},
-			inRange: function(mouseX, mouseY) {
-				var inRange = false;
-
-				if (this._view) {
-					var bounds = getBarBounds(this);
-					inRange = mouseX >= bounds.left && mouseX <= bounds.right && mouseY >= bounds.top && mouseY <= bounds.bottom;
-				}
-
-				return inRange;
-			},
-			inLabelRange: function(mouseX, mouseY) {
-				var me = this;
-				if (!me._view) {
-					return false;
-				}
-
-				var inRange = false;
-				var bounds = getBarBounds(me);
-
-				if (isVertical(me)) {
-					inRange = mouseX >= bounds.left && mouseX <= bounds.right;
-				} else {
-					inRange = mouseY >= bounds.top && mouseY <= bounds.bottom;
-				}
-
-				return inRange;
-			},
-			inXRange: function(mouseX) {
-				var bounds = getBarBounds(this);
-				return mouseX >= bounds.left && mouseX <= bounds.right;
-			},
-			inYRange: function(mouseY) {
-				var bounds = getBarBounds(this);
-				return mouseY >= bounds.top && mouseY <= bounds.bottom;
-			},
-			getCenterPoint: function() {
-				var vm = this._view;
-				var x, y;
-				if (isVertical(this)) {
-					x = vm.x;
-					y = (vm.y + vm.base) / 2;
-				} else {
-					x = (vm.x + vm.base) / 2;
-					y = vm.y;
-				}
-
-				return {x: x, y: y};
-			},
-			getArea: function() {
-				var vm = this._view;
-				return vm.width * Math.abs(vm.y - vm.base);
-			},
-			tooltipPosition: function() {
-				var vm = this._view;
-				return {
-					x: vm.x,
-					y: vm.y
-				};
-			}
-		});
-
-	};
-
-
-/***/ },
-/* 28 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = function(Chart) {
-
-		var helpers = Chart.helpers,
-			noop = helpers.noop;
+		var noop = helpers.noop;
 
 		Chart.LinearScaleBase = Chart.Scale.extend({
+			getRightValue: function(value) {
+				if (typeof value === 'string') {
+					return +value;
+				}
+				return Chart.Scale.prototype.getRightValue.call(this, value);
+			},
+
 			handleTickRangeOptions: function() {
 				var me = this;
 				var opts = me.options;
@@ -8715,6 +9552,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					}
 				}
 
+				var setMin = tickOpts.min !== undefined || tickOpts.suggestedMin !== undefined;
+				var setMax = tickOpts.max !== undefined || tickOpts.suggestedMax !== undefined;
+
 				if (tickOpts.min !== undefined) {
 					me.min = tickOpts.min;
 				} else if (tickOpts.suggestedMin !== undefined) {
@@ -8732,6 +9572,20 @@ return /******/ (function(modules) { // webpackBootstrap
 						me.max = tickOpts.suggestedMax;
 					} else {
 						me.max = Math.max(me.max, tickOpts.suggestedMax);
+					}
+				}
+
+				if (setMin !== setMax) {
+					// We set the min or the max but not both.
+					// So ensure that our range is good
+					// Inverted or 0 length range can happen when
+					// ticks.min is set, and no datasets are visible
+					if (me.min >= me.max) {
+						if (setMin) {
+							me.max = me.min + 1;
+						} else {
+							me.min = me.max - 1;
+						}
 					}
 				}
 
@@ -8762,9 +9616,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					maxTicks: maxTicks,
 					min: tickOpts.min,
 					max: tickOpts.max,
-					stepSize: helpers.getValueOrDefault(tickOpts.fixedStepSize, tickOpts.stepSize)
+					stepSize: helpers.valueOrDefault(tickOpts.fixedStepSize, tickOpts.stepSize)
 				};
-				var ticks = me.ticks = Chart.Ticks.generators.linear(numericGeneratorOptions, me);
+				var ticks = me.ticks = Ticks.generators.linear(numericGeneratorOptions, me);
 
 				me.handleDirectionalChanges();
 
@@ -8794,15 +9648,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 29 */
-/***/ function(module, exports) {
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
 
 	'use strict';
 
 	module.exports = function(Chart) {
 
-		var helpers = Chart.helpers;
 		// Default config for a category scale
 		var defaultConfig = {
 			position: 'bottom'
@@ -8816,7 +9669,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			*/
 			getLabels: function() {
 				var data = this.chart.data;
-				return (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels;
+				return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels;
 			},
 
 			determineDataLimits: function() {
@@ -8828,13 +9681,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				if (me.options.ticks.min !== undefined) {
 					// user specified min value
-					findIndex = helpers.indexOf(labels, me.options.ticks.min);
+					findIndex = labels.indexOf(me.options.ticks.min);
 					me.minIndex = findIndex !== -1 ? findIndex : me.minIndex;
 				}
 
 				if (me.options.ticks.max !== undefined) {
 					// user specified max value
-					findIndex = helpers.indexOf(labels, me.options.ticks.max);
+					findIndex = labels.indexOf(me.options.ticks.max);
 					me.maxIndex = findIndex !== -1 ? findIndex : me.maxIndex;
 				}
 
@@ -8861,10 +9714,11 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 
 			// Used to get data value locations.  Value can either be an index or a numerical value
-			getPixelForValue: function(value, index, datasetIndex, includeOffset) {
+			getPixelForValue: function(value, index) {
 				var me = this;
+				var offset = me.options.offset;
 				// 1 is added because we need the length but we have the indexes
-				var offsetAmt = Math.max((me.maxIndex + 1 - me.minIndex - ((me.options.gridLines.offsetGridLines) ? 0 : 1)), 1);
+				var offsetAmt = Math.max((me.maxIndex + 1 - me.minIndex - (offset ? 0 : 1)), 1);
 
 				// If value is a data object, then index is the index in the data array,
 				// not the index of the scale. We need to change that.
@@ -8883,7 +9737,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					var valueWidth = me.width / offsetAmt;
 					var widthOffset = (valueWidth * (index - me.minIndex));
 
-					if (me.options.gridLines.offsetGridLines && includeOffset || me.maxIndex === me.minIndex && includeOffset) {
+					if (offset) {
 						widthOffset += (valueWidth / 2);
 					}
 
@@ -8892,25 +9746,26 @@ return /******/ (function(modules) { // webpackBootstrap
 				var valueHeight = me.height / offsetAmt;
 				var heightOffset = (valueHeight * (index - me.minIndex));
 
-				if (me.options.gridLines.offsetGridLines && includeOffset) {
+				if (offset) {
 					heightOffset += (valueHeight / 2);
 				}
 
 				return me.top + Math.round(heightOffset);
 			},
-			getPixelForTick: function(index, includeOffset) {
-				return this.getPixelForValue(this.ticks[index], index + this.minIndex, null, includeOffset);
+			getPixelForTick: function(index) {
+				return this.getPixelForValue(this.ticks[index], index + this.minIndex, null);
 			},
 			getValueForPixel: function(pixel) {
 				var me = this;
+				var offset = me.options.offset;
 				var value;
-				var offsetAmt = Math.max((me.ticks.length - ((me.options.gridLines.offsetGridLines) ? 0 : 1)), 1);
+				var offsetAmt = Math.max((me._ticks.length - (offset ? 0 : 1)), 1);
 				var horz = me.isHorizontal();
 				var valueDimension = (horz ? me.width : me.height) / offsetAmt;
 
 				pixel -= horz ? me.left : me.top;
 
-				if (me.options.gridLines.offsetGridLines) {
+				if (offset) {
 					pixel -= (valueDimension / 2);
 				}
 
@@ -8920,7 +9775,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					value = Math.round(pixel / valueDimension);
 				}
 
-				return value;
+				return value + me.minIndex;
 			},
 			getBasePixel: function() {
 				return this.bottom;
@@ -8932,20 +9787,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 30 */
-/***/ function(module, exports) {
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var helpers = __webpack_require__(5);
+	var Ticks = __webpack_require__(33);
 
-		var helpers = Chart.helpers;
+	module.exports = function(Chart) {
 
 		var defaultConfig = {
 			position: 'left',
 			ticks: {
-				callback: Chart.Ticks.formatters.linear
+				callback: Ticks.formatters.linear
 			}
 		};
 
@@ -9062,8 +9919,8 @@ return /******/ (function(modules) { // webpackBootstrap
 					});
 				}
 
-				me.min = isFinite(me.min) ? me.min : DEFAULT_MIN;
-				me.max = isFinite(me.max) ? me.max : DEFAULT_MAX;
+				me.min = isFinite(me.min) && !isNaN(me.min) ? me.min : DEFAULT_MIN;
+				me.max = isFinite(me.max) && !isNaN(me.max) ? me.max : DEFAULT_MAX;
 
 				// Common base implementation to handle ticks.min, ticks.max, ticks.beginAtZero
 				this.handleTickRangeOptions();
@@ -9077,7 +9934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					maxTicks = Math.min(tickOpts.maxTicksLimit ? tickOpts.maxTicksLimit : 11, Math.ceil(me.width / 50));
 				} else {
 					// The factor of 2 used to scale the font size has been experimentally determined.
-					var tickFontSize = helpers.getValueOrDefault(tickOpts.fontSize, Chart.defaults.global.defaultFontSize);
+					var tickFontSize = helpers.valueOrDefault(tickOpts.fontSize, defaults.global.defaultFontSize);
 					maxTicks = Math.min(tickOpts.maxTicksLimit ? tickOpts.maxTicksLimit : 11, Math.ceil(me.height / (2 * tickFontSize)));
 				}
 
@@ -9128,22 +9985,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 31 */
-/***/ function(module, exports) {
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var helpers = __webpack_require__(5);
+	var Ticks = __webpack_require__(33);
 
-		var helpers = Chart.helpers;
+	module.exports = function(Chart) {
 
 		var defaultConfig = {
 			position: 'left',
 
 			// label settings
 			ticks: {
-				callback: Chart.Ticks.formatters.logarithmic
+				callback: Ticks.formatters.logarithmic
 			}
 		};
 
@@ -9155,7 +10013,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var chart = me.chart;
 				var data = chart.data;
 				var datasets = data.datasets;
-				var getValueOrDefault = helpers.getValueOrDefault;
+				var valueOrDefault = helpers.valueOrDefault;
 				var isHorizontal = me.isHorizontal();
 				function IDMatches(meta) {
 					return isHorizontal ? meta.xAxisID === me.id : meta.yAxisID === me.id;
@@ -9254,8 +10112,8 @@ return /******/ (function(modules) { // webpackBootstrap
 					});
 				}
 
-				me.min = getValueOrDefault(tickOpts.min, me.min);
-				me.max = getValueOrDefault(tickOpts.max, me.max);
+				me.min = valueOrDefault(tickOpts.min, me.min);
+				me.max = valueOrDefault(tickOpts.max, me.max);
 
 				if (me.min === me.max) {
 					if (me.min !== 0 && me.min !== null) {
@@ -9276,7 +10134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					min: tickOpts.min,
 					max: tickOpts.max
 				};
-				var ticks = me.ticks = Chart.Ticks.generators.logarithmic(generationOptions, me);
+				var ticks = me.ticks = Ticks.generators.logarithmic(generationOptions, me);
 
 				if (!me.isHorizontal()) {
 					// We are in a vertical orientation. The top value is the highest. So reverse the array
@@ -9312,14 +10170,11 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 			getPixelForValue: function(value) {
 				var me = this;
-				var innerDimension;
-				var pixel;
-
 				var start = me.start;
 				var newVal = +me.getRightValue(value);
-				var range;
 				var opts = me.options;
 				var tickOpts = opts.ticks;
+				var innerDimension, pixel, range;
 
 				if (me.isHorizontal()) {
 					range = helpers.log10(me.end) - helpers.log10(start); // todo: if start === 0
@@ -9339,7 +10194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						} else if (newVal === me.minNotZero) {
 							pixel = me.bottom - innerDimension * 0.02;
 						} else {
-							pixel = me.bottom - innerDimension * 0.02 - (innerDimension * 0.98/ range * (helpers.log10(newVal)-helpers.log10(me.minNotZero)));
+							pixel = me.bottom - innerDimension * 0.02 - (innerDimension * 0.98 / range * (helpers.log10(newVal) - helpers.log10(me.minNotZero)));
 						}
 					} else if (me.end === 0 && tickOpts.reverse) {
 						range = helpers.log10(me.start) - helpers.log10(me.minNotZero);
@@ -9348,7 +10203,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						} else if (newVal === me.minNotZero) {
 							pixel = me.top + innerDimension * 0.02;
 						} else {
-							pixel = me.top + innerDimension * 0.02 + (innerDimension * 0.98/ range * (helpers.log10(newVal)-helpers.log10(me.minNotZero)));
+							pixel = me.top + innerDimension * 0.02 + (innerDimension * 0.98 / range * (helpers.log10(newVal) - helpers.log10(me.minNotZero)));
 						}
 					} else if (newVal === 0) {
 						pixel = tickOpts.reverse ? me.top : me.bottom;
@@ -9368,7 +10223,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				if (me.isHorizontal()) {
 					innerDimension = me.width;
 					value = me.start * Math.pow(10, (pixel - me.left) * range / innerDimension);
-				} else {  // todo: if start === 0
+				} else { // todo: if start === 0
 					innerDimension = me.height;
 					value = Math.pow(10, (me.bottom - pixel) * range / innerDimension) / me.start;
 				}
@@ -9380,16 +10235,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 32 */
-/***/ function(module, exports) {
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	var defaults = __webpack_require__(4);
+	var helpers = __webpack_require__(5);
+	var Ticks = __webpack_require__(33);
+
 	module.exports = function(Chart) {
 
-		var helpers = Chart.helpers;
-		var globalDefaults = Chart.defaults.global;
+		var globalDefaults = defaults.global;
 
 		var defaultConfig = {
 			display: true,
@@ -9422,7 +10280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				// Number - The backdrop padding to the side of the label in pixels
 				backdropPaddingX: 2,
 
-				callback: Chart.Ticks.formatters.linear
+				callback: Ticks.formatters.linear
 			},
 
 			pointLabels: {
@@ -9446,9 +10304,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		function getPointLabelFontOptions(scale) {
 			var pointLabelOptions = scale.options.pointLabels;
-			var fontSize = helpers.getValueOrDefault(pointLabelOptions.fontSize, globalDefaults.defaultFontSize);
-			var fontStyle = helpers.getValueOrDefault(pointLabelOptions.fontStyle, globalDefaults.defaultFontStyle);
-			var fontFamily = helpers.getValueOrDefault(pointLabelOptions.fontFamily, globalDefaults.defaultFontFamily);
+			var fontSize = helpers.valueOrDefault(pointLabelOptions.fontSize, globalDefaults.defaultFontSize);
+			var fontStyle = helpers.valueOrDefault(pointLabelOptions.fontStyle, globalDefaults.defaultFontStyle);
+			var fontFamily = helpers.valueOrDefault(pointLabelOptions.fontFamily, globalDefaults.defaultFontFamily);
 			var font = helpers.fontString(fontSize, fontStyle, fontFamily);
 
 			return {
@@ -9536,9 +10394,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				b: 0
 			};
 			var furthestAngles = {};
-			var i;
-			var textSize;
-			var pointPosition;
+			var i, textSize, pointPosition;
 
 			scale.ctx.font = plFont.font;
 			scale._pointLabelSizes = [];
@@ -9605,7 +10461,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				for (var i = 0; i < text.length; ++i) {
 					ctx.fillText(text[i], position.x, y);
-					y+= spacing;
+					y += spacing;
 				}
 			} else {
 				ctx.fillText(text, position.x, position.y);
@@ -9622,7 +10478,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		function drawPointLabels(scale) {
 			var ctx = scale.ctx;
-			var getValueOrDefault = helpers.getValueOrDefault;
+			var valueOrDefault = helpers.valueOrDefault;
 			var opts = scale.options;
 			var angleLineOpts = opts.angleLines;
 			var pointLabelOpts = opts.pointLabels;
@@ -9630,7 +10486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			ctx.lineWidth = angleLineOpts.lineWidth;
 			ctx.strokeStyle = angleLineOpts.color;
 
-			var outerDistance = scale.getDistanceFromCenterForValue(opts.reverse ? scale.min : scale.max);
+			var outerDistance = scale.getDistanceFromCenterForValue(opts.ticks.reverse ? scale.min : scale.max);
 
 			// Point Label Font
 			var plFont = getPointLabelFontOptions(scale);
@@ -9652,7 +10508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					var pointLabelPosition = scale.getPointPosition(i, outerDistance + 5);
 
 					// Keep this in loop since we may support array properties here
-					var pointLabelFontColor = getValueOrDefault(pointLabelOpts.fontColor, globalDefaults.defaultFontColor);
+					var pointLabelFontColor = valueOrDefault(pointLabelOpts.fontColor, globalDefaults.defaultFontColor);
 					ctx.font = plFont.font;
 					ctx.fillStyle = pointLabelFontColor;
 
@@ -9667,8 +10523,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		function drawRadiusLine(scale, gridLineOpts, radius, index) {
 			var ctx = scale.ctx;
-			ctx.strokeStyle = helpers.getValueAtIndexOrDefault(gridLineOpts.color, index - 1);
-			ctx.lineWidth = helpers.getValueAtIndexOrDefault(gridLineOpts.lineWidth, index - 1);
+			ctx.strokeStyle = helpers.valueAtIndexOrDefault(gridLineOpts.color, index - 1);
+			ctx.lineWidth = helpers.valueAtIndexOrDefault(gridLineOpts.lineWidth, index - 1);
 
 			if (scale.options.gridLines.circular) {
 				// Draw circular arcs between the points
@@ -9714,7 +10570,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				me.yCenter = Math.round(me.height / 2);
 
 				var minSize = helpers.min([me.height, me.width]);
-				var tickFontSize = helpers.getValueOrDefault(tickOpts.fontSize, globalDefaults.defaultFontSize);
+				var tickFontSize = helpers.valueOrDefault(tickOpts.fontSize, globalDefaults.defaultFontSize);
 				me.drawingArea = opts.display ? (minSize / 2) - (tickFontSize / 2 + tickOpts.backdropPaddingY) : (minSize / 2);
 			},
 			determineDataLimits: function() {
@@ -9747,11 +10603,12 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 			getTickLimit: function() {
 				var tickOpts = this.options.ticks;
-				var tickFontSize = helpers.getValueOrDefault(tickOpts.fontSize, globalDefaults.defaultFontSize);
+				var tickFontSize = helpers.valueOrDefault(tickOpts.fontSize, globalDefaults.defaultFontSize);
 				return Math.min(tickOpts.maxTicksLimit ? tickOpts.maxTicksLimit : 11, Math.ceil(this.drawingArea / (1.5 * tickFontSize)));
 			},
 			convertTicksToLabels: function() {
 				var me = this;
+
 				Chart.LinearScaleBase.prototype.convertTicksToLabels.call(me);
 
 				// Point labels
@@ -9790,10 +10647,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 			setCenterPoint: function(leftMovement, rightMovement, topMovement, bottomMovement) {
 				var me = this;
-				var maxRight = me.width - rightMovement - me.drawingArea,
-					maxLeft = leftMovement + me.drawingArea,
-					maxTop = topMovement + me.drawingArea,
-					maxBottom = me.height - bottomMovement - me.drawingArea;
+				var maxRight = me.width - rightMovement - me.drawingArea;
+				var maxLeft = leftMovement + me.drawingArea;
+				var maxTop = topMovement + me.drawingArea;
+				var maxBottom = me.height - bottomMovement - me.drawingArea;
 
 				me.xCenter = Math.round(((maxLeft + maxRight) / 2) + me.left);
 				me.yCenter = Math.round(((maxTop + maxBottom) / 2) + me.top);
@@ -9819,7 +10676,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				// Take into account half font size + the yPadding of the top value
 				var scalingFactor = me.drawingArea / (me.max - me.min);
-				if (me.options.reverse) {
+				if (me.options.ticks.reverse) {
 					return (me.max - value) * scalingFactor;
 				}
 				return (value - me.min) * scalingFactor;
@@ -9842,9 +10699,9 @@ return /******/ (function(modules) { // webpackBootstrap
 				var max = me.max;
 
 				return me.getPointPositionForValue(0,
-					me.beginAtZero? 0:
-					min < 0 && max < 0? max :
-					min > 0 && max > 0? min :
+					me.beginAtZero ? 0 :
+					min < 0 && max < 0 ? max :
+					min > 0 && max > 0 ? min :
 					0);
 			},
 
@@ -9853,22 +10710,22 @@ return /******/ (function(modules) { // webpackBootstrap
 				var opts = me.options;
 				var gridLineOpts = opts.gridLines;
 				var tickOpts = opts.ticks;
-				var getValueOrDefault = helpers.getValueOrDefault;
+				var valueOrDefault = helpers.valueOrDefault;
 
 				if (opts.display) {
 					var ctx = me.ctx;
+					var startAngle = this.getIndexAngle(0);
 
 					// Tick Font
-					var tickFontSize = getValueOrDefault(tickOpts.fontSize, globalDefaults.defaultFontSize);
-					var tickFontStyle = getValueOrDefault(tickOpts.fontStyle, globalDefaults.defaultFontStyle);
-					var tickFontFamily = getValueOrDefault(tickOpts.fontFamily, globalDefaults.defaultFontFamily);
+					var tickFontSize = valueOrDefault(tickOpts.fontSize, globalDefaults.defaultFontSize);
+					var tickFontStyle = valueOrDefault(tickOpts.fontStyle, globalDefaults.defaultFontStyle);
+					var tickFontFamily = valueOrDefault(tickOpts.fontFamily, globalDefaults.defaultFontFamily);
 					var tickLabelFont = helpers.fontString(tickFontSize, tickFontStyle, tickFontFamily);
 
 					helpers.each(me.ticks, function(label, index) {
 						// Don't draw a centre value (if it is minimum)
-						if (index > 0 || opts.reverse) {
+						if (index > 0 || tickOpts.reverse) {
 							var yCenterOffset = me.getDistanceFromCenterForValue(me.ticksAsNumbers[index]);
-							var yHeight = me.yCenter - yCenterOffset;
 
 							// Draw circular lines around the scale
 							if (gridLineOpts.display && index !== 0) {
@@ -9876,15 +10733,19 @@ return /******/ (function(modules) { // webpackBootstrap
 							}
 
 							if (tickOpts.display) {
-								var tickFontColor = getValueOrDefault(tickOpts.fontColor, globalDefaults.defaultFontColor);
+								var tickFontColor = valueOrDefault(tickOpts.fontColor, globalDefaults.defaultFontColor);
 								ctx.font = tickLabelFont;
+
+								ctx.save();
+								ctx.translate(me.xCenter, me.yCenter);
+								ctx.rotate(startAngle);
 
 								if (tickOpts.showLabelBackdrop) {
 									var labelWidth = ctx.measureText(label).width;
 									ctx.fillStyle = tickOpts.backdropColor;
 									ctx.fillRect(
-										me.xCenter - labelWidth / 2 - tickOpts.backdropPaddingX,
-										yHeight - tickFontSize / 2 - tickOpts.backdropPaddingY,
+										-labelWidth / 2 - tickOpts.backdropPaddingX,
+										-yCenterOffset - tickFontSize / 2 - tickOpts.backdropPaddingY,
 										labelWidth + tickOpts.backdropPaddingX * 2,
 										tickFontSize + tickOpts.backdropPaddingY * 2
 									);
@@ -9893,7 +10754,8 @@ return /******/ (function(modules) { // webpackBootstrap
 								ctx.textAlign = 'center';
 								ctx.textBaseline = 'middle';
 								ctx.fillStyle = tickFontColor;
-								ctx.fillText(label, me.xCenter, yHeight);
+								ctx.fillText(label, 0, -yCenterOffset);
+								ctx.restore();
 							}
 						}
 					});
@@ -9909,60 +10771,414 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 33 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* global window: false */
 	'use strict';
 
-	var moment = __webpack_require__(34);
-	moment = typeof(moment) === 'function' ? moment : window.moment;
+	var moment = __webpack_require__(41);
+	moment = typeof moment === 'function' ? moment : window.moment;
+
+	var defaults = __webpack_require__(4);
+	var helpers = __webpack_require__(5);
+
+	// Integer constants are from the ES6 spec.
+	var MIN_INTEGER = Number.MIN_SAFE_INTEGER || -9007199254740991;
+	var MAX_INTEGER = Number.MAX_SAFE_INTEGER || 9007199254740991;
+
+	var INTERVALS = {
+		millisecond: {
+			major: true,
+			size: 1,
+			steps: [1, 2, 5, 10, 20, 50, 100, 250, 500]
+		},
+		second: {
+			major: true,
+			size: 1000,
+			steps: [1, 2, 5, 10, 30]
+		},
+		minute: {
+			major: true,
+			size: 60000,
+			steps: [1, 2, 5, 10, 30]
+		},
+		hour: {
+			major: true,
+			size: 3600000,
+			steps: [1, 2, 3, 6, 12]
+		},
+		day: {
+			major: true,
+			size: 86400000,
+			steps: [1, 2, 5]
+		},
+		week: {
+			major: false,
+			size: 604800000,
+			steps: [1, 2, 3, 4]
+		},
+		month: {
+			major: true,
+			size: 2.628e9,
+			steps: [1, 2, 3]
+		},
+		quarter: {
+			major: false,
+			size: 7.884e9,
+			steps: [1, 2, 3, 4]
+		},
+		year: {
+			major: true,
+			size: 3.154e10
+		}
+	};
+
+	var UNITS = Object.keys(INTERVALS);
+
+	function sorter(a, b) {
+		return a - b;
+	}
+
+	function arrayUnique(items) {
+		var hash = {};
+		var out = [];
+		var i, ilen, item;
+
+		for (i = 0, ilen = items.length; i < ilen; ++i) {
+			item = items[i];
+			if (!hash[item]) {
+				hash[item] = true;
+				out.push(item);
+			}
+		}
+
+		return out;
+	}
+
+	/**
+	 * Returns an array of {time, pos} objects used to interpolate a specific `time` or position
+	 * (`pos`) on the scale, by searching entries before and after the requested value. `pos` is
+	 * a decimal between 0 and 1: 0 being the start of the scale (left or top) and 1 the other
+	 * extremity (left + width or top + height). Note that it would be more optimized to directly
+	 * store pre-computed pixels, but the scale dimensions are not guaranteed at the time we need
+	 * to create the lookup table. The table ALWAYS contains at least two items: min and max.
+	 *
+	 * @param {Number[]} timestamps - timestamps sorted from lowest to highest.
+	 * @param {String} distribution - If 'linear', timestamps will be spread linearly along the min
+	 * and max range, so basically, the table will contains only two items: {min, 0} and {max, 1}.
+	 * If 'series', timestamps will be positioned at the same distance from each other. In this
+	 * case, only timestamps that break the time linearity are registered, meaning that in the
+	 * best case, all timestamps are linear, the table contains only min and max.
+	 */
+	function buildLookupTable(timestamps, min, max, distribution) {
+		if (distribution === 'linear' || !timestamps.length) {
+			return [
+				{time: min, pos: 0},
+				{time: max, pos: 1}
+			];
+		}
+
+		var table = [];
+		var items = [min];
+		var i, ilen, prev, curr, next;
+
+		for (i = 0, ilen = timestamps.length; i < ilen; ++i) {
+			curr = timestamps[i];
+			if (curr > min && curr < max) {
+				items.push(curr);
+			}
+		}
+
+		items.push(max);
+
+		for (i = 0, ilen = items.length; i < ilen; ++i) {
+			next = items[i + 1];
+			prev = items[i - 1];
+			curr = items[i];
+
+			// only add points that breaks the scale linearity
+			if (prev === undefined || next === undefined || Math.round((next + prev) / 2) !== curr) {
+				table.push({time: curr, pos: i / (ilen - 1)});
+			}
+		}
+
+		return table;
+	}
+
+	// @see adapted from http://www.anujgakhar.com/2014/03/01/binary-search-in-javascript/
+	function lookup(table, key, value) {
+		var lo = 0;
+		var hi = table.length - 1;
+		var mid, i0, i1;
+
+		while (lo >= 0 && lo <= hi) {
+			mid = (lo + hi) >> 1;
+			i0 = table[mid - 1] || null;
+			i1 = table[mid];
+
+			if (!i0) {
+				// given value is outside table (before first item)
+				return {lo: null, hi: i1};
+			} else if (i1[key] < value) {
+				lo = mid + 1;
+			} else if (i0[key] > value) {
+				hi = mid - 1;
+			} else {
+				return {lo: i0, hi: i1};
+			}
+		}
+
+		// given value is outside table (after last item)
+		return {lo: i1, hi: null};
+	}
+
+	/**
+	 * Linearly interpolates the given source `value` using the table items `skey` values and
+	 * returns the associated `tkey` value. For example, interpolate(table, 'time', 42, 'pos')
+	 * returns the position for a timestamp equal to 42. If value is out of bounds, values at
+	 * index [0, 1] or [n - 1, n] are used for the interpolation.
+	 */
+	function interpolate(table, skey, sval, tkey) {
+		var range = lookup(table, skey, sval);
+
+		// Note: the lookup table ALWAYS contains at least 2 items (min and max)
+		var prev = !range.lo ? table[0] : !range.hi ? table[table.length - 2] : range.lo;
+		var next = !range.lo ? table[1] : !range.hi ? table[table.length - 1] : range.hi;
+
+		var span = next[skey] - prev[skey];
+		var ratio = span ? (sval - prev[skey]) / span : 0;
+		var offset = (next[tkey] - prev[tkey]) * ratio;
+
+		return prev[tkey] + offset;
+	}
+
+	/**
+	 * Convert the given value to a moment object using the given time options.
+	 * @see http://momentjs.com/docs/#/parsing/
+	 */
+	function momentify(value, options) {
+		var parser = options.parser;
+		var format = options.parser || options.format;
+
+		if (typeof parser === 'function') {
+			return parser(value);
+		}
+
+		if (typeof value === 'string' && typeof format === 'string') {
+			return moment(value, format);
+		}
+
+		if (!(value instanceof moment)) {
+			value = moment(value);
+		}
+
+		if (value.isValid()) {
+			return value;
+		}
+
+		// Labels are in an incompatible moment format and no `parser` has been provided.
+		// The user might still use the deprecated `format` option to convert his inputs.
+		if (typeof format === 'function') {
+			return format(value);
+		}
+
+		return value;
+	}
+
+	function parse(input, scale) {
+		if (helpers.isNullOrUndef(input)) {
+			return null;
+		}
+
+		var options = scale.options.time;
+		var value = momentify(scale.getRightValue(input), options);
+		if (!value.isValid()) {
+			return null;
+		}
+
+		if (options.round) {
+			value.startOf(options.round);
+		}
+
+		return value.valueOf();
+	}
+
+	/**
+	 * Returns the number of unit to skip to be able to display up to `capacity` number of ticks
+	 * in `unit` for the given `min` / `max` range and respecting the interval steps constraints.
+	 */
+	function determineStepSize(min, max, unit, capacity) {
+		var range = max - min;
+		var interval = INTERVALS[unit];
+		var milliseconds = interval.size;
+		var steps = interval.steps;
+		var i, ilen, factor;
+
+		if (!steps) {
+			return Math.ceil(range / ((capacity || 1) * milliseconds));
+		}
+
+		for (i = 0, ilen = steps.length; i < ilen; ++i) {
+			factor = steps[i];
+			if (Math.ceil(range / (milliseconds * factor)) <= capacity) {
+				break;
+			}
+		}
+
+		return factor;
+	}
+
+	function determineUnit(minUnit, min, max, capacity) {
+		var ilen = UNITS.length;
+		var i, interval, factor;
+
+		for (i = UNITS.indexOf(minUnit); i < ilen - 1; ++i) {
+			interval = INTERVALS[UNITS[i]];
+			factor = interval.steps ? interval.steps[interval.steps.length - 1] : MAX_INTEGER;
+
+			if (Math.ceil((max - min) / (factor * interval.size)) <= capacity) {
+				return UNITS[i];
+			}
+		}
+
+		return UNITS[ilen - 1];
+	}
+
+	function determineMajorUnit(unit) {
+		for (var i = UNITS.indexOf(unit) + 1, ilen = UNITS.length; i < ilen; ++i) {
+			if (INTERVALS[UNITS[i]].major) {
+				return UNITS[i];
+			}
+		}
+	}
+
+	/**
+	 * Generates a maximum of `capacity` timestamps between min and max, rounded to the
+	 * `minor` unit, aligned on the `major` unit and using the given scale time `options`.
+	 * Important: this method can return ticks outside the min and max range, it's the
+	 * responsibility of the calling code to clamp values if needed.
+	 */
+	function generate(min, max, minor, major, capacity, options) {
+		var timeOpts = options.time;
+		var stepSize = helpers.valueOrDefault(timeOpts.stepSize, timeOpts.unitStepSize);
+		var weekday = minor === 'week' ? timeOpts.isoWeekday : false;
+		var majorTicksEnabled = options.ticks.major.enabled;
+		var interval = INTERVALS[minor];
+		var first = moment(min);
+		var last = moment(max);
+		var ticks = [];
+		var time;
+
+		if (!stepSize) {
+			stepSize = determineStepSize(min, max, minor, capacity);
+		}
+
+		// For 'week' unit, handle the first day of week option
+		if (weekday) {
+			first = first.isoWeekday(weekday);
+			last = last.isoWeekday(weekday);
+		}
+
+		// Align first/last ticks on unit
+		first = first.startOf(weekday ? 'day' : minor);
+		last = last.startOf(weekday ? 'day' : minor);
+
+		// Make sure that the last tick include max
+		if (last < max) {
+			last.add(1, minor);
+		}
+
+		time = moment(first);
+
+		if (majorTicksEnabled && major && !weekday && !timeOpts.round) {
+			// Align the first tick on the previous `minor` unit aligned on the `major` unit:
+			// we first aligned time on the previous `major` unit then add the number of full
+			// stepSize there is between first and the previous major time.
+			time.startOf(major);
+			time.add(~~((first - time) / (interval.size * stepSize)) * stepSize, minor);
+		}
+
+		for (; time < last; time.add(stepSize, minor)) {
+			ticks.push(+time);
+		}
+
+		ticks.push(+time);
+
+		return ticks;
+	}
+
+	/**
+	 * Returns the right and left offsets from edges in the form of {left, right}.
+	 * Offsets are added when the `offset` option is true.
+	 */
+	function computeOffsets(table, ticks, min, max, options) {
+		var left = 0;
+		var right = 0;
+		var upper, lower;
+
+		if (options.offset && ticks.length) {
+			if (!options.time.min) {
+				upper = ticks.length > 1 ? ticks[1] : max;
+				lower = ticks[0];
+				left = (
+					interpolate(table, 'time', upper, 'pos') -
+					interpolate(table, 'time', lower, 'pos')
+				) / 2;
+			}
+			if (!options.time.max) {
+				upper = ticks[ticks.length - 1];
+				lower = ticks.length > 1 ? ticks[ticks.length - 2] : min;
+				right = (
+					interpolate(table, 'time', upper, 'pos') -
+					interpolate(table, 'time', lower, 'pos')
+				) / 2;
+			}
+		}
+
+		return {left: left, right: right};
+	}
+
+	function ticksFromTimestamps(values, majorUnit) {
+		var ticks = [];
+		var i, ilen, value, major;
+
+		for (i = 0, ilen = values.length; i < ilen; ++i) {
+			value = values[i];
+			major = majorUnit ? value === +moment(value).startOf(majorUnit) : false;
+
+			ticks.push({
+				value: value,
+				major: major
+			});
+		}
+
+		return ticks;
+	}
 
 	module.exports = function(Chart) {
 
-		var helpers = Chart.helpers;
-		var interval = {
-			millisecond: {
-				size: 1,
-				steps: [1, 2, 5, 10, 20, 50, 100, 250, 500]
-			},
-			second: {
-				size: 1000,
-				steps: [1, 2, 5, 10, 30]
-			},
-			minute: {
-				size: 60000,
-				steps: [1, 2, 5, 10, 30]
-			},
-			hour: {
-				size: 3600000,
-				steps: [1, 2, 3, 6, 12]
-			},
-			day: {
-				size: 86400000,
-				steps: [1, 2, 5]
-			},
-			week: {
-				size: 604800000,
-				maxStep: 4
-			},
-			month: {
-				size: 2.628e9,
-				maxStep: 3
-			},
-			quarter: {
-				size: 7.884e9,
-				maxStep: 4
-			},
-			year: {
-				size: 3.154e10,
-				maxStep: false
-			}
-		};
-
 		var defaultConfig = {
 			position: 'bottom',
+
+			/**
+			 * Data distribution along the scale:
+			 * - 'linear': data are spread according to their time (distances can vary),
+			 * - 'series': data are spread at the same distance from each other.
+			 * @see https://github.com/chartjs/Chart.js/pull/4507
+			 * @since 2.7.0
+			 */
+			distribution: 'linear',
+
+			/**
+			 * Scale boundary strategy (bypassed by min/max time options)
+			 * - `data`: make sure data are fully visible, ticks outside are removed
+			 * - `ticks`: make sure ticks are fully visible, data outside are truncated
+			 * @see https://github.com/chartjs/Chart.js/pull/4556
+			 * @since 2.7.0
+			 */
+			bounds: 'data',
 
 			time: {
 				parser: false, // false == a pattern string from http://momentjs.com/docs/#/parsing/string-format/ or a custom callback that converts its argument to a moment
@@ -9977,9 +11193,9 @@ return /******/ (function(modules) { // webpackBootstrap
 				displayFormats: {
 					millisecond: 'h:mm:ss.SSS a', // 11:20:01.123 AM,
 					second: 'h:mm:ss a', // 11:20:01 AM
-					minute: 'h:mm:ss a', // 11:20:01 AM
-					hour: 'MMM D, hA', // Sept 4, 5PM
-					day: 'll', // Sep 4 2015
+					minute: 'h:mm a', // 11:20 AM
+					hour: 'hA', // 5PM
+					day: 'MMM D', // Sep 4
 					week: 'll', // Week 46, or maybe "[W]WW - YYYY" ?
 					month: 'MMM YYYY', // Sept 2015
 					quarter: '[Q]Q - YYYY', // Q3
@@ -9987,151 +11203,22 @@ return /******/ (function(modules) { // webpackBootstrap
 				},
 			},
 			ticks: {
-				autoSkip: false
-			}
-		};
+				autoSkip: false,
 
-		/**
-		 * Helper function to parse time to a moment object
-		 * @param axis {TimeAxis} the time axis
-		 * @param label {Date|string|number|Moment} The thing to parse
-		 * @return {Moment} parsed time
-		 */
-		function parseTime(axis, label) {
-			var timeOpts = axis.options.time;
-			if (typeof timeOpts.parser === 'string') {
-				return moment(label, timeOpts.parser);
-			}
-			if (typeof timeOpts.parser === 'function') {
-				return timeOpts.parser(label);
-			}
-			if (typeof label.getMonth === 'function' || typeof label === 'number') {
-				// Date objects
-				return moment(label);
-			}
-			if (label.isValid && label.isValid()) {
-				// Moment support
-				return label;
-			}
-			var format = timeOpts.format;
-			if (typeof format !== 'string' && format.call) {
-				// Custom parsing (return an instance of moment)
-				console.warn('options.time.format is deprecated and replaced by options.time.parser.');
-				return format(label);
-			}
-			// Moment format parsing
-			return moment(label, format);
-		}
+				/**
+				 * Ticks generation input values:
+				 * - 'auto': generates "optimal" ticks based on scale size and time options.
+				 * - 'data': generates ticks from data (including labels from data {t|x|y} objects).
+				 * - 'labels': generates ticks from user given `data.labels` values ONLY.
+				 * @see https://github.com/chartjs/Chart.js/pull/4507
+				 * @since 2.7.0
+				 */
+				source: 'auto',
 
-		/**
-		 * Figure out which is the best unit for the scale
-		 * @param minUnit {String} minimum unit to use
-		 * @param min {Number} scale minimum
-		 * @param max {Number} scale maximum
-		 * @return {String} the unit to use
-		 */
-		function determineUnit(minUnit, min, max, maxTicks) {
-			var units = Object.keys(interval);
-			var unit;
-			var numUnits = units.length;
-
-			for (var i = units.indexOf(minUnit); i < numUnits; i++) {
-				unit = units[i];
-				var unitDetails = interval[unit];
-				var steps = (unitDetails.steps && unitDetails.steps[unitDetails.steps.length - 1]) || unitDetails.maxStep;
-				if (steps === undefined || Math.ceil((max - min) / (steps * unitDetails.size)) <= maxTicks) {
-					break;
+				major: {
+					enabled: false
 				}
 			}
-
-			return unit;
-		}
-
-		/**
-		 * Determines how we scale the unit
-		 * @param min {Number} the scale minimum
-		 * @param max {Number} the scale maximum
-		 * @param unit {String} the unit determined by the {@see determineUnit} method
-		 * @return {Number} the axis step size as a multiple of unit
-		 */
-		function determineStepSize(min, max, unit, maxTicks) {
-			// Using our unit, figoure out what we need to scale as
-			var unitDefinition = interval[unit];
-			var unitSizeInMilliSeconds = unitDefinition.size;
-			var sizeInUnits = Math.ceil((max - min) / unitSizeInMilliSeconds);
-			var multiplier = 1;
-			var range = max - min;
-
-			if (unitDefinition.steps) {
-				// Have an array of steps
-				var numSteps = unitDefinition.steps.length;
-				for (var i = 0; i < numSteps && sizeInUnits > maxTicks; i++) {
-					multiplier = unitDefinition.steps[i];
-					sizeInUnits = Math.ceil(range / (unitSizeInMilliSeconds * multiplier));
-				}
-			} else {
-				while (sizeInUnits > maxTicks && maxTicks > 0) {
-					++multiplier;
-					sizeInUnits = Math.ceil(range / (unitSizeInMilliSeconds * multiplier));
-				}
-			}
-
-			return multiplier;
-		}
-
-		/**
-		 * Helper for generating axis labels.
-		 * @param options {ITimeGeneratorOptions} the options for generation
-		 * @param dataRange {IRange} the data range
-		 * @param niceRange {IRange} the pretty range to display
-		 * @return {Number[]} ticks
-		 */
-		function generateTicks(options, dataRange, niceRange) {
-			var ticks = [];
-			if (options.maxTicks) {
-				var stepSize = options.stepSize;
-				ticks.push(options.min !== undefined ? options.min : niceRange.min);
-				var cur = moment(niceRange.min);
-				while (cur.add(stepSize, options.unit).valueOf() < niceRange.max) {
-					ticks.push(cur.valueOf());
-				}
-				var realMax = options.max || niceRange.max;
-				if (ticks[ticks.length - 1] !== realMax) {
-					ticks.push(realMax);
-				}
-			}
-			return ticks;
-		}
-
-		/**
-		 * @function Chart.Ticks.generators.time
-		 * @param options {ITimeGeneratorOptions} the options for generation
-		 * @param dataRange {IRange} the data range
-		 * @return {Number[]} ticks
-		 */
-		Chart.Ticks.generators.time = function(options, dataRange) {
-			var niceMin;
-			var niceMax;
-			var isoWeekday = options.isoWeekday;
-			if (options.unit === 'week' && isoWeekday !== false) {
-				niceMin = moment(dataRange.min).startOf('isoWeek').isoWeekday(isoWeekday).valueOf();
-				niceMax = moment(dataRange.max).startOf('isoWeek').isoWeekday(isoWeekday);
-				if (dataRange.max - niceMax > 0) {
-					niceMax.add(1, 'week');
-				}
-				niceMax = niceMax.valueOf();
-			} else {
-				niceMin = moment(dataRange.min).startOf(options.unit).valueOf();
-				niceMax = moment(dataRange.max).startOf(options.unit);
-				if (dataRange.max - niceMax > 0) {
-					niceMax.add(1, options.unit);
-				}
-				niceMax = niceMax.valueOf();
-			}
-			return generateTicks(options, dataRange, {
-				min: niceMin,
-				max: niceMax
-			});
 		};
 
 		var TimeScale = Chart.Scale.extend({
@@ -10140,229 +11227,296 @@ return /******/ (function(modules) { // webpackBootstrap
 					throw new Error('Chart.js - Moment.js could not be found! You must include it before Chart.js to use the time scale. Download at https://momentjs.com');
 				}
 
+				this.mergeTicksOptions();
+
 				Chart.Scale.prototype.initialize.call(this);
 			},
+
+			update: function() {
+				var me = this;
+				var options = me.options;
+
+				// DEPRECATIONS: output a message only one time per update
+				if (options.time && options.time.format) {
+					console.warn('options.time.format is deprecated and replaced by options.time.parser.');
+				}
+
+				return Chart.Scale.prototype.update.apply(me, arguments);
+			},
+
+			/**
+			 * Allows data to be referenced via 't' attribute
+			 */
+			getRightValue: function(rawValue) {
+				if (rawValue && rawValue.t !== undefined) {
+					rawValue = rawValue.t;
+				}
+				return Chart.Scale.prototype.getRightValue.call(this, rawValue);
+			},
+
 			determineDataLimits: function() {
 				var me = this;
+				var chart = me.chart;
 				var timeOpts = me.options.time;
+				var min = parse(timeOpts.min, me) || MAX_INTEGER;
+				var max = parse(timeOpts.max, me) || MIN_INTEGER;
+				var timestamps = [];
+				var datasets = [];
+				var labels = [];
+				var i, j, ilen, jlen, data, timestamp;
 
-				// We store the data range as unix millisecond timestamps so dataMin and dataMax will always be integers.
-				var dataMin = Number.MAX_SAFE_INTEGER;
-				var dataMax = Number.MIN_SAFE_INTEGER;
+				// Convert labels to timestamps
+				for (i = 0, ilen = chart.data.labels.length; i < ilen; ++i) {
+					labels.push(parse(chart.data.labels[i], me));
+				}
 
-				var chartData = me.chart.data;
-				var parsedData = {
-					labels: [],
-					datasets: []
-				};
+				// Convert data to timestamps
+				for (i = 0, ilen = (chart.data.datasets || []).length; i < ilen; ++i) {
+					if (chart.isDatasetVisible(i)) {
+						data = chart.data.datasets[i].data;
 
-				var timestamp;
+						// Let's consider that all data have the same format.
+						if (helpers.isObject(data[0])) {
+							datasets[i] = [];
 
-				helpers.each(chartData.labels, function(label, labelIndex) {
-					var labelMoment = parseTime(me, label);
-
-					if (labelMoment.isValid()) {
-						// We need to round the time
-						if (timeOpts.round) {
-							labelMoment.startOf(timeOpts.round);
-						}
-
-						timestamp = labelMoment.valueOf();
-						dataMin = Math.min(timestamp, dataMin);
-						dataMax = Math.max(timestamp, dataMax);
-
-						// Store this value for later
-						parsedData.labels[labelIndex] = timestamp;
-					}
-				});
-
-				helpers.each(chartData.datasets, function(dataset, datasetIndex) {
-					var timestamps = [];
-
-					if (typeof dataset.data[0] === 'object' && dataset.data[0] !== null && me.chart.isDatasetVisible(datasetIndex)) {
-						// We have potential point data, so we need to parse this
-						helpers.each(dataset.data, function(value, dataIndex) {
-							var dataMoment = parseTime(me, me.getRightValue(value));
-
-							if (dataMoment.isValid()) {
-								if (timeOpts.round) {
-									dataMoment.startOf(timeOpts.round);
-								}
-
-								timestamp = dataMoment.valueOf();
-								dataMin = Math.min(timestamp, dataMin);
-								dataMax = Math.max(timestamp, dataMax);
-								timestamps[dataIndex] = timestamp;
+							for (j = 0, jlen = data.length; j < jlen; ++j) {
+								timestamp = parse(data[j], me);
+								timestamps.push(timestamp);
+								datasets[i][j] = timestamp;
 							}
-						});
+						} else {
+							timestamps.push.apply(timestamps, labels);
+							datasets[i] = labels.slice(0);
+						}
 					} else {
-						// We have no x coordinates, so use the ones from the labels
-						timestamps = parsedData.labels.slice();
+						datasets[i] = [];
 					}
+				}
 
-					parsedData.datasets[datasetIndex] = timestamps;
-				});
+				if (labels.length) {
+					// Sort labels **after** data have been converted
+					labels = arrayUnique(labels).sort(sorter);
+					min = Math.min(min, labels[0]);
+					max = Math.max(max, labels[labels.length - 1]);
+				}
 
-				me.dataMin = dataMin;
-				me.dataMax = dataMax;
-				me._parsedData = parsedData;
+				if (timestamps.length) {
+					timestamps = arrayUnique(timestamps).sort(sorter);
+					min = Math.min(min, timestamps[0]);
+					max = Math.max(max, timestamps[timestamps.length - 1]);
+				}
+
+				// In case there is no valid min/max, let's use today limits
+				min = min === MAX_INTEGER ? +moment().startOf('day') : min;
+				max = max === MIN_INTEGER ? +moment().endOf('day') + 1 : max;
+
+				// Make sure that max is strictly higher than min (required by the lookup table)
+				me.min = Math.min(min, max);
+				me.max = Math.max(min + 1, max);
+
+				// PRIVATE
+				me._horizontal = me.isHorizontal();
+				me._table = [];
+				me._timestamps = {
+					data: timestamps,
+					datasets: datasets,
+					labels: labels
+				};
 			},
+
 			buildTicks: function() {
 				var me = this;
-				var timeOpts = me.options.time;
+				var min = me.min;
+				var max = me.max;
+				var options = me.options;
+				var timeOpts = options.time;
+				var formats = timeOpts.displayFormats;
+				var capacity = me.getLabelCapacity(min);
+				var unit = timeOpts.unit || determineUnit(timeOpts.minUnit, min, max, capacity);
+				var majorUnit = determineMajorUnit(unit);
+				var timestamps = [];
+				var ticks = [];
+				var i, ilen, timestamp;
 
-				var minTimestamp;
-				var maxTimestamp;
-				var dataMin = me.dataMin;
-				var dataMax = me.dataMax;
+				switch (options.ticks.source) {
+				case 'data':
+					timestamps = me._timestamps.data;
+					break;
+				case 'labels':
+					timestamps = me._timestamps.labels;
+					break;
+				case 'auto':
+				default:
+					timestamps = generate(min, max, unit, majorUnit, capacity, options);
+				}
 
-				if (timeOpts.min) {
-					var minMoment = parseTime(me, timeOpts.min);
-					if (timeOpts.round) {
-						minMoment.round(timeOpts.round);
+				if (options.bounds === 'ticks' && timestamps.length) {
+					min = timestamps[0];
+					max = timestamps[timestamps.length - 1];
+				}
+
+				// Enforce limits with user min/max options
+				min = parse(timeOpts.min, me) || min;
+				max = parse(timeOpts.max, me) || max;
+
+				// Remove ticks outside the min/max range
+				for (i = 0, ilen = timestamps.length; i < ilen; ++i) {
+					timestamp = timestamps[i];
+					if (timestamp >= min && timestamp <= max) {
+						ticks.push(timestamp);
 					}
-					minTimestamp = minMoment.valueOf();
 				}
 
-				if (timeOpts.max) {
-					maxTimestamp = parseTime(me, timeOpts.max).valueOf();
-				}
+				me.min = min;
+				me.max = max;
 
-				var maxTicks = me.getLabelCapacity(minTimestamp || dataMin);
-				var unit = timeOpts.unit || determineUnit(timeOpts.minUnit, minTimestamp || dataMin, maxTimestamp || dataMax, maxTicks);
-				me.displayFormat = timeOpts.displayFormats[unit];
+				// PRIVATE
+				me._unit = unit;
+				me._majorUnit = majorUnit;
+				me._minorFormat = formats[unit];
+				me._majorFormat = formats[majorUnit];
+				me._table = buildLookupTable(me._timestamps.data, min, max, options.distribution);
+				me._offsets = computeOffsets(me._table, ticks, min, max, options);
 
-				var stepSize = timeOpts.stepSize || determineStepSize(minTimestamp || dataMin, maxTimestamp || dataMax, unit, maxTicks);
-				me.ticks = Chart.Ticks.generators.time({
-					maxTicks: maxTicks,
-					min: minTimestamp,
-					max: maxTimestamp,
-					stepSize: stepSize,
-					unit: unit,
-					isoWeekday: timeOpts.isoWeekday
-				}, {
-					min: dataMin,
-					max: dataMax
-				});
-
-				// At this point, we need to update our max and min given the tick values since we have expanded the
-				// range of the scale
-				me.max = helpers.max(me.ticks);
-				me.min = helpers.min(me.ticks);
+				return ticksFromTimestamps(ticks, majorUnit);
 			},
-			// Get tooltip label
+
 			getLabelForIndex: function(index, datasetIndex) {
 				var me = this;
-				var label = me.chart.data.labels && index < me.chart.data.labels.length ? me.chart.data.labels[index] : '';
-				var value = me.chart.data.datasets[datasetIndex].data[index];
+				var data = me.chart.data;
+				var timeOpts = me.options.time;
+				var label = data.labels && index < data.labels.length ? data.labels[index] : '';
+				var value = data.datasets[datasetIndex].data[index];
 
-				if (value !== null && typeof value === 'object') {
+				if (helpers.isObject(value)) {
 					label = me.getRightValue(value);
 				}
-
-				// Format nicely
-				if (me.options.time.tooltipFormat) {
-					label = parseTime(me, label).format(me.options.time.tooltipFormat);
+				if (timeOpts.tooltipFormat) {
+					label = momentify(label, timeOpts).format(timeOpts.tooltipFormat);
 				}
 
 				return label;
 			},
-			// Function to format an individual tick mark
+
+			/**
+			 * Function to format an individual tick mark
+			 * @private
+			 */
 			tickFormatFunction: function(tick, index, ticks) {
-				var formattedTick = tick.format(this.displayFormat);
-				var tickOpts = this.options.ticks;
-				var callback = helpers.getValueOrDefault(tickOpts.callback, tickOpts.userCallback);
-
-				if (callback) {
-					return callback(formattedTick, index, ticks);
-				}
-				return formattedTick;
-			},
-			convertTicksToLabels: function() {
 				var me = this;
-				me.ticksAsTimestamps = me.ticks;
-				me.ticks = me.ticks.map(function(tick) {
-					return moment(tick);
-				}).map(me.tickFormatFunction, me);
-			},
-			getPixelForOffset: function(offset) {
-				var me = this;
-				var epochWidth = me.max - me.min;
-				var decimal = epochWidth ? (offset - me.min) / epochWidth : 0;
+				var options = me.options;
+				var time = tick.valueOf();
+				var majorUnit = me._majorUnit;
+				var majorFormat = me._majorFormat;
+				var majorTime = tick.clone().startOf(me._majorUnit).valueOf();
+				var majorTickOpts = options.ticks.major;
+				var major = majorTickOpts.enabled && majorUnit && majorFormat && time === majorTime;
+				var label = tick.format(major ? majorFormat : me._minorFormat);
+				var tickOpts = major ? majorTickOpts : options.ticks.minor;
+				var formatter = helpers.valueOrDefault(tickOpts.callback, tickOpts.userCallback);
 
-				if (me.isHorizontal()) {
-					var valueOffset = (me.width * decimal);
-					return me.left + Math.round(valueOffset);
+				return formatter ? formatter(label, index, ticks) : label;
+			},
+
+			convertTicksToLabels: function(ticks) {
+				var labels = [];
+				var i, ilen;
+
+				for (i = 0, ilen = ticks.length; i < ilen; ++i) {
+					labels.push(this.tickFormatFunction(moment(ticks[i].value), i, ticks));
 				}
 
-				var heightOffset = (me.height * decimal);
-				return me.top + Math.round(heightOffset);
+				return labels;
 			},
+
+			/**
+			 * @private
+			 */
+			getPixelForOffset: function(time) {
+				var me = this;
+				var size = me._horizontal ? me.width : me.height;
+				var start = me._horizontal ? me.left : me.top;
+				var pos = interpolate(me._table, 'time', time, 'pos');
+
+				return start + size * (me._offsets.left + pos) / (me._offsets.left + 1 + me._offsets.right);
+			},
+
 			getPixelForValue: function(value, index, datasetIndex) {
 				var me = this;
-				var offset = null;
+				var time = null;
+
 				if (index !== undefined && datasetIndex !== undefined) {
-					offset = me._parsedData.datasets[datasetIndex][index];
+					time = me._timestamps.datasets[datasetIndex][index];
 				}
 
-				if (offset === null) {
-					if (!value || !value.isValid) {
-						// not already a moment object
-						value = parseTime(me, me.getRightValue(value));
-					}
-
-					if (value && value.isValid && value.isValid()) {
-						offset = value.valueOf();
-					}
+				if (time === null) {
+					time = parse(value, me);
 				}
 
-				if (offset !== null) {
-					return me.getPixelForOffset(offset);
+				if (time !== null) {
+					return me.getPixelForOffset(time);
 				}
 			},
+
 			getPixelForTick: function(index) {
-				return this.getPixelForOffset(this.ticksAsTimestamps[index]);
+				var ticks = this.getTicks();
+				return index >= 0 && index < ticks.length ?
+					this.getPixelForOffset(ticks[index].value) :
+					null;
 			},
+
 			getValueForPixel: function(pixel) {
 				var me = this;
-				var innerDimension = me.isHorizontal() ? me.width : me.height;
-				var offset = (pixel - (me.isHorizontal() ? me.left : me.top)) / innerDimension;
-				return moment(me.min + (offset * (me.max - me.min)));
+				var size = me._horizontal ? me.width : me.height;
+				var start = me._horizontal ? me.left : me.top;
+				var pos = (size ? (pixel - start) / size : 0) * (me._offsets.left + 1 + me._offsets.left) - me._offsets.right;
+				var time = interpolate(me._table, 'pos', pos, 'time');
+
+				return moment(time);
 			},
-			// Crude approximation of what the label width might be
+
+			/**
+			 * Crude approximation of what the label width might be
+			 * @private
+			 */
 			getLabelWidth: function(label) {
 				var me = this;
-				var ticks = me.options.ticks;
-
+				var ticksOpts = me.options.ticks;
 				var tickLabelWidth = me.ctx.measureText(label).width;
-				var cosRotation = Math.cos(helpers.toRadians(ticks.maxRotation));
-				var sinRotation = Math.sin(helpers.toRadians(ticks.maxRotation));
-				var tickFontSize = helpers.getValueOrDefault(ticks.fontSize, Chart.defaults.global.defaultFontSize);
+				var angle = helpers.toRadians(ticksOpts.maxRotation);
+				var cosRotation = Math.cos(angle);
+				var sinRotation = Math.sin(angle);
+				var tickFontSize = helpers.valueOrDefault(ticksOpts.fontSize, defaults.global.defaultFontSize);
+
 				return (tickLabelWidth * cosRotation) + (tickFontSize * sinRotation);
 			},
+
+			/**
+			 * @private
+			 */
 			getLabelCapacity: function(exampleTime) {
 				var me = this;
 
-				me.displayFormat = me.options.time.displayFormats.millisecond;	// Pick the longest format for guestimation
+				me._minorFormat = me.options.time.displayFormats.millisecond;	// Pick the longest format for guestimation
+
 				var exampleLabel = me.tickFormatFunction(moment(exampleTime), 0, []);
 				var tickLabelWidth = me.getLabelWidth(exampleLabel);
-
 				var innerWidth = me.isHorizontal() ? me.width : me.height;
-				var labelCapacity = innerWidth / tickLabelWidth;
-				return labelCapacity;
+
+				return Math.floor(innerWidth / tickLabelWidth);
 			}
 		});
-		Chart.scaleService.registerScaleType('time', TimeScale, defaultConfig);
 
+		Chart.scaleService.registerScaleType('time', TimeScale, defaultConfig);
 	};
 
 
-/***/ },
-/* 34 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
-	//! version : 2.17.1
+	//! version : 2.18.1
 	//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 	//! license : MIT
 	//! momentjs.com
@@ -10402,6 +11556,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return false;
 	    }
 	    return true;
+	}
+
+	function isUndefined(input) {
+	    return input === void 0;
 	}
 
 	function isNumber(input) {
@@ -10460,7 +11618,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        userInvalidated : false,
 	        iso             : false,
 	        parsedDateParts : [],
-	        meridiem        : null
+	        meridiem        : null,
+	        rfc2822         : false,
+	        weekdayMismatch : false
 	    };
 	}
 
@@ -10536,10 +11696,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return m;
 	}
 
-	function isUndefined(input) {
-	    return input === void 0;
-	}
-
 	// Plugins that add properties should also add the key here (null value),
 	// so we can properly clone ourselves.
 	var momentProperties = hooks.momentProperties = [];
@@ -10579,7 +11735,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    if (momentProperties.length > 0) {
-	        for (i in momentProperties) {
+	        for (i = 0; i < momentProperties.length; i++) {
 	            prop = momentProperties[i];
 	            val = from[prop];
 	            if (!isUndefined(val)) {
@@ -10716,8 +11872,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    this._config = config;
 	    // Lenient ordinal parsing accepts just a number in addition to
-	    // number + (possibly) stuff coming from _ordinalParseLenient.
-	    this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
+	    // number + (possibly) stuff coming from _dayOfMonthOrdinalParse.
+	    // TODO: Remove "ordinalParse" fallback in next major release.
+	    this._dayOfMonthOrdinalParseLenient = new RegExp(
+	        (this._dayOfMonthOrdinalParse.source || this._ordinalParse.source) +
+	            '|' + (/\d{1,2}/).source);
 	}
 
 	function mergeConfigs(parentConfig, childConfig) {
@@ -10815,7 +11974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	var defaultOrdinal = '%d';
-	var defaultOrdinalParse = /\d{1,2}/;
+	var defaultDayOfMonthOrdinalParse = /\d{1,2}/;
 
 	function ordinal (number) {
 	    return this._ordinal.replace('%d', number);
@@ -10825,6 +11984,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    future : 'in %s',
 	    past   : '%s ago',
 	    s  : 'a few seconds',
+	    ss : '%d seconds',
 	    m  : 'a minute',
 	    mm : '%d minutes',
 	    h  : 'an hour',
@@ -11007,7 +12167,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return function (mom) {
 	        var output = '', i;
 	        for (i = 0; i < length; i++) {
-	            output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
+	            output += isFunction(array[i]) ? array[i].call(mom, format) : array[i];
 	        }
 	        return output;
 	    };
@@ -11210,7 +12370,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
 	function localeMonths (m, format) {
 	    if (!m) {
-	        return this._months;
+	        return isArray(this._months) ? this._months :
+	            this._months['standalone'];
 	    }
 	    return isArray(this._months) ? this._months[m.month()] :
 	        this._months[(this._months.isFormat || MONTHS_IN_FORMAT).test(format) ? 'format' : 'standalone'][m.month()];
@@ -11219,7 +12380,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
 	function localeMonthsShort (m, format) {
 	    if (!m) {
-	        return this._monthsShort;
+	        return isArray(this._monthsShort) ? this._monthsShort :
+	            this._monthsShort['standalone'];
 	    }
 	    return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
 	        this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
@@ -11486,11 +12648,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function createDate (y, m, d, h, M, s, ms) {
-	    //can't just apply() to create a date:
-	    //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
+	    // can't just apply() to create a date:
+	    // https://stackoverflow.com/q/181348
 	    var date = new Date(y, m, d, h, M, s, ms);
 
-	    //the date constructor remaps years 0-99 to 1900-1999
+	    // the date constructor remaps years 0-99 to 1900-1999
 	    if (y < 100 && y >= 0 && isFinite(date.getFullYear())) {
 	        date.setFullYear(y);
 	    }
@@ -11500,7 +12662,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function createUTCDate (y) {
 	    var date = new Date(Date.UTC.apply(null, arguments));
 
-	    //the Date.UTC function remaps years 0-99 to 1900-1999
+	    // the Date.UTC function remaps years 0-99 to 1900-1999
 	    if (y < 100 && y >= 0 && isFinite(date.getUTCFullYear())) {
 	        date.setUTCFullYear(y);
 	    }
@@ -11517,7 +12679,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return -fwdlw + fwd - 1;
 	}
 
-	//http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
+	// https://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
 	function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
 	    var localWeekday = (7 + weekday - dow) % 7,
 	        weekOffset = firstWeekOffset(year, dow, doy),
@@ -11718,7 +12880,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
 	function localeWeekdays (m, format) {
 	    if (!m) {
-	        return this._weekdays;
+	        return isArray(this._weekdays) ? this._weekdays :
+	            this._weekdays['standalone'];
 	    }
 	    return isArray(this._weekdays) ? this._weekdays[m.day()] :
 	        this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
@@ -12038,8 +13201,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	addRegexToken('A',  matchMeridiem);
 	addRegexToken('H',  match1to2);
 	addRegexToken('h',  match1to2);
+	addRegexToken('k',  match1to2);
 	addRegexToken('HH', match1to2, match2);
 	addRegexToken('hh', match1to2, match2);
+	addRegexToken('kk', match1to2, match2);
 
 	addRegexToken('hmm', match3to4);
 	addRegexToken('hmmss', match5to6);
@@ -12047,6 +13212,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	addRegexToken('Hmmss', match5to6);
 
 	addParseToken(['H', 'HH'], HOUR);
+	addParseToken(['k', 'kk'], function (input, array, config) {
+	    var kInput = toInt(input);
+	    array[HOUR] = kInput === 24 ? 0 : kInput;
+	});
 	addParseToken(['a', 'A'], function (input, array, config) {
 	    config._isPm = config._locale.isPM(input);
 	    config._meridiem = input;
@@ -12117,7 +13286,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    longDateFormat: defaultLongDateFormat,
 	    invalidDate: defaultInvalidDate,
 	    ordinal: defaultOrdinal,
-	    ordinalParse: defaultOrdinalParse,
+	    dayOfMonthOrdinalParse: defaultDayOfMonthOrdinalParse,
 	    relativeTime: defaultRelativeTime,
 
 	    months: defaultLocaleMonths,
@@ -12175,7 +13344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            module && module.exports) {
 	        try {
 	            oldLocale = globalLocale._abbr;
-	            __webpack_require__(36)("./" + name);
+	            __webpack_require__(43)("./" + name);
 	            // because defineLocale currently also sets the global locale, we
 	            // want to undo that for lazy loaded locales
 	            getSetGlobalLocale(oldLocale);
@@ -12428,6 +13597,77 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	}
 
+	// RFC 2822 regex: For details see https://tools.ietf.org/html/rfc2822#section-3.3
+	var basicRfcRegex = /^((?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s)?(\d?\d\s(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(?:\d\d)?\d\d\s)(\d\d:\d\d)(\:\d\d)?(\s(?:UT|GMT|[ECMP][SD]T|[A-IK-Za-ik-z]|[+-]\d{4}))$/;
+
+	// date and time from ref 2822 format
+	function configFromRFC2822(config) {
+	    var string, match, dayFormat,
+	        dateFormat, timeFormat, tzFormat;
+	    var timezones = {
+	        ' GMT': ' +0000',
+	        ' EDT': ' -0400',
+	        ' EST': ' -0500',
+	        ' CDT': ' -0500',
+	        ' CST': ' -0600',
+	        ' MDT': ' -0600',
+	        ' MST': ' -0700',
+	        ' PDT': ' -0700',
+	        ' PST': ' -0800'
+	    };
+	    var military = 'YXWVUTSRQPONZABCDEFGHIKLM';
+	    var timezone, timezoneIndex;
+
+	    string = config._i
+	        .replace(/\([^\)]*\)|[\n\t]/g, ' ') // Remove comments and folding whitespace
+	        .replace(/(\s\s+)/g, ' ') // Replace multiple-spaces with a single space
+	        .replace(/^\s|\s$/g, ''); // Remove leading and trailing spaces
+	    match = basicRfcRegex.exec(string);
+
+	    if (match) {
+	        dayFormat = match[1] ? 'ddd' + ((match[1].length === 5) ? ', ' : ' ') : '';
+	        dateFormat = 'D MMM ' + ((match[2].length > 10) ? 'YYYY ' : 'YY ');
+	        timeFormat = 'HH:mm' + (match[4] ? ':ss' : '');
+
+	        // TODO: Replace the vanilla JS Date object with an indepentent day-of-week check.
+	        if (match[1]) { // day of week given
+	            var momentDate = new Date(match[2]);
+	            var momentDay = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][momentDate.getDay()];
+
+	            if (match[1].substr(0,3) !== momentDay) {
+	                getParsingFlags(config).weekdayMismatch = true;
+	                config._isValid = false;
+	                return;
+	            }
+	        }
+
+	        switch (match[5].length) {
+	            case 2: // military
+	                if (timezoneIndex === 0) {
+	                    timezone = ' +0000';
+	                } else {
+	                    timezoneIndex = military.indexOf(match[5][1].toUpperCase()) - 12;
+	                    timezone = ((timezoneIndex < 0) ? ' -' : ' +') +
+	                        (('' + timezoneIndex).replace(/^-?/, '0')).match(/..$/)[0] + '00';
+	                }
+	                break;
+	            case 4: // Zone
+	                timezone = timezones[match[5]];
+	                break;
+	            default: // UT or +/-9999
+	                timezone = timezones[' GMT'];
+	        }
+	        match[5] = timezone;
+	        config._i = match.splice(1).join('');
+	        tzFormat = ' ZZ';
+	        config._f = dayFormat + dateFormat + timeFormat + tzFormat;
+	        configFromStringAndFormat(config);
+	        getParsingFlags(config).rfc2822 = true;
+	    } else {
+	        config._isValid = false;
+	    }
+	}
+
 	// date from iso format or fallback
 	function configFromString(config) {
 	    var matched = aspNetJsonRegex.exec(config._i);
@@ -12440,13 +13680,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	    configFromISO(config);
 	    if (config._isValid === false) {
 	        delete config._isValid;
-	        hooks.createFromInputFallback(config);
+	    } else {
+	        return;
 	    }
+
+	    configFromRFC2822(config);
+	    if (config._isValid === false) {
+	        delete config._isValid;
+	    } else {
+	        return;
+	    }
+
+	    // Final attempt, use Input Fallback
+	    hooks.createFromInputFallback(config);
 	}
 
 	hooks.createFromInputFallback = deprecate(
-	    'value provided is not in a recognized ISO format. moment construction falls back to js Date(), ' +
-	    'which is not reliable across all browsers and versions. Non ISO date formats are ' +
+	    'value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), ' +
+	    'which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are ' +
 	    'discouraged and will be removed in an upcoming major release. Please refer to ' +
 	    'http://momentjs.com/guides/#/warnings/js-date/ for more info.',
 	    function (config) {
@@ -12493,10 +13744,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    //if the day of the year is set, figure out what it is
-	    if (config._dayOfYear) {
+	    if (config._dayOfYear != null) {
 	        yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
 
-	        if (config._dayOfYear > daysInYear(yearToUse)) {
+	        if (config._dayOfYear > daysInYear(yearToUse) || config._dayOfYear === 0) {
 	            getParsingFlags(config)._overflowDayOfYear = true;
 	        }
 
@@ -12600,6 +13851,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	// constant that refers to the ISO standard
 	hooks.ISO_8601 = function () {};
 
+	// constant that refers to the RFC 2822 form
+	hooks.RFC_2822 = function () {};
+
 	// date from string and format string
 	function configFromStringAndFormat(config) {
 	    // TODO: Move this to another part of the creation flow to prevent circular deps
@@ -12607,7 +13861,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        configFromISO(config);
 	        return;
 	    }
-
+	    if (config._f === hooks.RFC_2822) {
+	        configFromRFC2822(config);
+	        return;
+	    }
 	    config._a = [];
 	    getParsingFlags(config).empty = true;
 
@@ -12799,7 +14056,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function configFromInput(config) {
 	    var input = config._i;
-	    if (input === undefined) {
+	    if (isUndefined(input)) {
 	        config._d = new Date(hooks.now());
 	    } else if (isDate(input)) {
 	        config._d = new Date(input.valueOf());
@@ -12810,7 +14067,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return parseInt(obj, 10);
 	        });
 	        configFromArray(config);
-	    } else if (typeof(input) === 'object') {
+	    } else if (isObject(input)) {
 	        configFromObject(config);
 	    } else if (isNumber(input)) {
 	        // from milliseconds
@@ -12911,6 +14168,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return Date.now ? Date.now() : +(new Date());
 	};
 
+	var ordering = ['year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond'];
+
+	function isDurationValid(m) {
+	    for (var key in m) {
+	        if (!(ordering.indexOf(key) !== -1 && (m[key] == null || !isNaN(m[key])))) {
+	            return false;
+	        }
+	    }
+
+	    var unitHasDecimal = false;
+	    for (var i = 0; i < ordering.length; ++i) {
+	        if (m[ordering[i]]) {
+	            if (unitHasDecimal) {
+	                return false; // only allow non-integers for smallest unit
+	            }
+	            if (parseFloat(m[ordering[i]]) !== toInt(m[ordering[i]])) {
+	                unitHasDecimal = true;
+	            }
+	        }
+	    }
+
+	    return true;
+	}
+
+	function isValid$1() {
+	    return this._isValid;
+	}
+
+	function createInvalid$1() {
+	    return createDuration(NaN);
+	}
+
 	function Duration (duration) {
 	    var normalizedInput = normalizeObjectUnits(duration),
 	        years = normalizedInput.year || 0,
@@ -12922,6 +14211,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        minutes = normalizedInput.minute || 0,
 	        seconds = normalizedInput.second || 0,
 	        milliseconds = normalizedInput.millisecond || 0;
+
+	    this._isValid = isDurationValid(normalizedInput);
 
 	    // representation for dateAddRemove
 	    this._milliseconds = +milliseconds +
@@ -13046,7 +14337,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// a second time. In case it wants us to change the offset again
 	// _changeInProgress == true case, then we have to adjust, because
 	// there is no such time in the given timezone.
-	function getSetOffset (input, keepLocalTime) {
+	function getSetOffset (input, keepLocalTime, keepMinutes) {
 	    var offset = this._offset || 0,
 	        localAdjust;
 	    if (!this.isValid()) {
@@ -13058,7 +14349,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (input === null) {
 	                return this;
 	            }
-	        } else if (Math.abs(input) < 16) {
+	        } else if (Math.abs(input) < 16 && !keepMinutes) {
 	            input = input * 60;
 	        }
 	        if (!this._isUTC && keepLocalTime) {
@@ -13116,7 +14407,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function setOffsetToParsedOffset () {
 	    if (this._tzm != null) {
-	        this.utcOffset(this._tzm);
+	        this.utcOffset(this._tzm, false, true);
 	    } else if (typeof this._i === 'string') {
 	        var tZone = offsetFromString(matchOffset, this._i);
 	        if (tZone != null) {
@@ -13248,6 +14539,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	createDuration.fn = Duration.prototype;
+	createDuration.invalid = createInvalid$1;
 
 	function parseIso (inp, sign) {
 	    // We'd normally use ~~inp for this, but unfortunately it also
@@ -13484,18 +14776,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
 	}
 
-	function toISOString () {
+	function toISOString() {
+	    if (!this.isValid()) {
+	        return null;
+	    }
 	    var m = this.clone().utc();
-	    if (0 < m.year() && m.year() <= 9999) {
-	        if (isFunction(Date.prototype.toISOString)) {
-	            // native implementation is ~50x faster, use it when we can
-	            return this.toDate().toISOString();
-	        } else {
-	            return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
-	        }
-	    } else {
+	    if (m.year() < 0 || m.year() > 9999) {
 	        return formatMoment(m, 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
 	    }
+	    if (isFunction(Date.prototype.toISOString)) {
+	        // native implementation is ~50x faster, use it when we can
+	        return this.toDate().toISOString();
+	    }
+	    return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
 	}
 
 	/**
@@ -13515,7 +14808,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        zone = 'Z';
 	    }
 	    var prefix = '[' + func + '("]';
-	    var year = (0 < this.year() && this.year() <= 9999) ? 'YYYY' : 'YYYYYY';
+	    var year = (0 <= this.year() && this.year() <= 9999) ? 'YYYY' : 'YYYYYY';
 	    var datetime = '-MM-DD[T]HH:mm:ss.SSS';
 	    var suffix = zone + '[")]';
 
@@ -13683,7 +14976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return this.isValid() ? this.toISOString() : null;
 	}
 
-	function isValid$1 () {
+	function isValid$2 () {
 	    return isValid(this);
 	}
 
@@ -13843,7 +15136,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	addRegexToken('D',  match1to2);
 	addRegexToken('DD', match1to2, match2);
 	addRegexToken('Do', function (isStrict, locale) {
-	    return isStrict ? locale._ordinalParse : locale._ordinalParseLenient;
+	    // TODO: Remove "ordinalParse" fallback in next major release.
+	    return isStrict ?
+	      (locale._dayOfMonthOrdinalParse || locale._ordinalParse) :
+	      locale._dayOfMonthOrdinalParseLenient;
 	});
 
 	addParseToken(['D', 'DD'], DATE);
@@ -14023,7 +15319,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	proto.isSame            = isSame;
 	proto.isSameOrAfter     = isSameOrAfter;
 	proto.isSameOrBefore    = isSameOrBefore;
-	proto.isValid           = isValid$1;
+	proto.isValid           = isValid$2;
 	proto.lang              = lang;
 	proto.locale            = locale;
 	proto.localeData        = localeData;
@@ -14248,7 +15544,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	getSetGlobalLocale('en', {
-	    ordinalParse: /\d{1,2}(th|st|nd|rd)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
 	    ordinal : function (number) {
 	        var b = number % 10,
 	            output = (toInt(number % 100 / 10) === 1) ? 'th' :
@@ -14369,6 +15665,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function as (units) {
+	    if (!this.isValid()) {
+	        return NaN;
+	    }
 	    var days;
 	    var months;
 	    var milliseconds = this._milliseconds;
@@ -14397,6 +15696,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// TODO: Use this.as('ms')?
 	function valueOf$1 () {
+	    if (!this.isValid()) {
+	        return NaN;
+	    }
 	    return (
 	        this._milliseconds +
 	        this._days * 864e5 +
@@ -14422,12 +15724,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function get$2 (units) {
 	    units = normalizeUnits(units);
-	    return this[units + 's']();
+	    return this.isValid() ? this[units + 's']() : NaN;
 	}
 
 	function makeGetter(name) {
 	    return function () {
-	        return this._data[name];
+	        return this.isValid() ? this._data[name] : NaN;
 	    };
 	}
 
@@ -14445,11 +15747,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var round = Math.round;
 	var thresholds = {
-	    s: 45,  // seconds to minute
-	    m: 45,  // minutes to hour
-	    h: 22,  // hours to day
-	    d: 26,  // days to month
-	    M: 11   // months to year
+	    ss: 44,         // a few seconds to seconds
+	    s : 45,         // seconds to minute
+	    m : 45,         // minutes to hour
+	    h : 22,         // hours to day
+	    d : 26,         // days to month
+	    M : 11          // months to year
 	};
 
 	// helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
@@ -14466,16 +15769,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var months   = round(duration.as('M'));
 	    var years    = round(duration.as('y'));
 
-	    var a = seconds < thresholds.s && ['s', seconds]  ||
-	            minutes <= 1           && ['m']           ||
-	            minutes < thresholds.m && ['mm', minutes] ||
-	            hours   <= 1           && ['h']           ||
-	            hours   < thresholds.h && ['hh', hours]   ||
-	            days    <= 1           && ['d']           ||
-	            days    < thresholds.d && ['dd', days]    ||
-	            months  <= 1           && ['M']           ||
-	            months  < thresholds.M && ['MM', months]  ||
-	            years   <= 1           && ['y']           || ['yy', years];
+	    var a = seconds <= thresholds.ss && ['s', seconds]  ||
+	            seconds < thresholds.s   && ['ss', seconds] ||
+	            minutes <= 1             && ['m']           ||
+	            minutes < thresholds.m   && ['mm', minutes] ||
+	            hours   <= 1             && ['h']           ||
+	            hours   < thresholds.h   && ['hh', hours]   ||
+	            days    <= 1             && ['d']           ||
+	            days    < thresholds.d   && ['dd', days]    ||
+	            months  <= 1             && ['M']           ||
+	            months  < thresholds.M   && ['MM', months]  ||
+	            years   <= 1             && ['y']           || ['yy', years];
 
 	    a[2] = withoutSuffix;
 	    a[3] = +posNegDuration > 0;
@@ -14504,10 +15808,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return thresholds[threshold];
 	    }
 	    thresholds[threshold] = limit;
+	    if (threshold === 's') {
+	        thresholds.ss = limit - 1;
+	    }
 	    return true;
 	}
 
 	function humanize (withSuffix) {
+	    if (!this.isValid()) {
+	        return this.localeData().invalidDate();
+	    }
+
 	    var locale = this.localeData();
 	    var output = relativeTime$1(this, !withSuffix, locale);
 
@@ -14528,6 +15839,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // This is because there is no context-free conversion between hours and days
 	    // (think of clock changes)
 	    // and also not between days and months (28-31 days per month)
+	    if (!this.isValid()) {
+	        return this.localeData().invalidDate();
+	    }
+
 	    var seconds = abs$1(this._milliseconds) / 1000;
 	    var days         = abs$1(this._days);
 	    var months       = abs$1(this._months);
@@ -14572,6 +15887,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var proto$2 = Duration.prototype;
 
+	proto$2.isValid        = isValid$1;
 	proto$2.abs            = abs;
 	proto$2.add            = add$1;
 	proto$2.subtract       = subtract$1;
@@ -14627,7 +15943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Side effect imports
 
 
-	hooks.version = '2.17.1';
+	hooks.version = '2.18.1';
 
 	setHookCallback(createLocal);
 
@@ -14663,11 +15979,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	})));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(42)(module)))
 
-/***/ },
-/* 35 */
-/***/ function(module, exports) {
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
 
 	module.exports = function(module) {
 		if(!module.webpackPolyfill) {
@@ -14681,227 +15997,241 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-/***/ },
-/* 36 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 37,
-		"./af.js": 37,
-		"./ar": 38,
-		"./ar-dz": 39,
-		"./ar-dz.js": 39,
-		"./ar-ly": 40,
-		"./ar-ly.js": 40,
-		"./ar-ma": 41,
-		"./ar-ma.js": 41,
-		"./ar-sa": 42,
-		"./ar-sa.js": 42,
-		"./ar-tn": 43,
-		"./ar-tn.js": 43,
-		"./ar.js": 38,
-		"./az": 44,
-		"./az.js": 44,
-		"./be": 45,
-		"./be.js": 45,
-		"./bg": 46,
-		"./bg.js": 46,
-		"./bn": 47,
-		"./bn.js": 47,
-		"./bo": 48,
-		"./bo.js": 48,
-		"./br": 49,
-		"./br.js": 49,
-		"./bs": 50,
-		"./bs.js": 50,
-		"./ca": 51,
-		"./ca.js": 51,
-		"./cs": 52,
-		"./cs.js": 52,
-		"./cv": 53,
-		"./cv.js": 53,
-		"./cy": 54,
-		"./cy.js": 54,
-		"./da": 55,
-		"./da.js": 55,
-		"./de": 56,
-		"./de-at": 57,
-		"./de-at.js": 57,
-		"./de.js": 56,
-		"./dv": 58,
-		"./dv.js": 58,
-		"./el": 59,
-		"./el.js": 59,
-		"./en-au": 60,
-		"./en-au.js": 60,
-		"./en-ca": 61,
-		"./en-ca.js": 61,
-		"./en-gb": 62,
-		"./en-gb.js": 62,
-		"./en-ie": 63,
-		"./en-ie.js": 63,
-		"./en-nz": 64,
-		"./en-nz.js": 64,
-		"./eo": 65,
-		"./eo.js": 65,
-		"./es": 66,
-		"./es-do": 67,
-		"./es-do.js": 67,
-		"./es.js": 66,
-		"./et": 68,
-		"./et.js": 68,
-		"./eu": 69,
-		"./eu.js": 69,
-		"./fa": 70,
-		"./fa.js": 70,
-		"./fi": 71,
-		"./fi.js": 71,
-		"./fo": 72,
-		"./fo.js": 72,
-		"./fr": 73,
-		"./fr-ca": 74,
-		"./fr-ca.js": 74,
-		"./fr-ch": 75,
-		"./fr-ch.js": 75,
-		"./fr.js": 73,
-		"./fy": 76,
-		"./fy.js": 76,
-		"./gd": 77,
-		"./gd.js": 77,
-		"./gl": 78,
-		"./gl.js": 78,
-		"./he": 79,
-		"./he.js": 79,
-		"./hi": 80,
-		"./hi.js": 80,
-		"./hr": 81,
-		"./hr.js": 81,
-		"./hu": 82,
-		"./hu.js": 82,
-		"./hy-am": 83,
-		"./hy-am.js": 83,
-		"./id": 84,
-		"./id.js": 84,
-		"./is": 85,
-		"./is.js": 85,
-		"./it": 86,
-		"./it.js": 86,
-		"./ja": 87,
-		"./ja.js": 87,
-		"./jv": 88,
-		"./jv.js": 88,
-		"./ka": 89,
-		"./ka.js": 89,
-		"./kk": 90,
-		"./kk.js": 90,
-		"./km": 91,
-		"./km.js": 91,
-		"./ko": 92,
-		"./ko.js": 92,
-		"./ky": 93,
-		"./ky.js": 93,
-		"./lb": 94,
-		"./lb.js": 94,
-		"./lo": 95,
-		"./lo.js": 95,
-		"./lt": 96,
-		"./lt.js": 96,
-		"./lv": 97,
-		"./lv.js": 97,
-		"./me": 98,
-		"./me.js": 98,
-		"./mi": 99,
-		"./mi.js": 99,
-		"./mk": 100,
-		"./mk.js": 100,
-		"./ml": 101,
-		"./ml.js": 101,
-		"./mr": 102,
-		"./mr.js": 102,
-		"./ms": 103,
-		"./ms-my": 104,
-		"./ms-my.js": 104,
-		"./ms.js": 103,
-		"./my": 105,
-		"./my.js": 105,
-		"./nb": 106,
-		"./nb.js": 106,
-		"./ne": 107,
-		"./ne.js": 107,
-		"./nl": 108,
-		"./nl-be": 109,
-		"./nl-be.js": 109,
-		"./nl.js": 108,
-		"./nn": 110,
-		"./nn.js": 110,
-		"./pa-in": 111,
-		"./pa-in.js": 111,
-		"./pl": 112,
-		"./pl.js": 112,
-		"./pt": 113,
-		"./pt-br": 114,
-		"./pt-br.js": 114,
-		"./pt.js": 113,
-		"./ro": 115,
-		"./ro.js": 115,
-		"./ru": 116,
-		"./ru.js": 116,
-		"./se": 117,
-		"./se.js": 117,
-		"./si": 118,
-		"./si.js": 118,
-		"./sk": 119,
-		"./sk.js": 119,
-		"./sl": 120,
-		"./sl.js": 120,
-		"./sq": 121,
-		"./sq.js": 121,
-		"./sr": 122,
-		"./sr-cyrl": 123,
-		"./sr-cyrl.js": 123,
-		"./sr.js": 122,
-		"./ss": 124,
-		"./ss.js": 124,
-		"./sv": 125,
-		"./sv.js": 125,
-		"./sw": 126,
-		"./sw.js": 126,
-		"./ta": 127,
-		"./ta.js": 127,
-		"./te": 128,
-		"./te.js": 128,
-		"./tet": 129,
-		"./tet.js": 129,
-		"./th": 130,
-		"./th.js": 130,
-		"./tl-ph": 131,
-		"./tl-ph.js": 131,
-		"./tlh": 132,
-		"./tlh.js": 132,
-		"./tr": 133,
-		"./tr.js": 133,
-		"./tzl": 134,
-		"./tzl.js": 134,
-		"./tzm": 135,
-		"./tzm-latn": 136,
-		"./tzm-latn.js": 136,
-		"./tzm.js": 135,
-		"./uk": 137,
-		"./uk.js": 137,
-		"./uz": 138,
-		"./uz.js": 138,
-		"./vi": 139,
-		"./vi.js": 139,
-		"./x-pseudo": 140,
-		"./x-pseudo.js": 140,
-		"./yo": 141,
-		"./yo.js": 141,
-		"./zh-cn": 142,
-		"./zh-cn.js": 142,
-		"./zh-hk": 143,
-		"./zh-hk.js": 143,
-		"./zh-tw": 144,
-		"./zh-tw.js": 144
+		"./af": 44,
+		"./af.js": 44,
+		"./ar": 45,
+		"./ar-dz": 46,
+		"./ar-dz.js": 46,
+		"./ar-kw": 47,
+		"./ar-kw.js": 47,
+		"./ar-ly": 48,
+		"./ar-ly.js": 48,
+		"./ar-ma": 49,
+		"./ar-ma.js": 49,
+		"./ar-sa": 50,
+		"./ar-sa.js": 50,
+		"./ar-tn": 51,
+		"./ar-tn.js": 51,
+		"./ar.js": 45,
+		"./az": 52,
+		"./az.js": 52,
+		"./be": 53,
+		"./be.js": 53,
+		"./bg": 54,
+		"./bg.js": 54,
+		"./bn": 55,
+		"./bn.js": 55,
+		"./bo": 56,
+		"./bo.js": 56,
+		"./br": 57,
+		"./br.js": 57,
+		"./bs": 58,
+		"./bs.js": 58,
+		"./ca": 59,
+		"./ca.js": 59,
+		"./cs": 60,
+		"./cs.js": 60,
+		"./cv": 61,
+		"./cv.js": 61,
+		"./cy": 62,
+		"./cy.js": 62,
+		"./da": 63,
+		"./da.js": 63,
+		"./de": 64,
+		"./de-at": 65,
+		"./de-at.js": 65,
+		"./de-ch": 66,
+		"./de-ch.js": 66,
+		"./de.js": 64,
+		"./dv": 67,
+		"./dv.js": 67,
+		"./el": 68,
+		"./el.js": 68,
+		"./en-au": 69,
+		"./en-au.js": 69,
+		"./en-ca": 70,
+		"./en-ca.js": 70,
+		"./en-gb": 71,
+		"./en-gb.js": 71,
+		"./en-ie": 72,
+		"./en-ie.js": 72,
+		"./en-nz": 73,
+		"./en-nz.js": 73,
+		"./eo": 74,
+		"./eo.js": 74,
+		"./es": 75,
+		"./es-do": 76,
+		"./es-do.js": 76,
+		"./es.js": 75,
+		"./et": 77,
+		"./et.js": 77,
+		"./eu": 78,
+		"./eu.js": 78,
+		"./fa": 79,
+		"./fa.js": 79,
+		"./fi": 80,
+		"./fi.js": 80,
+		"./fo": 81,
+		"./fo.js": 81,
+		"./fr": 82,
+		"./fr-ca": 83,
+		"./fr-ca.js": 83,
+		"./fr-ch": 84,
+		"./fr-ch.js": 84,
+		"./fr.js": 82,
+		"./fy": 85,
+		"./fy.js": 85,
+		"./gd": 86,
+		"./gd.js": 86,
+		"./gl": 87,
+		"./gl.js": 87,
+		"./gom-latn": 88,
+		"./gom-latn.js": 88,
+		"./he": 89,
+		"./he.js": 89,
+		"./hi": 90,
+		"./hi.js": 90,
+		"./hr": 91,
+		"./hr.js": 91,
+		"./hu": 92,
+		"./hu.js": 92,
+		"./hy-am": 93,
+		"./hy-am.js": 93,
+		"./id": 94,
+		"./id.js": 94,
+		"./is": 95,
+		"./is.js": 95,
+		"./it": 96,
+		"./it.js": 96,
+		"./ja": 97,
+		"./ja.js": 97,
+		"./jv": 98,
+		"./jv.js": 98,
+		"./ka": 99,
+		"./ka.js": 99,
+		"./kk": 100,
+		"./kk.js": 100,
+		"./km": 101,
+		"./km.js": 101,
+		"./kn": 102,
+		"./kn.js": 102,
+		"./ko": 103,
+		"./ko.js": 103,
+		"./ky": 104,
+		"./ky.js": 104,
+		"./lb": 105,
+		"./lb.js": 105,
+		"./lo": 106,
+		"./lo.js": 106,
+		"./lt": 107,
+		"./lt.js": 107,
+		"./lv": 108,
+		"./lv.js": 108,
+		"./me": 109,
+		"./me.js": 109,
+		"./mi": 110,
+		"./mi.js": 110,
+		"./mk": 111,
+		"./mk.js": 111,
+		"./ml": 112,
+		"./ml.js": 112,
+		"./mr": 113,
+		"./mr.js": 113,
+		"./ms": 114,
+		"./ms-my": 115,
+		"./ms-my.js": 115,
+		"./ms.js": 114,
+		"./my": 116,
+		"./my.js": 116,
+		"./nb": 117,
+		"./nb.js": 117,
+		"./ne": 118,
+		"./ne.js": 118,
+		"./nl": 119,
+		"./nl-be": 120,
+		"./nl-be.js": 120,
+		"./nl.js": 119,
+		"./nn": 121,
+		"./nn.js": 121,
+		"./pa-in": 122,
+		"./pa-in.js": 122,
+		"./pl": 123,
+		"./pl.js": 123,
+		"./pt": 124,
+		"./pt-br": 125,
+		"./pt-br.js": 125,
+		"./pt.js": 124,
+		"./ro": 126,
+		"./ro.js": 126,
+		"./ru": 127,
+		"./ru.js": 127,
+		"./sd": 128,
+		"./sd.js": 128,
+		"./se": 129,
+		"./se.js": 129,
+		"./si": 130,
+		"./si.js": 130,
+		"./sk": 131,
+		"./sk.js": 131,
+		"./sl": 132,
+		"./sl.js": 132,
+		"./sq": 133,
+		"./sq.js": 133,
+		"./sr": 134,
+		"./sr-cyrl": 135,
+		"./sr-cyrl.js": 135,
+		"./sr.js": 134,
+		"./ss": 136,
+		"./ss.js": 136,
+		"./sv": 137,
+		"./sv.js": 137,
+		"./sw": 138,
+		"./sw.js": 138,
+		"./ta": 139,
+		"./ta.js": 139,
+		"./te": 140,
+		"./te.js": 140,
+		"./tet": 141,
+		"./tet.js": 141,
+		"./th": 142,
+		"./th.js": 142,
+		"./tl-ph": 143,
+		"./tl-ph.js": 143,
+		"./tlh": 144,
+		"./tlh.js": 144,
+		"./tr": 145,
+		"./tr.js": 145,
+		"./tzl": 146,
+		"./tzl.js": 146,
+		"./tzm": 147,
+		"./tzm-latn": 148,
+		"./tzm-latn.js": 148,
+		"./tzm.js": 147,
+		"./uk": 149,
+		"./uk.js": 149,
+		"./ur": 150,
+		"./ur.js": 150,
+		"./uz": 151,
+		"./uz-latn": 152,
+		"./uz-latn.js": 152,
+		"./uz.js": 151,
+		"./vi": 153,
+		"./vi.js": 153,
+		"./x-pseudo": 154,
+		"./x-pseudo.js": 154,
+		"./yo": 155,
+		"./yo.js": 155,
+		"./zh-cn": 156,
+		"./zh-cn.js": 156,
+		"./zh-hk": 157,
+		"./zh-hk.js": 157,
+		"./zh-tw": 158,
+		"./zh-tw.js": 158
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -14914,19 +16244,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 36;
+	webpackContext.id = 43;
 
 
-/***/ },
-/* 37 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Afrikaans [af]
 	//! author : Werner Mollentze : https://github.com/wernerm
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14980,7 +16310,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : '\'n jaar',
 	        yy : '%d jaar'
 	    },
-	    ordinalParse: /\d{1,2}(ste|de)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(ste|de)/,
 	    ordinal : function (number) {
 	        return number + ((number === 1 || number === 8 || number >= 20) ? 'ste' : 'de'); // Thanks to Joris Röling : https://github.com/jjupiter
 	    },
@@ -14995,9 +16325,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 38 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Arabic [ar]
@@ -15006,7 +16336,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : forabi https://github.com/forabi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15142,16 +16472,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 39 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Arabic (Algeria) [ar-dz]
 	//! author : Noureddine LOUAHEDJ : https://github.com/noureddineme
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15206,16 +16536,80 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Arabic (Kuwait) [ar-kw]
+	//! author : Nusret Parlak: https://github.com/nusretparlak
+
+	;(function (global, factory) {
+	    true ? factory(__webpack_require__(41)) :
+	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
+	   factory(global.moment)
+	}(this, (function (moment) { 'use strict';
+
+
+	var arKw = moment.defineLocale('ar-kw', {
+	    months : 'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split('_'),
+	    monthsShort : 'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split('_'),
+	    weekdays : 'الأحد_الإتنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
+	    weekdaysShort : 'احد_اتنين_ثلاثاء_اربعاء_خميس_جمعة_سبت'.split('_'),
+	    weekdaysMin : 'ح_ن_ث_ر_خ_ج_س'.split('_'),
+	    weekdaysParseExact : true,
+	    longDateFormat : {
+	        LT : 'HH:mm',
+	        LTS : 'HH:mm:ss',
+	        L : 'DD/MM/YYYY',
+	        LL : 'D MMMM YYYY',
+	        LLL : 'D MMMM YYYY HH:mm',
+	        LLLL : 'dddd D MMMM YYYY HH:mm'
+	    },
+	    calendar : {
+	        sameDay: '[اليوم على الساعة] LT',
+	        nextDay: '[غدا على الساعة] LT',
+	        nextWeek: 'dddd [على الساعة] LT',
+	        lastDay: '[أمس على الساعة] LT',
+	        lastWeek: 'dddd [على الساعة] LT',
+	        sameElse: 'L'
+	    },
+	    relativeTime : {
+	        future : 'في %s',
+	        past : 'منذ %s',
+	        s : 'ثوان',
+	        m : 'دقيقة',
+	        mm : '%d دقائق',
+	        h : 'ساعة',
+	        hh : '%d ساعات',
+	        d : 'يوم',
+	        dd : '%d أيام',
+	        M : 'شهر',
+	        MM : '%d أشهر',
+	        y : 'سنة',
+	        yy : '%d سنوات'
+	    },
+	    week : {
+	        dow : 0, // Sunday is the first day of the week.
+	        doy : 12  // The week that contains Jan 1st is the first week of the year.
+	    }
+	});
+
+	return arKw;
+
+	})));
+
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Arabic (Lybia) [ar-ly]
 	//! author : Ali Hmer: https://github.com/kikoanis
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15337,9 +16731,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 41 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Arabic (Morocco) [ar-ma]
@@ -15347,7 +16741,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15402,16 +16796,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 42 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Arabic (Saudi Arabia) [ar-sa]
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15512,16 +16906,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 43 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale  :  Arabic (Tunisia) [ar-tn]
 	//! author : Nader Toukabri : https://github.com/naderio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15576,16 +16970,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 44 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Azerbaijani [az]
 	//! author : topchiyev : https://github.com/topchiyev
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15665,7 +17059,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return 'axşam';
 	        }
 	    },
-	    ordinalParse: /\d{1,2}-(ıncı|inci|nci|üncü|ncı|uncu)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}-(ıncı|inci|nci|üncü|ncı|uncu)/,
 	    ordinal : function (number) {
 	        if (number === 0) {  // special case for zero
 	            return number + '-ıncı';
@@ -15686,9 +17080,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 45 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Belarusian [be]
@@ -15697,7 +17091,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15799,7 +17193,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return 'вечара';
 	        }
 	    },
-	    ordinalParse: /\d{1,2}-(і|ы|га)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}-(і|ы|га)/,
 	    ordinal: function (number, period) {
 	        switch (period) {
 	            case 'M':
@@ -15825,16 +17219,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 46 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Bulgarian [bg]
 	//! author : Krasen Borisov : https://github.com/kraz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15889,7 +17283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'година',
 	        yy : '%d години'
 	    },
-	    ordinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
 	    ordinal : function (number) {
 	        var lastDigit = number % 10,
 	            last2Digits = number % 100;
@@ -15920,16 +17314,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 47 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Bengali [bn]
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16044,16 +17438,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 48 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Tibetan [bo]
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16168,16 +17562,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 49 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Breton [br]
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16265,7 +17659,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'ur bloaz',
 	        yy : specialMutationForYears
 	    },
-	    ordinalParse: /\d{1,2}(añ|vet)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(añ|vet)/,
 	    ordinal : function (number) {
 	        var output = (number === 1) ? 'añ' : 'vet';
 	        return number + output;
@@ -16281,9 +17675,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 50 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Bosnian [bs]
@@ -16291,7 +17685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on (hr) translation by Bojan Marković
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16416,7 +17810,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y      : 'godinu',
 	        yy     : translate
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -16429,24 +17823,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 51 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Catalan [ca]
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
 
 
 	var ca = moment.defineLocale('ca', {
-	    months : 'gener_febrer_març_abril_maig_juny_juliol_agost_setembre_octubre_novembre_desembre'.split('_'),
-	    monthsShort : 'gen._febr._mar._abr._mai._jun._jul._ag._set._oct._nov._des.'.split('_'),
+	    months : {
+	        standalone: 'gener_febrer_març_abril_maig_juny_juliol_agost_setembre_octubre_novembre_desembre'.split('_'),
+	        format: 'de gener_de febrer_de març_d\'abril_de maig_de juny_de juliol_d\'agost_de setembre_d\'octubre_de novembre_de desembre'.split('_'),
+	        isFormat: /D[oD]?(\s)+MMMM/
+	    },
+	    monthsShort : 'gen._febr._març_abr._maig_juny_jul._ag._set._oct._nov._des.'.split('_'),
 	    monthsParseExact : true,
 	    weekdays : 'diumenge_dilluns_dimarts_dimecres_dijous_divendres_dissabte'.split('_'),
 	    weekdaysShort : 'dg._dl._dt._dc._dj._dv._ds.'.split('_'),
@@ -16456,9 +17854,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        LT : 'H:mm',
 	        LTS : 'H:mm:ss',
 	        L : 'DD/MM/YYYY',
-	        LL : 'D MMMM YYYY',
-	        LLL : 'D MMMM YYYY H:mm',
-	        LLLL : 'dddd D MMMM YYYY H:mm'
+	        LL : '[el] D MMMM [de] YYYY',
+	        ll : 'D MMM YYYY',
+	        LLL : '[el] D MMMM [de] YYYY [a les] H:mm',
+	        lll : 'D MMM YYYY, H:mm',
+	        LLLL : '[el] dddd D MMMM [de] YYYY [a les] H:mm',
+	        llll : 'ddd D MMM YYYY, H:mm'
 	    },
 	    calendar : {
 	        sameDay : function () {
@@ -16493,7 +17894,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'un any',
 	        yy : '%d anys'
 	    },
-	    ordinalParse: /\d{1,2}(r|n|t|è|a)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(r|n|t|è|a)/,
 	    ordinal : function (number, period) {
 	        var output = (number === 1) ? 'r' :
 	            (number === 2) ? 'n' :
@@ -16515,16 +17916,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 52 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Czech [cs]
 	//! author : petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16679,7 +18080,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : translate,
 	        yy : translate
 	    },
-	    ordinalParse : /\d{1,2}\./,
+	    dayOfMonthOrdinalParse : /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -16692,16 +18093,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 53 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Chuvash [cv]
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16747,7 +18148,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'пӗр ҫул',
 	        yy : '%d ҫул'
 	    },
-	    ordinalParse: /\d{1,2}-мӗш/,
+	    dayOfMonthOrdinalParse: /\d{1,2}-мӗш/,
 	    ordinal : '%d-мӗш',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -16760,9 +18161,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 54 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Welsh [cy]
@@ -16770,7 +18171,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : https://github.com/ryangreaves
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16815,7 +18216,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y: 'blwyddyn',
 	        yy: '%d flynedd'
 	    },
-	    ordinalParse: /\d{1,2}(fed|ain|af|il|ydd|ed|eg)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(fed|ain|af|il|ydd|ed|eg)/,
 	    // traditional ordinal numbers above 31 are not commonly used in colloquial Welsh
 	    ordinal: function (number) {
 	        var b = number,
@@ -16846,16 +18247,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 55 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Danish [da]
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16873,14 +18274,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        L : 'DD/MM/YYYY',
 	        LL : 'D. MMMM YYYY',
 	        LLL : 'D. MMMM YYYY HH:mm',
-	        LLLL : 'dddd [d.] D. MMMM YYYY HH:mm'
+	        LLLL : 'dddd [d.] D. MMMM YYYY [kl.] HH:mm'
 	    },
 	    calendar : {
-	        sameDay : '[I dag kl.] LT',
-	        nextDay : '[I morgen kl.] LT',
-	        nextWeek : 'dddd [kl.] LT',
-	        lastDay : '[I går kl.] LT',
-	        lastWeek : '[sidste] dddd [kl] LT',
+	        sameDay : '[i dag kl.] LT',
+	        nextDay : '[i morgen kl.] LT',
+	        nextWeek : 'på dddd [kl.] LT',
+	        lastDay : '[i går kl.] LT',
+	        lastWeek : '[i] dddd[s kl.] LT',
 	        sameElse : 'L'
 	    },
 	    relativeTime : {
@@ -16898,7 +18299,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'et år',
 	        yy : '%d år'
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -16911,9 +18312,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 56 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : German [de]
@@ -16922,7 +18323,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16981,7 +18382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : processRelativeTime,
 	        yy : processRelativeTime
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -16994,9 +18395,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 57 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : German (Austria) [de-at]
@@ -17006,7 +18407,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17065,7 +18466,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : processRelativeTime,
 	        yy : processRelativeTime
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -17078,16 +18479,99 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 58 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : German (Switzerland) [de-ch]
+	//! author : sschueller : https://github.com/sschueller
+
+	;(function (global, factory) {
+	    true ? factory(__webpack_require__(41)) :
+	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
+	   factory(global.moment)
+	}(this, (function (moment) { 'use strict';
+
+
+	// based on: https://www.bk.admin.ch/dokumentation/sprachen/04915/05016/index.html?lang=de#
+
+	function processRelativeTime(number, withoutSuffix, key, isFuture) {
+	    var format = {
+	        'm': ['eine Minute', 'einer Minute'],
+	        'h': ['eine Stunde', 'einer Stunde'],
+	        'd': ['ein Tag', 'einem Tag'],
+	        'dd': [number + ' Tage', number + ' Tagen'],
+	        'M': ['ein Monat', 'einem Monat'],
+	        'MM': [number + ' Monate', number + ' Monaten'],
+	        'y': ['ein Jahr', 'einem Jahr'],
+	        'yy': [number + ' Jahre', number + ' Jahren']
+	    };
+	    return withoutSuffix ? format[key][0] : format[key][1];
+	}
+
+	var deCh = moment.defineLocale('de-ch', {
+	    months : 'Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split('_'),
+	    monthsShort : 'Jan._Febr._März_April_Mai_Juni_Juli_Aug._Sept._Okt._Nov._Dez.'.split('_'),
+	    monthsParseExact : true,
+	    weekdays : 'Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag'.split('_'),
+	    weekdaysShort : 'So_Mo_Di_Mi_Do_Fr_Sa'.split('_'),
+	    weekdaysMin : 'So_Mo_Di_Mi_Do_Fr_Sa'.split('_'),
+	    weekdaysParseExact : true,
+	    longDateFormat : {
+	        LT: 'HH.mm',
+	        LTS: 'HH.mm.ss',
+	        L : 'DD.MM.YYYY',
+	        LL : 'D. MMMM YYYY',
+	        LLL : 'D. MMMM YYYY HH.mm',
+	        LLLL : 'dddd, D. MMMM YYYY HH.mm'
+	    },
+	    calendar : {
+	        sameDay: '[heute um] LT [Uhr]',
+	        sameElse: 'L',
+	        nextDay: '[morgen um] LT [Uhr]',
+	        nextWeek: 'dddd [um] LT [Uhr]',
+	        lastDay: '[gestern um] LT [Uhr]',
+	        lastWeek: '[letzten] dddd [um] LT [Uhr]'
+	    },
+	    relativeTime : {
+	        future : 'in %s',
+	        past : 'vor %s',
+	        s : 'ein paar Sekunden',
+	        m : processRelativeTime,
+	        mm : '%d Minuten',
+	        h : processRelativeTime,
+	        hh : '%d Stunden',
+	        d : processRelativeTime,
+	        dd : processRelativeTime,
+	        M : processRelativeTime,
+	        MM : processRelativeTime,
+	        y : processRelativeTime,
+	        yy : processRelativeTime
+	    },
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
+	    ordinal : '%d.',
+	    week : {
+	        dow : 1, // Monday is the first day of the week.
+	        doy : 4  // The week that contains Jan 4th is the first week of the year.
+	    }
+	});
+
+	return deCh;
+
+	})));
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Maldivian [dv]
 	//! author : Jawish Hameed : https://github.com/jawish
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17183,16 +18667,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 59 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Greek [el]
 	//! author : Aggelos Karalias : https://github.com/mehiel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17206,7 +18690,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    monthsNominativeEl : 'Ιανουάριος_Φεβρουάριος_Μάρτιος_Απρίλιος_Μάιος_Ιούνιος_Ιούλιος_Αύγουστος_Σεπτέμβριος_Οκτώβριος_Νοέμβριος_Δεκέμβριος'.split('_'),
 	    monthsGenitiveEl : 'Ιανουαρίου_Φεβρουαρίου_Μαρτίου_Απριλίου_Μαΐου_Ιουνίου_Ιουλίου_Αυγούστου_Σεπτεμβρίου_Οκτωβρίου_Νοεμβρίου_Δεκεμβρίου'.split('_'),
 	    months : function (momentToFormat, format) {
-	        if (/D/.test(format.substring(0, format.indexOf('MMMM')))) { // if there is a day number before 'MMMM'
+	        if (!momentToFormat) {
+	            return this._monthsNominativeEl;
+	        } else if (/D/.test(format.substring(0, format.indexOf('MMMM')))) { // if there is a day number before 'MMMM'
 	            return this._monthsGenitiveEl[momentToFormat.month()];
 	        } else {
 	            return this._monthsNominativeEl[momentToFormat.month()];
@@ -17273,7 +18759,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'ένας χρόνος',
 	        yy : '%d χρόνια'
 	    },
-	    ordinalParse: /\d{1,2}η/,
+	    dayOfMonthOrdinalParse: /\d{1,2}η/,
 	    ordinal: '%dη',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -17286,16 +18772,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 60 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : English (Australia) [en-au]
 	//! author : Jared Morse : https://github.com/jarcoal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17338,7 +18824,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'a year',
 	        yy : '%d years'
 	    },
-	    ordinalParse: /\d{1,2}(st|nd|rd|th)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
 	    ordinal : function (number) {
 	        var b = number % 10,
 	            output = (~~(number % 100 / 10) === 1) ? 'th' :
@@ -17358,16 +18844,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 61 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : English (Canada) [en-ca]
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17410,7 +18896,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'a year',
 	        yy : '%d years'
 	    },
-	    ordinalParse: /\d{1,2}(st|nd|rd|th)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
 	    ordinal : function (number) {
 	        var b = number % 10,
 	            output = (~~(number % 100 / 10) === 1) ? 'th' :
@@ -17426,16 +18912,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 62 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : English (United Kingdom) [en-gb]
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17478,7 +18964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'a year',
 	        yy : '%d years'
 	    },
-	    ordinalParse: /\d{1,2}(st|nd|rd|th)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
 	    ordinal : function (number) {
 	        var b = number % 10,
 	            output = (~~(number % 100 / 10) === 1) ? 'th' :
@@ -17498,16 +18984,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 63 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : English (Ireland) [en-ie]
 	//! author : Chris Cartlidge : https://github.com/chriscartlidge
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17550,7 +19036,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'a year',
 	        yy : '%d years'
 	    },
-	    ordinalParse: /\d{1,2}(st|nd|rd|th)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
 	    ordinal : function (number) {
 	        var b = number % 10,
 	            output = (~~(number % 100 / 10) === 1) ? 'th' :
@@ -17570,16 +19056,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 64 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : English (New Zealand) [en-nz]
 	//! author : Luke McGregor : https://github.com/lukemcgregor
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17622,7 +19108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'a year',
 	        yy : '%d years'
 	    },
-	    ordinalParse: /\d{1,2}(st|nd|rd|th)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
 	    ordinal : function (number) {
 	        var b = number % 10,
 	            output = (~~(number % 100 / 10) === 1) ? 'th' :
@@ -17642,18 +19128,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 65 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Esperanto [eo]
 	//! author : Colin Dean : https://github.com/colindean
-	//! komento: Mi estas malcerta se mi korekte traktis akuzativojn en tiu traduko.
-	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
+	//! author : Mia Nordentoft Imperatori : https://github.com/miestasmia
+	//! comment : miestasmia corrected the translation by colindean
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17662,16 +19148,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	var eo = moment.defineLocale('eo', {
 	    months : 'januaro_februaro_marto_aprilo_majo_junio_julio_aŭgusto_septembro_oktobro_novembro_decembro'.split('_'),
 	    monthsShort : 'jan_feb_mar_apr_maj_jun_jul_aŭg_sep_okt_nov_dec'.split('_'),
-	    weekdays : 'Dimanĉo_Lundo_Mardo_Merkredo_Ĵaŭdo_Vendredo_Sabato'.split('_'),
-	    weekdaysShort : 'Dim_Lun_Mard_Merk_Ĵaŭ_Ven_Sab'.split('_'),
-	    weekdaysMin : 'Di_Lu_Ma_Me_Ĵa_Ve_Sa'.split('_'),
+	    weekdays : 'dimanĉo_lundo_mardo_merkredo_ĵaŭdo_vendredo_sabato'.split('_'),
+	    weekdaysShort : 'dim_lun_mard_merk_ĵaŭ_ven_sab'.split('_'),
+	    weekdaysMin : 'di_lu_ma_me_ĵa_ve_sa'.split('_'),
 	    longDateFormat : {
 	        LT : 'HH:mm',
 	        LTS : 'HH:mm:ss',
 	        L : 'YYYY-MM-DD',
-	        LL : 'D[-an de] MMMM, YYYY',
-	        LLL : 'D[-an de] MMMM, YYYY HH:mm',
-	        LLLL : 'dddd, [la] D[-an de] MMMM, YYYY HH:mm'
+	        LL : 'D[-a de] MMMM, YYYY',
+	        LLL : 'D[-a de] MMMM, YYYY HH:mm',
+	        LLLL : 'dddd, [la] D[-a de] MMMM, YYYY HH:mm'
 	    },
 	    meridiemParse: /[ap]\.t\.m/i,
 	    isPM: function (input) {
@@ -17693,7 +19179,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        sameElse : 'L'
 	    },
 	    relativeTime : {
-	        future : 'je %s',
+	        future : 'post %s',
 	        past : 'antaŭ %s',
 	        s : 'sekundoj',
 	        m : 'minuto',
@@ -17707,7 +19193,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'jaro',
 	        yy : '%d jaroj'
 	    },
-	    ordinalParse: /\d{1,2}a/,
+	    dayOfMonthOrdinalParse: /\d{1,2}a/,
 	    ordinal : '%da',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -17720,16 +19206,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 66 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Spanish [es]
 	//! author : Julio Napurí : https://github.com/julionc
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17741,7 +19227,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var es = moment.defineLocale('es', {
 	    months : 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split('_'),
 	    monthsShort : function (m, format) {
-	        if (/-MMM-/.test(format)) {
+	        if (!m) {
+	            return monthsShortDot;
+	        } else if (/-MMM-/.test(format)) {
 	            return monthsShort[m.month()];
 	        } else {
 	            return monthsShortDot[m.month()];
@@ -17793,7 +19281,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'un año',
 	        yy : '%d años'
 	    },
-	    ordinalParse : /\d{1,2}º/,
+	    dayOfMonthOrdinalParse : /\d{1,2}º/,
 	    ordinal : '%dº',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -17806,15 +19294,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 67 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Spanish (Dominican Republic) [es-do]
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17826,7 +19314,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var esDo = moment.defineLocale('es-do', {
 	    months : 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split('_'),
 	    monthsShort : function (m, format) {
-	        if (/-MMM-/.test(format)) {
+	        if (!m) {
+	            return monthsShortDot;
+	        } else if (/-MMM-/.test(format)) {
 	            return monthsShort[m.month()];
 	        } else {
 	            return monthsShortDot[m.month()];
@@ -17878,7 +19368,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'un año',
 	        yy : '%d años'
 	    },
-	    ordinalParse : /\d{1,2}º/,
+	    dayOfMonthOrdinalParse : /\d{1,2}º/,
 	    ordinal : '%dº',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -17891,9 +19381,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 68 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Estonian [et]
@@ -17901,7 +19391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17963,7 +19453,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y      : processRelativeTime,
 	        yy     : processRelativeTime
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -17976,16 +19466,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 69 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Basque [eu]
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18034,7 +19524,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'urte bat',
 	        yy : '%d urte'
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -18047,16 +19537,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 70 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Persian [fa]
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18124,7 +19614,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    relativeTime : {
 	        future : 'در %s',
 	        past : '%s پیش',
-	        s : 'چندین ثانیه',
+	        s : 'چند ثانیه',
 	        m : 'یک دقیقه',
 	        mm : '%d دقیقه',
 	        h : 'یک ساعت',
@@ -18146,7 +19636,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return symbolMap[match];
 	        }).replace(/,/g, '،');
 	    },
-	    ordinalParse: /\d{1,2}م/,
+	    dayOfMonthOrdinalParse: /\d{1,2}م/,
 	    ordinal : '%dم',
 	    week : {
 	        dow : 6, // Saturday is the first day of the week.
@@ -18159,16 +19649,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 71 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Finnish [fi]
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18258,7 +19748,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : translate,
 	        yy : translate
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -18271,16 +19761,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 72 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Faroese [fo]
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18323,7 +19813,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'eitt ár',
 	        yy : '%d ár'
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -18336,16 +19826,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 73 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : French [fr]
 	//! author : John Fischer : https://github.com/jfroffice
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18368,12 +19858,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        LLLL : 'dddd D MMMM YYYY HH:mm'
 	    },
 	    calendar : {
-	        sameDay: '[Aujourd\'hui à] LT',
-	        nextDay: '[Demain à] LT',
-	        nextWeek: 'dddd [à] LT',
-	        lastDay: '[Hier à] LT',
-	        lastWeek: 'dddd [dernier à] LT',
-	        sameElse: 'L'
+	        sameDay : '[Aujourd’hui à] LT',
+	        nextDay : '[Demain à] LT',
+	        nextWeek : 'dddd [à] LT',
+	        lastDay : '[Hier à] LT',
+	        lastWeek : 'dddd [dernier à] LT',
+	        sameElse : 'L'
 	    },
 	    relativeTime : {
 	        future : 'dans %s',
@@ -18390,9 +19880,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'un an',
 	        yy : '%d ans'
 	    },
-	    ordinalParse: /\d{1,2}(er|)/,
-	    ordinal : function (number) {
-	        return number + (number === 1 ? 'er' : '');
+	    dayOfMonthOrdinalParse: /\d{1,2}(er|)/,
+	    ordinal : function (number, period) {
+	        switch (period) {
+	            // TODO: Return 'e' when day of month > 1. Move this case inside
+	            // block for masculine words below.
+	            // See https://github.com/moment/moment/issues/3375
+	            case 'D':
+	                return number + (number === 1 ? 'er' : '');
+
+	            // Words with masculine grammatical gender: mois, trimestre, jour
+	            default:
+	            case 'M':
+	            case 'Q':
+	            case 'DDD':
+	            case 'd':
+	                return number + (number === 1 ? 'er' : 'e');
+
+	            // Words with feminine grammatical gender: semaine
+	            case 'w':
+	            case 'W':
+	                return number + (number === 1 ? 're' : 'e');
+	        }
 	    },
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -18405,16 +19914,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 74 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : French (Canada) [fr-ca]
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18437,12 +19946,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        LLLL : 'dddd D MMMM YYYY HH:mm'
 	    },
 	    calendar : {
-	        sameDay: '[Aujourd\'hui à] LT',
-	        nextDay: '[Demain à] LT',
-	        nextWeek: 'dddd [à] LT',
-	        lastDay: '[Hier à] LT',
-	        lastWeek: 'dddd [dernier à] LT',
-	        sameElse: 'L'
+	        sameDay : '[Aujourd’hui à] LT',
+	        nextDay : '[Demain à] LT',
+	        nextWeek : 'dddd [à] LT',
+	        lastDay : '[Hier à] LT',
+	        lastWeek : 'dddd [dernier à] LT',
+	        sameElse : 'L'
 	    },
 	    relativeTime : {
 	        future : 'dans %s',
@@ -18459,9 +19968,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'un an',
 	        yy : '%d ans'
 	    },
-	    ordinalParse: /\d{1,2}(er|e)/,
-	    ordinal : function (number) {
-	        return number + (number === 1 ? 'er' : 'e');
+	    dayOfMonthOrdinalParse: /\d{1,2}(er|e)/,
+	    ordinal : function (number, period) {
+	        switch (period) {
+	            // Words with masculine grammatical gender: mois, trimestre, jour
+	            default:
+	            case 'M':
+	            case 'Q':
+	            case 'D':
+	            case 'DDD':
+	            case 'd':
+	                return number + (number === 1 ? 'er' : 'e');
+
+	            // Words with feminine grammatical gender: semaine
+	            case 'w':
+	            case 'W':
+	                return number + (number === 1 ? 're' : 'e');
+	        }
 	    }
 	});
 
@@ -18470,16 +19993,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 75 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : French (Switzerland) [fr-ch]
 	//! author : Gaspard Bucher : https://github.com/gaspard
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18502,12 +20025,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        LLLL : 'dddd D MMMM YYYY HH:mm'
 	    },
 	    calendar : {
-	        sameDay: '[Aujourd\'hui à] LT',
-	        nextDay: '[Demain à] LT',
-	        nextWeek: 'dddd [à] LT',
-	        lastDay: '[Hier à] LT',
-	        lastWeek: 'dddd [dernier à] LT',
-	        sameElse: 'L'
+	        sameDay : '[Aujourd’hui à] LT',
+	        nextDay : '[Demain à] LT',
+	        nextWeek : 'dddd [à] LT',
+	        lastDay : '[Hier à] LT',
+	        lastWeek : 'dddd [dernier à] LT',
+	        sameElse : 'L'
 	    },
 	    relativeTime : {
 	        future : 'dans %s',
@@ -18524,9 +20047,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'un an',
 	        yy : '%d ans'
 	    },
-	    ordinalParse: /\d{1,2}(er|e)/,
-	    ordinal : function (number) {
-	        return number + (number === 1 ? 'er' : 'e');
+	    dayOfMonthOrdinalParse: /\d{1,2}(er|e)/,
+	    ordinal : function (number, period) {
+	        switch (period) {
+	            // Words with masculine grammatical gender: mois, trimestre, jour
+	            default:
+	            case 'M':
+	            case 'Q':
+	            case 'D':
+	            case 'DDD':
+	            case 'd':
+	                return number + (number === 1 ? 'er' : 'e');
+
+	            // Words with feminine grammatical gender: semaine
+	            case 'w':
+	            case 'W':
+	                return number + (number === 1 ? 're' : 'e');
+	        }
 	    },
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -18539,16 +20076,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 76 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Frisian [fy]
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18560,7 +20097,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var fy = moment.defineLocale('fy', {
 	    months : 'jannewaris_febrewaris_maart_april_maaie_juny_july_augustus_septimber_oktober_novimber_desimber'.split('_'),
 	    monthsShort : function (m, format) {
-	        if (/-MMM-/.test(format)) {
+	        if (!m) {
+	            return monthsShortWithDots;
+	        } else if (/-MMM-/.test(format)) {
 	            return monthsShortWithoutDots[m.month()];
 	        } else {
 	            return monthsShortWithDots[m.month()];
@@ -18602,7 +20141,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'ien jier',
 	        yy : '%d jierren'
 	    },
-	    ordinalParse: /\d{1,2}(ste|de)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(ste|de)/,
 	    ordinal : function (number) {
 	        return number + ((number === 1 || number === 8 || number >= 20) ? 'ste' : 'de');
 	    },
@@ -18617,16 +20156,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 77 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Scottish Gaelic [gd]
 	//! author : Jon Ashdown : https://github.com/jonashdown
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18682,7 +20221,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'bliadhna',
 	        yy : '%d bliadhna'
 	    },
-	    ordinalParse : /\d{1,2}(d|na|mh)/,
+	    dayOfMonthOrdinalParse : /\d{1,2}(d|na|mh)/,
 	    ordinal : function (number) {
 	        var output = number === 1 ? 'd' : number % 10 === 2 ? 'na' : 'mh';
 	        return number + output;
@@ -18698,16 +20237,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 78 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Galician [gl]
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18767,7 +20306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'un ano',
 	        yy : '%d anos'
 	    },
-	    ordinalParse : /\d{1,2}º/,
+	    dayOfMonthOrdinalParse : /\d{1,2}º/,
 	    ordinal : '%dº',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -18780,9 +20319,136 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 79 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Konkani Latin script [gom-latn]
+	//! author : The Discoverer : https://github.com/WikiDiscoverer
+
+	;(function (global, factory) {
+	    true ? factory(__webpack_require__(41)) :
+	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
+	   factory(global.moment)
+	}(this, (function (moment) { 'use strict';
+
+
+	function processRelativeTime(number, withoutSuffix, key, isFuture) {
+	    var format = {
+	        's': ['thodde secondanim', 'thodde second'],
+	        'm': ['eka mintan', 'ek minute'],
+	        'mm': [number + ' mintanim', number + ' mintam'],
+	        'h': ['eka horan', 'ek hor'],
+	        'hh': [number + ' horanim', number + ' hor'],
+	        'd': ['eka disan', 'ek dis'],
+	        'dd': [number + ' disanim', number + ' dis'],
+	        'M': ['eka mhoinean', 'ek mhoino'],
+	        'MM': [number + ' mhoineanim', number + ' mhoine'],
+	        'y': ['eka vorsan', 'ek voros'],
+	        'yy': [number + ' vorsanim', number + ' vorsam']
+	    };
+	    return withoutSuffix ? format[key][0] : format[key][1];
+	}
+
+	var gomLatn = moment.defineLocale('gom-latn', {
+	    months : 'Janer_Febrer_Mars_Abril_Mai_Jun_Julai_Agost_Setembr_Otubr_Novembr_Dezembr'.split('_'),
+	    monthsShort : 'Jan._Feb._Mars_Abr._Mai_Jun_Jul._Ago._Set._Otu._Nov._Dez.'.split('_'),
+	    monthsParseExact : true,
+	    weekdays : 'Aitar_Somar_Mongllar_Budvar_Brestar_Sukrar_Son\'var'.split('_'),
+	    weekdaysShort : 'Ait._Som._Mon._Bud._Bre._Suk._Son.'.split('_'),
+	    weekdaysMin : 'Ai_Sm_Mo_Bu_Br_Su_Sn'.split('_'),
+	    weekdaysParseExact : true,
+	    longDateFormat : {
+	        LT : 'A h:mm [vazta]',
+	        LTS : 'A h:mm:ss [vazta]',
+	        L : 'DD-MM-YYYY',
+	        LL : 'D MMMM YYYY',
+	        LLL : 'D MMMM YYYY A h:mm [vazta]',
+	        LLLL : 'dddd, MMMM[achea] Do, YYYY, A h:mm [vazta]',
+	        llll: 'ddd, D MMM YYYY, A h:mm [vazta]'
+	    },
+	    calendar : {
+	        sameDay: '[Aiz] LT',
+	        nextDay: '[Faleam] LT',
+	        nextWeek: '[Ieta to] dddd[,] LT',
+	        lastDay: '[Kal] LT',
+	        lastWeek: '[Fatlo] dddd[,] LT',
+	        sameElse: 'L'
+	    },
+	    relativeTime : {
+	        future : '%s',
+	        past : '%s adim',
+	        s : processRelativeTime,
+	        m : processRelativeTime,
+	        mm : processRelativeTime,
+	        h : processRelativeTime,
+	        hh : processRelativeTime,
+	        d : processRelativeTime,
+	        dd : processRelativeTime,
+	        M : processRelativeTime,
+	        MM : processRelativeTime,
+	        y : processRelativeTime,
+	        yy : processRelativeTime
+	    },
+	    dayOfMonthOrdinalParse : /\d{1,2}(er)/,
+	    ordinal : function (number, period) {
+	        switch (period) {
+	            // the ordinal 'er' only applies to day of the month
+	            case 'D':
+	                return number + 'er';
+	            default:
+	            case 'M':
+	            case 'Q':
+	            case 'DDD':
+	            case 'd':
+	            case 'w':
+	            case 'W':
+	                return number;
+	        }
+	    },
+	    week : {
+	        dow : 1, // Monday is the first day of the week.
+	        doy : 4  // The week that contains Jan 4th is the first week of the year.
+	    },
+	    meridiemParse: /rati|sokalli|donparam|sanje/,
+	    meridiemHour : function (hour, meridiem) {
+	        if (hour === 12) {
+	            hour = 0;
+	        }
+	        if (meridiem === 'rati') {
+	            return hour < 4 ? hour : hour + 12;
+	        } else if (meridiem === 'sokalli') {
+	            return hour;
+	        } else if (meridiem === 'donparam') {
+	            return hour > 12 ? hour : hour + 12;
+	        } else if (meridiem === 'sanje') {
+	            return hour + 12;
+	        }
+	    },
+	    meridiem : function (hour, minute, isLower) {
+	        if (hour < 4) {
+	            return 'rati';
+	        } else if (hour < 12) {
+	            return 'sokalli';
+	        } else if (hour < 16) {
+	            return 'donparam';
+	        } else if (hour < 20) {
+	            return 'sanje';
+	        } else {
+	            return 'rati';
+	        }
+	    }
+	});
+
+	return gomLatn;
+
+	})));
+
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Hebrew [he]
@@ -18791,7 +20457,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tal Ater : https://github.com/TalAter
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18884,16 +20550,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 80 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Hindi [hi]
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19013,16 +20679,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 81 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Croatian [hr]
 	//! author : Bojan Marković : https://github.com/bmarkovic
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19150,7 +20816,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y      : 'godinu',
 	        yy     : translate
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -19163,16 +20829,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 82 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Hungarian [hu]
 	//! author : Adam Brunner : https://github.com/adambrunner
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19264,7 +20930,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : translate,
 	        yy : translate
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -19277,16 +20943,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 83 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Armenian [hy-am]
 	//! author : Armendarabyan : https://github.com/armendarabyan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19351,7 +21017,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return 'երեկոյան';
 	        }
 	    },
-	    ordinalParse: /\d{1,2}|\d{1,2}-(ին|րդ)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}|\d{1,2}-(ին|րդ)/,
 	    ordinal: function (number, period) {
 	        switch (period) {
 	            case 'DDD':
@@ -19377,9 +21043,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 84 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Indonesian [id]
@@ -19387,7 +21053,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19465,16 +21131,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 85 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Icelandic [is]
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19584,7 +21250,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : translate,
 	        yy : translate
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -19597,9 +21263,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 86 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Italian [it]
@@ -19607,7 +21273,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19616,9 +21282,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var it = moment.defineLocale('it', {
 	    months : 'gennaio_febbraio_marzo_aprile_maggio_giugno_luglio_agosto_settembre_ottobre_novembre_dicembre'.split('_'),
 	    monthsShort : 'gen_feb_mar_apr_mag_giu_lug_ago_set_ott_nov_dic'.split('_'),
-	    weekdays : 'Domenica_Lunedì_Martedì_Mercoledì_Giovedì_Venerdì_Sabato'.split('_'),
-	    weekdaysShort : 'Dom_Lun_Mar_Mer_Gio_Ven_Sab'.split('_'),
-	    weekdaysMin : 'Do_Lu_Ma_Me_Gi_Ve_Sa'.split('_'),
+	    weekdays : 'domenica_lunedì_martedì_mercoledì_giovedì_venerdì_sabato'.split('_'),
+	    weekdaysShort : 'dom_lun_mar_mer_gio_ven_sab'.split('_'),
+	    weekdaysMin : 'do_lu_ma_me_gi_ve_sa'.split('_'),
 	    longDateFormat : {
 	        LT : 'HH:mm',
 	        LTS : 'HH:mm:ss',
@@ -19659,7 +21325,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'un anno',
 	        yy : '%d anni'
 	    },
-	    ordinalParse : /\d{1,2}º/,
+	    dayOfMonthOrdinalParse : /\d{1,2}º/,
 	    ordinal: '%dº',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -19672,16 +21338,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 87 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Japanese [ja]
 	//! author : LI Long : https://github.com/baryon
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19694,12 +21360,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    weekdaysShort : '日_月_火_水_木_金_土'.split('_'),
 	    weekdaysMin : '日_月_火_水_木_金_土'.split('_'),
 	    longDateFormat : {
-	        LT : 'Ah時m分',
-	        LTS : 'Ah時m分s秒',
+	        LT : 'HH:mm',
+	        LTS : 'HH:mm:ss',
 	        L : 'YYYY/MM/DD',
 	        LL : 'YYYY年M月D日',
-	        LLL : 'YYYY年M月D日Ah時m分',
-	        LLLL : 'YYYY年M月D日Ah時m分 dddd'
+	        LLL : 'YYYY年M月D日 HH:mm',
+	        LLLL : 'YYYY年M月D日 HH:mm dddd',
+	        l : 'YYYY/MM/DD',
+	        ll : 'YYYY年M月D日',
+	        lll : 'YYYY年M月D日 HH:mm',
+	        llll : 'YYYY年M月D日 HH:mm dddd'
 	    },
 	    meridiemParse: /午前|午後/i,
 	    isPM : function (input) {
@@ -19720,7 +21390,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        lastWeek : '[前週]dddd LT',
 	        sameElse : 'L'
 	    },
-	    ordinalParse : /\d{1,2}日/,
+	    dayOfMonthOrdinalParse : /\d{1,2}日/,
 	    ordinal : function (number, period) {
 	        switch (period) {
 	            case 'd':
@@ -19753,9 +21423,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 88 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Javanese [jv]
@@ -19763,7 +21433,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19841,16 +21511,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 89 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Georgian [ka]
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19893,10 +21563,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 	        past : function (s) {
 	            if ((/(წამი|წუთი|საათი|დღე|თვე)/).test(s)) {
-	                return s.replace(/(ი|ე)$/, 'ის წინ');
+	                return s.replace(/(ი|ე)$/, 'ის უკან');
 	            }
 	            if ((/წელი/).test(s)) {
-	                return s.replace(/წელი$/, 'წლის წინ');
+	                return s.replace(/წელი$/, 'წლის უკან');
 	            }
 	        },
 	        s : 'რამდენიმე წამი',
@@ -19911,7 +21581,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'წელი',
 	        yy : '%d წელი'
 	    },
-	    ordinalParse: /0|1-ლი|მე-\d{1,2}|\d{1,2}-ე/,
+	    dayOfMonthOrdinalParse: /0|1-ლი|მე-\d{1,2}|\d{1,2}-ე/,
 	    ordinal : function (number) {
 	        if (number === 0) {
 	            return number;
@@ -19935,16 +21605,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 90 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Kazakh [kk]
 	//! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20010,7 +21680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'бір жыл',
 	        yy : '%d жыл'
 	    },
-	    ordinalParse: /\d{1,2}-(ші|шы)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}-(ші|шы)/,
 	    ordinal : function (number) {
 	        var a = number % 10,
 	            b = number >= 100 ? 100 : null;
@@ -20027,16 +21697,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 91 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Cambodian [km]
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20090,9 +21760,140 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 92 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Kannada [kn]
+	//! author : Rajeev Naik : https://github.com/rajeevnaikte
+
+	;(function (global, factory) {
+	    true ? factory(__webpack_require__(41)) :
+	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
+	   factory(global.moment)
+	}(this, (function (moment) { 'use strict';
+
+
+	var symbolMap = {
+	    '1': '೧',
+	    '2': '೨',
+	    '3': '೩',
+	    '4': '೪',
+	    '5': '೫',
+	    '6': '೬',
+	    '7': '೭',
+	    '8': '೮',
+	    '9': '೯',
+	    '0': '೦'
+	};
+	var numberMap = {
+	    '೧': '1',
+	    '೨': '2',
+	    '೩': '3',
+	    '೪': '4',
+	    '೫': '5',
+	    '೬': '6',
+	    '೭': '7',
+	    '೮': '8',
+	    '೯': '9',
+	    '೦': '0'
+	};
+
+	var kn = moment.defineLocale('kn', {
+	    months : 'ಜನವರಿ_ಫೆಬ್ರವರಿ_ಮಾರ್ಚ್_ಏಪ್ರಿಲ್_ಮೇ_ಜೂನ್_ಜುಲೈ_ಆಗಸ್ಟ್_ಸೆಪ್ಟೆಂಬರ್_ಅಕ್ಟೋಬರ್_ನವೆಂಬರ್_ಡಿಸೆಂಬರ್'.split('_'),
+	    monthsShort : 'ಜನ_ಫೆಬ್ರ_ಮಾರ್ಚ್_ಏಪ್ರಿಲ್_ಮೇ_ಜೂನ್_ಜುಲೈ_ಆಗಸ್ಟ್_ಸೆಪ್ಟೆಂಬ_ಅಕ್ಟೋಬ_ನವೆಂಬ_ಡಿಸೆಂಬ'.split('_'),
+	    monthsParseExact: true,
+	    weekdays : 'ಭಾನುವಾರ_ಸೋಮವಾರ_ಮಂಗಳವಾರ_ಬುಧವಾರ_ಗುರುವಾರ_ಶುಕ್ರವಾರ_ಶನಿವಾರ'.split('_'),
+	    weekdaysShort : 'ಭಾನು_ಸೋಮ_ಮಂಗಳ_ಬುಧ_ಗುರು_ಶುಕ್ರ_ಶನಿ'.split('_'),
+	    weekdaysMin : 'ಭಾ_ಸೋ_ಮಂ_ಬು_ಗು_ಶು_ಶ'.split('_'),
+	    longDateFormat : {
+	        LT : 'A h:mm',
+	        LTS : 'A h:mm:ss',
+	        L : 'DD/MM/YYYY',
+	        LL : 'D MMMM YYYY',
+	        LLL : 'D MMMM YYYY, A h:mm',
+	        LLLL : 'dddd, D MMMM YYYY, A h:mm'
+	    },
+	    calendar : {
+	        sameDay : '[ಇಂದು] LT',
+	        nextDay : '[ನಾಳೆ] LT',
+	        nextWeek : 'dddd, LT',
+	        lastDay : '[ನಿನ್ನೆ] LT',
+	        lastWeek : '[ಕೊನೆಯ] dddd, LT',
+	        sameElse : 'L'
+	    },
+	    relativeTime : {
+	        future : '%s ನಂತರ',
+	        past : '%s ಹಿಂದೆ',
+	        s : 'ಕೆಲವು ಕ್ಷಣಗಳು',
+	        m : 'ಒಂದು ನಿಮಿಷ',
+	        mm : '%d ನಿಮಿಷ',
+	        h : 'ಒಂದು ಗಂಟೆ',
+	        hh : '%d ಗಂಟೆ',
+	        d : 'ಒಂದು ದಿನ',
+	        dd : '%d ದಿನ',
+	        M : 'ಒಂದು ತಿಂಗಳು',
+	        MM : '%d ತಿಂಗಳು',
+	        y : 'ಒಂದು ವರ್ಷ',
+	        yy : '%d ವರ್ಷ'
+	    },
+	    preparse: function (string) {
+	        return string.replace(/[೧೨೩೪೫೬೭೮೯೦]/g, function (match) {
+	            return numberMap[match];
+	        });
+	    },
+	    postformat: function (string) {
+	        return string.replace(/\d/g, function (match) {
+	            return symbolMap[match];
+	        });
+	    },
+	    meridiemParse: /ರಾತ್ರಿ|ಬೆಳಿಗ್ಗೆ|ಮಧ್ಯಾಹ್ನ|ಸಂಜೆ/,
+	    meridiemHour : function (hour, meridiem) {
+	        if (hour === 12) {
+	            hour = 0;
+	        }
+	        if (meridiem === 'ರಾತ್ರಿ') {
+	            return hour < 4 ? hour : hour + 12;
+	        } else if (meridiem === 'ಬೆಳಿಗ್ಗೆ') {
+	            return hour;
+	        } else if (meridiem === 'ಮಧ್ಯಾಹ್ನ') {
+	            return hour >= 10 ? hour : hour + 12;
+	        } else if (meridiem === 'ಸಂಜೆ') {
+	            return hour + 12;
+	        }
+	    },
+	    meridiem : function (hour, minute, isLower) {
+	        if (hour < 4) {
+	            return 'ರಾತ್ರಿ';
+	        } else if (hour < 10) {
+	            return 'ಬೆಳಿಗ್ಗೆ';
+	        } else if (hour < 17) {
+	            return 'ಮಧ್ಯಾಹ್ನ';
+	        } else if (hour < 20) {
+	            return 'ಸಂಜೆ';
+	        } else {
+	            return 'ರಾತ್ರಿ';
+	        }
+	    },
+	    dayOfMonthOrdinalParse: /\d{1,2}(ನೇ)/,
+	    ordinal : function (number) {
+	        return number + 'ನೇ';
+	    },
+	    week : {
+	        dow : 0, // Sunday is the first day of the week.
+	        doy : 6  // The week that contains Jan 1st is the first week of the year.
+	    }
+	});
+
+	return kn;
+
+	})));
+
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Korean [ko]
@@ -20100,7 +21901,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jeeeyul Lee <jeeeyul@gmail.com>
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20113,12 +21914,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    weekdaysShort : '일_월_화_수_목_금_토'.split('_'),
 	    weekdaysMin : '일_월_화_수_목_금_토'.split('_'),
 	    longDateFormat : {
-	        LT : 'A h시 m분',
-	        LTS : 'A h시 m분 s초',
+	        LT : 'A h:mm',
+	        LTS : 'A h:mm:ss',
 	        L : 'YYYY.MM.DD',
 	        LL : 'YYYY년 MMMM D일',
-	        LLL : 'YYYY년 MMMM D일 A h시 m분',
-	        LLLL : 'YYYY년 MMMM D일 dddd A h시 m분'
+	        LLL : 'YYYY년 MMMM D일 A h:mm',
+	        LLLL : 'YYYY년 MMMM D일 dddd A h:mm',
+	        l : 'YYYY.MM.DD',
+	        ll : 'YYYY년 MMMM D일',
+	        lll : 'YYYY년 MMMM D일 A h:mm',
+	        llll : 'YYYY년 MMMM D일 dddd A h:mm'
 	    },
 	    calendar : {
 	        sameDay : '오늘 LT',
@@ -20133,7 +21938,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        past : '%s 전',
 	        s : '몇 초',
 	        ss : '%d초',
-	        m : '일분',
+	        m : '1분',
 	        mm : '%d분',
 	        h : '한 시간',
 	        hh : '%d시간',
@@ -20144,7 +21949,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : '일 년',
 	        yy : '%d년'
 	    },
-	    ordinalParse : /\d{1,2}일/,
+	    dayOfMonthOrdinalParse : /\d{1,2}일/,
 	    ordinal : '%d일',
 	    meridiemParse : /오전|오후/,
 	    isPM : function (token) {
@@ -20160,16 +21965,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 93 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 104 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Kyrgyz [ky]
 	//! author : Chyngyz Arystan uulu : https://github.com/chyngyz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20236,7 +22041,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'бир жыл',
 	        yy : '%d жыл'
 	    },
-	    ordinalParse: /\d{1,2}-(чи|чы|чү|чу)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}-(чи|чы|чү|чу)/,
 	    ordinal : function (number) {
 	        var a = number % 10,
 	            b = number >= 100 ? 100 : null;
@@ -20253,9 +22058,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 94 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Luxembourgish [lb]
@@ -20263,7 +22068,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : David Raison : https://github.com/kwisatz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20382,7 +22187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : processRelativeTime,
 	        yy : '%d Joer'
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal: '%d.',
 	    week: {
 	        dow: 1, // Monday is the first day of the week.
@@ -20395,16 +22200,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 95 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Lao [lo]
 	//! author : Ryan Hart : https://github.com/ryanhart2
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20459,7 +22264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : '1 ປີ',
 	        yy : '%d ປີ'
 	    },
-	    ordinalParse: /(ທີ່)\d{1,2}/,
+	    dayOfMonthOrdinalParse: /(ທີ່)\d{1,2}/,
 	    ordinal : function (number) {
 	        return 'ທີ່' + number;
 	    }
@@ -20470,16 +22275,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 96 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Lithuanian [lt]
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20577,7 +22382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : translateSingular,
 	        yy : translate
 	    },
-	    ordinalParse: /\d{1,2}-oji/,
+	    dayOfMonthOrdinalParse: /\d{1,2}-oji/,
 	    ordinal : function (number) {
 	        return number + '-oji';
 	    },
@@ -20592,9 +22397,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 97 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Latvian [lv]
@@ -20602,7 +22407,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jānis Elmeris : https://github.com/JanisE
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20681,7 +22486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : relativeTimeWithSingular,
 	        yy : relativeTimeWithPlural
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -20694,16 +22499,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 98 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Montenegrin [me]
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20797,7 +22602,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y      : 'godinu',
 	        yy     : translator.translate
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -20810,16 +22615,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 99 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Maori [mi]
 	//! author : John Corrigan <robbiecloset@gmail.com> : https://github.com/johnideal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20866,7 +22671,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y: 'he tau',
 	        yy: '%d tau'
 	    },
-	    ordinalParse: /\d{1,2}º/,
+	    dayOfMonthOrdinalParse: /\d{1,2}º/,
 	    ordinal: '%dº',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -20879,16 +22684,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 100 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Macedonian [mk]
 	//! author : Borislav Mickov : https://github.com/B0k0
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20943,7 +22748,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'година',
 	        yy : '%d години'
 	    },
-	    ordinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
 	    ordinal : function (number) {
 	        var lastDigit = number % 10,
 	            last2Digits = number % 100;
@@ -20974,16 +22779,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 101 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Malayalam [ml]
 	//! author : Floyd Pink : https://github.com/floydpink
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21060,9 +22865,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 102 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Marathi [mr]
@@ -21070,7 +22875,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Vivek Athalye : https://github.com/vnathalye
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21224,16 +23029,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 103 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Malay [ms]
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21311,9 +23116,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 104 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Malay [ms-my]
@@ -21321,7 +23126,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21399,9 +23204,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 105 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Burmese [my]
@@ -21410,7 +23215,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tin Aung Lin : https://github.com/thanyawzinmin
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21500,9 +23305,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 106 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Norwegian Bokmål [nb]
@@ -21510,7 +23315,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21555,7 +23360,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'ett år',
 	        yy : '%d år'
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -21568,16 +23373,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 107 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Nepalese [ne]
 	//! author : suvash : https://github.com/suvash
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21696,9 +23501,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 108 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Dutch [nl]
@@ -21706,7 +23511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jacob Middag : https://github.com/middagj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21721,7 +23526,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var nl = moment.defineLocale('nl', {
 	    months : 'januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december'.split('_'),
 	    monthsShort : function (m, format) {
-	        if (/-MMM-/.test(format)) {
+	        if (!m) {
+	            return monthsShortWithDots;
+	        } else if (/-MMM-/.test(format)) {
 	            return monthsShortWithoutDots[m.month()];
 	        } else {
 	            return monthsShortWithDots[m.month()];
@@ -21772,7 +23579,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'één jaar',
 	        yy : '%d jaar'
 	    },
-	    ordinalParse: /\d{1,2}(ste|de)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(ste|de)/,
 	    ordinal : function (number) {
 	        return number + ((number === 1 || number === 8 || number >= 20) ? 'ste' : 'de');
 	    },
@@ -21787,9 +23594,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 109 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Dutch (Belgium) [nl-be]
@@ -21797,7 +23604,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jacob Middag : https://github.com/middagj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21812,7 +23619,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var nlBe = moment.defineLocale('nl-be', {
 	    months : 'januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december'.split('_'),
 	    monthsShort : function (m, format) {
-	        if (/-MMM-/.test(format)) {
+	        if (!m) {
+	            return monthsShortWithDots;
+	        } else if (/-MMM-/.test(format)) {
 	            return monthsShortWithoutDots[m.month()];
 	        } else {
 	            return monthsShortWithDots[m.month()];
@@ -21863,7 +23672,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'één jaar',
 	        yy : '%d jaar'
 	    },
-	    ordinalParse: /\d{1,2}(ste|de)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(ste|de)/,
 	    ordinal : function (number) {
 	        return number + ((number === 1 || number === 8 || number >= 20) ? 'ste' : 'de');
 	    },
@@ -21878,16 +23687,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 110 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 121 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Nynorsk [nn]
 	//! author : https://github.com/mechuwind
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21930,7 +23739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'eit år',
 	        yy : '%d år'
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -21943,16 +23752,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 111 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Punjabi (India) [pa-in]
 	//! author : Harpreet Singh : https://github.com/harpreetkhalsagtbit
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22072,16 +23881,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 112 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Polish [pl]
 	//! author : Rafal Hirsz : https://github.com/evoL
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22112,7 +23921,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var pl = moment.defineLocale('pl', {
 	    months : function (momentToFormat, format) {
-	        if (format === '') {
+	        if (!momentToFormat) {
+	            return monthsNominative;
+	        } else if (format === '') {
 	            // Hack: if format empty we know this is used to generate
 	            // RegExp by moment. Give then back both valid forms of months
 	            // in RegExp ready format.
@@ -22169,7 +23980,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'rok',
 	        yy : translate
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -22182,16 +23993,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 113 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Portuguese [pt]
 	//! author : Jefferson : https://github.com/jalex79
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22202,7 +24013,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    monthsShort : 'Jan_Fev_Mar_Abr_Mai_Jun_Jul_Ago_Set_Out_Nov_Dez'.split('_'),
 	    weekdays : 'Domingo_Segunda-Feira_Terça-Feira_Quarta-Feira_Quinta-Feira_Sexta-Feira_Sábado'.split('_'),
 	    weekdaysShort : 'Dom_Seg_Ter_Qua_Qui_Sex_Sáb'.split('_'),
-	    weekdaysMin : 'Dom_2ª_3ª_4ª_5ª_6ª_Sáb'.split('_'),
+	    weekdaysMin : 'Do_2ª_3ª_4ª_5ª_6ª_Sá'.split('_'),
 	    weekdaysParseExact : true,
 	    longDateFormat : {
 	        LT : 'HH:mm',
@@ -22239,7 +24050,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'um ano',
 	        yy : '%d anos'
 	    },
-	    ordinalParse: /\d{1,2}º/,
+	    dayOfMonthOrdinalParse: /\d{1,2}º/,
 	    ordinal : '%dº',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -22252,16 +24063,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 114 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Portuguese (Brazil) [pt-br]
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22272,7 +24083,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    monthsShort : 'Jan_Fev_Mar_Abr_Mai_Jun_Jul_Ago_Set_Out_Nov_Dez'.split('_'),
 	    weekdays : 'Domingo_Segunda-feira_Terça-feira_Quarta-feira_Quinta-feira_Sexta-feira_Sábado'.split('_'),
 	    weekdaysShort : 'Dom_Seg_Ter_Qua_Qui_Sex_Sáb'.split('_'),
-	    weekdaysMin : 'Dom_2ª_3ª_4ª_5ª_6ª_Sáb'.split('_'),
+	    weekdaysMin : 'Do_2ª_3ª_4ª_5ª_6ª_Sá'.split('_'),
 	    weekdaysParseExact : true,
 	    longDateFormat : {
 	        LT : 'HH:mm',
@@ -22309,7 +24120,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'um ano',
 	        yy : '%d anos'
 	    },
-	    ordinalParse: /\d{1,2}º/,
+	    dayOfMonthOrdinalParse: /\d{1,2}º/,
 	    ordinal : '%dº'
 	});
 
@@ -22318,9 +24129,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 115 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 126 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Romanian [ro]
@@ -22328,7 +24139,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Valentin Agachi : https://github.com/avaly
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22398,9 +24209,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 116 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 127 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Russian [ru]
@@ -22409,7 +24220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Коренберг Марк : https://github.com/socketpair
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22559,7 +24370,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return 'вечера';
 	        }
 	    },
-	    ordinalParse: /\d{1,2}-(й|го|я)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}-(й|го|я)/,
 	    ordinal: function (number, period) {
 	        switch (period) {
 	            case 'M':
@@ -22586,16 +24397,119 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 117 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 128 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Sindhi [sd]
+	//! author : Narain Sagar : https://github.com/narainsagar
+
+	;(function (global, factory) {
+	    true ? factory(__webpack_require__(41)) :
+	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
+	   factory(global.moment)
+	}(this, (function (moment) { 'use strict';
+
+
+	var months = [
+	    'جنوري',
+	    'فيبروري',
+	    'مارچ',
+	    'اپريل',
+	    'مئي',
+	    'جون',
+	    'جولاءِ',
+	    'آگسٽ',
+	    'سيپٽمبر',
+	    'آڪٽوبر',
+	    'نومبر',
+	    'ڊسمبر'
+	];
+	var days = [
+	    'آچر',
+	    'سومر',
+	    'اڱارو',
+	    'اربع',
+	    'خميس',
+	    'جمع',
+	    'ڇنڇر'
+	];
+
+	var sd = moment.defineLocale('sd', {
+	    months : months,
+	    monthsShort : months,
+	    weekdays : days,
+	    weekdaysShort : days,
+	    weekdaysMin : days,
+	    longDateFormat : {
+	        LT : 'HH:mm',
+	        LTS : 'HH:mm:ss',
+	        L : 'DD/MM/YYYY',
+	        LL : 'D MMMM YYYY',
+	        LLL : 'D MMMM YYYY HH:mm',
+	        LLLL : 'dddd، D MMMM YYYY HH:mm'
+	    },
+	    meridiemParse: /صبح|شام/,
+	    isPM : function (input) {
+	        return 'شام' === input;
+	    },
+	    meridiem : function (hour, minute, isLower) {
+	        if (hour < 12) {
+	            return 'صبح';
+	        }
+	        return 'شام';
+	    },
+	    calendar : {
+	        sameDay : '[اڄ] LT',
+	        nextDay : '[سڀاڻي] LT',
+	        nextWeek : 'dddd [اڳين هفتي تي] LT',
+	        lastDay : '[ڪالهه] LT',
+	        lastWeek : '[گزريل هفتي] dddd [تي] LT',
+	        sameElse : 'L'
+	    },
+	    relativeTime : {
+	        future : '%s پوء',
+	        past : '%s اڳ',
+	        s : 'چند سيڪنڊ',
+	        m : 'هڪ منٽ',
+	        mm : '%d منٽ',
+	        h : 'هڪ ڪلاڪ',
+	        hh : '%d ڪلاڪ',
+	        d : 'هڪ ڏينهن',
+	        dd : '%d ڏينهن',
+	        M : 'هڪ مهينو',
+	        MM : '%d مهينا',
+	        y : 'هڪ سال',
+	        yy : '%d سال'
+	    },
+	    preparse: function (string) {
+	        return string.replace(/،/g, ',');
+	    },
+	    postformat: function (string) {
+	        return string.replace(/,/g, '،');
+	    },
+	    week : {
+	        dow : 1, // Monday is the first day of the week.
+	        doy : 4  // The week that contains Jan 4th is the first week of the year.
+	    }
+	});
+
+	return sd;
+
+	})));
+
+
+/***/ }),
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Northern Sami [se]
 	//! authors : Bård Rolstad Henriksen : https://github.com/karamell
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22639,7 +24553,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'okta jahki',
 	        yy : '%d jagit'
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -22652,16 +24566,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 118 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Sinhalese [si]
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22706,7 +24620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'වසර',
 	        yy : 'වසර %d'
 	    },
-	    ordinalParse: /\d{1,2} වැනි/,
+	    dayOfMonthOrdinalParse: /\d{1,2} වැනි/,
 	    ordinal : function (number) {
 	        return number + ' වැනි';
 	    },
@@ -22728,9 +24642,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 119 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 131 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Slovak [sk]
@@ -22738,7 +24652,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on work of petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22870,7 +24784,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : translate,
 	        yy : translate
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -22883,16 +24797,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 120 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Slovenian [sl]
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23037,7 +24951,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y      : processRelativeTime,
 	        yy     : processRelativeTime
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -23050,9 +24964,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 121 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 133 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Albanian [sq]
@@ -23061,7 +24975,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Oerd Cukalla : https://github.com/oerd
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23112,7 +25026,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'një vit',
 	        yy : '%d vite'
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -23125,16 +25039,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 122 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Serbian [sr]
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23227,7 +25141,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y      : 'godinu',
 	        yy     : translator.translate
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -23240,16 +25154,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 123 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 135 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Serbian Cyrillic [sr-cyrl]
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23342,7 +25256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y      : 'годину',
 	        yy     : translator.translate
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -23355,16 +25269,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 124 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 136 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : siSwati [ss]
 	//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23436,7 +25350,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return hour + 12;
 	        }
 	    },
-	    ordinalParse: /\d{1,2}/,
+	    dayOfMonthOrdinalParse: /\d{1,2}/,
 	    ordinal : '%d',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -23449,16 +25363,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 125 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 137 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Swedish [sv]
 	//! author : Jens Alm : https://github.com/ulmus
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23503,7 +25417,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'ett år',
 	        yy : '%d år'
 	    },
-	    ordinalParse: /\d{1,2}(e|a)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(e|a)/,
 	    ordinal : function (number) {
 	        var b = number % 10,
 	            output = (~~(number % 100 / 10) === 1) ? 'e' :
@@ -23523,16 +25437,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 126 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 138 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Swahili [sw]
 	//! author : Fahad Kassim : https://github.com/fadsel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23587,16 +25501,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 127 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 139 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Tamil [ta]
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23664,7 +25578,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'ஒரு வருடம்',
 	        yy : '%d ஆண்டுகள்'
 	    },
-	    ordinalParse: /\d{1,2}வது/,
+	    dayOfMonthOrdinalParse: /\d{1,2}வது/,
 	    ordinal : function (number) {
 	        return number + 'வது';
 	    },
@@ -23722,16 +25636,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 128 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 140 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Telugu [te]
 	//! author : Krishna Chaitanya Thota : https://github.com/kcthota
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23775,7 +25689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'ఒక సంవత్సరం',
 	        yy : '%d సంవత్సరాలు'
 	    },
-	    ordinalParse : /\d{1,2}వ/,
+	    dayOfMonthOrdinalParse : /\d{1,2}వ/,
 	    ordinal : '%dవ',
 	    meridiemParse: /రాత్రి|ఉదయం|మధ్యాహ్నం|సాయంత్రం/,
 	    meridiemHour : function (hour, meridiem) {
@@ -23816,9 +25730,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 129 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Tetun Dili (East Timor) [tet]
@@ -23826,7 +25740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Onorio De J. Afonso : https://github.com/marobo
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23869,7 +25783,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'tinan ida',
 	        yy : 'tinan %d'
 	    },
-	    ordinalParse: /\d{1,2}(st|nd|rd|th)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
 	    ordinal : function (number) {
 	        var b = number % 10,
 	            output = (~~(number % 100 / 10) === 1) ? 'th' :
@@ -23889,16 +25803,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 130 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 142 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Thai [th]
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23915,7 +25829,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    longDateFormat : {
 	        LT : 'H:mm',
 	        LTS : 'H:mm:ss',
-	        L : 'YYYY/MM/DD',
+	        L : 'DD/MM/YYYY',
 	        LL : 'D MMMM YYYY',
 	        LLL : 'D MMMM YYYY เวลา H:mm',
 	        LLLL : 'วันddddที่ D MMMM YYYY เวลา H:mm'
@@ -23961,16 +25875,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 131 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Tagalog (Philippines) [tl-ph]
 	//! author : Dan Hagman : https://github.com/hagmandan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24013,7 +25927,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'isang taon',
 	        yy : '%d taon'
 	    },
-	    ordinalParse: /\d{1,2}/,
+	    dayOfMonthOrdinalParse: /\d{1,2}/,
 	    ordinal : function (number) {
 	        return number;
 	    },
@@ -24028,16 +25942,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 132 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 144 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Klingon [tlh]
 	//! author : Dominika Kruk : https://github.com/amaranthrose
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24140,7 +26054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'wa’ DIS',
 	        yy : translate
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -24153,9 +26067,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 133 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 145 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Turkish [tr]
@@ -24163,7 +26077,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24227,7 +26141,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'bir yıl',
 	        yy : '%d yıl'
 	    },
-	    ordinalParse: /\d{1,2}'(inci|nci|üncü|ncı|uncu|ıncı)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}'(inci|nci|üncü|ncı|uncu|ıncı)/,
 	    ordinal : function (number) {
 	        if (number === 0) {  // special case for zero
 	            return number + '\'ıncı';
@@ -24248,9 +26162,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 134 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 146 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Talossan [tzl]
@@ -24258,7 +26172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Iustì Canun
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24314,7 +26228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : processRelativeTime,
 	        yy : processRelativeTime
 	    },
-	    ordinalParse: /\d{1,2}\./,
+	    dayOfMonthOrdinalParse: /\d{1,2}\./,
 	    ordinal : '%d.',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -24344,16 +26258,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 135 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 147 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Central Atlas Tamazight [tzm]
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24407,16 +26321,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 136 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 148 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Central Atlas Tamazight Latin [tzm-latn]
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24470,9 +26384,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 137 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 149 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Ukrainian [uk]
@@ -24480,7 +26394,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24513,8 +26427,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'nominative': 'неділя_понеділок_вівторок_середа_четвер_п’ятниця_субота'.split('_'),
 	        'accusative': 'неділю_понеділок_вівторок_середу_четвер_п’ятницю_суботу'.split('_'),
 	        'genitive': 'неділі_понеділка_вівторка_середи_четверга_п’ятниці_суботи'.split('_')
-	    },
-	    nounCase = (/(\[[ВвУу]\]) ?dddd/).test(format) ?
+	    };
+
+	    if (!m) {
+	        return weekdays['nominative'];
+	    }
+
+	    var nounCase = (/(\[[ВвУу]\]) ?dddd/).test(format) ?
 	        'accusative' :
 	        ((/\[?(?:минулої|наступної)? ?\] ?dddd/).test(format) ?
 	            'genitive' :
@@ -24595,7 +26514,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return 'вечора';
 	        }
 	    },
-	    ordinalParse: /\d{1,2}-(й|го)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}-(й|го)/,
 	    ordinal: function (number, period) {
 	        switch (period) {
 	            case 'M':
@@ -24621,16 +26540,120 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 138 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 150 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Urdu [ur]
+	//! author : Sawood Alam : https://github.com/ibnesayeed
+	//! author : Zack : https://github.com/ZackVision
+
+	;(function (global, factory) {
+	    true ? factory(__webpack_require__(41)) :
+	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
+	   factory(global.moment)
+	}(this, (function (moment) { 'use strict';
+
+
+	var months = [
+	    'جنوری',
+	    'فروری',
+	    'مارچ',
+	    'اپریل',
+	    'مئی',
+	    'جون',
+	    'جولائی',
+	    'اگست',
+	    'ستمبر',
+	    'اکتوبر',
+	    'نومبر',
+	    'دسمبر'
+	];
+	var days = [
+	    'اتوار',
+	    'پیر',
+	    'منگل',
+	    'بدھ',
+	    'جمعرات',
+	    'جمعہ',
+	    'ہفتہ'
+	];
+
+	var ur = moment.defineLocale('ur', {
+	    months : months,
+	    monthsShort : months,
+	    weekdays : days,
+	    weekdaysShort : days,
+	    weekdaysMin : days,
+	    longDateFormat : {
+	        LT : 'HH:mm',
+	        LTS : 'HH:mm:ss',
+	        L : 'DD/MM/YYYY',
+	        LL : 'D MMMM YYYY',
+	        LLL : 'D MMMM YYYY HH:mm',
+	        LLLL : 'dddd، D MMMM YYYY HH:mm'
+	    },
+	    meridiemParse: /صبح|شام/,
+	    isPM : function (input) {
+	        return 'شام' === input;
+	    },
+	    meridiem : function (hour, minute, isLower) {
+	        if (hour < 12) {
+	            return 'صبح';
+	        }
+	        return 'شام';
+	    },
+	    calendar : {
+	        sameDay : '[آج بوقت] LT',
+	        nextDay : '[کل بوقت] LT',
+	        nextWeek : 'dddd [بوقت] LT',
+	        lastDay : '[گذشتہ روز بوقت] LT',
+	        lastWeek : '[گذشتہ] dddd [بوقت] LT',
+	        sameElse : 'L'
+	    },
+	    relativeTime : {
+	        future : '%s بعد',
+	        past : '%s قبل',
+	        s : 'چند سیکنڈ',
+	        m : 'ایک منٹ',
+	        mm : '%d منٹ',
+	        h : 'ایک گھنٹہ',
+	        hh : '%d گھنٹے',
+	        d : 'ایک دن',
+	        dd : '%d دن',
+	        M : 'ایک ماہ',
+	        MM : '%d ماہ',
+	        y : 'ایک سال',
+	        yy : '%d سال'
+	    },
+	    preparse: function (string) {
+	        return string.replace(/،/g, ',');
+	    },
+	    postformat: function (string) {
+	        return string.replace(/,/g, '،');
+	    },
+	    week : {
+	        dow : 1, // Monday is the first day of the week.
+	        doy : 4  // The week that contains Jan 4th is the first week of the year.
+	    }
+	});
+
+	return ur;
+
+	})));
+
+
+/***/ }),
+/* 151 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Uzbek [uz]
 	//! author : Sardor Muminov : https://github.com/muminoff
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24684,16 +26707,79 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 139 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 152 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Uzbek Latin [uz-latn]
+	//! author : Rasulbek Mirzayev : github.com/Rasulbeeek
+
+	;(function (global, factory) {
+	    true ? factory(__webpack_require__(41)) :
+	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
+	   factory(global.moment)
+	}(this, (function (moment) { 'use strict';
+
+
+	var uzLatn = moment.defineLocale('uz-latn', {
+	    months : 'Yanvar_Fevral_Mart_Aprel_May_Iyun_Iyul_Avgust_Sentabr_Oktabr_Noyabr_Dekabr'.split('_'),
+	    monthsShort : 'Yan_Fev_Mar_Apr_May_Iyun_Iyul_Avg_Sen_Okt_Noy_Dek'.split('_'),
+	    weekdays : 'Yakshanba_Dushanba_Seshanba_Chorshanba_Payshanba_Juma_Shanba'.split('_'),
+	    weekdaysShort : 'Yak_Dush_Sesh_Chor_Pay_Jum_Shan'.split('_'),
+	    weekdaysMin : 'Ya_Du_Se_Cho_Pa_Ju_Sha'.split('_'),
+	    longDateFormat : {
+	        LT : 'HH:mm',
+	        LTS : 'HH:mm:ss',
+	        L : 'DD/MM/YYYY',
+	        LL : 'D MMMM YYYY',
+	        LLL : 'D MMMM YYYY HH:mm',
+	        LLLL : 'D MMMM YYYY, dddd HH:mm'
+	    },
+	    calendar : {
+	        sameDay : '[Bugun soat] LT [da]',
+	        nextDay : '[Ertaga] LT [da]',
+	        nextWeek : 'dddd [kuni soat] LT [da]',
+	        lastDay : '[Kecha soat] LT [da]',
+	        lastWeek : '[O\'tgan] dddd [kuni soat] LT [da]',
+	        sameElse : 'L'
+	    },
+	    relativeTime : {
+	        future : 'Yaqin %s ichida',
+	        past : 'Bir necha %s oldin',
+	        s : 'soniya',
+	        m : 'bir daqiqa',
+	        mm : '%d daqiqa',
+	        h : 'bir soat',
+	        hh : '%d soat',
+	        d : 'bir kun',
+	        dd : '%d kun',
+	        M : 'bir oy',
+	        MM : '%d oy',
+	        y : 'bir yil',
+	        yy : '%d yil'
+	    },
+	    week : {
+	        dow : 1, // Monday is the first day of the week.
+	        doy : 7  // The week that contains Jan 1st is the first week of the year.
+	    }
+	});
+
+	return uzLatn;
+
+	})));
+
+
+/***/ }),
+/* 153 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Vietnamese [vi]
 	//! author : Bang Nguyen : https://github.com/bangnk
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24753,7 +26839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'một năm',
 	        yy : '%d năm'
 	    },
-	    ordinalParse: /\d{1,2}/,
+	    dayOfMonthOrdinalParse: /\d{1,2}/,
 	    ordinal : function (number) {
 	        return number;
 	    },
@@ -24768,16 +26854,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 140 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 154 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Pseudo [x-pseudo]
 	//! author : Andrew Hood : https://github.com/andrewhood125
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24821,7 +26907,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'á ~ýéár',
 	        yy : '%d ý~éárs'
 	    },
-	    ordinalParse: /\d{1,2}(th|st|nd|rd)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
 	    ordinal : function (number) {
 	        var b = number % 10,
 	            output = (~~(number % 100 / 10) === 1) ? 'th' :
@@ -24841,16 +26927,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 141 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 155 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Yoruba Nigeria [yo]
 	//! author : Atolagbe Abisoye : https://github.com/andela-batolagbe
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24893,7 +26979,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        y : 'ọdún kan',
 	        yy : 'ọdún %d'
 	    },
-	    ordinalParse : /ọjọ́\s\d{1,2}/,
+	    dayOfMonthOrdinalParse : /ọjọ́\s\d{1,2}/,
 	    ordinal : 'ọjọ́ %d',
 	    week : {
 	        dow : 1, // Monday is the first day of the week.
@@ -24906,9 +26992,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 142 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 156 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Chinese (China) [zh-cn]
@@ -24916,7 +27002,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Zeno Zeng : https://github.com/zenozeng
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24929,16 +27015,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    weekdaysShort : '周日_周一_周二_周三_周四_周五_周六'.split('_'),
 	    weekdaysMin : '日_一_二_三_四_五_六'.split('_'),
 	    longDateFormat : {
-	        LT : 'Ah点mm分',
-	        LTS : 'Ah点m分s秒',
-	        L : 'YYYY-MM-DD',
+	        LT : 'HH:mm',
+	        LTS : 'HH:mm:ss',
+	        L : 'YYYY年MMMD日',
 	        LL : 'YYYY年MMMD日',
 	        LLL : 'YYYY年MMMD日Ah点mm分',
 	        LLLL : 'YYYY年MMMD日ddddAh点mm分',
-	        l : 'YYYY-MM-DD',
+	        l : 'YYYY年MMMD日',
 	        ll : 'YYYY年MMMD日',
-	        lll : 'YYYY年MMMD日Ah点mm分',
-	        llll : 'YYYY年MMMD日ddddAh点mm分'
+	        lll : 'YYYY年MMMD日 HH:mm',
+	        llll : 'YYYY年MMMD日dddd HH:mm'
 	    },
 	    meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
 	    meridiemHour: function (hour, meridiem) {
@@ -24972,30 +27058,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    },
 	    calendar : {
-	        sameDay : function () {
-	            return this.minutes() === 0 ? '[今天]Ah[点整]' : '[今天]LT';
-	        },
-	        nextDay : function () {
-	            return this.minutes() === 0 ? '[明天]Ah[点整]' : '[明天]LT';
-	        },
-	        lastDay : function () {
-	            return this.minutes() === 0 ? '[昨天]Ah[点整]' : '[昨天]LT';
-	        },
-	        nextWeek : function () {
-	            var startOfWeek, prefix;
-	            startOfWeek = moment().startOf('week');
-	            prefix = this.diff(startOfWeek, 'days') >= 7 ? '[下]' : '[本]';
-	            return this.minutes() === 0 ? prefix + 'dddAh点整' : prefix + 'dddAh点mm';
-	        },
-	        lastWeek : function () {
-	            var startOfWeek, prefix;
-	            startOfWeek = moment().startOf('week');
-	            prefix = this.unix() < startOfWeek.unix()  ? '[上]' : '[本]';
-	            return this.minutes() === 0 ? prefix + 'dddAh点整' : prefix + 'dddAh点mm';
-	        },
-	        sameElse : 'LL'
+	        sameDay : '[今天]LT',
+	        nextDay : '[明天]LT',
+	        nextWeek : '[下]ddddLT',
+	        lastDay : '[昨天]LT',
+	        lastWeek : '[上]ddddLT',
+	        sameElse : 'L'
 	    },
-	    ordinalParse: /\d{1,2}(日|月|周)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(日|月|周)/,
 	    ordinal : function (number, period) {
 	        switch (period) {
 	            case 'd':
@@ -25038,9 +27108,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 143 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 157 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Chinese (Hong Kong) [zh-hk]
@@ -25049,7 +27119,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Konstantin : https://github.com/skfd
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25062,16 +27132,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    weekdaysShort : '週日_週一_週二_週三_週四_週五_週六'.split('_'),
 	    weekdaysMin : '日_一_二_三_四_五_六'.split('_'),
 	    longDateFormat : {
-	        LT : 'Ah點mm分',
-	        LTS : 'Ah點m分s秒',
+	        LT : 'HH:mm',
+	        LTS : 'HH:mm:ss',
 	        L : 'YYYY年MMMD日',
 	        LL : 'YYYY年MMMD日',
-	        LLL : 'YYYY年MMMD日Ah點mm分',
-	        LLLL : 'YYYY年MMMD日ddddAh點mm分',
+	        LLL : 'YYYY年MMMD日 HH:mm',
+	        LLLL : 'YYYY年MMMD日dddd HH:mm',
 	        l : 'YYYY年MMMD日',
 	        ll : 'YYYY年MMMD日',
-	        lll : 'YYYY年MMMD日Ah點mm分',
-	        llll : 'YYYY年MMMD日ddddAh點mm分'
+	        lll : 'YYYY年MMMD日 HH:mm',
+	        llll : 'YYYY年MMMD日dddd HH:mm'
 	    },
 	    meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
 	    meridiemHour : function (hour, meridiem) {
@@ -25110,7 +27180,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        lastWeek : '[上]ddddLT',
 	        sameElse : 'L'
 	    },
-	    ordinalParse: /\d{1,2}(日|月|週)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(日|月|週)/,
 	    ordinal : function (number, period) {
 	        switch (period) {
 	            case 'd' :
@@ -25148,9 +27218,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 144 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 158 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Chinese (Taiwan) [zh-tw]
@@ -25158,7 +27228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Lam : https://github.com/hehachris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(34)) :
+	    true ? factory(__webpack_require__(41)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25171,16 +27241,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    weekdaysShort : '週日_週一_週二_週三_週四_週五_週六'.split('_'),
 	    weekdaysMin : '日_一_二_三_四_五_六'.split('_'),
 	    longDateFormat : {
-	        LT : 'Ah點mm分',
-	        LTS : 'Ah點m分s秒',
+	        LT : 'HH:mm',
+	        LTS : 'HH:mm:ss',
 	        L : 'YYYY年MMMD日',
 	        LL : 'YYYY年MMMD日',
-	        LLL : 'YYYY年MMMD日Ah點mm分',
-	        LLLL : 'YYYY年MMMD日ddddAh點mm分',
+	        LLL : 'YYYY年MMMD日 HH:mm',
+	        LLLL : 'YYYY年MMMD日dddd HH:mm',
 	        l : 'YYYY年MMMD日',
 	        ll : 'YYYY年MMMD日',
-	        lll : 'YYYY年MMMD日Ah點mm分',
-	        llll : 'YYYY年MMMD日ddddAh點mm分'
+	        lll : 'YYYY年MMMD日 HH:mm',
+	        llll : 'YYYY年MMMD日dddd HH:mm'
 	    },
 	    meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
 	    meridiemHour : function (hour, meridiem) {
@@ -25219,7 +27289,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        lastWeek : '[上]ddddLT',
 	        sameElse : 'L'
 	    },
-	    ordinalParse: /\d{1,2}(日|月|週)/,
+	    dayOfMonthOrdinalParse: /\d{1,2}(日|月|週)/,
 	    ordinal : function (number, period) {
 	        switch (period) {
 	            case 'd' :
@@ -25257,43 +27327,112 @@ return /******/ (function(modules) { // webpackBootstrap
 	})));
 
 
-/***/ },
-/* 145 */
-/***/ function(module, exports) {
+/***/ }),
+/* 159 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var elements = __webpack_require__(17);
+	var helpers = __webpack_require__(5);
 
-		var helpers = Chart.helpers;
+	defaults._set('bar', {
+		hover: {
+			mode: 'label'
+		},
 
-		Chart.defaults.bar = {
-			hover: {
-				mode: 'label'
-			},
+		scales: {
+			xAxes: [{
+				type: 'category',
 
-			scales: {
-				xAxes: [{
-					type: 'category',
+				// Specific to Bar Controller
+				categoryPercentage: 0.8,
+				barPercentage: 0.9,
 
-					// Specific to Bar Controller
-					categoryPercentage: 0.8,
-					barPercentage: 0.9,
+				// offset settings
+				offset: true,
 
-					// grid line settings
-					gridLines: {
-						offsetGridLines: true
-					}
-				}],
-				yAxes: [{
-					type: 'linear'
-				}]
+				// grid line settings
+				gridLines: {
+					offsetGridLines: true
+				}
+			}],
+
+			yAxes: [{
+				type: 'linear'
+			}]
+		}
+	});
+
+	defaults._set('horizontalBar', {
+		hover: {
+			mode: 'index',
+			axis: 'y'
+		},
+
+		scales: {
+			xAxes: [{
+				type: 'linear',
+				position: 'bottom'
+			}],
+
+			yAxes: [{
+				position: 'left',
+				type: 'category',
+
+				// Specific to Horizontal Bar Controller
+				categoryPercentage: 0.8,
+				barPercentage: 0.9,
+
+				// offset settings
+				offset: true,
+
+				// grid line settings
+				gridLines: {
+					offsetGridLines: true
+				}
+			}]
+		},
+
+		elements: {
+			rectangle: {
+				borderSkipped: 'left'
 			}
-		};
+		},
+
+		tooltips: {
+			callbacks: {
+				title: function(item, data) {
+					// Pick first xLabel for now
+					var title = '';
+
+					if (item.length > 0) {
+						if (item[0].yLabel) {
+							title = item[0].yLabel;
+						} else if (data.labels.length > 0 && item[0].index < data.labels.length) {
+							title = data.labels[item[0].index];
+						}
+					}
+
+					return title;
+				},
+
+				label: function(item, data) {
+					var datasetLabel = data.datasets[item.datasetIndex].label || '';
+					return datasetLabel + ': ' + item.xLabel;
+				}
+			},
+			mode: 'index',
+			axis: 'y'
+		}
+	});
+
+	module.exports = function(Chart) {
 
 		Chart.controllers.bar = Chart.DatasetController.extend({
 
-			dataElementType: Chart.elements.Rectangle,
+			dataElementType: elements.Rectangle,
 
 			initialize: function() {
 				var me = this;
@@ -25308,13 +27447,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			update: function(reset) {
 				var me = this;
-				var elements = me.getMeta().data;
+				var rects = me.getMeta().data;
 				var i, ilen;
 
 				me._ruler = me.getRuler();
 
-				for (i = 0, ilen = elements.length; i < ilen; ++i) {
-					me.updateElement(elements[i], i, reset);
+				for (i = 0, ilen = rects.length; i < ilen; ++i) {
+					me.updateElement(rects[i], i, reset);
 				}
 			},
 
@@ -25335,9 +27474,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					datasetLabel: dataset.label,
 					label: chart.data.labels[index],
 					borderSkipped: custom.borderSkipped ? custom.borderSkipped : rectangleOptions.borderSkipped,
-					backgroundColor: custom.backgroundColor ? custom.backgroundColor : helpers.getValueAtIndexOrDefault(dataset.backgroundColor, index, rectangleOptions.backgroundColor),
-					borderColor: custom.borderColor ? custom.borderColor : helpers.getValueAtIndexOrDefault(dataset.borderColor, index, rectangleOptions.borderColor),
-					borderWidth: custom.borderWidth ? custom.borderWidth : helpers.getValueAtIndexOrDefault(dataset.borderWidth, index, rectangleOptions.borderWidth)
+					backgroundColor: custom.backgroundColor ? custom.backgroundColor : helpers.valueAtIndexOrDefault(dataset.backgroundColor, index, rectangleOptions.backgroundColor),
+					borderColor: custom.borderColor ? custom.borderColor : helpers.valueAtIndexOrDefault(dataset.borderColor, index, rectangleOptions.borderColor),
+					borderWidth: custom.borderWidth ? custom.borderWidth : helpers.valueAtIndexOrDefault(dataset.borderWidth, index, rectangleOptions.borderWidth)
 				};
 
 				me.updateElementGeometry(rectangle, index, reset);
@@ -25359,11 +27498,11 @@ return /******/ (function(modules) { // webpackBootstrap
 				var ipixels = me.calculateBarIndexPixels(me.index, index, ruler);
 
 				model.horizontal = horizontal;
-				model.base = reset? base : vpixels.base;
-				model.x = horizontal? reset? base : vpixels.head : ipixels.center;
-				model.y = horizontal? ipixels.center : reset? base : vpixels.head;
-				model.height = horizontal? ipixels.size : undefined;
-				model.width = horizontal? undefined : ipixels.size;
+				model.base = reset ? base : vpixels.base;
+				model.x = horizontal ? reset ? base : vpixels.head : ipixels.center;
+				model.y = horizontal ? ipixels.center : reset ? base : vpixels.head;
+				model.height = horizontal ? ipixels.size : undefined;
+				model.width = horizontal ? undefined : ipixels.size;
 			},
 
 			/**
@@ -25403,7 +27542,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var chart = me.chart;
 				var scale = me.getIndexScale();
 				var stacked = scale.options.stacked;
-				var ilen = last === undefined? chart.data.datasets.length : last + 1;
+				var ilen = last === undefined ? chart.data.datasets.length : last + 1;
 				var stacks = [];
 				var i, meta;
 
@@ -25434,26 +27573,23 @@ return /******/ (function(modules) { // webpackBootstrap
 			getRuler: function() {
 				var me = this;
 				var scale = me.getIndexScale();
-				var options = scale.options;
 				var stackCount = me.getStackCount();
-				var fullSize = scale.isHorizontal()? scale.width : scale.height;
-				var tickSize = fullSize / scale.ticks.length;
-				var categorySize = tickSize * options.categoryPercentage;
-				var fullBarSize = categorySize / stackCount;
-				var barSize = fullBarSize * options.barPercentage;
+				var datasetIndex = me.index;
+				var pixels = [];
+				var isHorizontal = scale.isHorizontal();
+				var start = isHorizontal ? scale.left : scale.top;
+				var end = start + (isHorizontal ? scale.width : scale.height);
+				var i, ilen;
 
-				barSize = Math.min(
-					helpers.getValueOrDefault(options.barThickness, barSize),
-					helpers.getValueOrDefault(options.maxBarThickness, Infinity));
+				for (i = 0, ilen = me.getMeta().data.length; i < ilen; ++i) {
+					pixels.push(scale.getPixelForValue(null, i, datasetIndex));
+				}
 
 				return {
+					pixels: pixels,
+					start: start,
+					end: end,
 					stackCount: stackCount,
-					tickSize: tickSize,
-					categorySize: categorySize,
-					categorySpacing: tickSize - categorySize,
-					fullBarSize: fullBarSize,
-					barSize: barSize,
-					barSpacing: fullBarSize - barSize,
 					scale: scale
 				};
 			},
@@ -25468,7 +27604,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var meta = me.getMeta();
 				var scale = me.getValueScale();
 				var datasets = chart.data.datasets;
-				var value = Number(datasets[datasetIndex].data[index]);
+				var value = scale.getRightValue(datasets[datasetIndex].data[index]);
 				var stacked = scale.options.stacked;
 				var stack = meta.stack;
 				var start = 0;
@@ -25483,7 +27619,7 @@ return /******/ (function(modules) { // webpackBootstrap
 							imeta.controller.getValueScaleId() === scale.id &&
 							chart.isDatasetVisible(i)) {
 
-							ivalue = Number(datasets[i].data[index]);
+							ivalue = scale.getRightValue(datasets[i].data[index]);
 							if ((value < 0 && ivalue < 0) || (value >= 0 && ivalue > 0)) {
 								start += ivalue;
 							}
@@ -25508,16 +27644,45 @@ return /******/ (function(modules) { // webpackBootstrap
 			 */
 			calculateBarIndexPixels: function(datasetIndex, index, ruler) {
 				var me = this;
-				var scale = ruler.scale;
-				var isCombo = me.chart.isCombo;
+				var options = ruler.scale.options;
 				var stackIndex = me.getStackIndex(datasetIndex);
-				var base = scale.getPixelForValue(null, index, datasetIndex, isCombo);
-				var size = ruler.barSize;
+				var pixels = ruler.pixels;
+				var base = pixels[index];
+				var length = pixels.length;
+				var start = ruler.start;
+				var end = ruler.end;
+				var leftSampleSize, rightSampleSize, leftCategorySize, rightCategorySize, fullBarSize, size;
 
-				base -= isCombo? ruler.tickSize / 2 : 0;
-				base += ruler.fullBarSize * stackIndex;
-				base += ruler.categorySpacing / 2;
-				base += ruler.barSpacing / 2;
+				if (length === 1) {
+					leftSampleSize = base > start ? base - start : end - base;
+					rightSampleSize = base < end ? end - base : base - start;
+				} else {
+					if (index > 0) {
+						leftSampleSize = (base - pixels[index - 1]) / 2;
+						if (index === length - 1) {
+							rightSampleSize = leftSampleSize;
+						}
+					}
+					if (index < length - 1) {
+						rightSampleSize = (pixels[index + 1] - base) / 2;
+						if (index === 0) {
+							leftSampleSize = rightSampleSize;
+						}
+					}
+				}
+
+				leftCategorySize = leftSampleSize * options.categoryPercentage;
+				rightCategorySize = rightSampleSize * options.categoryPercentage;
+				fullBarSize = (leftCategorySize + rightCategorySize) / ruler.stackCount;
+				size = fullBarSize * options.barPercentage;
+
+				size = Math.min(
+					helpers.valueOrDefault(options.barThickness, size),
+					helpers.valueOrDefault(options.maxBarThickness, Infinity));
+
+				base -= leftCategorySize;
+				base += fullBarSize * stackIndex;
+				base += (fullBarSize - size) / 2;
 
 				return {
 					size: size,
@@ -25530,18 +27695,17 @@ return /******/ (function(modules) { // webpackBootstrap
 			draw: function() {
 				var me = this;
 				var chart = me.chart;
-				var elements = me.getMeta().data;
+				var scale = me.getValueScale();
+				var rects = me.getMeta().data;
 				var dataset = me.getDataset();
-				var ilen = elements.length;
+				var ilen = rects.length;
 				var i = 0;
-				var d;
 
 				helpers.canvas.clipArea(chart.ctx, chart.chartArea);
 
-				for (; i<ilen; ++i) {
-					d = dataset.data[i];
-					if (d !== null && d !== undefined && !isNaN(d)) {
-						elements[i].draw();
+				for (; i < ilen; ++i) {
+					if (!isNaN(scale.getRightValue(dataset.data[i]))) {
+						rects[i].draw();
 					}
 				}
 
@@ -25554,9 +27718,9 @@ return /******/ (function(modules) { // webpackBootstrap
 				var custom = rectangle.custom || {};
 				var model = rectangle._model;
 
-				model.backgroundColor = custom.hoverBackgroundColor ? custom.hoverBackgroundColor : helpers.getValueAtIndexOrDefault(dataset.hoverBackgroundColor, index, helpers.getHoverColor(model.backgroundColor));
-				model.borderColor = custom.hoverBorderColor ? custom.hoverBorderColor : helpers.getValueAtIndexOrDefault(dataset.hoverBorderColor, index, helpers.getHoverColor(model.borderColor));
-				model.borderWidth = custom.hoverBorderWidth ? custom.hoverBorderWidth : helpers.getValueAtIndexOrDefault(dataset.hoverBorderWidth, index, model.borderWidth);
+				model.backgroundColor = custom.hoverBackgroundColor ? custom.hoverBackgroundColor : helpers.valueAtIndexOrDefault(dataset.hoverBackgroundColor, index, helpers.getHoverColor(model.backgroundColor));
+				model.borderColor = custom.hoverBorderColor ? custom.hoverBorderColor : helpers.valueAtIndexOrDefault(dataset.hoverBorderColor, index, helpers.getHoverColor(model.borderColor));
+				model.borderWidth = custom.hoverBorderWidth ? custom.hoverBorderWidth : helpers.valueAtIndexOrDefault(dataset.hoverBorderWidth, index, model.borderWidth);
 			},
 
 			removeHoverStyle: function(rectangle) {
@@ -25566,67 +27730,11 @@ return /******/ (function(modules) { // webpackBootstrap
 				var model = rectangle._model;
 				var rectangleElementOptions = this.chart.options.elements.rectangle;
 
-				model.backgroundColor = custom.backgroundColor ? custom.backgroundColor : helpers.getValueAtIndexOrDefault(dataset.backgroundColor, index, rectangleElementOptions.backgroundColor);
-				model.borderColor = custom.borderColor ? custom.borderColor : helpers.getValueAtIndexOrDefault(dataset.borderColor, index, rectangleElementOptions.borderColor);
-				model.borderWidth = custom.borderWidth ? custom.borderWidth : helpers.getValueAtIndexOrDefault(dataset.borderWidth, index, rectangleElementOptions.borderWidth);
+				model.backgroundColor = custom.backgroundColor ? custom.backgroundColor : helpers.valueAtIndexOrDefault(dataset.backgroundColor, index, rectangleElementOptions.backgroundColor);
+				model.borderColor = custom.borderColor ? custom.borderColor : helpers.valueAtIndexOrDefault(dataset.borderColor, index, rectangleElementOptions.borderColor);
+				model.borderWidth = custom.borderWidth ? custom.borderWidth : helpers.valueAtIndexOrDefault(dataset.borderWidth, index, rectangleElementOptions.borderWidth);
 			}
 		});
-
-
-		// including horizontalBar in the bar file, instead of a file of its own
-		// it extends bar (like pie extends doughnut)
-		Chart.defaults.horizontalBar = {
-			hover: {
-				mode: 'label'
-			},
-
-			scales: {
-				xAxes: [{
-					type: 'linear',
-					position: 'bottom'
-				}],
-				yAxes: [{
-					position: 'left',
-					type: 'category',
-
-					// Specific to Horizontal Bar Controller
-					categoryPercentage: 0.8,
-					barPercentage: 0.9,
-
-					// grid line settings
-					gridLines: {
-						offsetGridLines: true
-					}
-				}]
-			},
-			elements: {
-				rectangle: {
-					borderSkipped: 'left'
-				}
-			},
-			tooltips: {
-				callbacks: {
-					title: function(tooltipItems, data) {
-						// Pick first xLabel for now
-						var title = '';
-
-						if (tooltipItems.length > 0) {
-							if (tooltipItems[0].yLabel) {
-								title = tooltipItems[0].yLabel;
-							} else if (data.labels.length > 0 && tooltipItems[0].index < data.labels.length) {
-								title = data.labels[tooltipItems[0].index];
-							}
-						}
-
-						return title;
-					},
-					label: function(tooltipItem, data) {
-						var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
-						return datasetLabel + ': ' + tooltipItem.xLabel;
-					}
-				}
-			}
-		};
 
 		Chart.controllers.horizontalBar = Chart.controllers.bar.extend({
 			/**
@@ -25646,53 +27754,61 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 146 */
-/***/ function(module, exports) {
+/***/ }),
+/* 160 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var elements = __webpack_require__(17);
+	var helpers = __webpack_require__(5);
 
-		var helpers = Chart.helpers;
+	defaults._set('bubble', {
+		hover: {
+			mode: 'single'
+		},
 
-		Chart.defaults.bubble = {
-			hover: {
-				mode: 'single'
-			},
+		scales: {
+			xAxes: [{
+				type: 'linear', // bubble should probably use a linear scale by default
+				position: 'bottom',
+				id: 'x-axis-0' // need an ID so datasets can reference the scale
+			}],
+			yAxes: [{
+				type: 'linear',
+				position: 'left',
+				id: 'y-axis-0'
+			}]
+		},
 
-			scales: {
-				xAxes: [{
-					type: 'linear', // bubble should probably use a linear scale by default
-					position: 'bottom',
-					id: 'x-axis-0' // need an ID so datasets can reference the scale
-				}],
-				yAxes: [{
-					type: 'linear',
-					position: 'left',
-					id: 'y-axis-0'
-				}]
-			},
-
-			tooltips: {
-				callbacks: {
-					title: function() {
-						// Title doesn't make sense for scatter since we format the data as a point
-						return '';
-					},
-					label: function(tooltipItem, data) {
-						var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
-						var dataPoint = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-						return datasetLabel + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ', ' + dataPoint.r + ')';
-					}
+		tooltips: {
+			callbacks: {
+				title: function() {
+					// Title doesn't make sense for scatter since we format the data as a point
+					return '';
+				},
+				label: function(item, data) {
+					var datasetLabel = data.datasets[item.datasetIndex].label || '';
+					var dataPoint = data.datasets[item.datasetIndex].data[item.index];
+					return datasetLabel + ': (' + item.xLabel + ', ' + item.yLabel + ', ' + dataPoint.r + ')';
 				}
 			}
-		};
+		}
+	});
+
+
+	module.exports = function(Chart) {
 
 		Chart.controllers.bubble = Chart.DatasetController.extend({
+			/**
+			 * @protected
+			 */
+			dataElementType: elements.Point,
 
-			dataElementType: Chart.elements.Point,
-
+			/**
+			 * @protected
+			 */
 			update: function(reset) {
 				var me = this;
 				var meta = me.getMeta();
@@ -25704,211 +27820,260 @@ return /******/ (function(modules) { // webpackBootstrap
 				});
 			},
 
+			/**
+			 * @protected
+			 */
 			updateElement: function(point, index, reset) {
 				var me = this;
 				var meta = me.getMeta();
+				var custom = point.custom || {};
 				var xScale = me.getScaleForId(meta.xAxisID);
 				var yScale = me.getScaleForId(meta.yAxisID);
-
-				var custom = point.custom || {};
-				var dataset = me.getDataset();
-				var data = dataset.data[index];
-				var pointElementOptions = me.chart.options.elements.point;
+				var options = me._resolveElementOptions(point, index);
+				var data = me.getDataset().data[index];
 				var dsIndex = me.index;
 
-				helpers.extend(point, {
-					// Utility
-					_xScale: xScale,
-					_yScale: yScale,
-					_datasetIndex: dsIndex,
-					_index: index,
+				var x = reset ? xScale.getPixelForDecimal(0.5) : xScale.getPixelForValue(typeof data === 'object' ? data : NaN, index, dsIndex);
+				var y = reset ? yScale.getBasePixel() : yScale.getPixelForValue(data, index, dsIndex);
 
-					// Desired view properties
-					_model: {
-						x: reset ? xScale.getPixelForDecimal(0.5) : xScale.getPixelForValue(typeof data === 'object' ? data : NaN, index, dsIndex, me.chart.isCombo),
-						y: reset ? yScale.getBasePixel() : yScale.getPixelForValue(data, index, dsIndex),
-						// Appearance
-						radius: reset ? 0 : custom.radius ? custom.radius : me.getRadius(data),
-
-						// Tooltip
-						hitRadius: custom.hitRadius ? custom.hitRadius : helpers.getValueAtIndexOrDefault(dataset.hitRadius, index, pointElementOptions.hitRadius)
-					}
-				});
-
-				// Trick to reset the styles of the point
-				Chart.DatasetController.prototype.removeHoverStyle.call(me, point, pointElementOptions);
-
-				var model = point._model;
-				model.skip = custom.skip ? custom.skip : (isNaN(model.x) || isNaN(model.y));
+				point._xScale = xScale;
+				point._yScale = yScale;
+				point._options = options;
+				point._datasetIndex = dsIndex;
+				point._index = index;
+				point._model = {
+					backgroundColor: options.backgroundColor,
+					borderColor: options.borderColor,
+					borderWidth: options.borderWidth,
+					hitRadius: options.hitRadius,
+					pointStyle: options.pointStyle,
+					radius: reset ? 0 : options.radius,
+					skip: custom.skip || isNaN(x) || isNaN(y),
+					x: x,
+					y: y,
+				};
 
 				point.pivot();
 			},
 
-			getRadius: function(value) {
-				return value.r || this.chart.options.elements.point.radius;
-			},
-
+			/**
+			 * @protected
+			 */
 			setHoverStyle: function(point) {
-				var me = this;
-				Chart.DatasetController.prototype.setHoverStyle.call(me, point);
-
-				// Radius
-				var dataset = me.chart.data.datasets[point._datasetIndex];
-				var index = point._index;
-				var custom = point.custom || {};
 				var model = point._model;
-				model.radius = custom.hoverRadius ? custom.hoverRadius : (helpers.getValueAtIndexOrDefault(dataset.hoverRadius, index, me.chart.options.elements.point.hoverRadius)) + me.getRadius(dataset.data[index]);
+				var options = point._options;
+
+				model.backgroundColor = helpers.valueOrDefault(options.hoverBackgroundColor, helpers.getHoverColor(options.backgroundColor));
+				model.borderColor = helpers.valueOrDefault(options.hoverBorderColor, helpers.getHoverColor(options.borderColor));
+				model.borderWidth = helpers.valueOrDefault(options.hoverBorderWidth, options.borderWidth);
+				model.radius = options.radius + options.hoverRadius;
 			},
 
+			/**
+			 * @protected
+			 */
 			removeHoverStyle: function(point) {
-				var me = this;
-				Chart.DatasetController.prototype.removeHoverStyle.call(me, point, me.chart.options.elements.point);
-
-				var dataVal = me.chart.data.datasets[point._datasetIndex].data[point._index];
-				var custom = point.custom || {};
 				var model = point._model;
+				var options = point._options;
 
-				model.radius = custom.radius ? custom.radius : me.getRadius(dataVal);
+				model.backgroundColor = options.backgroundColor;
+				model.borderColor = options.borderColor;
+				model.borderWidth = options.borderWidth;
+				model.radius = options.radius;
+			},
+
+			/**
+			 * @private
+			 */
+			_resolveElementOptions: function(point, index) {
+				var me = this;
+				var chart = me.chart;
+				var datasets = chart.data.datasets;
+				var dataset = datasets[me.index];
+				var custom = point.custom || {};
+				var options = chart.options.elements.point;
+				var resolve = helpers.options.resolve;
+				var data = dataset.data[index];
+				var values = {};
+				var i, ilen, key;
+
+				// Scriptable options
+				var context = {
+					chart: chart,
+					dataIndex: index,
+					dataset: dataset,
+					datasetIndex: me.index
+				};
+
+				var keys = [
+					'backgroundColor',
+					'borderColor',
+					'borderWidth',
+					'hoverBackgroundColor',
+					'hoverBorderColor',
+					'hoverBorderWidth',
+					'hoverRadius',
+					'hitRadius',
+					'pointStyle'
+				];
+
+				for (i = 0, ilen = keys.length; i < ilen; ++i) {
+					key = keys[i];
+					values[key] = resolve([
+						custom[key],
+						dataset[key],
+						options[key]
+					], context, index);
+				}
+
+				// Custom radius resolution
+				values.radius = resolve([
+					custom.radius,
+					data ? data.r : undefined,
+					dataset.radius,
+					options.radius
+				], context, index);
+
+				return values;
 			}
 		});
 	};
 
 
-/***/ },
-/* 147 */
-/***/ function(module, exports) {
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var elements = __webpack_require__(17);
+	var helpers = __webpack_require__(5);
 
-		var helpers = Chart.helpers,
-			defaults = Chart.defaults;
+	defaults._set('doughnut', {
+		animation: {
+			// Boolean - Whether we animate the rotation of the Doughnut
+			animateRotate: true,
+			// Boolean - Whether we animate scaling the Doughnut from the centre
+			animateScale: false
+		},
+		hover: {
+			mode: 'single'
+		},
+		legendCallback: function(chart) {
+			var text = [];
+			text.push('<ul class="' + chart.id + '-legend">');
 
-		defaults.doughnut = {
-			animation: {
-				// Boolean - Whether we animate the rotation of the Doughnut
-				animateRotate: true,
-				// Boolean - Whether we animate scaling the Doughnut from the centre
-				animateScale: false
-			},
-			aspectRatio: 1,
-			hover: {
-				mode: 'single'
-			},
-			legendCallback: function(chart) {
-				var text = [];
-				text.push('<ul class="' + chart.id + '-legend">');
+			var data = chart.data;
+			var datasets = data.datasets;
+			var labels = data.labels;
 
-				var data = chart.data;
-				var datasets = data.datasets;
-				var labels = data.labels;
-
-				if (datasets.length) {
-					for (var i = 0; i < datasets[0].data.length; ++i) {
-						text.push('<li><span style="background-color:' + datasets[0].backgroundColor[i] + '"></span>');
-						if (labels[i]) {
-							text.push(labels[i]);
-						}
-						text.push('</li>');
+			if (datasets.length) {
+				for (var i = 0; i < datasets[0].data.length; ++i) {
+					text.push('<li><span style="background-color:' + datasets[0].backgroundColor[i] + '"></span>');
+					if (labels[i]) {
+						text.push(labels[i]);
 					}
-				}
-
-				text.push('</ul>');
-				return text.join('');
-			},
-			legend: {
-				labels: {
-					generateLabels: function(chart) {
-						var data = chart.data;
-						if (data.labels.length && data.datasets.length) {
-							return data.labels.map(function(label, i) {
-								var meta = chart.getDatasetMeta(0);
-								var ds = data.datasets[0];
-								var arc = meta.data[i];
-								var custom = arc && arc.custom || {};
-								var getValueAtIndexOrDefault = helpers.getValueAtIndexOrDefault;
-								var arcOpts = chart.options.elements.arc;
-								var fill = custom.backgroundColor ? custom.backgroundColor : getValueAtIndexOrDefault(ds.backgroundColor, i, arcOpts.backgroundColor);
-								var stroke = custom.borderColor ? custom.borderColor : getValueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
-								var bw = custom.borderWidth ? custom.borderWidth : getValueAtIndexOrDefault(ds.borderWidth, i, arcOpts.borderWidth);
-
-								return {
-									text: label,
-									fillStyle: fill,
-									strokeStyle: stroke,
-									lineWidth: bw,
-									hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
-
-									// Extra data used for toggling the correct item
-									index: i
-								};
-							});
-						}
-						return [];
-					}
-				},
-
-				onClick: function(e, legendItem) {
-					var index = legendItem.index;
-					var chart = this.chart;
-					var i, ilen, meta;
-
-					for (i = 0, ilen = (chart.data.datasets || []).length; i < ilen; ++i) {
-						meta = chart.getDatasetMeta(i);
-						// toggle visibility of index if exists
-						if (meta.data[index]) {
-							meta.data[index].hidden = !meta.data[index].hidden;
-						}
-					}
-
-					chart.update();
-				}
-			},
-
-			// The percentage of the chart that we cut out of the middle.
-			cutoutPercentage: 50,
-
-			// The rotation of the chart, where the first data arc begins.
-			rotation: Math.PI * -0.5,
-
-			// The total circumference of the chart.
-			circumference: Math.PI * 2.0,
-
-			// Need to override these to give a nice default
-			tooltips: {
-				callbacks: {
-					title: function() {
-						return '';
-					},
-					label: function(tooltipItem, data) {
-						var dataLabel = data.labels[tooltipItem.index];
-						var value = ': ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-
-						if (helpers.isArray(dataLabel)) {
-							// show value on first line of multiline label
-							// need to clone because we are changing the value
-							dataLabel = dataLabel.slice();
-							dataLabel[0] += value;
-						} else {
-							dataLabel += value;
-						}
-
-						return dataLabel;
-					}
+					text.push('</li>');
 				}
 			}
-		};
 
-		defaults.pie = helpers.clone(defaults.doughnut);
-		helpers.extend(defaults.pie, {
-			cutoutPercentage: 0
-		});
+			text.push('</ul>');
+			return text.join('');
+		},
+		legend: {
+			labels: {
+				generateLabels: function(chart) {
+					var data = chart.data;
+					if (data.labels.length && data.datasets.length) {
+						return data.labels.map(function(label, i) {
+							var meta = chart.getDatasetMeta(0);
+							var ds = data.datasets[0];
+							var arc = meta.data[i];
+							var custom = arc && arc.custom || {};
+							var valueAtIndexOrDefault = helpers.valueAtIndexOrDefault;
+							var arcOpts = chart.options.elements.arc;
+							var fill = custom.backgroundColor ? custom.backgroundColor : valueAtIndexOrDefault(ds.backgroundColor, i, arcOpts.backgroundColor);
+							var stroke = custom.borderColor ? custom.borderColor : valueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
+							var bw = custom.borderWidth ? custom.borderWidth : valueAtIndexOrDefault(ds.borderWidth, i, arcOpts.borderWidth);
 
+							return {
+								text: label,
+								fillStyle: fill,
+								strokeStyle: stroke,
+								lineWidth: bw,
+								hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
+
+								// Extra data used for toggling the correct item
+								index: i
+							};
+						});
+					}
+					return [];
+				}
+			},
+
+			onClick: function(e, legendItem) {
+				var index = legendItem.index;
+				var chart = this.chart;
+				var i, ilen, meta;
+
+				for (i = 0, ilen = (chart.data.datasets || []).length; i < ilen; ++i) {
+					meta = chart.getDatasetMeta(i);
+					// toggle visibility of index if exists
+					if (meta.data[index]) {
+						meta.data[index].hidden = !meta.data[index].hidden;
+					}
+				}
+
+				chart.update();
+			}
+		},
+
+		// The percentage of the chart that we cut out of the middle.
+		cutoutPercentage: 50,
+
+		// The rotation of the chart, where the first data arc begins.
+		rotation: Math.PI * -0.5,
+
+		// The total circumference of the chart.
+		circumference: Math.PI * 2.0,
+
+		// Need to override these to give a nice default
+		tooltips: {
+			callbacks: {
+				title: function() {
+					return '';
+				},
+				label: function(tooltipItem, data) {
+					var dataLabel = data.labels[tooltipItem.index];
+					var value = ': ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+
+					if (helpers.isArray(dataLabel)) {
+						// show value on first line of multiline label
+						// need to clone because we are changing the value
+						dataLabel = dataLabel.slice();
+						dataLabel[0] += value;
+					} else {
+						dataLabel += value;
+					}
+
+					return dataLabel;
+				}
+			}
+		}
+	});
+
+	defaults._set('pie', helpers.clone(defaults.doughnut));
+	defaults._set('pie', {
+		cutoutPercentage: 0
+	});
+
+	module.exports = function(Chart) {
 
 		Chart.controllers.doughnut = Chart.controllers.pie = Chart.DatasetController.extend({
 
-			dataElementType: Chart.elements.Arc,
+			dataElementType: elements.Arc,
 
 			linkScales: helpers.noop,
 
@@ -25927,20 +28092,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			update: function(reset) {
 				var me = this;
-				var chart = me.chart,
-					chartArea = chart.chartArea,
-					opts = chart.options,
-					arcOpts = opts.elements.arc,
-					availableWidth = chartArea.right - chartArea.left - arcOpts.borderWidth,
-					availableHeight = chartArea.bottom - chartArea.top - arcOpts.borderWidth,
-					minSize = Math.min(availableWidth, availableHeight),
-					offset = {
-						x: 0,
-						y: 0
-					},
-					meta = me.getMeta(),
-					cutoutPercentage = opts.cutoutPercentage,
-					circumference = opts.circumference;
+				var chart = me.chart;
+				var chartArea = chart.chartArea;
+				var opts = chart.options;
+				var arcOpts = opts.elements.arc;
+				var availableWidth = chartArea.right - chartArea.left - arcOpts.borderWidth;
+				var availableHeight = chartArea.bottom - chartArea.top - arcOpts.borderWidth;
+				var minSize = Math.min(availableWidth, availableHeight);
+				var offset = {x: 0, y: 0};
+				var meta = me.getMeta();
+				var cutoutPercentage = opts.cutoutPercentage;
+				var circumference = opts.circumference;
 
 				// If the chart's circumference isn't a full circle, calculate minSize as a ratio of the width/height of the arc
 				if (circumference < Math.PI * 2.0) {
@@ -25949,7 +28111,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					var endAngle = startAngle + circumference;
 					var start = {x: Math.cos(startAngle), y: Math.sin(startAngle)};
 					var end = {x: Math.cos(endAngle), y: Math.sin(endAngle)};
-					var contains0 = (startAngle <= 0 && 0 <= endAngle) || (startAngle <= Math.PI * 2.0 && Math.PI * 2.0 <= endAngle);
+					var contains0 = (startAngle <= 0 && endAngle >= 0) || (startAngle <= Math.PI * 2.0 && Math.PI * 2.0 <= endAngle);
 					var contains90 = (startAngle <= Math.PI * 0.5 && Math.PI * 0.5 <= endAngle) || (startAngle <= Math.PI * 2.5 && Math.PI * 2.5 <= endAngle);
 					var contains180 = (startAngle <= -Math.PI && -Math.PI <= endAngle) || (startAngle <= Math.PI && Math.PI <= endAngle);
 					var contains270 = (startAngle <= -Math.PI * 0.5 && -Math.PI * 0.5 <= endAngle) || (startAngle <= Math.PI * 1.5 && Math.PI * 1.5 <= endAngle);
@@ -25980,19 +28142,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			updateElement: function(arc, index, reset) {
 				var me = this;
-				var chart = me.chart,
-					chartArea = chart.chartArea,
-					opts = chart.options,
-					animationOpts = opts.animation,
-					centerX = (chartArea.left + chartArea.right) / 2,
-					centerY = (chartArea.top + chartArea.bottom) / 2,
-					startAngle = opts.rotation, // non reset case handled later
-					endAngle = opts.rotation, // non reset case handled later
-					dataset = me.getDataset(),
-					circumference = reset && animationOpts.animateRotate ? 0 : arc.hidden ? 0 : me.calculateCircumference(dataset.data[index]) * (opts.circumference / (2.0 * Math.PI)),
-					innerRadius = reset && animationOpts.animateScale ? 0 : me.innerRadius,
-					outerRadius = reset && animationOpts.animateScale ? 0 : me.outerRadius,
-					valueAtIndexOrDefault = helpers.getValueAtIndexOrDefault;
+				var chart = me.chart;
+				var chartArea = chart.chartArea;
+				var opts = chart.options;
+				var animationOpts = opts.animation;
+				var centerX = (chartArea.left + chartArea.right) / 2;
+				var centerY = (chartArea.top + chartArea.bottom) / 2;
+				var startAngle = opts.rotation; // non reset case handled later
+				var endAngle = opts.rotation; // non reset case handled later
+				var dataset = me.getDataset();
+				var circumference = reset && animationOpts.animateRotate ? 0 : arc.hidden ? 0 : me.calculateCircumference(dataset.data[index]) * (opts.circumference / (2.0 * Math.PI));
+				var innerRadius = reset && animationOpts.animateScale ? 0 : me.innerRadius;
+				var outerRadius = reset && animationOpts.animateScale ? 0 : me.outerRadius;
+				var valueAtIndexOrDefault = helpers.valueAtIndexOrDefault;
 
 				helpers.extend(arc, {
 					// Utility
@@ -26063,16 +28225,16 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 
 			// gets the max border or hover width to properly scale pie charts
-			getMaxBorderWidth: function(elements) {
-				var max = 0,
-					index = this.index,
-					length = elements.length,
-					borderWidth,
-					hoverWidth;
+			getMaxBorderWidth: function(arcs) {
+				var max = 0;
+				var index = this.index;
+				var length = arcs.length;
+				var borderWidth;
+				var hoverWidth;
 
 				for (var i = 0; i < length; i++) {
-					borderWidth = elements[i]._model ? elements[i]._model.borderWidth : 0;
-					hoverWidth = elements[i]._chart ? elements[i]._chart.config.data.datasets[index].hoverBorderWidth : 0;
+					borderWidth = arcs[i]._model ? arcs[i]._model.borderWidth : 0;
+					hoverWidth = arcs[i]._chart ? arcs[i]._chart.config.data.datasets[index].hoverBorderWidth : 0;
 
 					max = borderWidth > max ? borderWidth : max;
 					max = hoverWidth > max ? hoverWidth : max;
@@ -26083,45 +28245,47 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 148 */
-/***/ function(module, exports) {
+/***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	var defaults = __webpack_require__(4);
+	var elements = __webpack_require__(17);
+	var helpers = __webpack_require__(5);
+
+	defaults._set('line', {
+		showLines: true,
+		spanGaps: false,
+
+		hover: {
+			mode: 'label'
+		},
+
+		scales: {
+			xAxes: [{
+				type: 'category',
+				id: 'x-axis-0'
+			}],
+			yAxes: [{
+				type: 'linear',
+				id: 'y-axis-0'
+			}]
+		}
+	});
+
 	module.exports = function(Chart) {
 
-		var helpers = Chart.helpers;
-
-		Chart.defaults.line = {
-			showLines: true,
-			spanGaps: false,
-
-			hover: {
-				mode: 'label'
-			},
-
-			scales: {
-				xAxes: [{
-					type: 'category',
-					id: 'x-axis-0'
-				}],
-				yAxes: [{
-					type: 'linear',
-					id: 'y-axis-0'
-				}]
-			}
-		};
-
 		function lineEnabled(dataset, options) {
-			return helpers.getValueOrDefault(dataset.showLine, options.showLines);
+			return helpers.valueOrDefault(dataset.showLine, options.showLines);
 		}
 
 		Chart.controllers.line = Chart.DatasetController.extend({
 
-			datasetElementType: Chart.elements.Line,
+			datasetElementType: elements.Line,
 
-			dataElementType: Chart.elements.Point,
+			dataElementType: elements.Point,
 
 			update: function(reset) {
 				var me = this;
@@ -26156,7 +28320,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						// to https://github.com/chartjs/Chart.js/issues/2435#issuecomment-216718158
 						// This option gives lines the ability to span gaps
 						spanGaps: dataset.spanGaps ? dataset.spanGaps : options.spanGaps,
-						tension: custom.tension ? custom.tension : helpers.getValueOrDefault(dataset.lineTension, lineElementOptions.tension),
+						tension: custom.tension ? custom.tension : helpers.valueOrDefault(dataset.lineTension, lineElementOptions.tension),
 						backgroundColor: custom.backgroundColor ? custom.backgroundColor : (dataset.backgroundColor || lineElementOptions.backgroundColor),
 						borderWidth: custom.borderWidth ? custom.borderWidth : (dataset.borderWidth || lineElementOptions.borderWidth),
 						borderColor: custom.borderColor ? custom.borderColor : (dataset.borderColor || lineElementOptions.borderColor),
@@ -26165,15 +28329,15 @@ return /******/ (function(modules) { // webpackBootstrap
 						borderDashOffset: custom.borderDashOffset ? custom.borderDashOffset : (dataset.borderDashOffset || lineElementOptions.borderDashOffset),
 						borderJoinStyle: custom.borderJoinStyle ? custom.borderJoinStyle : (dataset.borderJoinStyle || lineElementOptions.borderJoinStyle),
 						fill: custom.fill ? custom.fill : (dataset.fill !== undefined ? dataset.fill : lineElementOptions.fill),
-						steppedLine: custom.steppedLine ? custom.steppedLine : helpers.getValueOrDefault(dataset.steppedLine, lineElementOptions.stepped),
-						cubicInterpolationMode: custom.cubicInterpolationMode ? custom.cubicInterpolationMode : helpers.getValueOrDefault(dataset.cubicInterpolationMode, lineElementOptions.cubicInterpolationMode),
+						steppedLine: custom.steppedLine ? custom.steppedLine : helpers.valueOrDefault(dataset.steppedLine, lineElementOptions.stepped),
+						cubicInterpolationMode: custom.cubicInterpolationMode ? custom.cubicInterpolationMode : helpers.valueOrDefault(dataset.cubicInterpolationMode, lineElementOptions.cubicInterpolationMode),
 					};
 
 					line.pivot();
 				}
 
 				// Update Points
-				for (i=0, ilen=points.length; i<ilen; ++i) {
+				for (i = 0, ilen = points.length; i < ilen; ++i) {
 					me.updateElement(points[i], i, reset);
 				}
 
@@ -26182,7 +28346,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 
 				// Now pivot the point for animation
-				for (i=0, ilen=points.length; i<ilen; ++i) {
+				for (i = 0, ilen = points.length; i < ilen; ++i) {
 					points[i].pivot();
 				}
 			},
@@ -26195,7 +28359,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				if (custom.backgroundColor) {
 					backgroundColor = custom.backgroundColor;
 				} else if (dataset.pointBackgroundColor) {
-					backgroundColor = helpers.getValueAtIndexOrDefault(dataset.pointBackgroundColor, index, backgroundColor);
+					backgroundColor = helpers.valueAtIndexOrDefault(dataset.pointBackgroundColor, index, backgroundColor);
 				} else if (dataset.backgroundColor) {
 					backgroundColor = dataset.backgroundColor;
 				}
@@ -26211,7 +28375,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				if (custom.borderColor) {
 					borderColor = custom.borderColor;
 				} else if (dataset.pointBorderColor) {
-					borderColor = helpers.getValueAtIndexOrDefault(dataset.pointBorderColor, index, borderColor);
+					borderColor = helpers.valueAtIndexOrDefault(dataset.pointBorderColor, index, borderColor);
 				} else if (dataset.borderColor) {
 					borderColor = dataset.borderColor;
 				}
@@ -26226,8 +28390,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				if (!isNaN(custom.borderWidth)) {
 					borderWidth = custom.borderWidth;
-				} else if (!isNaN(dataset.pointBorderWidth)) {
-					borderWidth = helpers.getValueAtIndexOrDefault(dataset.pointBorderWidth, index, borderWidth);
+				} else if (!isNaN(dataset.pointBorderWidth) || helpers.isArray(dataset.pointBorderWidth)) {
+					borderWidth = helpers.valueAtIndexOrDefault(dataset.pointBorderWidth, index, borderWidth);
 				} else if (!isNaN(dataset.borderWidth)) {
 					borderWidth = dataset.borderWidth;
 				}
@@ -26246,8 +28410,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				var xScale = me.getScaleForId(meta.xAxisID);
 				var pointOptions = me.chart.options.elements.point;
 				var x, y;
-				var labels = me.chart.data.labels || [];
-				var includeOffset = (labels.length === 1 || dataset.data.length === 1) || me.chart.isCombo;
 
 				// Compatibility: If the properties are defined with only the old name, use those values
 				if ((dataset.radius !== undefined) && (dataset.pointRadius === undefined)) {
@@ -26257,7 +28419,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					dataset.pointHitRadius = dataset.hitRadius;
 				}
 
-				x = xScale.getPixelForValue(typeof value === 'object' ? value : NaN, index, datasetIndex, includeOffset);
+				x = xScale.getPixelForValue(typeof value === 'object' ? value : NaN, index, datasetIndex);
 				y = reset ? yScale.getBasePixel() : me.calculatePointY(value, index, datasetIndex);
 
 				// Utility
@@ -26272,15 +28434,15 @@ return /******/ (function(modules) { // webpackBootstrap
 					y: y,
 					skip: custom.skip || isNaN(x) || isNaN(y),
 					// Appearance
-					radius: custom.radius || helpers.getValueAtIndexOrDefault(dataset.pointRadius, index, pointOptions.radius),
-					pointStyle: custom.pointStyle || helpers.getValueAtIndexOrDefault(dataset.pointStyle, index, pointOptions.pointStyle),
+					radius: custom.radius || helpers.valueAtIndexOrDefault(dataset.pointRadius, index, pointOptions.radius),
+					pointStyle: custom.pointStyle || helpers.valueAtIndexOrDefault(dataset.pointStyle, index, pointOptions.pointStyle),
 					backgroundColor: me.getPointBackgroundColor(point, index),
 					borderColor: me.getPointBorderColor(point, index),
 					borderWidth: me.getPointBorderWidth(point, index),
 					tension: meta.dataset._model ? meta.dataset._model.tension : 0,
 					steppedLine: meta.dataset._model ? meta.dataset._model.steppedLine : false,
 					// Tooltip
-					hitRadius: custom.hitRadius || helpers.getValueAtIndexOrDefault(dataset.pointHitRadius, index, pointOptions.hitRadius)
+					hitRadius: custom.hitRadius || helpers.valueAtIndexOrDefault(dataset.pointHitRadius, index, pointOptions.hitRadius)
 				};
 			},
 
@@ -26374,16 +28536,16 @@ return /******/ (function(modules) { // webpackBootstrap
 				var ilen = points.length;
 				var i = 0;
 
-				Chart.canvasHelpers.clipArea(chart.ctx, area);
+				helpers.canvas.clipArea(chart.ctx, area);
 
 				if (lineEnabled(me.getDataset(), chart.options)) {
 					meta.dataset.draw();
 				}
 
-				Chart.canvasHelpers.unclipArea(chart.ctx);
+				helpers.canvas.unclipArea(chart.ctx);
 
 				// Draw the points
-				for (; i<ilen; ++i) {
+				for (; i < ilen; ++i) {
 					points[i].draw(area);
 				}
 			},
@@ -26395,10 +28557,10 @@ return /******/ (function(modules) { // webpackBootstrap
 				var custom = point.custom || {};
 				var model = point._model;
 
-				model.radius = custom.hoverRadius || helpers.getValueAtIndexOrDefault(dataset.pointHoverRadius, index, this.chart.options.elements.point.hoverRadius);
-				model.backgroundColor = custom.hoverBackgroundColor || helpers.getValueAtIndexOrDefault(dataset.pointHoverBackgroundColor, index, helpers.getHoverColor(model.backgroundColor));
-				model.borderColor = custom.hoverBorderColor || helpers.getValueAtIndexOrDefault(dataset.pointHoverBorderColor, index, helpers.getHoverColor(model.borderColor));
-				model.borderWidth = custom.hoverBorderWidth || helpers.getValueAtIndexOrDefault(dataset.pointHoverBorderWidth, index, model.borderWidth);
+				model.radius = custom.hoverRadius || helpers.valueAtIndexOrDefault(dataset.pointHoverRadius, index, this.chart.options.elements.point.hoverRadius);
+				model.backgroundColor = custom.hoverBackgroundColor || helpers.valueAtIndexOrDefault(dataset.pointHoverBackgroundColor, index, helpers.getHoverColor(model.backgroundColor));
+				model.borderColor = custom.hoverBorderColor || helpers.valueAtIndexOrDefault(dataset.pointHoverBorderColor, index, helpers.getHoverColor(model.borderColor));
+				model.borderWidth = custom.hoverBorderWidth || helpers.valueAtIndexOrDefault(dataset.pointHoverBorderWidth, index, model.borderWidth);
 			},
 
 			removeHoverStyle: function(point) {
@@ -26413,7 +28575,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					dataset.pointRadius = dataset.radius;
 				}
 
-				model.radius = custom.radius || helpers.getValueAtIndexOrDefault(dataset.pointRadius, index, me.chart.options.elements.point.radius);
+				model.radius = custom.radius || helpers.valueAtIndexOrDefault(dataset.pointRadius, index, me.chart.options.elements.point.radius);
 				model.backgroundColor = me.getPointBackgroundColor(point, index);
 				model.borderColor = me.getPointBorderColor(point, index);
 				model.borderWidth = me.getPointBorderWidth(point, index);
@@ -26422,125 +28584,125 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 149 */
-/***/ function(module, exports) {
+/***/ }),
+/* 163 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var elements = __webpack_require__(17);
+	var helpers = __webpack_require__(5);
 
-		var helpers = Chart.helpers;
-
-		Chart.defaults.polarArea = {
-
-			scale: {
-				type: 'radialLinear',
-				angleLines: {
-					display: false
-				},
-				gridLines: {
-					circular: true
-				},
-				pointLabels: {
-					display: false
-				},
-				ticks: {
-					beginAtZero: true
-				}
+	defaults._set('polarArea', {
+		scale: {
+			type: 'radialLinear',
+			angleLines: {
+				display: false
 			},
-
-			// Boolean - Whether to animate the rotation of the chart
-			animation: {
-				animateRotate: true,
-				animateScale: true
+			gridLines: {
+				circular: true
 			},
-
-			startAngle: -0.5 * Math.PI,
-			aspectRatio: 1,
-			legendCallback: function(chart) {
-				var text = [];
-				text.push('<ul class="' + chart.id + '-legend">');
-
-				var data = chart.data;
-				var datasets = data.datasets;
-				var labels = data.labels;
-
-				if (datasets.length) {
-					for (var i = 0; i < datasets[0].data.length; ++i) {
-						text.push('<li><span style="background-color:' + datasets[0].backgroundColor[i] + '"></span>');
-						if (labels[i]) {
-							text.push(labels[i]);
-						}
-						text.push('</li>');
-					}
-				}
-
-				text.push('</ul>');
-				return text.join('');
+			pointLabels: {
+				display: false
 			},
-			legend: {
-				labels: {
-					generateLabels: function(chart) {
-						var data = chart.data;
-						if (data.labels.length && data.datasets.length) {
-							return data.labels.map(function(label, i) {
-								var meta = chart.getDatasetMeta(0);
-								var ds = data.datasets[0];
-								var arc = meta.data[i];
-								var custom = arc.custom || {};
-								var getValueAtIndexOrDefault = helpers.getValueAtIndexOrDefault;
-								var arcOpts = chart.options.elements.arc;
-								var fill = custom.backgroundColor ? custom.backgroundColor : getValueAtIndexOrDefault(ds.backgroundColor, i, arcOpts.backgroundColor);
-								var stroke = custom.borderColor ? custom.borderColor : getValueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
-								var bw = custom.borderWidth ? custom.borderWidth : getValueAtIndexOrDefault(ds.borderWidth, i, arcOpts.borderWidth);
+			ticks: {
+				beginAtZero: true
+			}
+		},
 
-								return {
-									text: label,
-									fillStyle: fill,
-									strokeStyle: stroke,
-									lineWidth: bw,
-									hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
+		// Boolean - Whether to animate the rotation of the chart
+		animation: {
+			animateRotate: true,
+			animateScale: true
+		},
 
-									// Extra data used for toggling the correct item
-									index: i
-								};
-							});
-						}
-						return [];
+		startAngle: -0.5 * Math.PI,
+		legendCallback: function(chart) {
+			var text = [];
+			text.push('<ul class="' + chart.id + '-legend">');
+
+			var data = chart.data;
+			var datasets = data.datasets;
+			var labels = data.labels;
+
+			if (datasets.length) {
+				for (var i = 0; i < datasets[0].data.length; ++i) {
+					text.push('<li><span style="background-color:' + datasets[0].backgroundColor[i] + '"></span>');
+					if (labels[i]) {
+						text.push(labels[i]);
 					}
-				},
-
-				onClick: function(e, legendItem) {
-					var index = legendItem.index;
-					var chart = this.chart;
-					var i, ilen, meta;
-
-					for (i = 0, ilen = (chart.data.datasets || []).length; i < ilen; ++i) {
-						meta = chart.getDatasetMeta(i);
-						meta.data[index].hidden = !meta.data[index].hidden;
-					}
-
-					chart.update();
-				}
-			},
-
-			// Need to override these to give a nice default
-			tooltips: {
-				callbacks: {
-					title: function() {
-						return '';
-					},
-					label: function(tooltipItem, data) {
-						return data.labels[tooltipItem.index] + ': ' + tooltipItem.yLabel;
-					}
+					text.push('</li>');
 				}
 			}
-		};
+
+			text.push('</ul>');
+			return text.join('');
+		},
+		legend: {
+			labels: {
+				generateLabels: function(chart) {
+					var data = chart.data;
+					if (data.labels.length && data.datasets.length) {
+						return data.labels.map(function(label, i) {
+							var meta = chart.getDatasetMeta(0);
+							var ds = data.datasets[0];
+							var arc = meta.data[i];
+							var custom = arc.custom || {};
+							var valueAtIndexOrDefault = helpers.valueAtIndexOrDefault;
+							var arcOpts = chart.options.elements.arc;
+							var fill = custom.backgroundColor ? custom.backgroundColor : valueAtIndexOrDefault(ds.backgroundColor, i, arcOpts.backgroundColor);
+							var stroke = custom.borderColor ? custom.borderColor : valueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
+							var bw = custom.borderWidth ? custom.borderWidth : valueAtIndexOrDefault(ds.borderWidth, i, arcOpts.borderWidth);
+
+							return {
+								text: label,
+								fillStyle: fill,
+								strokeStyle: stroke,
+								lineWidth: bw,
+								hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
+
+								// Extra data used for toggling the correct item
+								index: i
+							};
+						});
+					}
+					return [];
+				}
+			},
+
+			onClick: function(e, legendItem) {
+				var index = legendItem.index;
+				var chart = this.chart;
+				var i, ilen, meta;
+
+				for (i = 0, ilen = (chart.data.datasets || []).length; i < ilen; ++i) {
+					meta = chart.getDatasetMeta(i);
+					meta.data[index].hidden = !meta.data[index].hidden;
+				}
+
+				chart.update();
+			}
+		},
+
+		// Need to override these to give a nice default
+		tooltips: {
+			callbacks: {
+				title: function() {
+					return '';
+				},
+				label: function(item, data) {
+					return data.labels[item.index] + ': ' + item.yLabel;
+				}
+			}
+		}
+	});
+
+	module.exports = function(Chart) {
 
 		Chart.controllers.polarArea = Chart.DatasetController.extend({
 
-			dataElementType: Chart.elements.Arc,
+			dataElementType: elements.Arc,
 
 			linkScales: helpers.noop,
 
@@ -26573,7 +28735,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				var opts = chart.options;
 				var animationOpts = opts.animation;
 				var scale = chart.scale;
-				var getValueAtIndexOrDefault = helpers.getValueAtIndexOrDefault;
 				var labels = chart.data.labels;
 
 				var circumference = me.calculateCircumference(dataset.data[index]);
@@ -26612,7 +28773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						outerRadius: reset ? resetRadius : distance,
 						startAngle: reset && animationOpts.animateRotate ? datasetStartAngle : startAngle,
 						endAngle: reset && animationOpts.animateRotate ? datasetStartAngle : endAngle,
-						label: getValueAtIndexOrDefault(labels, index, labels[index])
+						label: helpers.valueAtIndexOrDefault(labels, index, labels[index])
 					}
 				});
 
@@ -26651,33 +28812,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 150 */
-/***/ function(module, exports) {
+/***/ }),
+/* 164 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var elements = __webpack_require__(17);
+	var helpers = __webpack_require__(5);
 
-		var helpers = Chart.helpers;
-
-		Chart.defaults.radar = {
-			aspectRatio: 1,
-			scale: {
-				type: 'radialLinear'
-			},
-			elements: {
-				line: {
-					tension: 0 // no bezier in radar
-				}
+	defaults._set('radar', {
+		scale: {
+			type: 'radialLinear'
+		},
+		elements: {
+			line: {
+				tension: 0 // no bezier in radar
 			}
-		};
+		}
+	});
+
+	module.exports = function(Chart) {
 
 		Chart.controllers.radar = Chart.DatasetController.extend({
 
-			datasetElementType: Chart.elements.Line,
+			datasetElementType: elements.Line,
 
-			dataElementType: Chart.elements.Point,
+			dataElementType: elements.Point,
 
 			linkScales: helpers.noop,
 
@@ -26706,7 +28868,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					// Model
 					_model: {
 						// Appearance
-						tension: custom.tension ? custom.tension : helpers.getValueOrDefault(dataset.lineTension, lineElementOptions.tension),
+						tension: custom.tension ? custom.tension : helpers.valueOrDefault(dataset.lineTension, lineElementOptions.tension),
 						backgroundColor: custom.backgroundColor ? custom.backgroundColor : (dataset.backgroundColor || lineElementOptions.backgroundColor),
 						borderWidth: custom.borderWidth ? custom.borderWidth : (dataset.borderWidth || lineElementOptions.borderWidth),
 						borderColor: custom.borderColor ? custom.borderColor : (dataset.borderColor || lineElementOptions.borderColor),
@@ -26756,15 +28918,15 @@ return /******/ (function(modules) { // webpackBootstrap
 						y: reset ? scale.yCenter : pointPosition.y,
 
 						// Appearance
-						tension: custom.tension ? custom.tension : helpers.getValueOrDefault(dataset.lineTension, me.chart.options.elements.line.tension),
-						radius: custom.radius ? custom.radius : helpers.getValueAtIndexOrDefault(dataset.pointRadius, index, pointElementOptions.radius),
-						backgroundColor: custom.backgroundColor ? custom.backgroundColor : helpers.getValueAtIndexOrDefault(dataset.pointBackgroundColor, index, pointElementOptions.backgroundColor),
-						borderColor: custom.borderColor ? custom.borderColor : helpers.getValueAtIndexOrDefault(dataset.pointBorderColor, index, pointElementOptions.borderColor),
-						borderWidth: custom.borderWidth ? custom.borderWidth : helpers.getValueAtIndexOrDefault(dataset.pointBorderWidth, index, pointElementOptions.borderWidth),
-						pointStyle: custom.pointStyle ? custom.pointStyle : helpers.getValueAtIndexOrDefault(dataset.pointStyle, index, pointElementOptions.pointStyle),
+						tension: custom.tension ? custom.tension : helpers.valueOrDefault(dataset.lineTension, me.chart.options.elements.line.tension),
+						radius: custom.radius ? custom.radius : helpers.valueAtIndexOrDefault(dataset.pointRadius, index, pointElementOptions.radius),
+						backgroundColor: custom.backgroundColor ? custom.backgroundColor : helpers.valueAtIndexOrDefault(dataset.pointBackgroundColor, index, pointElementOptions.backgroundColor),
+						borderColor: custom.borderColor ? custom.borderColor : helpers.valueAtIndexOrDefault(dataset.pointBorderColor, index, pointElementOptions.borderColor),
+						borderWidth: custom.borderWidth ? custom.borderWidth : helpers.valueAtIndexOrDefault(dataset.pointBorderWidth, index, pointElementOptions.borderWidth),
+						pointStyle: custom.pointStyle ? custom.pointStyle : helpers.valueAtIndexOrDefault(dataset.pointStyle, index, pointElementOptions.pointStyle),
 
 						// Tooltip
-						hitRadius: custom.hitRadius ? custom.hitRadius : helpers.getValueAtIndexOrDefault(dataset.pointHitRadius, index, pointElementOptions.hitRadius)
+						hitRadius: custom.hitRadius ? custom.hitRadius : helpers.valueAtIndexOrDefault(dataset.pointHitRadius, index, pointElementOptions.hitRadius)
 					}
 				});
 
@@ -26802,10 +28964,10 @@ return /******/ (function(modules) { // webpackBootstrap
 				var index = point._index;
 				var model = point._model;
 
-				model.radius = custom.hoverRadius ? custom.hoverRadius : helpers.getValueAtIndexOrDefault(dataset.pointHoverRadius, index, this.chart.options.elements.point.hoverRadius);
-				model.backgroundColor = custom.hoverBackgroundColor ? custom.hoverBackgroundColor : helpers.getValueAtIndexOrDefault(dataset.pointHoverBackgroundColor, index, helpers.getHoverColor(model.backgroundColor));
-				model.borderColor = custom.hoverBorderColor ? custom.hoverBorderColor : helpers.getValueAtIndexOrDefault(dataset.pointHoverBorderColor, index, helpers.getHoverColor(model.borderColor));
-				model.borderWidth = custom.hoverBorderWidth ? custom.hoverBorderWidth : helpers.getValueAtIndexOrDefault(dataset.pointHoverBorderWidth, index, model.borderWidth);
+				model.radius = custom.hoverRadius ? custom.hoverRadius : helpers.valueAtIndexOrDefault(dataset.pointHoverRadius, index, this.chart.options.elements.point.hoverRadius);
+				model.backgroundColor = custom.hoverBackgroundColor ? custom.hoverBackgroundColor : helpers.valueAtIndexOrDefault(dataset.pointHoverBackgroundColor, index, helpers.getHoverColor(model.backgroundColor));
+				model.borderColor = custom.hoverBorderColor ? custom.hoverBorderColor : helpers.valueAtIndexOrDefault(dataset.pointHoverBorderColor, index, helpers.getHoverColor(model.borderColor));
+				model.borderWidth = custom.hoverBorderWidth ? custom.hoverBorderWidth : helpers.valueAtIndexOrDefault(dataset.pointHoverBorderWidth, index, model.borderWidth);
 			},
 
 			removeHoverStyle: function(point) {
@@ -26815,18 +28977,66 @@ return /******/ (function(modules) { // webpackBootstrap
 				var model = point._model;
 				var pointElementOptions = this.chart.options.elements.point;
 
-				model.radius = custom.radius ? custom.radius : helpers.getValueAtIndexOrDefault(dataset.pointRadius, index, pointElementOptions.radius);
-				model.backgroundColor = custom.backgroundColor ? custom.backgroundColor : helpers.getValueAtIndexOrDefault(dataset.pointBackgroundColor, index, pointElementOptions.backgroundColor);
-				model.borderColor = custom.borderColor ? custom.borderColor : helpers.getValueAtIndexOrDefault(dataset.pointBorderColor, index, pointElementOptions.borderColor);
-				model.borderWidth = custom.borderWidth ? custom.borderWidth : helpers.getValueAtIndexOrDefault(dataset.pointBorderWidth, index, pointElementOptions.borderWidth);
+				model.radius = custom.radius ? custom.radius : helpers.valueAtIndexOrDefault(dataset.pointRadius, index, pointElementOptions.radius);
+				model.backgroundColor = custom.backgroundColor ? custom.backgroundColor : helpers.valueAtIndexOrDefault(dataset.pointBackgroundColor, index, pointElementOptions.backgroundColor);
+				model.borderColor = custom.borderColor ? custom.borderColor : helpers.valueAtIndexOrDefault(dataset.pointBorderColor, index, pointElementOptions.borderColor);
+				model.borderWidth = custom.borderWidth ? custom.borderWidth : helpers.valueAtIndexOrDefault(dataset.pointBorderWidth, index, pointElementOptions.borderWidth);
 			}
 		});
 	};
 
 
-/***/ },
-/* 151 */
-/***/ function(module, exports) {
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var defaults = __webpack_require__(4);
+
+	defaults._set('scatter', {
+		hover: {
+			mode: 'single'
+		},
+
+		scales: {
+			xAxes: [{
+				id: 'x-axis-1',    // need an ID so datasets can reference the scale
+				type: 'linear',    // scatter should not use a category axis
+				position: 'bottom'
+			}],
+			yAxes: [{
+				id: 'y-axis-1',
+				type: 'linear',
+				position: 'left'
+			}]
+		},
+
+		showLines: false,
+
+		tooltips: {
+			callbacks: {
+				title: function() {
+					return '';     // doesn't make sense for scatter since data are formatted as a point
+				},
+				label: function(item) {
+					return '(' + item.xLabel + ', ' + item.yLabel + ')';
+				}
+			}
+		}
+	});
+
+	module.exports = function(Chart) {
+
+		// Scatter charts use line controllers
+		Chart.controllers.scatter = Chart.controllers.line;
+
+	};
+
+
+/***/ }),
+/* 166 */
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -26841,9 +29051,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 152 */
-/***/ function(module, exports) {
+/***/ }),
+/* 167 */
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -26857,9 +29067,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 153 */
-/***/ function(module, exports) {
+/***/ }),
+/* 168 */
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -26874,9 +29084,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 154 */
-/***/ function(module, exports) {
+/***/ }),
+/* 169 */
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -26891,9 +29101,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 155 */
-/***/ function(module, exports) {
+/***/ }),
+/* 170 */
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -26908,9 +29118,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 156 */
-/***/ function(module, exports) {
+/***/ }),
+/* 171 */
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -26925,77 +29135,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 157 */
-/***/ function(module, exports) {
+/***/ }),
+/* 172 */
+/***/ (function(module, exports) {
 
 	'use strict';
 
 	module.exports = function(Chart) {
-
-		var defaultConfig = {
-			hover: {
-				mode: 'single'
-			},
-
-			scales: {
-				xAxes: [{
-					type: 'linear', // scatter should not use a category axis
-					position: 'bottom',
-					id: 'x-axis-1' // need an ID so datasets can reference the scale
-				}],
-				yAxes: [{
-					type: 'linear',
-					position: 'left',
-					id: 'y-axis-1'
-				}]
-			},
-
-			tooltips: {
-				callbacks: {
-					title: function() {
-						// Title doesn't make sense for scatter since we format the data as a point
-						return '';
-					},
-					label: function(tooltipItem) {
-						return '(' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ')';
-					}
-				}
-			}
-		};
-
-		// Register the default config for this type
-		Chart.defaults.scatter = defaultConfig;
-
-		// Scatter charts use line controllers
-		Chart.controllers.scatter = Chart.controllers.line;
-
 		Chart.Scatter = function(context, config) {
 			config.type = 'scatter';
 			return new Chart(context, config);
 		};
-
 	};
 
 
-/***/ },
-/* 158 */
-/***/ function(module, exports) {
+/***/ }),
+/* 173 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * Plugin based on discussion from the following Chart.js issues:
+	 * @see https://github.com/chartjs/Chart.js/issues/2380#issuecomment-279961569
+	 * @see https://github.com/chartjs/Chart.js/issues/2440#issuecomment-256461897
+	 */
 
 	'use strict';
 
-	module.exports = function(Chart) {
-		/**
-		 * Plugin based on discussion from the following Chart.js issues:
-		 * @see https://github.com/chartjs/Chart.js/issues/2380#issuecomment-279961569
-		 * @see https://github.com/chartjs/Chart.js/issues/2440#issuecomment-256461897
-		 */
-		Chart.defaults.global.plugins.filler = {
-			propagate: true
-		};
+	var defaults = __webpack_require__(4);
+	var elements = __webpack_require__(17);
+	var helpers = __webpack_require__(5);
 
-		var defaults = Chart.defaults;
-		var helpers = Chart.helpers;
+	defaults._set('global', {
+		plugins: {
+			filler: {
+				propagate: true
+			}
+		}
+	});
+
+	module.exports = function() {
+
 		var mappers = {
 			dataset: function(source) {
 				var index = source.fill;
@@ -27003,21 +29182,22 @@ return /******/ (function(modules) { // webpackBootstrap
 				var meta = chart.getDatasetMeta(index);
 				var visible = meta && chart.isDatasetVisible(index);
 				var points = (visible && meta.dataset._children) || [];
+				var length = points.length || 0;
 
-				return !points.length? null : function(point, i) {
-					return points[i]._view || null;
+				return !length ? null : function(point, i) {
+					return (i < length && points[i]._view) || null;
 				};
 			},
 
 			boundary: function(source) {
 				var boundary = source.boundary;
-				var x = boundary? boundary.x : null;
-				var y = boundary? boundary.y : null;
+				var x = boundary ? boundary.x : null;
+				var y = boundary ? boundary.y : null;
 
 				return function(point) {
 					return {
-						x: x === null? point.x : x,
-						y: y === null? point.y : y,
+						x: x === null ? point.x : x,
+						y: y === null ? point.y : y,
 					};
 				};
 			}
@@ -27089,9 +29269,9 @@ return /******/ (function(modules) { // webpackBootstrap
 			// controllers might still use it (e.g. the Smith chart).
 
 			if (fill === 'start') {
-				target = model.scaleBottom === undefined? scale.bottom : model.scaleBottom;
+				target = model.scaleBottom === undefined ? scale.bottom : model.scaleBottom;
 			} else if (fill === 'end') {
-				target = model.scaleTop === undefined? scale.top : model.scaleTop;
+				target = model.scaleTop === undefined ? scale.top : model.scaleTop;
 			} else if (model.scaleZero !== undefined) {
 				target = model.scaleZero;
 			} else if (scale.getBasePosition) {
@@ -27108,8 +29288,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				if (typeof target === 'number' && isFinite(target)) {
 					horizontal = scale.isHorizontal();
 					return {
-						x: horizontal? target : null,
-						y: horizontal? null : target
+						x: horizontal ? target : null,
+						y: horizontal ? null : target
 					};
 				}
 			}
@@ -27176,16 +29356,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			// building first area curve (normal)
 			ctx.moveTo(curve0[0].x, curve0[0].y);
-			for (i=1; i<len0; ++i) {
-				helpers.canvas.lineTo(ctx, curve0[i-1], curve0[i]);
+			for (i = 1; i < len0; ++i) {
+				helpers.canvas.lineTo(ctx, curve0[i - 1], curve0[i]);
 			}
 
 			// joining the two area curves
-			ctx.lineTo(curve1[len1-1].x, curve1[len1-1].y);
+			ctx.lineTo(curve1[len1 - 1].x, curve1[len1 - 1].y);
 
 			// building opposite area curve (reverse)
-			for (i=len1-1; i>0; --i) {
-				helpers.canvas.lineTo(ctx, curve1[i], curve1[i-1], true);
+			for (i = len1 - 1; i > 0; --i) {
+				helpers.canvas.lineTo(ctx, curve1[i], curve1[i - 1], true);
 			}
 		}
 
@@ -27201,7 +29381,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			ctx.beginPath();
 
 			for (i = 0, ilen = (count + !!loop); i < ilen; ++i) {
-				index = i%count;
+				index = i % count;
 				p0 = points[index]._view;
 				p1 = mapper(p0, index, view);
 				d0 = isDrawable(p0);
@@ -27248,7 +29428,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					el = meta.dataset;
 					source = null;
 
-					if (el && el._model && el instanceof Chart.elements.Line) {
+					if (el && el._model && el instanceof elements.Line) {
 						source = {
 							visible: chart.isDatasetVisible(i),
 							fill: decodeFill(el, i, count),
@@ -27261,7 +29441,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					sources.push(source);
 				}
 
-				for (i=0; i<count; ++i) {
+				for (i = 0; i < count; ++i) {
 					source = sources[i];
 					if (!source) {
 						continue;
@@ -27279,6 +29459,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					return;
 				}
 
+				var ctx = chart.ctx;
 				var el = meta.el;
 				var view = el._view;
 				var points = el._children || [];
@@ -27286,26 +29467,27 @@ return /******/ (function(modules) { // webpackBootstrap
 				var color = view.backgroundColor || defaults.global.defaultColor;
 
 				if (mapper && color && points.length) {
-					doFill(chart.ctx, points, mapper, view, color, el._loop);
+					helpers.canvas.clipArea(ctx, chart.chartArea);
+					doFill(ctx, points, mapper, view, color, el._loop);
+					helpers.canvas.unclipArea(ctx);
 				}
 			}
 		};
 	};
 
 
-/***/ },
-/* 159 */
-/***/ function(module, exports) {
+/***/ }),
+/* 174 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = function(Chart) {
+	var defaults = __webpack_require__(4);
+	var Element = __webpack_require__(16);
+	var helpers = __webpack_require__(5);
 
-		var helpers = Chart.helpers;
-		var layout = Chart.layoutService;
-		var noop = helpers.noop;
-
-		Chart.defaults.global.legend = {
+	defaults._set('global', {
+		legend: {
 			display: true,
 			position: 'top',
 			fullWidth: true,
@@ -27319,7 +29501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var meta = ci.getDatasetMeta(index);
 
 				// See controller.isDatasetVisible comment
-				meta.hidden = meta.hidden === null? !ci.data.datasets[index].hidden : null;
+				meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
 
 				// We hid a dataset ... rerender the chart
 				ci.update();
@@ -27362,7 +29544,27 @@ return /******/ (function(modules) { // webpackBootstrap
 					}, this) : [];
 				}
 			}
-		};
+		},
+
+		legendCallback: function(chart) {
+			var text = [];
+			text.push('<ul class="' + chart.id + '-legend">');
+			for (var i = 0; i < chart.data.datasets.length; i++) {
+				text.push('<li><span style="background-color:' + chart.data.datasets[i].backgroundColor + '"></span>');
+				if (chart.data.datasets[i].label) {
+					text.push(chart.data.datasets[i].label);
+				}
+				text.push('</li>');
+			}
+			text.push('</ul>');
+			return text.join('');
+		}
+	});
+
+	module.exports = function(Chart) {
+
+		var layout = Chart.layoutService;
+		var noop = helpers.noop;
 
 		/**
 		 * Helper function to get the box width based on the usePointStyle option
@@ -27376,7 +29578,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				labelOpts.boxWidth;
 		}
 
-		Chart.Legend = Chart.Element.extend({
+		Chart.Legend = Element.extend({
 
 			initialize: function(config) {
 				helpers.extend(this, config);
@@ -27462,8 +29664,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			beforeBuildLabels: noop,
 			buildLabels: function() {
 				var me = this;
-				var labelOpts = me.options.labels;
-				var legendItems = labelOpts.generateLabels.call(me, me.chart);
+				var labelOpts = me.options.labels || {};
+				var legendItems = helpers.callback(labelOpts.generateLabels, [me.chart], me) || [];
 
 				if (labelOpts.filter) {
 					legendItems = legendItems.filter(function(item) {
@@ -27490,12 +29692,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				var ctx = me.ctx;
 
-				var globalDefault = Chart.defaults.global,
-					itemOrDefault = helpers.getValueOrDefault,
-					fontSize = itemOrDefault(labelOpts.fontSize, globalDefault.defaultFontSize),
-					fontStyle = itemOrDefault(labelOpts.fontStyle, globalDefault.defaultFontStyle),
-					fontFamily = itemOrDefault(labelOpts.fontFamily, globalDefault.defaultFontFamily),
-					labelFont = helpers.fontString(fontSize, fontStyle, fontFamily);
+				var globalDefault = defaults.global;
+				var valueOrDefault = helpers.valueOrDefault;
+				var fontSize = valueOrDefault(labelOpts.fontSize, globalDefault.defaultFontSize);
+				var fontStyle = valueOrDefault(labelOpts.fontStyle, globalDefault.defaultFontStyle);
+				var fontFamily = valueOrDefault(labelOpts.fontFamily, globalDefault.defaultFontFamily);
+				var labelFont = helpers.fontString(fontSize, fontStyle, fontFamily);
 
 				// Reset hit boxes
 				var hitboxes = me.legendHitBoxes = [];
@@ -27602,31 +29804,31 @@ return /******/ (function(modules) { // webpackBootstrap
 				var me = this;
 				var opts = me.options;
 				var labelOpts = opts.labels;
-				var globalDefault = Chart.defaults.global,
-					lineDefault = globalDefault.elements.line,
-					legendWidth = me.width,
-					lineWidths = me.lineWidths;
+				var globalDefault = defaults.global;
+				var lineDefault = globalDefault.elements.line;
+				var legendWidth = me.width;
+				var lineWidths = me.lineWidths;
 
 				if (opts.display) {
-					var ctx = me.ctx,
-						cursor,
-						itemOrDefault = helpers.getValueOrDefault,
-						fontColor = itemOrDefault(labelOpts.fontColor, globalDefault.defaultFontColor),
-						fontSize = itemOrDefault(labelOpts.fontSize, globalDefault.defaultFontSize),
-						fontStyle = itemOrDefault(labelOpts.fontStyle, globalDefault.defaultFontStyle),
-						fontFamily = itemOrDefault(labelOpts.fontFamily, globalDefault.defaultFontFamily),
-						labelFont = helpers.fontString(fontSize, fontStyle, fontFamily);
+					var ctx = me.ctx;
+					var valueOrDefault = helpers.valueOrDefault;
+					var fontColor = valueOrDefault(labelOpts.fontColor, globalDefault.defaultFontColor);
+					var fontSize = valueOrDefault(labelOpts.fontSize, globalDefault.defaultFontSize);
+					var fontStyle = valueOrDefault(labelOpts.fontStyle, globalDefault.defaultFontStyle);
+					var fontFamily = valueOrDefault(labelOpts.fontFamily, globalDefault.defaultFontFamily);
+					var labelFont = helpers.fontString(fontSize, fontStyle, fontFamily);
+					var cursor;
 
 					// Canvas setup
 					ctx.textAlign = 'left';
-					ctx.textBaseline = 'top';
+					ctx.textBaseline = 'middle';
 					ctx.lineWidth = 0.5;
 					ctx.strokeStyle = fontColor; // for strikethrough effect
 					ctx.fillStyle = fontColor; // render in correct colour
 					ctx.font = labelFont;
 
-					var boxWidth = getBoxWidth(labelOpts, fontSize),
-						hitboxes = me.legendHitBoxes;
+					var boxWidth = getBoxWidth(labelOpts, fontSize);
+					var hitboxes = me.legendHitBoxes;
 
 					// current position
 					var drawLegendBox = function(x, y, legendItem) {
@@ -27637,17 +29839,17 @@ return /******/ (function(modules) { // webpackBootstrap
 						// Set the ctx for the box
 						ctx.save();
 
-						ctx.fillStyle = itemOrDefault(legendItem.fillStyle, globalDefault.defaultColor);
-						ctx.lineCap = itemOrDefault(legendItem.lineCap, lineDefault.borderCapStyle);
-						ctx.lineDashOffset = itemOrDefault(legendItem.lineDashOffset, lineDefault.borderDashOffset);
-						ctx.lineJoin = itemOrDefault(legendItem.lineJoin, lineDefault.borderJoinStyle);
-						ctx.lineWidth = itemOrDefault(legendItem.lineWidth, lineDefault.borderWidth);
-						ctx.strokeStyle = itemOrDefault(legendItem.strokeStyle, globalDefault.defaultColor);
-						var isLineWidthZero = (itemOrDefault(legendItem.lineWidth, lineDefault.borderWidth) === 0);
+						ctx.fillStyle = valueOrDefault(legendItem.fillStyle, globalDefault.defaultColor);
+						ctx.lineCap = valueOrDefault(legendItem.lineCap, lineDefault.borderCapStyle);
+						ctx.lineDashOffset = valueOrDefault(legendItem.lineDashOffset, lineDefault.borderDashOffset);
+						ctx.lineJoin = valueOrDefault(legendItem.lineJoin, lineDefault.borderJoinStyle);
+						ctx.lineWidth = valueOrDefault(legendItem.lineWidth, lineDefault.borderWidth);
+						ctx.strokeStyle = valueOrDefault(legendItem.strokeStyle, globalDefault.defaultColor);
+						var isLineWidthZero = (valueOrDefault(legendItem.lineWidth, lineDefault.borderWidth) === 0);
 
 						if (ctx.setLineDash) {
 							// IE 9 and 10 do not support line dash
-							ctx.setLineDash(itemOrDefault(legendItem.lineDash, lineDefault.borderDash));
+							ctx.setLineDash(valueOrDefault(legendItem.lineDash, lineDefault.borderDash));
 						}
 
 						if (opts.labels && opts.labels.usePointStyle) {
@@ -27659,7 +29861,7 @@ return /******/ (function(modules) { // webpackBootstrap
 							var centerY = y + offSet;
 
 							// Draw pointStyle as legend symbol
-							Chart.canvasHelpers.drawPoint(ctx, legendItem.pointStyle, radius, centerX, centerY);
+							helpers.canvas.drawPoint(ctx, legendItem.pointStyle, radius, centerX, centerY);
 						} else {
 							// Draw box as legend symbol
 							if (!isLineWidthZero) {
@@ -27671,14 +29873,18 @@ return /******/ (function(modules) { // webpackBootstrap
 						ctx.restore();
 					};
 					var fillText = function(x, y, legendItem, textWidth) {
-						ctx.fillText(legendItem.text, boxWidth + (fontSize / 2) + x, y);
+						var halfFontSize = fontSize / 2;
+						var xLeft = boxWidth + halfFontSize + x;
+						var yMiddle = y + halfFontSize;
+
+						ctx.fillText(legendItem.text, xLeft, yMiddle);
 
 						if (legendItem.hidden) {
 							// Strikethrough the text if hidden
 							ctx.beginPath();
 							ctx.lineWidth = 2;
-							ctx.moveTo(boxWidth + (fontSize / 2) + x, y + (fontSize / 2));
-							ctx.lineTo(boxWidth + (fontSize / 2) + x + textWidth, y + (fontSize / 2));
+							ctx.moveTo(xLeft, yMiddle);
+							ctx.lineTo(xLeft + textWidth, yMiddle);
 							ctx.stroke();
 						}
 					};
@@ -27701,10 +29907,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 					var itemHeight = fontSize + labelOpts.padding;
 					helpers.each(me.legendItems, function(legendItem, i) {
-						var textWidth = ctx.measureText(legendItem.text).width,
-							width = boxWidth + (fontSize / 2) + textWidth,
-							x = cursor.x,
-							y = cursor.y;
+						var textWidth = ctx.measureText(legendItem.text).width;
+						var width = boxWidth + (fontSize / 2) + textWidth;
+						var x = cursor.x;
+						var y = cursor.y;
 
 						if (isHorizontal) {
 							if (x + width >= legendWidth) {
@@ -27761,8 +29967,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 
 				// Chart event already has relative position in it
-				var x = e.x,
-					y = e.y;
+				var x = e.x;
+				var y = e.y;
 
 				if (x >= me.left && x <= me.right && y >= me.top && y <= me.bottom) {
 					// See if we are touching one of the dataset boxes
@@ -27819,7 +30025,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var legend = chart.legend;
 
 				if (legendOpts) {
-					legendOpts = helpers.configMerge(Chart.defaults.global.legend, legendOpts);
+					helpers.mergeIf(legendOpts, defaults.global.legend);
 
 					if (legend) {
 						layout.configure(chart, legend, legendOpts);
@@ -27843,31 +30049,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 160 */
-/***/ function(module, exports) {
+/***/ }),
+/* 175 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	var defaults = __webpack_require__(4);
+	var Element = __webpack_require__(16);
+	var helpers = __webpack_require__(5);
+
+	defaults._set('global', {
+		title: {
+			display: false,
+			fontStyle: 'bold',
+			fullWidth: true,
+			lineHeight: 1.2,
+			padding: 10,
+			position: 'top',
+			text: '',
+			weight: 2000         // by default greater than legend (1000) to be above
+		}
+	});
+
 	module.exports = function(Chart) {
 
-		var helpers = Chart.helpers;
 		var layout = Chart.layoutService;
 		var noop = helpers.noop;
 
-		Chart.defaults.global.title = {
-			display: false,
-			position: 'top',
-			fullWidth: true,
-			weight: 2000,        // by default greater than legend (1000) to be above
-			fontStyle: 'bold',
-			padding: 10,
-
-			// actual title
-			text: ''
-		};
-
-		Chart.Title = Chart.Element.extend({
+		Chart.Title = Element.extend({
 			initialize: function(config) {
 				var me = this;
 				helpers.extend(me, config);
@@ -27954,19 +30164,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			beforeFit: noop,
 			fit: function() {
-				var me = this,
-					valueOrDefault = helpers.getValueOrDefault,
-					opts = me.options,
-					globalDefaults = Chart.defaults.global,
-					display = opts.display,
-					fontSize = valueOrDefault(opts.fontSize, globalDefaults.defaultFontSize),
-					minSize = me.minSize;
+				var me = this;
+				var valueOrDefault = helpers.valueOrDefault;
+				var opts = me.options;
+				var display = opts.display;
+				var fontSize = valueOrDefault(opts.fontSize, defaults.global.defaultFontSize);
+				var minSize = me.minSize;
+				var lineCount = helpers.isArray(opts.text) ? opts.text.length : 1;
+				var lineHeight = helpers.options.toLineHeight(opts.lineHeight, fontSize);
+				var textSize = display ? (lineCount * lineHeight) + (opts.padding * 2) : 0;
 
 				if (me.isHorizontal()) {
 					minSize.width = me.maxWidth; // fill all the width
-					minSize.height = display ? fontSize + (opts.padding * 2) : 0;
+					minSize.height = textSize;
 				} else {
-					minSize.width = display ? fontSize + (opts.padding * 2) : 0;
+					minSize.width = textSize;
 					minSize.height = me.maxHeight; // fill all the height
 				}
 
@@ -27984,25 +30196,25 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			// Actually draw the title block on the canvas
 			draw: function() {
-				var me = this,
-					ctx = me.ctx,
-					valueOrDefault = helpers.getValueOrDefault,
-					opts = me.options,
-					globalDefaults = Chart.defaults.global;
+				var me = this;
+				var ctx = me.ctx;
+				var valueOrDefault = helpers.valueOrDefault;
+				var opts = me.options;
+				var globalDefaults = defaults.global;
 
 				if (opts.display) {
-					var fontSize = valueOrDefault(opts.fontSize, globalDefaults.defaultFontSize),
-						fontStyle = valueOrDefault(opts.fontStyle, globalDefaults.defaultFontStyle),
-						fontFamily = valueOrDefault(opts.fontFamily, globalDefaults.defaultFontFamily),
-						titleFont = helpers.fontString(fontSize, fontStyle, fontFamily),
-						rotation = 0,
-						titleX,
-						titleY,
-						top = me.top,
-						left = me.left,
-						bottom = me.bottom,
-						right = me.right,
-						maxWidth;
+					var fontSize = valueOrDefault(opts.fontSize, globalDefaults.defaultFontSize);
+					var fontStyle = valueOrDefault(opts.fontStyle, globalDefaults.defaultFontStyle);
+					var fontFamily = valueOrDefault(opts.fontFamily, globalDefaults.defaultFontFamily);
+					var titleFont = helpers.fontString(fontSize, fontStyle, fontFamily);
+					var lineHeight = helpers.options.toLineHeight(opts.lineHeight, fontSize);
+					var offset = lineHeight / 2 + opts.padding;
+					var rotation = 0;
+					var top = me.top;
+					var left = me.left;
+					var bottom = me.bottom;
+					var right = me.right;
+					var maxWidth, titleX, titleY;
 
 					ctx.fillStyle = valueOrDefault(opts.fontColor, globalDefaults.defaultFontColor); // render in correct colour
 					ctx.font = titleFont;
@@ -28010,10 +30222,10 @@ return /******/ (function(modules) { // webpackBootstrap
 					// Horizontal
 					if (me.isHorizontal()) {
 						titleX = left + ((right - left) / 2); // midpoint of the width
-						titleY = top + ((bottom - top) / 2); // midpoint of the height
+						titleY = top + offset;
 						maxWidth = right - left;
 					} else {
-						titleX = opts.position === 'left' ? left + (fontSize / 2) : right - (fontSize / 2);
+						titleX = opts.position === 'left' ? left + offset : right - offset;
 						titleY = top + ((bottom - top) / 2);
 						maxWidth = bottom - top;
 						rotation = Math.PI * (opts.position === 'left' ? -0.5 : 0.5);
@@ -28024,7 +30236,18 @@ return /******/ (function(modules) { // webpackBootstrap
 					ctx.rotate(rotation);
 					ctx.textAlign = 'center';
 					ctx.textBaseline = 'middle';
-					ctx.fillText(opts.text, 0, 0, maxWidth);
+
+					var text = opts.text;
+					if (helpers.isArray(text)) {
+						var y = 0;
+						for (var i = 0; i < text.length; ++i) {
+							ctx.fillText(text[i], 0, y, maxWidth);
+							y += lineHeight;
+						}
+					} else {
+						ctx.fillText(text, 0, 0, maxWidth);
+					}
+
 					ctx.restore();
 				}
 			}
@@ -28058,7 +30281,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var titleBlock = chart.titleBlock;
 
 				if (titleOpts) {
-					titleOpts = helpers.configMerge(Chart.defaults.global.title, titleOpts);
+					helpers.mergeIf(titleOpts, defaults.global.title);
 
 					if (titleBlock) {
 						layout.configure(chart, titleBlock, titleOpts);
@@ -28075,537 +30298,2244 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
-/* 161 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 176 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _assign = __webpack_require__(162);
-
-	var _assign2 = _interopRequireDefault(_assign);
-
 	exports.mergeOptions = mergeOptions;
+
+	var _lodash = __webpack_require__(177);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function mergeOptions(obj, src) {
-	  var mutableObj = (0, _assign2.default)({}, obj);
-	  return (0, _assign2.default)(mutableObj, src);
+	  return (0, _lodash2.default)(obj, src);
 	}
 
-/***/ },
-/* 162 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(163), __esModule: true };
+	/* WEBPACK VAR INJECTION */(function(global, module) {/**
+	 * lodash (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modularize exports="npm" -o ./`
+	 * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+	 * Released under MIT license <https://lodash.com/license>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 */
 
-/***/ },
-/* 163 */
-/***/ function(module, exports, __webpack_require__) {
+	/** Used as the size to enable large array optimizations. */
+	var LARGE_ARRAY_SIZE = 200;
 
-	__webpack_require__(164);
-	module.exports = __webpack_require__(167).Object.assign;
+	/** Used to stand-in for `undefined` hash values. */
+	var HASH_UNDEFINED = '__lodash_hash_undefined__';
 
-/***/ },
-/* 164 */
-/***/ function(module, exports, __webpack_require__) {
+	/** Used as references for various `Number` constants. */
+	var MAX_SAFE_INTEGER = 9007199254740991;
 
-	// 19.1.3.1 Object.assign(target, source)
-	var $export = __webpack_require__(165);
+	/** `Object#toString` result references. */
+	var argsTag = '[object Arguments]',
+	    arrayTag = '[object Array]',
+	    boolTag = '[object Boolean]',
+	    dateTag = '[object Date]',
+	    errorTag = '[object Error]',
+	    funcTag = '[object Function]',
+	    genTag = '[object GeneratorFunction]',
+	    mapTag = '[object Map]',
+	    numberTag = '[object Number]',
+	    objectTag = '[object Object]',
+	    promiseTag = '[object Promise]',
+	    regexpTag = '[object RegExp]',
+	    setTag = '[object Set]',
+	    stringTag = '[object String]',
+	    symbolTag = '[object Symbol]',
+	    weakMapTag = '[object WeakMap]';
 
-	$export($export.S + $export.F, 'Object', {assign: __webpack_require__(180)});
+	var arrayBufferTag = '[object ArrayBuffer]',
+	    dataViewTag = '[object DataView]',
+	    float32Tag = '[object Float32Array]',
+	    float64Tag = '[object Float64Array]',
+	    int8Tag = '[object Int8Array]',
+	    int16Tag = '[object Int16Array]',
+	    int32Tag = '[object Int32Array]',
+	    uint8Tag = '[object Uint8Array]',
+	    uint8ClampedTag = '[object Uint8ClampedArray]',
+	    uint16Tag = '[object Uint16Array]',
+	    uint32Tag = '[object Uint32Array]';
 
-/***/ },
-/* 165 */
-/***/ function(module, exports, __webpack_require__) {
+	/**
+	 * Used to match `RegExp`
+	 * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+	 */
+	var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
 
-	var global    = __webpack_require__(166)
-	  , core      = __webpack_require__(167)
-	  , ctx       = __webpack_require__(168)
-	  , hide      = __webpack_require__(170)
-	  , PROTOTYPE = 'prototype';
+	/** Used to match `RegExp` flags from their coerced string values. */
+	var reFlags = /\w*$/;
 
-	var $export = function(type, name, source){
-	  var IS_FORCED = type & $export.F
-	    , IS_GLOBAL = type & $export.G
-	    , IS_STATIC = type & $export.S
-	    , IS_PROTO  = type & $export.P
-	    , IS_BIND   = type & $export.B
-	    , IS_WRAP   = type & $export.W
-	    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
-	    , expProto  = exports[PROTOTYPE]
-	    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
-	    , key, own, out;
-	  if(IS_GLOBAL)source = name;
-	  for(key in source){
-	    // contains in native
-	    own = !IS_FORCED && target && target[key] !== undefined;
-	    if(own && key in exports)continue;
-	    // export native or passed
-	    out = own ? target[key] : source[key];
-	    // prevent global pollution for namespaces
-	    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-	    // bind timers to global for call from export context
-	    : IS_BIND && own ? ctx(out, global)
-	    // wrap global constructors for prevent change them in library
-	    : IS_WRAP && target[key] == out ? (function(C){
-	      var F = function(a, b, c){
-	        if(this instanceof C){
-	          switch(arguments.length){
-	            case 0: return new C;
-	            case 1: return new C(a);
-	            case 2: return new C(a, b);
-	          } return new C(a, b, c);
-	        } return C.apply(this, arguments);
-	      };
-	      F[PROTOTYPE] = C[PROTOTYPE];
-	      return F;
-	    // make static versions for prototype methods
-	    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-	    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-	    if(IS_PROTO){
-	      (exports.virtual || (exports.virtual = {}))[key] = out;
-	      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-	      if(type & $export.R && expProto && !expProto[key])hide(expProto, key, out);
+	/** Used to detect host constructors (Safari). */
+	var reIsHostCtor = /^\[object .+?Constructor\]$/;
+
+	/** Used to detect unsigned integer values. */
+	var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+	/** Used to identify `toStringTag` values of typed arrays. */
+	var typedArrayTags = {};
+	typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
+	typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
+	typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
+	typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
+	typedArrayTags[uint32Tag] = true;
+	typedArrayTags[argsTag] = typedArrayTags[arrayTag] =
+	typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] =
+	typedArrayTags[dataViewTag] = typedArrayTags[dateTag] =
+	typedArrayTags[errorTag] = typedArrayTags[funcTag] =
+	typedArrayTags[mapTag] = typedArrayTags[numberTag] =
+	typedArrayTags[objectTag] = typedArrayTags[regexpTag] =
+	typedArrayTags[setTag] = typedArrayTags[stringTag] =
+	typedArrayTags[weakMapTag] = false;
+
+	/** Used to identify `toStringTag` values supported by `_.clone`. */
+	var cloneableTags = {};
+	cloneableTags[argsTag] = cloneableTags[arrayTag] =
+	cloneableTags[arrayBufferTag] = cloneableTags[dataViewTag] =
+	cloneableTags[boolTag] = cloneableTags[dateTag] =
+	cloneableTags[float32Tag] = cloneableTags[float64Tag] =
+	cloneableTags[int8Tag] = cloneableTags[int16Tag] =
+	cloneableTags[int32Tag] = cloneableTags[mapTag] =
+	cloneableTags[numberTag] = cloneableTags[objectTag] =
+	cloneableTags[regexpTag] = cloneableTags[setTag] =
+	cloneableTags[stringTag] = cloneableTags[symbolTag] =
+	cloneableTags[uint8Tag] = cloneableTags[uint8ClampedTag] =
+	cloneableTags[uint16Tag] = cloneableTags[uint32Tag] = true;
+	cloneableTags[errorTag] = cloneableTags[funcTag] =
+	cloneableTags[weakMapTag] = false;
+
+	/** Detect free variable `global` from Node.js. */
+	var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+	/** Detect free variable `self`. */
+	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+	/** Used as a reference to the global object. */
+	var root = freeGlobal || freeSelf || Function('return this')();
+
+	/** Detect free variable `exports`. */
+	var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
+
+	/** Detect free variable `module`. */
+	var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
+
+	/** Detect the popular CommonJS extension `module.exports`. */
+	var moduleExports = freeModule && freeModule.exports === freeExports;
+
+	/** Detect free variable `process` from Node.js. */
+	var freeProcess = moduleExports && freeGlobal.process;
+
+	/** Used to access faster Node.js helpers. */
+	var nodeUtil = (function() {
+	  try {
+	    return freeProcess && freeProcess.binding('util');
+	  } catch (e) {}
+	}());
+
+	/* Node.js helper references. */
+	var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
+
+	/**
+	 * Adds the key-value `pair` to `map`.
+	 *
+	 * @private
+	 * @param {Object} map The map to modify.
+	 * @param {Array} pair The key-value pair to add.
+	 * @returns {Object} Returns `map`.
+	 */
+	function addMapEntry(map, pair) {
+	  // Don't return `map.set` because it's not chainable in IE 11.
+	  map.set(pair[0], pair[1]);
+	  return map;
+	}
+
+	/**
+	 * Adds `value` to `set`.
+	 *
+	 * @private
+	 * @param {Object} set The set to modify.
+	 * @param {*} value The value to add.
+	 * @returns {Object} Returns `set`.
+	 */
+	function addSetEntry(set, value) {
+	  // Don't return `set.add` because it's not chainable in IE 11.
+	  set.add(value);
+	  return set;
+	}
+
+	/**
+	 * A faster alternative to `Function#apply`, this function invokes `func`
+	 * with the `this` binding of `thisArg` and the arguments of `args`.
+	 *
+	 * @private
+	 * @param {Function} func The function to invoke.
+	 * @param {*} thisArg The `this` binding of `func`.
+	 * @param {Array} args The arguments to invoke `func` with.
+	 * @returns {*} Returns the result of `func`.
+	 */
+	function apply(func, thisArg, args) {
+	  switch (args.length) {
+	    case 0: return func.call(thisArg);
+	    case 1: return func.call(thisArg, args[0]);
+	    case 2: return func.call(thisArg, args[0], args[1]);
+	    case 3: return func.call(thisArg, args[0], args[1], args[2]);
+	  }
+	  return func.apply(thisArg, args);
+	}
+
+	/**
+	 * A specialized version of `_.forEach` for arrays without support for
+	 * iteratee shorthands.
+	 *
+	 * @private
+	 * @param {Array} [array] The array to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Array} Returns `array`.
+	 */
+	function arrayEach(array, iteratee) {
+	  var index = -1,
+	      length = array ? array.length : 0;
+
+	  while (++index < length) {
+	    if (iteratee(array[index], index, array) === false) {
+	      break;
 	    }
 	  }
-	};
-	// type bitmap
-	$export.F = 1;   // forced
-	$export.G = 2;   // global
-	$export.S = 4;   // static
-	$export.P = 8;   // proto
-	$export.B = 16;  // bind
-	$export.W = 32;  // wrap
-	$export.U = 64;  // safe
-	$export.R = 128; // real proto method for `library` 
-	module.exports = $export;
+	  return array;
+	}
 
-/***/ },
-/* 166 */
-/***/ function(module, exports) {
+	/**
+	 * Appends the elements of `values` to `array`.
+	 *
+	 * @private
+	 * @param {Array} array The array to modify.
+	 * @param {Array} values The values to append.
+	 * @returns {Array} Returns `array`.
+	 */
+	function arrayPush(array, values) {
+	  var index = -1,
+	      length = values.length,
+	      offset = array.length;
 
-	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-	var global = module.exports = typeof window != 'undefined' && window.Math == Math
-	  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-
-/***/ },
-/* 167 */
-/***/ function(module, exports) {
-
-	var core = module.exports = {version: '2.4.0'};
-	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-
-/***/ },
-/* 168 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// optional / simple context binding
-	var aFunction = __webpack_require__(169);
-	module.exports = function(fn, that, length){
-	  aFunction(fn);
-	  if(that === undefined)return fn;
-	  switch(length){
-	    case 1: return function(a){
-	      return fn.call(that, a);
-	    };
-	    case 2: return function(a, b){
-	      return fn.call(that, a, b);
-	    };
-	    case 3: return function(a, b, c){
-	      return fn.call(that, a, b, c);
-	    };
+	  while (++index < length) {
+	    array[offset + index] = values[index];
 	  }
-	  return function(/* ...args */){
-	    return fn.apply(that, arguments);
-	  };
-	};
+	  return array;
+	}
 
-/***/ },
-/* 169 */
-/***/ function(module, exports) {
+	/**
+	 * A specialized version of `_.reduce` for arrays without support for
+	 * iteratee shorthands.
+	 *
+	 * @private
+	 * @param {Array} [array] The array to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @param {*} [accumulator] The initial value.
+	 * @param {boolean} [initAccum] Specify using the first element of `array` as
+	 *  the initial value.
+	 * @returns {*} Returns the accumulated value.
+	 */
+	function arrayReduce(array, iteratee, accumulator, initAccum) {
+	  var index = -1,
+	      length = array ? array.length : 0;
 
-	module.exports = function(it){
-	  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
-	  return it;
-	};
-
-/***/ },
-/* 170 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var dP         = __webpack_require__(171)
-	  , createDesc = __webpack_require__(179);
-	module.exports = __webpack_require__(175) ? function(object, key, value){
-	  return dP.f(object, key, createDesc(1, value));
-	} : function(object, key, value){
-	  object[key] = value;
-	  return object;
-	};
-
-/***/ },
-/* 171 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var anObject       = __webpack_require__(172)
-	  , IE8_DOM_DEFINE = __webpack_require__(174)
-	  , toPrimitive    = __webpack_require__(178)
-	  , dP             = Object.defineProperty;
-
-	exports.f = __webpack_require__(175) ? Object.defineProperty : function defineProperty(O, P, Attributes){
-	  anObject(O);
-	  P = toPrimitive(P, true);
-	  anObject(Attributes);
-	  if(IE8_DOM_DEFINE)try {
-	    return dP(O, P, Attributes);
-	  } catch(e){ /* empty */ }
-	  if('get' in Attributes || 'set' in Attributes)throw TypeError('Accessors not supported!');
-	  if('value' in Attributes)O[P] = Attributes.value;
-	  return O;
-	};
-
-/***/ },
-/* 172 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObject = __webpack_require__(173);
-	module.exports = function(it){
-	  if(!isObject(it))throw TypeError(it + ' is not an object!');
-	  return it;
-	};
-
-/***/ },
-/* 173 */
-/***/ function(module, exports) {
-
-	module.exports = function(it){
-	  return typeof it === 'object' ? it !== null : typeof it === 'function';
-	};
-
-/***/ },
-/* 174 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = !__webpack_require__(175) && !__webpack_require__(176)(function(){
-	  return Object.defineProperty(__webpack_require__(177)('div'), 'a', {get: function(){ return 7; }}).a != 7;
-	});
-
-/***/ },
-/* 175 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// Thank's IE8 for his funny defineProperty
-	module.exports = !__webpack_require__(176)(function(){
-	  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
-	});
-
-/***/ },
-/* 176 */
-/***/ function(module, exports) {
-
-	module.exports = function(exec){
-	  try {
-	    return !!exec();
-	  } catch(e){
-	    return true;
+	  if (initAccum && length) {
+	    accumulator = array[++index];
 	  }
-	};
+	  while (++index < length) {
+	    accumulator = iteratee(accumulator, array[index], index, array);
+	  }
+	  return accumulator;
+	}
 
-/***/ },
-/* 177 */
-/***/ function(module, exports, __webpack_require__) {
+	/**
+	 * The base implementation of `_.times` without support for iteratee shorthands
+	 * or max array length checks.
+	 *
+	 * @private
+	 * @param {number} n The number of times to invoke `iteratee`.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Array} Returns the array of results.
+	 */
+	function baseTimes(n, iteratee) {
+	  var index = -1,
+	      result = Array(n);
 
-	var isObject = __webpack_require__(173)
-	  , document = __webpack_require__(166).document
-	  // in old IE typeof document.createElement is 'object'
-	  , is = isObject(document) && isObject(document.createElement);
-	module.exports = function(it){
-	  return is ? document.createElement(it) : {};
-	};
-
-/***/ },
-/* 178 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 7.1.1 ToPrimitive(input [, PreferredType])
-	var isObject = __webpack_require__(173);
-	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-	// and the second argument - flag - preferred type is a string
-	module.exports = function(it, S){
-	  if(!isObject(it))return it;
-	  var fn, val;
-	  if(S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-	  if(typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it)))return val;
-	  if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-	  throw TypeError("Can't convert object to primitive value");
-	};
-
-/***/ },
-/* 179 */
-/***/ function(module, exports) {
-
-	module.exports = function(bitmap, value){
-	  return {
-	    enumerable  : !(bitmap & 1),
-	    configurable: !(bitmap & 2),
-	    writable    : !(bitmap & 4),
-	    value       : value
-	  };
-	};
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	// 19.1.2.1 Object.assign(target, source, ...)
-	var getKeys  = __webpack_require__(181)
-	  , gOPS     = __webpack_require__(196)
-	  , pIE      = __webpack_require__(197)
-	  , toObject = __webpack_require__(198)
-	  , IObject  = __webpack_require__(185)
-	  , $assign  = Object.assign;
-
-	// should work with symbols and should have deterministic property order (V8 bug)
-	module.exports = !$assign || __webpack_require__(176)(function(){
-	  var A = {}
-	    , B = {}
-	    , S = Symbol()
-	    , K = 'abcdefghijklmnopqrst';
-	  A[S] = 7;
-	  K.split('').forEach(function(k){ B[k] = k; });
-	  return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
-	}) ? function assign(target, source){ // eslint-disable-line no-unused-vars
-	  var T     = toObject(target)
-	    , aLen  = arguments.length
-	    , index = 1
-	    , getSymbols = gOPS.f
-	    , isEnum     = pIE.f;
-	  while(aLen > index){
-	    var S      = IObject(arguments[index++])
-	      , keys   = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S)
-	      , length = keys.length
-	      , j      = 0
-	      , key;
-	    while(length > j)if(isEnum.call(S, key = keys[j++]))T[key] = S[key];
-	  } return T;
-	} : $assign;
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-	var $keys       = __webpack_require__(182)
-	  , enumBugKeys = __webpack_require__(195);
-
-	module.exports = Object.keys || function keys(O){
-	  return $keys(O, enumBugKeys);
-	};
-
-/***/ },
-/* 182 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var has          = __webpack_require__(183)
-	  , toIObject    = __webpack_require__(184)
-	  , arrayIndexOf = __webpack_require__(188)(false)
-	  , IE_PROTO     = __webpack_require__(192)('IE_PROTO');
-
-	module.exports = function(object, names){
-	  var O      = toIObject(object)
-	    , i      = 0
-	    , result = []
-	    , key;
-	  for(key in O)if(key != IE_PROTO)has(O, key) && result.push(key);
-	  // Don't enum bug & hidden keys
-	  while(names.length > i)if(has(O, key = names[i++])){
-	    ~arrayIndexOf(result, key) || result.push(key);
+	  while (++index < n) {
+	    result[index] = iteratee(index);
 	  }
 	  return result;
-	};
+	}
 
-/***/ },
-/* 183 */
-/***/ function(module, exports) {
-
-	var hasOwnProperty = {}.hasOwnProperty;
-	module.exports = function(it, key){
-	  return hasOwnProperty.call(it, key);
-	};
-
-/***/ },
-/* 184 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// to indexed object, toObject with fallback for non-array-like ES3 strings
-	var IObject = __webpack_require__(185)
-	  , defined = __webpack_require__(187);
-	module.exports = function(it){
-	  return IObject(defined(it));
-	};
-
-/***/ },
-/* 185 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// fallback for non-array-like ES3 and non-enumerable old V8 strings
-	var cof = __webpack_require__(186);
-	module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
-	  return cof(it) == 'String' ? it.split('') : Object(it);
-	};
-
-/***/ },
-/* 186 */
-/***/ function(module, exports) {
-
-	var toString = {}.toString;
-
-	module.exports = function(it){
-	  return toString.call(it).slice(8, -1);
-	};
-
-/***/ },
-/* 187 */
-/***/ function(module, exports) {
-
-	// 7.2.1 RequireObjectCoercible(argument)
-	module.exports = function(it){
-	  if(it == undefined)throw TypeError("Can't call method on  " + it);
-	  return it;
-	};
-
-/***/ },
-/* 188 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// false -> Array#indexOf
-	// true  -> Array#includes
-	var toIObject = __webpack_require__(184)
-	  , toLength  = __webpack_require__(189)
-	  , toIndex   = __webpack_require__(191);
-	module.exports = function(IS_INCLUDES){
-	  return function($this, el, fromIndex){
-	    var O      = toIObject($this)
-	      , length = toLength(O.length)
-	      , index  = toIndex(fromIndex, length)
-	      , value;
-	    // Array#includes uses SameValueZero equality algorithm
-	    if(IS_INCLUDES && el != el)while(length > index){
-	      value = O[index++];
-	      if(value != value)return true;
-	    // Array#toIndex ignores holes, Array#includes - not
-	    } else for(;length > index; index++)if(IS_INCLUDES || index in O){
-	      if(O[index] === el)return IS_INCLUDES || index || 0;
-	    } return !IS_INCLUDES && -1;
+	/**
+	 * The base implementation of `_.unary` without support for storing metadata.
+	 *
+	 * @private
+	 * @param {Function} func The function to cap arguments for.
+	 * @returns {Function} Returns the new capped function.
+	 */
+	function baseUnary(func) {
+	  return function(value) {
+	    return func(value);
 	  };
-	};
+	}
 
-/***/ },
-/* 189 */
-/***/ function(module, exports, __webpack_require__) {
+	/**
+	 * Gets the value at `key` of `object`.
+	 *
+	 * @private
+	 * @param {Object} [object] The object to query.
+	 * @param {string} key The key of the property to get.
+	 * @returns {*} Returns the property value.
+	 */
+	function getValue(object, key) {
+	  return object == null ? undefined : object[key];
+	}
 
-	// 7.1.15 ToLength
-	var toInteger = __webpack_require__(190)
-	  , min       = Math.min;
-	module.exports = function(it){
-	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
-	};
+	/**
+	 * Checks if `value` is a host object in IE < 9.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+	 */
+	function isHostObject(value) {
+	  // Many host objects are `Object` objects that can coerce to strings
+	  // despite having improperly defined `toString` methods.
+	  var result = false;
+	  if (value != null && typeof value.toString != 'function') {
+	    try {
+	      result = !!(value + '');
+	    } catch (e) {}
+	  }
+	  return result;
+	}
 
-/***/ },
-/* 190 */
-/***/ function(module, exports) {
+	/**
+	 * Converts `map` to its key-value pairs.
+	 *
+	 * @private
+	 * @param {Object} map The map to convert.
+	 * @returns {Array} Returns the key-value pairs.
+	 */
+	function mapToArray(map) {
+	  var index = -1,
+	      result = Array(map.size);
 
-	// 7.1.4 ToInteger
-	var ceil  = Math.ceil
-	  , floor = Math.floor;
-	module.exports = function(it){
-	  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
-	};
+	  map.forEach(function(value, key) {
+	    result[++index] = [key, value];
+	  });
+	  return result;
+	}
 
-/***/ },
-/* 191 */
-/***/ function(module, exports, __webpack_require__) {
+	/**
+	 * Creates a unary function that invokes `func` with its argument transformed.
+	 *
+	 * @private
+	 * @param {Function} func The function to wrap.
+	 * @param {Function} transform The argument transform.
+	 * @returns {Function} Returns the new function.
+	 */
+	function overArg(func, transform) {
+	  return function(arg) {
+	    return func(transform(arg));
+	  };
+	}
 
-	var toInteger = __webpack_require__(190)
-	  , max       = Math.max
-	  , min       = Math.min;
-	module.exports = function(index, length){
-	  index = toInteger(index);
-	  return index < 0 ? max(index + length, 0) : min(index, length);
-	};
+	/**
+	 * Converts `set` to an array of its values.
+	 *
+	 * @private
+	 * @param {Object} set The set to convert.
+	 * @returns {Array} Returns the values.
+	 */
+	function setToArray(set) {
+	  var index = -1,
+	      result = Array(set.size);
 
-/***/ },
-/* 192 */
-/***/ function(module, exports, __webpack_require__) {
+	  set.forEach(function(value) {
+	    result[++index] = value;
+	  });
+	  return result;
+	}
 
-	var shared = __webpack_require__(193)('keys')
-	  , uid    = __webpack_require__(194);
-	module.exports = function(key){
-	  return shared[key] || (shared[key] = uid(key));
-	};
+	/** Used for built-in method references. */
+	var arrayProto = Array.prototype,
+	    funcProto = Function.prototype,
+	    objectProto = Object.prototype;
 
-/***/ },
-/* 193 */
-/***/ function(module, exports, __webpack_require__) {
+	/** Used to detect overreaching core-js shims. */
+	var coreJsData = root['__core-js_shared__'];
 
-	var global = __webpack_require__(166)
-	  , SHARED = '__core-js_shared__'
-	  , store  = global[SHARED] || (global[SHARED] = {});
-	module.exports = function(key){
-	  return store[key] || (store[key] = {});
-	};
+	/** Used to detect methods masquerading as native. */
+	var maskSrcKey = (function() {
+	  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
+	  return uid ? ('Symbol(src)_1.' + uid) : '';
+	}());
 
-/***/ },
-/* 194 */
-/***/ function(module, exports) {
+	/** Used to resolve the decompiled source of functions. */
+	var funcToString = funcProto.toString;
 
-	var id = 0
-	  , px = Math.random();
-	module.exports = function(key){
-	  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
-	};
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
 
-/***/ },
-/* 195 */
-/***/ function(module, exports) {
+	/** Used to infer the `Object` constructor. */
+	var objectCtorString = funcToString.call(Object);
 
-	// IE 8- don't enum bug keys
-	module.exports = (
-	  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
-	).split(',');
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objectToString = objectProto.toString;
 
-/***/ },
-/* 196 */
-/***/ function(module, exports) {
+	/** Used to detect if a method is native. */
+	var reIsNative = RegExp('^' +
+	  funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
+	  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+	);
 
-	exports.f = Object.getOwnPropertySymbols;
+	/** Built-in value references. */
+	var Buffer = moduleExports ? root.Buffer : undefined,
+	    Symbol = root.Symbol,
+	    Uint8Array = root.Uint8Array,
+	    getPrototype = overArg(Object.getPrototypeOf, Object),
+	    objectCreate = Object.create,
+	    propertyIsEnumerable = objectProto.propertyIsEnumerable,
+	    splice = arrayProto.splice;
 
-/***/ },
-/* 197 */
-/***/ function(module, exports) {
+	/* Built-in method references for those with the same name as other `lodash` methods. */
+	var nativeGetSymbols = Object.getOwnPropertySymbols,
+	    nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined,
+	    nativeKeys = overArg(Object.keys, Object),
+	    nativeMax = Math.max;
 
-	exports.f = {}.propertyIsEnumerable;
+	/* Built-in method references that are verified to be native. */
+	var DataView = getNative(root, 'DataView'),
+	    Map = getNative(root, 'Map'),
+	    Promise = getNative(root, 'Promise'),
+	    Set = getNative(root, 'Set'),
+	    WeakMap = getNative(root, 'WeakMap'),
+	    nativeCreate = getNative(Object, 'create');
 
-/***/ },
-/* 198 */
-/***/ function(module, exports, __webpack_require__) {
+	/** Used to detect maps, sets, and weakmaps. */
+	var dataViewCtorString = toSource(DataView),
+	    mapCtorString = toSource(Map),
+	    promiseCtorString = toSource(Promise),
+	    setCtorString = toSource(Set),
+	    weakMapCtorString = toSource(WeakMap);
 
-	// 7.1.13 ToObject(argument)
-	var defined = __webpack_require__(187);
-	module.exports = function(it){
-	  return Object(defined(it));
-	};
+	/** Used to convert symbols to primitives and strings. */
+	var symbolProto = Symbol ? Symbol.prototype : undefined,
+	    symbolValueOf = symbolProto ? symbolProto.valueOf : undefined;
 
-/***/ },
-/* 199 */
-/***/ function(module, exports, __webpack_require__) {
+	/**
+	 * Creates a hash object.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
+	 */
+	function Hash(entries) {
+	  var index = -1,
+	      length = entries ? entries.length : 0;
+
+	  this.clear();
+	  while (++index < length) {
+	    var entry = entries[index];
+	    this.set(entry[0], entry[1]);
+	  }
+	}
+
+	/**
+	 * Removes all key-value entries from the hash.
+	 *
+	 * @private
+	 * @name clear
+	 * @memberOf Hash
+	 */
+	function hashClear() {
+	  this.__data__ = nativeCreate ? nativeCreate(null) : {};
+	}
+
+	/**
+	 * Removes `key` and its value from the hash.
+	 *
+	 * @private
+	 * @name delete
+	 * @memberOf Hash
+	 * @param {Object} hash The hash to modify.
+	 * @param {string} key The key of the value to remove.
+	 * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+	 */
+	function hashDelete(key) {
+	  return this.has(key) && delete this.__data__[key];
+	}
+
+	/**
+	 * Gets the hash value for `key`.
+	 *
+	 * @private
+	 * @name get
+	 * @memberOf Hash
+	 * @param {string} key The key of the value to get.
+	 * @returns {*} Returns the entry value.
+	 */
+	function hashGet(key) {
+	  var data = this.__data__;
+	  if (nativeCreate) {
+	    var result = data[key];
+	    return result === HASH_UNDEFINED ? undefined : result;
+	  }
+	  return hasOwnProperty.call(data, key) ? data[key] : undefined;
+	}
+
+	/**
+	 * Checks if a hash value for `key` exists.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf Hash
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function hashHas(key) {
+	  var data = this.__data__;
+	  return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
+	}
+
+	/**
+	 * Sets the hash `key` to `value`.
+	 *
+	 * @private
+	 * @name set
+	 * @memberOf Hash
+	 * @param {string} key The key of the value to set.
+	 * @param {*} value The value to set.
+	 * @returns {Object} Returns the hash instance.
+	 */
+	function hashSet(key, value) {
+	  var data = this.__data__;
+	  data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
+	  return this;
+	}
+
+	// Add methods to `Hash`.
+	Hash.prototype.clear = hashClear;
+	Hash.prototype['delete'] = hashDelete;
+	Hash.prototype.get = hashGet;
+	Hash.prototype.has = hashHas;
+	Hash.prototype.set = hashSet;
+
+	/**
+	 * Creates an list cache object.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
+	 */
+	function ListCache(entries) {
+	  var index = -1,
+	      length = entries ? entries.length : 0;
+
+	  this.clear();
+	  while (++index < length) {
+	    var entry = entries[index];
+	    this.set(entry[0], entry[1]);
+	  }
+	}
+
+	/**
+	 * Removes all key-value entries from the list cache.
+	 *
+	 * @private
+	 * @name clear
+	 * @memberOf ListCache
+	 */
+	function listCacheClear() {
+	  this.__data__ = [];
+	}
+
+	/**
+	 * Removes `key` and its value from the list cache.
+	 *
+	 * @private
+	 * @name delete
+	 * @memberOf ListCache
+	 * @param {string} key The key of the value to remove.
+	 * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+	 */
+	function listCacheDelete(key) {
+	  var data = this.__data__,
+	      index = assocIndexOf(data, key);
+
+	  if (index < 0) {
+	    return false;
+	  }
+	  var lastIndex = data.length - 1;
+	  if (index == lastIndex) {
+	    data.pop();
+	  } else {
+	    splice.call(data, index, 1);
+	  }
+	  return true;
+	}
+
+	/**
+	 * Gets the list cache value for `key`.
+	 *
+	 * @private
+	 * @name get
+	 * @memberOf ListCache
+	 * @param {string} key The key of the value to get.
+	 * @returns {*} Returns the entry value.
+	 */
+	function listCacheGet(key) {
+	  var data = this.__data__,
+	      index = assocIndexOf(data, key);
+
+	  return index < 0 ? undefined : data[index][1];
+	}
+
+	/**
+	 * Checks if a list cache value for `key` exists.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf ListCache
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function listCacheHas(key) {
+	  return assocIndexOf(this.__data__, key) > -1;
+	}
+
+	/**
+	 * Sets the list cache `key` to `value`.
+	 *
+	 * @private
+	 * @name set
+	 * @memberOf ListCache
+	 * @param {string} key The key of the value to set.
+	 * @param {*} value The value to set.
+	 * @returns {Object} Returns the list cache instance.
+	 */
+	function listCacheSet(key, value) {
+	  var data = this.__data__,
+	      index = assocIndexOf(data, key);
+
+	  if (index < 0) {
+	    data.push([key, value]);
+	  } else {
+	    data[index][1] = value;
+	  }
+	  return this;
+	}
+
+	// Add methods to `ListCache`.
+	ListCache.prototype.clear = listCacheClear;
+	ListCache.prototype['delete'] = listCacheDelete;
+	ListCache.prototype.get = listCacheGet;
+	ListCache.prototype.has = listCacheHas;
+	ListCache.prototype.set = listCacheSet;
+
+	/**
+	 * Creates a map cache object to store key-value pairs.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
+	 */
+	function MapCache(entries) {
+	  var index = -1,
+	      length = entries ? entries.length : 0;
+
+	  this.clear();
+	  while (++index < length) {
+	    var entry = entries[index];
+	    this.set(entry[0], entry[1]);
+	  }
+	}
+
+	/**
+	 * Removes all key-value entries from the map.
+	 *
+	 * @private
+	 * @name clear
+	 * @memberOf MapCache
+	 */
+	function mapCacheClear() {
+	  this.__data__ = {
+	    'hash': new Hash,
+	    'map': new (Map || ListCache),
+	    'string': new Hash
+	  };
+	}
+
+	/**
+	 * Removes `key` and its value from the map.
+	 *
+	 * @private
+	 * @name delete
+	 * @memberOf MapCache
+	 * @param {string} key The key of the value to remove.
+	 * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+	 */
+	function mapCacheDelete(key) {
+	  return getMapData(this, key)['delete'](key);
+	}
+
+	/**
+	 * Gets the map value for `key`.
+	 *
+	 * @private
+	 * @name get
+	 * @memberOf MapCache
+	 * @param {string} key The key of the value to get.
+	 * @returns {*} Returns the entry value.
+	 */
+	function mapCacheGet(key) {
+	  return getMapData(this, key).get(key);
+	}
+
+	/**
+	 * Checks if a map value for `key` exists.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf MapCache
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function mapCacheHas(key) {
+	  return getMapData(this, key).has(key);
+	}
+
+	/**
+	 * Sets the map `key` to `value`.
+	 *
+	 * @private
+	 * @name set
+	 * @memberOf MapCache
+	 * @param {string} key The key of the value to set.
+	 * @param {*} value The value to set.
+	 * @returns {Object} Returns the map cache instance.
+	 */
+	function mapCacheSet(key, value) {
+	  getMapData(this, key).set(key, value);
+	  return this;
+	}
+
+	// Add methods to `MapCache`.
+	MapCache.prototype.clear = mapCacheClear;
+	MapCache.prototype['delete'] = mapCacheDelete;
+	MapCache.prototype.get = mapCacheGet;
+	MapCache.prototype.has = mapCacheHas;
+	MapCache.prototype.set = mapCacheSet;
+
+	/**
+	 * Creates a stack cache object to store key-value pairs.
+	 *
+	 * @private
+	 * @constructor
+	 * @param {Array} [entries] The key-value pairs to cache.
+	 */
+	function Stack(entries) {
+	  this.__data__ = new ListCache(entries);
+	}
+
+	/**
+	 * Removes all key-value entries from the stack.
+	 *
+	 * @private
+	 * @name clear
+	 * @memberOf Stack
+	 */
+	function stackClear() {
+	  this.__data__ = new ListCache;
+	}
+
+	/**
+	 * Removes `key` and its value from the stack.
+	 *
+	 * @private
+	 * @name delete
+	 * @memberOf Stack
+	 * @param {string} key The key of the value to remove.
+	 * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+	 */
+	function stackDelete(key) {
+	  return this.__data__['delete'](key);
+	}
+
+	/**
+	 * Gets the stack value for `key`.
+	 *
+	 * @private
+	 * @name get
+	 * @memberOf Stack
+	 * @param {string} key The key of the value to get.
+	 * @returns {*} Returns the entry value.
+	 */
+	function stackGet(key) {
+	  return this.__data__.get(key);
+	}
+
+	/**
+	 * Checks if a stack value for `key` exists.
+	 *
+	 * @private
+	 * @name has
+	 * @memberOf Stack
+	 * @param {string} key The key of the entry to check.
+	 * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+	 */
+	function stackHas(key) {
+	  return this.__data__.has(key);
+	}
+
+	/**
+	 * Sets the stack `key` to `value`.
+	 *
+	 * @private
+	 * @name set
+	 * @memberOf Stack
+	 * @param {string} key The key of the value to set.
+	 * @param {*} value The value to set.
+	 * @returns {Object} Returns the stack cache instance.
+	 */
+	function stackSet(key, value) {
+	  var cache = this.__data__;
+	  if (cache instanceof ListCache) {
+	    var pairs = cache.__data__;
+	    if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
+	      pairs.push([key, value]);
+	      return this;
+	    }
+	    cache = this.__data__ = new MapCache(pairs);
+	  }
+	  cache.set(key, value);
+	  return this;
+	}
+
+	// Add methods to `Stack`.
+	Stack.prototype.clear = stackClear;
+	Stack.prototype['delete'] = stackDelete;
+	Stack.prototype.get = stackGet;
+	Stack.prototype.has = stackHas;
+	Stack.prototype.set = stackSet;
+
+	/**
+	 * Creates an array of the enumerable property names of the array-like `value`.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @param {boolean} inherited Specify returning inherited property names.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function arrayLikeKeys(value, inherited) {
+	  // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+	  // Safari 9 makes `arguments.length` enumerable in strict mode.
+	  var result = (isArray(value) || isArguments(value))
+	    ? baseTimes(value.length, String)
+	    : [];
+
+	  var length = result.length,
+	      skipIndexes = !!length;
+
+	  for (var key in value) {
+	    if ((inherited || hasOwnProperty.call(value, key)) &&
+	        !(skipIndexes && (key == 'length' || isIndex(key, length)))) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+
+	/**
+	 * This function is like `assignValue` except that it doesn't assign
+	 * `undefined` values.
+	 *
+	 * @private
+	 * @param {Object} object The object to modify.
+	 * @param {string} key The key of the property to assign.
+	 * @param {*} value The value to assign.
+	 */
+	function assignMergeValue(object, key, value) {
+	  if ((value !== undefined && !eq(object[key], value)) ||
+	      (typeof key == 'number' && value === undefined && !(key in object))) {
+	    object[key] = value;
+	  }
+	}
+
+	/**
+	 * Assigns `value` to `key` of `object` if the existing value is not equivalent
+	 * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+	 * for equality comparisons.
+	 *
+	 * @private
+	 * @param {Object} object The object to modify.
+	 * @param {string} key The key of the property to assign.
+	 * @param {*} value The value to assign.
+	 */
+	function assignValue(object, key, value) {
+	  var objValue = object[key];
+	  if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
+	      (value === undefined && !(key in object))) {
+	    object[key] = value;
+	  }
+	}
+
+	/**
+	 * Gets the index at which the `key` is found in `array` of key-value pairs.
+	 *
+	 * @private
+	 * @param {Array} array The array to inspect.
+	 * @param {*} key The key to search for.
+	 * @returns {number} Returns the index of the matched value, else `-1`.
+	 */
+	function assocIndexOf(array, key) {
+	  var length = array.length;
+	  while (length--) {
+	    if (eq(array[length][0], key)) {
+	      return length;
+	    }
+	  }
+	  return -1;
+	}
+
+	/**
+	 * The base implementation of `_.assign` without support for multiple sources
+	 * or `customizer` functions.
+	 *
+	 * @private
+	 * @param {Object} object The destination object.
+	 * @param {Object} source The source object.
+	 * @returns {Object} Returns `object`.
+	 */
+	function baseAssign(object, source) {
+	  return object && copyObject(source, keys(source), object);
+	}
+
+	/**
+	 * The base implementation of `_.clone` and `_.cloneDeep` which tracks
+	 * traversed objects.
+	 *
+	 * @private
+	 * @param {*} value The value to clone.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @param {boolean} [isFull] Specify a clone including symbols.
+	 * @param {Function} [customizer] The function to customize cloning.
+	 * @param {string} [key] The key of `value`.
+	 * @param {Object} [object] The parent object of `value`.
+	 * @param {Object} [stack] Tracks traversed objects and their clone counterparts.
+	 * @returns {*} Returns the cloned value.
+	 */
+	function baseClone(value, isDeep, isFull, customizer, key, object, stack) {
+	  var result;
+	  if (customizer) {
+	    result = object ? customizer(value, key, object, stack) : customizer(value);
+	  }
+	  if (result !== undefined) {
+	    return result;
+	  }
+	  if (!isObject(value)) {
+	    return value;
+	  }
+	  var isArr = isArray(value);
+	  if (isArr) {
+	    result = initCloneArray(value);
+	    if (!isDeep) {
+	      return copyArray(value, result);
+	    }
+	  } else {
+	    var tag = getTag(value),
+	        isFunc = tag == funcTag || tag == genTag;
+
+	    if (isBuffer(value)) {
+	      return cloneBuffer(value, isDeep);
+	    }
+	    if (tag == objectTag || tag == argsTag || (isFunc && !object)) {
+	      if (isHostObject(value)) {
+	        return object ? value : {};
+	      }
+	      result = initCloneObject(isFunc ? {} : value);
+	      if (!isDeep) {
+	        return copySymbols(value, baseAssign(result, value));
+	      }
+	    } else {
+	      if (!cloneableTags[tag]) {
+	        return object ? value : {};
+	      }
+	      result = initCloneByTag(value, tag, baseClone, isDeep);
+	    }
+	  }
+	  // Check for circular references and return its corresponding clone.
+	  stack || (stack = new Stack);
+	  var stacked = stack.get(value);
+	  if (stacked) {
+	    return stacked;
+	  }
+	  stack.set(value, result);
+
+	  if (!isArr) {
+	    var props = isFull ? getAllKeys(value) : keys(value);
+	  }
+	  arrayEach(props || value, function(subValue, key) {
+	    if (props) {
+	      key = subValue;
+	      subValue = value[key];
+	    }
+	    // Recursively populate clone (susceptible to call stack limits).
+	    assignValue(result, key, baseClone(subValue, isDeep, isFull, customizer, key, value, stack));
+	  });
+	  return result;
+	}
+
+	/**
+	 * The base implementation of `_.create` without support for assigning
+	 * properties to the created object.
+	 *
+	 * @private
+	 * @param {Object} prototype The object to inherit from.
+	 * @returns {Object} Returns the new object.
+	 */
+	function baseCreate(proto) {
+	  return isObject(proto) ? objectCreate(proto) : {};
+	}
+
+	/**
+	 * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
+	 * `keysFunc` and `symbolsFunc` to get the enumerable property names and
+	 * symbols of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @param {Function} keysFunc The function to get the keys of `object`.
+	 * @param {Function} symbolsFunc The function to get the symbols of `object`.
+	 * @returns {Array} Returns the array of property names and symbols.
+	 */
+	function baseGetAllKeys(object, keysFunc, symbolsFunc) {
+	  var result = keysFunc(object);
+	  return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
+	}
+
+	/**
+	 * The base implementation of `getTag`.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {string} Returns the `toStringTag`.
+	 */
+	function baseGetTag(value) {
+	  return objectToString.call(value);
+	}
+
+	/**
+	 * The base implementation of `_.isNative` without bad shim checks.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a native function,
+	 *  else `false`.
+	 */
+	function baseIsNative(value) {
+	  if (!isObject(value) || isMasked(value)) {
+	    return false;
+	  }
+	  var pattern = (isFunction(value) || isHostObject(value)) ? reIsNative : reIsHostCtor;
+	  return pattern.test(toSource(value));
+	}
+
+	/**
+	 * The base implementation of `_.isTypedArray` without Node.js optimizations.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+	 */
+	function baseIsTypedArray(value) {
+	  return isObjectLike(value) &&
+	    isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
+	}
+
+	/**
+	 * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function baseKeys(object) {
+	  if (!isPrototype(object)) {
+	    return nativeKeys(object);
+	  }
+	  var result = [];
+	  for (var key in Object(object)) {
+	    if (hasOwnProperty.call(object, key) && key != 'constructor') {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+
+	/**
+	 * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function baseKeysIn(object) {
+	  if (!isObject(object)) {
+	    return nativeKeysIn(object);
+	  }
+	  var isProto = isPrototype(object),
+	      result = [];
+
+	  for (var key in object) {
+	    if (!(key == 'constructor' && (isProto || !hasOwnProperty.call(object, key)))) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+
+	/**
+	 * The base implementation of `_.merge` without support for multiple sources.
+	 *
+	 * @private
+	 * @param {Object} object The destination object.
+	 * @param {Object} source The source object.
+	 * @param {number} srcIndex The index of `source`.
+	 * @param {Function} [customizer] The function to customize merged values.
+	 * @param {Object} [stack] Tracks traversed source values and their merged
+	 *  counterparts.
+	 */
+	function baseMerge(object, source, srcIndex, customizer, stack) {
+	  if (object === source) {
+	    return;
+	  }
+	  if (!(isArray(source) || isTypedArray(source))) {
+	    var props = baseKeysIn(source);
+	  }
+	  arrayEach(props || source, function(srcValue, key) {
+	    if (props) {
+	      key = srcValue;
+	      srcValue = source[key];
+	    }
+	    if (isObject(srcValue)) {
+	      stack || (stack = new Stack);
+	      baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
+	    }
+	    else {
+	      var newValue = customizer
+	        ? customizer(object[key], srcValue, (key + ''), object, source, stack)
+	        : undefined;
+
+	      if (newValue === undefined) {
+	        newValue = srcValue;
+	      }
+	      assignMergeValue(object, key, newValue);
+	    }
+	  });
+	}
+
+	/**
+	 * A specialized version of `baseMerge` for arrays and objects which performs
+	 * deep merges and tracks traversed objects enabling objects with circular
+	 * references to be merged.
+	 *
+	 * @private
+	 * @param {Object} object The destination object.
+	 * @param {Object} source The source object.
+	 * @param {string} key The key of the value to merge.
+	 * @param {number} srcIndex The index of `source`.
+	 * @param {Function} mergeFunc The function to merge values.
+	 * @param {Function} [customizer] The function to customize assigned values.
+	 * @param {Object} [stack] Tracks traversed source values and their merged
+	 *  counterparts.
+	 */
+	function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, stack) {
+	  var objValue = object[key],
+	      srcValue = source[key],
+	      stacked = stack.get(srcValue);
+
+	  if (stacked) {
+	    assignMergeValue(object, key, stacked);
+	    return;
+	  }
+	  var newValue = customizer
+	    ? customizer(objValue, srcValue, (key + ''), object, source, stack)
+	    : undefined;
+
+	  var isCommon = newValue === undefined;
+
+	  if (isCommon) {
+	    newValue = srcValue;
+	    if (isArray(srcValue) || isTypedArray(srcValue)) {
+	      if (isArray(objValue)) {
+	        newValue = objValue;
+	      }
+	      else if (isArrayLikeObject(objValue)) {
+	        newValue = copyArray(objValue);
+	      }
+	      else {
+	        isCommon = false;
+	        newValue = baseClone(srcValue, true);
+	      }
+	    }
+	    else if (isPlainObject(srcValue) || isArguments(srcValue)) {
+	      if (isArguments(objValue)) {
+	        newValue = toPlainObject(objValue);
+	      }
+	      else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
+	        isCommon = false;
+	        newValue = baseClone(srcValue, true);
+	      }
+	      else {
+	        newValue = objValue;
+	      }
+	    }
+	    else {
+	      isCommon = false;
+	    }
+	  }
+	  if (isCommon) {
+	    // Recursively merge objects and arrays (susceptible to call stack limits).
+	    stack.set(srcValue, newValue);
+	    mergeFunc(newValue, srcValue, srcIndex, customizer, stack);
+	    stack['delete'](srcValue);
+	  }
+	  assignMergeValue(object, key, newValue);
+	}
+
+	/**
+	 * The base implementation of `_.rest` which doesn't validate or coerce arguments.
+	 *
+	 * @private
+	 * @param {Function} func The function to apply a rest parameter to.
+	 * @param {number} [start=func.length-1] The start position of the rest parameter.
+	 * @returns {Function} Returns the new function.
+	 */
+	function baseRest(func, start) {
+	  start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
+	  return function() {
+	    var args = arguments,
+	        index = -1,
+	        length = nativeMax(args.length - start, 0),
+	        array = Array(length);
+
+	    while (++index < length) {
+	      array[index] = args[start + index];
+	    }
+	    index = -1;
+	    var otherArgs = Array(start + 1);
+	    while (++index < start) {
+	      otherArgs[index] = args[index];
+	    }
+	    otherArgs[start] = array;
+	    return apply(func, this, otherArgs);
+	  };
+	}
+
+	/**
+	 * Creates a clone of  `buffer`.
+	 *
+	 * @private
+	 * @param {Buffer} buffer The buffer to clone.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @returns {Buffer} Returns the cloned buffer.
+	 */
+	function cloneBuffer(buffer, isDeep) {
+	  if (isDeep) {
+	    return buffer.slice();
+	  }
+	  var result = new buffer.constructor(buffer.length);
+	  buffer.copy(result);
+	  return result;
+	}
+
+	/**
+	 * Creates a clone of `arrayBuffer`.
+	 *
+	 * @private
+	 * @param {ArrayBuffer} arrayBuffer The array buffer to clone.
+	 * @returns {ArrayBuffer} Returns the cloned array buffer.
+	 */
+	function cloneArrayBuffer(arrayBuffer) {
+	  var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
+	  new Uint8Array(result).set(new Uint8Array(arrayBuffer));
+	  return result;
+	}
+
+	/**
+	 * Creates a clone of `dataView`.
+	 *
+	 * @private
+	 * @param {Object} dataView The data view to clone.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @returns {Object} Returns the cloned data view.
+	 */
+	function cloneDataView(dataView, isDeep) {
+	  var buffer = isDeep ? cloneArrayBuffer(dataView.buffer) : dataView.buffer;
+	  return new dataView.constructor(buffer, dataView.byteOffset, dataView.byteLength);
+	}
+
+	/**
+	 * Creates a clone of `map`.
+	 *
+	 * @private
+	 * @param {Object} map The map to clone.
+	 * @param {Function} cloneFunc The function to clone values.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @returns {Object} Returns the cloned map.
+	 */
+	function cloneMap(map, isDeep, cloneFunc) {
+	  var array = isDeep ? cloneFunc(mapToArray(map), true) : mapToArray(map);
+	  return arrayReduce(array, addMapEntry, new map.constructor);
+	}
+
+	/**
+	 * Creates a clone of `regexp`.
+	 *
+	 * @private
+	 * @param {Object} regexp The regexp to clone.
+	 * @returns {Object} Returns the cloned regexp.
+	 */
+	function cloneRegExp(regexp) {
+	  var result = new regexp.constructor(regexp.source, reFlags.exec(regexp));
+	  result.lastIndex = regexp.lastIndex;
+	  return result;
+	}
+
+	/**
+	 * Creates a clone of `set`.
+	 *
+	 * @private
+	 * @param {Object} set The set to clone.
+	 * @param {Function} cloneFunc The function to clone values.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @returns {Object} Returns the cloned set.
+	 */
+	function cloneSet(set, isDeep, cloneFunc) {
+	  var array = isDeep ? cloneFunc(setToArray(set), true) : setToArray(set);
+	  return arrayReduce(array, addSetEntry, new set.constructor);
+	}
+
+	/**
+	 * Creates a clone of the `symbol` object.
+	 *
+	 * @private
+	 * @param {Object} symbol The symbol object to clone.
+	 * @returns {Object} Returns the cloned symbol object.
+	 */
+	function cloneSymbol(symbol) {
+	  return symbolValueOf ? Object(symbolValueOf.call(symbol)) : {};
+	}
+
+	/**
+	 * Creates a clone of `typedArray`.
+	 *
+	 * @private
+	 * @param {Object} typedArray The typed array to clone.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @returns {Object} Returns the cloned typed array.
+	 */
+	function cloneTypedArray(typedArray, isDeep) {
+	  var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
+	  return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
+	}
+
+	/**
+	 * Copies the values of `source` to `array`.
+	 *
+	 * @private
+	 * @param {Array} source The array to copy values from.
+	 * @param {Array} [array=[]] The array to copy values to.
+	 * @returns {Array} Returns `array`.
+	 */
+	function copyArray(source, array) {
+	  var index = -1,
+	      length = source.length;
+
+	  array || (array = Array(length));
+	  while (++index < length) {
+	    array[index] = source[index];
+	  }
+	  return array;
+	}
+
+	/**
+	 * Copies properties of `source` to `object`.
+	 *
+	 * @private
+	 * @param {Object} source The object to copy properties from.
+	 * @param {Array} props The property identifiers to copy.
+	 * @param {Object} [object={}] The object to copy properties to.
+	 * @param {Function} [customizer] The function to customize copied values.
+	 * @returns {Object} Returns `object`.
+	 */
+	function copyObject(source, props, object, customizer) {
+	  object || (object = {});
+
+	  var index = -1,
+	      length = props.length;
+
+	  while (++index < length) {
+	    var key = props[index];
+
+	    var newValue = customizer
+	      ? customizer(object[key], source[key], key, object, source)
+	      : undefined;
+
+	    assignValue(object, key, newValue === undefined ? source[key] : newValue);
+	  }
+	  return object;
+	}
+
+	/**
+	 * Copies own symbol properties of `source` to `object`.
+	 *
+	 * @private
+	 * @param {Object} source The object to copy symbols from.
+	 * @param {Object} [object={}] The object to copy symbols to.
+	 * @returns {Object} Returns `object`.
+	 */
+	function copySymbols(source, object) {
+	  return copyObject(source, getSymbols(source), object);
+	}
+
+	/**
+	 * Creates a function like `_.assign`.
+	 *
+	 * @private
+	 * @param {Function} assigner The function to assign values.
+	 * @returns {Function} Returns the new assigner function.
+	 */
+	function createAssigner(assigner) {
+	  return baseRest(function(object, sources) {
+	    var index = -1,
+	        length = sources.length,
+	        customizer = length > 1 ? sources[length - 1] : undefined,
+	        guard = length > 2 ? sources[2] : undefined;
+
+	    customizer = (assigner.length > 3 && typeof customizer == 'function')
+	      ? (length--, customizer)
+	      : undefined;
+
+	    if (guard && isIterateeCall(sources[0], sources[1], guard)) {
+	      customizer = length < 3 ? undefined : customizer;
+	      length = 1;
+	    }
+	    object = Object(object);
+	    while (++index < length) {
+	      var source = sources[index];
+	      if (source) {
+	        assigner(object, source, index, customizer);
+	      }
+	    }
+	    return object;
+	  });
+	}
+
+	/**
+	 * Creates an array of own enumerable property names and symbols of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names and symbols.
+	 */
+	function getAllKeys(object) {
+	  return baseGetAllKeys(object, keys, getSymbols);
+	}
+
+	/**
+	 * Gets the data for `map`.
+	 *
+	 * @private
+	 * @param {Object} map The map to query.
+	 * @param {string} key The reference key.
+	 * @returns {*} Returns the map data.
+	 */
+	function getMapData(map, key) {
+	  var data = map.__data__;
+	  return isKeyable(key)
+	    ? data[typeof key == 'string' ? 'string' : 'hash']
+	    : data.map;
+	}
+
+	/**
+	 * Gets the native function at `key` of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @param {string} key The key of the method to get.
+	 * @returns {*} Returns the function if it's native, else `undefined`.
+	 */
+	function getNative(object, key) {
+	  var value = getValue(object, key);
+	  return baseIsNative(value) ? value : undefined;
+	}
+
+	/**
+	 * Creates an array of the own enumerable symbol properties of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of symbols.
+	 */
+	var getSymbols = nativeGetSymbols ? overArg(nativeGetSymbols, Object) : stubArray;
+
+	/**
+	 * Gets the `toStringTag` of `value`.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {string} Returns the `toStringTag`.
+	 */
+	var getTag = baseGetTag;
+
+	// Fallback for data views, maps, sets, and weak maps in IE 11,
+	// for data views in Edge < 14, and promises in Node.js.
+	if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
+	    (Map && getTag(new Map) != mapTag) ||
+	    (Promise && getTag(Promise.resolve()) != promiseTag) ||
+	    (Set && getTag(new Set) != setTag) ||
+	    (WeakMap && getTag(new WeakMap) != weakMapTag)) {
+	  getTag = function(value) {
+	    var result = objectToString.call(value),
+	        Ctor = result == objectTag ? value.constructor : undefined,
+	        ctorString = Ctor ? toSource(Ctor) : undefined;
+
+	    if (ctorString) {
+	      switch (ctorString) {
+	        case dataViewCtorString: return dataViewTag;
+	        case mapCtorString: return mapTag;
+	        case promiseCtorString: return promiseTag;
+	        case setCtorString: return setTag;
+	        case weakMapCtorString: return weakMapTag;
+	      }
+	    }
+	    return result;
+	  };
+	}
+
+	/**
+	 * Initializes an array clone.
+	 *
+	 * @private
+	 * @param {Array} array The array to clone.
+	 * @returns {Array} Returns the initialized clone.
+	 */
+	function initCloneArray(array) {
+	  var length = array.length,
+	      result = array.constructor(length);
+
+	  // Add properties assigned by `RegExp#exec`.
+	  if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
+	    result.index = array.index;
+	    result.input = array.input;
+	  }
+	  return result;
+	}
+
+	/**
+	 * Initializes an object clone.
+	 *
+	 * @private
+	 * @param {Object} object The object to clone.
+	 * @returns {Object} Returns the initialized clone.
+	 */
+	function initCloneObject(object) {
+	  return (typeof object.constructor == 'function' && !isPrototype(object))
+	    ? baseCreate(getPrototype(object))
+	    : {};
+	}
+
+	/**
+	 * Initializes an object clone based on its `toStringTag`.
+	 *
+	 * **Note:** This function only supports cloning values with tags of
+	 * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
+	 *
+	 * @private
+	 * @param {Object} object The object to clone.
+	 * @param {string} tag The `toStringTag` of the object to clone.
+	 * @param {Function} cloneFunc The function to clone values.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @returns {Object} Returns the initialized clone.
+	 */
+	function initCloneByTag(object, tag, cloneFunc, isDeep) {
+	  var Ctor = object.constructor;
+	  switch (tag) {
+	    case arrayBufferTag:
+	      return cloneArrayBuffer(object);
+
+	    case boolTag:
+	    case dateTag:
+	      return new Ctor(+object);
+
+	    case dataViewTag:
+	      return cloneDataView(object, isDeep);
+
+	    case float32Tag: case float64Tag:
+	    case int8Tag: case int16Tag: case int32Tag:
+	    case uint8Tag: case uint8ClampedTag: case uint16Tag: case uint32Tag:
+	      return cloneTypedArray(object, isDeep);
+
+	    case mapTag:
+	      return cloneMap(object, isDeep, cloneFunc);
+
+	    case numberTag:
+	    case stringTag:
+	      return new Ctor(object);
+
+	    case regexpTag:
+	      return cloneRegExp(object);
+
+	    case setTag:
+	      return cloneSet(object, isDeep, cloneFunc);
+
+	    case symbolTag:
+	      return cloneSymbol(object);
+	  }
+	}
+
+	/**
+	 * Checks if `value` is a valid array-like index.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+	 * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+	 */
+	function isIndex(value, length) {
+	  length = length == null ? MAX_SAFE_INTEGER : length;
+	  return !!length &&
+	    (typeof value == 'number' || reIsUint.test(value)) &&
+	    (value > -1 && value % 1 == 0 && value < length);
+	}
+
+	/**
+	 * Checks if the given arguments are from an iteratee call.
+	 *
+	 * @private
+	 * @param {*} value The potential iteratee value argument.
+	 * @param {*} index The potential iteratee index or key argument.
+	 * @param {*} object The potential iteratee object argument.
+	 * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
+	 *  else `false`.
+	 */
+	function isIterateeCall(value, index, object) {
+	  if (!isObject(object)) {
+	    return false;
+	  }
+	  var type = typeof index;
+	  if (type == 'number'
+	        ? (isArrayLike(object) && isIndex(index, object.length))
+	        : (type == 'string' && index in object)
+	      ) {
+	    return eq(object[index], value);
+	  }
+	  return false;
+	}
+
+	/**
+	 * Checks if `value` is suitable for use as unique object key.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
+	 */
+	function isKeyable(value) {
+	  var type = typeof value;
+	  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
+	    ? (value !== '__proto__')
+	    : (value === null);
+	}
+
+	/**
+	 * Checks if `func` has its source masked.
+	 *
+	 * @private
+	 * @param {Function} func The function to check.
+	 * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+	 */
+	function isMasked(func) {
+	  return !!maskSrcKey && (maskSrcKey in func);
+	}
+
+	/**
+	 * Checks if `value` is likely a prototype object.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+	 */
+	function isPrototype(value) {
+	  var Ctor = value && value.constructor,
+	      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+
+	  return value === proto;
+	}
+
+	/**
+	 * This function is like
+	 * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+	 * except that it includes inherited enumerable properties.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function nativeKeysIn(object) {
+	  var result = [];
+	  if (object != null) {
+	    for (var key in Object(object)) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+
+	/**
+	 * Converts `func` to its source code.
+	 *
+	 * @private
+	 * @param {Function} func The function to process.
+	 * @returns {string} Returns the source code.
+	 */
+	function toSource(func) {
+	  if (func != null) {
+	    try {
+	      return funcToString.call(func);
+	    } catch (e) {}
+	    try {
+	      return (func + '');
+	    } catch (e) {}
+	  }
+	  return '';
+	}
+
+	/**
+	 * Performs a
+	 * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+	 * comparison between two values to determine if they are equivalent.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to compare.
+	 * @param {*} other The other value to compare.
+	 * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+	 * @example
+	 *
+	 * var object = { 'a': 1 };
+	 * var other = { 'a': 1 };
+	 *
+	 * _.eq(object, object);
+	 * // => true
+	 *
+	 * _.eq(object, other);
+	 * // => false
+	 *
+	 * _.eq('a', 'a');
+	 * // => true
+	 *
+	 * _.eq('a', Object('a'));
+	 * // => false
+	 *
+	 * _.eq(NaN, NaN);
+	 * // => true
+	 */
+	function eq(value, other) {
+	  return value === other || (value !== value && other !== other);
+	}
+
+	/**
+	 * Checks if `value` is likely an `arguments` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+	 *  else `false`.
+	 * @example
+	 *
+	 * _.isArguments(function() { return arguments; }());
+	 * // => true
+	 *
+	 * _.isArguments([1, 2, 3]);
+	 * // => false
+	 */
+	function isArguments(value) {
+	  // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+	  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
+	    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
+	}
+
+	/**
+	 * Checks if `value` is classified as an `Array` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+	 * @example
+	 *
+	 * _.isArray([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArray(document.body.children);
+	 * // => false
+	 *
+	 * _.isArray('abc');
+	 * // => false
+	 *
+	 * _.isArray(_.noop);
+	 * // => false
+	 */
+	var isArray = Array.isArray;
+
+	/**
+	 * Checks if `value` is array-like. A value is considered array-like if it's
+	 * not a function and has a `value.length` that's an integer greater than or
+	 * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+	 * @example
+	 *
+	 * _.isArrayLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArrayLike(document.body.children);
+	 * // => true
+	 *
+	 * _.isArrayLike('abc');
+	 * // => true
+	 *
+	 * _.isArrayLike(_.noop);
+	 * // => false
+	 */
+	function isArrayLike(value) {
+	  return value != null && isLength(value.length) && !isFunction(value);
+	}
+
+	/**
+	 * This method is like `_.isArrayLike` except that it also checks if `value`
+	 * is an object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an array-like object,
+	 *  else `false`.
+	 * @example
+	 *
+	 * _.isArrayLikeObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArrayLikeObject(document.body.children);
+	 * // => true
+	 *
+	 * _.isArrayLikeObject('abc');
+	 * // => false
+	 *
+	 * _.isArrayLikeObject(_.noop);
+	 * // => false
+	 */
+	function isArrayLikeObject(value) {
+	  return isObjectLike(value) && isArrayLike(value);
+	}
+
+	/**
+	 * Checks if `value` is a buffer.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.3.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+	 * @example
+	 *
+	 * _.isBuffer(new Buffer(2));
+	 * // => true
+	 *
+	 * _.isBuffer(new Uint8Array(2));
+	 * // => false
+	 */
+	var isBuffer = nativeIsBuffer || stubFalse;
+
+	/**
+	 * Checks if `value` is classified as a `Function` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+	 * @example
+	 *
+	 * _.isFunction(_);
+	 * // => true
+	 *
+	 * _.isFunction(/abc/);
+	 * // => false
+	 */
+	function isFunction(value) {
+	  // The use of `Object#toString` avoids issues with the `typeof` operator
+	  // in Safari 8-9 which returns 'object' for typed array and other constructors.
+	  var tag = isObject(value) ? objectToString.call(value) : '';
+	  return tag == funcTag || tag == genTag;
+	}
+
+	/**
+	 * Checks if `value` is a valid array-like length.
+	 *
+	 * **Note:** This method is loosely based on
+	 * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+	 * @example
+	 *
+	 * _.isLength(3);
+	 * // => true
+	 *
+	 * _.isLength(Number.MIN_VALUE);
+	 * // => false
+	 *
+	 * _.isLength(Infinity);
+	 * // => false
+	 *
+	 * _.isLength('3');
+	 * // => false
+	 */
+	function isLength(value) {
+	  return typeof value == 'number' &&
+	    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+	}
+
+	/**
+	 * Checks if `value` is the
+	 * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+	 * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.1.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+	 * @example
+	 *
+	 * _.isObject({});
+	 * // => true
+	 *
+	 * _.isObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObject(_.noop);
+	 * // => true
+	 *
+	 * _.isObject(null);
+	 * // => false
+	 */
+	function isObject(value) {
+	  var type = typeof value;
+	  return !!value && (type == 'object' || type == 'function');
+	}
+
+	/**
+	 * Checks if `value` is object-like. A value is object-like if it's not `null`
+	 * and has a `typeof` result of "object".
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 * @example
+	 *
+	 * _.isObjectLike({});
+	 * // => true
+	 *
+	 * _.isObjectLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObjectLike(_.noop);
+	 * // => false
+	 *
+	 * _.isObjectLike(null);
+	 * // => false
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+
+	/**
+	 * Checks if `value` is a plain object, that is, an object created by the
+	 * `Object` constructor or one with a `[[Prototype]]` of `null`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.8.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 * }
+	 *
+	 * _.isPlainObject(new Foo);
+	 * // => false
+	 *
+	 * _.isPlainObject([1, 2, 3]);
+	 * // => false
+	 *
+	 * _.isPlainObject({ 'x': 0, 'y': 0 });
+	 * // => true
+	 *
+	 * _.isPlainObject(Object.create(null));
+	 * // => true
+	 */
+	function isPlainObject(value) {
+	  if (!isObjectLike(value) ||
+	      objectToString.call(value) != objectTag || isHostObject(value)) {
+	    return false;
+	  }
+	  var proto = getPrototype(value);
+	  if (proto === null) {
+	    return true;
+	  }
+	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+	  return (typeof Ctor == 'function' &&
+	    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
+	}
+
+	/**
+	 * Checks if `value` is classified as a typed array.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 3.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+	 * @example
+	 *
+	 * _.isTypedArray(new Uint8Array);
+	 * // => true
+	 *
+	 * _.isTypedArray([]);
+	 * // => false
+	 */
+	var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
+
+	/**
+	 * Converts `value` to a plain object flattening inherited enumerable string
+	 * keyed properties of `value` to own properties of the plain object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 3.0.0
+	 * @category Lang
+	 * @param {*} value The value to convert.
+	 * @returns {Object} Returns the converted plain object.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.assign({ 'a': 1 }, new Foo);
+	 * // => { 'a': 1, 'b': 2 }
+	 *
+	 * _.assign({ 'a': 1 }, _.toPlainObject(new Foo));
+	 * // => { 'a': 1, 'b': 2, 'c': 3 }
+	 */
+	function toPlainObject(value) {
+	  return copyObject(value, keysIn(value));
+	}
+
+	/**
+	 * Creates an array of the own enumerable property names of `object`.
+	 *
+	 * **Note:** Non-object values are coerced to objects. See the
+	 * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+	 * for more details.
+	 *
+	 * @static
+	 * @since 0.1.0
+	 * @memberOf _
+	 * @category Object
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.keys(new Foo);
+	 * // => ['a', 'b'] (iteration order is not guaranteed)
+	 *
+	 * _.keys('hi');
+	 * // => ['0', '1']
+	 */
+	function keys(object) {
+	  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
+	}
+
+	/**
+	 * Creates an array of the own and inherited enumerable property names of `object`.
+	 *
+	 * **Note:** Non-object values are coerced to objects.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 3.0.0
+	 * @category Object
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.keysIn(new Foo);
+	 * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
+	 */
+	function keysIn(object) {
+	  return isArrayLike(object) ? arrayLikeKeys(object, true) : baseKeysIn(object);
+	}
+
+	/**
+	 * This method is like `_.assign` except that it recursively merges own and
+	 * inherited enumerable string keyed properties of source objects into the
+	 * destination object. Source properties that resolve to `undefined` are
+	 * skipped if a destination value exists. Array and plain object properties
+	 * are merged recursively. Other objects and value types are overridden by
+	 * assignment. Source objects are applied from left to right. Subsequent
+	 * sources overwrite property assignments of previous sources.
+	 *
+	 * **Note:** This method mutates `object`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.5.0
+	 * @category Object
+	 * @param {Object} object The destination object.
+	 * @param {...Object} [sources] The source objects.
+	 * @returns {Object} Returns `object`.
+	 * @example
+	 *
+	 * var object = {
+	 *   'a': [{ 'b': 2 }, { 'd': 4 }]
+	 * };
+	 *
+	 * var other = {
+	 *   'a': [{ 'c': 3 }, { 'e': 5 }]
+	 * };
+	 *
+	 * _.merge(object, other);
+	 * // => { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }
+	 */
+	var merge = createAssigner(function(object, source, srcIndex) {
+	  baseMerge(object, source, srcIndex);
+	});
+
+	/**
+	 * This method returns a new empty array.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.13.0
+	 * @category Util
+	 * @returns {Array} Returns the new empty array.
+	 * @example
+	 *
+	 * var arrays = _.times(2, _.stubArray);
+	 *
+	 * console.log(arrays);
+	 * // => [[], []]
+	 *
+	 * console.log(arrays[0] === arrays[1]);
+	 * // => false
+	 */
+	function stubArray() {
+	  return [];
+	}
+
+	/**
+	 * This method returns `false`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.13.0
+	 * @category Util
+	 * @returns {boolean} Returns `false`.
+	 * @example
+	 *
+	 * _.times(2, _.stubFalse);
+	 * // => [false, false]
+	 */
+	function stubFalse() {
+	  return false;
+	}
+
+	module.exports = merge;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(42)(module)))
+
+/***/ }),
+/* 178 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -28617,7 +32547,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(161);
+	var _options = __webpack_require__(176);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28660,6 +32590,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  data: function data() {
 	    return {
+	      _chart: null,
 	      defaultOptions: {
 	        scales: {
 	          yAxes: [{
@@ -28690,7 +32621,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    renderChart: function renderChart(data, options, type) {
 	      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-	      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
+	      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
 	        type: 'horizontalBar',
 	        data: data,
 	        options: chartOptions,
@@ -28699,15 +32630,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  beforeDestroy: function beforeDestroy() {
-	    if (this._chart) {
-	      this._chart.destroy();
+	    if (this.$data._chart) {
+	      this.$data._chart.destroy();
 	    }
 	  }
 	};
 
-/***/ },
-/* 200 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 179 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -28719,7 +32650,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(161);
+	var _options = __webpack_require__(176);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28762,6 +32693,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  data: function data() {
 	    return {
+	      _chart: null,
 	      defaultOptions: {},
 	      plugins: []
 	    };
@@ -28775,7 +32707,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    renderChart: function renderChart(data, options) {
 	      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
 
-	      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
+	      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
 	        type: 'doughnut',
 	        data: data,
 	        options: chartOptions,
@@ -28784,15 +32716,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  beforeDestroy: function beforeDestroy() {
-	    if (this._chart) {
-	      this._chart.destroy();
+	    if (this.$data._chart) {
+	      this.$data._chart.destroy();
 	    }
 	  }
 	};
 
-/***/ },
-/* 201 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 180 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -28804,7 +32736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(161);
+	var _options = __webpack_require__(176);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28847,6 +32779,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  data: function data() {
 	    return {
+	      _chart: null,
 	      defaultOptions: {
 	        scales: {
 	          yAxes: [{
@@ -28876,7 +32809,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    renderChart: function renderChart(data, options) {
 	      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
 
-	      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
+	      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
 	        type: 'line',
 	        data: data,
 	        options: chartOptions,
@@ -28885,15 +32818,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  beforeDestroy: function beforeDestroy() {
-	    if (this._chart) {
-	      this._chart.destroy();
+	    if (this.$data._chart) {
+	      this.$data._chart.destroy();
 	    }
 	  }
 	};
 
-/***/ },
-/* 202 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 181 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -28905,7 +32838,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(161);
+	var _options = __webpack_require__(176);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28948,6 +32881,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  data: function data() {
 	    return {
+	      _chart: null,
 	      defaultOptions: {},
 	      plugins: []
 	    };
@@ -28961,7 +32895,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    renderChart: function renderChart(data, options) {
 	      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
 
-	      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
+	      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
 	        type: 'pie',
 	        data: data,
 	        options: chartOptions,
@@ -28970,15 +32904,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  beforeDestroy: function beforeDestroy() {
-	    if (this._chart) {
-	      this._chart.destroy();
+	    if (this.$data._chart) {
+	      this.$data._chart.destroy();
 	    }
 	  }
 	};
 
-/***/ },
-/* 203 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -28990,7 +32924,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(161);
+	var _options = __webpack_require__(176);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29033,6 +32967,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  data: function data() {
 	    return {
+	      _chart: null,
 	      defaultOptions: {},
 	      plugins: []
 	    };
@@ -29046,7 +32981,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    renderChart: function renderChart(data, options) {
 	      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
 
-	      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
+	      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
 	        type: 'polarArea',
 	        data: data,
 	        options: chartOptions,
@@ -29055,15 +32990,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  beforeDestroy: function beforeDestroy() {
-	    if (this._chart) {
-	      this._chart.destroy();
+	    if (this.$data._chart) {
+	      this.$data._chart.destroy();
 	    }
 	  }
 	};
 
-/***/ },
-/* 204 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -29075,7 +33010,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(161);
+	var _options = __webpack_require__(176);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29118,6 +33053,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  data: function data() {
 	    return {
+	      _chart: null,
 	      defaultOptions: {},
 	      plugins: []
 	    };
@@ -29131,7 +33067,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    renderChart: function renderChart(data, options) {
 	      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
 
-	      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
+	      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
 	        type: 'radar',
 	        data: data,
 	        options: chartOptions,
@@ -29140,15 +33076,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  beforeDestroy: function beforeDestroy() {
-	    if (this._chart) {
-	      this._chart.destroy();
+	    if (this.$data._chart) {
+	      this.$data._chart.destroy();
 	    }
 	  }
 	};
 
-/***/ },
-/* 205 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -29160,7 +33096,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(161);
+	var _options = __webpack_require__(176);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29203,6 +33139,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  data: function data() {
 	    return {
+	      _chart: null,
 	      defaultOptions: {
 	        scales: {
 	          yAxes: [{
@@ -29234,7 +33171,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    renderChart: function renderChart(data, options) {
 	      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
 
-	      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
+	      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
 	        type: 'bubble',
 	        data: data,
 	        options: chartOptions,
@@ -29243,15 +33180,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  beforeDestroy: function beforeDestroy() {
-	    if (this._chart) {
-	      this._chart.destroy();
+	    if (this.$data._chart) {
+	      this.$data._chart.destroy();
 	    }
 	  }
 	};
 
-/***/ },
-/* 206 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -29263,7 +33200,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _options = __webpack_require__(161);
+	var _options = __webpack_require__(176);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29306,6 +33243,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  data: function data() {
 	    return {
+	      _chart: null,
 	      defaultOptions: {
 	        scales: {
 	          xAxes: [{
@@ -29326,7 +33264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    renderChart: function renderChart(data, options) {
 	      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
 
-	      this._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
+	      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
 	        type: 'scatter',
 	        data: data,
 	        options: chartOptions,
@@ -29335,15 +33273,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  beforeDestroy: function beforeDestroy() {
-	    if (this._chart) {
-	      this._chart.destroy();
+	    if (this.$data._chart) {
+	      this.$data._chart.destroy();
 	    }
 	  }
 	};
 
-/***/ },
-/* 207 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -29351,11 +33289,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _reactiveData = __webpack_require__(208);
+	var _reactiveData = __webpack_require__(187);
 
 	var _reactiveData2 = _interopRequireDefault(_reactiveData);
 
-	var _reactiveProp = __webpack_require__(215);
+	var _reactiveProp = __webpack_require__(225);
 
 	var _reactiveProp2 = _interopRequireDefault(_reactiveProp);
 
@@ -29366,17 +33304,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  reactiveProp: _reactiveProp2.default
 	};
 
-/***/ },
-/* 208 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _keys = __webpack_require__(209);
+	var _keys = __webpack_require__(188);
 
 	var _keys2 = _interopRequireDefault(_keys);
 
-	var _stringify = __webpack_require__(213);
+	var _stringify = __webpack_require__(223);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -29393,7 +33331,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'chartData': {
 	      handler: function handler(newData, oldData) {
 	        if (oldData) {
-	          var chart = this._chart;
+	          var chart = this.$data._chart;
 
 	          var newDatasetLabels = newData.datasets.map(function (dataset) {
 	            return dataset.label;
@@ -29448,75 +33386,548 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	};
 
-/***/ },
-/* 209 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(210), __esModule: true };
+	module.exports = { "default": __webpack_require__(189), __esModule: true };
 
-/***/ },
-/* 210 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 189 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(211);
-	module.exports = __webpack_require__(167).Object.keys;
+	__webpack_require__(190);
+	module.exports = __webpack_require__(210).Object.keys;
 
-/***/ },
-/* 211 */
-/***/ function(module, exports, __webpack_require__) {
+
+/***/ }),
+/* 190 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	// 19.1.2.14 Object.keys(O)
-	var toObject = __webpack_require__(198)
-	  , $keys    = __webpack_require__(181);
+	var toObject = __webpack_require__(191);
+	var $keys = __webpack_require__(193);
 
-	__webpack_require__(212)('keys', function(){
-	  return function keys(it){
+	__webpack_require__(208)('keys', function () {
+	  return function keys(it) {
 	    return $keys(toObject(it));
 	  };
 	});
 
-/***/ },
-/* 212 */
-/***/ function(module, exports, __webpack_require__) {
 
-	// most Object methods by ES6 should accept primitives
-	var $export = __webpack_require__(165)
-	  , core    = __webpack_require__(167)
-	  , fails   = __webpack_require__(176);
-	module.exports = function(KEY, exec){
-	  var fn  = (core.Object || {})[KEY] || Object[KEY]
-	    , exp = {};
-	  exp[KEY] = exec(fn);
-	  $export($export.S + $export.F * fails(function(){ fn(1); }), 'Object', exp);
+/***/ }),
+/* 191 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// 7.1.13 ToObject(argument)
+	var defined = __webpack_require__(192);
+	module.exports = function (it) {
+	  return Object(defined(it));
 	};
 
-/***/ },
+
+/***/ }),
+/* 192 */
+/***/ (function(module, exports) {
+
+	// 7.2.1 RequireObjectCoercible(argument)
+	module.exports = function (it) {
+	  if (it == undefined) throw TypeError("Can't call method on  " + it);
+	  return it;
+	};
+
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+	var $keys = __webpack_require__(194);
+	var enumBugKeys = __webpack_require__(207);
+
+	module.exports = Object.keys || function keys(O) {
+	  return $keys(O, enumBugKeys);
+	};
+
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var has = __webpack_require__(195);
+	var toIObject = __webpack_require__(196);
+	var arrayIndexOf = __webpack_require__(199)(false);
+	var IE_PROTO = __webpack_require__(203)('IE_PROTO');
+
+	module.exports = function (object, names) {
+	  var O = toIObject(object);
+	  var i = 0;
+	  var result = [];
+	  var key;
+	  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
+	  // Don't enum bug & hidden keys
+	  while (names.length > i) if (has(O, key = names[i++])) {
+	    ~arrayIndexOf(result, key) || result.push(key);
+	  }
+	  return result;
+	};
+
+
+/***/ }),
+/* 195 */
+/***/ (function(module, exports) {
+
+	var hasOwnProperty = {}.hasOwnProperty;
+	module.exports = function (it, key) {
+	  return hasOwnProperty.call(it, key);
+	};
+
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// to indexed object, toObject with fallback for non-array-like ES3 strings
+	var IObject = __webpack_require__(197);
+	var defined = __webpack_require__(192);
+	module.exports = function (it) {
+	  return IObject(defined(it));
+	};
+
+
+/***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// fallback for non-array-like ES3 and non-enumerable old V8 strings
+	var cof = __webpack_require__(198);
+	// eslint-disable-next-line no-prototype-builtins
+	module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
+	  return cof(it) == 'String' ? it.split('') : Object(it);
+	};
+
+
+/***/ }),
+/* 198 */
+/***/ (function(module, exports) {
+
+	var toString = {}.toString;
+
+	module.exports = function (it) {
+	  return toString.call(it).slice(8, -1);
+	};
+
+
+/***/ }),
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// false -> Array#indexOf
+	// true  -> Array#includes
+	var toIObject = __webpack_require__(196);
+	var toLength = __webpack_require__(200);
+	var toAbsoluteIndex = __webpack_require__(202);
+	module.exports = function (IS_INCLUDES) {
+	  return function ($this, el, fromIndex) {
+	    var O = toIObject($this);
+	    var length = toLength(O.length);
+	    var index = toAbsoluteIndex(fromIndex, length);
+	    var value;
+	    // Array#includes uses SameValueZero equality algorithm
+	    // eslint-disable-next-line no-self-compare
+	    if (IS_INCLUDES && el != el) while (length > index) {
+	      value = O[index++];
+	      // eslint-disable-next-line no-self-compare
+	      if (value != value) return true;
+	    // Array#indexOf ignores holes, Array#includes - not
+	    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
+	      if (O[index] === el) return IS_INCLUDES || index || 0;
+	    } return !IS_INCLUDES && -1;
+	  };
+	};
+
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// 7.1.15 ToLength
+	var toInteger = __webpack_require__(201);
+	var min = Math.min;
+	module.exports = function (it) {
+	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
+	};
+
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports) {
+
+	// 7.1.4 ToInteger
+	var ceil = Math.ceil;
+	var floor = Math.floor;
+	module.exports = function (it) {
+	  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
+	};
+
+
+/***/ }),
+/* 202 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var toInteger = __webpack_require__(201);
+	var max = Math.max;
+	var min = Math.min;
+	module.exports = function (index, length) {
+	  index = toInteger(index);
+	  return index < 0 ? max(index + length, 0) : min(index, length);
+	};
+
+
+/***/ }),
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var shared = __webpack_require__(204)('keys');
+	var uid = __webpack_require__(206);
+	module.exports = function (key) {
+	  return shared[key] || (shared[key] = uid(key));
+	};
+
+
+/***/ }),
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var global = __webpack_require__(205);
+	var SHARED = '__core-js_shared__';
+	var store = global[SHARED] || (global[SHARED] = {});
+	module.exports = function (key) {
+	  return store[key] || (store[key] = {});
+	};
+
+
+/***/ }),
+/* 205 */
+/***/ (function(module, exports) {
+
+	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+	var global = module.exports = typeof window != 'undefined' && window.Math == Math
+	  ? window : typeof self != 'undefined' && self.Math == Math ? self
+	  // eslint-disable-next-line no-new-func
+	  : Function('return this')();
+	if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+
+/***/ }),
+/* 206 */
+/***/ (function(module, exports) {
+
+	var id = 0;
+	var px = Math.random();
+	module.exports = function (key) {
+	  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
+	};
+
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports) {
+
+	// IE 8- don't enum bug keys
+	module.exports = (
+	  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
+	).split(',');
+
+
+/***/ }),
+/* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// most Object methods by ES6 should accept primitives
+	var $export = __webpack_require__(209);
+	var core = __webpack_require__(210);
+	var fails = __webpack_require__(219);
+	module.exports = function (KEY, exec) {
+	  var fn = (core.Object || {})[KEY] || Object[KEY];
+	  var exp = {};
+	  exp[KEY] = exec(fn);
+	  $export($export.S + $export.F * fails(function () { fn(1); }), 'Object', exp);
+	};
+
+
+/***/ }),
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var global = __webpack_require__(205);
+	var core = __webpack_require__(210);
+	var ctx = __webpack_require__(211);
+	var hide = __webpack_require__(213);
+	var PROTOTYPE = 'prototype';
+
+	var $export = function (type, name, source) {
+	  var IS_FORCED = type & $export.F;
+	  var IS_GLOBAL = type & $export.G;
+	  var IS_STATIC = type & $export.S;
+	  var IS_PROTO = type & $export.P;
+	  var IS_BIND = type & $export.B;
+	  var IS_WRAP = type & $export.W;
+	  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
+	  var expProto = exports[PROTOTYPE];
+	  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
+	  var key, own, out;
+	  if (IS_GLOBAL) source = name;
+	  for (key in source) {
+	    // contains in native
+	    own = !IS_FORCED && target && target[key] !== undefined;
+	    if (own && key in exports) continue;
+	    // export native or passed
+	    out = own ? target[key] : source[key];
+	    // prevent global pollution for namespaces
+	    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+	    // bind timers to global for call from export context
+	    : IS_BIND && own ? ctx(out, global)
+	    // wrap global constructors for prevent change them in library
+	    : IS_WRAP && target[key] == out ? (function (C) {
+	      var F = function (a, b, c) {
+	        if (this instanceof C) {
+	          switch (arguments.length) {
+	            case 0: return new C();
+	            case 1: return new C(a);
+	            case 2: return new C(a, b);
+	          } return new C(a, b, c);
+	        } return C.apply(this, arguments);
+	      };
+	      F[PROTOTYPE] = C[PROTOTYPE];
+	      return F;
+	    // make static versions for prototype methods
+	    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+	    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
+	    if (IS_PROTO) {
+	      (exports.virtual || (exports.virtual = {}))[key] = out;
+	      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
+	      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
+	    }
+	  }
+	};
+	// type bitmap
+	$export.F = 1;   // forced
+	$export.G = 2;   // global
+	$export.S = 4;   // static
+	$export.P = 8;   // proto
+	$export.B = 16;  // bind
+	$export.W = 32;  // wrap
+	$export.U = 64;  // safe
+	$export.R = 128; // real proto method for `library`
+	module.exports = $export;
+
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports) {
+
+	var core = module.exports = { version: '2.5.1' };
+	if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+
+/***/ }),
+/* 211 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// optional / simple context binding
+	var aFunction = __webpack_require__(212);
+	module.exports = function (fn, that, length) {
+	  aFunction(fn);
+	  if (that === undefined) return fn;
+	  switch (length) {
+	    case 1: return function (a) {
+	      return fn.call(that, a);
+	    };
+	    case 2: return function (a, b) {
+	      return fn.call(that, a, b);
+	    };
+	    case 3: return function (a, b, c) {
+	      return fn.call(that, a, b, c);
+	    };
+	  }
+	  return function (/* ...args */) {
+	    return fn.apply(that, arguments);
+	  };
+	};
+
+
+/***/ }),
+/* 212 */
+/***/ (function(module, exports) {
+
+	module.exports = function (it) {
+	  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
+	  return it;
+	};
+
+
+/***/ }),
 /* 213 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(214), __esModule: true };
+	var dP = __webpack_require__(214);
+	var createDesc = __webpack_require__(222);
+	module.exports = __webpack_require__(218) ? function (object, key, value) {
+	  return dP.f(object, key, createDesc(1, value));
+	} : function (object, key, value) {
+	  object[key] = value;
+	  return object;
+	};
 
-/***/ },
+
+/***/ }),
 /* 214 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	var core  = __webpack_require__(167)
-	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
-	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	var anObject = __webpack_require__(215);
+	var IE8_DOM_DEFINE = __webpack_require__(217);
+	var toPrimitive = __webpack_require__(221);
+	var dP = Object.defineProperty;
+
+	exports.f = __webpack_require__(218) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+	  anObject(O);
+	  P = toPrimitive(P, true);
+	  anObject(Attributes);
+	  if (IE8_DOM_DEFINE) try {
+	    return dP(O, P, Attributes);
+	  } catch (e) { /* empty */ }
+	  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+	  if ('value' in Attributes) O[P] = Attributes.value;
+	  return O;
+	};
+
+
+/***/ }),
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(216);
+	module.exports = function (it) {
+	  if (!isObject(it)) throw TypeError(it + ' is not an object!');
+	  return it;
+	};
+
+
+/***/ }),
+/* 216 */
+/***/ (function(module, exports) {
+
+	module.exports = function (it) {
+	  return typeof it === 'object' ? it !== null : typeof it === 'function';
+	};
+
+
+/***/ }),
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = !__webpack_require__(218) && !__webpack_require__(219)(function () {
+	  return Object.defineProperty(__webpack_require__(220)('div'), 'a', { get: function () { return 7; } }).a != 7;
+	});
+
+
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// Thank's IE8 for his funny defineProperty
+	module.exports = !__webpack_require__(219)(function () {
+	  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
+	});
+
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports) {
+
+	module.exports = function (exec) {
+	  try {
+	    return !!exec();
+	  } catch (e) {
+	    return true;
+	  }
+	};
+
+
+/***/ }),
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(216);
+	var document = __webpack_require__(205).document;
+	// typeof document.createElement is 'object' in old IE
+	var is = isObject(document) && isObject(document.createElement);
+	module.exports = function (it) {
+	  return is ? document.createElement(it) : {};
+	};
+
+
+/***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// 7.1.1 ToPrimitive(input [, PreferredType])
+	var isObject = __webpack_require__(216);
+	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+	// and the second argument - flag - preferred type is a string
+	module.exports = function (it, S) {
+	  if (!isObject(it)) return it;
+	  var fn, val;
+	  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+	  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
+	  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+	  throw TypeError("Can't convert object to primitive value");
+	};
+
+
+/***/ }),
+/* 222 */
+/***/ (function(module, exports) {
+
+	module.exports = function (bitmap, value) {
+	  return {
+	    enumerable: !(bitmap & 1),
+	    configurable: !(bitmap & 2),
+	    writable: !(bitmap & 4),
+	    value: value
+	  };
+	};
+
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(224), __esModule: true };
+
+/***/ }),
+/* 224 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var core = __webpack_require__(210);
+	var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
+	module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
 	  return $JSON.stringify.apply($JSON, arguments);
 	};
 
-/***/ },
-/* 215 */
-/***/ function(module, exports, __webpack_require__) {
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _keys = __webpack_require__(209);
+	var _keys = __webpack_require__(188);
 
 	var _keys2 = _interopRequireDefault(_keys);
 
-	var _stringify = __webpack_require__(213);
+	var _stringify = __webpack_require__(223);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -29532,7 +33943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'chartData': {
 	      handler: function handler(newData, oldData) {
 	        if (oldData) {
-	          var chart = this._chart;
+	          var chart = this.$data._chart;
 
 	          var newDatasetLabels = newData.datasets.map(function (dataset) {
 	            return dataset.label;
@@ -29587,162 +33998,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	};
 
-/***/ },
-/* 216 */
-/***/ function(module, exports) {
+/***/ }),
+/* 226 */
+/***/ (function(module, exports) {
 
-	module.exports = {
-		"name": "vue-chartjs",
-		"version": "3.0.0-rc0",
-		"description": "vue.js wrapper for chart.js",
-		"author": "Jakub Juszczak <jakub@posteo.de>",
-		"homepage": "http://vue-chartjs.org",
-		"license": "MIT",
-		"contributors": [
-			{
-				"name": "Thorsten Lünborg",
-				"web": "https://github.com/LinusBorg"
-			},
-			{
-				"name": "Juan Carlos Alonso",
-				"web": "https://github.com/jcalonso"
-			}
-		],
-		"maintainers": [
-			{
-				"name": "Jakub Juszczak",
-				"email": "jakub@posteo.de",
-				"web": "http://www.jakubjuszczak.de"
-			}
-		],
-		"repository": {
-			"type": "git",
-			"url": "git+ssh://git@github.com:apertureless/vue-chartjs.git"
-		},
-		"bugs": {
-			"url": "https://github.com/apertureless/vue-chartjs/issues"
-		},
-		"keywords": [
-			"ChartJs",
-			"Vue",
-			"Visualisation",
-			"Wrapper",
-			"Charts"
-		],
-		"main": "dist/vue-chartjs.js",
-		"unpkg": "dist/vue-chartjs.full.min.js",
-		"module": "es/index.js",
-		"jsnext:main": "es/index.js",
-		"files": [
-			"src",
-			"dist",
-			"es"
-		],
-		"scripts": {
-			"dev": "node build/dev-server.js",
-			"build": "yarn run release && yarn run build:es",
-			"build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-			"unit": "karma start test/unit/karma.conf.js --single-run",
-			"e2e": "node test/e2e/runner.js",
-			"test": "npm run unit",
-			"lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-			"release": "webpack --progress --hide-modules --config  ./build/webpack.release.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js && webpack --progress --hide-modules --config  ./build/webpack.release.full.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.full.min.js",
-			"prepublish": "yarn run lint && yarn run test && yarn run build"
-		},
-		"dependencies": {},
-		"peerDependencies": {
-			"chart.js": "^2.6.0",
-			"vue": "^2.4.2"
-		},
-		"devDependencies": {
-			"babel-cli": "^6.24.1",
-			"babel-core": "^6.25.0",
-			"babel-loader": "^7.0.0",
-			"babel-plugin-transform-runtime": "^6.23.0",
-			"babel-preset-es2015": "^6.24.1",
-			"babel-preset-stage-2": "^6.24.1",
-			"babel-runtime": "^6.23.0",
-			"chai": "^3.5.0",
-			"chart.js": "^2.6.0",
-			"chromedriver": "^2.28.0",
-			"connect-history-api-fallback": "^1.1.0",
-			"cross-env": "^3.2.4",
-			"cross-spawn": "^5.1.0",
-			"css-loader": "^0.28.0",
-			"eslint": "^3.19.0",
-			"eslint-config-standard": "^10.2.1",
-			"eslint-friendly-formatter": "^2.0.7",
-			"eslint-loader": "^1.7.1",
-			"eslint-plugin-html": "^2.0.1",
-			"eslint-plugin-import": "^2.2.0",
-			"eslint-plugin-node": "^4.2.2",
-			"eslint-plugin-promise": "^3.5.0",
-			"eslint-plugin-standard": "^3.0.1",
-			"eventsource-polyfill": "^0.9.6",
-			"express": "^4.15.2",
-			"extract-text-webpack-plugin": "^1.0.1",
-			"file-loader": "^0.10.1",
-			"function-bind": "^1.0.2",
-			"html-webpack-plugin": "^2.28.0",
-			"http-proxy-middleware": "^0.17.4",
-			"inject-loader": "^3.0.0",
-			"isparta-loader": "^2.0.0",
-			"jasmine-core": "^2.5.2",
-			"json-loader": "^0.5.4",
-			"karma": "^1.5.0",
-			"karma-coverage": "^1.1.1",
-			"karma-jasmine": "^1.0.2",
-			"karma-mocha": "^1.2.0",
-			"karma-phantomjs-launcher": "^1.0.4",
-			"karma-sinon-chai": "^1.2.0",
-			"karma-sourcemap-loader": "^0.3.7",
-			"karma-spec-reporter": "0.0.30",
-			"karma-webpack": "1.8.1",
-			"lolex": "^1.6.0",
-			"mocha": "^3.1.0",
-			"nightwatch": "^0.9.14",
-			"ora": "^1.2.0",
-			"phantomjs-prebuilt": "^2.1.13",
-			"selenium-server": "^3.3.1",
-			"shelljs": "^0.7.7",
-			"sinon": "^2.1.0",
-			"sinon-chai": "^2.9.0",
-			"url-loader": "^0.5.8",
-			"vue": "^2.4.2",
-			"vue-hot-reload-api": "^2.1.0",
-			"vue-html-loader": "^1.2.4",
-			"vue-loader": "^12.2.2",
-			"vue-style-loader": "^3.0.1",
-			"vue-template-compiler": "^2.4.2",
-			"webpack": "^1.13.2",
-			"webpack-dev-middleware": "^1.10.1",
-			"webpack-hot-middleware": "^2.17.1",
-			"webpack-merge": "1.1.1"
-		},
-		"engines": {
-			"node": ">=6.9.0"
-		},
-		"babel": {
-			"presets": [
-				"es2015"
-			]
-		},
-		"browserify": {
-			"transform": [
-				"babelify"
-			]
-		},
-		"greenkeeper": {
-			"ignore": [
-				"extract-text-webpack-plugin",
-				"karma-webpack",
-				"webpack",
-				"webpack-merge"
-			]
-		}
-	};
+	module.exports = {"name":"vue-chartjs","version":"3.0.0-rc0","description":"Vue.js wrapper for chart.js for creating beautiful charts.","author":"Jakub Juszczak <jakub@posteo.de>","homepage":"http://vue-chartjs.org","license":"MIT","contributors":[{"name":"Thorsten Lünborg","web":"https://github.com/LinusBorg"},{"name":"Juan Carlos Alonso","web":"https://github.com/jcalonso"}],"maintainers":[{"name":"Jakub Juszczak","email":"jakub@posteo.de","web":"http://www.jakubjuszczak.de"}],"repository":{"type":"git","url":"git+ssh://git@github.com:apertureless/vue-chartjs.git"},"bugs":{"url":"https://github.com/apertureless/vue-chartjs/issues"},"keywords":["ChartJs","Vue","Visualisation","Wrapper","Charts"],"main":"dist/vue-chartjs.js","unpkg":"dist/vue-chartjs.full.min.js","module":"es/index.js","jsnext:main":"es/index.js","files":["src","dist","es"],"scripts":{"dev":"node build/dev-server.js","build":"yarn run release && yarn run build:es","build:es":"cross-env BABEL_ENV=es babel src --out-dir es","unit":"karma start test/unit/karma.conf.js --single-run","e2e":"node test/e2e/runner.js","test":"npm run unit","lint":"eslint --ext .js,.vue src test/unit/specs test/e2e/specs","release":"webpack --progress --hide-modules --config  ./build/webpack.release.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js && webpack --progress --hide-modules --config  ./build/webpack.release.full.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.full.min.js","prepublish":"yarn run lint && yarn run test && yarn run build"},"dependencies":{"lodash.merge":"^4.6.0"},"peerDependencies":{"chart.js":"2.7.0","vue":"2.5.2"},"devDependencies":{"babel-cli":"^6.24.1","babel-core":"^6.25.0","babel-loader":"6.4.1","babel-plugin-transform-object-assign":"^6.22.0","babel-plugin-transform-runtime":"^6.23.0","babel-preset-es2015":"^6.24.1","babel-preset-stage-2":"^6.24.1","babel-runtime":"^6.23.0","chai":"^3.5.0","chart.js":"2.7.0","chromedriver":"^2.28.0","connect-history-api-fallback":"^1.1.0","cross-env":"^3.2.4","cross-spawn":"^5.1.0","css-loader":"^0.28.0","eslint":"^3.19.0","eslint-config-standard":"^10.2.1","eslint-friendly-formatter":"^2.0.7","eslint-loader":"^1.7.1","eslint-plugin-html":"^2.0.1","eslint-plugin-import":"^2.2.0","eslint-plugin-node":"^4.2.2","eslint-plugin-promise":"^3.5.0","eslint-plugin-standard":"^3.0.1","eventsource-polyfill":"^0.9.6","express":"^4.15.2","extract-text-webpack-plugin":"^1.0.1","file-loader":"^0.10.1","function-bind":"^1.0.2","html-webpack-plugin":"^2.28.0","http-proxy-middleware":"^0.17.4","inject-loader":"^3.0.0","isparta-loader":"^2.0.0","jasmine-core":"^2.5.2","json-loader":"^0.5.4","karma":"^1.5.0","karma-coverage":"^1.1.1","karma-jasmine":"^1.0.2","karma-mocha":"^1.2.0","karma-phantomjs-launcher":"^1.0.4","karma-sinon-chai":"^1.2.0","karma-sourcemap-loader":"^0.3.7","karma-spec-reporter":"0.0.30","karma-webpack":"1.8.1","lolex":"^1.6.0","mocha":"^3.1.0","nightwatch":"^0.9.14","ora":"^1.2.0","phantomjs-prebuilt":"^2.1.13","selenium-server":"^3.3.1","shelljs":"^0.7.7","sinon":"^2.1.0","sinon-chai":"^2.9.0","url-loader":"^0.5.8","vue":"2.5.2","vue-hot-reload-api":"2.1.0","vue-html-loader":"^1.2.4","vue-loader":"12.2.2","vue-style-loader":"3.0.1","vue-template-compiler":"2.5.2","webpack":"^1.13.2","webpack-dev-middleware":"^1.10.1","webpack-hot-middleware":"^2.17.1","webpack-merge":"1.1.1"},"engines":{"node":">=6.9.0"},"babel":{"presets":["es2015"]},"browserify":{"transform":["babelify"]},"greenkeeper":{"ignore":["extract-text-webpack-plugin","karma-webpack","webpack","webpack-merge"]}}
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;
