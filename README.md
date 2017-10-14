@@ -50,7 +50,7 @@ There are three different entry points. It depends on which build setup do you h
 - Webpack 2
 
 | Build | Chart.js |
-|---|---|---|
+|---|---|
 | vue-chartjs.full.js | Bundled |
 | vue-chartjs.full.min.js |  Bundled |
 | vue-chartjs.js | peerDependency |
