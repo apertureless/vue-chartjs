@@ -13,4 +13,6 @@ exclude_paths:
 - "dist/"
 - "test/**/*"
 - "es/"
+- "build/"
+- "config/"
 - "src/examples/**"
