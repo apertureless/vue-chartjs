@@ -1,8 +1,7 @@
-import Vue from 'vue'
 import Chart from 'chart.js'
 import { mergeOptions } from '../helpers/options'
 
-export default Vue.extend({
+export default {
   render: function (createElement) {
     return createElement(
       'div', {
@@ -48,6 +47,7 @@ export default Vue.extend({
 
   data () {
     return {
+      _chart: null,
       defaultOptions: {
         scales: {
           yAxes: [{
@@ -78,7 +78,7 @@ export default Vue.extend({
     renderChart (data, options) {
       let chartOptions = mergeOptions(this.defaultOptions, options)
 
-      this._chart = new Chart(
+      this.$data._chart = new Chart(
         this.$refs.canvas.getContext('2d'), {
           type: 'bubble',
           data: data,
@@ -89,8 +89,8 @@ export default Vue.extend({
     }
   },
   beforeDestroy () {
-    if (this._chart) {
-      this._chart.destroy()
+    if (this.$data._chart) {
+      this.$data._chart.destroy()
     }
   }
-})
+}

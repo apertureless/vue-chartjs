@@ -1,6 +1,7 @@
-import BubbleChart from '../BaseCharts/Bubble'
+import Bubble from '../BaseCharts/Bubble'
 
-export default BubbleChart.extend({
+export default {
+  extends: Bubble,
   mounted () {
     this.renderChart({
       datasets: [
@@ -49,4 +50,4 @@ export default BubbleChart.extend({
       ]
     }, {responsive: true, maintainAspectRatio: false})
   }
-})
+}

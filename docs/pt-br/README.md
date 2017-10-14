@@ -90,7 +90,8 @@ Apenas crie seu próprio componente.
 // CommitChart.js
 import { Bar } from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart({
@@ -104,7 +105,7 @@ export default Bar.extend({
       ]
     })
   }
-})
+}
 ```
 
 Então, simplesmente importe e use seu próprio componente extendido como um componente vue.
@@ -121,12 +122,13 @@ Você pode sobreescrever as options (opções) padrão do gráfico. Basta passar
 // MonthlyIncome.js
 import { Line } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   props: ["data", "options"],
   mounted () {
     this.renderChart(this.data, this.options)
   }
-})
+}
 ```
 
 Use isso no seu componente vue
@@ -163,13 +165,14 @@ Os mixins criam automaticamente o `chartData` como um prop ou como um data. E ad
 // MonthlyIncome.js
 import { Line, mixins } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [mixins.reactiveProp],
   props: ["chartData", "options"],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 
 ```
 
@@ -181,26 +184,28 @@ Algumas maneiras de importá-los:
 // Load complete module with all charts
 import VueCharts from 'vue-chartjs'
 
-export default VueCharts.Line.extend({
+export default {
+  extends: VueCharts.Line,
   mixins: [VueCharts.mixins.reactiveProp],
   props: ["chartData", "options"],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 ```javascript
 // Load speperate modules
 import { Line, mixins } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [mixins.reactiveProp],
   props: ["chartData", "options"],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 ```javascript
@@ -208,13 +213,14 @@ export default Line.extend({
 import { Line, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [reactiveProp],
   props: ["chartData", "options"],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 ## Gráficos disponíveis

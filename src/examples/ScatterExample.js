@@ -1,6 +1,7 @@
 import Scatter from '../BaseCharts/Scatter'
 
-export default Scatter.extend({
+export default {
+  extends: Scatter,
   mounted () {
     this.renderChart({
       datasets: [{
@@ -49,4 +50,4 @@ export default Scatter.extend({
       }]
     }, {responsive: true, maintainAspectRatio: false})
   }
-})
+}

@@ -81,7 +81,7 @@ search: ru
 
 ## Как использовать
 
-Вам необходимо импортировать базовый класс диаграммы и унаследовать его. Это даст гораздо большую гибкость при работе с различными данными. Вы можете передать данные через props или vue-resource. 
+Вам необходимо импортировать базовый класс диаграммы и унаследовать его. Это даст гораздо большую гибкость при работе с различными данными. Вы можете передать данные через props или vue-resource.
 
 Вы можете импортировать весь проект или каждый модуль по отдельности.
 
@@ -96,7 +96,8 @@ import { Bar, Line } from 'vue-chartjs'
 // CommitChart.js
 import { Bar } from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   mounted () {
     // Переопределение базового рендер метода с реальными данными.
     this.renderChart({
@@ -110,7 +111,7 @@ export default Bar.extend({
       ]
     })
   }
-})
+}
 ```
 
 Затем просто импортируйте и используйте ваши собственные расширенные компоненты как обычные vue компоненты.
@@ -127,12 +128,13 @@ import CommitChart from 'path/to/component/CommitChart'
 // MonthlyIncome.js
 import { Line } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   props: ['data', 'options'],
   mounted () {
     this.renderChart(this.data, this.options)
   }
-})
+}
 ```
 
 Используйте это в вашем vue приложении
@@ -169,13 +171,14 @@ Chart.js не обновляет и не перерисовывает диагр
 // MonthlyIncome.js
 import { Line, mixins } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [mixins.reactiveProp],
   props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 
 ```
 
@@ -187,26 +190,28 @@ export default Line.extend({
 // Load complete module with all charts
 import VueCharts from 'vue-chartjs'
 
-export default VueCharts.Line.extend({
+export default {
+  extends: VueCharts.Line,
   mixins: [VueCharts.mixins.reactiveProp],
   props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 ```javascript
 // Load speperate modules
 import { Line, mixins } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [mixins.reactiveProp],
   props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 ```javascript
@@ -214,13 +219,14 @@ export default Line.extend({
 import { Line, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [reactiveProp],
   props: ['chartData', 'options'],
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 ## Доступные диаграммы

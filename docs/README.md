@@ -30,12 +30,13 @@ You can import the whole package or each module individual.
 // CommitChart.js
 import { Bar } from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart(data, options)
   }
-})
+}
 ```
 
 You can pass two arguments to the `renderChart()` method:
@@ -86,12 +87,13 @@ You can create data and options props to pass data to the chart.
 // LineChart.js
 import { Line } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   props: ['data', 'options'],
   mounted () {
     this.renderChart(this.data, this.options)
   }
-})
+}
 ```
 
 After you add your component you can use it:
@@ -121,7 +123,8 @@ If you want to overwrite width and height:
 ```javascript
 import {Bar} from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   data () {
     return {
       datacollection: {
@@ -139,7 +142,7 @@ export default Bar.extend({
   mounted () {
     this.renderChart(this.datacollection, {responsive: true, maintainAspectRatio: false})
   }
-})
+}
 ```
 
 ### Reusable Components
@@ -172,7 +175,8 @@ data () {
 import { Line, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [reactiveProp],
   props: ['options'],
   mounted () {
@@ -180,7 +184,7 @@ export default Line.extend({
     // If you want to pass options please create a local options object
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 **RandomChart.vue**
@@ -254,7 +258,7 @@ export default Line.extend({
 
 ## Chart.js object
 
-Sometimes you need more control over Chart.js. That's why you can access the Chart.js instance over `this._chart`.
+Sometimes you need more control over Chart.js. That's why you can access the Chart.js instance over `this.$data._chart`.
 
 ## Inline plugins
 

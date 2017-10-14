@@ -1,7 +1,8 @@
-import BarChart from '../BaseCharts/Bar'
+import Bar from '../BaseCharts/Bar'
 import reactiveData from '../mixins/reactiveData'
 
-export default BarChart.extend({
+export default {
+  extends: Bar,
   mixins: [reactiveData],
   data () {
     return {
@@ -38,4 +39,4 @@ export default BarChart.extend({
       return Math.floor(Math.random() * (50 - 5 + 1)) + 5
     }
   }
-})
+}

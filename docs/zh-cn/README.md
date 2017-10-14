@@ -31,12 +31,13 @@ search: zh-cn
 // CommitChart.js
 import { Bar } from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart(data, options)
   }
-})
+}
 ```
 
 你可以给 `renderChart()` 方法传递两个参数：
@@ -86,12 +87,13 @@ export default Bar.extend({
 // LineChart.js
 import { Line } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   props: ['data', 'options'],
   mounted () {
     this.renderChart(this.data, this.options)
   }
-})
+}
 ```
 
 然后你可以把它作为组件使用。
@@ -121,7 +123,8 @@ export default Line.extend({
 ```javascript
 import {Bar} from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   data () {
     return {
       datacollection: {
@@ -139,7 +142,7 @@ export default Bar.extend({
   mounted () {
     this.renderChart(this.datacollection, {responsive: true, maintainAspectRatio: false})
   }
-})
+}
 ```
 
 ### 可复用的组件
@@ -172,14 +175,15 @@ data () {
 import { Line, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [reactiveProp],
   props: ['options'],
   mounted () {
     // this.chartData is created in the mixin
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 **RandomChart.vue**
@@ -253,7 +257,7 @@ export default Line.extend({
 
 ## Chart.js 对象
 
-有时你需要更多的调整 chart.js。你可以访问 `this._chart` 实例。
+有时你需要更多的调整 chart.js。你可以访问 `this.$data._chart` 实例。
 
 ## 内联插件
 

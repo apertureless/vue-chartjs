@@ -1,6 +1,7 @@
-import RadarChart from '../BaseCharts/Radar'
+import Radar from '../BaseCharts/Radar'
 
-export default RadarChart.extend({
+export default {
+  extends: Radar,
   mounted () {
     this.renderChart({
       labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
@@ -28,4 +29,4 @@ export default RadarChart.extend({
       ]
     }, {responsive: true, maintainAspectRatio: false})
   }
-})
+}

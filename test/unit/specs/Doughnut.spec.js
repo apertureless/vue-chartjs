@@ -51,13 +51,13 @@ describe('DoughnutChart', () => {
       components: { DoughnutChart }
     }).$mount(el)
 
-    expect(vm.$children[0]._chart.chart.ctx).not.to.be.null
+    expect(vm.$children[0].$data._chart.chart.ctx).not.to.be.null
 
     vm.$destroy()
 
     vm.$nextTick(() => {
       vm.$forceUpdate()
-      expect(vm.$children[0]._chart.chart.ctx).to.be.null
+      expect(vm.$children[0].$data._chart.chart.ctx).to.be.null
       done()
     })
   })

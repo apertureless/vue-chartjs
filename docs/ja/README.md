@@ -32,12 +32,13 @@ BaseChartをインポートしてextendします。
 // CommitChart.js
 import { Bar } from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart(data, options)
   }
-})
+}
 ```
 
 renderChart()メソッドに2つの引数を渡すことができます:
@@ -86,12 +87,13 @@ dataとoptionsプロパティを作成して、チャートにデータを渡す
 // LineChart.js
 import { Line } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   props: ['data', 'options'],
   mounted () {
     this.renderChart(this.data, this.options)
   }
-})
+}
 ```
 
 コンポーネントに追加して、使用することができます。
@@ -121,7 +123,8 @@ export default Line.extend({
 ```javascript
 import {Bar} from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   data () {
     return {
       datacollection: {
@@ -139,7 +142,7 @@ export default Bar.extend({
   mounted () {
     this.renderChart(this.datacollection, {responsive: true, maintainAspectRatio: false})
   }
-})
+}
 ```
 
 ### コンポーネントの再利用
@@ -174,14 +177,15 @@ data () {
 import { Line, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [reactiveProp],
   props: ['options'],
   mounted () {
     // this.chartData is created in the mixin
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 **RandomChart.vue**
@@ -255,7 +259,7 @@ export default Line.extend({
 
 ## Chart.js オブジェクト
 
-場合によっては、chart.jsをより詳細に制御する必要があります。Chart.jsインスタンスには `this._chart` を使ってアクセスします。
+場合によっては、chart.jsをより詳細に制御する必要があります。Chart.jsインスタンスには `this.$data._chart` を使ってアクセスします。
 
 ## 利用可能なグラフ
 

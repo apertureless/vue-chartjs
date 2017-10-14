@@ -31,12 +31,13 @@ Kamu bisa meng-import seluruh package atau modul-modul terpisah.
 // CommitChart.js
 import { Bar } from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart(data, options)
   }
-})
+}
 ```
 
 Kamu dapat melewatkan dua argumen pada `renderChart()`:
@@ -87,12 +88,13 @@ Kamu dapat membuat props data dan opsi untuk melewatkan data pada chart.
 // LineChart.js
 import { Line } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   props: ['data', 'options'],
   mounted () {
     this.renderChart(this.data, this.options)
   }
-})
+}
 ```
 
 Setelah kamu menambahkannya kamu dapat menggunakannya seperti biasa:
@@ -122,7 +124,8 @@ Jika kamu ingin mengatur tinggi dan lebar:
 ```javascript
 import {Bar} from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   data () {
     return {
       datacollection: {
@@ -140,7 +143,7 @@ export default Bar.extend({
   mounted () {
     this.renderChart(this.datacollection, {responsive: true, maintainAspectRatio: false})
   }
-})
+}
 ```
 
 ### Reusable Komponen
@@ -173,7 +176,8 @@ data () {
 import { Line, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [reactiveProp],
   props: ['options'],
   mounted () {
@@ -181,7 +185,7 @@ export default Line.extend({
     // If you want to pass options please create a local options object
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 **RandomChart.vue**
@@ -255,7 +259,7 @@ export default Line.extend({
 
 ## Objek Chart.js
 
-Suatu ketika kamu membutuhkan kontrol chart.js. Kamu dapat mengaksesnya dengan `this._chart`
+Suatu ketika kamu membutuhkan kontrol chart.js. Kamu dapat mengaksesnya dengan `this.$data._chart`
 
 ## Inline plugins
 

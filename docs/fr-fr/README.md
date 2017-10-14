@@ -30,12 +30,13 @@ Vous pouvez choisir d'importer le package dans son intégralité, ou chaque comp
 // CommitChart.js
 import { Bar } from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   mounted () {
     // Surcharge de la méthode render avec les données.
     this.renderChart(data, options)
   }
-})
+}
 ```
 
 La méthode `renderChart()` prend deux paramètres :
@@ -86,12 +87,13 @@ Vous pouvez créer les props data et options à transmetttre au graphe.
 // LineChart.js
 import { Line } from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   props: ['data', 'options'],
   mounted () {
     this.renderChart(this.data, this.options)
   }
-})
+}
 ```
 
 Vous pourrez les utiliser après avoir ajouté votre composant :
@@ -121,7 +123,8 @@ Vous devrez préciser `responsive: false` si vous souhaitez appliquer une taille
 ```javascript
 import {Bar} from 'vue-chartjs'
 
-export default Bar.extend({
+export default {
+  extends: Bar,
   data () {
     return {
       datacollection: {
@@ -139,7 +142,7 @@ export default Bar.extend({
   mounted () {
     this.renderChart(this.datacollection, {responsive: true, maintainAspectRatio: false})
   }
-})
+}
 ```
 
 ### Composants réutilisables
@@ -174,7 +177,8 @@ data () {
 import { Line, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
 
-export default Line.extend({
+export default {
+  extends: Line,
   mixins: [reactiveProp],
   props: ['options'],
   mounted () {
@@ -182,7 +186,7 @@ export default Line.extend({
     // si vous voulez transmettre des options, il faudra créer une variable locale
     this.renderChart(this.chartData, this.options)
   }
-})
+}
 ```
 
 **RandomChart.vue**
@@ -256,7 +260,7 @@ export default Line.extend({
 
 ## Objet Chart.js
 
-Il peut arriver d'avoir besoin de plus de contrôle sur l'objet chart.js. Vous pouvez, à cet effet, accéder à cet objet via `this._chart`.
+Il peut arriver d'avoir besoin de plus de contrôle sur l'objet chart.js. Vous pouvez, à cet effet, accéder à cet objet via `this.$data._chart`.
 
 ## Plugins inline
 

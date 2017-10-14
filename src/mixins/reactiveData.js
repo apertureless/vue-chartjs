@@ -8,7 +8,7 @@ module.exports = {
     'chartData': {
       handler (newData, oldData) {
         if (oldData) {
-          let chart = this._chart
+          let chart = this.$data._chart
 
           // Get new and old DataSet Labels
           let newDatasetLabels = newData.datasets.map((dataset) => {

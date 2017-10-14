@@ -1,6 +1,7 @@
-import DoughnutChart from '../BaseCharts/Doughnut'
+import Doughnut from '../BaseCharts/Doughnut'
 
-export default DoughnutChart.extend({
+export default {
+  extends: Doughnut,
   mounted () {
     this.renderChart({
       labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
@@ -17,4 +18,4 @@ export default DoughnutChart.extend({
       ]
     }, {responsive: true, maintainAspectRatio: false})
   }
-})
+}
