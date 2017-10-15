@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import LineChart from 'src/examples/LineExample'
+import LineChart from '@/examples/LineExample'
 
 describe('LineChart', () => {
   let el

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import ScatterChart from 'src/examples/ScatterExample'
+import ScatterChart from '@/examples/ScatterExample'
 
 describe('ScatterChart', () => {
   let el

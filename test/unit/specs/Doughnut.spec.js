@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import DoughnutChart from 'src/examples/DoughnutExample'
+import DoughnutChart from '@/examples/DoughnutExample'
 
 describe('DoughnutChart', () => {
   let el

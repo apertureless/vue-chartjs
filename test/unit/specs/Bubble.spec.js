@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import BubbleChart from 'src/examples/BubbleExample'
+import BubbleChart from '@/examples/BubbleExample'
 
 describe('BubbleChart', () => {
   let el
