@@ -147,7 +147,7 @@ export default {
 
 ### Composants réutilisables
 
-Si vous souhaitez faire en sorte que vos composants restent réutilisables, le mieux est de leur appliquer un wrapper. De cette manière, le composant graphique est seulement responsable de la représentation de la donnée, alors que le wrapper se charge de la logique derrière elle. Il y a de nombreux cas d'utilisations, et la manière de faire sera différente si vous êtes sur une Application Monopage (SPA) ou si vous intégrez sur du Laravel par exemple.
+Si vous souhaitez faire en sorte que vos composants restent réutilisables, appliquez un wrapper. De cette manière, le composant graphique est seulement responsable de la représentation de la donnée, alors que le wrapper se charge de la logique derrière elle. Il y a de nombreux cas d'utilisations, et la manière de faire sera différente si vous êtes sur une Application Monopage (SPA) ou si vous intégrez sur du Laravel par exemple.
 
 ## Données en direct
 
@@ -264,7 +264,7 @@ Il peut arriver d'avoir besoin de plus de contrôle sur l'objet chart.js. Vous p
 
 ## Plugins inline
 
-Avec Chart.js, vous pouvez définir des pugins globaux ou inline. Les plugins globaux fonctionnent sans souci avec `vue-chartjs`, comme décrit dans la [documentation chart.js](http://www.chartjs.org/docs/latest/developers/plugins.html) described.
+Avec Chart.js, vous pouvez définir des pugins globaux ou inline. Les plugins globaux fonctionnent sans souci avec `vue-chartjs`, comme décrit dans la [documentation chart.js](http://www.chartjs.org/docs/latest/developers/plugins.html).
 
 Si vous désirez ajouter des plugins inline, `vue-chartjs` expose une méthode `addPlugin()`. L'appel à cette méthode doit se faire avant celui de `renderChart()`.
 
