@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import RadarChart from 'src/examples/RadarExample'
+import RadarChart from '@/examples/RadarExample'
 
 describe('RadarChart', () => {
   let el

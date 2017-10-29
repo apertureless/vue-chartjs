@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import BarChart from 'src/examples/BarExample'
+import BarChart from '@/examples/BarExample'
 
 describe('BarChart', () => {
   let el

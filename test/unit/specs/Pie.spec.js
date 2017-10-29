@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import PieChart from 'src/examples/PieExample'
+import PieChart from '@/examples/PieExample'
 
 describe('PieChart', () => {
   let el

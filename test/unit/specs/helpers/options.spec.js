@@ -1,4 +1,4 @@
-import { mergeOptions } from 'src/helpers/options'
+import { mergeOptions } from '@/helpers/options'
 
 describe('mergeOptions.js', () => {
   const a = {

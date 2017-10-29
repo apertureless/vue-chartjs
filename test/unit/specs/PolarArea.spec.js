@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import PolarChart from 'src/examples/PolarAreaExample'
+import PolarChart from '@/examples/PolarAreaExample'
 
 describe('PolarChart', () => {
   let el

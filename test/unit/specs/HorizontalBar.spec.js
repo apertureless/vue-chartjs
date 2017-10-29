@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import HorizontalBarChart from 'src/examples/HorizontalBarExample'
+import HorizontalBarChart from '@/examples/HorizontalBarExample'
 
 describe('HorizontalBarChart', () => {
   let el

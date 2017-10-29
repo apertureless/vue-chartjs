@@ -1,16 +1,19 @@
-var vue = require('vue-loader')
 var path = require('path')
-var webpack = require("webpack")
-var ExtractTextPlugin = require("extract-text-webpack-plugin")
-var projectRoot = path.resolve(__dirname, '../')
+var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var cssLoader = ExtractTextPlugin.extract('style-loader', 'css-loader')
-const npmCfg = require('../package.json');
+const npmCfg = require('../package.json')
+const vueLoaderConfig = require('./vue-loader.conf')
 
 var banner = [
-    npmCfg.name + ' v' + npmCfg.version,
-    '(c) ' + (new Date().getFullYear()) + ' ' + npmCfg.author,
-    npmCfg.homepage
+  npmCfg.name + ' v' + npmCfg.version,
+  '(c) ' + (new Date().getFullYear()) + ' ' + npmCfg.author,
+  npmCfg.homepage
 ].join('\n')
+
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
 
 module.exports = {
   entry: {
@@ -25,30 +28,33 @@ module.exports = {
   externals: {
     'chart.js': 'chart.js'
   },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src')
+    }
+  },
   module: {
-    preLoaders: [
+    rules: [
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src'), resolve('test')],
+        options: {
+          formatter: require('eslint-friendly-formatter')
+        }
+      },
       {
         test: /\.vue$/,
-        loader: 'eslint',
-        include: projectRoot,
-        exclude: /node_modules/
+        loader: 'vue-loader',
+        options: vueLoaderConfig
       },
       {
         test: /\.js$/,
-        loader: 'eslint',
-        include: projectRoot,
-        exclude: /node_modules/
-      }
-    ],
-    loaders: [
-      {
-        test: /\.vue$/,
-        loader: 'vue'
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel-loader',
+        include: [resolve('src'), resolve('test')]
       },
       {
         test: /\.css$/,
@@ -56,19 +62,13 @@ module.exports = {
       },
       {
         test: /\.s[a|c]ss$/,
-        loader: ExtractTextPlugin.extract('style-loader','css-loader!sass-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
       },
       {
-        test: /\.json$/, loader: 'json'
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
-  },
-  eslint: {
-    formatter: require('eslint-friendly-formatter')
-  },
-  babel: {
-    presets: ['es2015'],
-    plugins: ['transform-runtime']
   },
   plugins: [
     new webpack.BannerPlugin(banner)
@@ -76,7 +76,6 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV === 'production') {
-
   delete module.exports.devtool
   module.exports.plugins = [
     new webpack.DefinePlugin({
@@ -88,8 +87,6 @@ if (process.env.NODE_ENV === 'production') {
       compress: {
         warnings: false
       }
-    }),
-    new webpack.optimize.OccurenceOrderPlugin()
-    // new ExtractTextPlugin('build.css')
+    })
   ]
 }
