@@ -77,7 +77,7 @@ There are some basic props defined in the BaseCharts. Because you `extend()` the
 
 ## Examples
 
-Here are some exmaples
+Here are some examples
 
 ### Chart with props
 
