@@ -1,11 +1,92 @@
 # Change Log
 
+## [v3.0.1](https://github.com/apertureless/vue-chartjs/tree/v3.0.1) (2017-11-06)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v3.0.0...v3.0.1)
+
+**Closed issues:**
+
+- \[Suggestion\]Loose package dependencies [\#245](https://github.com/apertureless/vue-chartjs/issues/245)
+- reactiveData mixin [\#244](https://github.com/apertureless/vue-chartjs/issues/244)
+- Customise individual Axis Labels [\#243](https://github.com/apertureless/vue-chartjs/issues/243)
+- presets es2015  [\#242](https://github.com/apertureless/vue-chartjs/issues/242)
+- Uncaught TypeError: Cannot read property 'transition' of null [\#241](https://github.com/apertureless/vue-chartjs/issues/241)
+- Is it possible to create an callback on the onAnimationComplete option [\#240](https://github.com/apertureless/vue-chartjs/issues/240)
+- When resizing window, chart returns to first loaded state [\#239](https://github.com/apertureless/vue-chartjs/issues/239)
+- Reactively change chart properties [\#237](https://github.com/apertureless/vue-chartjs/issues/237)
+- how to enforce the max value on y axis [\#236](https://github.com/apertureless/vue-chartjs/issues/236)
+- Chart is not rendered when maintainAspectRatio is set to false and chart container is hidden [\#235](https://github.com/apertureless/vue-chartjs/issues/235)
+- How to access Chart.defaults.global [\#234](https://github.com/apertureless/vue-chartjs/issues/234)
+- Blank Chart - no data [\#233](https://github.com/apertureless/vue-chartjs/issues/233)
+- Maxin with multiple chartData [\#231](https://github.com/apertureless/vue-chartjs/issues/231)
+- How to destroy chart before re-rendering? [\#230](https://github.com/apertureless/vue-chartjs/issues/230)
+- chnage gridlines color [\#228](https://github.com/apertureless/vue-chartjs/issues/228)
+- Stacked bar chart? [\#226](https://github.com/apertureless/vue-chartjs/issues/226)
+- Chart crashes when reentering page [\#223](https://github.com/apertureless/vue-chartjs/issues/223)
+- 在图表上左右滑动会出现数据错乱的问题 [\#222](https://github.com/apertureless/vue-chartjs/issues/222)
+- How do I set the scale of the Y axis? [\#220](https://github.com/apertureless/vue-chartjs/issues/220)
+- Upgrading from 2.8.2 to 2.8.3 breaks charts [\#209](https://github.com/apertureless/vue-chartjs/issues/209)
+- How to scale the radius property of each bubble in a vue-chartjs bubble chart [\#205](https://github.com/apertureless/vue-chartjs/issues/205)
+- Last release is causing problems with Firefox [\#203](https://github.com/apertureless/vue-chartjs/issues/203)
+- 🔥 Remove Vue.extend\(\) [\#201](https://github.com/apertureless/vue-chartjs/issues/201)
+- Update to webpack@3 [\#134](https://github.com/apertureless/vue-chartjs/issues/134)
+
+**Merged pull requests:**
+
+- Feature/dependency and build fix [\#246](https://github.com/apertureless/vue-chartjs/pull/246) ([apertureless](https://github.com/apertureless))
+- Typo fix in EN docs [\#238](https://github.com/apertureless/vue-chartjs/pull/238) ([chakan](https://github.com/chakan))
+- Made some small edits to French README.MD [\#232](https://github.com/apertureless/vue-chartjs/pull/232) ([music-mind](https://github.com/music-mind))
+- update webpack to version 3 [\#227](https://github.com/apertureless/vue-chartjs/pull/227) ([kingkong64](https://github.com/kingkong64))
+
+## [v3.0.0](https://github.com/apertureless/vue-chartjs/tree/v3.0.0) (2017-10-14)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.7...v3.0.0)
+
+**Closed issues:**
+
+- Create an image of the chart to download [\#219](https://github.com/apertureless/vue-chartjs/issues/219)
+- How to achieve this effect? [\#218](https://github.com/apertureless/vue-chartjs/issues/218)
+- Some Error [\#217](https://github.com/apertureless/vue-chartjs/issues/217)
+- Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "chartData" [\#216](https://github.com/apertureless/vue-chartjs/issues/216)
+- can't get legendCallback to fire at all [\#212](https://github.com/apertureless/vue-chartjs/issues/212)
+- this demo is not support, is it because version older? [\#210](https://github.com/apertureless/vue-chartjs/issues/210)
+- how to change value without reload?? [\#208](https://github.com/apertureless/vue-chartjs/issues/208)
+- typescript definition? [\#207](https://github.com/apertureless/vue-chartjs/issues/207)
+- 使用动态数据时报错 [\#204](https://github.com/apertureless/vue-chartjs/issues/204)
+- Commit the final dist js files to github [\#202](https://github.com/apertureless/vue-chartjs/issues/202)
+- \[Best Practices❓\] Usage of Private Data [\#182](https://github.com/apertureless/vue-chartjs/issues/182)
+- 📝 Update docs & examples - SSR with nuxt [\#172](https://github.com/apertureless/vue-chartjs/issues/172)
+- 📝 Update Docs - Section about extending [\#171](https://github.com/apertureless/vue-chartjs/issues/171)
+- Register vue-chartjs as vue-plugin? [\#168](https://github.com/apertureless/vue-chartjs/issues/168)
+- Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders [\#151](https://github.com/apertureless/vue-chartjs/issues/151)
+
+**Merged pull requests:**
+
+- Feature/v3 [\#225](https://github.com/apertureless/vue-chartjs/pull/225) ([apertureless](https://github.com/apertureless))
+- ✏️ Spelling in docs [\#215](https://github.com/apertureless/vue-chartjs/pull/215) ([cugu](https://github.com/cugu))
+- Fix inaccuracies in Russian translation [\#214](https://github.com/apertureless/vue-chartjs/pull/214) ([pushkyn](https://github.com/pushkyn))
+- Add id docs readme support [\#213](https://github.com/apertureless/vue-chartjs/pull/213) ([tesarwijaya](https://github.com/tesarwijaya))
+- French translation for README.md [\#211](https://github.com/apertureless/vue-chartjs/pull/211) ([julienc91](https://github.com/julienc91))
+
+## [v2.8.7](https://github.com/apertureless/vue-chartjs/tree/v2.8.7) (2017-09-16)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.6...v2.8.7)
+
+**Closed issues:**
+
+- 真机和浏览器呈现的效果不一样的问题 [\#199](https://github.com/apertureless/vue-chartjs/issues/199)
+- can not use npm install? [\#198](https://github.com/apertureless/vue-chartjs/issues/198)
+- Reactive Props - Max Call Stack Exceeded Error [\#197](https://github.com/apertureless/vue-chartjs/issues/197)
+- Unmet Peer Dependency [\#196](https://github.com/apertureless/vue-chartjs/issues/196)
+- Is there a way to update options? [\#195](https://github.com/apertureless/vue-chartjs/issues/195)
+- deepmerge [\#194](https://github.com/apertureless/vue-chartjs/issues/194)
+- TypeError: Cannot convert undefined or null to object [\#193](https://github.com/apertureless/vue-chartjs/issues/193)
+
+## [v2.8.6](https://github.com/apertureless/vue-chartjs/tree/v2.8.6) (2017-09-12)
+[Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.5...v2.8.6)
+
 ## [v2.8.5](https://github.com/apertureless/vue-chartjs/tree/v2.8.5) (2017-09-12)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.4...v2.8.5)
 
 **Closed issues:**
 
-- TypeError: Cannot convert undefined or null to object [\#193](https://github.com/apertureless/vue-chartjs/issues/193)
 - Chart error since the addition of deepmerge in build 2.8.4 [\#192](https://github.com/apertureless/vue-chartjs/issues/192)
 
 ## [v2.8.4](https://github.com/apertureless/vue-chartjs/tree/v2.8.4) (2017-09-08)
