@@ -38,27 +38,14 @@ Simply run `yarn add vue-chartjs chart.js`
 Or if you want to use it directly in the browser add
 
 ```html
-<script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
 ```
 to your scripts. See [Codepen](https://codepen.io/apertureless/pen/zEvvWM)
 
-## Explanation of Different Builds
-There are three different entry points. It depends on which build setup do you have. The dependencies are bundled or required as a peerDependency.
-
-- Browser
-- Browserify / Webpack 1
-- Webpack 2
-
-| Build | Chart.js |
-|---|---|
-| vue-chartjs.full.js | Bundled |
-| vue-chartjs.full.min.js |  Bundled |
-| vue-chartjs.js | peerDependency |
-| vue-chartjs.min.js | peerDependency  |
-| es/index* |  peerDependency |
 
 ### Browser
-You can use `vue-chartjs` directly in the browser without any build setup. Like in this [codepen](https://codepen.io/apertureless/pen/zEvvWM). For this case, please use the `vue-chartjs.full.min.js` which is the minified version. It has Chart.js bundled into it. And bundled to a UMD Module. So you only need that one file.
+You can use `vue-chartjs` directly in the browser without any build setup. Like in this [codepen](https://codepen.io/apertureless/pen/zEvvWM). For this case, please use the `vue-chartjs.min.js` which is the minified version. You also need to add the Chart.js CDN script.
 
 You can then simply register your component:
 
