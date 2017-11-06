@@ -26,7 +26,12 @@ module.exports = {
     umdNamedDefine: true
   },
   externals: {
-    'chart.js': 'chart.js'
+    'chart.js': {
+      root: 'Chart',
+      commonjs: 'chart.js',
+      commonjs2: 'chart.js',
+      amd: 'chart.js'
+    }
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -71,7 +76,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.BannerPlugin(banner)
+    new webpack.BannerPlugin(banner),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ]
 }
 
