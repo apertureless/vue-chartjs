@@ -1,5 +1,5 @@
 /*!
- * vue-chartjs v3.0.0
+ * vue-chartjs v3.0.1
  * (c) 2017 Jakub Juszczak <jakub@posteo.de>
  * http://vue-chartjs.org
  */
@@ -11,7 +11,7 @@
 	else if(typeof exports === 'object')
 		exports["VueChartJs"] = factory(require("chart.js"));
 	else
-		root["VueChartJs"] = factory(root["chart.js"]);
+		root["VueChartJs"] = factory(root["Chart"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_0__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -75,7 +75,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -86,230 +86,28 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
+// EXTERNAL MODULE: external {"root":"Chart","commonjs":"chart.js","commonjs2":"chart.js","amd":"chart.js"}
+var external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js__ = __webpack_require__(0);
+var external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default = /*#__PURE__*/__webpack_require__.n(external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js__);
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.mergeOptions = mergeOptions;
+// EXTERNAL MODULE: ./node_modules/lodash.merge/index.js
+var lodash_merge = __webpack_require__(2);
+var lodash_merge_default = /*#__PURE__*/__webpack_require__.n(lodash_merge);
 
-var _lodash = __webpack_require__(14);
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+// CONCATENATED MODULE: ./src/helpers/options.js
 
 function mergeOptions(obj, src) {
-  return (0, _lodash2.default)(obj, src);
+  return lodash_merge_default()(obj, src);
 }
+// CONCATENATED MODULE: ./src/BaseCharts/Bar.js
 
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.5.1' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(6)(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
-};
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(27), __esModule: true };
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-// 7.2.1 RequireObjectCoercible(argument)
-module.exports = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on  " + it);
-  return it;
-};
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(33);
-var defined = __webpack_require__(8);
-module.exports = function (it) {
-  return IObject(defined(it));
-};
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-// 7.1.4 ToInteger
-var ceil = Math.ceil;
-var floor = Math.floor;
-module.exports = function (it) {
-  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
-};
-
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(53), __esModule: true };
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.mixins = exports.Scatter = exports.Bubble = exports.Radar = exports.PolarArea = exports.Pie = exports.Line = exports.Doughnut = exports.HorizontalBar = exports.Bar = exports.VueCharts = undefined;
-
-var _Bar = __webpack_require__(13);
-
-var _Bar2 = _interopRequireDefault(_Bar);
-
-var _HorizontalBar = __webpack_require__(17);
-
-var _HorizontalBar2 = _interopRequireDefault(_HorizontalBar);
-
-var _Doughnut = __webpack_require__(18);
-
-var _Doughnut2 = _interopRequireDefault(_Doughnut);
-
-var _Line = __webpack_require__(19);
-
-var _Line2 = _interopRequireDefault(_Line);
-
-var _Pie = __webpack_require__(20);
-
-var _Pie2 = _interopRequireDefault(_Pie);
-
-var _PolarArea = __webpack_require__(21);
-
-var _PolarArea2 = _interopRequireDefault(_PolarArea);
-
-var _Radar = __webpack_require__(22);
-
-var _Radar2 = _interopRequireDefault(_Radar);
-
-var _Bubble = __webpack_require__(23);
-
-var _Bubble2 = _interopRequireDefault(_Bubble);
-
-var _Scatter = __webpack_require__(24);
-
-var _Scatter2 = _interopRequireDefault(_Scatter);
-
-var _index = __webpack_require__(25);
-
-var _index2 = _interopRequireDefault(_index);
-
-var _package = __webpack_require__(55);
-
-var _package2 = _interopRequireDefault(_package);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var VueCharts = {
-  version: _package2.default.version,
-  Bar: _Bar2.default,
-  HorizontalBar: _HorizontalBar2.default,
-  Doughnut: _Doughnut2.default,
-  Line: _Line2.default,
-  Pie: _Pie2.default,
-  PolarArea: _PolarArea2.default,
-  Radar: _Radar2.default,
-  Bubble: _Bubble2.default,
-  Scatter: _Scatter2.default,
-  mixins: _index2.default
-};
-
-exports.default = VueCharts;
-exports.VueCharts = VueCharts;
-exports.Bar = _Bar2.default;
-exports.HorizontalBar = _HorizontalBar2.default;
-exports.Doughnut = _Doughnut2.default;
-exports.Line = _Line2.default;
-exports.Pie = _Pie2.default;
-exports.PolarArea = _PolarArea2.default;
-exports.Radar = _Radar2.default;
-exports.Bubble = _Bubble2.default;
-exports.Scatter = _Scatter2.default;
-exports.mixins = _index2.default;
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _chart = __webpack_require__(0);
-
-var _chart2 = _interopRequireDefault(_chart);
-
-var _options = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
+/* harmony default export */ var Bar = ({
   render: function render(createElement) {
     return createElement('div', {
       style: this.styles,
@@ -369,15 +167,13 @@ exports.default = {
       plugins: []
     };
   },
-
-
   methods: {
     addPlugin: function addPlugin(plugin) {
       this.plugins.push(plugin);
     },
     renderChart: function renderChart(data, options) {
-      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
+      var chartOptions = mergeOptions(this.defaultOptions, options);
+      this.$data._chart = new external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default.a(this.$refs.canvas.getContext('2d'), {
         type: 'bar',
         data: data,
         options: chartOptions,
@@ -390,10 +186,646 @@ exports.default = {
       this.$data._chart.destroy();
     }
   }
+});
+// CONCATENATED MODULE: ./src/BaseCharts/HorizontalBar.js
+
+
+/* harmony default export */ var HorizontalBar = ({
+  render: function render(createElement) {
+    return createElement('div', {
+      style: this.styles,
+      class: this.cssClasses
+    }, [createElement('canvas', {
+      attrs: {
+        id: this.chartId,
+        width: this.width,
+        height: this.height
+      },
+      ref: 'canvas'
+    })]);
+  },
+  props: {
+    chartId: {
+      default: 'horizontalbar-chart',
+      type: String
+    },
+    width: {
+      default: 400,
+      type: Number
+    },
+    height: {
+      default: 400,
+      type: Number
+    },
+    cssClasses: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: Object
+    }
+  },
+  data: function data() {
+    return {
+      _chart: null,
+      defaultOptions: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines: {
+              display: false
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
+            },
+            categoryPercentage: 0.5,
+            barPercentage: 0.2
+          }]
+        }
+      },
+      plugins: []
+    };
+  },
+  methods: {
+    addPlugin: function addPlugin(plugin) {
+      this.plugins.push(plugin);
+    },
+    renderChart: function renderChart(data, options, type) {
+      var chartOptions = mergeOptions(this.defaultOptions, options);
+      this.$data._chart = new external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default.a(this.$refs.canvas.getContext('2d'), {
+        type: 'horizontalBar',
+        data: data,
+        options: chartOptions,
+        plugins: this.plugins
+      });
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.$data._chart) {
+      this.$data._chart.destroy();
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/BaseCharts/Doughnut.js
+
+
+/* harmony default export */ var Doughnut = ({
+  render: function render(createElement) {
+    return createElement('div', {
+      style: this.styles,
+      class: this.cssClasses
+    }, [createElement('canvas', {
+      attrs: {
+        id: this.chartId,
+        width: this.width,
+        height: this.height
+      },
+      ref: 'canvas'
+    })]);
+  },
+  props: {
+    chartId: {
+      default: 'doughnut-chart',
+      type: String
+    },
+    width: {
+      default: 400,
+      type: Number
+    },
+    height: {
+      default: 400,
+      type: Number
+    },
+    cssClasses: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: Object
+    }
+  },
+  data: function data() {
+    return {
+      _chart: null,
+      defaultOptions: {},
+      plugins: []
+    };
+  },
+  methods: {
+    addPlugin: function addPlugin(plugin) {
+      this.plugins.push(plugin);
+    },
+    renderChart: function renderChart(data, options) {
+      var chartOptions = mergeOptions(this.defaultOptions, options);
+      this.$data._chart = new external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default.a(this.$refs.canvas.getContext('2d'), {
+        type: 'doughnut',
+        data: data,
+        options: chartOptions,
+        plugins: this.plugins
+      });
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.$data._chart) {
+      this.$data._chart.destroy();
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/BaseCharts/Line.js
+
+
+/* harmony default export */ var Line = ({
+  render: function render(createElement) {
+    return createElement('div', {
+      style: this.styles,
+      class: this.cssClasses
+    }, [createElement('canvas', {
+      attrs: {
+        id: this.chartId,
+        width: this.width,
+        height: this.height
+      },
+      ref: 'canvas'
+    })]);
+  },
+  props: {
+    chartId: {
+      default: 'line-chart',
+      type: String
+    },
+    width: {
+      default: 400,
+      type: Number
+    },
+    height: {
+      default: 400,
+      type: Number
+    },
+    cssClasses: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: Object
+    }
+  },
+  data: function data() {
+    return {
+      _chart: null,
+      defaultOptions: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines: {
+              display: false
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
+            }
+          }]
+        }
+      },
+      plugins: []
+    };
+  },
+  methods: {
+    addPlugin: function addPlugin(plugin) {
+      this.plugins.push(plugin);
+    },
+    renderChart: function renderChart(data, options) {
+      var chartOptions = mergeOptions(this.defaultOptions, options);
+      this.$data._chart = new external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default.a(this.$refs.canvas.getContext('2d'), {
+        type: 'line',
+        data: data,
+        options: chartOptions,
+        plugins: this.plugins
+      });
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.$data._chart) {
+      this.$data._chart.destroy();
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/BaseCharts/Pie.js
+
+
+/* harmony default export */ var Pie = ({
+  render: function render(createElement) {
+    return createElement('div', {
+      style: this.styles,
+      class: this.cssClasses
+    }, [createElement('canvas', {
+      attrs: {
+        id: this.chartId,
+        width: this.width,
+        height: this.height
+      },
+      ref: 'canvas'
+    })]);
+  },
+  props: {
+    chartId: {
+      default: 'pie-chart',
+      type: String
+    },
+    width: {
+      default: 400,
+      type: Number
+    },
+    height: {
+      default: 400,
+      type: Number
+    },
+    cssClasses: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: Object
+    }
+  },
+  data: function data() {
+    return {
+      _chart: null,
+      defaultOptions: {},
+      plugins: []
+    };
+  },
+  methods: {
+    addPlugin: function addPlugin(plugin) {
+      this.plugins.push(plugin);
+    },
+    renderChart: function renderChart(data, options) {
+      var chartOptions = mergeOptions(this.defaultOptions, options);
+      this.$data._chart = new external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default.a(this.$refs.canvas.getContext('2d'), {
+        type: 'pie',
+        data: data,
+        options: chartOptions,
+        plugins: this.plugins
+      });
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.$data._chart) {
+      this.$data._chart.destroy();
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/BaseCharts/PolarArea.js
+
+
+/* harmony default export */ var PolarArea = ({
+  render: function render(createElement) {
+    return createElement('div', {
+      style: this.styles,
+      class: this.cssClasses
+    }, [createElement('canvas', {
+      attrs: {
+        id: this.chartId,
+        width: this.width,
+        height: this.height
+      },
+      ref: 'canvas'
+    })]);
+  },
+  props: {
+    chartId: {
+      default: 'polar-chart',
+      type: String
+    },
+    width: {
+      default: 400,
+      type: Number
+    },
+    height: {
+      default: 400,
+      type: Number
+    },
+    cssClasses: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: Object
+    }
+  },
+  data: function data() {
+    return {
+      _chart: null,
+      defaultOptions: {},
+      plugins: []
+    };
+  },
+  methods: {
+    addPlugin: function addPlugin(plugin) {
+      this.plugins.push(plugin);
+    },
+    renderChart: function renderChart(data, options) {
+      var chartOptions = mergeOptions(this.defaultOptions, options);
+      this.$data._chart = new external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default.a(this.$refs.canvas.getContext('2d'), {
+        type: 'polarArea',
+        data: data,
+        options: chartOptions,
+        plugins: this.plugins
+      });
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.$data._chart) {
+      this.$data._chart.destroy();
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/BaseCharts/Radar.js
+
+
+/* harmony default export */ var Radar = ({
+  render: function render(createElement) {
+    return createElement('div', {
+      style: this.styles,
+      class: this.cssClasses
+    }, [createElement('canvas', {
+      attrs: {
+        id: this.chartId,
+        width: this.width,
+        height: this.height
+      },
+      ref: 'canvas'
+    })]);
+  },
+  props: {
+    chartId: {
+      default: 'radar-chart',
+      type: String
+    },
+    width: {
+      default: 400,
+      type: Number
+    },
+    height: {
+      default: 400,
+      type: Number
+    },
+    cssClasses: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: Object
+    }
+  },
+  data: function data() {
+    return {
+      _chart: null,
+      defaultOptions: {},
+      plugins: []
+    };
+  },
+  methods: {
+    addPlugin: function addPlugin(plugin) {
+      this.plugins.push(plugin);
+    },
+    renderChart: function renderChart(data, options) {
+      var chartOptions = mergeOptions(this.defaultOptions, options);
+      this.$data._chart = new external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default.a(this.$refs.canvas.getContext('2d'), {
+        type: 'radar',
+        data: data,
+        options: chartOptions,
+        plugins: this.plugins
+      });
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.$data._chart) {
+      this.$data._chart.destroy();
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/BaseCharts/Bubble.js
+
+
+/* harmony default export */ var Bubble = ({
+  render: function render(createElement) {
+    return createElement('div', {
+      style: this.styles,
+      class: this.cssClasses
+    }, [createElement('canvas', {
+      attrs: {
+        id: this.chartId,
+        width: this.width,
+        height: this.height
+      },
+      ref: 'canvas'
+    })]);
+  },
+  props: {
+    chartId: {
+      default: 'bubble-chart',
+      type: String
+    },
+    width: {
+      default: 400,
+      type: Number
+    },
+    height: {
+      default: 400,
+      type: Number
+    },
+    cssClasses: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: Object
+    }
+  },
+  data: function data() {
+    return {
+      _chart: null,
+      defaultOptions: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines: {
+              display: false
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
+            },
+            categoryPercentage: 0.5,
+            barPercentage: 0.2
+          }]
+        }
+      },
+      plugins: []
+    };
+  },
+  methods: {
+    addPlugin: function addPlugin(plugin) {
+      this.plugins.push(plugin);
+    },
+    renderChart: function renderChart(data, options) {
+      var chartOptions = mergeOptions(this.defaultOptions, options);
+      this.$data._chart = new external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default.a(this.$refs.canvas.getContext('2d'), {
+        type: 'bubble',
+        data: data,
+        options: chartOptions,
+        plugins: this.plugins
+      });
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.$data._chart) {
+      this.$data._chart.destroy();
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/BaseCharts/Scatter.js
+
+
+/* harmony default export */ var Scatter = ({
+  render: function render(createElement) {
+    return createElement('div', {
+      style: this.styles,
+      class: this.cssClasses
+    }, [createElement('canvas', {
+      attrs: {
+        id: this.chartId,
+        width: this.width,
+        height: this.height
+      },
+      ref: 'canvas'
+    })]);
+  },
+  props: {
+    chartId: {
+      default: 'scatter-chart',
+      type: String
+    },
+    width: {
+      default: 400,
+      type: Number
+    },
+    height: {
+      default: 400,
+      type: Number
+    },
+    cssClasses: {
+      type: String,
+      default: ''
+    },
+    styles: {
+      type: Object
+    }
+  },
+  data: function data() {
+    return {
+      _chart: null,
+      defaultOptions: {
+        scales: {
+          xAxes: [{
+            type: 'linear',
+            position: 'bottom'
+          }]
+        }
+      },
+      plugins: []
+    };
+  },
+  methods: {
+    addPlugin: function addPlugin(plugin) {
+      this.plugins.push(plugin);
+    },
+    renderChart: function renderChart(data, options) {
+      var chartOptions = mergeOptions(this.defaultOptions, options);
+      this.$data._chart = new external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default.a(this.$refs.canvas.getContext('2d'), {
+        type: 'scatter',
+        data: data,
+        options: chartOptions,
+        plugins: this.plugins
+      });
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.$data._chart) {
+      this.$data._chart.destroy();
+    }
+  }
+});
+// EXTERNAL MODULE: ./src/mixins/reactiveData.js
+var reactiveData = __webpack_require__(5);
+var reactiveData_default = /*#__PURE__*/__webpack_require__.n(reactiveData);
+
+// EXTERNAL MODULE: ./src/mixins/reactiveProp.js
+var reactiveProp = __webpack_require__(6);
+var reactiveProp_default = /*#__PURE__*/__webpack_require__.n(reactiveProp);
+
+// CONCATENATED MODULE: ./src/mixins/index.js
+
+
+/* harmony default export */ var mixins = ({
+  reactiveData: reactiveData_default.a,
+  reactiveProp: reactiveProp_default.a
+});
+// EXTERNAL MODULE: ./package.json
+var package_0 = __webpack_require__(7);
+var package_default = /*#__PURE__*/__webpack_require__.n(package_0);
+
+// CONCATENATED MODULE: ./src/index.js
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VueCharts", function() { return VueCharts; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Bar", function() { return Bar; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "HorizontalBar", function() { return HorizontalBar; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Doughnut", function() { return Doughnut; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Line", function() { return Line; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Pie", function() { return Pie; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "PolarArea", function() { return PolarArea; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Radar", function() { return Radar; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Bubble", function() { return Bubble; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Scatter", function() { return Scatter; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "mixins", function() { return mixins; });
+
+
+
+
+
+
+
+
+
+
+
+var VueCharts = {
+  version: package_default.a.version,
+  Bar: Bar,
+  HorizontalBar: HorizontalBar,
+  Doughnut: Doughnut,
+  Line: Line,
+  Pie: Pie,
+  PolarArea: PolarArea,
+  Radar: Radar,
+  Bubble: Bubble,
+  Scatter: Scatter,
+  mixins: mixins
 };
+/* harmony default export */ var src_0 = __webpack_exports__["default"] = (VueCharts);
+
 
 /***/ }),
-/* 14 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -2604,10 +3036,10 @@ function stubFalse() {
 
 module.exports = merge;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15), __webpack_require__(16)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(4)(module)))
 
 /***/ }),
-/* 15 */
+/* 3 */
 /***/ (function(module, exports) {
 
 var g;
@@ -2634,7 +3066,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 16 */
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -2662,801 +3094,8 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _chart = __webpack_require__(0);
-
-var _chart2 = _interopRequireDefault(_chart);
-
-var _options = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  render: function render(createElement) {
-    return createElement('div', {
-      style: this.styles,
-      class: this.cssClasses
-    }, [createElement('canvas', {
-      attrs: {
-        id: this.chartId,
-        width: this.width,
-        height: this.height
-      },
-      ref: 'canvas'
-    })]);
-  },
-
-  props: {
-    chartId: {
-      default: 'horizontalbar-chart',
-      type: String
-    },
-    width: {
-      default: 400,
-      type: Number
-    },
-    height: {
-      default: 400,
-      type: Number
-    },
-    cssClasses: {
-      type: String,
-      default: ''
-    },
-    styles: {
-      type: Object
-    }
-  },
-
-  data: function data() {
-    return {
-      _chart: null,
-      defaultOptions: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            },
-            gridLines: {
-              display: false
-            }
-          }],
-          xAxes: [{
-            gridLines: {
-              display: false
-            },
-            categoryPercentage: 0.5,
-            barPercentage: 0.2
-          }]
-        }
-      },
-      plugins: []
-    };
-  },
-
-
-  methods: {
-    addPlugin: function addPlugin(plugin) {
-      this.plugins.push(plugin);
-    },
-    renderChart: function renderChart(data, options, type) {
-      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
-        type: 'horizontalBar',
-        data: data,
-        options: chartOptions,
-        plugins: this.plugins
-      });
-    }
-  },
-  beforeDestroy: function beforeDestroy() {
-    if (this.$data._chart) {
-      this.$data._chart.destroy();
-    }
-  }
-};
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _chart = __webpack_require__(0);
-
-var _chart2 = _interopRequireDefault(_chart);
-
-var _options = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  render: function render(createElement) {
-    return createElement('div', {
-      style: this.styles,
-      class: this.cssClasses
-    }, [createElement('canvas', {
-      attrs: {
-        id: this.chartId,
-        width: this.width,
-        height: this.height
-      },
-      ref: 'canvas'
-    })]);
-  },
-
-  props: {
-    chartId: {
-      default: 'doughnut-chart',
-      type: String
-    },
-    width: {
-      default: 400,
-      type: Number
-    },
-    height: {
-      default: 400,
-      type: Number
-    },
-    cssClasses: {
-      type: String,
-      default: ''
-    },
-    styles: {
-      type: Object
-    }
-  },
-
-  data: function data() {
-    return {
-      _chart: null,
-      defaultOptions: {},
-      plugins: []
-    };
-  },
-
-
-  methods: {
-    addPlugin: function addPlugin(plugin) {
-      this.plugins.push(plugin);
-    },
-    renderChart: function renderChart(data, options) {
-      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-
-      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
-        type: 'doughnut',
-        data: data,
-        options: chartOptions,
-        plugins: this.plugins
-      });
-    }
-  },
-  beforeDestroy: function beforeDestroy() {
-    if (this.$data._chart) {
-      this.$data._chart.destroy();
-    }
-  }
-};
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _chart = __webpack_require__(0);
-
-var _chart2 = _interopRequireDefault(_chart);
-
-var _options = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  render: function render(createElement) {
-    return createElement('div', {
-      style: this.styles,
-      class: this.cssClasses
-    }, [createElement('canvas', {
-      attrs: {
-        id: this.chartId,
-        width: this.width,
-        height: this.height
-      },
-      ref: 'canvas'
-    })]);
-  },
-
-  props: {
-    chartId: {
-      default: 'line-chart',
-      type: String
-    },
-    width: {
-      default: 400,
-      type: Number
-    },
-    height: {
-      default: 400,
-      type: Number
-    },
-    cssClasses: {
-      type: String,
-      default: ''
-    },
-    styles: {
-      type: Object
-    }
-  },
-
-  data: function data() {
-    return {
-      _chart: null,
-      defaultOptions: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            },
-            gridLines: {
-              display: false
-            }
-          }],
-          xAxes: [{
-            gridLines: {
-              display: false
-            }
-          }]
-        }
-      },
-      plugins: []
-    };
-  },
-
-
-  methods: {
-    addPlugin: function addPlugin(plugin) {
-      this.plugins.push(plugin);
-    },
-    renderChart: function renderChart(data, options) {
-      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-
-      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
-        type: 'line',
-        data: data,
-        options: chartOptions,
-        plugins: this.plugins
-      });
-    }
-  },
-  beforeDestroy: function beforeDestroy() {
-    if (this.$data._chart) {
-      this.$data._chart.destroy();
-    }
-  }
-};
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _chart = __webpack_require__(0);
-
-var _chart2 = _interopRequireDefault(_chart);
-
-var _options = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  render: function render(createElement) {
-    return createElement('div', {
-      style: this.styles,
-      class: this.cssClasses
-    }, [createElement('canvas', {
-      attrs: {
-        id: this.chartId,
-        width: this.width,
-        height: this.height
-      },
-      ref: 'canvas'
-    })]);
-  },
-
-  props: {
-    chartId: {
-      default: 'pie-chart',
-      type: String
-    },
-    width: {
-      default: 400,
-      type: Number
-    },
-    height: {
-      default: 400,
-      type: Number
-    },
-    cssClasses: {
-      type: String,
-      default: ''
-    },
-    styles: {
-      type: Object
-    }
-  },
-
-  data: function data() {
-    return {
-      _chart: null,
-      defaultOptions: {},
-      plugins: []
-    };
-  },
-
-
-  methods: {
-    addPlugin: function addPlugin(plugin) {
-      this.plugins.push(plugin);
-    },
-    renderChart: function renderChart(data, options) {
-      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-
-      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
-        type: 'pie',
-        data: data,
-        options: chartOptions,
-        plugins: this.plugins
-      });
-    }
-  },
-  beforeDestroy: function beforeDestroy() {
-    if (this.$data._chart) {
-      this.$data._chart.destroy();
-    }
-  }
-};
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _chart = __webpack_require__(0);
-
-var _chart2 = _interopRequireDefault(_chart);
-
-var _options = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  render: function render(createElement) {
-    return createElement('div', {
-      style: this.styles,
-      class: this.cssClasses
-    }, [createElement('canvas', {
-      attrs: {
-        id: this.chartId,
-        width: this.width,
-        height: this.height
-      },
-      ref: 'canvas'
-    })]);
-  },
-
-  props: {
-    chartId: {
-      default: 'polar-chart',
-      type: String
-    },
-    width: {
-      default: 400,
-      type: Number
-    },
-    height: {
-      default: 400,
-      type: Number
-    },
-    cssClasses: {
-      type: String,
-      default: ''
-    },
-    styles: {
-      type: Object
-    }
-  },
-
-  data: function data() {
-    return {
-      _chart: null,
-      defaultOptions: {},
-      plugins: []
-    };
-  },
-
-
-  methods: {
-    addPlugin: function addPlugin(plugin) {
-      this.plugins.push(plugin);
-    },
-    renderChart: function renderChart(data, options) {
-      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-
-      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
-        type: 'polarArea',
-        data: data,
-        options: chartOptions,
-        plugins: this.plugins
-      });
-    }
-  },
-  beforeDestroy: function beforeDestroy() {
-    if (this.$data._chart) {
-      this.$data._chart.destroy();
-    }
-  }
-};
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _chart = __webpack_require__(0);
-
-var _chart2 = _interopRequireDefault(_chart);
-
-var _options = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  render: function render(createElement) {
-    return createElement('div', {
-      style: this.styles,
-      class: this.cssClasses
-    }, [createElement('canvas', {
-      attrs: {
-        id: this.chartId,
-        width: this.width,
-        height: this.height
-      },
-      ref: 'canvas'
-    })]);
-  },
-
-  props: {
-    chartId: {
-      default: 'radar-chart',
-      type: String
-    },
-    width: {
-      default: 400,
-      type: Number
-    },
-    height: {
-      default: 400,
-      type: Number
-    },
-    cssClasses: {
-      type: String,
-      default: ''
-    },
-    styles: {
-      type: Object
-    }
-  },
-
-  data: function data() {
-    return {
-      _chart: null,
-      defaultOptions: {},
-      plugins: []
-    };
-  },
-
-
-  methods: {
-    addPlugin: function addPlugin(plugin) {
-      this.plugins.push(plugin);
-    },
-    renderChart: function renderChart(data, options) {
-      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-
-      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
-        type: 'radar',
-        data: data,
-        options: chartOptions,
-        plugins: this.plugins
-      });
-    }
-  },
-  beforeDestroy: function beforeDestroy() {
-    if (this.$data._chart) {
-      this.$data._chart.destroy();
-    }
-  }
-};
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _chart = __webpack_require__(0);
-
-var _chart2 = _interopRequireDefault(_chart);
-
-var _options = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  render: function render(createElement) {
-    return createElement('div', {
-      style: this.styles,
-      class: this.cssClasses
-    }, [createElement('canvas', {
-      attrs: {
-        id: this.chartId,
-        width: this.width,
-        height: this.height
-      },
-      ref: 'canvas'
-    })]);
-  },
-
-  props: {
-    chartId: {
-      default: 'bubble-chart',
-      type: String
-    },
-    width: {
-      default: 400,
-      type: Number
-    },
-    height: {
-      default: 400,
-      type: Number
-    },
-    cssClasses: {
-      type: String,
-      default: ''
-    },
-    styles: {
-      type: Object
-    }
-  },
-
-  data: function data() {
-    return {
-      _chart: null,
-      defaultOptions: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            },
-            gridLines: {
-              display: false
-            }
-          }],
-          xAxes: [{
-            gridLines: {
-              display: false
-            },
-            categoryPercentage: 0.5,
-            barPercentage: 0.2
-          }]
-        }
-      },
-      plugins: []
-    };
-  },
-
-
-  methods: {
-    addPlugin: function addPlugin(plugin) {
-      this.plugins.push(plugin);
-    },
-    renderChart: function renderChart(data, options) {
-      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-
-      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
-        type: 'bubble',
-        data: data,
-        options: chartOptions,
-        plugins: this.plugins
-      });
-    }
-  },
-  beforeDestroy: function beforeDestroy() {
-    if (this.$data._chart) {
-      this.$data._chart.destroy();
-    }
-  }
-};
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _chart = __webpack_require__(0);
-
-var _chart2 = _interopRequireDefault(_chart);
-
-var _options = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  render: function render(createElement) {
-    return createElement('div', {
-      style: this.styles,
-      class: this.cssClasses
-    }, [createElement('canvas', {
-      attrs: {
-        id: this.chartId,
-        width: this.width,
-        height: this.height
-      },
-      ref: 'canvas'
-    })]);
-  },
-
-  props: {
-    chartId: {
-      default: 'scatter-chart',
-      type: String
-    },
-    width: {
-      default: 400,
-      type: Number
-    },
-    height: {
-      default: 400,
-      type: Number
-    },
-    cssClasses: {
-      type: String,
-      default: ''
-    },
-    styles: {
-      type: Object
-    }
-  },
-
-  data: function data() {
-    return {
-      _chart: null,
-      defaultOptions: {
-        scales: {
-          xAxes: [{
-            type: 'linear',
-            position: 'bottom'
-          }]
-        }
-      },
-      plugins: []
-    };
-  },
-
-
-  methods: {
-    addPlugin: function addPlugin(plugin) {
-      this.plugins.push(plugin);
-    },
-    renderChart: function renderChart(data, options) {
-      var chartOptions = (0, _options.mergeOptions)(this.defaultOptions, options);
-
-      this.$data._chart = new _chart2.default(this.$refs.canvas.getContext('2d'), {
-        type: 'scatter',
-        data: data,
-        options: chartOptions,
-        plugins: this.plugins
-      });
-    }
-  },
-  beforeDestroy: function beforeDestroy() {
-    if (this.$data._chart) {
-      this.$data._chart.destroy();
-    }
-  }
-};
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _reactiveData = __webpack_require__(26);
-
-var _reactiveData2 = _interopRequireDefault(_reactiveData);
-
-var _reactiveProp = __webpack_require__(54);
-
-var _reactiveProp2 = _interopRequireDefault(_reactiveProp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  reactiveData: _reactiveData2.default,
-  reactiveProp: _reactiveProp2.default
-};
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _keys = __webpack_require__(7);
-
-var _keys2 = _interopRequireDefault(_keys);
-
-var _stringify = __webpack_require__(11);
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+/* 5 */
+/***/ (function(module, exports) {
 
 module.exports = {
   data: function data() {
@@ -3464,33 +3103,27 @@ module.exports = {
       chartData: null
     };
   },
-
   watch: {
     'chartData': {
       handler: function handler(newData, oldData) {
         if (oldData) {
           var chart = this.$data._chart;
-
           var newDatasetLabels = newData.datasets.map(function (dataset) {
             return dataset.label;
           });
-
           var oldDatasetLabels = oldData.datasets.map(function (dataset) {
             return dataset.label;
           });
-
-          var oldLabels = (0, _stringify2.default)(oldDatasetLabels);
-          var newLabels = (0, _stringify2.default)(newDatasetLabels);
+          var oldLabels = JSON.stringify(oldDatasetLabels);
+          var newLabels = JSON.stringify(newDatasetLabels);
 
           if (newLabels === oldLabels && oldData.datasets.length === newData.datasets.length) {
             newData.datasets.forEach(function (dataset, i) {
-              var oldDatasetKeys = (0, _keys2.default)(oldData.datasets[i]);
-              var newDatasetKeys = (0, _keys2.default)(dataset);
-
+              var oldDatasetKeys = Object.keys(oldData.datasets[i]);
+              var newDatasetKeys = Object.keys(dataset);
               var deletionKeys = oldDatasetKeys.filter(function (key) {
                 return key !== '_meta' && newDatasetKeys.indexOf(key) === -1;
               });
-
               deletionKeys.forEach(function (deletionKey) {
                 delete chart.data.datasets[i][deletionKey];
               });
@@ -3505,12 +3138,15 @@ module.exports = {
             if (newData.hasOwnProperty('labels')) {
               chart.data.labels = newData.labels;
             }
+
             if (newData.hasOwnProperty('xLabels')) {
               chart.data.xLabels = newData.xLabels;
             }
+
             if (newData.hasOwnProperty('yLabels')) {
               chart.data.yLabels = newData.yLabels;
             }
+
             chart.update();
           } else {
             chart.destroy();
@@ -3525,453 +3161,8 @@ module.exports = {
 };
 
 /***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(28);
-module.exports = __webpack_require__(2).Object.keys;
-
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.14 Object.keys(O)
-var toObject = __webpack_require__(29);
-var $keys = __webpack_require__(30);
-
-__webpack_require__(42)('keys', function () {
-  return function keys(it) {
-    return $keys(toObject(it));
-  };
-});
-
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.13 ToObject(argument)
-var defined = __webpack_require__(8);
-module.exports = function (it) {
-  return Object(defined(it));
-};
-
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(31);
-var enumBugKeys = __webpack_require__(41);
-
-module.exports = Object.keys || function keys(O) {
-  return $keys(O, enumBugKeys);
-};
-
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var has = __webpack_require__(32);
-var toIObject = __webpack_require__(9);
-var arrayIndexOf = __webpack_require__(35)(false);
-var IE_PROTO = __webpack_require__(38)('IE_PROTO');
-
-module.exports = function (object, names) {
-  var O = toIObject(object);
-  var i = 0;
-  var result = [];
-  var key;
-  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
-  // Don't enum bug & hidden keys
-  while (names.length > i) if (has(O, key = names[i++])) {
-    ~arrayIndexOf(result, key) || result.push(key);
-  }
-  return result;
-};
-
-
-/***/ }),
-/* 32 */
+/* 6 */
 /***/ (function(module, exports) {
-
-var hasOwnProperty = {}.hasOwnProperty;
-module.exports = function (it, key) {
-  return hasOwnProperty.call(it, key);
-};
-
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(34);
-// eslint-disable-next-line no-prototype-builtins
-module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
-  return cof(it) == 'String' ? it.split('') : Object(it);
-};
-
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = function (it) {
-  return toString.call(it).slice(8, -1);
-};
-
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// false -> Array#indexOf
-// true  -> Array#includes
-var toIObject = __webpack_require__(9);
-var toLength = __webpack_require__(36);
-var toAbsoluteIndex = __webpack_require__(37);
-module.exports = function (IS_INCLUDES) {
-  return function ($this, el, fromIndex) {
-    var O = toIObject($this);
-    var length = toLength(O.length);
-    var index = toAbsoluteIndex(fromIndex, length);
-    var value;
-    // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare
-    if (IS_INCLUDES && el != el) while (length > index) {
-      value = O[index++];
-      // eslint-disable-next-line no-self-compare
-      if (value != value) return true;
-    // Array#indexOf ignores holes, Array#includes - not
-    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
-      if (O[index] === el) return IS_INCLUDES || index || 0;
-    } return !IS_INCLUDES && -1;
-  };
-};
-
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.15 ToLength
-var toInteger = __webpack_require__(10);
-var min = Math.min;
-module.exports = function (it) {
-  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
-};
-
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toInteger = __webpack_require__(10);
-var max = Math.max;
-var min = Math.min;
-module.exports = function (index, length) {
-  index = toInteger(index);
-  return index < 0 ? max(index + length, 0) : min(index, length);
-};
-
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var shared = __webpack_require__(39)('keys');
-var uid = __webpack_require__(40);
-module.exports = function (key) {
-  return shared[key] || (shared[key] = uid(key));
-};
-
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(3);
-var SHARED = '__core-js_shared__';
-var store = global[SHARED] || (global[SHARED] = {});
-module.exports = function (key) {
-  return store[key] || (store[key] = {});
-};
-
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports) {
-
-var id = 0;
-var px = Math.random();
-module.exports = function (key) {
-  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
-};
-
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports) {
-
-// IE 8- don't enum bug keys
-module.exports = (
-  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
-).split(',');
-
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(43);
-var core = __webpack_require__(2);
-var fails = __webpack_require__(6);
-module.exports = function (KEY, exec) {
-  var fn = (core.Object || {})[KEY] || Object[KEY];
-  var exp = {};
-  exp[KEY] = exec(fn);
-  $export($export.S + $export.F * fails(function () { fn(1); }), 'Object', exp);
-};
-
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__(3);
-var core = __webpack_require__(2);
-var ctx = __webpack_require__(44);
-var hide = __webpack_require__(46);
-var PROTOTYPE = 'prototype';
-
-var $export = function (type, name, source) {
-  var IS_FORCED = type & $export.F;
-  var IS_GLOBAL = type & $export.G;
-  var IS_STATIC = type & $export.S;
-  var IS_PROTO = type & $export.P;
-  var IS_BIND = type & $export.B;
-  var IS_WRAP = type & $export.W;
-  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
-  var expProto = exports[PROTOTYPE];
-  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
-  var key, own, out;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    if (own && key in exports) continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
-    : IS_BIND && own ? ctx(out, global)
-    // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? (function (C) {
-      var F = function (a, b, c) {
-        if (this instanceof C) {
-          switch (arguments.length) {
-            case 0: return new C();
-            case 1: return new C(a);
-            case 2: return new C(a, b);
-          } return new C(a, b, c);
-        } return C.apply(this, arguments);
-      };
-      F[PROTOTYPE] = C[PROTOTYPE];
-      return F;
-    // make static versions for prototype methods
-    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-    if (IS_PROTO) {
-      (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
-    }
-  }
-};
-// type bitmap
-$export.F = 1;   // forced
-$export.G = 2;   // global
-$export.S = 4;   // static
-$export.P = 8;   // proto
-$export.B = 16;  // bind
-$export.W = 32;  // wrap
-$export.U = 64;  // safe
-$export.R = 128; // real proto method for `library`
-module.exports = $export;
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// optional / simple context binding
-var aFunction = __webpack_require__(45);
-module.exports = function (fn, that, length) {
-  aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
-  return it;
-};
-
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var dP = __webpack_require__(47);
-var createDesc = __webpack_require__(52);
-module.exports = __webpack_require__(5) ? function (object, key, value) {
-  return dP.f(object, key, createDesc(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__(48);
-var IE8_DOM_DEFINE = __webpack_require__(49);
-var toPrimitive = __webpack_require__(51);
-var dP = Object.defineProperty;
-
-exports.f = __webpack_require__(5) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return dP(O, P, Attributes);
-  } catch (e) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(4);
-module.exports = function (it) {
-  if (!isObject(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = !__webpack_require__(5) && !__webpack_require__(6)(function () {
-  return Object.defineProperty(__webpack_require__(50)('div'), 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(4);
-var document = __webpack_require__(3).document;
-// typeof document.createElement is 'object' in old IE
-var is = isObject(document) && isObject(document.createElement);
-module.exports = function (it) {
-  return is ? document.createElement(it) : {};
-};
-
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(4);
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function (it, S) {
-  if (!isObject(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports) {
-
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var core = __webpack_require__(2);
-var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
-module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
-  return $JSON.stringify.apply($JSON, arguments);
-};
-
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _keys = __webpack_require__(7);
-
-var _keys2 = _interopRequireDefault(_keys);
-
-var _stringify = __webpack_require__(11);
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = {
   props: {
@@ -3984,27 +3175,22 @@ module.exports = {
       handler: function handler(newData, oldData) {
         if (oldData) {
           var chart = this.$data._chart;
-
           var newDatasetLabels = newData.datasets.map(function (dataset) {
             return dataset.label;
           });
-
           var oldDatasetLabels = oldData.datasets.map(function (dataset) {
             return dataset.label;
           });
-
-          var oldLabels = (0, _stringify2.default)(oldDatasetLabels);
-          var newLabels = (0, _stringify2.default)(newDatasetLabels);
+          var oldLabels = JSON.stringify(oldDatasetLabels);
+          var newLabels = JSON.stringify(newDatasetLabels);
 
           if (newLabels === oldLabels && oldData.datasets.length === newData.datasets.length) {
             newData.datasets.forEach(function (dataset, i) {
-              var oldDatasetKeys = (0, _keys2.default)(oldData.datasets[i]);
-              var newDatasetKeys = (0, _keys2.default)(dataset);
-
+              var oldDatasetKeys = Object.keys(oldData.datasets[i]);
+              var newDatasetKeys = Object.keys(dataset);
               var deletionKeys = oldDatasetKeys.filter(function (key) {
                 return key !== '_meta' && newDatasetKeys.indexOf(key) === -1;
               });
-
               deletionKeys.forEach(function (deletionKey) {
                 delete chart.data.datasets[i][deletionKey];
               });
@@ -4019,12 +3205,15 @@ module.exports = {
             if (newData.hasOwnProperty('labels')) {
               chart.data.labels = newData.labels;
             }
+
             if (newData.hasOwnProperty('xLabels')) {
               chart.data.xLabels = newData.xLabels;
             }
+
             if (newData.hasOwnProperty('yLabels')) {
               chart.data.yLabels = newData.yLabels;
             }
+
             chart.update();
           } else {
             chart.destroy();
@@ -4039,10 +3228,10 @@ module.exports = {
 };
 
 /***/ }),
-/* 55 */
+/* 7 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"vue-chartjs","version":"3.0.0","description":"Vue.js wrapper for chart.js for creating beautiful charts.","author":"Jakub Juszczak <jakub@posteo.de>","homepage":"http://vue-chartjs.org","license":"MIT","contributors":[{"name":"Thorsten Lünborg","web":"https://github.com/LinusBorg"},{"name":"Juan Carlos Alonso","web":"https://github.com/jcalonso"}],"maintainers":[{"name":"Jakub Juszczak","email":"jakub@posteo.de","web":"http://www.jakubjuszczak.de"}],"repository":{"type":"git","url":"git+ssh://git@github.com:apertureless/vue-chartjs.git"},"bugs":{"url":"https://github.com/apertureless/vue-chartjs/issues"},"keywords":["ChartJs","Vue","Visualisation","Wrapper","Charts"],"main":"dist/vue-chartjs.js","unpkg":"dist/vue-chartjs.full.min.js","module":"es/index.js","jsnext:main":"es/index.js","files":["src","dist","es"],"scripts":{"dev":"node build/dev-server.js","build":"yarn run release && yarn run build:es","build:es":"cross-env BABEL_ENV=es babel src --out-dir es","unit":"karma start test/unit/karma.conf.js --single-run","e2e":"node test/e2e/runner.js","test":"npm run unit","lint":"eslint --ext .js,.vue src test/unit/specs test/e2e/specs","release":"webpack --progress --hide-modules --config  ./build/webpack.release.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js && webpack --progress --hide-modules --config  ./build/webpack.release.full.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.full.min.js","prepublish":"yarn run lint && yarn run test && yarn run build"},"dependencies":{"lodash.merge":"^4.6.0"},"peerDependencies":{"chart.js":"2.7.0","vue":"2.5.2"},"devDependencies":{"babel-cli":"^6.24.1","babel-core":"^6.25.0","babel-loader":"7.1.2","babel-plugin-transform-object-assign":"^6.22.0","babel-plugin-transform-runtime":"^6.23.0","babel-preset-es2015":"^6.24.1","babel-preset-stage-2":"^6.24.1","babel-runtime":"^6.23.0","chai":"^3.5.0","chart.js":"2.7.0","chromedriver":"^2.28.0","connect-history-api-fallback":"^1.1.0","cross-env":"^3.2.4","cross-spawn":"^5.1.0","css-loader":"^0.28.0","eslint":"^3.19.0","eslint-config-standard":"^10.2.1","eslint-friendly-formatter":"^2.0.7","eslint-loader":"^1.7.1","eslint-plugin-html":"^2.0.1","eslint-plugin-import":"^2.2.0","eslint-plugin-node":"^4.2.2","eslint-plugin-promise":"^3.5.0","eslint-plugin-standard":"^3.0.1","eventsource-polyfill":"^0.9.6","express":"^4.15.2","extract-text-webpack-plugin":"^3.0.1","file-loader":"^0.10.1","friendly-errors-webpack-plugin":"^1.6.1","function-bind":"^1.0.2","html-webpack-plugin":"^2.28.0","http-proxy-middleware":"^0.17.4","inject-loader":"^3.0.0","jasmine-core":"^2.5.2","json-loader":"^0.5.4","karma":"^1.5.0","karma-coverage":"^1.1.1","karma-jasmine":"^1.0.2","karma-mocha":"^1.2.0","karma-phantomjs-launcher":"^1.0.4","karma-phantomjs-shim":"^1.4.0","karma-sinon-chai":"^1.2.0","karma-sourcemap-loader":"^0.3.7","karma-spec-reporter":"0.0.30","karma-webpack":"2","lolex":"^1.6.0","mocha":"^3.1.0","nightwatch":"^0.9.14","opn":"^5.1.0","ora":"^1.2.0","phantomjs-prebuilt":"^2.1.13","portfinder":"^1.0.13","selenium-server":"^3.3.1","shelljs":"^0.7.7","sinon":"^2.1.0","sinon-chai":"^2.9.0","url-loader":"^0.5.8","vue":"2.5.2","vue-hot-reload-api":"2.1.0","vue-html-loader":"^1.2.4","vue-loader":"^13.3.0","vue-style-loader":"3.0.1","vue-template-compiler":"2.5.2","webpack":"^3.7.1","webpack-dev-middleware":"^1.10.1","webpack-hot-middleware":"^2.17.1","webpack-merge":"^4.1.0"},"engines":{"node":">=6.9.0","npm":">= 3.0.0"},"babel":{"presets":["es2015"]},"browserify":{"transform":["babelify"]},"greenkeeper":{"ignore":["extract-text-webpack-plugin","karma-webpack","webpack","webpack-merge"]}}
+module.exports = {"name":"vue-chartjs","version":"3.0.1","description":"Vue.js wrapper for chart.js for creating beautiful charts.","author":"Jakub Juszczak <jakub@posteo.de>","homepage":"http://vue-chartjs.org","license":"MIT","contributors":[{"name":"Thorsten Lünborg","web":"https://github.com/LinusBorg"},{"name":"Juan Carlos Alonso","web":"https://github.com/jcalonso"}],"maintainers":[{"name":"Jakub Juszczak","email":"jakub@posteo.de","web":"http://www.jakubjuszczak.de"}],"repository":{"type":"git","url":"git+ssh://git@github.com:apertureless/vue-chartjs.git"},"bugs":{"url":"https://github.com/apertureless/vue-chartjs/issues"},"keywords":["ChartJs","Vue","Visualisation","Wrapper","Charts"],"main":"dist/vue-chartjs.js","unpkg":"dist/vue-chartjs.full.min.js","module":"es/index.js","jsnext:main":"es/index.js","files":["src","dist","es"],"scripts":{"dev":"node build/dev-server.js","build":"yarn run release && yarn run build:es","build:es":"cross-env BABEL_ENV=es babel src --out-dir es","unit":"karma start test/unit/karma.conf.js --single-run","e2e":"node test/e2e/runner.js","test":"npm run unit","lint":"eslint --ext .js,.vue src test/unit/specs test/e2e/specs","release":"webpack --progress --hide-modules --config  ./build/webpack.release.js && NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js","prepublishOnly":"yarn run lint && yarn run test && yarn run build"},"dependencies":{"lodash.merge":"^4.6.0"},"peerDependencies":{"chart.js":"2.7.x"},"devDependencies":{"@babel/cli":"^7.0.0-beta.31","@babel/core":"^7.0.0-beta.31","@babel/preset-env":"^7.0.0-beta.31","@babel/preset-stage-2":"^7.0.0-beta.31","babel-loader":"8.0.0-beta.0","chai":"^3.5.0","chart.js":"2.7.0","chromedriver":"^2.28.0","connect-history-api-fallback":"^1.1.0","cross-env":"^3.2.4","cross-spawn":"^5.1.0","css-loader":"^0.28.0","eslint":"^3.19.0","eslint-config-standard":"^10.2.1","eslint-friendly-formatter":"^2.0.7","eslint-loader":"^1.7.1","eslint-plugin-html":"^2.0.1","eslint-plugin-import":"^2.2.0","eslint-plugin-node":"^4.2.2","eslint-plugin-promise":"^3.5.0","eslint-plugin-standard":"^3.0.1","eventsource-polyfill":"^0.9.6","express":"^4.15.2","extract-text-webpack-plugin":"^3.0.1","file-loader":"^0.10.1","friendly-errors-webpack-plugin":"^1.6.1","function-bind":"^1.0.2","html-webpack-plugin":"^2.28.0","http-proxy-middleware":"^0.17.4","inject-loader":"^3.0.0","isparta":"^4.0.0","jasmine-core":"^2.5.2","json-loader":"^0.5.4","karma":"^1.5.0","karma-coverage":"^1.1.1","karma-jasmine":"^1.0.2","karma-mocha":"^1.2.0","karma-phantomjs-launcher":"^1.0.4","karma-phantomjs-shim":"^1.4.0","karma-sinon-chai":"^1.2.0","karma-sourcemap-loader":"^0.3.7","karma-spec-reporter":"0.0.30","karma-webpack":"2","lolex":"^1.6.0","mocha":"^3.1.0","nightwatch":"^0.9.14","opn":"^5.1.0","ora":"^1.2.0","phantomjs-prebuilt":"^2.1.13","portfinder":"^1.0.13","selenium-server":"^3.3.1","shelljs":"^0.7.7","sinon":"^2.1.0","sinon-chai":"^2.9.0","url-loader":"^0.5.8","vue":"2.5.2","vue-hot-reload-api":"2.1.0","vue-html-loader":"^1.2.4","vue-loader":"^13.3.0","vue-style-loader":"3.0.1","vue-template-compiler":"2.5.2","webpack":"^3.7.1","webpack-dev-middleware":"^1.10.1","webpack-hot-middleware":"^2.17.1","webpack-merge":"^4.1.0"},"engines":{"node":">=6.9.0","npm":">= 3.0.0"},"browserify":{"transform":["babelify"]},"greenkeeper":{"ignore":["extract-text-webpack-plugin","karma-webpack","webpack","webpack-merge"]}}
 
 /***/ })
 /******/ ]);
