@@ -6,6 +6,11 @@
     </div>
 
     <div class="Chart">
+      <h1 style="text-align:center;">Horizontal Barchart</h1>
+      <horizontal-bar-example :xAxesScale="xAxesScale"></horizontal-bar-example>
+    </div>
+
+    <div class="Chart">
       <h1 style="text-align:center;">Barchart with reactive mixing for live data</h1>
       <reactive-example></reactive-example>
     </div>
@@ -54,6 +59,7 @@
 
 <script>
   import BarExample from './BarExample'
+  import HorizontalBarExample from './HorizontalBarExample'
   import LineExample from './LineExample'
   import DoughnutExample from './DoughnutExample'
   import PieExample from './PieExample'
@@ -67,6 +73,7 @@
   export default {
     components: {
       BarExample,
+      HorizontalBarExample,
       LineExample,
       DoughnutExample,
       PieExample,
@@ -80,7 +87,8 @@
     data () {
       return {
         dataPoints: null,
-        height: 20
+        height: 20,
+        xAxesScale: [{categoryPercentage: 0.5, barPercentage: 0.2, ticks: {beginAtZero: true}, gridLines: { display: false }}]
       }
     },
     mounted () {
