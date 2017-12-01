@@ -76,7 +76,7 @@ However Chart.js is a `peerDependencies` so you have to install it separately. I
 
 ### Webpack 2
 If you're using Webpack 2 it will automatically use the `jsnext:main` / `module` entry point. Which is `es/index.js`
-It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way you three shaking will work.  Like in the bundled version, `Chart.js` is a `peerDependencies` and need to be installed.
+It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way you tree shaking will work.  Like in the bundled version, `Chart.js` is a `peerDependencies` and need to be installed.
 
 
 ## How to use
