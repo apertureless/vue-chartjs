@@ -71,7 +71,6 @@ export default {
       this.plugins.push(plugin)
     },
     renderChart (data, options, type) {
-      debugger
       let chartOptions = mergeOptions(this.defaultOptions, options)
       this.$data._chart = new Chart(
         this.$refs.canvas.getContext('2d'), {

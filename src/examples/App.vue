@@ -88,7 +88,14 @@
       return {
         dataPoints: null,
         height: 20,
-        xAxesScale: [{categoryPercentage: 0.5, barPercentage: 0.2, ticks: {beginAtZero: true}, gridLines: { display: false }}]
+        xAxesScale: [
+          {
+            categoryPercentage: 0.5, 
+            barPercentage: 0.2, 
+            ticks: {beginAtZero: true}, 
+            gridLines: { display: false }
+          }
+        ]
       }
     },
     mounted () {
