@@ -42,6 +42,14 @@ export default {
     },
     styles: {
       type: Object
+    },
+    xAxesScale: {
+      type: Array,
+      default: function () { return [{categoryPercentage: 0.5, barPercentage: 0.2, gridLines: { display: false }}] }
+    },
+    yAxesScale: {
+      type: Array,
+      default: function () { return [{ticks: {beginAtZero: true}, gridLines: { display: false }}] }
     }
   },
 
@@ -50,21 +58,8 @@ export default {
       _chart: null,
       defaultOptions: {
         scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            },
-            gridLines: {
-              display: false
-            }
-          }],
-          xAxes: [ {
-            gridLines: {
-              display: false
-            },
-            categoryPercentage: 0.5,
-            barPercentage: 0.2
-          }]
+          yAxes: this.yAxesScale,
+          xAxes: this.xAxesScale
         }
       },
       plugins: []
