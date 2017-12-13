@@ -76,9 +76,31 @@ describe('BarChart', () => {
       components: { BarChart }
     }).$mount(el)
 
-    expect(vm.$children[0].plugins).to.exist
+    expect(vm.$children[0]._plugins).to.exist
     vm.$children[0].addPlugin(testPlugin)
 
-    expect(vm.$children[0].plugins.length).to.equal(1)
+    expect(vm.$children[0]._plugins.length).to.equal(1)
+  })
+
+  it('should add inline plugins based on prop', () => {
+    const testPlugin = {
+      id: 'test'
+    }
+
+    const vm = new Vue({
+      render: function (createElement) {
+        return createElement(
+          BarChart, {
+            props: {
+              plugins: [testPlugin]
+            }
+          }
+        )
+      },
+      components: { BarChart }
+    }).$mount(el)
+
+    expect(vm.$children[0]._plugins).to.exist
+    expect(vm.$children[0]._plugins.length).to.equal(1)
   })
 })
