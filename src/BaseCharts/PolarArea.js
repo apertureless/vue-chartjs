@@ -62,7 +62,7 @@ export default {
 
   methods: {
     addPlugin (plugin) {
-      this._plugins.push(plugin)
+      this.$data._plugins.push(plugin)
     },
     renderChart (data, options) {
       let chartOptions = mergeOptions(this.defaultOptions, options)
@@ -72,7 +72,7 @@ export default {
           type: 'polarArea',
           data: data,
           options: chartOptions,
-          plugins: this._plugins
+          plugins: this.$data._plugins
         }
       )
     }

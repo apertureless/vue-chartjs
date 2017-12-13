@@ -79,7 +79,7 @@ export default {
 
   methods: {
     addPlugin (plugin) {
-      this._plugins.push(plugin)
+      this.$data._plugins.push(plugin)
     },
     renderChart (data, options, type) {
       let chartOptions = mergeOptions(this.defaultOptions, options)
@@ -88,7 +88,7 @@ export default {
           type: 'horizontalBar',
           data: data,
           options: chartOptions,
-          plugins: this._plugins
+          plugins: this.$data._plugins
         }
       )
     }
