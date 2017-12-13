@@ -75,10 +75,10 @@ describe('RadarChart', () => {
       components: { RadarChart }
     }).$mount(el)
 
-    expect(vm.$children[0]._plugins).to.exist
+    expect(vm.$children[0].$data._plugins).to.exist
     vm.$children[0].addPlugin(testPlugin)
 
-    expect(vm.$children[0]._plugins.length).to.equal(1)
+    expect(vm.$children[0].$data._plugins.length).to.equal(1)
   })
 
   it('should add inline plugins based on prop', () => {
@@ -99,7 +99,7 @@ describe('RadarChart', () => {
       components: { RadarChart }
     }).$mount(el)
 
-    expect(vm.$children[0]._plugins).to.exist
-    expect(vm.$children[0]._plugins.length).to.equal(1)
+    expect(vm.$children[0].$data._plugins).to.exist
+    expect(vm.$children[0].$data._plugins.length).to.equal(1)
   })
 })
