@@ -42,6 +42,12 @@ export default {
     },
     styles: {
       type: Object
+    },
+    plugins: {
+      type: Array,
+      default () {
+        return []
+      }
     }
   },
 
@@ -67,13 +73,13 @@ export default {
           }]
         }
       },
-      plugins: []
+      _plugins: this.plugins
     }
   },
 
   methods: {
     addPlugin (plugin) {
-      this.plugins.push(plugin)
+      this.$data._plugins.push(plugin)
     },
     renderChart (data, options) {
       let chartOptions = mergeOptions(this.defaultOptions, options)
@@ -83,7 +89,7 @@ export default {
           type: 'bubble',
           data: data,
           options: chartOptions,
-          plugins: this.plugins
+          plugins: this.$data._plugins
         }
       )
     }
