@@ -57,19 +57,19 @@ export default {
       defaultOptions: {
         scales: {
           yAxes: [{
+            gridLines: {
+              display: false
+            },
+            categoryPercentage: 0.8,
+            barPercentage: 0.9
+          }],
+          xAxes: [{
             ticks: {
               beginAtZero: true
             },
             gridLines: {
               display: false
             }
-          }],
-          xAxes: [ {
-            gridLines: {
-              display: false
-            },
-            categoryPercentage: 0.5,
-            barPercentage: 0.2
           }]
         }
       },
