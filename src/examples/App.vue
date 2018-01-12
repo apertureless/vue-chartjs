@@ -6,6 +6,11 @@
     </div>
 
     <div class="Chart">
+      <h1 style="text-align:center;">Horizontal Barchart</h1>
+      <horizontal-bar-example></horizontal-bar-example>
+    </div>
+
+    <div class="Chart">
       <h1 style="text-align:center;">Barchart with reactive mixing for live data</h1>
       <reactive-example></reactive-example>
     </div>
@@ -63,6 +68,7 @@
   import ReactiveExample from './ReactiveExample'
   import ReactivePropExample from './ReactivePropExample'
   import ScatterExample from './ScatterExample'
+  import HorizontalBarExample from './HorizontalBarExample'
 
   export default {
     components: {
@@ -75,7 +81,8 @@
       BubbleExample,
       ReactiveExample,
       ReactivePropExample,
-      ScatterExample
+      ScatterExample,
+      HorizontalBarExample
     },
     data () {
       return {

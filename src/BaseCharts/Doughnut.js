@@ -1,5 +1,4 @@
 import Chart from 'chart.js'
-import { mergeOptions } from '../helpers/options'
 
 export default {
   render: function (createElement) {
@@ -54,8 +53,6 @@ export default {
   data () {
     return {
       _chart: null,
-      defaultOptions: {
-      },
       _plugins: this.plugins
     }
   },
@@ -64,14 +61,13 @@ export default {
     addPlugin (plugin) {
       this.$data._plugins.push(plugin)
     },
-    renderChart (data, options) {
-      let chartOptions = mergeOptions(this.defaultOptions, options)
 
+    renderChart (data, options) {
       this.$data._chart = new Chart(
         this.$refs.canvas.getContext('2d'), {
           type: 'doughnut',
           data: data,
-          options: chartOptions,
+          options: options,
           plugins: this.$data._plugins
         }
       )
