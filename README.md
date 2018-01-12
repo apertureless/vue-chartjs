@@ -165,7 +165,11 @@ However you can simply implement this on your own or use one of the two mixins w
 Both are included in the `mixins` module.
 
 The mixins automatically create `chartData` as a prop or data. And add a watcher. If data has changed, the chart will update.
-However keep in mind the limitations of vue and javascript for mutations on arrays and objects. More info [here](http://vue-chartjs.org/#/home?id=reactive-data)
+However keep in mind the limitations of vue and javascript for mutations on arrays and objects.
+**It is important that you pass your options in a local variable named `options`!**
+The reason is that if the mixin re-renders the chart it calls `this.renderChart(this.chartData, this.options`)` so don't pass in the options object directly or it will be ignored.
+
+More info [here](http://vue-chartjs.org/#/home?id=reactive-data)
 
 ```javascript
 // MonthlyIncome.js
@@ -228,6 +232,10 @@ export default {
   }
 }
 ```
+
+## Single File Components
+
+You can create your components in Vues single file components. However it is important that you **do not** have the `<template></template>` included. Because Vue can't merge tempaltes. And the template is included in the mixin. If you leave the template tag in your component, it will overwrite the one which comes from the base chart and you will have a blank screen.
 
 ## Available Charts
 
