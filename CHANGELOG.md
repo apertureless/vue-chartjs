@@ -1,5 +1,24 @@
 # Change Log
 
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/apertureless/vue-chartjs/compare/v3.0.2...v3.1.0) (2018-01-12)
+
+
+### Bug Fixes
+
+* **mixins:** Check for chartjs instance before rendering chart ([39ff839](https://github.com/apertureless/vue-chartjs/commit/39ff839)), closes [#288](https://github.com/apertureless/vue-chartjs/issues/288)
+
+
+### Features
+
+* **charts:** Remove default styling ([ac5d4d8](https://github.com/apertureless/vue-chartjs/commit/ac5d4d8))
+
+
+
+# Change Log
+
 ## [v3.0.1](https://github.com/apertureless/vue-chartjs/tree/v3.0.1) (2017-11-06)
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v3.0.0...v3.0.1)
 
