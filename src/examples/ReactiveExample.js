@@ -4,17 +4,19 @@ import reactiveData from '../mixins/reactiveData'
 export default {
   extends: Bar,
   mixins: [reactiveData],
-  data () {
-    return {
-      chartData: ''
+  data: () => ({
+    chartData: '',
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
     }
-  },
+  }),
   created () {
     this.fillData()
   },
 
   mounted () {
-    this.renderChart(this.chartData, {responsive: true, maintainAspectRatio: false})
+    this.renderChart(this.chartData, this.options)
 
     setInterval(() => {
       this.fillData()
