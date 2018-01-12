@@ -56,9 +56,7 @@
     "release": "webpack --progress --hide-modules --config  ./build/webpack.release.js && cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js",
     "prepublishOnly": "yarn run lint && yarn run test && yarn run build"
   },
-  "dependencies": {
-    "lodash.merge": "^4.6.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "chart.js": "2.7.x"
   },
