@@ -1,5 +1,4 @@
 import Chart from 'chart.js'
-import { mergeOptions } from '../helpers/options'
 
 export default {
   render: function (createElement) {
@@ -54,25 +53,6 @@ export default {
   data () {
     return {
       _chart: null,
-      defaultOptions: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            },
-            gridLines: {
-              display: false
-            }
-          }],
-          xAxes: [ {
-            gridLines: {
-              display: false
-            },
-            categoryPercentage: 0.5,
-            barPercentage: 0.2
-          }]
-        }
-      },
       _plugins: this.plugins
     }
   },
@@ -82,13 +62,11 @@ export default {
       this.$data._plugins.push(plugin)
     },
     renderChart (data, options) {
-      let chartOptions = mergeOptions(this.defaultOptions, options)
-
       this.$data._chart = new Chart(
         this.$refs.canvas.getContext('2d'), {
           type: 'bubble',
           data: data,
-          options: chartOptions,
+          options: options,
           plugins: this.$data._plugins
         }
       )
