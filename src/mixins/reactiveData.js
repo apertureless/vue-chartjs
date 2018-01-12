@@ -63,6 +63,9 @@ module.exports = {
             this.renderChart(this.chartData, this.options)
           }
         } else {
+          if (this.$data._chart) {
+            this.$data._chart.destroy()
+          }
           this.renderChart(this.chartData, this.options)
         }
       }
