@@ -235,7 +235,7 @@ export default {
 
 ## Single File Components
 
-You can create your components in Vues single file components. However it is important that you **do not** have the `<template></template>` included. Because Vue can't merge tempaltes. And the template is included in the mixin. If you leave the template tag in your component, it will overwrite the one which comes from the base chart and you will have a blank screen.
+You can create your components in Vues single file components. However it is important that you **do not** have the `<template></template>` included. Because Vue can't merge templates. And the template is included in the mixin. If you leave the template tag in your component, it will overwrite the one which comes from the base chart and you will have a blank screen.
 
 ## Available Charts
 
