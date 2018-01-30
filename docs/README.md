@@ -99,20 +99,23 @@ export default {
 After you add your component you can use it:
 
 ```html
- <line-chart :data="{your data object}" :options="{your options}"></line-chart>
+ <line-chart data="{your data object}" options="{your options}"></line-chart>
 ```
 
 If you want to overwrite width and height:
 
 ```html
  <line-chart
-  :data="{your data object}"
-  :options="{responsive: false, maintainAspectRatio: false}"
-  :width="400"
-  :height="200"
+  data="{your data object}"
+  options="{responsive: false, maintainAspectRatio: false}"
+  width="400"
+  height="200"
   >
  </line-chart>
 ```
+<p class="info">
+  For dynamic property binding, use the v-bind: directive or : shorthand syntax
+</p>
 
 <p class="warning">
   Please keep in mind, that you have to set `responsive: false` to be able to set a fixed `width` and `height`.
