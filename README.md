@@ -35,7 +35,7 @@ If you're looking for v1 check this [branch](https://github.com/apertureless/vue
 
 Yarn install: `yarn add vue-chartjs chart.js`
 
-Npm install: `npm install vue-chartjs chartjs --save`
+Npm install: `npm install vue-chartjs chart.js --save`
 
 Or if you want to use it directly in the browser add
 
