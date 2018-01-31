@@ -1,4 +1,4 @@
-import Radar from '../BaseCharts/Radar'
+import { Radar } from '../BaseCharts'
 
 export default {
   extends: Radar,

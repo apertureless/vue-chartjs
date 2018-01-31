@@ -1,4 +1,4 @@
-import HorizontalBar from '../BaseCharts/HorizontalBar'
+import { HorizontalBar } from '../BaseCharts'
 
 export default {
   extends: HorizontalBar,

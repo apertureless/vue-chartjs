@@ -1,4 +1,4 @@
-import Bubble from '../BaseCharts/Bubble'
+import { Bubble } from '../BaseCharts'
 
 export default {
   extends: Bubble,

@@ -1,4 +1,4 @@
-import Bar from '../BaseCharts/Bar'
+import { Bar } from '../BaseCharts'
 import reactiveProp from '../mixins/reactiveProp'
 
 export default {

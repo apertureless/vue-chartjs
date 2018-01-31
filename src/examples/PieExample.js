@@ -1,4 +1,4 @@
-import Pie from '../BaseCharts/Pie'
+import { Pie } from '../BaseCharts'
 
 export default {
   extends: Pie,
