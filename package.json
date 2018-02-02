@@ -1,6 +1,6 @@
 {
   "name": "vue-chartjs",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Vue.js wrapper for chart.js for creating beautiful charts.",
   "author": "Jakub Juszczak <jakub@posteo.de>",
   "homepage": "http://vue-chartjs.org",
