@@ -1,4 +1,4 @@
-import PolarArea from '../BaseCharts/PolarArea'
+import { PolarArea } from '../BaseCharts'
 
 export default {
   extends: PolarArea,

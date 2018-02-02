@@ -1,4 +1,4 @@
-import Line from '../BaseCharts/Line'
+import { Line } from '../BaseCharts'
 
 export default {
   extends: Line,

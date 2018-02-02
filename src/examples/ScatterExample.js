@@ -1,4 +1,4 @@
-import Scatter from '../BaseCharts/Scatter'
+import { Scatter } from '../BaseCharts'
 
 export default {
   extends: Scatter,

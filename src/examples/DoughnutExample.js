@@ -1,4 +1,4 @@
-import Doughnut from '../BaseCharts/Doughnut'
+import { Doughnut } from '../BaseCharts'
 
 export default {
   extends: Doughnut,
