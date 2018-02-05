@@ -1,5 +1,5 @@
 import { Bar } from '../BaseCharts'
-import reactiveProp from '../mixins/reactiveProp'
+import { reactiveProp } from '../mixins'
 
 export default {
   extends: Bar,
