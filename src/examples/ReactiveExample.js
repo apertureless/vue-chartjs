@@ -1,5 +1,5 @@
 import { Bar } from '../BaseCharts'
-import reactiveData from '../mixins/reactiveData'
+import { reactiveData } from '../mixins'
 
 export default {
   extends: Bar,

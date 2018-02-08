@@ -1,5 +1,5 @@
 import mixins from './mixins/index.js'
-import npmCfg from '../package.json'
+
 import {
   Bar,
   HorizontalBar,
@@ -13,7 +13,7 @@ import {
 } from './BaseCharts'
 
 const VueCharts = {
-  version: npmCfg.version,
+  version: LIB_VERSION,
   Bar,
   HorizontalBar,
   Doughnut,
