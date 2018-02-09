@@ -1,8 +1,3 @@
-/*!
- * vue-chartjs v3.1.1
- * (c) 2018 Jakub Juszczak <jakub@posteo.de>
- * http://vue-chartjs.org
- */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("chart.js"));
@@ -12,7 +7,7 @@
 		exports["VueChartJs"] = factory(require("chart.js"));
 	else
 		root["VueChartJs"] = factory(root["Chart"]);
-})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_3__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -84,8 +79,44 @@ return /******/ (function(modules) { // webpackBootstrap
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VueCharts", function() { return VueCharts; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_index_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__BaseCharts__ = __webpack_require__(2);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Bar", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HorizontalBar", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["d"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Doughnut", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["c"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Line", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["e"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Pie", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["f"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "PolarArea", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["g"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Radar", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["h"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Bubble", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Scatter", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["i"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "mixins", function() { return __WEBPACK_IMPORTED_MODULE_0__mixins_index_js__["a"]; });
 
-// CONCATENATED MODULE: ./src/mixins/index.js
+
+var VueCharts = {
+  version: LIB_VERSION,
+  Bar: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["a" /* Bar */],
+  HorizontalBar: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["d" /* HorizontalBar */],
+  Doughnut: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["c" /* Doughnut */],
+  Line: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["e" /* Line */],
+  Pie: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["f" /* Pie */],
+  PolarArea: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["g" /* PolarArea */],
+  Radar: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["h" /* Radar */],
+  Bubble: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["b" /* Bubble */],
+  Scatter: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["i" /* Scatter */],
+  mixins: __WEBPACK_IMPORTED_MODULE_0__mixins_index_js__["a" /* default */]
+};
+/* harmony default export */ __webpack_exports__["default"] = (VueCharts);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export reactiveData */
+/* unused harmony export reactiveProp */
 function dataHandler(newData, oldData) {
   if (oldData) {
     var chart = this.$data._chart;
@@ -162,15 +193,27 @@ var reactiveProp = {
     'chartData': dataHandler
   }
 };
-/* harmony default export */ var mixins = ({
+/* harmony default export */ __webpack_exports__["a"] = ({
   reactiveData: reactiveData,
   reactiveProp: reactiveProp
 });
-// EXTERNAL MODULE: external {"root":"Chart","commonjs":"chart.js","commonjs2":"chart.js","amd":"chart.js"}
-var external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js__ = __webpack_require__(1);
-var external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default = /*#__PURE__*/__webpack_require__.n(external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js__);
 
-// CONCATENATED MODULE: ./src/BaseCharts.js
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Bar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return HorizontalBar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Doughnut; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return Line; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return Pie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return PolarArea; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return Radar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Bubble; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return Scatter; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
 
 
 function generateChart(chartId, chartType) {
@@ -226,7 +269,7 @@ function generateChart(chartId, chartType) {
         this.$data._plugins.push(plugin);
       },
       renderChart: function renderChart(data, options) {
-        this.$data._chart = new external___root___Chart___commonjs___chart_js___commonjs2___chart_js___amd___chart_js___default.a(this.$refs.canvas.getContext('2d'), {
+        this.$data._chart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(this.$refs.canvas.getContext('2d'), {
           type: chartType,
           data: data,
           options: options,
@@ -251,7 +294,7 @@ var PolarArea = generateChart('polar-chart', 'polarArea');
 var Radar = generateChart('radar-chart', 'radar');
 var Bubble = generateChart('bubble-chart', 'bubble');
 var Scatter = generateChart('scatter-chart', 'scatter');
-/* harmony default export */ var BaseCharts = ({
+/* unused harmony default export */ var _unused_webpack_default_export = ({
   Bar: Bar,
   HorizontalBar: HorizontalBar,
   Doughnut: Doughnut,
@@ -262,42 +305,14 @@ var Scatter = generateChart('scatter-chart', 'scatter');
   Bubble: Bubble,
   Scatter: Scatter
 });
-// CONCATENATED MODULE: ./src/index.js
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VueCharts", function() { return VueCharts; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Bar", function() { return Bar; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "HorizontalBar", function() { return HorizontalBar; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Doughnut", function() { return Doughnut; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Line", function() { return Line; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Pie", function() { return Pie; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "PolarArea", function() { return PolarArea; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Radar", function() { return Radar; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Bubble", function() { return Bubble; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Scatter", function() { return Scatter; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "mixins", function() { return mixins; });
-
-
-var VueCharts = {
-  version: LIB_VERSION,
-  Bar: Bar,
-  HorizontalBar: HorizontalBar,
-  Doughnut: Doughnut,
-  Line: Line,
-  Pie: Pie,
-  PolarArea: PolarArea,
-  Radar: Radar,
-  Bubble: Bubble,
-  Scatter: Scatter,
-  mixins: mixins
-};
-/* harmony default export */ var src = __webpack_exports__["default"] = (VueCharts);
-
 
 /***/ }),
-/* 1 */
+/* 3 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ })
 /******/ ]);
 });
+//# sourceMappingURL=vue-chartjs.js.map
