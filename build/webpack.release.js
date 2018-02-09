@@ -19,6 +19,7 @@ module.exports = {
   entry: {
     'vue-chartjs': './src/index.js'
   },
+  devtool: 'source-map',
   output: {
     filename: './dist/[name].js',
     library: 'VueChartJs',
@@ -82,7 +83,7 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  delete module.exports.devtool
+  // delete module.exports.devtool
   module.exports.plugins = [
     new webpack.DefinePlugin({
       'process.env': {
@@ -92,7 +93,8 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
-      }
+      },
+      sourceMap: true
     })
   ]
 }
