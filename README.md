@@ -73,11 +73,11 @@ Vue.component('line-chart', {
 
 If you're using Gulp, Browserify or Webpack 1 the entry is `vue-chartjs.js` which is __transpiled__ and __bundled__ UMD Module.
 
-However Chart.js is a `peerDependencies` so you have to install it separately. In most projects This way, you can have different versions of Chart.js then in this package.
+However, Chart.js is a `peerDependencies` so you have to install it separately. In most projects This way, you can have different versions of Chart.js then in this package.
 
 ### Webpack 2
 If you're using Webpack 2 it will automatically use the `jsnext:main` / `module` entry point. Which is `es/index.js`
-It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way you tree shaking will work.  Like in the bundled version, `Chart.js` is a `peerDependencies` and need to be installed.
+It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way your tree shaking will work.  Like in the bundled version, `Chart.js` is a `peerDependencies` and need to be installed.
 
 
 ## How to use
@@ -123,7 +123,7 @@ import CommitChart from 'path/to/component/CommitChart'
 
 ## Another Example with options
 
-You can overwrite the default chart options. Just pass the options object as a second paramenter to the render method
+You can overwrite the default chart options. Just pass the options object as a second parameter to the render method
 
 ```javascript
 // MonthlyIncome.vue
@@ -158,7 +158,7 @@ export default {
 ## Reactivity
 
 Chart.js does not update or re-render the chart if new data is passed.
-However you can simply implement this on your own or use one of the two mixins which are included.
+However, you can simply implement this on your own or use one of the two mixins which are included.
 
 - `reactiveProp`
 - `reactiveData`
@@ -166,7 +166,7 @@ However you can simply implement this on your own or use one of the two mixins w
 Both are included in the `mixins` module.
 
 The mixins automatically create `chartData` as a prop or data. And add a watcher. If data has changed, the chart will update.
-However keep in mind the limitations of vue and javascript for mutations on arrays and objects.
+However, keep in mind the limitations of vue and javascript for mutations on arrays and objects.
 **It is important that you pass your options in a local variable named `options`!**
 The reason is that if the mixin re-renders the chart it calls `this.renderChart(this.chartData, this.options`)` so don't pass in the options object directly or it will be ignored.
 
@@ -188,7 +188,7 @@ export default {
 ```
 
 ### Mixins module
-The `mixins` module is included in the `VueCharts` module and as a seperate module.
+The `mixins` module is included in the `VueCharts` module and as a separate module.
 Some ways to import them:
 
 ```javascript
@@ -294,7 +294,7 @@ npm run e2e
 npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For a detailed explanation of how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Contributing
 
