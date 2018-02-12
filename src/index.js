@@ -13,7 +13,6 @@ import {
 } from './BaseCharts'
 
 const VueCharts = {
-  version: LIB_VERSION,
   Bar,
   HorizontalBar,
   Doughnut,
