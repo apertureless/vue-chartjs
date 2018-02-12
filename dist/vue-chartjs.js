@@ -95,7 +95,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 var VueCharts = {
-  version: LIB_VERSION,
   Bar: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["a" /* Bar */],
   HorizontalBar: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["d" /* HorizontalBar */],
   Doughnut: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["c" /* Doughnut */],
