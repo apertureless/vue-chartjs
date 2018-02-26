@@ -6,7 +6,7 @@ search: ja
 **vue-chartjs** は [Chart.js](https://github.com/chartjs/Chart.js) をvueで使用するためのラッパーです。 再利用可能なチャートコンポーネントを簡単に作成できます。
 
 ## イントロ
-`vue-chartjs` vueの中であまり面倒なくchart.jsを使うことができます。 シンプルなチャートをできるだけ早く実行したいという人に最適です。
+`vue-chartjs` vueの中であまり面倒ことがなくchart.jsを使うことができます。 シンプルなチャートをできるだけ早く実行したいという人に最適です。
 
 chart.jsの基本ロジックを抽象化していますが、公開されたchart.jsのオブジェクト使用して柔軟にカスタマイズできます。
 
@@ -41,7 +41,7 @@ export default {
 }
 ```
 
-renderChart()メソッドに2つの引数を渡すことができます:
+`renderChart()`メソッドに2つの引数を渡すことができます:
 
 - Data object
 - Options object
@@ -64,16 +64,18 @@ renderChart()メソッドに2つの引数を渡すことができます:
 ```
 
 詳細については、[Chart.js](http://www.chartjs.org/docs/#chart-configuration-chart-data) のドキュメントをご覧ください。
+
 ## プロパティ
 
-BaseChartsには基本プロパティがいくつか定義されています。 extendされたときにそれらは明示的に表示されていませんが、使用するときに上書きして設定することができます。
+BaseChartsには基本プロパティがいくつか定義されています。 `extend()`したときにそれらは *表示されていません* が、使用するときに上書きして設定することができます。
 
 | プロパティ | 説明 |
 |---|---|
 | width | chartの表示幅 |
 | height | chartの表示高さ |
 | chart-id | canvas要素のid |
-
+| css-classes | 周囲のdivのCSSクラスの文字列 |
+| styles | 周囲のdivコンテナのCSSスタイルを持つオブジェクト |
 
 ## 実装例
 
@@ -115,7 +117,7 @@ export default {
 ```
 
 <p class="warning">
-`width` と `height` を反映させるためには、 `responsive：false` を設定しなければならないことに注意してください。
+固定値の`width` と `height` を反映させるためには、 `responsive：false` を設定しなければならないことに注意してください。
 </p>
 
 ### コンポーネント内のローカルデータを使用する場合
@@ -147,8 +149,7 @@ export default {
 
 ### コンポーネントの再利用
 
-チャートコンポーネントを再利用可能にしたい場合は、ラッパーを使用することをお勧めします。このようにすると、チャートコンポーネントはデータ表示とロジックを含むラッパーコンポーネントに対してのみ応答可能です。単一ページアプリケーションを実行している場合や、laravelで統合されている場合は、異なった方法があります。
-
+チャートコンポーネントを再利用可能にしたい場合は、ラッパーを使用することがベストです。このようにしてチャートコンポーネントは純粋なデータ表示と、背後にあるロジックのラッパーとしてのみ責務を負います。単一ページアプリケーションを実行している場合や、たとえば laravel などで統合されている場合は、異なった方法があります。
 
 ## リアクティブデータ
 
@@ -182,7 +183,8 @@ export default {
   mixins: [reactiveProp],
   props: ['options'],
   mounted () {
-    // this.chartData is created in the mixin
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
     this.renderChart(this.chartData, this.options)
   }
 }
@@ -259,7 +261,24 @@ export default {
 
 ## Chart.js オブジェクト
 
-場合によっては、chart.jsをより詳細に制御する必要があります。Chart.jsインスタンスには `this.$data._chart` を使ってアクセスします。
+時にはchart.jsをより詳細に制御する必要があります。そのためには `this.$data._chart` を使ってChart.jsインスタンスにアクセスすることができます。
+
+## インライン プラグイン
+
+Chart.jsでは、グローバルプラグインとインラインプラグインを定義できます。[Chart.js docs]（http://www.chartjs.org/docs/latest/developers/plugins.html）で記載されているのようなグローバルプラグインは、 `vue-chartjs ` で問題なく動作しています。
+
+### Example
+
+```javascript
+mounted () {
+  this.addPlugin({
+    id: 'my-plugin',
+    beforeInit: function (chart) {
+      ....
+    }
+  })
+}
+```
 
 ## 利用可能なグラフ
 
@@ -293,6 +312,11 @@ export default {
 
 ![Bubble](../assets/bubble.png)
 
+### 散布図
+
+このチャートは、他のものとは異なるデータ構造を持っています。現在のところ、reactive mixins はこのチャートタイプでは機能していません。
+
+![Scatter](../assets/scatter.png)
 
 ## ビルド方法の違い
 あなたが使用するビルドツールに依存した３つの異なるエントリーポイントがあります。 依存するライブラリは一緒にバンドルされているか、または peerDependency として指定します。
@@ -320,3 +344,13 @@ Vue.jsとChart.jsは `peerDependencies` なので別にインストールする�
 
 ### Webpack 2
 Webpack 2を使用している場合、 `jsnext:main` または `module` に`es/index.js` を指定します。 ソースファイルは __トランスパイル__ されます。またmoduleには __バンドル__ されません。このようにすると `tree shaking` が動作します。バンドル版のように、`peerDependencies` で指定された `Vue.js` と `Chart.js` はインストールする必要があります。
+
+## Resources
+
+以下に `vue-chartjs` の使い方に関するチュートリアルのようなリソースがあります
+
+- [Using vue-chartjs with WordPress](https://medium.com/@apertureless/wordpress-vue-and-chart-js-6b61493e289f)
+- [Create stunning Charts with Vue and Chart.js](https://hackernoon.com/creating-stunning-charts-with-vue-js-and-chart-js-28af584adc0a)
+- [Let’s Build a Web App with Vue, Chart.js and an API Part I](https://hackernoon.com/lets-build-a-web-app-with-vue-chart-js-and-an-api-544eb81c4b44)
+- [Let’s Build a Web App with Vue, Chart.js and an API Part II](https://hackernoon.com/lets-build-a-web-app-with-vue-chart-js-and-an-api-part-ii-39781b1d5acf)
+- [Build a realtime chart with VueJS and Pusher](https://blog.pusher.com/build-realtime-chart-with-vuejs-pusher/)
