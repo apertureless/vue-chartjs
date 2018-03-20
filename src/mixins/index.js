@@ -77,7 +77,9 @@ export const reactiveData = {
 export const reactiveProp = {
   props: {
     chartData: {
-      required: true
+      type: Object,
+      required: true,
+      default: () => {}
     }
   },
   watch: {
