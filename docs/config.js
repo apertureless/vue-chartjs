@@ -11,6 +11,11 @@ const langs = [
 
 docute.init({
   title: 'vue-chartjs docs',
+  announcement(route) {
+    const info = { type: 'success' }
+    info.html = '<a style="margin-right:10px;" class="docute-button docute-button-mini docute-button-success" href="https://www.paypal.me/apertureless/50eur" target="_blank">Donate!</a> Support vue-chartjs development by a one-time donation.'
+    return info
+  },
   landing: true,
   landing: '_landing.html',
   repo: 'apertureless/vue-chartjs',
