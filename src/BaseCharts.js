@@ -1,6 +1,6 @@
 import Chart from 'chart.js'
 
-function generateChart (chartId, chartType) {
+export function generateChart (chartId, chartType) {
   return {
     render: function (createElement) {
       return createElement(
