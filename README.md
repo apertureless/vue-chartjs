@@ -12,7 +12,7 @@
 [![CDNJS version](https://img.shields.io/cdnjs/v/vue-chartjs.svg)](https://cdnjs.com/libraries/vue-chartjs)
 [![Known Vulnerabilities](https://snyk.io/test/github/apertureless/vue-chartjs/badge.svg)](https://snyk.io/test/github/apertureless/vue-chartjs)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8c0256b16ba7a50a9f93/maintainability)](https://codeclimate.com/github/apertureless/vue-chartjs/maintainability)
-[![Donate](assets/donate.svg)](paypal)
+[![Donate](assets/donate.svg)](https://www.paypal.me/apertureless/50eur)
 
 # vue-chartjs
 
@@ -311,4 +311,3 @@ For a detailed explanation of how things work, check out the [guide](http://vuej
 
 This software is distributed under [MIT license](LICENSE.txt).
 
-[paypal]: https://www.paypal.me/apertureless/50eur
