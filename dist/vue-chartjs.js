@@ -202,6 +202,7 @@ var reactiveProp = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export generateChart */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Bar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return HorizontalBar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Doughnut; });
@@ -213,7 +214,6 @@ var reactiveProp = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return Scatter; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
-
 
 function generateChart(chartId, chartType) {
   return {
@@ -283,7 +283,6 @@ function generateChart(chartId, chartType) {
     }
   };
 }
-
 var Bar = generateChart('bar-chart', 'bar');
 var HorizontalBar = generateChart('horizontalbar-chart', 'horizontalBar');
 var Doughnut = generateChart('doughnut-chart', 'doughnut');

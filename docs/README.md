@@ -99,14 +99,14 @@ export default {
 After you add your component you can use it:
 
 ```html
- <line-chart :data="{your data object}" :options="{your options}"></line-chart>
+ <line-chart :data="chartData" :options="chartOptions"></line-chart>
 ```
 
 If you want to overwrite width and height:
 
 ```html
  <line-chart
-  :data="{your data object}"
+  :data="chartData"
   :options="{responsive: false, maintainAspectRatio: false}"
   :width="400"
   :height="200"
@@ -279,6 +279,36 @@ mounted () {
   })
 }
 ```
+## Custom / New Charts
+
+Sometimes you need to extend the default Chart.js charts. There are a lot of examples how to extend and modify the default charts. Or you want to create a own chart type.
+
+In `vue-chartjs` you can do this pretty much the same way.
+
+```js
+// 1. Import Chart.js so you can use the global Chart object
+import Chart from 'chart.js'
+// 2. Import the `generateChart()` method to create the vue component.
+import { generateChart } from 'vue-chartjs'
+
+// 3. Extend on of the default charts
+// http://www.chartjs.org/docs/latest/developers/charts.html
+Chart.defaults.LineWithLine = Chart.defaults.line;
+Chart.controllers.LineWithLine = Chart.controllers.line.extend({ /* custom magic here */})
+
+// 4. Generate the vue-chartjs component
+// First argument is the chart-id, second the chart type.
+const CustomLine = generateChart('custom-line', 'LineWithLine')
+
+// 5. Extend the CustomLine Component just like you do with the default vue-chartjs charts.
+
+export default {
+  extends: CustomLine,
+  mounted () {
+    // ....
+  }
+}
+```
 
 ## Available Charts
 
@@ -317,36 +347,6 @@ mounted () {
 This chart has a different data structure then the others. Right now the reactive mixins are not working for this chart type.
 
 ![Scatter](assets/scatter.png)
-
-
-## Explanation of Different Builds
-There are three different entry points. It depends on your build setup. The dependencies are bundled or required as a peerDependency.
-
-- Browser
-- Browserify / Webpack 1
-- Webpack 2
-
-
-| Build | Chart.js | Vue.js |
-|---|---|---|
-| vue-chartjs.full.js | Bundled | Bundled |
-| vue-chartjs.full.min.js |  Bundled | Bundled  |
-| vue-chartjs.js | peerDependency | peerDependency  |
-| vue-chartjs.min.js | peerDependency  | peerDependency  |
-| es/index* |  peerDependency | peerDependency  |
-
-### Browser
-You can use `vue-chartjs` directly in the browser without any build setup, like in this [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010). In this case, please use the `vue-chartjs.full.min.js` which is the minified version. It has Vue.js and Chart.js bundled into it and is bundled to a UMD module, so you only need that one file.
-
-
-### Browserify / Webpack 1
-
-If you're using Gulp, Browserify or Webpack 1 the entry is `vue-chartjs.js` which is __transpiled__ and __bundled__ UMD Module.
-
-However Vue.js and Chart.js are `peerDependencies` so you have to install them separately. In most projects you will have Vue.js already installed anyways. This way, you can have different versions of Vue.js and Chart.js then in this package.
-
-### Webpack 2
-If you're using Webpack 2 it will automatically use the `jsnext:main` / `module` entry point, which is `es/index.js`. It is a __transpiled__ es version of the source and is not __bundled__ to a module. This way your tree shaking will work.  Like in the bundled version, Vue.js and Chart.js are `peerDependencies` and need to be installed.
 
 ## Resources
 
