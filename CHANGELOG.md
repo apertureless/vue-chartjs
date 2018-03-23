@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.3.0"></a>
+# [3.3.0](https://github.com/apertureless/vue-chartjs/compare/v3.2.1...v3.3.0) (2018-03-23)
+
+
+### Bug Fixes
+
+* **readme:** Update paypal donate button ([bfda218](https://github.com/apertureless/vue-chartjs/commit/bfda218))
+
+
+### Features
+
+* **charts:** Export generateChart to create custom charts ([50e5644](https://github.com/apertureless/vue-chartjs/commit/50e5644))
+* **docs:** Update docs with custom chart example ([3247a61](https://github.com/apertureless/vue-chartjs/commit/3247a61))
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/apertureless/vue-chartjs/compare/v3.0.2...v3.1.0) (2018-01-12)
 
