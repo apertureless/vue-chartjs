@@ -71,18 +71,6 @@ Vue.component('line-chart', {
 })
 ```
 
-
-### Browserify / Webpack 1
-
-If you're using Gulp, Browserify or Webpack 1 the entry is `vue-chartjs.js` which is __transpiled__ and __bundled__ UMD Module.
-
-However, Chart.js is a `peerDependencies` so you have to install it separately. In most projects This way, you can have different versions of Chart.js then in this package.
-
-### Webpack 2
-If you're using Webpack 2 it will automatically use the `jsnext:main` / `module` entry point. Which is `es/index.js`
-It is a __transpiled__ es version of the source. And is not __bundled__ to a module. This way your tree shaking will work.  Like in the bundled version, `Chart.js` is a `peerDependencies` and need to be installed.
-
-
 ## How to use
 
 You need to import the component and then either use `extends` or `mixins` and add it.
