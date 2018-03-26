@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.3.1"></a>
+## [3.3.1](https://github.com/apertureless/vue-chartjs/compare/v3.3.0...v3.3.1) (2018-03-26)
+
+
+### Bug Fixes
+
+* **release:** Add exports to index ([8341f94](https://github.com/apertureless/vue-chartjs/commit/8341f94))
+
+
+
 <a name="3.3.0"></a>
 # [3.3.0](https://github.com/apertureless/vue-chartjs/compare/v3.2.1...v3.3.0) (2018-03-23)
 
