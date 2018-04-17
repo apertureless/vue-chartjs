@@ -3,29 +3,28 @@ search: id
 ---
 
 # vue-chartjs
-**vue-chartjs** adalah  wrapper [Chart.js](https://github.com/chartjs/Chart.js) dalam vue. Kamu dapat dengan mudah membuat komponen chart reusable.
+**vue-chartjs** adalah pembungkus [Chart.js](https://github.com/chartjs/Chart.js) dalam Vue. Anda dapat dengan mudah membuat komponen grafik yang dapat digunakan kembali.
 
-## Pengenalan
-`vue-chartjs` memungkinkan kamu untuk menggunakan chart.js tanpa usaha lebih didalam vue. Sempurna untuk orang-orang yang membutuhkan bagan/chart simpel dengan cepat.
+## Pengantar
+`vue-chartjs` memungkinkan Anda untuk dapat menggunakan Chart.js tanpa perlu bersusah-payah lagi dengan Vue. Hal ini sangat cocok bagi pengguna yang membutuhkan grafik sederhana dan mampu berfungsi dengan baik dalam waktu singkat.
 
-Flexibel karena langsung menampilkan objek chart.js.
-
+Ia memisahkan logika dasarnya namun mengekspos obyek Chart.js untuk memberikan Anda fleksibilitas maksimal.
 
 ## Instalasi
-Jika kamu menggunakan Vue.js 2+:
+Jika Anda menggunakan Vue.js 2+ jalankan perintah:
 
 `yarn add vue-chartjs chart.js`
 
-Jika menggunakan vue 1.x gunakan tag `legacy`. versi vue 1 sudah tidak diurus lagi.
+Jika Anda menggunakan vue 1.x gunakan tag `legacy`. Hal ini disebabkan karena Vue versi 1 sudah tidak dipelihara lagi.
 
 `yarn add vue-chartjs@legacy`
 
-## Mulai Cepat
+## Petunjuk Praktis
 
-Kamu perlu untuk meng-import base chart dan meng-extend-nya. Dengan cara ini akan lebih fleksibel ketika bekerja dengan data yang berbeda.
-Kamu dapat melakukan enkapsulasi komponen-komponen dan menggunakan props untuk menyampaikan data atau bisa juga dengan menginputkan langsung didalam komponen. Namun komponenmu tidak reuseable.
+Terlebih dahulu Anda perlu mengimpor grafik dasar kemudian mengembangkannya. Cara ini memberi keleluasaan saat bekerja dengan data yang berbeda.
+Anda dapat merangkum beberapa komponen dan menggunakan props untuk mengirimkan data atau Anda bisa memasukkannya secara langsung kedalam komponen. Namun cara yang terakhir ini akan mengakibatkan komponen Anda tidak dapat digunakan lagi.
 
-Kamu bisa meng-import seluruh package atau modul-modul terpisah.
+Anda dapat mengimpor seluruh paket secara keseluruhan atau setiap modul secara terpisah.
 
 ```javascript
 // CommitChart.js
@@ -40,14 +39,14 @@ export default {
 }
 ```
 
-Kamu dapat melewatkan dua argumen pada `renderChart()`:
+Anda dapat memberi dua argumen pada metode `renderChart()`:
 
-- Objek Data
-- Objek Opsi
+- Obyek Data
+- Obyek Pilihan
 
-### Data object
+### Obyek data
 
-Objek data:
+Berikut ini adalah obyek data:
 
 ```javascript
 {
@@ -62,27 +61,27 @@ Objek data:
 }
 ```
 
-Untuk keterangan lebih lanjut dapat dilihat di dokumentasi [Chart.js](http://www.chartjs.org/docs/#chart-configuration-chart-data).
+Keterangan lebih lengkap dapat dilihat pada dokumentasi [Chart.js](http://www.chartjs.org/docs/#chart-configuration-chart-data).
 
 ## Props
 
-Terdapat beberapa props standar yang didefinisikan didalam BaseChart. Karena menggunakan `extend()`, props-props tersebut *tidak terlihat*, Namun kamu tetap bisa menulis ulang:
+Terdapat beberapa props standar yang didefinisikan didalam grafik dasar. Karena menggunakan `extend()`,  sejumlah props tersebut *tidak terlihat*, namun tetap dapat ditulis ulang:
 
-| Prop | Description |
+| Prop | Deskripsi |
 |---|---|
-| width | lebar chart |
-| height | tinggi chart |
+| width | lebar grafik |
+| height | tinggi grafik |
 | chart-id | id canvas |
-| css-classes | String dengan kelas css mengelilingi div |
-| styles | Objek dengan style css mengelilingi div |
+| css-classes | String dengan kelas css untuk surrounding div |
+| styles | Obyek dengan style css untuk surrounding div container |
 
 ## Contoh
 
 Berikut adalah beberapa contoh penggunaan
 
-### Chart dengan props
+### Grafik dengan props
 
-Kamu dapat membuat props data dan opsi untuk melewatkan data pada chart.
+Anda dapat membuat props data dan opsi untuk mengirimkan data ke grafik.
 
 ```javascript
 // LineChart.js
@@ -97,17 +96,17 @@ export default {
 }
 ```
 
-Setelah kamu menambahkannya kamu dapat menggunakannya seperti biasa:
+Setelah menambahkan komponen Anda dapat menggunakannya seperti biasa:
 
 ```html
- <line-chart :data="{your data object}" :options="{your options}"></line-chart>
+ <line-chart :data="chartData" :options="chartOptions"></line-chart>
 ```
 
-Jika kamu ingin mengatur tinggi dan lebar:
+Jika Anda ingin mengatur tinggi dan lebar:
 
 ```html
  <line-chart
-  :data="{your data object}"
+  :data="chartData"
   :options="{responsive: false, maintainAspectRatio: false}"
   :width="400"
   :height="200"
@@ -116,10 +115,10 @@ Jika kamu ingin mengatur tinggi dan lebar:
 ```
 
 <p class="warning">
-  Perlu diingat, kamu perlu untuk mengatur `responsive: false` agaar dapat mengatur `width` dan `height`.
+  Perlu diingat, Anda perlu untuk mengatur `responsive: false` agar dapat mengatur `width` dan `height`.
 </p>
 
-### Chart dengan data lokal
+### Grafik dengan data lokal
 
 ```javascript
 import {Bar} from 'vue-chartjs'
@@ -146,20 +145,20 @@ export default {
 }
 ```
 
-### Reusable Komponen
+### Komponen yang Dapat Digunakan Kembali
 
-Jika kamu ingin agar komponen chart reusable, cara paling baik adalah dengan menambahkan sebuah wrapper. Dengan cara ini komponen chart hanya bertanggung jawab dalam representasi data dan wrapper komponen bertanggung jawab dengan logika didalamnya. Banyak kasus-kasus yang berbeda dan juga berbeda jika kamu menjalankan Single Page Application atau mengintegrasikannya pada contoh laravel.
+Jika Anda ingin menjaga agar komponen grafik Anda dapat digunakan kembali, cara yang terbaik adalah menambahkan pembungkus pada mereka. Dengan cara ini komponen grafik hanya bertanggung jawab untuk representasi data murni dan komponen pembungkus untuk logika di baliknya. Ada banyak kasus penggunaan yang berbeda dan akan berbeda jika Anda menjalankan single page application atau mengintegrasikannya dalam sebuah framework misalnya laravel.
 
-## Reactive Data
+## Data Reaktif
 
-Chart.js tidak menyediakan live update jika kamu mengubah datasets. Akan tetapi `vue-chartjs` menyediakan 2 mixins untuk melakukannya.
+Chart.js tidak menyediakan live update jika Anda mengubah dataset. Akan tetapi `vue-chartjs` menyediakan 2 mixin untuk melakukannya.
 
 - `reactiveProp`
 - `reactiveData`
 
-Kedua mixins tersebut sebenarnya sama. `reactiveProp` akan sering digunakan. `reactiveProp` meng-extend logika dari komponen chart dan secara otomatis membuat props `chartData` dan menambahkan `vue watch` dalam props ini. Pada saat data berubah, itu akan memanggil `update()` jika data memiliki datasets atau `renderChart()` jika datasets telah ada sebelumnya.
+Kedua mixin tersebut sebenarnya sama. Namun `reactiveProp` akan lebih sering digunakan. `reactiveProp` memperluas logika dari komponen grafik dan secara otomatis membuat props `chartData` serta menambahkan `vue watch` dalam props ini. Pada saat data berubah, `update()` akan dipanggil jika data di dalam dataset telah berubah atau `renderChart()` jika dataset baru ditambahkan.
 
-`reactiveData` secara sederhana membuat variabel lokal chartData dimana itu bukan sebuah props! dan watcher. Hal ini bisa berguna, jika kamu membutuhkan chart tertentu dan melakukan akses API didalam komponen chart.
+`reactiveData` secara sederhana membuat variabel lokal chartData dimana sebenarnya itu bukanlah sebuah props dan menambahkan watcher. Hal ini hanya berguna, jika Anda membutuhkan grafik tertentu dan melakukan akses API didalam komponen grafik.
 
 ```javascript
 data () {
@@ -246,7 +245,7 @@ export default {
 ```
 
 <p class="warning">
-  ⚠ Perhatian: jika kamu memutasi data didalam komponen parent dan melewatkannya pada child komponen chart perlu diingat batasan javascript.
+  ⚠ Perhatian: Jika Anda memutasi data dalam komponen induk dan meneruskannya ke komponen grafik anak, perlu diingat batasan javascript.
   Info lebih lanjut [issue#44](https://github.com/apertureless/vue-chartjs/issues/44)
 </p>
 
@@ -257,17 +256,15 @@ export default {
     <li>[vm.$watch](https://vuejs.org/v2/api/#vm-watch)</li>
   </ul>
 
-## Objek Chart.js
+## Obyek Chart.js 
 
-Suatu ketika kamu membutuhkan kontrol chart.js. Kamu dapat mengaksesnya dengan `this.$data._chart`
+Suatu ketika Anda membutuhkan kontrol atas Chart.js. Anda dapat mengakses instance Chart.js dengan `this.$data._chart`.
 
-## Inline plugins
+## Plugin Inline
 
-Di Chart.js kamu dapat mendefinisikan plugin global dan inline. Plugin global bekerja tanpa masalah dengan `vue-chartjs` seperti yang dijelaskan pada [chart.js docs](http://www.chartjs.org/docs/latest/developers/plugins.html)
+Dalam Chart.js Anda dapat mendefinisikan plugin global dan inline. Plugin global dapat bekerja tanpa masalah dengan `vue-chartjs` seperti yang dijelaskan pada [Chart.js docs](http://www.chartjs.org/docs/latest/developers/plugins.html).
 
-If you want to add inline plugins, `vue-chartjs` exposes a helper method called `addPlugin()`
-You should call `addPlugin()` before the `renderChart()` method.
-Jika kamu ingin menambahkan plugin inline, `vue-chartjs` menyediakan method helper `addPlugin()` kamu harus memanggil `addPlugin()` sebelum method `renderChart()`.
+Jika Anda ingin menambahkan plugin inline, `vue-chartjs` menyediakan method helper `addPlugin()`. Anda harus memanggil `addPlugin()` sebelum method `renderChart()`.
 
 ### Contoh
 
@@ -281,22 +278,52 @@ mounted () {
   })
 }
 ```
+## Grafik Kustom/Baru
 
-## Charts yang Tersedia
+Kadang-kadang Anda perlu mengembangkan grafik Chart.js default. Terdapat banyak contoh cara mengembangkan dan mengubah grafik default. Atau Anda ingin membuat jenis grafik sendiri.
 
-### Bar Chart
+Dalam `vue-chartjs` Anda bisa melakukan hal ini dengan cara yang hampir sama.
+
+```js
+// 1. Import Chart.js so you can use the global Chart object
+import Chart from 'chart.js'
+// 2. Import the `generateChart()` method to create the vue component.
+import { generateChart } from 'vue-chartjs'
+
+// 3. Extend on of the default charts
+// http://www.chartjs.org/docs/latest/developers/charts.html
+Chart.defaults.LineWithLine = Chart.defaults.line;
+Chart.controllers.LineWithLine = Chart.controllers.line.extend({ /* custom magic here */})
+
+// 4. Generate the vue-chartjs component
+// First argument is the chart-id, second the chart type.
+const CustomLine = generateChart('custom-line', 'LineWithLine')
+
+// 5. Extend the CustomLine Component just like you do with the default vue-chartjs charts.
+
+export default {
+  extends: CustomLine,
+  mounted () {
+    // ....
+  }
+}
+```
+
+## Grafik yang Tersedia
+
+### Grafik Batang
 <p class="tip">
-  Terdapat dua versi bar chart. `{Bar}` dan `{HorizontalBar}`
+  Terdapat dua versi grafik batang: `{Bar}` dan `{HorizontalBar}`
 </p>
 
-![Bar](assets/bar.png)
-### Line Chart
+![Batang](assets/bar.png)
+### Grafik Garis
 
-![Line](assets/line.png)
+![Garis](assets/line.png)
 
-### Doughnut
+### Donat
 
-![Doughnut](assets/doughnut.png)
+![Donat](assets/doughnut.png)
 
 ### Pie
 
@@ -304,11 +331,11 @@ mounted () {
 
 ### Radar
 
-![Pie](assets/radar.png)
+![Radar](assets/radar.png)
 
 ### Polar Area
 
-![Pie](assets/polar.png)
+![Polar](assets/polar.png)
 
 ### Bubble
 
@@ -316,45 +343,13 @@ mounted () {
 
 ### Scatter
 
-This chart has a different data structure then the others. Right now the reactive Mixins are not working for this chart type.
-Chart ini memiliki struktur data yang berbeda dengan yang lainnya. Untuk sekarang reactive mixins tidak dapat bekerja pada tipe chart ini.
+Grafik ini memiliki struktur data yang berbeda dengan yang lain. Untuk sekarang reactive mixins tidak dapat digunakan pada grafik tipe ini.
 
 ![Scatter](assets/scatter.png)
 
+## Sumber acuan
 
-## Penjelasan Build
-Terdapat tiga jenis titik entri. Tergantung setup mana yang kamu gunakan. Dependensi-dependensi telah di-bundle atau require sebagai peerDependency.
-
-- Browser
-- Browserify / Webpack 1
-- Webpack 2
-
-
-| Build | Chart.js | Vue.js |
-|---|---|---|
-| vue-chartjs.full.js | Bundled | Bundled |
-| vue-chartjs.full.min.js |  Bundled | Bundled  |
-| vue-chartjs.js | peerDependency | peerDependency  |
-| vue-chartjs.min.js | peerDependency  | peerDependency  |
-| es/index* |  peerDependency | peerDependency  |
-
-### Browser
-Kamu dapat menggunakan `vue-chartjs` secara langsung didalam browser tanpa setup build. Seperti berikut [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010). Dalam kasus ini, mohon gunakan `vue-chartjs.full.min.js` yang telah di-minify. Didalamnya terdapat Vue.js dan Chart.js. Dan bundel modul UMD. Jadi kamu hanya membutuhkan satu file saja.
-
-
-### Browserify / Webpack 1
-
-Jika kamu menggunakan GUlp, Browserify atau Webpack 1 entri yang digunakan adalah `vue-chartjs.js` dimana telah di__transpile__ dan di__bundle__ UMD Module.
-
-Bagaimanapun juga Vue.js dan Chart.js adalah `peerDependencies` jadi kamu harus meng-instalnya secara terpisah. Jika kamu telah memiliki `Vue.js` kamu dapat menggunakan versi Vue.js dan Chart.js yang terdapat di-package ini.
-
-### Webpack 2
-Jika kamu menggunakan Webpack 2 secara otomatis akan menggunakan titik entri `jsnext:main` / `module`. Di `es/index.js`
-Di__transpile__ es sumber dari versi ini. Dan tidak di__bundle__ pada modul. Sehingga tree shaking akan bekerja. Sama seperti versi bundle, `Vue.js` dan `Chart.js` adalah `peerDependencies` dan butuh untuk diinstal.
-
-## Sumber-sumber
-
-Kamu dapat menemukan sumber-sumber seperti tutrial bagaimana cara untuk menggunakan `vue-chartjs`
+Berikut ini adalah beberapa sumber acuan termasuk diantaranya tutorial cara menggunakan `vue-chartjs`
 
 - [Using vue-chartjs with WordPress](https://medium.com/@apertureless/wordpress-vue-and-chart-js-6b61493e289f)
 - [Create stunning Charts with Vue and Chart.js](https://hackernoon.com/creating-stunning-charts-with-vue-js-and-chart-js-28af584adc0a)
