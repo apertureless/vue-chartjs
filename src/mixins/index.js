@@ -51,7 +51,9 @@ function dataHandler (newData, oldData) {
       }
       chart.update()
     } else {
-      chart.destroy()
+      if (chart) {
+        chart.destroy()
+      }
       this.renderChart(this.chartData, this.options)
     }
   } else {

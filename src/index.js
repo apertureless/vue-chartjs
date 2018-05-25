@@ -9,7 +9,8 @@ import {
   PolarArea,
   Radar,
   Bubble,
-  Scatter
+  Scatter,
+  generateChart
 } from './BaseCharts'
 
 const VueCharts = {
@@ -22,7 +23,8 @@ const VueCharts = {
   Radar,
   Bubble,
   Scatter,
-  mixins
+  mixins,
+  generateChart
 }
 
 export default VueCharts
@@ -38,5 +40,6 @@ export {
   Radar,
   Bubble,
   Scatter,
-  mixins
+  mixins,
+  generateChart
 }
