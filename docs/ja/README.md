@@ -6,7 +6,7 @@ search: ja
 **vue-chartjs** は [Chart.js](https://github.com/chartjs/Chart.js) をvueで使用するためのラッパーです。 再利用可能なチャートコンポーネントを簡単に作成できます。
 
 ## イントロ
-`vue-chartjs` vueの中であまり面倒ことがなくchart.jsを使うことができます。 シンプルなチャートをできるだけ早く実行したいという人に最適です。
+`vue-chartjs` vueの中であまり面倒なことがなくchart.jsを使うことができます。 シンプルなチャートをできるだけ早く実行したいという人に最適です。
 
 chart.jsの基本ロジックを抽象化していますが、公開されたchart.jsのオブジェクト使用して柔軟にカスタマイズできます。
 
@@ -21,9 +21,7 @@ Vue.jsの Version 1.xを使用している場合は`legacy`タグを使用して
 
 ## クイックスタート
 
-BaseChartをインポートしてextendします。
-
-異なるデータのチャートを表示するときに柔軟性が大幅に向上します。
+BaseChartをインポートしてextendします。異なるデータのチャートを表示するときに柔軟性が大幅に向上します。
 コンポーネントをカプセル化し、プロパティをコンポーネントのデータに渡したり、コンポーネント内に直接データを記述することができます。ただし直接データを記述した場合はコンポーネントの再利用ができません。
 
 パッケージ全体またはモジュールごとに個別にインポートすることができます。
@@ -101,7 +99,7 @@ export default {
 コンポーネントに追加して、使用することができます。
 
 ```html
- <line-chart :data="{your data object}" :options="{your options}"></line-chart>
+<line-chart :data="chartData" :options="chartOptions"></line-chart>
 ```
 
 幅と高さを上書きする場合:
@@ -117,10 +115,10 @@ export default {
 ```
 
 <p class="warning">
-固定値の`width` と `height` を反映させるためには、 `responsive：false` を設定しなければならないことに注意してください。
+`width` と `height` を固定値で表示させるためには、 `responsive：false` を設定しなければならないことに注意してください。
 </p>
 
-### コンポーネント内のローカルデータを使用する場合
+### ローカルデータを使用したチャート
 
 ```javascript
 import {Bar} from 'vue-chartjs'
@@ -149,7 +147,7 @@ export default {
 
 ### コンポーネントの再利用
 
-チャートコンポーネントを再利用可能にしたい場合は、ラッパーを使用することがベストです。このようにしてチャートコンポーネントは純粋なデータ表示と、背後にあるロジックのラッパーとしてのみ責務を負います。単一ページアプリケーションを実行している場合や、たとえば laravel などで統合されている場合は、異なった方法があります。
+チャートコンポーネントを再利用可能にしたい場合は、ラッパーを追加して使用することがベストです。このようにしてチャートコンポーネントは純粋なデータ表示を行い、ラッパーコンポーネントは背後のロジックを担当します。単一ページアプリケーションを実行している場合や、たとえば laravel などで統合されている場合は、異なった方法があります。
 
 ## リアクティブデータ
 
@@ -267,6 +265,9 @@ export default {
 
 Chart.jsでは、グローバルプラグインとインラインプラグインを定義できます。[Chart.js docs]（http://www.chartjs.org/docs/latest/developers/plugins.html）で記載されているのようなグローバルプラグインは、 `vue-chartjs ` で問題なく動作しています。
 
+インラインプラグインを追加したい場合のために `vue-chartjs`は` addPlugin（） `というヘルパーメソッドを提供します。
+`renderChart（）`メソッドの前に `addPlugin（）`を呼び出す必要があります。
+
 ### Example
 
 ```javascript
@@ -277,6 +278,36 @@ mounted () {
       ....
     }
   })
+}
+```
+## チャートのカスタマイズ / 新たに定義するチャート
+
+場合によっては、デフォルトの Chart.jsのチャートを拡張する必要があります。デフォルトのグラフを拡張して変更する方法の例がたくさんあります。または、必要であれば独自のチャートタイプを作成することもできます。
+
+`vue-chartjs` においても、これと同じようにすることができます。
+
+```js
+// 1. Chart.jsをインポートして、グローバルChartオブジェクトを使用できるようにします。
+import Chart from 'chart.js'
+// 2. コンポーネントを作成するときに使用する `generateChart()` メソッドをインポートします。
+import { generateChart } from 'vue-chartjs'
+
+// 3. デフォルトチャートを拡張します
+// http://www.chartjs.org/docs/latest/developers/charts.html
+Chart.defaults.LineWithLine = Chart.defaults.line;
+Chart.controllers.LineWithLine = Chart.controllers.line.extend({ /* custom magic here */})
+
+// 4. vue-chartjs コンポーネントを作成します。
+// 最初の引数はチャートのID, 2番目の引数はチャートタイプ
+const CustomLine = generateChart('custom-line', 'LineWithLine')
+
+// 5. 拡張された CustomLine コンポーネントはデフォルトのvue-chartjsチャートのように使用できます。
+
+export default {
+  extends: CustomLine,
+  mounted () {
+    // ....
+  }
 }
 ```
 
@@ -318,36 +349,12 @@ mounted () {
 
 ![Scatter](../assets/scatter.png)
 
-## ビルド方法の違い
-あなたが使用するビルドツールに依存した３つの異なるエントリーポイントがあります。 依存するライブラリは一緒にバンドルされているか、または peerDependency として指定します。
 
-- Browser
-- Browserify / Webpack 1
-- Webpack 2
-
-
-| Build | Chart.js | Vue.js |
-|---|---|---|
-| vue-chartjs.full.js | Bundled | Bundled |
-| vue-chartjs.full.min.js |  Bundled | Bundled  |
-| vue-chartjs.js | peerDependency | peerDependency  |
-| vue-chartjs.min.js | peerDependency  | peerDependency  |
-| es/index* |  peerDependency | peerDependency  |
-
-### ブラウザー
-`vue-chartjs` をビルドツールを使用せず直接ブラウザー内で使用します。 例 [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010) このケースでは縮小版の `vue-chartjs.full.min.js` を使用します。これにはVue.js と Chart.js が 含まれていて、UMD Module として定義されています。従ってあなたはただ一つのファイルしか必要としません。
-
-### Browserify / Webpack 1
-Gulp、BrowserifyまたはWebpackのバージョン1を使用している場合は、__トランスパイル__ され UMD Moduleとして __バンドル__ された `vue-chartjs.js` を使用します。
-
-Vue.jsとChart.jsは `peerDependencies` なので別にインストールする必要があります。ほとんどのプロジェクトでは、Vue.jsはすでにインストールされているでしょう。この方法では、このパッケージと異なるバージョンのVue.jsとChart.jsを持つことができます。
-
-### Webpack 2
-Webpack 2を使用している場合、 `jsnext:main` または `module` に`es/index.js` を指定します。 ソースファイルは __トランスパイル__ されます。またmoduleには __バンドル__ されません。このようにすると `tree shaking` が動作します。バンドル版のように、`peerDependencies` で指定された `Vue.js` と `Chart.js` はインストールする必要があります。
 
 ## Resources
 
 以下に `vue-chartjs` の使い方に関するチュートリアルのようなリソースがあります
+
 
 - [Using vue-chartjs with WordPress](https://medium.com/@apertureless/wordpress-vue-and-chart-js-6b61493e289f)
 - [Create stunning Charts with Vue and Chart.js](https://hackernoon.com/creating-stunning-charts-with-vue-js-and-chart-js-28af584adc0a)
