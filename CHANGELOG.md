@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.3.2"></a>
+## [3.3.2](https://github.com/apertureless/vue-chartjs/compare/v3.3.1...v3.3.2) (2018-06-18)
+
+
+### Bug Fixes
+
+* **babel:** fix decorator error with new version of babel ([2fe804b](https://github.com/apertureless/vue-chartjs/commit/2fe804b))
+* **core:** Delete old chart.js instance first ([#375](https://github.com/apertureless/vue-chartjs/issues/375)) ([89a7cac](https://github.com/apertureless/vue-chartjs/commit/89a7cac))
+* **mixins:** Add condition to check if chart instance is present. ([1fed8e7](https://github.com/apertureless/vue-chartjs/commit/1fed8e7))
+
+
+### Features
+
+* **privacy:** Remove GA from docs page ([d2d944f](https://github.com/apertureless/vue-chartjs/commit/d2d944f))
+
+
+
 <a name="3.3.1"></a>
 ## [3.3.1](https://github.com/apertureless/vue-chartjs/compare/v3.3.0...v3.3.1) (2018-03-26)
 
