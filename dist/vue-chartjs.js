@@ -162,7 +162,10 @@ function dataHandler(newData, oldData) {
 
       chart.update();
     } else {
-      chart.destroy();
+      if (chart) {
+        chart.destroy();
+      }
+
       this.renderChart(this.chartData, this.options);
     }
   } else {
@@ -270,6 +273,7 @@ function generateChart(chartId, chartType) {
         this.$data._plugins.push(plugin);
       },
       renderChart: function renderChart(data, options) {
+        if (this.$data._chart) this.$data._chart.destroy();
         this.$data._chart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(this.$refs.canvas.getContext('2d'), {
           type: chartType,
           data: data,
