@@ -63,6 +63,7 @@ export function generateChart (chartId, chartType) {
         this.$data._plugins.push(plugin)
       },
       renderChart (data, options) {
+        if (this.$data._chart) this.$data._chart.destroy()
         this.$data._chart = new Chart(
           this.$refs.canvas.getContext('2d'), {
             type: chartType,
