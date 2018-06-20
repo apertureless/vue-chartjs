@@ -12,3 +12,4 @@ declare module 'vue-chartjs' {
   export class Bubble extends BaseChart {}
   export class Scatter extends BaseChart {}
 }
+
