@@ -1,3 +1,7 @@
+---
+search: pt-br
+---
+
 <div align="center">
   <img width="256" heigth="256" src="/assets/vue-chartjs.png" alt="vue-chartjs logo">
 </div>

@@ -46,10 +46,10 @@ docute.init({
       apiKey: 'b3544f7387612693644777553675d56a',
       indexName: 'vue-chartjs',
       // algolia docsearch allows you to search with tag filter
-      tags: ['en', 'fr', 'ja', 'pt-br', 'ru'],
+      tags: ['en', 'fr-fr', 'id', 'ja', 'pt-br', 'ru', 'zh-cn'],
       // this plugin does require a url too
       // where docsearch fetches contents
       url: 'https://vue-chartjs.org'
     })
-  ],
+  ]
 })
