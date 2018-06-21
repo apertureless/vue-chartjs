@@ -1,5 +1,6 @@
 ---
-search: ru
+search:
+- "language\:ru"
 ---
 
 <div align="center">

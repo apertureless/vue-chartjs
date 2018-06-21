@@ -1,5 +1,6 @@
 ---
-search: en
+search:
+- "language\:en"
 ---
 
 # vue-chartjs

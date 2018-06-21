@@ -1,5 +1,6 @@
 ---
-search: zh-cn
+search:
+- "language\:zh-cn"
 ---
 
 # vue-chartjs

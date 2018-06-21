@@ -1,5 +1,6 @@
 ---
-search: id
+search:
+- "language\:id"
 ---
 
 # vue-chartjs
