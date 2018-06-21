@@ -1,5 +1,6 @@
 ---
-search: pt-br
+search:
+- "language\:pt-br"
 ---
 
 <div align="center">
