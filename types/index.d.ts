@@ -11,5 +11,9 @@ declare module 'vue-chartjs' {
   export class Radar extends BaseChart {}
   export class Bubble extends BaseChart {}
   export class Scatter extends BaseChart {}
+  export const mixins: {
+    reactiveData: any
+    reactiveProp: any
+  }
 }
 
