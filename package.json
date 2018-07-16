@@ -40,10 +40,12 @@
   "unpkg": "dist/vue-chartjs.min.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
+  "typings": "types/index.d.ts",
   "files": [
     "src",
     "dist",
-    "es"
+    "es",
+    "types/*.d.ts"
   ],
   "scripts": {
     "dev": "node build/dev-server.js",
