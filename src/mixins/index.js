@@ -42,25 +42,33 @@ function dataHandler (newData, oldData) {
 
       if (newData.hasOwnProperty('labels')) {
         chart.data.labels = newData.labels
+        this.$emit('labels:update')
       }
       if (newData.hasOwnProperty('xLabels')) {
         chart.data.xLabels = newData.xLabels
+        this.$emit('xlabels:update')
       }
       if (newData.hasOwnProperty('yLabels')) {
         chart.data.yLabels = newData.yLabels
+        this.$emit('ylabels:update')
       }
       chart.update()
+      this.$emit('chart:update')
     } else {
       if (chart) {
         chart.destroy()
+        this.$emit('chart:destroy')
       }
       this.renderChart(this.chartData, this.options)
+      this.$emit('chart:render')
     }
   } else {
     if (this.$data._chart) {
       this.$data._chart.destroy()
+      this.$emit('chart:destroy')
     }
     this.renderChart(this.chartData, this.options)
+    this.$emit('chart:render')
   }
 }
 
