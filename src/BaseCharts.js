@@ -62,6 +62,11 @@ export function generateChart (chartId, chartType) {
       addPlugin (plugin) {
         this.$data._plugins.push(plugin)
       },
+      generateLegend () {
+        if (this.$data._chart) {
+          return this.$data._chart.generateLegend()
+        }
+      },
       renderChart (data, options) {
         if (this.$data._chart) this.$data._chart.destroy()
         this.$data._chart = new Chart(
