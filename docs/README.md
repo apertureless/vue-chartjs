@@ -75,6 +75,27 @@ There are some basic props defined in the BaseCharts. Because you `extend()` the
 | chart-id | id of the canvas |
 | css-classes | String with css classes for the surrounding div |
 | styles | Object with css styles for the surrounding div container |
+| plugins | Array with chartjs plugins |
+
+## Legend Generation
+
+`vue-chartjs` provides a small helper to generate a HTML legend.
+
+```js
+import { Line } from 'vue-chartjs'
+
+export default {
+  extends: Line,
+  props: ['datasets', 'options']
+  data: () => ({
+    htmlLegend: null
+  })
+  mounted () {
+    this.renderChart(this.datasets, this.options)
+    this.htmlLegend = this.generateLegend()
+  }
+}
+```
 
 ## Examples
 
