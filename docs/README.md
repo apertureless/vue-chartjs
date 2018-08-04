@@ -75,6 +75,27 @@ There are some basic props defined in the BaseCharts. Because you `extend()` the
 | chart-id | id of the canvas |
 | css-classes | String with css classes for the surrounding div |
 | styles | Object with css styles for the surrounding div container |
+| plugins | Array with chartjs plugins |
+
+## Legend Generation
+
+`vue-chartjs` provides a small helper to generate a HTML legend.
+
+```js
+import { Line } from 'vue-chartjs'
+
+export default {
+  extends: Line,
+  props: ['datasets', 'options']
+  data: () => ({
+    htmlLegend: null
+  })
+  mounted () {
+    this.renderChart(this.datasets, this.options)
+    this.htmlLegend = this.generateLegend()
+  }
+}
+```
 
 ## Examples
 
@@ -168,6 +189,18 @@ data () {
   }
 }
 ```
+
+### Events
+
+The reactive mixins will emit events if the data changes. You can listen to them with `v:on` on the chart component. Following events are available:
+
+- `chart:render` - if the mixin performs a complete rerender
+- `chart:destroy` - if the mixin deletes the chart object instance
+- `chart:update` - if the mixin performs an update instead of a re-render
+- `labels:update` - if new labels were set
+- `xlabels:update` if new xLabels were set
+- `ylabels:update` - if new yLabels were set
+
 
 ### Example
 

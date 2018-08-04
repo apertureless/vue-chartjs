@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.4.0"></a>
+# [3.4.0](https://github.com/apertureless/vue-chartjs/compare/v3.3.2...v3.4.0) (2018-08-04)
+
+
+### Features
+
+* **events:** Add events to reactiveMixins ([#389](https://github.com/apertureless/vue-chartjs/issues/389)) ([67e8e4d](https://github.com/apertureless/vue-chartjs/commit/67e8e4d)), closes [#382](https://github.com/apertureless/vue-chartjs/issues/382)
+* **typescript:** Add basic typescript definitions ([184be5c](https://github.com/apertureless/vue-chartjs/commit/184be5c)), closes [#376](https://github.com/apertureless/vue-chartjs/issues/376)
+* **ux:** Add a wrapper around generateLegend ([#390](https://github.com/apertureless/vue-chartjs/issues/390)) ([fc646d8](https://github.com/apertureless/vue-chartjs/commit/fc646d8))
+* **ux:** Add fake render method with error message ([23ff90d](https://github.com/apertureless/vue-chartjs/commit/23ff90d)), closes [#380](https://github.com/apertureless/vue-chartjs/issues/380)
+
+
+
 <a name="3.3.2"></a>
 ## [3.3.2](https://github.com/apertureless/vue-chartjs/compare/v3.3.1...v3.3.2) (2018-06-18)
 
