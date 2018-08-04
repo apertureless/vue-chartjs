@@ -190,6 +190,18 @@ data () {
 }
 ```
 
+### Events
+
+The reactive mixins will emit events if the data changes. You can listen to them with `v:on` on the chart component. Following events are available:
+
+- `chart:render` - if the mixin performs a complete rerender
+- `chart:destroy` - if the mixin deletes the chart object instance
+- `chart:update` - if the mixin performs an update instead of a re-render
+- `labels:update` - if new labels were set
+- `xlabels:update` if new xLabels were set
+- `ylabels:update` - if new yLabels were set
+
+
 ### Example
 
 **LineChart.js**
