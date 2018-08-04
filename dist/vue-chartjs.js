@@ -106,7 +106,10 @@ var VueCharts = {
   Bubble: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["b" /* Bubble */],
   Scatter: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["i" /* Scatter */],
   mixins: __WEBPACK_IMPORTED_MODULE_0__mixins_index_js__["a" /* default */],
-  generateChart: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["j" /* generateChart */]
+  generateChart: __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["j" /* generateChart */],
+  render: function render() {
+    return console.error('[vue-chartjs]: This is not a vue component. It is the whole object containing all vue components. Please import the named export or access the components over the dot notation. For more info visit https://vue-chartjs.org/#/home?id=quick-start');
+  }
 };
 /* harmony default export */ __webpack_exports__["default"] = (VueCharts);
 
@@ -150,30 +153,39 @@ function dataHandler(newData, oldData) {
 
       if (newData.hasOwnProperty('labels')) {
         chart.data.labels = newData.labels;
+        this.$emit('labels:update');
       }
 
       if (newData.hasOwnProperty('xLabels')) {
         chart.data.xLabels = newData.xLabels;
+        this.$emit('xlabels:update');
       }
 
       if (newData.hasOwnProperty('yLabels')) {
         chart.data.yLabels = newData.yLabels;
+        this.$emit('ylabels:update');
       }
 
       chart.update();
+      this.$emit('chart:update');
     } else {
       if (chart) {
         chart.destroy();
+        this.$emit('chart:destroy');
       }
 
       this.renderChart(this.chartData, this.options);
+      this.$emit('chart:render');
     }
   } else {
     if (this.$data._chart) {
       this.$data._chart.destroy();
+
+      this.$emit('chart:destroy');
     }
 
     this.renderChart(this.chartData, this.options);
+    this.$emit('chart:render');
   }
 }
 
@@ -271,6 +283,11 @@ function generateChart(chartId, chartType) {
     methods: {
       addPlugin: function addPlugin(plugin) {
         this.$data._plugins.push(plugin);
+      },
+      generateLegend: function generateLegend() {
+        if (this.$data._chart) {
+          return this.$data._chart.generateLegend();
+        }
       },
       renderChart: function renderChart(data, options) {
         if (this.$data._chart) this.$data._chart.destroy();
