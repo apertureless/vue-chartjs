@@ -86,10 +86,10 @@ import { Line } from 'vue-chartjs'
 
 export default {
   extends: Line,
-  props: ['datasets', 'options']
+  props: ['datasets', 'options'],
   data: () => ({
     htmlLegend: null
-  })
+  }),
   mounted () {
     this.renderChart(this.datasets, this.options)
     this.htmlLegend = this.generateLegend()
