@@ -1,12 +1,11 @@
 const langs = [
   {title: 'English', path: '/home', matchPath: /^\/(home|changelog)/},
-  {title: 'Deutsch', path: '/de/', matchPath: /^\/de/},
   {title: 'Français', path: '/fr-fr/', matchPath: /^\/fr-fr/},
+  {title: 'Bahasa Indonesia', path: '/id/', matchPath: /^\/id/},
   {title: '日本語', path: '/ja/', matchPath: /^\/ja/},
   {title: 'Português do Brasil', path: '/pt-br/', matchPath: /^\/pt-br/},
-  {title: '中文(简体)', path: '/zh-cn/', matchPath: /^\/zh-cn/},
   {title: 'Русский', path: '/ru/', matchPath: /^\/ru/},
-  {title: 'Bahasa Indonesia', path: '/id/', matchPath: /^\/ru/}
+  {title: '中文(简体)', path: '/zh-cn/', matchPath: /^\/zh-cn/}
 ]
 
 docute.init({
@@ -32,11 +31,6 @@ docute.init({
       },
       {
         title: 'Languages', type: 'dropdown', items: langs
-      }
-    ],
-    'de': [
-      {
-        title: 'Startseite', path: '/de/'
       }
     ],
     'fr-fr': [
