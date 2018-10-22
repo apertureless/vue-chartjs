@@ -159,7 +159,7 @@ Both are included in the `mixins` module.
 The mixins automatically create `chartData` as a prop or data. And add a watcher. If data has changed, the chart will update.
 However, keep in mind the limitations of vue and javascript for mutations on arrays and objects.
 **It is important that you pass your options in a local variable named `options`!**
-The reason is that if the mixin re-renders the chart it calls `this.renderChart(this.chartData, this.options`)` so don't pass in the options object directly or it will be ignored.
+The reason is that if the mixin re-renders the chart it calls `this.renderChart(this.chartData, this.options)` so don't pass in the options object directly or it will be ignored.
 
 More info [here](http://vue-chartjs.org/#/home?id=reactive-data)
 
