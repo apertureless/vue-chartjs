@@ -75,6 +75,24 @@ Certains props de base sont définis dans BaseCharts. Grâce à l'héritage de l
 | chart-id | id du canvas |
 | css-classes | Chaîne de caractères avec les classes CSS à appliquer à l'élément div parent |
 | styles | Object avec les styles CSS à appliquer à l'élément div parent |
+| plugins | Tableau avec les plugins chartjs |
+
+ ## Génération de légende
+ `vue-chartjs` fournit un petit assistant pour générer une légende HTML.
+ ```js
+import { Line } from 'vue-chartjs'
+ export default {
+  extends: Line,
+  props: ['datasets', 'options'],
+  data: () => ({
+    htmlLegend: null
+  }),
+  mounted () {
+    this.renderChart(this.datasets, this.options)
+    this.htmlLegend = this.generateLegend()
+  }
+}
+```
 
 ## Exemples
 
@@ -100,14 +118,14 @@ export default {
 Vous pourrez les utiliser après avoir ajouté votre composant :
 
 ```html
- <line-chart :data="{votre objet de données}" :options="{vos options}"></line-chart>
+ <line-chart :data="dataGraphe" :options="optionsGraphe"></line-chart>
 ```
 
 Si vous souhaitez modifier la hauteur ou la largeur :
 
 ```html
  <line-chart
-  :data="{votre objet de données}"
+  :data="dataGraphe"
   :options="{responsive: false, maintainAspectRatio: false}"
   :width="400"
   :height="200"
@@ -169,6 +187,15 @@ data () {
   }
 }
 ```
+
+### Événements
+ Les mixins réactifs émettront des événements si les données changent. Vous pouvez les écouter avec `v: on` sur le composant graphique. Les événements suivants sont disponibles:
+ - `chart:render` - si le mixin effectue une restitution complète
+- `chart:destroy` - si le mixin supprime l'instance d'objet graphique
+- `chart:update` - si le mixin effectue une mise à jour au lieu d'un re-rendu
+- `labels:update` - si de nouvelles étiquettes ont été définies
+- `xlabels:update` si de nouveaux xLabels ont été définis
+- `ylabels:update` - si de nouveaux yLabels ont été définis
 
 ### Exemple
 
@@ -281,6 +308,29 @@ mounted () {
   })
 }
 ```
+## Customisés / Nouveaux Graphes
+ Parfois, vous devez étendre les graphes par défaut de Chart.js. Il y a beaucoup d'exemples sur la manière d'étendre et de modifier les graphes par défaut. Ou vous voulez créer un type de graphe propre.
+ Dans `vue-chartjs` vous pouvez le faire à peu près de la même manière.
+ ```js
+// 1. Importez Chart.js pour pouvoir utiliser l'objet graphe global
+import Chart from 'chart.js'
+// 2. Importez la méthode `generateChart ()` pour créer le composant vue.
+import { generateChart } from 'vue-chartjs'
+ // 3. Étendre l'un des graphes par défaut
+// http://www.chartjs.org/docs/latest/developers/charts.html
+Chart.defaults.LineWithLine = Chart.defaults.line;
+Chart.controllers.LineWithLine = Chart.controllers.line.extend({ /* magie personnalisée ici */})
+ // 4. Générer le composant vue-chartjs
+// Le premier argument est l'identifiant du graphe, le second le type de graphe.
+const CustomLine = generateChart('custom-line', 'LineWithLine')
+ // 5. Étendez le composant CustomLine comme vous le feriez avec les graphes par défaut de vue-chartjs
+ export default {
+  extends: CustomLine,
+  mounted () {
+    // ....
+  }
+}
+```
 
 ## Diagrammes disponibles
 
@@ -315,46 +365,6 @@ mounted () {
 ### Bulles
 
 ![Bulles](../assets/bubble.png)
-
-
-### Nuages de points
-
-Ce diagramme utilise une structure de données différente des autres. Pour le moment, les mixis de mise à jour de données ne fonctionnent pas avec ce type de graphique.
-
-![Nuage de points](../assets/scatter.png)
-
-
-## Explications sur les différents builds
-
-Il y a trois builds différents. Le choix dépend de votre projet. Les dépendances sont soient intégrées, soit marquées comme peerDependency.
-
-- Browser
-- Browserify / Webpack 1
-- Webpack 2
-
-
-| Build | Chart.js | Vue.js |
-|---|---|---|
-| vue-chartjs.full.js | Intégré | Intégré |
-| vue-chartjs.full.min.js |  Intégré | Intégré  |
-| vue-chartjs.js | peerDependency | peerDependency  |
-| vue-chartjs.min.js | peerDependency  | peerDependency  |
-| es/index* |  peerDependency | peerDependency  |
-
-### Browser
-
-Vous pouvez utiliser `vue-chartjs` directement depuis votre navigateur sans aucun pré-requis. Comme par exemple sur ce [codepen](https://codepen.io/apertureless/pen/vxWbqB?editors=1010). Dans une telle situation, veuillez utiliser `vue-chartjs.full.min.js`, qui est la version compressée. Elle intègre Vue.js et Chart.js, et est bundlée à un module UMD. Donc ce fichier se suffit à lui-même.
-
-
-### Browserify / Webpack 1
-
-Si vous utilisez Gulp, Browserify ou Webpack 1, vous devrez prendre `vue-chartjs.js`, qui est __transpilé__ et __bundlé__ comme module UMD.
-
-Toutefois, Vue.js et Chart.js sont des `peerDependencies`, vous devrez donc les installer séparemment. Dans la plupart des projets, `Vue.js` sera de toute façon déjà installé. De cette manière, vous pouvez utiliser des versions différentes de Vue.js et Chart.js dans un même package.
-
-### Webpack 2
-
-Si vous utilisez Webpack 2, `jsnext:main` / `module` sera automatiquement sélectionné. `es/index.js`est une version es __transpilée__ des sources, et n'est pas __bundlée__ à un module. Ainsi, rien ne devrait bloquer l'élimination de code mort.  Comme dans la version bundlée précédente, `Vue.js` et `Chart.js` sont des `peerDependencies` et doivent être installés.
 
 ## Ressources
 
