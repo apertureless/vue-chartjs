@@ -80,7 +80,7 @@ export function generateChart (chartId, chartType) {
       }
     },
     updateChart () {
-      this.$data._chart.update();
+      this.$data._chart.update()
     },
     beforeDestroy () {
       if (this.$data._chart) {
