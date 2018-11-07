@@ -4,7 +4,7 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
-      { text: 'References', link: '/reference/' }
+      { text: 'API', link: '/api/' }
     ],
     sidebar: 'auto',
     repo: 'apertureless/vue-chartjs',
