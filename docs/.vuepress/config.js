@@ -13,6 +13,7 @@ module.exports = {
     docsDir: 'docs',
     docsBranch: 'master',
     base: '/vue-chartjs/',
+    serviceWorker: true,
     locales: {
       '/': {
         selectText: 'Languages',
