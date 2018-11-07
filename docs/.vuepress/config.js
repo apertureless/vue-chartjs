@@ -12,7 +12,7 @@ module.exports = {
     editLinkText: 'Help us improve this page!',
     docsDir: 'docs',
     docsBranch: 'master',
-    base: '/vue-chartjs/',
+    serviceWorker: true,
     locales: {
       '/': {
         selectText: 'Languages',
