@@ -256,7 +256,7 @@ watch: {
 }
 ```
 
-## Exampels
+## Examples
 
 ### Chart with props
 
