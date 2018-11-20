@@ -12,3 +12,4 @@ features:
   details: With the full power of chart.js 💯
 footer: MIT Licensed | Copyright © 2018-present Jakub Juszczak
 ---
+aze
