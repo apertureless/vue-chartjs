@@ -256,8 +256,7 @@ watch: {
 }
 ```
 
-## Exampels
-
+## Examples
 ### Chart with props
 
 Your goal should be to create reuseable chart components. For this purpose you should utilize Vue.js props to pass in your options and your chart data. This way the chart itself does not care,about fetching data and is only for presentation.
