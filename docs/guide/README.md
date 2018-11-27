@@ -89,7 +89,7 @@ export default {
 ```
 
 ::: danger Template Tag can not be merged
-Do not include the `<template>` tag to your `.vue` files. Vue can **not** merge templates. If you add an empty `<template>` tag, Vue will took the template from your component and not from the extended one, which will result in an empty template and errors.
+Do not include the `<template>` tag to your `.vue` files. Vue can **not** merge templates. If you add an empty `<template>` tag, Vue will take the template from your component and not from the extended one, which will result in an empty template and errors.
 :::
 
 ## Updating Charts
@@ -273,7 +273,7 @@ export default {
     chartdata: {
       type: Object,
       default: null
-    }
+    },
     options: {
       type: Object,
       default: null
