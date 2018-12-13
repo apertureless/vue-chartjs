@@ -197,7 +197,7 @@ export default {
 ```
 
 ```javascript
-// Load speperate modules
+// Load separate modules
 import { Line, mixins } from 'vue-chartjs'
 
 export default {
@@ -211,7 +211,7 @@ export default {
 ```
 
 ```javascript
-// Load speperate modules with destructure assign
+// Load separate modules with destructure assign
 import { Line, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
 
