@@ -75,12 +75,15 @@ function dataHandler (newData, oldData) {
 export const reactiveData = {
   data () {
     return {
-      chartData: null
+      chartData: { labels: [], datasets: [] }
     }
   },
 
   watch: {
-    'chartData': dataHandler
+    chartData: {
+		handler: dataHandler,
+		deep: true
+	}
   }
 }
 
