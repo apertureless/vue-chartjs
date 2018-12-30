@@ -81,9 +81,9 @@ export const reactiveData = {
 
   watch: {
     chartData: {
-		handler: dataHandler,
-		deep: true
-	}
+      handler: dataHandler,
+      deep: true
+    }
   }
 }
 
