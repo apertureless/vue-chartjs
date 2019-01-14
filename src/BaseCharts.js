@@ -34,7 +34,7 @@ export function generateChart (chartId, chartType) {
       },
       height: {
         default: 400,
-        type: [String, Number]
+        type: Number
       },
       cssClasses: {
         type: String,

@@ -49,13 +49,13 @@
   ],
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build": "npm run release && npm run build:es",
+    "build": "yarn run release && yarn run build:es",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "release": "NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.js && cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js",
+    "release": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.js && cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js",
     "prepublishOnly": "yarn run lint && yarn run test && yarn run build",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
