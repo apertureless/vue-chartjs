@@ -1,61 +1,85 @@
 <template>
   <div class="container">
     <div class="Chart">
-      <h1 style="text-align:center;">Barchart</h1>
-      <bar-example/>
+      <h1 style="text-align:center;">
+        Barchart
+      </h1>
+      <bar-example />
     </div>
 
     <div class="Chart">
-      <h1 style="text-align:center;">Horizontal Barchart</h1>
-      <horizontal-bar-example/>
+      <h1 style="text-align:center;">
+        Horizontal Barchart
+      </h1>
+      <horizontal-bar-example />
     </div>
 
     <div class="Chart">
-      <h1 style="text-align:center;">Barchart with reactive mixing for live data</h1>
-      <reactive-example/>
+      <h1 style="text-align:center;">
+        Barchart with reactive mixing for live data
+      </h1>
+      <reactive-example />
     </div>
 
     <div class="Chart">
-      <h1 style="text-align:center;">Barchart with reactive mixing for live data as props</h1>
-      <reactive-prop-example :chart-data="dataPoints"/>
+      <h1 style="text-align:center;">
+        Barchart with reactive mixing for live data as props
+      </h1>
+      <reactive-prop-example :chart-data="dataPoints" />
     </div>
 
     <div class="Chart">
-      <h1 style="text-align:center;">Linechart</h1>
-      <line-example/>
+      <h1 style="text-align:center;">
+        Linechart
+      </h1>
+      <line-example />
     </div>
 
     <div class="Chart">
-      <h1 style="text-align:center;">Doughnutchart</h1>
-      <doughnut-example/>
+      <h1 style="text-align:center;">
+        Doughnutchart
+      </h1>
+      <doughnut-example />
     </div>
 
     <div class="Chart">
-      <h1 style="text-align:center;">Piechart</h1>
-      <pie-example/>
+      <h1 style="text-align:center;">
+        Piechart
+      </h1>
+      <pie-example />
     </div>
 
     <div class="Chart">
-      <h1 style="text-align:center;">Radarchart</h1>
-      <radar-example/>
+      <h1 style="text-align:center;">
+        Radarchart
+      </h1>
+      <radar-example />
     </div>
 
     <div class="Chart">
-      <h1 style="text-align:center;">Polararea</h1>
-      <polar-area-example/>
+      <h1 style="text-align:center;">
+        Polararea
+      </h1>
+      <polar-area-example />
     </div>
 
     <div class="Chart">
-      <h1 style="text-align:center;">Bubblechart</h1>
+      <h1 style="text-align:center;">
+        Bubblechart
+      </h1>
       <bubble-example />
     </div>
 
     <div class="Chart">
-      <h1 style="text-align:center;">Scatter Chart</h1>
+      <h1 style="text-align:center;">
+        Scatter Chart
+      </h1>
       <scatter-example />
     </div>
     <div class="Chart">
-      <h1 style="text-align:center;">Custom Line Chart</h1>
+      <h1 style="text-align:center;">
+        Custom Line Chart
+      </h1>
       <custom-line />
     </div>
   </div>
@@ -96,6 +120,14 @@
         height: 20
       }
     },
+    computed: {
+      myStyles () {
+        return {
+          height: `${this.height}px`,
+          position: 'relative'
+        }
+      }
+    },
     mounted () {
       setInterval(() => {
         this.fillData()
@@ -118,14 +150,6 @@
               data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
             }
           ]
-        }
-      }
-    },
-    computed: {
-      myStyles () {
-        return {
-          height: `${this.height}px`,
-          position: 'relative'
         }
       }
     }

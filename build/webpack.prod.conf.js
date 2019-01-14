@@ -21,6 +21,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       extract: true
     })
   },
+  mode: 'production',
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
@@ -31,13 +32,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
-    }),
-    // UglifyJs do not support ES6+, you can also use babel-minify for better treeshaking: https://github.com/babel/minify
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      sourceMap: true
     }),
     // extract css into its own file
     new ExtractTextPlugin({
