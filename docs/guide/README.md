@@ -370,7 +370,7 @@ Then create a container component, which handles your api call or vuex connectio
 </template>
 
 <script>
-import LineChart from './LineChart.vue'
+import LineChart from './Chart.vue'
 
 export default {
   name: 'LineChartContainer',
