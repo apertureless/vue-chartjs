@@ -445,7 +445,7 @@ import Chart from 'chart.js'
 // 2. Import the `generateChart()` method to create the vue component.
 import { generateChart } from 'vue-chartjs'
 
-// 3. Extend on of the default charts
+// 3. Extend one of the default charts
 // http://www.chartjs.org/docs/latest/developers/charts.html
 Chart.defaults.LineWithLine = Chart.defaults.line;
 Chart.controllers.LineWithLine = Chart.controllers.line.extend({ /* custom magic here */})
