@@ -116,7 +116,7 @@ import { Component } from 'vue-property-decorator';
 @Component({
     extends: Bar, // this is important to add the functionality to your component
 })
-export default class CommitChart extends Bar {
+export default class CommitChart extends Vue<Bar> {
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart({
