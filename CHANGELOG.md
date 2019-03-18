@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.2](https://github.com/apertureless/vue-chartjs/compare/v3.4.1...v3.4.2) (2019-03-18)
+
+
+### Bug Fixes
+
+* Change peerDependency version of chart.js to include older versions ([8c780d3](https://github.com/apertureless/vue-chartjs/commit/8c780d3))
+
+
+
 ## [3.4.1](https://github.com/apertureless/vue-chartjs/compare/v3.4.0...v3.4.1) (2019-03-18)
 
 
