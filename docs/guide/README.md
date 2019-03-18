@@ -344,7 +344,7 @@ export default {
     chartdata: {
       type: Object,
       default: null
-    }
+    },
     options: {
       type: Object,
       default: null
@@ -370,7 +370,7 @@ Then create a container component, which handles your api call or vuex connectio
 </template>
 
 <script>
-import LineChart from './LineChart.vue'
+import LineChart from './Chart.vue'
 
 export default {
   name: 'LineChartContainer',
@@ -445,7 +445,7 @@ import Chart from 'chart.js'
 // 2. Import the `generateChart()` method to create the vue component.
 import { generateChart } from 'vue-chartjs'
 
-// 3. Extend on of the default charts
+// 3. Extend one of the default charts
 // http://www.chartjs.org/docs/latest/developers/charts.html
 Chart.defaults.LineWithLine = Chart.defaults.line;
 Chart.controllers.LineWithLine = Chart.controllers.line.extend({ /* custom magic here */})
