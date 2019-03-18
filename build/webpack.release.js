@@ -19,12 +19,14 @@ module.exports = {
   entry: {
     'vue-chartjs': './src/index.js'
   },
+  mode: 'production',
   devtool: 'source-map',
   output: {
-    filename: './dist/[name].js',
+    filename: '[name].js',
     library: 'VueChartJs',
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
+    globalObject: `typeof self !== 'undefined' ? self : this`
   },
   externals: {
     'chart.js': {

@@ -12,8 +12,9 @@ var projectRoot = path.resolve(__dirname, '../../')
 
 var webpackConfig = merge(baseConfig, {
   // use inline sourcemap for karma-sourcemap-loader
+  mode: 'development',
   module: {
-    loaders: utils.styleLoaders()
+    rules: utils.styleLoaders()
   },
   devtool: '#inline-source-map',
   plugins: [
@@ -38,7 +39,7 @@ delete webpackConfig.entry
 // })
 
 // // only apply babel for test files when using isparta
-webpackConfig.module.loaders.some(function (loader, i) {
+webpackConfig.module.rules.some(function (loader, i) {
   if (loader.loader === 'babel') {
     loader.include = path.resolve(projectRoot, 'test/unit')
     return true
