@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.1](https://github.com/apertureless/vue-chartjs/compare/v3.4.0...v3.4.1) (2019-03-18)
+
+
+### Bug Fixes
+
+* **reactive-mixins:** Add prop type and default value ([8762521](https://github.com/apertureless/vue-chartjs/commit/8762521))
+* Update peerDependencies ([5b19efc](https://github.com/apertureless/vue-chartjs/commit/5b19efc)), closes [#489](https://github.com/apertureless/vue-chartjs/issues/489)
+
+
+
 <a name="3.4.0"></a>
 # [3.4.0](https://github.com/apertureless/vue-chartjs/compare/v3.3.2...v3.4.0) (2018-08-04)
 
