@@ -2,7 +2,7 @@
 home: true
 heroImage: /vue-chartjs.png
 actionText: 初めに →
-actionLink: /guide/
+actionLink: /ja/guide/
 features:
 - title: 簡単
   details: 初心者にもプロにも簡単に始められる 🙌
