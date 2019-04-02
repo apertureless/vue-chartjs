@@ -21,7 +21,7 @@
 ## Demo & Docs
 
 - 📺 [Demo](http://demo.vue-chartjs.org/)
-- 📖 [Docs](http://www.vue-chartjs.org/)
+- 📖 [Docs](http://vue-chartjs.org/)
 
 ### Compatibility
 
