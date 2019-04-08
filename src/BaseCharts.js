@@ -29,11 +29,9 @@ export function generateChart (chartId, chartType) {
         type: String
       },
       width: {
-        default: 400,
         type: Number
       },
       height: {
-        default: 400,
         type: Number
       },
       cssClasses: {
