@@ -320,7 +320,7 @@ export default {
   }),
 
   mounted () {
-    this.renderChart(this.datacollection, this.options)
+    this.renderChart(this.chartdata, this.options)
   }
 }
 ```
@@ -383,7 +383,7 @@ export default {
     this.loaded = false
       try {
         const { userlist } = await fetch('/api/userlist')
-        this.chartData = userlist
+        this.chartdata = userlist
         this.loaded = true
       } catch (e) {
         console.error(e)
