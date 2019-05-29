@@ -91,6 +91,10 @@ module.exports = {
           }
         },
       }
+    },
+    algolia: {
+      indexName: 'vue-chartjs',
+      apiKey: 'b3544f7387612693644777553675d56a'
     }
   },
   locales: {
