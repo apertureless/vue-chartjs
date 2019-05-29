@@ -288,8 +288,8 @@ export default {
 After that you can add your chart component to a parent component
 
 ```js
- <line-chart :chartdata="chartData" :options="chartOptions"/>
- ```
+<line-chart :chartdata="chartData" :options="chartOptions"/>
+```
 
 ### Chart with local data
 
@@ -302,16 +302,14 @@ export default {
   extends: Bar,
   data: () => ({
     chartdata: {
-      datacollection: {
-        labels: ['January', 'February'],
-        datasets: [
-          {
-            label: 'Data One',
-            backgroundColor: '#f87979',
-            data: [40, 20]
-          }
-        ]
-      }
+      labels: ['January', 'February'],
+      datasets: [
+        {
+          label: 'Data One',
+          backgroundColor: '#f87979',
+          data: [40, 20]
+        }
+      ]
     },
     options: {
       responsive: true,
@@ -320,7 +318,7 @@ export default {
   }),
 
   mounted () {
-    this.renderChart(this.datacollection, this.options)
+    this.renderChart(this.chartdata, this.options)
   }
 }
 ```
@@ -381,13 +379,13 @@ export default {
   }),
   async mounted () {
     this.loaded = false
-      try {
-        const { userlist } = await fetch('/api/userlist')
-        this.chartData = userlist
-        this.loaded = true
-      } catch (e) {
-        console.error(e)
-      }
+    try {
+      const { userlist } = await fetch('/api/userlist')
+      this.chartdata = userlist
+      this.loaded = true
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
 </script>
@@ -403,10 +401,10 @@ You can set `responsive: true` and pass in a styles object which get applied as 
 
 ```html
 <template>
-     <div>
-       <line-chart :styles="myStyles"/>
-       <button @click="increase()">Increase height</button>
-     </div>
+  <div>
+    <line-chart :styles="myStyles"/>
+    <button @click="increase()">Increase height</button>
+  </div>
 </template>
 
 <script>

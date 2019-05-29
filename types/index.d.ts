@@ -1,4 +1,5 @@
 import { BaseChart } from './components'
+import { ReactiveDataMixin, ReactivePropMixin } from './mixins'
 
 declare module 'vue-chartjs' {
   export function generateChart(chartId: string, chartType: string): any;
@@ -12,8 +13,8 @@ declare module 'vue-chartjs' {
   export class Bubble extends BaseChart {}
   export class Scatter extends BaseChart {}
   export const mixins: {
-    reactiveData: any
-    reactiveProp: any
+    reactiveData: typeof ReactiveDataMixin
+    reactiveProp: typeof ReactivePropMixin
   }
 }
 
