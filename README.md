@@ -13,6 +13,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/apertureless/vue-chartjs/badge.svg)](https://snyk.io/test/github/apertureless/vue-chartjs)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8c0256b16ba7a50a9f93/maintainability)](https://codeclimate.com/github/apertureless/vue-chartjs/maintainability)
 [![Donate](assets/donate.svg)](https://www.paypal.me/apertureless/50eur)
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C1WP7C)
 
 # vue-chartjs
 
