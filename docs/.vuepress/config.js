@@ -26,15 +26,26 @@ module.exports = {
         },
       },
       '/zh-cn/': {
-        selectText: 'Languages',
+        selectText: '选择语言',
         label: '中文(简体)',
-        editLinkText: 'Edit this page on GitHub',
+        sidebar: 'auto',
+        editLinkText: '在GitHub上编辑本页',
+        nav: [
+          {
+            text: '指南',
+            link: '/zh-cn/guide/'
+          },
+          {
+            text: 'API 参考',
+            link: '/zh-cn/api/'
+          }
+        ],
         serviceWorker: {
           updatePopup: {
-            message: "New content is available.",
-            buttonText: "Refresh"
+            message: "有新内容更新.",
+            buttonText: "刷新"
           }
-        },
+        }
       },
       '/id/': {
         selectText: 'Languages',
@@ -106,7 +117,7 @@ module.exports = {
     '/zh-cn/': {
       lang: 'zh-CN',
       title: '📈 vue-chartjs',
-      description: '⚡ Easy and beautiful charts with Chart.js and Vue.js'
+      description: '⚡ 使用 Chart.js 和 Vue.js 搭建简单和漂亮的图表'
     },
     '/id/': {
       lang: 'id',
