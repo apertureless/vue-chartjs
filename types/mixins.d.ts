@@ -1,9 +1,10 @@
-import Vue from 'vue'
+import Vue from 'vue';
+import { ChartData } from 'chart.js';
 
 export declare class ReactiveDataMixin extends Vue {
-  chartData: any;
+  chartData: ChartData;
 }
 
 export declare class ReactivePropMixin extends Vue {
-  readonly chartData: any;
+  readonly chartData: ChartData;
 }
