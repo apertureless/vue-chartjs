@@ -189,7 +189,7 @@ However, keep in mind the limitations of vue and javascript for mutations on arr
 **It is important that you pass your options in a local variable named `options`!**
 The reason is that if the mixin re-renders the chart it calls `this.renderChart(this.chartData, this.options)` so don't pass in the options object directly or it will be ignored.
 
-More info [here](http://vue-chartjs.org/#/home?id=reactive-data)
+More info [here](https://vue-chartjs.org/guide/#updating-charts)
 
 ```javascript
 // MonthlyIncome.js
