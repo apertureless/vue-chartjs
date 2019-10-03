@@ -70,13 +70,23 @@ module.exports = {
         },
       },
       '/ru/': {
-        selectText: 'Languages',
+        selectText: 'Языки',
         label: 'Русский',
-        editLinkText: 'Edit this page on GitHub',
+        editLinkText: 'Редактировать эту страницу на GitHub',
+        nav: [
+          {
+            text: 'Руководство',
+            link: '/ru/guide/'
+          },
+          {
+            text: 'API',
+            link: '/ru/api/'
+          }
+        ],
         serviceWorker: {
           updatePopup: {
-            message: "New content is available.",
-            buttonText: "Refresh"
+            message: "Доступен новый контент.",
+            buttonText: "Обновить"
           }
         },
       },
@@ -132,7 +142,7 @@ module.exports = {
     '/ru/': {
       lang: 'ru',
       title: '📈 vue-chartjs',
-      description: '⚡ Easy and beautiful charts with Chart.js and Vue.js'
+      description: '⚡ Простые и красивые графики с Chart.js и Vue.js'
     },
     '/pt-br/': {
       lang: 'pt-br',
