@@ -3,6 +3,6 @@ import { ChartData, ChartOptions } from 'chart.js';
 
 /** vue-chartjs component common definition */
 export declare class BaseChart extends Vue {
-  addPlugin (plugin?: string[]): void
+  addPlugin (plugin?: object): void
   renderChart (chartData: ChartData, options?: ChartOptions): void
 }
