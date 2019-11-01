@@ -1,6 +1,22 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [3.5.0](https://github.com/apertureless/vue-chartjs/compare/v3.4.2...v3.5.0) (2019-11-01)
+
+
+### Bug Fixes
+
+* Fix type script definition for `addPlugin` method ([#564](https://github.com/apertureless/vue-chartjs/issues/564)) ([3065d70](https://github.com/apertureless/vue-chartjs/commit/3065d70))
+* Update chart.js peerDependency ([a140f5a](https://github.com/apertureless/vue-chartjs/commit/a140f5a))
+
+
+### Features
+
+* **typescript:** Improve mixins type definitions ([2a6eb7b](https://github.com/apertureless/vue-chartjs/commit/2a6eb7b))
+* **typescript:** Improve mixins type definitions ([#514](https://github.com/apertureless/vue-chartjs/issues/514)) ([520faca](https://github.com/apertureless/vue-chartjs/commit/520faca))
+* Add @types/chart.js types in typescript definitions ([#536](https://github.com/apertureless/vue-chartjs/issues/536)) ([22fb8d1](https://github.com/apertureless/vue-chartjs/commit/22fb8d1))
+* enhance search on the documentation ([3542b34](https://github.com/apertureless/vue-chartjs/commit/3542b34))
 
 ## [3.4.2](https://github.com/apertureless/vue-chartjs/compare/v3.4.1...v3.4.2) (2019-03-18)
 
