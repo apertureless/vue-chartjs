@@ -250,7 +250,10 @@ A simple watcher would be:
 
 ```js
 watch: {
-  chartData () {
+  chartData (oldVal,newVal) {
+    if (newVal) this.renderChart(newVal, this.options)
+      else 
+        this.renderChart(oldVal, this.options)
     this.$data._chart.update()
   }
 }
