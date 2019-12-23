@@ -101,7 +101,7 @@ Chart.js does not provide a live update if you change the datasets. However, `vu
 
 Both mixins do actually achieve the same. Most of the time you will use `reactiveProp`. It extends the logic of your chart component and automatically creates a prop named `chartData` and adds a `vue watch` on this prop. On data change, it will either call `update()` if only the data inside the datasets has changed or `renderChart()` if new datasets were added.
 
-`reactiveData` simply creates a local chartData variable which is not a prop! and adds a watcher. This is only useful, if you need single purpose charts and make an API call inside your chart component.
+`reactiveData` simply creates a local chartData variable which is not a prop! and adds a watcher. This is only useful if you need single purpose charts and make an API call inside your chart component.
 
 ### Example
 
