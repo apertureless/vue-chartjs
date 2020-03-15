@@ -1,6 +1,6 @@
 # Getting Started
 
-**vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in Vue. You can easily create reusable chart components.
+**vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in Vue. It enables you to easily create reusable chart components.
 
 ## Introduction
 
@@ -12,9 +12,14 @@ It abstracts the basic logic but exposes the Chart.js object to give you maximal
 
 ### NPM
 
-You can install `vue-chartjs` over `npm`. However, you also need to add `chart.js` as a dependency to your project. Because `Chart.js` is a peerDependency. This way you have full control over the versioning of Chart.js
+You can install `vue-chartjs` over `npm`. However, you also need to add `chart.js` as a dependency to your project because `Chart.js` is a peerDependency. This way you can have full control over the versioning of `Chart.js`.
 
-`yarn add vue-chartjs chart.js` or `npm install vue-chartjs chart.js --save`
+```bash
+yarn add vue-chartjs chart.js
+```
+```bash
+npm install vue-chartjs chart.js --save
+```
 
 ::: tip
 If you are using vue 1.x please use the `legacy` tag. However, the Vue 1 version is not maintained anymore.
@@ -24,8 +29,8 @@ If you are using vue 1.x please use the `legacy` tag. However, the Vue 1 version
 
 ### Browser
 
-You can also use `vue-chartjs` directly in the browser.
-First, add the `Chart.js` script and then the `vue-chartjs` script.
+You can also use `vue-chartjs` directly in the browser via CDN.
+First, add the `Chart.js` script, and then add the `vue-chartjs` script.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
@@ -36,15 +41,15 @@ First, add the `Chart.js` script and then the `vue-chartjs` script.
 
 Every chart type that is available in `Chart.js` is exported as a named component and can be imported as such. These components are normal Vue components, however you need to `extend` it.
 
-The idea behind `vue-chartjs` is to provide easy to use components, with maximum flexibility and extensibility. To achieve this, you need to create your own *Chart Component*  and extend it with the provided `vue-chartjs` components.
+The idea behind `vue-chartjs` is to provide easy to use components, with maximal flexibility and extensibility. To achieve this, you need to create your own *Chart Component* and extend it with the provided `vue-chartjs` components.
 
-This way, the methods and logic in the Chart components, get merged into your own chart component.
+This way, the methods and logic in the Chart components get merged into your own chart component.
 
 ## Creating your first Chart
 
-You need to import the base chart and extend it. This gives more flexibility when working with different data. You can encapsulate your components and use props to pass data or you can input them directly inside the component. However, your component is not reusable this way.
+First, you need to import the base chart and extend it. This gives more flexibility when working with different data. You can encapsulate your components and use props to pass data, or you can input them directly inside the component. However, your component is not reusable this way.
 
-You can import the whole package or each module individual. Then you need either to use `extends:` or `mixins:[]`. And then in the `mounted()` hook, call `this.renderChart()`. This will create your chart instance.
+You can import the whole package or each module individually. Then, you need to use either `extends:` or `mixins:[]`. Afterwards, in the `mounted()` hook, call `this.renderChart()`. This will create your chart instance.
 
 ```js{1,4,6}
 import { Bar } from 'vue-chartjs'
@@ -61,13 +66,13 @@ export default {
 You can either use `extends: Bar` or `mixins: [Bar]`
 :::
 
-The method `this.renderChart()` is provided by the `Bar` component and is accepting two parameters. Both are `objects`. The first one is your chart data and the second one is an options object.
+The method `this.renderChart()` is provided by the `Bar` component and accepts two parameters: both are `objects`. The first one is your chart data, and the second one is an options object.
 
 Check out the official [Chart.js docs](http://www.chartjs.org/docs/latest/#creating-a-chart) to see the object structure you need to provide.
 
 ### Vue Single File Components
 
-Most examples in the docs are based on javascript files and not `.vue` files. This is because you mostly will only need the `<script>` block. You can, however, use `.vue` files as well.
+Most examples in the docs are based on JavaScript files and not `.vue` files. This is because, mostly, you will only need the `<script>` block. You can, however, use `.vue` single-file components as well.
 
 **Chart.vue**
 
@@ -89,19 +94,19 @@ export default {
 ```
 
 ::: danger Template Tag can not be merged
-Do not include the `<template>` tag to your `.vue` files. Vue can **not** merge templates. If you add an empty `<template>` tag, Vue will take the template from your component and not from the extended one, which will result in an empty template and errors.
+Do not include the `<template>` tag in your `.vue` single-file components. Vue can **not** merge templates. If you add an empty `<template>` tag, Vue will take the template from your component and not from the extended one, which will result in an empty template and unexpected errors.
 :::
 
 ## Updating Charts
 
-Chart.js does not provide a live update if you change the datasets. However, `vue-chartjs` provides two mixins to achieve this.
+Chart.js does not provide a live update if you change the datasets. However, `vue-chartjs` provides two mixins to achieve this:
 
 - `reactiveProp`
 - `reactiveData`
 
-Both mixins do actually achieve the same. Most of the time you will use `reactiveProp`. It extends the logic of your chart component and automatically creates a prop named `chartData` and adds a `vue watch` on this prop. On data change, it will either call `update()` if only the data inside the datasets has changed or `renderChart()` if new datasets were added.
+Both mixins achieve the same result. Most of the time you will use `reactiveProp`. It extends the logic of your chart component and automatically creates a prop named `chartData` and adds a `vue watch` on this prop. On data mutation, it will call `update()` if the data inside the datasets has changed, or `renderChart()` if new datasets were added.
 
-`reactiveData` simply creates a local chartData variable which is not a prop! and adds a watcher. This is only useful if you need single purpose charts and make an API call inside your chart component.
+`reactiveData` simply creates a local `chartData` variable (which is not a `prop`!) and adds a watcher. This is only useful if you need single-purpose charts or need an API call inside your chart component.
 
 ### Example
 
@@ -190,7 +195,7 @@ export default {
 
 ### Events
 
-The reactive mixins will emit events if the data changes. You can listen to them with `v:on` on the chart component. Following events are available:
+These reactive mixins will emit events if the data changes. You can listen to them with `v:on` in the chart component. The following events are available:
 
 - `chart:render` - if the mixin performs a complete rerender
 - `chart:destroy` - if the mixin deletes the chart object instance
@@ -202,15 +207,15 @@ The reactive mixins will emit events if the data changes. You can listen to them
 
 ### Troubleshooting
 
-The reactivity system at its current state is not **robust**. You will run into several problems with it because there are many use-cases and ways to pass in your data.
+The reactivity system at its current state is not **robust**. You will run into several problems with it because there are many use cases and ways to pass in your data.
 
 #### Options
 
-The `options` object is not reactive right now. So if you dynamically change the chart options, they will not be recognized by the mixin. You can create a watcher to destroy and rerender when chart options are updated.
+The `options` object is not currently implemented reactively. Therefore, if you dynamically change the chart options, they will not be recognized by the mixin. If needed, you can create a watcher to destroy and rerender when chart options are updated.
 
-If you are using the mixin you need to pass in your options as a prop names `options`. This is important because the mixin will call chart.js `update()` method or destroy and render a new chart. If the mixin renders a new chart it calls `this.renderChart(this.chartData, this.options)`.
+If you are using the mixin you need to pass in your options as a prop named `options`. This is important because the mixin will either call the Chart.js `update()` method or destroy and render a new chart. If the mixin renders a new chart, it calls `this.renderChart(this.chartData, this.options)`.
 
-But if you pass in your options directly in your `mounted()` hook, they get lost.
+But, if you pass in your options directly in your `mounted()` hook, they get destroyed.
 
 ::: danger Wrong Way
 ```js {7}
@@ -243,8 +248,8 @@ export default {
 
 #### Own watcher
 
-If you transform your data a lot of changing it (instead of pushing new data) it is the best, if you implement your own watcher.
-You can then either call `this.$data._chart.update()` or `this.renderChart()` by yourself, depending on your needs.
+If you transform your data, mutating (instead of pushing new data) it is the best method, if you implement your own watcher.
+You can then either call `this.$data._chart.update()` or `this.renderChart()` independently, depending on your needs.
 
 A simple watcher would be:
 
@@ -260,9 +265,9 @@ watch: {
 
 ### Chart with props
 
-Your goal should be to create reusable chart components. For this purpose, you should utilize Vue.js props to pass in your options and your chart data. This way the chart itself does not care, about fetching data and is only for presentation.
+Your goal should be to create reusable chart components. For this purpose, you should utilize Vue.js props to pass in your options and your chart data. This way, the chart itself does not hold an opinion about fetching data and is only for presentation.
 
-First, create your component
+First, create your component:
 
 ```js
 import { Line } from 'vue-chartjs'
@@ -285,7 +290,7 @@ export default {
 }
 ```
 
-After that you can add your chart component to a parent component
+After that you can add your chart component to a parent component:
 
 ```js
 <line-chart :chartdata="chartData" :options="chartOptions"/>
@@ -293,7 +298,7 @@ After that you can add your chart component to a parent component
 
 ### Chart with local data
 
-You can handle your chart data directly in your own chart component. You only need to pass it to the `renderChart()` method.
+You can handle your chart data directly in your own chart component. You only need to pass it to the `renderChart()` method:
 
 ```js
 import { Bar } from 'vue-chartjs'
@@ -325,7 +330,7 @@ export default {
 
 ### Chart with API data
 
-It is a common pattern to use an API to get your data. However, there are some things to keep in mind. The most common problem is, that you mount your chart component directly and pass in data from an async API call. The problem with this approach is, that chart.js tries to render your chart and access the chart data, but your API call is async. So you chart mounts before your data arrives.
+A common pattern is to use an API to retrieve your data. However, there are some things to keep in mind. The most common problem is that you mount your chart component directly and pass in data from an asyncronous API call. The problem with this approach is that Chart.js tries to render your chart and access the chart data syncronously, so your chart mounts before the API data arrives.
 
 To prevent this, a simple `v-if` is the best solution.
 
@@ -355,6 +360,7 @@ export default {
 ```
 
 Then create a container component, which handles your api call or vuex connection.
+
 **ChartContainer.vue**
 
 ```html {4}
@@ -393,7 +399,7 @@ export default {
 
 ### Chart with dynamic styles
 
-You can set `responsive: true` and pass in a styles object which get applied as inline styles to the outer div. This way you can change the height and width of the outer container dynamically. Which is not the default behaviour of chart.js. It is best to use computed properties for this.
+You can set `responsive: true` and pass in a styles object which gets applied as inline styles to the outer `<div>`. This way, you can change the height and width of the outer container dynamically, which is not the default behaviour of Chart.js. It is best to use computed properties for this.
 
 ::: warning
  You need to set `position: relative`
@@ -433,9 +439,9 @@ export default {
 
 ### Custom / New Charts
 
-Sometimes you need to extend the default Chart.js charts. There are a lot of [examples](http://www.chartjs.org/docs/latest/developers/charts.html) how to extend and modify the default charts. Or you want to create a own chart type.
+Sometimes you need to extend the default Chart.js charts. There are a lot of [examples](http://www.chartjs.org/docs/latest/developers/charts.html) on how to extend and modify the default charts. Or, you can create your own chart type.
 
-In `vue-chartjs`, you can do this pretty much the same way.
+In `vue-chartjs`, you can do this pretty much the same way:
 
 ```js
 // 1. Import Chart.js so you can use the global Chart object
@@ -464,7 +470,7 @@ export default {
 
 ## Resourcess
 
-You can find here some resources like tutorials on how to use `vue-chartjs`
+Here are some resources, such as tutorials, on how to use `vue-chartjs`:
 
 - [Using vue-chartjs with WordPress](https://medium.com/@apertureless/wordpress-vue-and-chart-js-6b61493e289f)
 - [Create stunning Charts with Vue and Chart.js](https://hackernoon.com/creating-stunning-charts-with-vue-js-and-chart-js-28af584adc0a)
