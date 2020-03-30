@@ -91,13 +91,18 @@ module.exports = {
         },
       },
       '/pt-br/': {
-        selectText: 'Languages',
+        selectText: 'Linguas',
         label: 'Português do Brasil',
-        editLinkText: 'Edit this page on GitHub',
+        editLinkText: 'Edite esta página no GitHub',
+        nav: [
+          { text: 'Home', link: '/pt-br/' },
+          { text: 'Guia', link: '/pt-br/guide/' },
+          { text: 'API', link: '/pt-br/api/' }
+        ],
         serviceWorker: {
           updatePopup: {
-            message: "New content is available.",
-            buttonText: "Refresh"
+            message: "Novo conteúdo está disponível.",
+            buttonText: "Atualizar"
           }
         },
       },
@@ -147,7 +152,7 @@ module.exports = {
     '/pt-br/': {
       lang: 'pt-br',
       title: '📈 vue-chartjs',
-      description: '⚡ Easy and beautiful charts with Chart.js and Vue.js'
+      description: '⚡ Gráficos bonitos e fácil com Chart.js e Vue.js'
     },
     '/fr-fr/': {
       lang: 'fr-fr',
