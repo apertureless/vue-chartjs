@@ -1,14 +1,14 @@
 ---
 home: true
 heroImage: /vue-chartjs.png
-actionText: Get Started →
-actionLink: /guide/
+actionText: Começar →
+actionLink: /pt-br/guide/
 features:
-- title: Easy
-  details: Easy for both beginners and pros 🙌
-- title: Extendable
-  details: Simple to use, easy to extend 💪
-- title: Powerful
-  details: With the full power of chart.js 💯
-footer: MIT Licensed | Copyright © 2018-present Jakub Juszczak
+- title: Fácil
+  details: Fácil para ambos, iniciantes e profissionais 🙌
+- title: Extensível
+  details: Simples de usar, fácil de estender 💪
+- title: Poderoso
+  details: Com todo o poder do chart.js 💯
+footer: MIT Licenciado | Copyright © 2018-presente Jakub Juszczak
 ---
