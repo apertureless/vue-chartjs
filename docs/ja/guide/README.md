@@ -281,8 +281,6 @@ export default {
   }
 }
 ```
-
-After that you can add your chart component to a parent component
 その後、作成したチャートコンポーネントを親コンポーネントに追加できます。
 
 ```js
@@ -291,8 +289,7 @@ After that you can add your chart component to a parent component
 
 ### ローカルデータを使用したチャート
 
-You can handle your chart data directly in your own chart component. You only need to pass it to the `renderChart()` method.
-独自ののチャートコンポーネントでチャートデータを直接扱うことができます。 コンポーネント内のチャートデータを `renderChart()`メソッドに渡すだけです。
+独自のチャートコンポーネントでチャートデータを直接扱うことができます。 コンポーネント内のチャートデータを `renderChart()`メソッドに渡すだけです。
 
 ```js
 import { Bar } from 'vue-chartjs'
