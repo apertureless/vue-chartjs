@@ -40,6 +40,8 @@ If you're looking for v1 check this [branch](https://github.com/apertureless/vue
 - **yarn** install: `yarn add vue-chartjs chart.js`
 - **npm** install: `npm install vue-chartjs chart.js --save`
 
+Please note: vue-chartjs uses [Scarf](https://www.npmjs.com/package/@scarf/scarf) to collect anonymized installation analytics. These analytics help support the maintainers of this library. However, if you'd like to opt out, you can do so by setting `scarfSettings.enabled = false` in your project's package.json. Alternatively, you can set the environment variable `SCARF_ANALYTICS=false`.
+
 Or if you want to use it directly in the browser add
 
 ```html

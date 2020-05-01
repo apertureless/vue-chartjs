@@ -147,5 +147,8 @@
       "webpack",
       "webpack-merge"
     ]
+  },
+  "dependencies": {
+    "@scarf/scarf": "^1.0.4"
   }
 }
