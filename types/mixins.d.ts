@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import {} from 'chart.js';
+import 'chart.js';
 
 export declare class ReactiveDataMixin extends Vue {
   chartData: Chart.ChartData;
