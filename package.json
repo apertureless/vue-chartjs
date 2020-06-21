@@ -63,6 +63,9 @@
   "peerDependencies": {
     "chart.js": ">= 2.5"
   },
+  "dependencies": {
+    "@types/chart.js": "^2.7.55"
+  },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.42",
     "@babel/core": "^7.0.0-beta.42",
