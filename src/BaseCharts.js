@@ -69,6 +69,7 @@ export function generateChart (chartId, chartType) {
       },
       renderChart (data, options) {
         if (this.$data._chart) this.$data._chart.destroy()
+        if (!this.$refs.canvas) throw "No canvas found. If you are using a VUE compiler remove the `<template></template>` tags from your component."
         this.$data._chart = new Chart(
           this.$refs.canvas.getContext('2d'), {
             type: chartType,
