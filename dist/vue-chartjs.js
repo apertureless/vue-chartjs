@@ -293,6 +293,7 @@ function generateChart(chartId, chartType) {
       },
       renderChart: function renderChart(data, options) {
         if (this.$data._chart) this.$data._chart.destroy();
+        if (!this.$refs.canvas) throw new Error('Please remove the <template></template> tags from your chart component. See https://vue-chartjs.org/guide/#vue-single-file-components');
         this.$data._chart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(this.$refs.canvas.getContext('2d'), {
           type: chartType,
           data: data,
