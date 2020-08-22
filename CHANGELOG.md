@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.5.1](https://github.com/apertureless/vue-chartjs/compare/v3.5.0...v3.5.1) (2020-08-22)
+
+
+### Bug Fixes
+
+* Fix typescript issue [#614](https://github.com/apertureless/vue-chartjs/issues/614) ([#621](https://github.com/apertureless/vue-chartjs/issues/621)) ([2901be4](https://github.com/apertureless/vue-chartjs/commit/2901be4a7599630e1f6fe75d25fa9f2c3bf94582))
+
 ## [3.5.0](https://github.com/apertureless/vue-chartjs/compare/v3.4.2...v3.5.0) (2019-11-01)
 
 
