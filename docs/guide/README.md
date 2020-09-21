@@ -469,6 +469,42 @@ export default {
 }
 ```
 
+### Overriding Chart.js Global Defaults
+##### e.g. Set default global font
+
+Sometimes you need to override the default settings of Chart.js. For example to set a global default font similar to this [example](https://www.chartjs.org/docs/latest/general/fonts.html).
+
+To achieve this, you need to import Chart.js manually in your Vue componenent. There you can set global defaults:
+
+```vue
+
+<script>
+import Chart from 'chart.js'
+Chart.defaults.global.defaultFontFamily = 'Open Sans'
+import { Line } from 'vue-chartjs'
+
+export default {
+    extends: Line,
+    props: {
+        chartdata: {
+            type: Object,
+            default: null,
+        },
+        options: {
+            type: Object,
+            default: null,
+        },
+    },
+
+    mounted() {
+        this.renderChart(this.chartdata, this.options)
+    },
+}
+</script>
+
+
+```
+
 ## Resourcess
 
 Here are some resources, such as tutorials, on how to use `vue-chartjs`:
