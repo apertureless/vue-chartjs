@@ -122,7 +122,7 @@
     "sinon": "^2.1.0",
     "sinon-chai": "^2.9.0",
     "url-loader": "^0.5.8",
-    "vue": "2.5.17",
+    "vue": "3.0.0",
     "vue-hot-reload-api": "2.3.1",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^14.2.1",
