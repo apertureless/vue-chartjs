@@ -111,6 +111,7 @@ or in TypeScript
 
 ```ts
 // CommitChart.ts
+import { Component, Mixins } from 'vue-property-decorator'
 import { Bar, mixins } from 'vue-chartjs';
 import { Component } from 'vue-property-decorator';
 
@@ -118,7 +119,7 @@ import { Component } from 'vue-property-decorator';
     extends: Bar, // this is important to add the functionality to your component
     mixins: [mixins.reactiveProp]
 })
-export default class CommitChart extends Vue<Bar> {
+export default class CommitChart extends Mixins(mixins.reactiveProp, Bar) {
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart({
