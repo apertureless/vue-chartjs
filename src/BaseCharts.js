@@ -1,4 +1,6 @@
-import Chart from 'chart.js'
+import { Arc, BarController, BubbleController, CategoryScale, Chart, DoughnutController, Filler, Legend, Line as ChartLine, LineController, LinearScale, LogarithmicScale, PieController, Point, PolarAreaController, RadarController, RadialLinearScale, Rectangle, ScatterController, TimeScale, TimeSeriesScale, Title, Tooltip } from 'chart.js';
+
+Chart.register(Arc, BarController, BubbleController, CategoryScale, DoughnutController, Filler, Legend, ChartLine, LineController, LinearScale, LogarithmicScale, PieController, Point, PolarAreaController, RadarController, RadialLinearScale, Rectangle, ScatterController, TimeScale, TimeSeriesScale, Title, Tooltip);
 
 export function generateChart (chartId, chartType) {
   return {
