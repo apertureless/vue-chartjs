@@ -1,3 +1,4 @@
+
 import {
   Arc,
   BarController,
@@ -14,7 +15,7 @@ import {
   PieController,
   Point,
   PolarAreaController,
-  RadarController
+  RadarController,
   RadialLinearScale,
   Rectangle,
   ScatterController,
@@ -32,14 +33,14 @@ Chart.register(
   DoughnutController,
   Filler,
   Legend,
-  Line as ChartLine,
+  ChartLine,
   LineController,
   LinearScale,
   LogarithmicScale,
   PieController,
   Point,
   PolarAreaController,
-  RadarController
+  RadarController,
   RadialLinearScale,
   Rectangle,
   ScatterController,
