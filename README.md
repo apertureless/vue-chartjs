@@ -253,6 +253,62 @@ export default {
     this.renderChart(this.chartData, this.options)
   }
 }
+### Out-of-the-box Store Reactivity
+
+Reactivity with a central store is a breeze. Just have the filler method return the datacollection you'll use for the chart. Naturally, you'll have to define your getters in the store for your data:
+
+E.g. Bar chart as module import:
+
+```javascript
+// BarChart.js
+import { Bar, mixins } from "vue-chartjs";
+
+export default {
+  extends: Bar,
+  mixins: [mixins.reactiveProp],
+  props: ["chartData", "options"],
+  mounted() {
+    this.renderChart(this.chartData, this.options);
+  },
+};
+```
+
+Vue Single File Component:
+
+```html
+<template>
+  <div class="small">
+    <bar-chart :chart-data="fillData()"></bar-chart>
+  </div>
+</template>
+
+<script>
+  import store from "../store/index"; // assuming standard store setup
+
+  import BarChart from "./BarChart.js";
+
+  export default {
+    components: {
+      BarChart,
+    },
+
+    store,
+
+    methods: {
+      fillData() {
+        return {
+          labels: ["First Column"],
+          datasets: [
+            {
+              label: "First Column",
+              data: [this.$store.getters.yourAwesomeData],
+            },
+          ],
+        };
+      },
+    },
+  };
+</script>
 ```
 
 ## Single File Components
