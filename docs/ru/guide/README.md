@@ -142,7 +142,7 @@ const { reactiveProp } = mixins
 export default {
   extends: Line,
   mixins: [reactiveProp],
-  props: ['options'],
+  props: ['chartData', 'options'],
   mounted () {
     // this.chartData создаётся внутри миксина.
     // Если вы хотите передать опции, создайте локальный объект options
