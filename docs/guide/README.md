@@ -505,7 +505,7 @@ export default {
 
 ```
 
-## Resourcess
+## Resources
 
 Here are some resources, such as tutorials, on how to use `vue-chartjs`:
 
