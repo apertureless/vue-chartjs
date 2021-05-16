@@ -37,13 +37,13 @@ If you're looking for v1 check this [branch](https://github.com/apertureless/vue
 
 ## Install
 
-- **yarn** install: `yarn add vue-chartjs chart.js`
-- **npm** install: `npm install vue-chartjs chart.js --save`
+- **yarn** install: `yarn add vue-chartjs chart.js@2.9.4`
+- **npm** install: `npm install vue-chartjs chart.js@2.9.4`
 
 Or if you want to use it directly in the browser add
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
 ```
 to your scripts. See [Codepen](https://codepen.io/apertureless/pen/zEvvWM)
