@@ -61,7 +61,7 @@
     "docs:build": "vuepress build docs"
   },
   "peerDependencies": {
-    "chart.js": ">= 2.5"
+    "chart.js": "^2.5"
   },
   "dependencies": {
     "@types/chart.js": "^2.7.55"
