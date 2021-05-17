@@ -1,4 +1,7 @@
-import Chart from 'chart.js'
+
+import * as ChartJs from 'chart.js'
+
+ChartJs.Chart.register.apply(null, Object.values(ChartJs).filter((chartClass) => (chartClass.id)))
 
 export function generateChart (chartId, chartType) {
   return {
@@ -70,7 +73,7 @@ export function generateChart (chartId, chartType) {
       renderChart (data, options) {
         if (this.$data._chart) this.$data._chart.destroy()
         if (!this.$refs.canvas) throw new Error('Please remove the <template></template> tags from your chart component. See https://vue-chartjs.org/guide/#vue-single-file-components')
-        this.$data._chart = new Chart(
+        this.$data._chart = new ChartJs.Chart(
           this.$refs.canvas.getContext('2d'), {
             type: chartType,
             data: data,
