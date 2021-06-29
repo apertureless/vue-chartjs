@@ -77,7 +77,7 @@ Most examples in the docs are based on JavaScript files and not `.vue` files. Th
 
 **Chart.vue**
 
-```js
+```vue
 <script>
 import { Line } from 'vue-chartjs'
 
@@ -112,6 +112,7 @@ Both mixins achieve the same result. Most of the time you will use `reactiveProp
 ### Example
 
 **LineChart.js**
+
 ```javascript
 import { Line, mixins } from 'vue-chartjs'
 const { reactiveProp } = mixins
@@ -130,7 +131,7 @@ export default {
 
 **RandomChart.vue**
 
-```javascript
+```vue
 <template>
   <div class="small">
     <line-chart :chart-data="datacollection"></line-chart>
@@ -406,7 +407,7 @@ You can set `responsive: true` and pass in a styles object which gets applied as
  You need to set `position: relative`
 :::
 
-```html
+```vue
 <template>
   <div>
     <line-chart :styles="myStyles"/>
@@ -469,7 +470,7 @@ export default {
 }
 ```
 
-## Resourcess
+## Resources
 
 Here are some resources, such as tutorials, on how to use `vue-chartjs`:
 
