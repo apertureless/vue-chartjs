@@ -15,11 +15,11 @@ It abstracts the basic logic but exposes the Chart.js object to give you maximal
 You can install `vue-chartjs` over `yarn` or `npm`. However, you also need to add `chart.js` as a dependency to your project because `Chart.js` is a peerDependency. This way you can have full control over the versioning of `Chart.js`.
 
 ```bash
-yarn add vue-chartjs chart.js
+yarn add vue-chartjs chart.js@2.9.4
 ```
 
 ```bash
-npm install vue-chartjs chart.js --save
+npm install vue-chartjs chart.js@2.9.4
 ```
 
 ::: tip
