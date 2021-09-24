@@ -262,6 +262,39 @@ watch: {
 }
 ```
 
+#### Responsive
+
+If you want the chart to be responsive and to respect an aspect ratio, you have to set the `width` and the `height` props of your chart component to null after setting the `aspectRatio` in the chart `options`
+
+Here is your chart component in it's parent template.
+```vue
+<template>
+    <MyChartComponent :width="null" :height="null"></MyChartComponent>
+</template>
+```
+
+Here is the component definition
+```js
+import { Line } from 'vue-chartjs'
+
+export default {
+  name: 'MyChartComponent',
+  extends: Line,
+  props: {
+    chartdata: {
+      type: Object,
+      default: null
+    },
+  },
+  mounted () {
+    const options = {
+        responsive: true,
+        aspectRatio: 1.5 // width/height
+    }
+    this.renderChart(this.chartdata, options)
+  }
+}
+```
 ## Examples
 
 ### Chart with props
