@@ -1,30 +1,20 @@
 {
-  "name": "vue-chartjs",
+  "name": "@aram-zahedi/vue-chartjs",
   "version": "3.5.1",
   "description": "Vue.js wrapper for chart.js for creating beautiful charts.",
   "author": "Jakub Juszczak <jakub@posteo.de>",
   "homepage": "http://vue-chartjs.org",
   "license": "MIT",
   "contributors": [
-    {
-      "name": "Thorsten Lünborg",
-      "web": "https://github.com/LinusBorg"
-    },
-    {
-      "name": "Juan Carlos Alonso",
-      "web": "https://github.com/jcalonso"
-    }
+    "Thorsten Lünborg (https://github.com/LinusBorg)",
+    "Juan Carlos Alonso (https://github.com/jcalonso)"
   ],
   "maintainers": [
-    {
-      "name": "Jakub Juszczak",
-      "email": "jakub@posteo.de",
-      "web": "http://www.jakubjuszczak.de"
-    }
+    "Jakub Juszczak <jakub@posteo.de> (http://www.jakubjuszczak.de)"
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:apertureless/vue-chartjs.git"
+    "url": "git+ssh://git@github.com/apertureless/vue-chartjs.git"
   },
   "bugs": {
     "url": "https://github.com/apertureless/vue-chartjs/issues"
@@ -51,12 +41,10 @@
     "dev": "node build/dev-server.js",
     "build": "yarn run release && yarn run build:es",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "unit": "karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "release": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.js && cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js",
-    "prepublishOnly": "yarn run lint && yarn run test && yarn run build",
+    "prepublishOnly": "",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
@@ -150,5 +138,8 @@
       "webpack",
       "webpack-merge"
     ]
+  },
+  "directories": {
+    "doc": "docs"
   }
 }
