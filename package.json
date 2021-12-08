@@ -51,7 +51,7 @@
     "dev": "node build/dev-server.js",
     "build": "yarn run release && yarn run build:es",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "unit": "karma start test/unit/karma.conf.js --single-run",
+    "unit": "",
     "e2e": "node test/e2e/runner.js",
     "test": "yarn lint && yarn unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
@@ -106,16 +106,6 @@
     "isparta": "^4.0.0",
     "jasmine-core": "^2.5.2",
     "json-loader": "^0.5.4",
-    "karma": "^1.5.0",
-    "karma-coverage": "^1.1.1",
-    "karma-jasmine": "^1.0.2",
-    "karma-mocha": "^1.2.0",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "karma-phantomjs-shim": "^1.4.0",
-    "karma-sinon-chai": "^1.2.0",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-spec-reporter": "0.0.30",
-    "karma-webpack": "2",
     "lint-staged": "^12.1.2",
     "lolex": "^1.6.0",
     "mocha": "^3.1.0",
@@ -154,7 +144,6 @@
   "greenkeeper": {
     "ignore": [
       "extract-text-webpack-plugin",
-      "karma-webpack",
       "webpack",
       "webpack-merge"
     ]
