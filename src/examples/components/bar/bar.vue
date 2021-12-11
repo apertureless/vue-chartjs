@@ -1,0 +1,48 @@
+<template>
+  <bar-example
+    :chart-id="chartId"
+    :width="width"
+    :height="height"
+    :css-classes="cssClasses"
+    :styles="styles"
+    :plugins="plugins"
+  />
+</template>
+
+<script>
+import BarExample from './BarExample';
+
+export default {
+  name: 'BarChart',
+  components: {
+    BarExample,
+  },
+  props: {
+    chartId: {
+      type: String,
+      default: 'bar-chart',
+    },
+    width: {
+      type: Number,
+      default: 400,
+    },
+    height: {
+      type: Number,
+      default: 400,
+    },
+    cssClasses: {
+      default: '',
+      type: String,
+    },
+    styles: {
+      type: Object,
+    },
+    plugins: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
+};
+</script>
