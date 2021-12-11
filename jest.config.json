@@ -1,0 +1,32 @@
+{
+	"name": "vue-chartjs",
+	"displayName": "vue-chartjs",
+	"testEnvironment": "jsdom",
+	"setupFiles": [
+		"<rootDir>/test/unit/setup-test.js"
+	],
+	"testMatch": [
+		"<rootDir>/test/unit/jest-specs/(*.)spec.(js|ts)"
+	],
+	"moduleFileExtensions": [
+		"js",
+		"ts",
+		"vue"
+	],
+	"transform": {
+		"^.+\\.vue$": "@vue/vue2-jest",
+		"^.+\\.js$": "babel-jest"
+	},
+	"moduleNameMapper": {
+		"^@/(.*)$": "<rootDir>/src/$1"
+	},
+	"collectCoverage": true,
+	"collectCoverageFrom": [
+		"<rootDir>/src/**/*.{js|ts}"
+	],
+	"coverageDirectory": "<rootDir>/test/unit/coverage",
+	"coverageReporters": [
+		"lcovonly",
+		"text"
+	]
+}
