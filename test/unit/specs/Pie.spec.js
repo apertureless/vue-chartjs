@@ -1,105 +1,66 @@
-import Vue from 'vue'
-import PieChart from '@/examples/PieExample'
+import { mount } from '@vue/test-utils';
+import PieChart from '@/examples/components/pie/pie.vue';
 
 describe('PieChart', () => {
-  let el
-
-  beforeEach(() => {
-    el = document.createElement('div')
-  })
-
   it('should render a canvas', () => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          PieChart
-        )
-      },
-      components: { PieChart }
-    }).$mount(el)
+    const wrapper = mount(PieChart);
 
-    expect(vm.$el.querySelector('#pie-chart')).not.to.be.an('undefined')
-    expect(vm.$el.querySelector('canvas')).not.to.be.an('undefined')
-    expect(vm.$el.querySelector('canvas')).not.to.be.an('null')
-    expect(vm.$el.querySelector('canvas')).to.exist
-  })
+    const pieChartEl = wrapper.find('#pie-chart');
+    expect(pieChartEl.element.id).not.toBe('undefined');
+    expect(pieChartEl.exists()).toBe(true);
+
+    const canvasEl = wrapper.find('canvas');
+    expect(canvasEl.exists()).toBe(true);
+  });
 
   it('should change id based on prop', () => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          PieChart, {
-            props: {
-              chartId: 'piechartprop'
-            }
-          }
-        )
-      },
-      components: { PieChart }
-    }).$mount(el)
+    const wrapper = mount(PieChart, {
+      propsData: { chartId: 'piechartprop' },
+    });
 
-    expect(vm.$el.querySelector('#piechartprop')).not.to.be.an('undefined')
-  })
-  it('should destroy chart instance', (done) => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          PieChart
-        )
-      },
-      components: { PieChart }
-    }).$mount(el)
+    const pieChartEl = wrapper.find('#piechartprop');
+    expect(pieChartEl.element.id).not.toBe('undefined');
+    expect(pieChartEl.exists()).toBe(true);
+  });
+  it('should destroy chart instance', done => {
+    const wrapper = mount(PieChart);
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._chart.chart.ctx).not.to.be.null
+    expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null);
 
-    vm.$destroy()
+    vm.$destroy();
 
     vm.$nextTick(() => {
-      vm.$forceUpdate()
-      expect(vm.$children[0].$data._chart.chart.ctx).to.be.null
-      done()
-    })
-  })
+      vm.$forceUpdate();
+      expect(vm.$children[0].$data._chart.chart.ctx).toBe(null);
+      done();
+    });
+  });
 
   it('should add an inline plugin to the array', () => {
     const testPlugin = {
-      id: 'test'
-    }
+      id: 'test',
+    };
 
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          PieChart
-        )
-      },
-      components: { PieChart }
-    }).$mount(el)
+    const wrapper = mount(PieChart);
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._plugins).to.exist
-    vm.$children[0].addPlugin(testPlugin)
+    expect(vm.$children[0].$data._plugins).toEqual([]);
+    vm.$children[0].addPlugin(testPlugin);
 
-    expect(vm.$children[0].$data._plugins.length).to.equal(1)
-  })
+    expect(vm.$children[0].$data._plugins.length).toEqual(1);
+  });
 
   it('should add inline plugins based on prop', () => {
     const testPlugin = {
-      id: 'test'
-    }
+      id: 'test',
+    };
 
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          PieChart, {
-            props: {
-              plugins: [testPlugin]
-            }
-          }
-        )
-      },
-      components: { PieChart }
-    }).$mount(el)
+    const wrapper = mount(PieChart, {
+      propsData: { plugins: [testPlugin] },
+    });
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._plugins).to.exist
-    expect(vm.$children[0].$data._plugins.length).to.equal(1)
-  })
-})
+    expect(vm.$children[0].$data._plugins.length).toEqual(1);
+  });
+});

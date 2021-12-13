@@ -1,106 +1,67 @@
-import Vue from 'vue'
-import ScatterChart from '@/examples/ScatterExample'
+import { mount } from '@vue/test-utils';
+import ScatterChart from '@/examples/components/scatter/scatter.vue';
 
 describe('ScatterChart', () => {
-  let el
-
-  beforeEach(() => {
-    el = document.createElement('div')
-  })
-
   it('should render a canvas', () => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          ScatterChart
-        )
-      },
-      components: { ScatterChart }
-    }).$mount(el)
+    const wrapper = mount(ScatterChart);
 
-    expect(vm.$el.querySelector('#scatter-chart')).not.to.be.an('undefined')
-    expect(vm.$el.querySelector('canvas')).not.to.be.an('undefined')
-    expect(vm.$el.querySelector('canvas')).not.to.be.an('null')
-    expect(vm.$el.querySelector('canvas')).to.exist
-  })
+    const scatterChartEl = wrapper.find('#scatter-chart');
+    expect(scatterChartEl.element.id).not.toBe('undefined');
+    expect(scatterChartEl.exists()).toBe(true);
+
+    const canvasEl = wrapper.find('canvas');
+    expect(canvasEl.exists()).toBe(true);
+  });
 
   it('should change id based on prop', () => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          ScatterChart, {
-            props: {
-              chartId: 'linechartprop'
-            }
-          }
-        )
-      },
-      components: { ScatterChart }
-    }).$mount(el)
+    const wrapper = mount(ScatterChart, {
+      propsData: { chartId: 'scatterchartprop' },
+    });
 
-    expect(vm.$el.querySelector('#linechartprop')).not.to.be.an('undefined')
-  })
+    const scatterChartEl = wrapper.find('#scatterchartprop');
+    expect(scatterChartEl.element.id).not.toBe('undefined');
+    expect(scatterChartEl.exists()).toBe(true);
+  });
 
-  it('should destroy chart instance', (done) => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          ScatterChart
-        )
-      },
-      components: { ScatterChart }
-    }).$mount(el)
+  it('should destroy chart instance', done => {
+    const wrapper = mount(ScatterChart);
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._chart.chart.ctx).not.to.be.null
+    expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null);
 
-    vm.$destroy()
+    vm.$destroy();
 
     vm.$nextTick(() => {
-      vm.$forceUpdate()
-      expect(vm.$children[0].$data._chart.chart.ctx).to.be.null
-      done()
-    })
-  })
+      vm.$forceUpdate();
+      expect(vm.$children[0].$data._chart.chart.ctx).toBe(null);
+      done();
+    });
+  });
 
   it('should add an inline plugin to the array', () => {
     const testPlugin = {
-      id: 'test'
-    }
+      id: 'test',
+    };
 
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          ScatterChart
-        )
-      },
-      components: { ScatterChart }
-    }).$mount(el)
+    const wrapper = mount(ScatterChart);
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._plugins).to.exist
-    vm.$children[0].addPlugin(testPlugin)
+    expect(vm.$children[0].$data._plugins).toEqual([]);
+    vm.$children[0].addPlugin(testPlugin);
 
-    expect(vm.$children[0].$data._plugins.length).to.equal(1)
-  })
+    expect(vm.$children[0].$data._plugins.length).toEqual(1);
+  });
 
   it('should add inline plugins based on prop', () => {
     const testPlugin = {
-      id: 'test'
-    }
+      id: 'test',
+    };
 
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          ScatterChart, {
-            props: {
-              plugins: [testPlugin]
-            }
-          }
-        )
-      },
-      components: { ScatterChart }
-    }).$mount(el)
+    const wrapper = mount(ScatterChart, {
+      propsData: { plugins: [testPlugin] },
+    });
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._plugins).to.exist
-    expect(vm.$children[0].$data._plugins.length).to.equal(1)
-  })
-})
+    expect(vm.$children[0].$data._plugins.length).toEqual(1);
+  });
+});

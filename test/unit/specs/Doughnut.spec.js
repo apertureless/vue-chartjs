@@ -1,106 +1,67 @@
-import Vue from 'vue'
-import DoughnutChart from '@/examples/DoughnutExample'
+import { mount } from '@vue/test-utils';
+import DoughnutChart from '@/examples/components/doughnut/doughnut.vue';
 
 describe('DoughnutChart', () => {
-  let el
-
-  beforeEach(() => {
-    el = document.createElement('div')
-  })
-
   it('should render a canvas', () => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          DoughnutChart
-        )
-      },
-      components: { DoughnutChart }
-    }).$mount(el)
+    const wrapper = mount(DoughnutChart);
 
-    expect(vm.$el.querySelector('#doughnut-chart')).not.to.be.an('undefined')
-    expect(vm.$el.querySelector('canvas')).not.to.be.an('undefined')
-    expect(vm.$el.querySelector('canvas')).not.to.be.an('null')
-    expect(vm.$el.querySelector('canvas')).to.exist
-  })
+    const doughnutChartEl = wrapper.find('#doughnut-chart');
+    expect(doughnutChartEl.element.id).not.toBe('undefined');
+    expect(doughnutChartEl.exists()).toBe(true);
+
+    const canvasEl = wrapper.find('canvas');
+    expect(canvasEl.exists()).toBe(true);
+  });
 
   it('should change id based on prop', () => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          DoughnutChart, {
-            props: {
-              chartId: 'doughnutchartprop'
-            }
-          }
-        )
-      },
-      components: { DoughnutChart }
-    }).$mount(el)
+    const wrapper = mount(DoughnutChart, {
+      propsData: { chartId: 'doughnutchartprop' },
+    });
 
-    expect(vm.$el.querySelector('#doughnutchartprop')).not.to.be.an('undefined')
-  })
+    const doughnutChartEl = wrapper.find('#doughnutchartprop');
+    expect(doughnutChartEl.element.id).not.toBe('undefined');
+    expect(doughnutChartEl.exists()).toBe(true);
+  });
 
-  it('should destroy chart instance', (done) => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          DoughnutChart
-        )
-      },
-      components: { DoughnutChart }
-    }).$mount(el)
+  it('should destroy chart instance', done => {
+    const wrapper = mount(DoughnutChart);
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._chart.chart.ctx).not.to.be.null
+    expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null);
 
-    vm.$destroy()
+    vm.$destroy();
 
     vm.$nextTick(() => {
-      vm.$forceUpdate()
-      expect(vm.$children[0].$data._chart.chart.ctx).to.be.null
-      done()
-    })
-  })
+      vm.$forceUpdate();
+      expect(vm.$children[0].$data._chart.chart.ctx).toBe(null);
+      done();
+    });
+  });
 
   it('should add an inline plugin to the array', () => {
     const testPlugin = {
-      id: 'test'
-    }
+      id: 'test',
+    };
 
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          DoughnutChart
-        )
-      },
-      components: { DoughnutChart }
-    }).$mount(el)
+    const wrapper = mount(DoughnutChart);
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._plugins).to.exist
-    vm.$children[0].addPlugin(testPlugin)
+    expect(vm.$children[0].$data._plugins).toEqual([]);
+    vm.$children[0].addPlugin(testPlugin);
 
-    expect(vm.$children[0].$data._plugins.length).to.equal(1)
-  })
+    expect(vm.$children[0].$data._plugins.length).toEqual(1);
+  });
 
   it('should add inline plugins based on prop', () => {
     const testPlugin = {
-      id: 'test'
-    }
+      id: 'test',
+    };
 
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          DoughnutChart, {
-            props: {
-              plugins: [testPlugin]
-            }
-          }
-        )
-      },
-      components: { DoughnutChart }
-    }).$mount(el)
+    const wrapper = mount(DoughnutChart, {
+      propsData: { plugins: [testPlugin] },
+    });
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._plugins).to.exist
-    expect(vm.$children[0].$data._plugins.length).to.equal(1)
-  })
-})
+    expect(vm.$children[0].$data._plugins.length).toEqual(1);
+  });
+});

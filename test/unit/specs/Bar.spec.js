@@ -1,106 +1,67 @@
-import Vue from 'vue'
-import BarChart from '@/examples/BarExample'
+import { mount } from '@vue/test-utils';
+import BarChart from '@/examples/components/bar/bar.vue';
 
 describe('BarChart', () => {
-  let el
-
-  beforeEach(() => {
-    el = document.createElement('div')
-  })
-
   it('should render a canvas', () => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          BarChart
-        )
-      },
-      components: { BarChart }
-    }).$mount(el)
+    const wrapper = mount(BarChart);
 
-    expect(vm.$el.querySelector('#bar-chart')).not.to.be.an('undefined')
-    expect(vm.$el.querySelector('canvas')).not.to.be.an('undefined')
-    expect(vm.$el.querySelector('canvas')).not.to.be.an('null')
-    expect(vm.$el.querySelector('canvas')).to.exist
-  })
+    const barChart = wrapper.find('#bar-chart');
+    expect(barChart.element.id).not.toBe('undefined');
+    expect(barChart.exists()).toBe(true);
+
+    const canvasEl = wrapper.find('canvas');
+    expect(canvasEl.exists()).toBe(true);
+  });
 
   it('should change id based on prop', () => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          BarChart, {
-            props: {
-              chartId: 'barchartprop'
-            }
-          }
-        )
-      },
-      components: { BarChart }
-    }).$mount(el)
+    const wrapper = mount(BarChart, {
+      propsData: { chartId: 'barchartprop' },
+    });
 
-    expect(vm.$el.querySelector('#barchartprop')).not.to.be.an('undefined')
-  })
+    const barChart = wrapper.find('#barchartprop');
+    expect(barChart.element.id).not.toBe('undefined');
+    expect(barChart.exists()).toBe(true);
+  });
 
-  it('should destroy chart instance', (done) => {
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          BarChart
-        )
-      },
-      components: { BarChart }
-    }).$mount(el)
+  it('should destroy chart instance', done => {
+    const wrapper = mount(BarChart);
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._chart.chart.ctx).not.to.be.null
+    expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null);
 
-    vm.$destroy()
+    vm.$destroy();
 
     vm.$nextTick(() => {
-      vm.$forceUpdate()
-      expect(vm.$children[0].$data._chart.chart.ctx).to.equal
-      done()
-    })
-  })
+      vm.$forceUpdate();
+      expect(vm.$children[0].$data._chart.chart.ctx).toBe(null);
+      done();
+    });
+  });
 
   it('should add an inline plugin to the array', () => {
     const testPlugin = {
-      id: 'test'
-    }
+      id: 'test',
+    };
 
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          BarChart
-        )
-      },
-      components: { BarChart }
-    }).$mount(el)
+    const wrapper = mount(BarChart);
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._plugins).to.exist
-    vm.$children[0].addPlugin(testPlugin)
+    expect(vm.$children[0].$data._plugins).toEqual([]);
+    vm.$children[0].addPlugin(testPlugin);
 
-    expect(vm.$children[0].$data._plugins.length).to.equal(1)
-  })
+    expect(vm.$children[0].$data._plugins.length).toEqual(1);
+  });
 
   it('should add inline plugins based on prop', () => {
     const testPlugin = {
-      id: 'test'
-    }
+      id: 'test',
+    };
 
-    const vm = new Vue({
-      render: function (createElement) {
-        return createElement(
-          BarChart, {
-            props: {
-              plugins: [testPlugin]
-            }
-          }
-        )
-      },
-      components: { BarChart }
-    }).$mount(el)
+    const wrapper = mount(BarChart, {
+      propsData: { plugins: [testPlugin] },
+    });
+    const { vm } = wrapper;
 
-    expect(vm.$children[0].$data._plugins).to.exist
-    expect(vm.$children[0].$data._plugins.length).to.equal(1)
-  })
-})
+    expect(vm.$children[0].$data._plugins.length).toEqual(1);
+  });
+});
