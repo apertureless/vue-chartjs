@@ -18,11 +18,6 @@ export default {
   components: {
     ReactivePropExample,
   },
-  data() {
-    return {
-      dataPoints: {},
-    };
-  },
   props: {
     chartId: {
       type: String,
@@ -42,13 +37,17 @@ export default {
     },
     styles: {
       type: Object,
+      default: () => {},
     },
     plugins: {
       type: Array,
-      default() {
-        return [];
-      },
+      default: () => {},
     },
+  },
+  data() {
+    return {
+      dataPoints: {},
+    };
   },
 };
 </script>

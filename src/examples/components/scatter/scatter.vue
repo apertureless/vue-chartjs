@@ -36,12 +36,11 @@ export default {
     },
     styles: {
       type: Object,
+      default: () => {},
     },
     plugins: {
       type: Array,
-      default() {
-        return [];
-      },
+      default: () => {},
     },
   },
 };
