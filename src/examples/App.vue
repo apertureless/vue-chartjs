@@ -101,6 +101,14 @@ export default {
       height: 20,
     };
   },
+  computed: {
+    myStyles() {
+      return {
+        height: `${this.height}px`,
+        position: 'relative',
+      };
+    },
+  },
   mounted() {
     setInterval(() => {
       this.fillData();
@@ -149,14 +157,6 @@ export default {
             ],
           },
         ],
-      };
-    },
-  },
-  computed: {
-    myStyles() {
-      return {
-        height: `${this.height}px`,
-        position: 'relative',
       };
     },
   },
