@@ -7,7 +7,19 @@
   "moduleFileExtensions": ["js", "ts", "vue"],
   "transform": {
     "^.+\\.vue$": "@vue/vue2-jest",
-    "^.+\\.js$": "babel-jest"
+    "^.+\\.(t|j)sx?$": [
+      "@swc/jest",
+      {
+        "module": {
+          "type": "commonjs"
+        },
+        "env": {
+          "targets": {
+            "node": 12
+          }
+        }
+      }
+    ]
   },
   "moduleNameMapper": {
     "^@/(.*)$": "<rootDir>/src/$1"
