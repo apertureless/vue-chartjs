@@ -1,14 +1,22 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "modules": false,
-      "targets": {
-        "browsers": [
-          "last 2 versions"
-        ]
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "last 2 versions"
+          ]
+        }
       }
-    }],
-    ["@babel/stage-2",{"decoratorsLegacy":true}]
+    ],
+    [
+      "@babel/stage-2",
+      {
+        "decoratorsLegacy": true
+      }
+    ]
   ],
   "comments": false
 }
