@@ -55,12 +55,12 @@
     "e2e": "node test/e2e/runner.js",
     "test": "yarn lint && yarn unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "format": "prettier --write src test",
     "release": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.js && cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js && standard-version",
     "prepublishOnly": "yarn run lint && yarn run test && yarn run build",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "commit": "cz",
-    "format": "prettier --write src test"
+    "commit": "cz"
   },
   "peerDependencies": {
     "chart.js": ">= 2.5"
@@ -71,7 +71,6 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.42",
     "@babel/core": "7.5.5",
-    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
     "@babel/preset-env": "^7.0.0-beta.42",
     "@babel/preset-stage-2": "^7.0.0-beta.42",
     "@commitlint/cli": "^15.0.0",
