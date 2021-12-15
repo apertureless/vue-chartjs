@@ -54,6 +54,7 @@
     "unit": "jest -c jest.config.json",
     "test": "yarn lint && yarn unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "format": "prettier --write src test",
     "release": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.js && cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.min.js && standard-version",
     "prepublishOnly": "yarn run lint && yarn run test && yarn run build",
     "docs:dev": "vuepress dev docs",

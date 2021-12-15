@@ -1,0 +1,13 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "globals": {
+    "expect": true,
+    "jasmine": true,
+    "sinon": true
+  },
+  "rules": {
+    "no-unused-expressions": 0
+  }
+}
