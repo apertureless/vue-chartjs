@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import PolarAreaExample from './PolarAreaExample';
+import PolarAreaExample from './PolarAreaExample'
 
 export default {
   name: 'PolarAreaChart',
@@ -43,5 +43,5 @@ export default {
       default: () => {},
     },
   },
-};
+}
 </script>

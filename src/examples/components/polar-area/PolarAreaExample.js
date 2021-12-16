@@ -1,4 +1,4 @@
-import { PolarArea } from '../../../BaseCharts';
+import { PolarArea } from '../../../BaseCharts'
 
 export default {
   extends: PolarArea,
@@ -36,6 +36,6 @@ export default {
         ],
       },
       { responsive: true, maintainAspectRatio: false }
-    );
+    )
   },
-};
+}

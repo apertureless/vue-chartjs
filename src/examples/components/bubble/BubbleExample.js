@@ -1,4 +1,4 @@
-import { Bubble } from '../../../BaseCharts';
+import { Bubble } from '../../../BaseCharts'
 
 export default {
   extends: Bubble,
@@ -51,6 +51,6 @@ export default {
         ],
       },
       { responsive: true, maintainAspectRatio: false }
-    );
+    )
   },
-};
+}

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import CustomExample from './CustomExample';
+import CustomExample from './CustomExample'
 
 export default {
   name: 'CustomChart',
@@ -43,5 +43,5 @@ export default {
       default: () => {},
     },
   },
-};
+}
 </script>

@@ -1,4 +1,4 @@
-import { Doughnut } from '../../../BaseCharts';
+import { Doughnut } from '../../../BaseCharts'
 
 export default {
   extends: Doughnut,
@@ -14,6 +14,6 @@ export default {
         ],
       },
       { responsive: true, maintainAspectRatio: false }
-    );
+    )
   },
-};
+}

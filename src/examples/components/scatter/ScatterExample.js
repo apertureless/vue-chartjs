@@ -1,4 +1,4 @@
-import { Scatter } from '../../../BaseCharts';
+import { Scatter } from '../../../BaseCharts'
 
 export default {
   extends: Scatter,
@@ -65,6 +65,6 @@ export default {
         ],
       },
       { responsive: true, maintainAspectRatio: false }
-    );
+    )
   },
-};
+}

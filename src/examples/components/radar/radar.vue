@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import RadarExample from './RadarExample';
+import RadarExample from './RadarExample'
 
 export default {
   name: 'RadarChart',
@@ -43,5 +43,5 @@ export default {
       default: () => {},
     },
   },
-};
+}
 </script>

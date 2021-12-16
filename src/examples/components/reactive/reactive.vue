@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import ReactiveExample from './ReactiveExample';
+import ReactiveExample from './ReactiveExample'
 
 export default {
   name: 'ReactiveChart',
@@ -43,5 +43,5 @@ export default {
       default: () => {},
     },
   },
-};
+}
 </script>

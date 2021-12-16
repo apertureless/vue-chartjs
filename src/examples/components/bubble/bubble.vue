@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BubbleExample from './BubbleExample';
+import BubbleExample from './BubbleExample'
 
 export default {
   name: 'BubbleChart',
@@ -43,5 +43,5 @@ export default {
       default: () => {},
     },
   },
-};
+}
 </script>

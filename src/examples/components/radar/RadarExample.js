@@ -1,4 +1,4 @@
-import { Radar } from '../../../BaseCharts';
+import { Radar } from '../../../BaseCharts'
 
 export default {
   extends: Radar,
@@ -38,6 +38,6 @@ export default {
         ],
       },
       { responsive: true, maintainAspectRatio: false }
-    );
+    )
   },
-};
+}

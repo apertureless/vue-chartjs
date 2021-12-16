@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import LineExample from './LineExample';
+import LineExample from './LineExample'
 
 export default {
   name: 'LineChart',
@@ -43,5 +43,5 @@ export default {
       default: () => {},
     },
   },
-};
+}
 </script>

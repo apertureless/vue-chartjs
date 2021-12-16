@@ -1,5 +1,5 @@
-import { Bar } from '../../../BaseCharts';
-import { reactiveProp } from '../../../mixins';
+import { Bar } from '../../../BaseCharts'
+import { reactiveProp } from '../../../mixins'
 
 export default {
   extends: Bar,
@@ -12,6 +12,6 @@ export default {
   }),
 
   mounted() {
-    this.renderChart(this.chartData, this.options);
+    this.renderChart(this.chartData, this.options)
   },
-};
+}

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import DoughnutExample from './DoughnutExample';
+import DoughnutExample from './DoughnutExample'
 
 export default {
   name: 'DoughnutChart',
@@ -43,5 +43,5 @@ export default {
       default: () => {},
     },
   },
-};
+}
 </script>

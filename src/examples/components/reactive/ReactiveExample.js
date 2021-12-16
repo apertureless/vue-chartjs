@@ -1,5 +1,5 @@
-import { Bar } from '../../../BaseCharts';
-import { reactiveData } from '../../../mixins';
+import { Bar } from '../../../BaseCharts'
+import { reactiveData } from '../../../mixins'
 
 export default {
   extends: Bar,
@@ -12,15 +12,15 @@ export default {
     },
   }),
   created() {
-    this.fillData();
+    this.fillData()
   },
 
   mounted() {
-    this.renderChart(this.chartData, this.options);
+    this.renderChart(this.chartData, this.options)
 
     setInterval(() => {
-      this.fillData();
-    }, 5000);
+      this.fillData()
+    }, 5000)
   },
 
   methods: {
@@ -60,11 +60,11 @@ export default {
             ],
           },
         ],
-      };
+      }
     },
 
     getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
     },
   },
-};
+}

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import ScatterExample from './ScatterExample';
+import ScatterExample from './ScatterExample'
 
 export default {
   name: 'ScatterChart',
@@ -43,5 +43,5 @@ export default {
       default: () => {},
     },
   },
-};
+}
 </script>

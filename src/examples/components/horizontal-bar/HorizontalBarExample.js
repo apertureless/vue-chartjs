@@ -1,4 +1,4 @@
-import { HorizontalBar } from '../../../BaseCharts';
+import { HorizontalBar } from '../../../BaseCharts'
 
 export default {
   extends: HorizontalBar,
@@ -28,6 +28,6 @@ export default {
         ],
       },
       { responsive: true, maintainAspectRatio: false }
-    );
+    )
   },
-};
+}

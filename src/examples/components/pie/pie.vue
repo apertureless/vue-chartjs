@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import PieExample from './PieExample';
+import PieExample from './PieExample'
 
 export default {
   name: 'PieChart',
@@ -43,5 +43,5 @@ export default {
       default: () => {},
     },
   },
-};
+}
 </script>

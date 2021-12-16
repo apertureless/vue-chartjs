@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BarExample from './BarExample';
+import BarExample from './BarExample'
 
 export default {
   name: 'BarChart',
@@ -43,5 +43,5 @@ export default {
       default: () => {},
     },
   },
-};
+}
 </script>

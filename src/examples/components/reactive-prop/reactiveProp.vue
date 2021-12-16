@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ReactivePropExample from './ReactivePropExample';
+import ReactivePropExample from './ReactivePropExample'
 
 export default {
   name: 'ReactivePropChart',
@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       dataPoints: {},
-    };
+    }
   },
-};
+}
 </script>

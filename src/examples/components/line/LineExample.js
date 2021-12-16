@@ -1,4 +1,4 @@
-import { Line } from '../../../BaseCharts';
+import { Line } from '../../../BaseCharts'
 
 export default {
   extends: Line,
@@ -23,6 +23,6 @@ export default {
         ],
       },
       { responsive: true, maintainAspectRatio: false }
-    );
+    )
   },
-};
+}

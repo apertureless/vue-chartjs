@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import HorizontalBarExample from './HorizontalBarExample';
+import HorizontalBarExample from './HorizontalBarExample'
 
 export default {
   name: 'HorizontalBarChart',
@@ -43,5 +43,5 @@ export default {
       default: () => {},
     },
   },
-};
+}
 </script>

@@ -1,4 +1,4 @@
-import { Pie } from '../../../BaseCharts';
+import { Pie } from '../../../BaseCharts'
 
 export default {
   extends: Pie,
@@ -14,6 +14,6 @@ export default {
         ],
       },
       { responsive: true, maintainAspectRatio: false }
-    );
+    )
   },
-};
+}

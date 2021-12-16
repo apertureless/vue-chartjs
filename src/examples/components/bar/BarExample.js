@@ -1,4 +1,4 @@
-import { Bar } from '../../../BaseCharts';
+import { Bar } from '../../../BaseCharts'
 
 export default {
   extends: Bar,
@@ -28,6 +28,6 @@ export default {
         ],
       },
       { responsive: true, maintainAspectRatio: false }
-    );
+    )
   },
-};
+}
