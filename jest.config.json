@@ -1,6 +1,4 @@
 {
-  "name": "vue-chartjs",
-  "displayName": "vue-chartjs",
   "testEnvironment": "jsdom",
   "setupFiles": ["<rootDir>/test/unit/setup.js"],
   "testMatch": ["<rootDir>/test/unit/specs/(*.)spec.(js|ts)"],
@@ -26,6 +24,5 @@
   },
   "collectCoverage": true,
   "collectCoverageFrom": ["<rootDir>/src/examples/components/**"],
-  "coverageDirectory": "<rootDir>/test/unit/coverage",
   "coverageReporters": ["lcovonly", "text"]
 }
