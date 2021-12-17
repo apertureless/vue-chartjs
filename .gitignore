@@ -1,7 +1,21 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+
+# builds
+build
+dist
+es
+
+# misc
 .DS_Store
-node_modules/
-npm-debug.log
-selenium-debug.log
-test/unit/coverage
-es/
-docs/.vuepress/dist
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+react-app-env.d.ts
+
+# testing
+coverage
