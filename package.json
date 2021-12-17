@@ -138,14 +138,5 @@
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.17.1",
     "webpack-merge": "^4.1.0"
-  },
-  "engines": {
-    "node": ">=6.9.0",
-    "npm": ">= 3.0.0"
-  },
-  "browserify": {
-    "transform": [
-      "babelify"
-    ]
   }
 }
