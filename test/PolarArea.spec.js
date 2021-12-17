@@ -15,7 +15,7 @@ describe('PolarChart', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(PolarAreaChart, {
-      propsData: { chartId: 'polarchartprop' },
+      propsData: { chartId: 'polarchartprop' }
     })
 
     const polarAreaChartEl = wrapper.find('#polarchartprop')
@@ -40,7 +40,7 @@ describe('PolarChart', () => {
 
   it('should add an inline plugin to the array', () => {
     const testPlugin = {
-      id: 'test',
+      id: 'test'
     }
 
     const wrapper = mount(PolarAreaChart)
@@ -54,11 +54,11 @@ describe('PolarChart', () => {
 
   it('should add inline plugins based on prop', () => {
     const testPlugin = {
-      id: 'test',
+      id: 'test'
     }
 
     const wrapper = mount(PolarAreaChart, {
-      propsData: { plugins: [testPlugin] },
+      propsData: { plugins: [testPlugin] }
     })
     const { vm } = wrapper
 

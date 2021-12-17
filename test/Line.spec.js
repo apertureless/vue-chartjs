@@ -15,7 +15,7 @@ describe('LineChart', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(LineChart, {
-      propsData: { chartId: 'linechartprop' },
+      propsData: { chartId: 'linechartprop' }
     })
 
     const lineChartEl = wrapper.find('#linechartprop')
@@ -40,7 +40,7 @@ describe('LineChart', () => {
 
   it('should add an inline plugin to the array', () => {
     const testPlugin = {
-      id: 'test',
+      id: 'test'
     }
 
     const wrapper = mount(LineChart)
@@ -54,11 +54,11 @@ describe('LineChart', () => {
 
   it('should add inline plugins based on prop', () => {
     const testPlugin = {
-      id: 'test',
+      id: 'test'
     }
 
     const wrapper = mount(LineChart, {
-      propsData: { plugins: [testPlugin] },
+      propsData: { plugins: [testPlugin] }
     })
     const { vm } = wrapper
 

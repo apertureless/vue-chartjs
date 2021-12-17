@@ -12,7 +12,7 @@ export default {
           'Designing',
           'Coding',
           'Cycling',
-          'Running',
+          'Running'
         ],
         datasets: [
           {
@@ -22,7 +22,7 @@ export default {
             pointBorderColor: '#fff',
             pointHoverBackgroundColor: '#fff',
             pointHoverBorderColor: 'rgba(179,181,198,1)',
-            data: [65, 59, 90, 81, 56, 55, 40],
+            data: [65, 59, 90, 81, 56, 55, 40]
           },
           {
             label: 'My Second dataset',
@@ -31,11 +31,11 @@ export default {
             pointBorderColor: '#fff',
             pointHoverBackgroundColor: '#fff',
             pointHoverBorderColor: 'rgba(255,99,132,1)',
-            data: [28, 48, 40, 19, 96, 27, 100],
-          },
-        ],
+            data: [28, 48, 40, 19, 96, 27, 100]
+          }
+        ]
       },
       { responsive: true, maintainAspectRatio: false }
     )
-  },
+  }
 }

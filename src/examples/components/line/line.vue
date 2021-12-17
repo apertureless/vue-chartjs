@@ -15,33 +15,33 @@ import LineExample from './LineExample'
 export default {
   name: 'LineChart',
   components: {
-    LineExample,
+    LineExample
   },
   props: {
     chartId: {
       type: String,
-      default: 'line-chart',
+      default: 'line-chart'
     },
     width: {
       type: Number,
-      default: 400,
+      default: 400
     },
     height: {
       type: Number,
-      default: 400,
+      default: 400
     },
     cssClasses: {
       default: '',
-      type: String,
+      type: String
     },
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     plugins: {
       type: Array,
-      default: () => {},
-    },
-  },
+      default: () => {}
+    }
+  }
 }
 </script>

@@ -93,21 +93,21 @@ export default {
     ReactiveExample,
     ReactivePropExample,
     ScatterExample,
-    HorizontalBarExample,
+    HorizontalBarExample
   },
   data() {
     return {
       dataPoints: {},
-      height: 20,
+      height: 20
     }
   },
   computed: {
     myStyles() {
       return {
         height: `${this.height}px`,
-        position: 'relative',
+        position: 'relative'
       }
-    },
+    }
   },
   mounted() {
     setInterval(() => {
@@ -135,7 +135,7 @@ export default {
           'September',
           'October',
           'November',
-          'December',
+          'December'
         ],
         datasets: [
           {
@@ -153,13 +153,13 @@ export default {
               this.getRandomInt(),
               this.getRandomInt(),
               this.getRandomInt(),
-              this.getRandomInt(),
-            ],
-          },
-        ],
+              this.getRandomInt()
+            ]
+          }
+        ]
       }
-    },
-  },
+    }
+  }
 }
 </script>
 

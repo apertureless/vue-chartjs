@@ -15,33 +15,33 @@ import HorizontalBarExample from './HorizontalBarExample'
 export default {
   name: 'HorizontalBarChart',
   components: {
-    HorizontalBarExample,
+    HorizontalBarExample
   },
   props: {
     chartId: {
       type: String,
-      default: 'horizontalbar-chart',
+      default: 'horizontalbar-chart'
     },
     width: {
       type: Number,
-      default: 400,
+      default: 400
     },
     height: {
       type: Number,
-      default: 400,
+      default: 400
     },
     cssClasses: {
       default: '',
-      type: String,
+      type: String
     },
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     plugins: {
       type: Array,
-      default: () => {},
-    },
-  },
+      default: () => {}
+    }
+  }
 }
 </script>

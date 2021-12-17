@@ -15,33 +15,33 @@ import DoughnutExample from './DoughnutExample'
 export default {
   name: 'DoughnutChart',
   components: {
-    DoughnutExample,
+    DoughnutExample
   },
   props: {
     chartId: {
       type: String,
-      default: 'doughnut-chart',
+      default: 'doughnut-chart'
     },
     width: {
       type: Number,
-      default: 400,
+      default: 400
     },
     height: {
       type: Number,
-      default: 400,
+      default: 400
     },
     cssClasses: {
       default: '',
-      type: String,
+      type: String
     },
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     plugins: {
       type: Array,
-      default: () => {},
-    },
-  },
+      default: () => {}
+    }
+  }
 }
 </script>

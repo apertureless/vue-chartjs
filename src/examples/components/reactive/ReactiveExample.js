@@ -8,8 +8,8 @@ export default {
     chartData: '',
     options: {
       responsive: true,
-      maintainAspectRatio: false,
-    },
+      maintainAspectRatio: false
+    }
   }),
   created() {
     this.fillData()
@@ -38,7 +38,7 @@ export default {
           'September',
           'October',
           'November',
-          'December',
+          'December'
         ],
         datasets: [
           {
@@ -56,15 +56,15 @@ export default {
               this.getRandomInt(),
               this.getRandomInt(),
               this.getRandomInt(),
-              this.getRandomInt(),
-            ],
-          },
-        ],
+              this.getRandomInt()
+            ]
+          }
+        ]
       }
     },
 
     getRandomInt() {
       return Math.floor(Math.random() * (50 - 5 + 1)) + 5
-    },
-  },
+    }
+  }
 }

@@ -14,25 +14,25 @@ export default {
             data: [
               {
                 x: -2,
-                y: 4,
+                y: 4
               },
               {
                 x: -1,
-                y: 1,
+                y: 1
               },
               {
                 x: 0,
-                y: 0,
+                y: 0
               },
               {
                 x: 1,
-                y: 1,
+                y: 1
               },
               {
                 x: 2,
-                y: 4,
-              },
-            ],
+                y: 4
+              }
+            ]
           },
           {
             label: 'Scatter Dataset 2',
@@ -42,29 +42,29 @@ export default {
             data: [
               {
                 x: -2,
-                y: -4,
+                y: -4
               },
               {
                 x: -1,
-                y: -1,
+                y: -1
               },
               {
                 x: 0,
-                y: 1,
+                y: 1
               },
               {
                 x: 1,
-                y: -1,
+                y: -1
               },
               {
                 x: 2,
-                y: -4,
-              },
-            ],
-          },
-        ],
+                y: -4
+              }
+            ]
+          }
+        ]
       },
       { responsive: true, maintainAspectRatio: false }
     )
-  },
+  }
 }

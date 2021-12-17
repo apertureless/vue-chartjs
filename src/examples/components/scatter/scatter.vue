@@ -15,33 +15,33 @@ import ScatterExample from './ScatterExample'
 export default {
   name: 'ScatterChart',
   components: {
-    ScatterExample,
+    ScatterExample
   },
   props: {
     chartId: {
       type: String,
-      default: 'scatter-chart',
+      default: 'scatter-chart'
     },
     width: {
       type: Number,
-      default: 400,
+      default: 400
     },
     height: {
       type: Number,
-      default: 400,
+      default: 400
     },
     cssClasses: {
       default: '',
-      type: String,
+      type: String
     },
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     plugins: {
       type: Array,
-      default: () => {},
-    },
-  },
+      default: () => {}
+    }
+  }
 }
 </script>

@@ -15,7 +15,7 @@ describe('BubbleChart', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(BubbleChart, {
-      propsData: { chartId: 'bubblechartprop' },
+      propsData: { chartId: 'bubblechartprop' }
     })
 
     const bubbleChartEl = wrapper.find('#bubblechartprop')
@@ -40,7 +40,7 @@ describe('BubbleChart', () => {
 
   it('should add an inline plugin to the array', () => {
     const testPlugin = {
-      id: 'test',
+      id: 'test'
     }
 
     const wrapper = mount(BubbleChart)
@@ -54,11 +54,11 @@ describe('BubbleChart', () => {
 
   it('should add inline plugins based on prop', () => {
     const testPlugin = {
-      id: 'test',
+      id: 'test'
     }
 
     const wrapper = mount(BubbleChart, {
-      propsData: { plugins: [testPlugin] },
+      propsData: { plugins: [testPlugin] }
     })
     const { vm } = wrapper
 

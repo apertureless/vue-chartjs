@@ -16,38 +16,38 @@ import ReactivePropExample from './ReactivePropExample'
 export default {
   name: 'ReactivePropChart',
   components: {
-    ReactivePropExample,
+    ReactivePropExample
   },
   props: {
     chartId: {
       type: String,
-      default: '',
+      default: ''
     },
     width: {
       type: Number,
-      default: 400,
+      default: 400
     },
     height: {
       type: Number,
-      default: 400,
+      default: 400
     },
     cssClasses: {
       default: '',
-      type: String,
+      type: String
     },
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     plugins: {
       type: Array,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
   data() {
     return {
-      dataPoints: {},
+      dataPoints: {}
     }
-  },
+  }
 }
 </script>
