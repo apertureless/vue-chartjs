@@ -1,7 +1,7 @@
 {
   "testEnvironment": "jsdom",
-  "setupFiles": ["<rootDir>/test/unit/setup.js"],
-  "testMatch": ["<rootDir>/test/unit/specs/(*.)spec.(js|ts)"],
+  "setupFiles": ["<rootDir>/test/setup.js"],
+  "testMatch": ["<rootDir>/test/(*.)spec.(js|ts)"],
   "moduleFileExtensions": ["js", "ts", "vue"],
   "transform": {
     "^.+\\.vue$": "@vue/vue2-jest",
