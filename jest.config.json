@@ -1,0 +1,28 @@
+{
+  "testEnvironment": "jsdom",
+  "setupFiles": ["<rootDir>/test/setup.js"],
+  "testMatch": ["<rootDir>/test/(*.)spec.(js|ts)"],
+  "moduleFileExtensions": ["js", "ts", "vue"],
+  "transform": {
+    "^.+\\.vue$": "@vue/vue2-jest",
+    "^.+\\.(t|j)sx?$": [
+      "@swc/jest",
+      {
+        "module": {
+          "type": "commonjs"
+        },
+        "env": {
+          "targets": {
+            "node": 12
+          }
+        }
+      }
+    ]
+  },
+  "moduleNameMapper": {
+    "^@/(.*)$": "<rootDir>/src/$1"
+  },
+  "collectCoverage": true,
+  "collectCoverageFrom": ["<rootDir>/src/examples/components/**"],
+  "coverageReporters": ["lcovonly", "text"]
+}

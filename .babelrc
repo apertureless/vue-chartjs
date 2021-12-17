@@ -1,14 +1,23 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "modules": false,
-      "targets": {
-        "browsers": [
-          "last 2 versions"
-        ]
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "last 2 versions"
+          ]
+        }
       }
-    }],
-    ["@babel/stage-2",{"decoratorsLegacy":true}]
+    ]
   ],
-  "comments": false
+  "comments": false,
+  "env": {
+    "test": {
+      "plugins": [
+        "@babel/plugin-transform-modules-commonjs"
+      ]
+    }
+  }
 }
