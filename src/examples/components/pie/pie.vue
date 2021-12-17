@@ -15,33 +15,33 @@ import PieExample from './PieExample'
 export default {
   name: 'PieChart',
   components: {
-    PieExample,
+    PieExample
   },
   props: {
     chartId: {
       type: String,
-      default: 'pie-chart',
+      default: 'pie-chart'
     },
     width: {
       type: Number,
-      default: 400,
+      default: 400
     },
     height: {
       type: Number,
-      default: 400,
+      default: 400
     },
     cssClasses: {
       default: '',
-      type: String,
+      type: String
     },
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     plugins: {
       type: Array,
-      default: () => {},
-    },
-  },
+      default: () => {}
+    }
+  }
 }
 </script>

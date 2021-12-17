@@ -7,11 +7,11 @@ export default {
   data: () => ({
     options: {
       responsive: true,
-      maintainAspectRatio: false,
-    },
+      maintainAspectRatio: false
+    }
   }),
 
   mounted() {
     this.renderChart(this.chartData, this.options)
-  },
+  }
 }

@@ -12,17 +12,17 @@ export default {
           'April',
           'May',
           'June',
-          'July',
+          'July'
         ],
         datasets: [
           {
             label: 'Data One',
             backgroundColor: '#f87979',
-            data: [40, 39, 10, 40, 39, 80, 40],
-          },
-        ],
+            data: [40, 39, 10, 40, 39, 80, 40]
+          }
+        ]
       },
       { responsive: true, maintainAspectRatio: false }
     )
-  },
+  }
 }

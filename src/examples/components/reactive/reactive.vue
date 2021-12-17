@@ -15,33 +15,33 @@ import ReactiveExample from './ReactiveExample'
 export default {
   name: 'ReactiveChart',
   components: {
-    ReactiveExample,
+    ReactiveExample
   },
   props: {
     chartId: {
       type: String,
-      default: '',
+      default: ''
     },
     width: {
       type: Number,
-      default: 400,
+      default: 400
     },
     height: {
       type: Number,
-      default: 400,
+      default: 400
     },
     cssClasses: {
       default: '',
-      type: String,
+      type: String
     },
     styles: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     plugins: {
       type: Array,
-      default: () => {},
-    },
-  },
+      default: () => {}
+    }
+  }
 }
 </script>

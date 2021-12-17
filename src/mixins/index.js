@@ -1,13 +1,13 @@
-function dataHandler (newData, oldData) {
+function dataHandler(newData, oldData) {
   if (oldData) {
     let chart = this.$data._chart
 
     // Get new and old DataSet Labels
-    let newDatasetLabels = newData.datasets.map((dataset) => {
+    let newDatasetLabels = newData.datasets.map(dataset => {
       return dataset.label
     })
 
-    let oldDatasetLabels = oldData.datasets.map((dataset) => {
+    let oldDatasetLabels = oldData.datasets.map(dataset => {
       return dataset.label
     })
 
@@ -16,19 +16,22 @@ function dataHandler (newData, oldData) {
     const newLabels = JSON.stringify(newDatasetLabels)
 
     // Check if Labels are equal and if dataset length is equal
-    if (newLabels === oldLabels && oldData.datasets.length === newData.datasets.length) {
+    if (
+      newLabels === oldLabels &&
+      oldData.datasets.length === newData.datasets.length
+    ) {
       newData.datasets.forEach((dataset, i) => {
         // Get new and old dataset keys
         const oldDatasetKeys = Object.keys(oldData.datasets[i])
         const newDatasetKeys = Object.keys(dataset)
 
         // Get keys that aren't present in the new data
-        const deletionKeys = oldDatasetKeys.filter((key) => {
+        const deletionKeys = oldDatasetKeys.filter(key => {
           return key !== '_meta' && newDatasetKeys.indexOf(key) === -1
         })
 
         // Remove outdated key-value pairs
-        deletionKeys.forEach((deletionKey) => {
+        deletionKeys.forEach(deletionKey => {
           delete chart.data.datasets[i][deletionKey]
         })
 
@@ -73,14 +76,14 @@ function dataHandler (newData, oldData) {
 }
 
 export const reactiveData = {
-  data () {
+  data() {
     return {
       chartData: null
     }
   },
 
   watch: {
-    'chartData': dataHandler
+    chartData: dataHandler
   }
 }
 
@@ -93,7 +96,7 @@ export const reactiveProp = {
     }
   },
   watch: {
-    'chartData': dataHandler
+    chartData: dataHandler
   }
 }
 
