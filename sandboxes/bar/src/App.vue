@@ -1,14 +1,14 @@
 <template>
-  <bar-chart />
+  <bar-page />
 </template>
 
 <script>
-import BarChart from './bar.vue'
+import BarPage from './components/barPage.vue'
 
 export default {
   name: 'App',
   components: {
-    BarChart
+    BarPage
   }
 }
 </script>
