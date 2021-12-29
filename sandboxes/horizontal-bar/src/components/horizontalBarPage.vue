@@ -1,5 +1,5 @@
 <template>
-  <bar-chart
+  <horizontal-bar-chart
     :chart-id="chartId"
     :width="width"
     :height="height"
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import BarChart from './barChart.vue'
+import HorizontalBarChart from './horizontalBarChart.vue'
 
 export default {
-  name: 'BarPage',
+  name: 'HorizontalBarPage',
   components: {
-    BarChart
+    HorizontalBarChart
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: 'horizontalbar-chart'
     },
     width: {
       type: Number,

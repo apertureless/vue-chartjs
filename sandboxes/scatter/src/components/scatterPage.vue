@@ -1,5 +1,5 @@
 <template>
-  <bar-chart
+  <scatter-chart
     :chart-id="chartId"
     :width="width"
     :height="height"
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import BarChart from './barChart.vue'
+import ScatterChart from './scatterChart.vue'
 
 export default {
-  name: 'BarPage',
+  name: 'ScatterPage',
   components: {
-    BarChart
+    ScatterChart
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: 'scatter-chart'
     },
     width: {
       type: Number,

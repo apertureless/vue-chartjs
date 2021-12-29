@@ -1,5 +1,5 @@
 <template>
-  <bar-chart
+  <doughnut-chart
     :chart-id="chartId"
     :width="width"
     :height="height"
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import BarChart from './barChart.vue'
+import DoughnutChart from './doughnutChart.vue'
 
 export default {
-  name: 'BarPage',
+  name: 'DoughnutPage',
   components: {
-    BarChart
+    DoughnutChart
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: 'doughnut-chart'
     },
     width: {
       type: Number,

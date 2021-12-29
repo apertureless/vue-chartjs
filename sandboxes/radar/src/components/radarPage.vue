@@ -1,5 +1,5 @@
 <template>
-  <bar-chart
+  <radar-chart
     :chart-id="chartId"
     :width="width"
     :height="height"
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import BarChart from './barChart.vue'
+import RadarChart from './radarChart.vue'
 
 export default {
-  name: 'BarPage',
+  name: 'RadarPage',
   components: {
-    BarChart
+    RadarChart
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: 'radar-chart'
     },
     width: {
       type: Number,

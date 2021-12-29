@@ -1,5 +1,5 @@
 <template>
-  <bar-chart
+  <polar-area-chart
     :chart-id="chartId"
     :width="width"
     :height="height"
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import BarChart from './barChart.vue'
+import PolarAreaChart from './polarAreaChart.vue'
 
 export default {
-  name: 'BarPage',
+  name: 'PolarAreaPage',
   components: {
-    BarChart
+    PolarAreaChart
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: 'polar-chart'
     },
     width: {
       type: Number,

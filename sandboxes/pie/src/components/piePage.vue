@@ -1,5 +1,5 @@
 <template>
-  <bar-chart
+  <pie-chart
     :chart-id="chartId"
     :width="width"
     :height="height"
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import BarChart from './barChart.vue'
+import PieChart from './pieChart.vue'
 
 export default {
-  name: 'BarPage',
+  name: 'PiePage',
   components: {
-    BarChart
+    PieChart
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: 'pie-chart'
     },
     width: {
       type: Number,

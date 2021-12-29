@@ -1,5 +1,5 @@
 <template>
-  <bar-chart
+  <custom-chart
     :chart-id="chartId"
     :width="width"
     :height="height"
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import BarChart from './barChart.vue'
+import CustomChart from './customChart.vue'
 
 export default {
-  name: 'BarPage',
+  name: 'CustomPage',
   components: {
-    BarChart
+    CustomChart
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: ''
     },
     width: {
       type: Number,

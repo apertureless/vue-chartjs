@@ -1,5 +1,5 @@
 <template>
-  <bar-chart
+  <bubble-chart
     :chart-id="chartId"
     :width="width"
     :height="height"
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import BarChart from './barChart.vue'
+import BubbleChart from './bubbleChart.vue'
 
 export default {
-  name: 'BarPage',
+  name: 'BubblePage',
   components: {
-    BarChart
+    BubbleChart
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: 'bubble-chart'
     },
     width: {
       type: Number,

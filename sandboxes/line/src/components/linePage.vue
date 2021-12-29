@@ -1,5 +1,5 @@
 <template>
-  <bar-chart
+  <line-chart
     :chart-id="chartId"
     :width="width"
     :height="height"
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import BarChart from './barChart.vue'
+import LineChart from './lineChart.vue'
 
 export default {
-  name: 'BarPage',
+  name: 'LinePage',
   components: {
-    BarChart
+    LineChart
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: 'line-chart'
     },
     width: {
       type: Number,

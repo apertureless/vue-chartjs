@@ -1,5 +1,5 @@
 <template>
-  <bar-chart
+  <reactive-chart
     :chart-id="chartId"
     :width="width"
     :height="height"
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import BarChart from './barChart.vue'
+import ReactiveChart from './reactiveChart.vue'
 
 export default {
-  name: 'BarPage',
+  name: 'ReactivePage',
   components: {
-    BarChart
+    ReactiveChart
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: ''
     },
     width: {
       type: Number,
