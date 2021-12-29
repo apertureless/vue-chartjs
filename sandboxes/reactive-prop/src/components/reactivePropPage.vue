@@ -1,5 +1,6 @@
 <template>
   <reactive-prop-chart
+    :chart-data="dataPoints"
     :chart-id="chartId"
     :width="width"
     :height="height"
@@ -46,6 +47,54 @@ export default {
   data() {
     return {
       dataPoints: {}
+    }
+  },
+  mounted() {
+    setInterval(() => {
+      this.fillData()
+    }, 2000)
+  },
+  methods: {
+    getRandomInt() {
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+    },
+    fillData() {
+      this.dataPoints = {
+        labels: [
+          'January' + this.getRandomInt(),
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+        ],
+        datasets: [
+          {
+            label: 'Data One',
+            backgroundColor: '#f87979',
+            data: [
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt()
+            ]
+          }
+        ]
+      }
     }
   }
 }
