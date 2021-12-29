@@ -11,7 +11,7 @@ export default {
   extends: HorizontalBar,
   data: () => ({
     chartdata: {
-      abels: [
+      labels: [
         'January',
         'February',
         'March',

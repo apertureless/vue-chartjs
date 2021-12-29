@@ -4,7 +4,9 @@
 #in an empty template and unexpected errors.
 
 <script>
-import { Bar, reactiveData } from 'vue-chartjs'
+import { Bar, mixins } from 'vue-chartjs'
+
+const { reactiveData } = mixins
 
 export default {
   name: 'ReactiveChart',
