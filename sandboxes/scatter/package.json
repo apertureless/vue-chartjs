@@ -1,0 +1,8 @@
+{
+  "name": "vue-chartjs-scatter-example",
+  "dependencies": {
+    "vue": "^2.6.11",
+    "chart.js": "2.6.0",
+    "vue-chartjs": "3.5.1"
+  }
+}
