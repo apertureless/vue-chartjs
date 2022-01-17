@@ -60,8 +60,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "commit": "cz",
-    "storybook:start": "start-storybook -p 6006",
-    "storybook:build": "build-storybook"
+    "start:storybook": "start-storybook -p 6006"
   },
   "peerDependencies": {
     "chart.js": ">= 2.5"
@@ -76,8 +75,7 @@
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@storybook/addon-actions": "^6.4.12",
-    "@storybook/addon-essentials": "^6.4.12",
-    "@storybook/addon-links": "^6.4.12",
+    "@storybook/addon-essentials": "^6.4.13",
     "@storybook/vue": "^6.4.12",
     "@swc/core": "^1.2.120",
     "@swc/jest": "^0.2.15",
