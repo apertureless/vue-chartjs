@@ -1,6 +1,6 @@
 {
   "name": "vue-chartjs",
-  "version": "3.5.1",
+  "version": "3.5.2",
   "description": "Vue.js wrapper for chart.js for creating beautiful charts.",
   "author": "Jakub Juszczak <jakub@posteo.de>",
   "homepage": "http://vue-chartjs.org",
@@ -48,7 +48,6 @@
     "types/*.d.ts"
   ],
   "scripts": {
-    "dev": "node build/dev-server.js",
     "build": "yarn run release && yarn run build:es",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "unit": "jest -c jest.config.json",
