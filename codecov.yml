@@ -24,7 +24,6 @@ coverage:
 
   ignore:
     - "tests/*"
-    - "src/examples/*"
     - "src/mixins/*"
 
 
