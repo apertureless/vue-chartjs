@@ -1,9 +1,16 @@
 import { mount } from '@vue/test-utils'
-import DoughnutChart from '@/examples/components/doughnut/doughnut.vue'
+import DoughnutChart from './examples/DoughnutChart.vue'
 
 describe('DoughnutChart', () => {
+  const Component = {
+    template:
+      '<div><DoughnutChart :chart-id="chartId" :plugins="plugins" /></div>',
+    components: { DoughnutChart },
+    props: ['chartId', 'plugins']
+  }
+
   it('should render a canvas', () => {
-    const wrapper = mount(DoughnutChart)
+    const wrapper = mount(Component)
 
     const doughnutChartEl = wrapper.find('#doughnut-chart')
     expect(doughnutChartEl.element.id).not.toBe('undefined')
@@ -14,7 +21,7 @@ describe('DoughnutChart', () => {
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(DoughnutChart, {
+    const wrapper = mount(Component, {
       propsData: { chartId: 'doughnutchartprop' }
     })
 
@@ -24,7 +31,7 @@ describe('DoughnutChart', () => {
   })
 
   it('should destroy chart instance', done => {
-    const wrapper = mount(DoughnutChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null)
@@ -43,7 +50,7 @@ describe('DoughnutChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(DoughnutChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._plugins).toEqual([])
@@ -57,7 +64,7 @@ describe('DoughnutChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(DoughnutChart, {
+    const wrapper = mount(Component, {
       propsData: { plugins: [testPlugin] }
     })
     const { vm } = wrapper

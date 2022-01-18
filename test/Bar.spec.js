@@ -1,9 +1,15 @@
 import { mount } from '@vue/test-utils'
-import BarChart from '@/examples/components/bar/bar.vue'
+import BarChart from './examples/BarChart.vue'
 
 describe('BarChart', () => {
+  const Component = {
+    template: '<div><BarChart :chart-id="chartId" :plugins="plugins" /></div>',
+    components: { BarChart },
+    props: ['chartId', 'plugins']
+  }
+
   it('should render a canvas', () => {
-    const wrapper = mount(BarChart)
+    const wrapper = mount(Component)
 
     const barChart = wrapper.find('#bar-chart')
     expect(barChart.element.id).not.toBe('undefined')
@@ -14,7 +20,7 @@ describe('BarChart', () => {
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(BarChart, {
+    const wrapper = mount(Component, {
       propsData: { chartId: 'barchartprop' }
     })
 
@@ -24,7 +30,7 @@ describe('BarChart', () => {
   })
 
   it('should destroy chart instance', done => {
-    const wrapper = mount(BarChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null)
@@ -43,7 +49,7 @@ describe('BarChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(BarChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._plugins).toEqual([])
@@ -57,7 +63,7 @@ describe('BarChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(BarChart, {
+    const wrapper = mount(Component, {
       propsData: { plugins: [testPlugin] }
     })
     const { vm } = wrapper

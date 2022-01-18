@@ -1,9 +1,16 @@
 import { mount } from '@vue/test-utils'
-import RadarChart from '@/examples/components/radar/radar.vue'
+import RadarChart from './examples/RadarChart.vue'
 
 describe('RadarChart', () => {
+  const Component = {
+    template:
+      '<div><RadarChart :chart-id="chartId" :plugins="plugins" /></div>',
+    components: { RadarChart },
+    props: ['chartId', 'plugins']
+  }
+
   it('should render a canvas', () => {
-    const wrapper = mount(RadarChart)
+    const wrapper = mount(Component)
 
     const radarChartEl = wrapper.find('#radar-chart')
     expect(radarChartEl.element.id).not.toBe('undefined')
@@ -14,7 +21,7 @@ describe('RadarChart', () => {
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(RadarChart, {
+    const wrapper = mount(Component, {
       propsData: { chartId: 'rodarchartprop' }
     })
 
@@ -23,7 +30,7 @@ describe('RadarChart', () => {
     expect(radarChartEl.exists()).toBe(true)
   })
   it('should destroy chart instance', done => {
-    const wrapper = mount(RadarChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null)
@@ -42,7 +49,7 @@ describe('RadarChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(RadarChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._plugins).toEqual([])
@@ -56,7 +63,7 @@ describe('RadarChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(RadarChart, {
+    const wrapper = mount(Component, {
       propsData: { plugins: [testPlugin] }
     })
     const { vm } = wrapper

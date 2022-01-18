@@ -1,9 +1,16 @@
 import { mount } from '@vue/test-utils'
-import BubbleChart from '@/examples/components/bubble/bubble.vue'
+import BubbleChart from './examples/BubbleChart.vue'
 
 describe('BubbleChart', () => {
+  const Component = {
+    template:
+      '<div><BubbleChart :chart-id="chartId" :plugins="plugins" /></div>',
+    components: { BubbleChart },
+    props: ['chartId', 'plugins']
+  }
+
   it('should render a canvas', () => {
-    const wrapper = mount(BubbleChart)
+    const wrapper = mount(Component)
 
     const bubbleChartEl = wrapper.find('#bubble-chart')
     expect(bubbleChartEl.element.id).not.toBe('undefined')
@@ -14,7 +21,7 @@ describe('BubbleChart', () => {
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(BubbleChart, {
+    const wrapper = mount(Component, {
       propsData: { chartId: 'bubblechartprop' }
     })
 
@@ -24,7 +31,7 @@ describe('BubbleChart', () => {
   })
 
   it('should destroy chart instance', done => {
-    const wrapper = mount(BubbleChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null)
@@ -43,7 +50,7 @@ describe('BubbleChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(BubbleChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._plugins).toEqual([])
@@ -57,7 +64,7 @@ describe('BubbleChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(BubbleChart, {
+    const wrapper = mount(Component, {
       propsData: { plugins: [testPlugin] }
     })
     const { vm } = wrapper
