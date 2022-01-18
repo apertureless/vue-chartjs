@@ -298,9 +298,6 @@ You can create your components in Vues single file components. However it is imp
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
-
 # build for production with minification
 npm run build
 
