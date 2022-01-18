@@ -59,7 +59,8 @@
     "prepublishOnly": "yarn run lint && yarn run test && yarn run build",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "commit": "cz"
+    "commit": "cz",
+    "start:storybook": "start-storybook -p 6006"
   },
   "peerDependencies": {
     "chart.js": ">= 2.5"
@@ -73,6 +74,9 @@
     "@babel/preset-env": "^7.16.5",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@storybook/addon-actions": "^6.4.12",
+    "@storybook/addon-essentials": "^6.4.13",
+    "@storybook/vue": "^6.4.12",
     "@swc/core": "^1.2.120",
     "@swc/jest": "^0.2.15",
     "@types/chart.js": "^2.7.55",
@@ -123,7 +127,7 @@
     "vue": "2.6.14",
     "vue-hot-reload-api": "2.3.1",
     "vue-html-loader": "^1.2.4",
-    "vue-loader": "^14.2.1",
+    "vue-loader": "^15.9.8",
     "vue-style-loader": "4.1.2",
     "vue-template-compiler": "2.6.14",
     "vuepress": "^0.14.4",
