@@ -1,9 +1,15 @@
 import { mount } from '@vue/test-utils'
-import PieChart from '@/examples/components/pie/pie.vue'
+import PieChart from './examples/PieChart.vue'
 
 describe('PieChart', () => {
+  const Component = {
+    template: '<div><PieChart :chart-id="chartId" :plugins="plugins" /></div>',
+    components: { PieChart },
+    props: ['chartId', 'plugins']
+  }
+
   it('should render a canvas', () => {
-    const wrapper = mount(PieChart)
+    const wrapper = mount(Component)
 
     const pieChartEl = wrapper.find('#pie-chart')
     expect(pieChartEl.element.id).not.toBe('undefined')
@@ -14,7 +20,7 @@ describe('PieChart', () => {
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(PieChart, {
+    const wrapper = mount(Component, {
       propsData: { chartId: 'piechartprop' }
     })
 
@@ -23,7 +29,7 @@ describe('PieChart', () => {
     expect(pieChartEl.exists()).toBe(true)
   })
   it('should destroy chart instance', done => {
-    const wrapper = mount(PieChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null)
@@ -42,7 +48,7 @@ describe('PieChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(PieChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._plugins).toEqual([])
@@ -56,7 +62,7 @@ describe('PieChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(PieChart, {
+    const wrapper = mount(Component, {
       propsData: { plugins: [testPlugin] }
     })
     const { vm } = wrapper

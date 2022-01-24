@@ -1,5 +1,6 @@
+<script>
 import Chart from 'chart.js'
-import { generateChart } from '../../../BaseCharts'
+import { generateChart } from '../../src/index'
 
 Chart.defaults.LineWithLine = Chart.defaults.line
 Chart.controllers.LineWithLine = Chart.controllers.line.extend({
@@ -29,34 +30,30 @@ Chart.controllers.LineWithLine = Chart.controllers.line.extend({
 const LineWithLine = generateChart('line-with-chart', 'LineWithLine')
 
 export default {
+  name: 'CustomChart',
   extends: LineWithLine,
-  mounted() {
-    this.renderChart(
-      {
-        labels: [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July'
-        ],
-        datasets: [
-          {
-            label: 'Data One',
-            backgroundColor: '#f87979',
-            data: [40, 39, 10, 40, 39, 80, 40]
-          }
-        ]
-      },
-      {
-        responsive: true,
-        maintainAspectRatio: false,
-        tooltips: {
-          intersect: false
+  data: () => ({
+    chartdata: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+        {
+          label: 'Data One',
+          backgroundColor: '#f87979',
+          data: [40, 39, 10, 40, 39, 80, 40]
         }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      tooltips: {
+        intersect: false
       }
-    )
+    }
+  }),
+
+  mounted() {
+    this.renderChart(this.chartdata, this.options)
   }
 }
+</script>

@@ -19,10 +19,7 @@
       }
     ]
   },
-  "moduleNameMapper": {
-    "^@/(.*)$": "<rootDir>/src/$1"
-  },
   "collectCoverage": true,
-  "collectCoverageFrom": ["<rootDir>/src/examples/components/**"],
+  "collectCoverageFrom": ["<rootDir>/src/**/*"],
   "coverageReporters": ["lcovonly", "text"]
 }

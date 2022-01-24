@@ -15,4 +15,3 @@ exclude_paths:
 - "es/"
 - "build/"
 - "config/"
-- "src/examples/**"

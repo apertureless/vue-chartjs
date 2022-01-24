@@ -1,9 +1,16 @@
 import { mount } from '@vue/test-utils'
-import PolarAreaChart from '@/examples/components/polar-area/polarArea.vue'
+import PolarAreaChart from './examples/PolarAreaChart.vue'
 
 describe('PolarChart', () => {
+  const Component = {
+    template:
+      '<div><PolarAreaChart :chart-id="chartId" :plugins="plugins" /></div>',
+    components: { PolarAreaChart },
+    props: ['chartId', 'plugins']
+  }
+
   it('should render a canvas', () => {
-    const wrapper = mount(PolarAreaChart)
+    const wrapper = mount(Component)
 
     const polarAreaChartEl = wrapper.find('#polar-chart')
     expect(polarAreaChartEl.element.id).not.toBe('undefined')
@@ -14,7 +21,7 @@ describe('PolarChart', () => {
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(PolarAreaChart, {
+    const wrapper = mount(Component, {
       propsData: { chartId: 'polarchartprop' }
     })
 
@@ -24,7 +31,7 @@ describe('PolarChart', () => {
   })
 
   it('should destroy chart instance', done => {
-    const wrapper = mount(PolarAreaChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null)
@@ -43,7 +50,7 @@ describe('PolarChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(PolarAreaChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._plugins).toEqual([])
@@ -57,7 +64,7 @@ describe('PolarChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(PolarAreaChart, {
+    const wrapper = mount(Component, {
       propsData: { plugins: [testPlugin] }
     })
     const { vm } = wrapper

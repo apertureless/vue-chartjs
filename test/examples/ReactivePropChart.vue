@@ -1,7 +1,10 @@
-import { Bar } from '../../../BaseCharts'
-import { reactiveProp } from '../../../mixins'
+<script>
+import { Bar, mixins } from '../../src/index'
+
+const { reactiveProp } = mixins
 
 export default {
+  name: 'ReactivePropChart',
   extends: Bar,
   mixins: [reactiveProp],
   data: () => ({
@@ -10,8 +13,8 @@ export default {
       maintainAspectRatio: false
     }
   }),
-
   mounted() {
     this.renderChart(this.chartData, this.options)
   }
 }
+</script>

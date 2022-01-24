@@ -1,9 +1,16 @@
 import { mount } from '@vue/test-utils'
-import ScatterChart from '@/examples/components/scatter/scatter.vue'
+import ScatterChart from './examples/ScatterChart.vue'
 
 describe('ScatterChart', () => {
+  const Component = {
+    template:
+      '<div><ScatterChart :chart-id="chartId" :plugins="plugins" /></div>',
+    components: { ScatterChart },
+    props: ['chartId', 'plugins']
+  }
+
   it('should render a canvas', () => {
-    const wrapper = mount(ScatterChart)
+    const wrapper = mount(Component)
 
     const scatterChartEl = wrapper.find('#scatter-chart')
     expect(scatterChartEl.element.id).not.toBe('undefined')
@@ -14,7 +21,7 @@ describe('ScatterChart', () => {
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(ScatterChart, {
+    const wrapper = mount(Component, {
       propsData: { chartId: 'scatterchartprop' }
     })
 
@@ -24,7 +31,7 @@ describe('ScatterChart', () => {
   })
 
   it('should destroy chart instance', done => {
-    const wrapper = mount(ScatterChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null)
@@ -43,7 +50,7 @@ describe('ScatterChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(ScatterChart)
+    const wrapper = mount(Component)
     const { vm } = wrapper
 
     expect(vm.$children[0].$data._plugins).toEqual([])
@@ -57,7 +64,7 @@ describe('ScatterChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(ScatterChart, {
+    const wrapper = mount(Component, {
       propsData: { plugins: [testPlugin] }
     })
     const { vm } = wrapper

@@ -1,7 +1,10 @@
-import { Bar } from '../../../BaseCharts'
-import { reactiveData } from '../../../mixins'
+<script>
+import { Bar, mixins } from '../../src/index'
+
+const { reactiveData } = mixins
 
 export default {
+  name: 'ReactiveChart',
   extends: Bar,
   mixins: [reactiveData],
   data: () => ({
@@ -62,9 +65,9 @@ export default {
         ]
       }
     },
-
     getRandomInt() {
       return Math.floor(Math.random() * (50 - 5 + 1)) + 5
     }
   }
 }
+</script>
