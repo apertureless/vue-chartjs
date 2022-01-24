@@ -20,6 +20,6 @@
     ]
   },
   "collectCoverage": true,
-  "collectCoverageFrom": ["<rootDir>/test/examples/**"],
+  "collectCoverageFrom": ["<rootDir>/src/**/*"],
   "coverageReporters": ["lcovonly", "text"]
 }
