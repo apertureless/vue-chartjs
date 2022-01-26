@@ -47,7 +47,7 @@
     "types/*.d.ts"
   ],
   "scripts": {
-    "build": "yarn run release && rimraf dist && rollup -c",
+    "build": "yarn release && rimraf dist && rollup -c",
     "unit": "jest -c jest.config.json",
     "test": "yarn lint && yarn unit",
     "lint": "eslint --ext .js,.vue src test",
@@ -57,8 +57,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "commit": "cz",
-    "start:storybook": "start-storybook -p 6006",
-    "build:rollup": "rollup -c"
+    "start:storybook": "start-storybook -p 6006"
   },
   "peerDependencies": {
     "chart.js": ">= 2.5"
@@ -67,7 +66,6 @@
     "@types/chart.js": "^2.7.55"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.42",
     "@babel/core": "7.16.5",
     "@babel/preset-env": "^7.16.5",
     "@commitlint/cli": "^15.0.0",
@@ -86,17 +84,13 @@
     "browserslist": "^4.19.1",
     "chart.js": "^2.8.0",
     "commitizen": "^4.2.4",
-    "connect-history-api-fallback": "^1.1.0",
     "cross-env": "^5.1.1",
-    "cross-spawn": "^5.1.0",
     "css-loader": "^0.28.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^10.2.1",
-    "eslint-friendly-formatter": "^2.0.7",
     "eslint-loader": "^4.0.2",
-    "eslint-plugin-html": "^2.0.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-prettier": "^4.0.0",
@@ -104,40 +98,22 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^8.2.0",
-    "eventsource-polyfill": "^0.9.6",
-    "express": "^4.15.2",
-    "extract-text-webpack-plugin": "^3.0.1",
-    "file-loader": "^0.10.1",
-    "friendly-errors-webpack-plugin": "^1.6.1",
-    "function-bind": "^1.0.2",
-    "html-webpack-plugin": "^2.28.0",
-    "http-proxy-middleware": "^0.17.4",
-    "inject-loader": "^3.0.0",
     "jest": "^27.4.3",
     "jest-canvas-mock": "^2.3.1",
-    "json-loader": "^0.5.4",
     "lint-staged": "^12.1.2",
-    "opn": "^5.1.0",
-    "portfinder": "^1.0.13",
     "prettier": "2.5.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.66.1",
     "rollup-plugin-swc": "^0.2.0",
     "rollup-plugin-vue": "^6.0.0",
-    "shelljs": "^0.7.7",
     "simple-git-hooks": "^2.7.0",
     "standard-version": "^9.3.2",
-    "url-loader": "^0.5.8",
     "vue": "2.6.14",
     "vue-hot-reload-api": "2.3.1",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^15.9.8",
     "vue-style-loader": "4.1.2",
     "vue-template-compiler": "2.6.14",
-    "vuepress": "^0.14.4",
-    "webpack": "^3.7.1",
-    "webpack-dev-middleware": "^1.10.1",
-    "webpack-hot-middleware": "^2.17.1",
-    "webpack-merge": "^4.1.0"
+    "vuepress": "^0.14.4"
   }
 }
