@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.5.4](https://github.com/apertureless/vue-chartjs/compare/v3.5.1...v3.5.4) (2022-01-26)
+
 ### [3.5.1](https://github.com/apertureless/vue-chartjs/compare/v3.5.0...v3.5.1) (2020-08-22)
 
 
