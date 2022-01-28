@@ -14,7 +14,7 @@ chart.jsの基本ロジックを抽象化していますが、公開されたcha
 
 `npm`を使って` vue-chartjs`をインストールすることができます。 ただしプロジェクトへの依存関係として `chart.js`を追加する必要があります。 なぜなら `Chart.js`はpeerDependencyだからです。 このため、Chart.jsのバージョンを完全に制御できます。
 
-`yarn add vue-chartjs chart.js` or `npm install vue-chartjs chart.js --save`
+`yarn add vue-chartjs chart.js@2.9.4` or `npm install vue-chartjs chart.js@2.9.4 --save`
 
 ::: tip
 Vue.jsの Version 1.xを使用している場合は`legacy`タグを使用してください。しかし、vueのバージョン1はもうメンテナンスされません。
