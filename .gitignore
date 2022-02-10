@@ -4,9 +4,8 @@
 node_modules
 
 # builds
-build
 dist
-es
+package
 
 # misc
 .DS_Store

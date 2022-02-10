@@ -36,17 +36,16 @@
     "Wrapper",
     "Charts"
   ],
-  "main": "dist/vue-chartjs.cjs",
-  "module": "dist/vue-chartjs.mjs",
-  "jsnext:main": "es/index.js",
-  "typings": "types/index.d.ts",
-  "files": [
-    "src",
-    "dist",
-    "es",
-    "types/*.d.ts"
-  ],
+  "main": "./src/index.js",
+  "typings": "./dist/index.d.ts",
+  "publishConfig": {
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "directory": "package"
+  },
   "scripts": {
+    "prepublishOnly": "pnpm lint && pnpm test && pnpm build && rm -rf ./package && clean-publish",
+    "postpublish": "rm -rf ./package",
     "emitDeclarations": "tsc --skipLibCheck --emitDeclarationOnly",
     "build": "rollup -c & pnpm emitDeclarations",
     "unit": "jest -c jest.config.json",
@@ -54,7 +53,6 @@
     "lint": "eslint --ext .js,.vue src test",
     "format": "prettier --write src test",
     "release": "standard-version",
-    "prepublishOnly": "pnpm lint && pnpm test && pnpm build",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "commit": "cz",
@@ -85,6 +83,7 @@
     "babel-loader": "8.2.3",
     "browserslist": "^4.19.1",
     "chart.js": "^2.8.0",
+    "clean-publish": "^4.0.0",
     "commitizen": "^4.2.4",
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.0",

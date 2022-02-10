@@ -23,7 +23,7 @@ const plugins = (targets, vueOptions = {}) => [
 
 export default [
   {
-    input: 'src/index.js',
+    input: pkg.main,
     plugins: plugins('defaults, not ie 11, not ie_mob 11', {
       template: {
         optimizeSSR: true
@@ -32,18 +32,18 @@ export default [
     external,
     output: {
       format: 'cjs',
-      file: pkg.main,
+      file: pkg.publishConfig.main,
       exports: 'named',
       sourcemap: true
     }
   },
   {
-    input: 'src/index.js',
+    input: pkg.main,
     plugins: plugins('defaults and supports es6-module'),
     external,
     output: {
-      format: 'esm',
-      file: pkg.module,
+      format: 'es',
+      file: pkg.publishConfig.module,
       sourcemap: true
     }
   }
