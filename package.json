@@ -44,8 +44,8 @@
     "directory": "package"
   },
   "scripts": {
-    "prepublishOnly": "pnpm lint && pnpm test && pnpm build && rm -rf ./package && clean-publish",
-    "postpublish": "rm -rf ./package",
+    "prepublishOnly": "pnpm test && pnpm build && del ./package && clean-publish",
+    "postpublish": "del ./package",
     "emitDeclarations": "tsc --skipLibCheck --emitDeclarationOnly",
     "build": "rollup -c & pnpm emitDeclarations",
     "unit": "jest -c jest.config.json",
@@ -88,6 +88,7 @@
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.0",
     "cz-conventional-changelog": "3.3.0",
+    "del-cli": "^4.0.1",
     "eslint": "7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^10.2.1",
