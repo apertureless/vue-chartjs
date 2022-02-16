@@ -59,7 +59,7 @@
     "start:storybook": "start-storybook -p 6006"
   },
   "peerDependencies": {
-    "chart.js": ">= 2.5"
+    "chart.js": "^3.7.0"
   },
   "dependencies": {
     "@types/chart.js": "^2.7.55"
@@ -76,13 +76,13 @@
     "@swc/core": "^1.2.120",
     "@swc/helpers": "^0.3.2",
     "@swc/jest": "^0.2.15",
-    "@types/chart.js": "^2.7.55",
+    "@types/chart.js": "^3.7.0",
     "@vue/test-utils": "^1.3.0",
     "@vue/vue2-jest": "^27.0.0-alpha.4",
     "babel-jest": "^27.4.5",
     "babel-loader": "8.2.3",
     "browserslist": "^4.19.1",
-    "chart.js": "^2.8.0",
+    "chart.js": "^3.7.0",
     "clean-publish": "^4.0.0",
     "commitizen": "^4.2.4",
     "cross-env": "^5.1.1",
