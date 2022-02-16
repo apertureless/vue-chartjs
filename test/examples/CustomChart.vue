@@ -1,11 +1,16 @@
 <script>
-import Chart from 'chart.js'
+import {
+  LineController,
+  LineElement,
+  PointElement,
+  CategoryScale,
+  LinearScale
+} from 'chart.js'
 import { generateChart } from '../../src/index'
 
-Chart.defaults.LineWithLine = Chart.defaults.line
-Chart.controllers.LineWithLine = Chart.controllers.line.extend({
-  draw: function (ease) {
-    Chart.controllers.line.prototype.draw.call(this, ease)
+class LineWithLineController extends LineController {
+  draw() {
+    super.draw(arguments)
 
     if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
       let activePoint = this.chart.tooltip._active[0]
@@ -25,9 +30,15 @@ Chart.controllers.LineWithLine = Chart.controllers.line.extend({
       ctx.restore()
     }
   }
-})
+}
 
-const LineWithLine = generateChart('line-with-chart', 'LineWithLine')
+const LineWithLine = generateChart(
+  'line-with-chart',
+  'line',
+  [LineElement, PointElement],
+  LineWithLineController,
+  [CategoryScale, LinearScale]
+)
 
 export default {
   name: 'CustomChart',
