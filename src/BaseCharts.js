@@ -1,6 +1,33 @@
-import Chart from 'chart.js'
+import {
+  Chart,
+  ArcElement,
+  BarElement,
+  LineElement,
+  BarController,
+  PointElement,
+  BubbleController,
+  DoughnutController,
+  LineController,
+  PieController,
+  PolarAreaController,
+  RadarController,
+  ScatterController,
+  LinearScale,
+  CategoryScale,
+  RadialLinearScale,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js'
 
-export function generateChart(chartId, chartType) {
+export function generateChart(
+  chartId,
+  chartType,
+  chartElements,
+  chartController,
+  chartScales,
+  defaultOptions
+) {
   return {
     render: function (createElement) {
       return createElement(
@@ -49,34 +76,56 @@ export function generateChart(chartId, chartType) {
         }
       }
     },
-
     data() {
       return {
-        _chart: null,
-        _plugins: this.plugins
+        _chart: null
       }
     },
-
+    created() {
+      Chart.register(
+        ...chartElements,
+        chartController,
+        ...chartScales,
+        Title,
+        Tooltip,
+        Legend
+      )
+    },
     methods: {
-      addPlugin(plugin) {
-        this.$data._plugins.push(plugin)
-      },
-      generateLegend() {
-        if (this.$data._chart) {
-          return this.$data._chart.generateLegend()
-        }
-      },
       renderChart(data, options) {
-        if (this.$data._chart) this.$data._chart.destroy()
-        if (!this.$refs.canvas)
+        if (this.$data._chart) {
+          this.$data._chart.destroy()
+        }
+
+        if (!this.$refs.canvas) {
           throw new Error(
             'Please remove the <template></template> tags from your chart component. See https://vue-chartjs.org/guide/#vue-single-file-components'
           )
+        }
+
+        const chartOptions = options
+
+        if (
+          typeof defaultOptions !== 'undefined' &&
+          defaultOptions.length > 0
+        ) {
+          for (const defaultOption of defaultOptions) {
+            for (const defaultOptionKey of Object.keys(defaultOption)) {
+              chartOptions[defaultOptionKey] = defaultOption[defaultOptionKey]
+            }
+          }
+        }
+
+        if (this.plugins.length > 0) {
+          for (const plugin of this.plugins) {
+            chartOptions['plugins'] = { ...chartOptions.plugins, ...plugin }
+          }
+        }
+
         this.$data._chart = new Chart(this.$refs.canvas.getContext('2d'), {
           type: chartType,
           data: data,
-          options: options,
-          plugins: this.$data._plugins
+          options: chartOptions
         })
       }
     },
@@ -88,18 +137,78 @@ export function generateChart(chartId, chartType) {
   }
 }
 
-export const Bar = generateChart('bar-chart', 'bar')
+export const Bar = generateChart(
+  'bar-chart',
+  'bar',
+  [BarElement],
+  BarController,
+  [LinearScale, CategoryScale]
+)
+
 export const HorizontalBar = generateChart(
   'horizontalbar-chart',
-  'horizontalBar'
+  'bar',
+  [BarElement],
+  BarController,
+  [CategoryScale],
+  [{ indexAxis: 'y' }]
 )
-export const Doughnut = generateChart('doughnut-chart', 'doughnut')
-export const Line = generateChart('line-chart', 'line')
-export const Pie = generateChart('pie-chart', 'pie')
-export const PolarArea = generateChart('polar-chart', 'polarArea')
-export const Radar = generateChart('radar-chart', 'radar')
-export const Bubble = generateChart('bubble-chart', 'bubble')
-export const Scatter = generateChart('scatter-chart', 'scatter')
+
+export const Doughnut = generateChart(
+  'doughnut-chart',
+  'doughnut',
+  [ArcElement],
+  DoughnutController,
+  [CategoryScale]
+)
+
+export const Line = generateChart(
+  'line-chart',
+  'line',
+  [LineElement],
+  LineController,
+  [LinearScale]
+)
+
+export const Pie = generateChart(
+  'pie-chart',
+  'pie',
+  [ArcElement],
+  PieController,
+  [CategoryScale]
+)
+
+export const PolarArea = generateChart(
+  'polar-chart',
+  'polarArea',
+  [ArcElement],
+  PolarAreaController,
+  [RadialLinearScale]
+)
+
+export const Radar = generateChart(
+  'radar-chart',
+  'radar',
+  [PointElement],
+  RadarController,
+  [RadialLinearScale]
+)
+
+export const Bubble = generateChart(
+  'bubble-chart',
+  'bubble',
+  [PointElement],
+  BubbleController,
+  [LinearScale]
+)
+
+export const Scatter = generateChart(
+  'scatter-chart',
+  'scatter',
+  [LineElement],
+  ScatterController,
+  [CategoryScale]
+)
 
 export default {
   Bar,
