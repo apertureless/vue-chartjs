@@ -83,7 +83,7 @@ export function generateChart(chartId, chartType, chartController) {
 
         if (this.plugins.length > 0) {
           for (const plugin of this.plugins) {
-            chartOptions['plugins'] = { ...chartOptions.plugins, ...plugin }
+            chartOptions.plugins = { ...chartOptions.plugins, ...plugin }
           }
         }
 
