@@ -36,6 +36,7 @@
     "Wrapper",
     "Charts"
   ],
+  "sideEffects": false,
   "main": "./src/index.js",
   "typings": "./dist/index.d.ts",
   "publishConfig": {
@@ -76,7 +77,6 @@
     "@swc/core": "^1.2.120",
     "@swc/helpers": "^0.3.2",
     "@swc/jest": "^0.2.15",
-    "@types/chart.js": "^3.7.0",
     "@vue/test-utils": "^1.3.0",
     "@vue/vue2-jest": "^27.0.0-alpha.4",
     "babel-jest": "^27.4.5",

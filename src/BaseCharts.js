@@ -1,31 +1,19 @@
 import {
   Chart,
-  ArcElement,
-  BarElement,
-  LineElement,
   BarController,
-  PointElement,
   BubbleController,
   DoughnutController,
   LineController,
   PieController,
   PolarAreaController,
   RadarController,
-  ScatterController,
-  LinearScale,
-  CategoryScale,
-  RadialLinearScale,
-  Title,
-  Tooltip,
-  Legend
+  ScatterController
 } from 'chart.js'
 
 export function generateChart(
   chartId,
   chartType,
-  chartElements,
   chartController,
-  chartScales,
   defaultOptions
 ) {
   return {
@@ -82,14 +70,7 @@ export function generateChart(
       }
     },
     created() {
-      Chart.register(
-        ...chartElements,
-        chartController,
-        ...chartScales,
-        Title,
-        Tooltip,
-        Legend
-      )
+      Chart.register(chartController)
     },
     methods: {
       renderChart(data, options) {
@@ -137,77 +118,59 @@ export function generateChart(
   }
 }
 
-export const Bar = generateChart(
+export const Bar = /* #__PURE__ */ generateChart(
   'bar-chart',
   'bar',
-  [BarElement],
-  BarController,
-  [LinearScale, CategoryScale]
+  BarController
 )
 
-export const HorizontalBar = generateChart(
+export const HorizontalBar = /* #__PURE__ */ generateChart(
   'horizontalbar-chart',
   'bar',
-  [BarElement],
   BarController,
-  [CategoryScale],
   [{ indexAxis: 'y' }]
 )
 
-export const Doughnut = generateChart(
+export const Doughnut = /* #__PURE__ */ generateChart(
   'doughnut-chart',
   'doughnut',
-  [ArcElement],
-  DoughnutController,
-  [CategoryScale]
+  DoughnutController
 )
 
-export const Line = generateChart(
+export const Line = /* #__PURE__ */ generateChart(
   'line-chart',
   'line',
-  [LineElement],
-  LineController,
-  [LinearScale]
+  LineController
 )
 
-export const Pie = generateChart(
+export const Pie = /* #__PURE__ */ generateChart(
   'pie-chart',
   'pie',
-  [ArcElement],
-  PieController,
-  [CategoryScale]
+  PieController
 )
 
-export const PolarArea = generateChart(
+export const PolarArea = /* #__PURE__ */ generateChart(
   'polar-chart',
   'polarArea',
-  [ArcElement],
-  PolarAreaController,
-  [RadialLinearScale]
+  PolarAreaController
 )
 
-export const Radar = generateChart(
+export const Radar = /* #__PURE__ */ generateChart(
   'radar-chart',
   'radar',
-  [PointElement],
-  RadarController,
-  [RadialLinearScale]
+  RadarController
 )
 
-export const Bubble = generateChart(
+export const Bubble = /* #__PURE__ */ generateChart(
   'bubble-chart',
   'bubble',
-  [PointElement],
-  BubbleController,
-  [LinearScale]
+  BubbleController
 )
 
-export const Scatter = generateChart(
+export const Scatter = /* #__PURE__ */ generateChart(
   'scatter-chart',
   'scatter',
-  [LineElement],
-  ScatterController,
-  [CategoryScale]
+  ScatterController
 )
 
 export default {
