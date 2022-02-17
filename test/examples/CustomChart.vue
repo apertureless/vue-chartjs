@@ -1,12 +1,26 @@
 <script>
+import { generateChart } from '../../src/index'
 import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
   LineController,
   LineElement,
   PointElement,
   CategoryScale,
   LinearScale
 } from 'chart.js'
-import { generateChart } from '../../src/index'
+
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  PointElement,
+  CategoryScale,
+  LinearScale
+)
 
 class LineWithLineController extends LineController {
   draw() {
@@ -35,9 +49,7 @@ class LineWithLineController extends LineController {
 const LineWithLine = generateChart(
   'line-with-chart',
   'line',
-  [LineElement, PointElement],
-  LineWithLineController,
-  [CategoryScale, LinearScale]
+  LineWithLineController
 )
 
 export default {

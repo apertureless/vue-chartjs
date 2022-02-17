@@ -1,5 +1,15 @@
 <script>
 import { PolarArea } from '../../src/index'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+  RadialLinearScale
+} from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, ArcElement, RadialLinearScale)
 
 export default {
   name: 'PolarAreaChart',

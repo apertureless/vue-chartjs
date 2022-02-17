@@ -1,5 +1,15 @@
 <script>
 import { Line } from '../../src/index'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  LinearScale
+} from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale)
 
 export default {
   name: 'LineChart',

@@ -1,6 +1,17 @@
 <script>
 import { Bubble } from '../../src/index'
 
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+  LinearScale
+} from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale)
+
 export default {
   name: 'BubbleChart',
   extends: Bubble,

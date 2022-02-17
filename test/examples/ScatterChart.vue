@@ -1,5 +1,15 @@
 <script>
 import { Scatter } from '../../src/index'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  CategoryScale
+} from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale)
 
 export default {
   name: 'ScatterChart',

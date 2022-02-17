@@ -1,5 +1,15 @@
 <script>
 import { HorizontalBar } from '../../src/index'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale
+} from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale)
 
 export default {
   name: 'HorizontalBarChart',

@@ -1,5 +1,15 @@
 <script>
 import { Radar } from '../../src/index'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+  RadialLinearScale
+} from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, PointElement, RadialLinearScale)
 
 export default {
   name: 'RadarChart',
