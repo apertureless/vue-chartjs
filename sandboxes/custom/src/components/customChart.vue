@@ -4,14 +4,28 @@
 #in an empty template and unexpected errors.
 
 <script>
+import { generateChart } from 'vue-chartjs'
 import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
   LineController,
   LineElement,
   PointElement,
   CategoryScale,
   LinearScale
 } from 'chart.js'
-import { generateChart } from 'vue-chartjs'
+
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  PointElement,
+  CategoryScale,
+  LinearScale
+)
 
 class LineWithLineController extends LineController {
   draw() {
@@ -40,9 +54,7 @@ class LineWithLineController extends LineController {
 const LineWithLine = generateChart(
   'line-with-chart',
   'line',
-  [LineElement, PointElement],
-  LineWithLineController,
-  [CategoryScale, LinearScale]
+  LineWithLineController
 )
 
 export default {

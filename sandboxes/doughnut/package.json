@@ -2,7 +2,7 @@
   "name": "vue-chartjs-doughnut-example",
   "dependencies": {
     "vue": "^2.6.11",
-    "chart.js": "2.6.0",
+    "chart.js": "3.7.0",
     "vue-chartjs": "3.5.1"
   }
 }

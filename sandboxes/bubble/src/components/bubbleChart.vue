@@ -5,6 +5,16 @@
 
 <script>
 import { Bubble } from 'vue-chartjs'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+  LinearScale
+} from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale)
 
 export default {
   name: 'BubbleChart',
