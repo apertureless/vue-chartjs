@@ -10,12 +10,7 @@ import {
   ScatterController
 } from 'chart.js'
 
-export function generateChart(
-  chartId,
-  chartType,
-  chartController,
-  defaultOptions
-) {
+export function generateChart(chartId, chartType, chartController) {
   return {
     render: function (createElement) {
       return createElement(
@@ -86,17 +81,6 @@ export function generateChart(
 
         const chartOptions = options
 
-        if (
-          typeof defaultOptions !== 'undefined' &&
-          defaultOptions.length > 0
-        ) {
-          for (const defaultOption of defaultOptions) {
-            for (const defaultOptionKey of Object.keys(defaultOption)) {
-              chartOptions[defaultOptionKey] = defaultOption[defaultOptionKey]
-            }
-          }
-        }
-
         if (this.plugins.length > 0) {
           for (const plugin of this.plugins) {
             chartOptions['plugins'] = { ...chartOptions.plugins, ...plugin }
@@ -122,13 +106,6 @@ export const Bar = /* #__PURE__ */ generateChart(
   'bar-chart',
   'bar',
   BarController
-)
-
-export const HorizontalBar = /* #__PURE__ */ generateChart(
-  'horizontalbar-chart',
-  'bar',
-  BarController,
-  [{ indexAxis: 'y' }]
 )
 
 export const Doughnut = /* #__PURE__ */ generateChart(
@@ -175,7 +152,6 @@ export const Scatter = /* #__PURE__ */ generateChart(
 
 export default {
   Bar,
-  HorizontalBar,
   Doughnut,
   Line,
   Pie,

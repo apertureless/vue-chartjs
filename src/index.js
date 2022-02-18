@@ -2,7 +2,6 @@ import mixins from './mixins/index.js'
 
 import {
   Bar,
-  HorizontalBar,
   Doughnut,
   Line,
   Pie,
@@ -15,7 +14,6 @@ import {
 
 const VueCharts = {
   Bar,
-  HorizontalBar,
   Doughnut,
   Line,
   Pie,
@@ -36,7 +34,6 @@ export default VueCharts
 export {
   VueCharts,
   Bar,
-  HorizontalBar,
   Doughnut,
   Line,
   Pie,
