@@ -1,6 +1,16 @@
-import Chart from 'chart.js'
+import {
+  Chart,
+  BarController,
+  BubbleController,
+  DoughnutController,
+  LineController,
+  PieController,
+  PolarAreaController,
+  RadarController,
+  ScatterController
+} from 'chart.js'
 
-export function generateChart(chartId, chartType) {
+export function generateChart(chartId, chartType, chartController) {
   return {
     render: function (createElement) {
       return createElement(
@@ -49,34 +59,38 @@ export function generateChart(chartId, chartType) {
         }
       }
     },
-
     data() {
       return {
-        _chart: null,
-        _plugins: this.plugins
+        _chart: null
       }
     },
-
+    created() {
+      Chart.register(chartController)
+    },
     methods: {
-      addPlugin(plugin) {
-        this.$data._plugins.push(plugin)
-      },
-      generateLegend() {
-        if (this.$data._chart) {
-          return this.$data._chart.generateLegend()
-        }
-      },
       renderChart(data, options) {
-        if (this.$data._chart) this.$data._chart.destroy()
-        if (!this.$refs.canvas)
+        if (this.$data._chart) {
+          this.$data._chart.destroy()
+        }
+
+        if (!this.$refs.canvas) {
           throw new Error(
             'Please remove the <template></template> tags from your chart component. See https://vue-chartjs.org/guide/#vue-single-file-components'
           )
+        }
+
+        const chartOptions = options
+
+        if (this.plugins.length > 0) {
+          for (const plugin of this.plugins) {
+            chartOptions['plugins'] = { ...chartOptions.plugins, ...plugin }
+          }
+        }
+
         this.$data._chart = new Chart(this.$refs.canvas.getContext('2d'), {
           type: chartType,
           data: data,
-          options: options,
-          plugins: this.$data._plugins
+          options: chartOptions
         })
       }
     },
@@ -88,22 +102,56 @@ export function generateChart(chartId, chartType) {
   }
 }
 
-export const Bar = generateChart('bar-chart', 'bar')
-export const HorizontalBar = generateChart(
-  'horizontalbar-chart',
-  'horizontalBar'
+export const Bar = /* #__PURE__ */ generateChart(
+  'bar-chart',
+  'bar',
+  BarController
 )
-export const Doughnut = generateChart('doughnut-chart', 'doughnut')
-export const Line = generateChart('line-chart', 'line')
-export const Pie = generateChart('pie-chart', 'pie')
-export const PolarArea = generateChart('polar-chart', 'polarArea')
-export const Radar = generateChart('radar-chart', 'radar')
-export const Bubble = generateChart('bubble-chart', 'bubble')
-export const Scatter = generateChart('scatter-chart', 'scatter')
+
+export const Doughnut = /* #__PURE__ */ generateChart(
+  'doughnut-chart',
+  'doughnut',
+  DoughnutController
+)
+
+export const Line = /* #__PURE__ */ generateChart(
+  'line-chart',
+  'line',
+  LineController
+)
+
+export const Pie = /* #__PURE__ */ generateChart(
+  'pie-chart',
+  'pie',
+  PieController
+)
+
+export const PolarArea = /* #__PURE__ */ generateChart(
+  'polar-chart',
+  'polarArea',
+  PolarAreaController
+)
+
+export const Radar = /* #__PURE__ */ generateChart(
+  'radar-chart',
+  'radar',
+  RadarController
+)
+
+export const Bubble = /* #__PURE__ */ generateChart(
+  'bubble-chart',
+  'bubble',
+  BubbleController
+)
+
+export const Scatter = /* #__PURE__ */ generateChart(
+  'scatter-chart',
+  'scatter',
+  ScatterController
+)
 
 export default {
   Bar,
-  HorizontalBar,
   Doughnut,
   Line,
   Pie,

@@ -33,34 +33,22 @@ describe('LineChart', () => {
     const wrapper = mount(Component)
     const { vm } = wrapper
 
-    expect(vm.$children[0].$data._chart.chart.ctx).not.toBe(null)
+    expect(vm.$children[0].$data._chart.ctx).not.toBe(null)
 
     vm.$destroy()
 
     vm.$nextTick(() => {
       vm.$forceUpdate()
-      expect(vm.$children[0].$data._chart.chart.ctx).toBe(null)
+      expect(vm.$children[0].$data._chart.ctx).toBe(null)
       done()
     })
   })
 
-  it('should add an inline plugin to the array', () => {
-    const testPlugin = {
-      id: 'test'
-    }
-
-    const wrapper = mount(Component)
-    const { vm } = wrapper
-
-    expect(vm.$children[0].$data._plugins).toEqual([])
-    vm.$children[0].addPlugin(testPlugin)
-
-    expect(vm.$children[0].$data._plugins.length).toEqual(1)
-  })
-
   it('should add inline plugins based on prop', () => {
     const testPlugin = {
-      id: 'test'
+      title: {
+        display: true
+      }
     }
 
     const wrapper = mount(Component, {
@@ -68,6 +56,6 @@ describe('LineChart', () => {
     })
     const { vm } = wrapper
 
-    expect(vm.$children[0].$data._plugins.length).toEqual(1)
+    expect(Object.keys(vm.$children[0].$data.options.plugins).length).toEqual(1)
   })
 })

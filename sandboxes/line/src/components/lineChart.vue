@@ -5,6 +5,16 @@
 
 <script>
 import { Line } from 'vue-chartjs'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  LinearScale
+} from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale)
 
 export default {
   name: 'LineChart',
