@@ -15,8 +15,6 @@ specifiers:
   '@swc/jest': ^0.2.15
   '@types/chart.js': ^2.7.55
   '@vitejs/plugin-vue': ^2.2.2
-  '@vue/compat': ^3.2.31
-  '@vue/compiler-sfc': ^3.2.31
   '@vue/test-utils': ^2.0.0-rc.17
   '@vue/vue3-jest': ^27.0.0-alpha.4
   babel-jest: ^27.4.5
@@ -63,13 +61,11 @@ devDependencies:
   '@size-limit/preset-big-lib': 7.0.8_070b32a7cd5b24e1aa86940aabf66c67
   '@storybook/addon-actions': 6.4.13
   '@storybook/addon-essentials': 6.4.13_5a939804e507bbcdc9a6b0dc26ed10af
-  '@storybook/vue3': 6.4.19_43526b1e990be8549849ae8be0ee0fcb
+  '@storybook/vue3': 6.4.19_9acdbe7dd6547c318b6d3fe71f0ccc31
   '@swc/core': 1.2.120
   '@swc/helpers': 0.3.2
   '@swc/jest': 0.2.15_@swc+core@1.2.120
   '@vitejs/plugin-vue': 2.2.2_vue@3.2.31
-  '@vue/compat': 3.2.31_vue@3.2.31
-  '@vue/compiler-sfc': 3.2.31
   '@vue/test-utils': 2.0.0-rc.17_vue@3.2.31
   '@vue/vue3-jest': 27.0.0-alpha.4_086e071c456560e3f52577ca51f14fd3
   babel-jest: 27.4.5_@babel+core@7.16.5
@@ -4301,7 +4297,7 @@ packages:
       '@storybook/source-loader': 6.4.13
       '@storybook/store': 6.4.13
       '@storybook/theming': 6.4.13
-      '@storybook/vue3': 6.4.19_43526b1e990be8549849ae8be0ee0fcb
+      '@storybook/vue3': 6.4.19_9acdbe7dd6547c318b6d3fe71f0ccc31
       acorn: 7.4.1
       acorn-jsx: 5.3.2_acorn@7.4.1
       acorn-walk: 7.2.0
@@ -5913,7 +5909,7 @@ packages:
       - '@types/react'
     dev: true
 
-  /@storybook/vue3/6.4.19_43526b1e990be8549849ae8be0ee0fcb:
+  /@storybook/vue3/6.4.19_9acdbe7dd6547c318b6d3fe71f0ccc31:
     resolution: {integrity: sha512-ocW2haoDOXudK3XHC7raBjq9k9gPsApiyQc4dPnjcF8sXmC3WZg6CYSPt0o00UMDmeDL0MDW336fw94jy6+LfA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -5930,7 +5926,6 @@ packages:
       '@storybook/csf': 0.0.2--canary.87bc651.0
       '@storybook/store': 6.4.19_react-dom@16.14.0+react@16.14.0
       '@types/webpack-env': 1.16.3
-      '@vue/compiler-sfc': 3.2.31
       babel-loader: 8.2.3_@babel+core@7.16.5
       core-js: 3.20.2
       global: 4.4.0
@@ -6440,14 +6435,6 @@ packages:
       babel-plugin-transform-vue-jsx: 4.0.1_5b6fc1b18b04c575d0ce5bffb8f53b98
     transitivePeerDependencies:
       - '@babel/core'
-    dev: true
-
-  /@vue/compat/3.2.31_vue@3.2.31:
-    resolution: {integrity: sha512-hhwJk/SRwpT2OADctj+t7QZCRIgh04AcelGpe6gdj0OxA75xpHnPrG+fmG37U3Z6WDrNHZpGvu2eXBzWXM4OVA==}
-    peerDependencies:
-      vue: 3.2.31
-    dependencies:
-      vue: 3.2.31
     dev: true
 
   /@vue/compiler-core/3.2.26:

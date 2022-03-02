@@ -79,8 +79,6 @@
     "@swc/helpers": "^0.3.2",
     "@swc/jest": "^0.2.15",
     "@vitejs/plugin-vue": "^2.2.2",
-    "@vue/compat": "^3.2.31",
-    "@vue/compiler-sfc": "^3.2.31",
     "@vue/test-utils": "^2.0.0-rc.17",
     "@vue/vue3-jest": "^27.0.0-alpha.4",
     "babel-jest": "^27.4.5",
