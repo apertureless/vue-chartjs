@@ -1,4 +1,5 @@
 <script>
+import { defineComponent, h } from 'vue'
 import { Bubble } from '../../src/index'
 
 import {
@@ -12,11 +13,39 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale)
 
-export default {
+export default defineComponent({
   name: 'BubbleChart',
-  extends: Bubble,
-  data: () => ({
-    chartdata: {
+  components: {
+    Bubble
+  },
+  props: {
+    chartId: {
+      type: String,
+      default: 'bubble-chart'
+    },
+    width: {
+      type: Number,
+      default: 400
+    },
+    height: {
+      type: Number,
+      default: 400
+    },
+    cssClasses: {
+      default: '',
+      type: String
+    },
+    styles: {
+      type: Object,
+      default: () => {}
+    },
+    plugins: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  setup(props) {
+    const chartData = {
       datasets: [
         {
           label: 'Data One',
@@ -61,15 +90,24 @@ export default {
           ]
         }
       ]
-    },
-    options: {
+    }
+
+    const chartOptions = {
       responsive: true,
       maintainAspectRatio: false
     }
-  }),
 
-  mounted() {
-    this.renderChart(this.chartdata, this.options)
+    return () =>
+      h(Bubble, {
+        chartData,
+        chartOptions,
+        chartId: props.chartId,
+        width: props.width,
+        height: props.height,
+        cssClasses: props.cssClasses,
+        styles: props.styles,
+        plugins: props.plugins
+      })
   }
-}
+})
 </script>
