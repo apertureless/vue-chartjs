@@ -109,6 +109,7 @@
     "simple-git-hooks": "^2.7.0",
     "size-limit": "^7.0.8",
     "standard-version": "^9.3.2",
+    "vite": "^2.8.6",
     "vue": "^3.2.31",
     "vue-loader": "^17.0.0",
     "vuepress": "^0.14.4"
