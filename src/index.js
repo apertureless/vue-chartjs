@@ -1,5 +1,3 @@
-import mixins from './mixins/index.js'
-
 import {
   Bar,
   Doughnut,
@@ -21,7 +19,6 @@ const VueCharts = {
   Radar,
   Bubble,
   Scatter,
-  mixins,
   generateChart,
   render: () =>
     console.error(
@@ -41,6 +38,5 @@ export {
   Radar,
   Bubble,
   Scatter,
-  mixins,
   generateChart
 }
