@@ -1,9 +1,5 @@
-#Do not include the template tag in your .vue single-file components. Vue can
-#not merge templates. If you add an empty template tag, Vue will take the
-#template from your component and not from the extended one, which will result
-#in an empty template and unexpected errors.
-
 <script>
+import { defineComponent, h } from 'vue'
 import { Bar } from 'vue-chartjs'
 import {
   Chart as ChartJS,
@@ -17,11 +13,39 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-export default {
+export default defineComponent({
   name: 'BarChart',
-  extends: Bar,
-  data: () => ({
-    chartdata: {
+  components: {
+    Bar
+  },
+  props: {
+    chartId: {
+      type: String,
+      default: 'bar-chart'
+    },
+    width: {
+      type: Number,
+      default: 400
+    },
+    height: {
+      type: Number,
+      default: 400
+    },
+    cssClasses: {
+      default: '',
+      type: String
+    },
+    styles: {
+      type: Object,
+      default: () => {}
+    },
+    plugins: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  setup(props) {
+    const chartData = {
       labels: [
         'January',
         'February',
@@ -43,15 +67,24 @@ export default {
           data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
         }
       ]
-    },
-    options: {
+    }
+
+    const chartOptions = {
       responsive: true,
       maintainAspectRatio: false
     }
-  }),
 
-  mounted() {
-    this.renderChart(this.chartdata, this.options)
+    return () =>
+      h(Bar, {
+        chartData,
+        chartOptions,
+        chartId: props.chartId,
+        width: props.width,
+        height: props.height,
+        cssClasses: props.cssClasses,
+        styles: props.styles,
+        plugins: props.plugins
+      })
   }
-}
+})
 </script>

@@ -1,14 +1,14 @@
 <template>
-  <doughnut-page />
+  <DoughnutChart />
 </template>
 
 <script>
-import DoughnutPage from './components/doughnutPage.vue'
+import DoughnutChart from './components/doughnutChart.vue'
 
 export default {
   name: 'App',
   components: {
-    DoughnutPage
+    DoughnutChart
   }
 }
 </script>

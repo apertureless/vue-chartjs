@@ -1,10 +1,6 @@
-#Do not include the template tag in your .vue single-file components. Vue can
-#not merge templates. If you add an empty template tag, Vue will take the
-#template from your component and not from the extended one, which will result
-#in an empty template and unexpected errors.
-
 <script>
-import { Bar, mixins } from 'vue-chartjs'
+import { defineComponent, h } from 'vue'
+import { Bar } from 'vue-chartjs'
 import {
   Chart as ChartJS,
   Title,
@@ -17,20 +13,58 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-const { reactiveProp } = mixins
-
-export default {
-  name: 'ReactivePropChart',
-  extends: Bar,
-  mixins: [reactiveProp],
-  data: () => ({
-    options: {
+export default defineComponent({
+  name: 'ReactiveChart',
+  components: {
+    Bar
+  },
+  props: {
+    chartData: {
+      type: Object,
+      required: true
+    },
+    chartId: {
+      type: String,
+      default: 'bar-chart'
+    },
+    width: {
+      type: Number,
+      default: 400
+    },
+    height: {
+      type: Number,
+      default: 400
+    },
+    cssClasses: {
+      default: '',
+      type: String
+    },
+    styles: {
+      type: Object,
+      default: () => {}
+    },
+    plugins: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  setup(props) {
+    const chartOptions = {
       responsive: true,
       maintainAspectRatio: false
     }
-  }),
-  mounted() {
-    this.renderChart(this.chartData, this.options)
+
+    return () =>
+      h(Bar, {
+        chartData: props.chartData,
+        chartOptions,
+        chartId: props.chartId,
+        width: props.width,
+        height: props.height,
+        cssClasses: props.cssClasses,
+        styles: props.styles,
+        plugins: props.plugins
+      })
   }
-}
+})
 </script>

@@ -1,67 +1,31 @@
-<template>
-  <reactive-prop-chart
-    :chart-data="dataPoints"
-    :chart-id="chartId"
-    :width="width"
-    :height="height"
-    :css-classes="cssClasses"
-    :styles="styles"
-    :plugins="plugins"
-  />
-</template>
-
 <script>
 import ReactivePropChart from './reactivePropChart.vue'
 
-export default {
-  name: 'ReactivePropPage',
+import { defineComponent, ref, h, onMounted } from 'vue'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+} from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+export default defineComponent({
+  name: 'ReactiveChart',
   components: {
     ReactivePropChart
   },
-  props: {
-    chartId: {
-      type: String,
-      default: ''
-    },
-    width: {
-      type: Number,
-      default: 400
-    },
-    height: {
-      type: Number,
-      default: 400
-    },
-    cssClasses: {
-      default: '',
-      type: String
-    },
-    styles: {
-      type: Object,
-      default: () => {}
-    },
-    plugins: {
-      type: Array,
-      default: () => []
-    }
-  },
-  data() {
-    return {
-      dataPoints: {}
-    }
-  },
-  mounted() {
-    setInterval(() => {
-      this.fillData()
-    }, 2000)
-  },
-  methods: {
-    getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
-    },
-    fillData() {
-      this.dataPoints = {
+  setup() {
+    const chartData = ref({})
+
+    function fillData() {
+      const updatedChartData = {
         labels: [
-          'January' + this.getRandomInt(),
+          'January' + getRandomInt(),
           'February',
           'March',
           'April',
@@ -79,23 +43,40 @@ export default {
             label: 'Data One',
             backgroundColor: '#f87979',
             data: [
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt()
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt()
             ]
           }
         ]
       }
+
+      chartData.value = { ...updatedChartData }
     }
+
+    function getRandomInt() {
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+    }
+
+    onMounted(() => {
+      setInterval(() => {
+        fillData()
+      }, 5000)
+    })
+
+    return () =>
+      h(ReactivePropChart, {
+        chartData: chartData.value
+      })
   }
-}
+})
 </script>

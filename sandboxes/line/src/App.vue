@@ -1,14 +1,14 @@
 <template>
-  <line-page />
+  <LineChart />
 </template>
 
 <script>
-import LinePage from './components/linePage.vue'
+import LineChart from './components/lineChart.vue'
 
 export default {
   name: 'App',
   components: {
-    LinePage
+    LineChart
   }
 }
 </script>

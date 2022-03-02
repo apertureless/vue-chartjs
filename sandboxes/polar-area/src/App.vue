@@ -1,14 +1,14 @@
 <template>
-  <polar-area-page />
+  <PolarAreaChart />
 </template>
 
 <script>
-import PolarAreaPage from './components/polarAreaPage.vue'
+import PolarAreaChart from './components/polarAreaChart.vue'
 
 export default {
   name: 'App',
   components: {
-    PolarAreaPage
+    PolarAreaChart
   }
 }
 </script>
