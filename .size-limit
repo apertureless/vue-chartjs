@@ -1,24 +1,24 @@
 [
   {
     "path": "dist/index.cjs",
-    "limit": "2.2 KB",
+    "limit": "2.3 KB",
     "webpack": false,
     "running": false
   },
   {
     "path": "dist/index.cjs",
-    "limit": "700 B",
-    "import": "{ Chart }"
+    "limit": "60 KB",
+    "import": "{ Bar }"
   },
   {
     "path": "dist/index.js",
-    "limit": "2 KB",
+    "limit": "2.25 KB",
     "webpack": false,
     "running": false
   },
   {
     "path": "dist/index.js",
-    "limit": "300 B",
-    "import": "{ Chart }"
+    "limit": "8.5 KB",
+    "import": "{ Bar }"
   }
 ]
