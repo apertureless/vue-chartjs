@@ -17,9 +17,22 @@ import {
   onMounted,
   onBeforeUnmount,
   watch,
+  computed,
   isProxy,
   toRaw
 } from 'vue'
+
+import {
+  chartCreate,
+  chartDestroy,
+  chartUpdate,
+  getChartOptions,
+  getChartData,
+  setChartLabels,
+  setChartXLabels,
+  setChartYLabels,
+  setChartDatasets
+} from './utils.js'
 
 export const generateChart = (chartId, chartType, chartController) =>
   defineComponent({
@@ -28,21 +41,25 @@ export const generateChart = (chartId, chartType, chartController) =>
         type: Object,
         required: true
       },
+      datasetIdKey: {
+        type: String,
+        default: 'label'
+      },
       chartOptions: {
         type: Object,
         default: () => {}
       },
       chartId: {
-        default: chartId,
-        type: String
+        type: String,
+        default: 'chartId'
       },
       width: {
-        default: 400,
-        type: Number
+        type: Number,
+        default: 400
       },
       height: {
-        default: 400,
-        type: Number
+        type: Number,
+        default: 400
       },
       cssClasses: {
         type: String,
@@ -63,9 +80,11 @@ export const generateChart = (chartId, chartType, chartController) =>
       const _chart = ref(null)
       const canvasEl = ref(null)
 
+      const hasChart = computed(() => _chart.value !== null)
+
       function renderChart(data, options) {
-        if (_chart.value !== null) {
-          toRaw(_chart.value).destroy()
+        if (hasChart.value) {
+          chartDestroy(toRaw(_chart.value), context)
         }
 
         if (canvasEl.value === null) {
@@ -74,19 +93,12 @@ export const generateChart = (chartId, chartType, chartController) =>
           )
         }
 
-        const chartOptions = options
-
-        if (
-          typeof props.plugins !== 'undefined' &&
-          Object.keys(props.plugins).length > 0
-        ) {
-          chartOptions.plugins = { ...chartOptions.plugins, ...props.plugins }
-        }
+        const chartData = getChartData(data)
 
         _chart.value = new ChartJS(canvasEl.value.getContext('2d'), {
           type: chartType,
-          data: data,
-          options: chartOptions
+          data: isProxy(data) ? new Proxy(chartData, {}) : chartData,
+          options: getChartOptions(options, props.plugins)
         })
       }
 
@@ -106,71 +118,49 @@ export const generateChart = (chartId, chartType, chartController) =>
             return dataset.label
           })
 
-          // Stringify 'em for easier compare
-          const oldLabels = JSON.stringify(oldDatasetLabels)
-          const newLabels = JSON.stringify(newDatasetLabels)
-
           // Check if Labels are equal and if dataset length is equal
           if (
-            newLabels === oldLabels &&
-            oldData.datasets.length === newData.datasets.length
+            oldData.datasets.length === newData.datasets.length &&
+            newDatasetLabels.every(
+              (value, index) => value === oldDatasetLabels[index]
+            )
           ) {
-            for (const [i, dataset] of newData.datasets.entries()) {
-              // Get new and old dataset keys
-              const oldDatasetKeys = Object.keys(oldData.datasets[i])
-              const newDatasetKeys = Object.keys(dataset)
-
-              // Get keys that aren't present in the new data
-              const deletionKeys = oldDatasetKeys.filter(key => {
-                return key !== '_meta' && newDatasetKeys.indexOf(key) === -1
-              })
-
-              for (const deletionKey of deletionKeys) {
-                delete chart.data.datasets[i][deletionKey]
-              }
-
-              // Update attributes individually to avoid re-rendering the entire chart
-              for (const attribute in dataset) {
-                if (Object.prototype.hasOwnProperty.call(dataset, attribute)) {
-                  chart.data.datasets[i][attribute] = dataset[attribute]
-                }
-              }
-            }
+            setChartDatasets(chart.data, newData, props.datasetIdKey)
 
             if (Object.prototype.hasOwnProperty.call(newData, 'labels')) {
-              chart.data.labels = newData.labels
-              context.emit('labels:update')
+              setChartLabels(chart, newData.labels, context)
             }
 
             if (Object.prototype.hasOwnProperty.call(newData, 'xLabels')) {
-              chart.data.xLabels = newData.xLabels
-              context.emit('xlabels:update')
+              setChartXLabels(chart, newData.xLabels, context)
             }
 
             if (Object.prototype.hasOwnProperty.call(newData, 'yLabels')) {
-              chart.data.yLabels = newData.yLabels
-              context.emit('ylabels:update')
+              setChartYLabels(chart, newData.yLabels, context)
             }
 
-            chart.update()
-            context.emit('chart:update')
+            chartUpdate(chart, context)
           } else {
-            if (chart !== null) {
-              chart.destroy()
-              context.emit('chart:destroy')
+            if (hasChart.value) {
+              chartDestroy(chart, context)
             }
 
-            renderChart(props.chartData, props.options)
-            context.emit('chart:render')
+            chartCreate(
+              renderChart,
+              [props.chartData, props.chartOptions],
+              context
+            )
           }
         } else {
-          if (_chart.value !== null) {
-            toRaw(_chart.value).destroy()
-            context.emit('chart:destroy')
+          if (hasChart.value) {
+            chartDestroy(toRaw(_chart.value), context)
           }
 
-          renderChart(props.chartData, props.options)
-          context.emit('chart:render')
+          chartCreate(
+            renderChart,
+            [props.chartData, props.chartOptions],
+            context
+          )
         }
       }
 
@@ -185,13 +175,17 @@ export const generateChart = (chartId, chartType, chartController) =>
           'datasets' in props.chartData &&
           props.chartData.datasets.length > 0
         ) {
-          renderChart(props.chartData, props.chartOptions)
+          chartCreate(
+            renderChart,
+            [props.chartData, props.chartOptions],
+            context
+          )
         }
       })
 
       onBeforeUnmount(() => {
-        if (_chart.value !== null) {
-          toRaw(_chart.value).destroy()
+        if (hasChart.value) {
+          chartDestroy(toRaw(_chart.value), context)
         }
       })
 

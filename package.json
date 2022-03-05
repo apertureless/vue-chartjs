@@ -5,7 +5,6 @@
   "author": "Jakub Juszczak <jakub@posteo.de>",
   "homepage": "http://vue-chartjs.org",
   "license": "MIT",
-  "packageManager": "pnpm@6.32.2",
   "contributors": [
     {
       "name": "Thorsten Lünborg",
@@ -62,9 +61,6 @@
   },
   "peerDependencies": {
     "chart.js": "^3.7.0"
-  },
-  "dependencies": {
-    "@types/chart.js": "^2.7.55"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
