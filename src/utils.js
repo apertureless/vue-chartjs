@@ -77,3 +77,20 @@ export function setChartYLabels(chart, yLabels, context) {
   chart.data.yLabels = yLabels
   context.emit('ylabels:updated')
 }
+
+export function compareData(newData, oldData) {
+  // Get new and old DataSet Labels
+  const newDatasetLabels = newData.datasets.map(dataset => {
+    return dataset.label
+  })
+
+  const oldDatasetLabels = oldData.datasets.map(dataset => {
+    return dataset.label
+  })
+
+  // Check if Labels are equal and if dataset length is equal
+  return (
+    oldData.datasets.length === newData.datasets.length &&
+    newDatasetLabels.every((value, index) => value === oldDatasetLabels[index])
+  )
+}

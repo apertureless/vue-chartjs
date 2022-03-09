@@ -31,7 +31,8 @@ import {
   setChartLabels,
   setChartXLabels,
   setChartYLabels,
-  setChartDatasets
+  setChartDatasets,
+  compareData
 } from './utils.js'
 
 export const generateChart = (chartId, chartType, chartController) =>
@@ -51,7 +52,7 @@ export const generateChart = (chartId, chartType, chartController) =>
       },
       chartId: {
         type: String,
-        default: 'chartId'
+        default: chartId
       },
       width: {
         type: Number,
@@ -109,22 +110,9 @@ export const generateChart = (chartId, chartType, chartController) =>
         if (Object.keys(oldData).length > 0) {
           const chart = toRaw(_chart.value)
 
-          // Get new and old DataSet Labels
-          const newDatasetLabels = newData.datasets.map(dataset => {
-            return dataset.label
-          })
+          const isEqualLabelsAndDatasetsLength = compareData(newData, oldData)
 
-          const oldDatasetLabels = oldData.datasets.map(dataset => {
-            return dataset.label
-          })
-
-          // Check if Labels are equal and if dataset length is equal
-          if (
-            oldData.datasets.length === newData.datasets.length &&
-            newDatasetLabels.every(
-              (value, index) => value === oldDatasetLabels[index]
-            )
-          ) {
+          if (isEqualLabelsAndDatasetsLength) {
             setChartDatasets(chart.data, newData, props.datasetIdKey)
 
             if (Object.prototype.hasOwnProperty.call(newData, 'labels')) {

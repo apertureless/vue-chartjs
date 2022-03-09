@@ -8,7 +8,7 @@
   {
     "path": "dist/index.cjs",
     "limit": "60 KB",
-    "import": "{ Bar }"
+    "import": "{ VueCharts }"
   },
   {
     "path": "dist/index.js",
@@ -19,6 +19,6 @@
   {
     "path": "dist/index.js",
     "limit": "8.5 KB",
-    "import": "{ Bar }"
+    "import": "{ VueCharts }"
   }
 ]
