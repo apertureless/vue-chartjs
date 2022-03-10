@@ -1,5 +1,5 @@
 import {
-  Chart,
+  Chart as ChartJS,
   BarController,
   BubbleController,
   DoughnutController,
@@ -10,97 +10,184 @@ import {
   ScatterController
 } from 'chart.js'
 
-export function generateChart(chartId, chartType, chartController) {
-  return {
-    render: function (createElement) {
-      return createElement(
-        'div',
-        {
-          style: this.styles,
-          class: this.cssClasses
-        },
-        [
-          createElement('canvas', {
-            attrs: {
-              id: this.chartId,
-              width: this.width,
-              height: this.height
-            },
-            ref: 'canvas'
-          })
-        ]
-      )
-    },
+import {
+  defineComponent,
+  ref,
+  h,
+  onMounted,
+  onBeforeUnmount,
+  watch,
+  computed,
+  isProxy,
+  toRaw
+} from 'vue'
 
+import {
+  chartCreate,
+  chartDestroy,
+  chartUpdate,
+  getChartOptions,
+  getChartData,
+  setChartLabels,
+  setChartXLabels,
+  setChartYLabels,
+  setChartDatasets,
+  compareData
+} from './utils.js'
+
+export const generateChart = (chartId, chartType, chartController) =>
+  defineComponent({
     props: {
+      chartData: {
+        type: Object,
+        required: true
+      },
+      datasetIdKey: {
+        type: String,
+        default: 'label'
+      },
+      chartOptions: {
+        type: Object,
+        default: () => {}
+      },
       chartId: {
-        default: chartId,
-        type: String
+        type: String,
+        default: chartId
       },
       width: {
-        default: 400,
-        type: Number
+        type: Number,
+        default: 400
       },
       height: {
-        default: 400,
-        type: Number
+        type: Number,
+        default: 400
       },
       cssClasses: {
         type: String,
         default: ''
       },
       styles: {
-        type: Object
+        type: Object,
+        default: () => {}
       },
       plugins: {
-        type: Array,
-        default() {
-          return []
-        }
+        type: Object,
+        default: () => {}
       }
     },
-    data() {
-      return {
-        _chart: null
-      }
-    },
-    created() {
-      Chart.register(chartController)
-    },
-    methods: {
-      renderChart(data, options) {
-        if (this.$data._chart) {
-          this.$data._chart.destroy()
+    setup(props, context) {
+      ChartJS.register(chartController)
+
+      const _chart = ref(null)
+      const canvasEl = ref(null)
+
+      const hasChart = computed(() => _chart.value !== null)
+
+      function renderChart(data, options) {
+        if (hasChart.value) {
+          chartDestroy(toRaw(_chart.value), context)
         }
 
-        if (!this.$refs.canvas) {
+        if (canvasEl.value === null) {
           throw new Error(
             'Please remove the <template></template> tags from your chart component. See https://vue-chartjs.org/guide/#vue-single-file-components'
           )
         }
 
-        const chartOptions = options
+        const chartData = getChartData(data)
 
-        if (this.plugins.length > 0) {
-          for (const plugin of this.plugins) {
-            chartOptions['plugins'] = { ...chartOptions.plugins, ...plugin }
-          }
-        }
-
-        this.$data._chart = new Chart(this.$refs.canvas.getContext('2d'), {
+        _chart.value = new ChartJS(canvasEl.value.getContext('2d'), {
           type: chartType,
-          data: data,
-          options: chartOptions
+          data: isProxy(data) ? new Proxy(chartData, {}) : chartData,
+          options: getChartOptions(options, props.plugins)
         })
       }
-    },
-    beforeDestroy() {
-      if (this.$data._chart) {
-        this.$data._chart.destroy()
+
+      function chartDataHandler(newValue, oldValue) {
+        const newData = isProxy(newValue) ? toRaw(newValue) : { ...newValue }
+        const oldData = isProxy(oldValue) ? toRaw(oldValue) : { ...oldValue }
+
+        if (Object.keys(oldData).length > 0) {
+          const chart = toRaw(_chart.value)
+
+          const isEqualLabelsAndDatasetsLength = compareData(newData, oldData)
+
+          if (isEqualLabelsAndDatasetsLength) {
+            setChartDatasets(chart.data, newData, props.datasetIdKey)
+
+            if (Object.prototype.hasOwnProperty.call(newData, 'labels')) {
+              setChartLabels(chart, newData.labels, context)
+            }
+
+            if (Object.prototype.hasOwnProperty.call(newData, 'xLabels')) {
+              setChartXLabels(chart, newData.xLabels, context)
+            }
+
+            if (Object.prototype.hasOwnProperty.call(newData, 'yLabels')) {
+              setChartYLabels(chart, newData.yLabels, context)
+            }
+
+            chartUpdate(chart, context)
+          } else {
+            if (hasChart.value) {
+              chartDestroy(chart, context)
+            }
+
+            chartCreate(
+              renderChart,
+              [props.chartData, props.chartOptions],
+              context
+            )
+          }
+        } else {
+          if (hasChart.value) {
+            chartDestroy(toRaw(_chart.value), context)
+          }
+
+          chartCreate(
+            renderChart,
+            [props.chartData, props.chartOptions],
+            context
+          )
+        }
       }
+
+      watch(
+        () => props.chartData,
+        (newValue, oldValue) => chartDataHandler(newValue, oldValue),
+        { deep: true }
+      )
+
+      onMounted(() => {
+        if (
+          'datasets' in props.chartData &&
+          props.chartData.datasets.length > 0
+        ) {
+          chartCreate(
+            renderChart,
+            [props.chartData, props.chartOptions],
+            context
+          )
+        }
+      })
+
+      onBeforeUnmount(() => {
+        if (hasChart.value) {
+          chartDestroy(toRaw(_chart.value), context)
+        }
+      })
+
+      return () =>
+        h('div', { style: props.styles, class: props.cssClasses }, [
+          h('canvas', {
+            id: props.chartId,
+            width: props.width,
+            height: props.height,
+            ref: canvasEl
+          })
+        ])
     }
-  }
-}
+  })
 
 export const Bar = /* #__PURE__ */ generateChart(
   'bar-chart',

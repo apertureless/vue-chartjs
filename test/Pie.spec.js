@@ -3,7 +3,7 @@ import PieChart from './examples/PieChart.vue'
 
 describe('PieChart', () => {
   const Component = {
-    template: '<div><PieChart :chart-id="chartId" :plugins="plugins" /></div>',
+    template: '<div><PieChart :chartId="chartId" :plugins="plugins" /></div>',
     components: { PieChart },
     props: ['chartId', 'plugins']
   }
@@ -21,26 +21,12 @@ describe('PieChart', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(Component, {
-      propsData: { chartId: 'piechartprop' }
+      props: { chartId: 'piechartprop' }
     })
 
     const pieChartEl = wrapper.find('#piechartprop')
     expect(pieChartEl.element.id).not.toBe('undefined')
     expect(pieChartEl.exists()).toBe(true)
-  })
-  it('should destroy chart instance', done => {
-    const wrapper = mount(Component)
-    const { vm } = wrapper
-
-    expect(vm.$children[0].$data._chart.ctx).not.toBe(null)
-
-    vm.$destroy()
-
-    vm.$nextTick(() => {
-      vm.$forceUpdate()
-      expect(vm.$children[0].$data._chart.ctx).toBe(null)
-      done()
-    })
   })
 
   it('should add inline plugins based on prop', () => {
@@ -51,10 +37,9 @@ describe('PieChart', () => {
     }
 
     const wrapper = mount(Component, {
-      propsData: { plugins: [testPlugin] }
+      propsData: { plugins: testPlugin }
     })
-    const { vm } = wrapper
 
-    expect(Object.keys(vm.$children[0].$data.options.plugins).length).toEqual(1)
+    expect(Object.keys(wrapper.props().plugins).length).toEqual(1)
   })
 })

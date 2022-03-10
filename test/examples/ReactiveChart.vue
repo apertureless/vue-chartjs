@@ -1,5 +1,6 @@
 <script>
-import { Bar, mixins } from '../../src/index'
+import { defineComponent, ref, h, onMounted } from 'vue'
+import { Bar } from '../../src/index'
 import {
   Chart as ChartJS,
   Title,
@@ -12,36 +13,49 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-const { reactiveData } = mixins
-
-export default {
+export default defineComponent({
   name: 'ReactiveChart',
-  extends: Bar,
-  mixins: [reactiveData],
-  data: () => ({
-    chartData: '',
-    options: {
+  components: {
+    Bar
+  },
+  props: {
+    chartId: {
+      type: String,
+      default: 'bar-chart'
+    },
+    width: {
+      type: Number,
+      default: 400
+    },
+    height: {
+      type: Number,
+      default: 400
+    },
+    cssClasses: {
+      default: '',
+      type: String
+    },
+    styles: {
+      type: Object,
+      default: () => {}
+    },
+    plugins: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  setup(props) {
+    const chartData = ref({})
+
+    const chartOptions = {
       responsive: true,
       maintainAspectRatio: false
     }
-  }),
-  created() {
-    this.fillData()
-  },
 
-  mounted() {
-    this.renderChart(this.chartData, this.options)
-
-    setInterval(() => {
-      this.fillData()
-    }, 5000)
-  },
-
-  methods: {
-    fillData() {
-      this.chartData = {
+    function fillData() {
+      const updatedChartData = {
         labels: [
-          'January' + this.getRandomInt(),
+          'January' + getRandomInt(),
           'February',
           'March',
           'April',
@@ -59,26 +73,47 @@ export default {
             label: 'Data One',
             backgroundColor: '#f87979',
             data: [
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt(),
-              this.getRandomInt()
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt(),
+              getRandomInt()
             ]
           }
         ]
       }
-    },
-    getRandomInt() {
+
+      chartData.value = { ...updatedChartData }
+    }
+
+    function getRandomInt() {
       return Math.floor(Math.random() * (50 - 5 + 1)) + 5
     }
+
+    onMounted(() => {
+      setInterval(() => {
+        fillData()
+      }, 5000)
+    })
+
+    return () =>
+      h(Bar, {
+        chartData: chartData.value,
+        chartOptions,
+        chartId: props.chartId,
+        width: props.width,
+        height: props.height,
+        cssClasses: props.cssClasses,
+        styles: props.styles,
+        plugins: props.plugins
+      })
   }
-}
+})
 </script>

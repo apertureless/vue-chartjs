@@ -1,14 +1,14 @@
 <template>
-  <scatter-page />
+  <ScatterChart />
 </template>
 
 <script>
-import ScatterPage from './components/scatterPage.vue'
+import ScatterChart from './components/scatterChart.vue'
 
 export default {
   name: 'App',
   components: {
-    ScatterPage
+    ScatterChart
   }
 }
 </script>

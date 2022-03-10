@@ -1,4 +1,6 @@
 <script>
+import { defineComponent, h } from 'vue'
+
 import { PolarArea } from '../../src/index'
 import {
   Chart as ChartJS,
@@ -11,11 +13,39 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, RadialLinearScale)
 
-export default {
+export default defineComponent({
   name: 'PolarAreaChart',
-  extends: PolarArea,
-  data: () => ({
-    chartdata: {
+  components: {
+    PolarArea
+  },
+  props: {
+    chartId: {
+      type: String,
+      default: 'polar-chart'
+    },
+    width: {
+      type: Number,
+      default: 400
+    },
+    height: {
+      type: Number,
+      default: 400
+    },
+    cssClasses: {
+      default: '',
+      type: String
+    },
+    styles: {
+      type: Object,
+      default: () => {}
+    },
+    plugins: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  setup(props) {
+    const chartData = {
       labels: [
         'Eating',
         'Drinking',
@@ -45,15 +75,24 @@ export default {
           data: [28, 48, 40, 19, 96, 27, 100]
         }
       ]
-    },
-    options: {
+    }
+
+    const chartOptions = {
       responsive: true,
       maintainAspectRatio: false
     }
-  }),
 
-  mounted() {
-    this.renderChart(this.chartdata, this.options)
+    return () =>
+      h(PolarArea, {
+        chartData,
+        chartOptions,
+        chartId: props.chartId,
+        width: props.width,
+        height: props.height,
+        cssClasses: props.cssClasses,
+        styles: props.styles,
+        plugins: props.plugins
+      })
   }
-}
+})
 </script>

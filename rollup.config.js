@@ -1,4 +1,4 @@
-import vue from 'rollup-plugin-vue'
+import vue from '@vitejs/plugin-vue'
 import swc from 'rollup-plugin-swc'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import pkg from './package.json'

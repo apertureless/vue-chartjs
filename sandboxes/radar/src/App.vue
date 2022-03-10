@@ -1,14 +1,14 @@
 <template>
-  <radar-page />
+  <RadarChart />
 </template>
 
 <script>
-import RadarPage from './components/radarPage.vue'
+import RadarChart from './components/radarChart.vue'
 
 export default {
   name: 'App',
   components: {
-    RadarPage
+    RadarChart
   }
 }
 </script>

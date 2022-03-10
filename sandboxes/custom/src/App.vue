@@ -1,14 +1,14 @@
 <template>
-  <custom-page />
+  <CustomChart />
 </template>
 
 <script>
-import CustomPage from './components/customPage.vue'
+import CustomChart from './components/customChart.vue'
 
 export default {
   name: 'App',
   components: {
-    CustomPage
+    CustomChart
   }
 }
 </script>

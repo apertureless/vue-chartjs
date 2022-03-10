@@ -1,14 +1,14 @@
 <template>
-  <bubble-page />
+  <BubbleChart />
 </template>
 
 <script>
-import BubblePage from './components/bubblePage.vue'
+import BubbleChart from './components/bubbleChart.vue'
 
 export default {
   name: 'App',
   components: {
-    BubblePage
+    BubbleChart
   }
 }
 </script>

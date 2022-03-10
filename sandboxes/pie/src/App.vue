@@ -1,14 +1,14 @@
 <template>
-  <pie-page />
+  <PieChart />
 </template>
 
 <script>
-import PiePage from './components/piePage.vue'
+import PieChart from './components/pieChart.vue'
 
 export default {
   name: 'App',
   components: {
-    PiePage
+    PieChart
   }
 }
 </script>

@@ -1,14 +1,14 @@
 <template>
-  <reactive-page />
+  <ReactiveChart />
 </template>
 
 <script>
-import ReactivePage from './components/reactivePage.vue'
+import ReactiveChart from './components/reactiveChart.vue'
 
 export default {
   name: 'App',
   components: {
-    ReactivePage
+    ReactiveChart
   }
 }
 </script>
