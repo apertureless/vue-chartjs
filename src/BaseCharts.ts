@@ -10,16 +10,25 @@ import {
   ScatterController
 } from 'chart.js'
 
+import type {
+  ChartType,
+  ChartComponentLike,
+  DefaultDataPoint,
+  PluginOptionsByType,
+  ChartOptions
+} from 'chart.js'
+
 import {
   defineComponent,
   ref,
+  shallowRef,
   h,
   onMounted,
   onBeforeUnmount,
   watch,
-  computed,
   isProxy,
-  toRaw
+  toRaw,
+  PropType
 } from 'vue'
 
 import {
@@ -29,26 +38,39 @@ import {
   getChartOptions,
   getChartData,
   setChartLabels,
-  setChartXLabels,
-  setChartYLabels,
   setChartDatasets,
   compareData
-} from './utils.js'
+} from './utils'
 
-export const generateChart = (chartId, chartType, chartController) =>
+import type {
+  TChartData,
+  TChartOptions,
+  TypedChartJS,
+  TypedChartComponent
+} from './types'
+
+export const generateChart = <
+  TType extends ChartType = ChartType,
+  TData = DefaultDataPoint<TType>,
+  TLabel = unknown
+>(
+  chartId: string,
+  chartType: TType,
+  chartController: ChartComponentLike
+): TypedChartComponent<TType, TData, TLabel> =>
   defineComponent({
     props: {
       chartData: {
-        type: Object,
+        type: Object as PropType<TChartData<TType, TData, TLabel>>,
         required: true
+      },
+      chartOptions: {
+        type: Object as PropType<TChartOptions<TType>>,
+        default: () => {}
       },
       datasetIdKey: {
         type: String,
         default: 'label'
-      },
-      chartOptions: {
-        type: Object,
-        default: () => {}
       },
       chartId: {
         type: String,
@@ -67,87 +89,106 @@ export const generateChart = (chartId, chartType, chartController) =>
         default: ''
       },
       styles: {
-        type: Object,
+        type: Object as PropType<Partial<CSSStyleDeclaration>>,
         default: () => {}
       },
       plugins: {
-        type: Object,
+        type: Object as PropType<PluginOptionsByType<TType>>,
         default: () => {}
       }
     },
     setup(props, context) {
       ChartJS.register(chartController)
 
-      const _chart = ref(null)
-      const canvasEl = ref(null)
+      const _chart = shallowRef<TypedChartJS<TType, TData, TLabel> | null>(null)
+      const canvasEl = ref<HTMLCanvasElement | null>(null)
 
-      const hasChart = computed(() => _chart.value !== null)
-
-      function renderChart(data, options) {
-        if (hasChart.value) {
-          chartDestroy(toRaw(_chart.value), context)
+      function renderChart(
+        data: TChartData<TType, TData, TLabel>,
+        options: TChartOptions<TType>
+      ): void {
+        if (_chart.value !== null) {
+          chartDestroy<TType, TData, TLabel>(toRaw(_chart.value), context)
         }
 
         if (canvasEl.value === null) {
           throw new Error(
             'Please remove the <template></template> tags from your chart component. See https://vue-chartjs.org/guide/#vue-single-file-components'
           )
+        } else {
+          const chartData = getChartData<TType, TData, TLabel>(
+            data,
+            props.datasetIdKey
+          )
+          const canvasEl2DContext = canvasEl.value.getContext('2d')
+
+          if (canvasEl2DContext !== null) {
+            _chart.value = new ChartJS<TType, TData, TLabel>(
+              canvasEl2DContext,
+              {
+                type: chartType,
+                data: isProxy(data) ? new Proxy(chartData, {}) : chartData,
+                options: getChartOptions<TType>(options, props.plugins)
+              }
+            )
+          }
         }
-
-        const chartData = getChartData(data)
-
-        _chart.value = new ChartJS(canvasEl.value.getContext('2d'), {
-          type: chartType,
-          data: isProxy(data) ? new Proxy(chartData, {}) : chartData,
-          options: getChartOptions(options, props.plugins)
-        })
       }
 
-      function chartDataHandler(newValue, oldValue) {
+      function chartDataHandler(
+        newValue: TChartData<TType, TData, TLabel>,
+        oldValue: TChartData<TType, TData, TLabel>
+      ): void {
         const newData = isProxy(newValue) ? toRaw(newValue) : { ...newValue }
         const oldData = isProxy(oldValue) ? toRaw(oldValue) : { ...oldValue }
 
         if (Object.keys(oldData).length > 0) {
           const chart = toRaw(_chart.value)
 
-          const isEqualLabelsAndDatasetsLength = compareData(newData, oldData)
+          const isEqualLabelsAndDatasetsLength = compareData<
+            TType,
+            TData,
+            TLabel
+          >(newData, oldData)
 
-          if (isEqualLabelsAndDatasetsLength) {
-            setChartDatasets(chart.data, newData, props.datasetIdKey)
+          if (isEqualLabelsAndDatasetsLength && chart !== null) {
+            setChartDatasets<TType, TData, TLabel>(
+              chart?.data,
+              newData,
+              props.datasetIdKey
+            )
 
-            if (Object.prototype.hasOwnProperty.call(newData, 'labels')) {
-              setChartLabels(chart, newData.labels, context)
+            if (newData.labels !== undefined) {
+              setChartLabels<TType, TData, TLabel>(
+                chart,
+                newData.labels,
+                context
+              )
             }
 
-            if (Object.prototype.hasOwnProperty.call(newData, 'xLabels')) {
-              setChartXLabels(chart, newData.xLabels, context)
-            }
-
-            if (Object.prototype.hasOwnProperty.call(newData, 'yLabels')) {
-              setChartYLabels(chart, newData.yLabels, context)
-            }
-
-            chartUpdate(chart, context)
+            chartUpdate<TType, TData, TLabel>(chart, context)
           } else {
-            if (hasChart.value) {
-              chartDestroy(chart, context)
+            if (chart !== null) {
+              chartDestroy<TType, TData, TLabel>(chart, context)
             }
 
-            chartCreate(
+            chartCreate<TType, TData, TLabel>(
               renderChart,
-              [props.chartData, props.chartOptions],
-              context
+              context,
+              props.chartData,
+              props.chartOptions as ChartOptions<TType>
             )
           }
         } else {
-          if (hasChart.value) {
-            chartDestroy(toRaw(_chart.value), context)
+          if (_chart.value !== null) {
+            chartDestroy<TType, TData, TLabel>(toRaw(_chart.value), context)
           }
 
-          chartCreate(
+          chartCreate<TType, TData, TLabel>(
             renderChart,
-            [props.chartData, props.chartOptions],
-            context
+            context,
+            props.chartData,
+            props.chartOptions as ChartOptions<TType>
           )
         }
       }
@@ -163,16 +204,17 @@ export const generateChart = (chartId, chartType, chartController) =>
           'datasets' in props.chartData &&
           props.chartData.datasets.length > 0
         ) {
-          chartCreate(
+          chartCreate<TType, TData, TLabel>(
             renderChart,
-            [props.chartData, props.chartOptions],
-            context
+            context,
+            props.chartData,
+            props.chartOptions as ChartOptions<TType>
           )
         }
       })
 
       onBeforeUnmount(() => {
-        if (hasChart.value) {
+        if (_chart.value !== null) {
           chartDestroy(toRaw(_chart.value), context)
         }
       })
@@ -187,7 +229,7 @@ export const generateChart = (chartId, chartType, chartController) =>
           })
         ])
     }
-  })
+  }) as any
 
 export const Bar = /* #__PURE__ */ generateChart(
   'bar-chart',
