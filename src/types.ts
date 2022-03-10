@@ -51,7 +51,7 @@ export interface IChartProps<
   plugins: PluginOptionsByType<TType>
 }
 
-export interface TypedChartComponentData<
+export interface IChartComponentData<
   TType extends ChartType,
   TData = DefaultDataPoint<TType>,
   TLabel = unknown
@@ -81,7 +81,7 @@ export type TypedChartComponent<
   TLabel = unknown
 > = DefineComponent<
   IChartProps<TType, TData, TLabel>,
-  TypedChartComponentData<TType, TData, TLabel>,
+  IChartComponentData<TType, TData, TLabel>,
   unknown,
   ComputedOptions,
   MethodOptions,
