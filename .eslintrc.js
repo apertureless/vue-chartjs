@@ -22,8 +22,5 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'prettier/prettier': 'error',
     quotes: [2, 'single', 'avoid-escape']
-  },
-  globals: {
-    LIB_VERSION: true
   }
 }
