@@ -1,4 +1,4 @@
-import LineChart from '../sandboxes/line/src/components/lineChart.vue'
+import LineChart from '../sandboxes/line/src/components/lineChart'
 
 export default {
   title: 'LineChart',

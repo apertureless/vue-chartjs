@@ -1,4 +1,4 @@
-import ReactiveChart from '../sandboxes/reactive/src/components/reactiveChart.vue'
+import ReactiveChart from '../sandboxes/reactive/src/components/reactiveChart'
 
 export default {
   title: 'ReactiveChart',

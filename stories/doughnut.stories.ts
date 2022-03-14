@@ -1,4 +1,4 @@
-import DoughnutChart from '../sandboxes/doughnut/src/components/doughnutChart.vue'
+import DoughnutChart from '../sandboxes/doughnut/src/components/doughnutChart'
 
 export default {
   title: 'DoughnutChart',

@@ -1,4 +1,4 @@
-import PieChart from '../sandboxes/pie/src/components/pieChart.vue'
+import PieChart from '../sandboxes/pie/src/components/pieChart'
 
 export default {
   title: 'PieChart',

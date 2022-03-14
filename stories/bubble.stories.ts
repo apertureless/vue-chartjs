@@ -1,4 +1,4 @@
-import BubbleChart from '../sandboxes/bubble/src/components/bubbleChart.vue'
+import BubbleChart from '../sandboxes/bubble/src/components/bubbleChart'
 
 export default {
   title: 'BubbleChart',

@@ -1,4 +1,4 @@
-import ScatterChart from '../sandboxes/scatter/src/components/scatterChart.vue'
+import ScatterChart from '../sandboxes/scatter/src/components/scatterChart'
 
 export default {
   title: 'ScatterChart',

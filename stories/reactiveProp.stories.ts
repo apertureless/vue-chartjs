@@ -1,4 +1,4 @@
-import ReactivePropChart from '../sandboxes/reactive-prop/src/components/reactivePropChart.vue'
+import ReactivePropChart from '../sandboxes/reactive-prop/src/components/reactivePropChart'
 
 export default {
   title: 'ReactivePropChart',

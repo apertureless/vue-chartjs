@@ -1,4 +1,4 @@
-import RadarChart from '../sandboxes/radar/src/components/radarChart.vue'
+import RadarChart from '../sandboxes/radar/src/components/radarChart'
 
 export default {
   title: 'RadarChart',

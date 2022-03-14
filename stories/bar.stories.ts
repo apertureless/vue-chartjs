@@ -1,4 +1,4 @@
-import BarChart from '../sandboxes/bar/src/components/barChart.vue'
+import BarChart from '../sandboxes/bar/src/components/barChart'
 
 export default {
   title: 'BarChart',

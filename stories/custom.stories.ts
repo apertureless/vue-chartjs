@@ -1,4 +1,4 @@
-import CustomChart from '../sandboxes/custom/src/components/customChart.vue'
+import CustomChart from '../sandboxes/custom/src/components/customChart'
 
 export default {
   title: 'CustomChart',

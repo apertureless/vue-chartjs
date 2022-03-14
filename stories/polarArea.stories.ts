@@ -1,4 +1,4 @@
-import PolarAreaChart from '../sandboxes/polar-area/src/components/polarAreaChart.vue'
+import PolarAreaChart from '../sandboxes/polar-area/src/components/polarAreaChart'
 
 export default {
   title: 'PolarAreaChart',
