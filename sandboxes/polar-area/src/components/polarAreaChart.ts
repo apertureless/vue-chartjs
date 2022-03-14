@@ -1,27 +1,27 @@
-<script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 
-import { Radar } from 'vue-chartjs'
+import { PolarArea } from 'vue-chartjs'
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  PointElement,
-  RadialLinearScale
+  ArcElement,
+  RadialLinearScale,
+  PluginOptionsByType
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, PointElement, RadialLinearScale)
+ChartJS.register(Title, Tooltip, Legend, ArcElement, RadialLinearScale)
 
 export default defineComponent({
-  name: 'RadarChart',
+  name: 'PolarAreaChart',
   components: {
-    Radar
+    PolarArea
   },
   props: {
     chartId: {
       type: String,
-      default: 'radar-chart'
+      default: 'polar-chart'
     },
     width: {
       type: Number,
@@ -36,11 +36,11 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'polarArea'>>,
       default: () => {}
     }
   },
@@ -59,7 +59,6 @@ export default defineComponent({
         {
           label: 'My First dataset',
           backgroundColor: 'rgba(179,181,198,0.2)',
-          borderColor: 'rgba(179,181,198,1)',
           pointBackgroundColor: 'rgba(179,181,198,1)',
           pointBorderColor: '#fff',
           pointHoverBackgroundColor: '#fff',
@@ -69,7 +68,6 @@ export default defineComponent({
         {
           label: 'My Second dataset',
           backgroundColor: 'rgba(255,99,132,0.2)',
-          borderColor: 'rgba(255,99,132,1)',
           pointBackgroundColor: 'rgba(255,99,132,1)',
           pointBorderColor: '#fff',
           pointHoverBackgroundColor: '#fff',
@@ -85,7 +83,7 @@ export default defineComponent({
     }
 
     return () =>
-      h(Radar, {
+      h(PolarArea, {
         chartData,
         chartOptions,
         chartId: props.chartId,
@@ -97,4 +95,3 @@ export default defineComponent({
       })
   }
 })
-</script>

@@ -1,5 +1,4 @@
-<script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 import { Bar } from 'vue-chartjs'
 import {
   Chart as ChartJS,
@@ -8,7 +7,10 @@ import {
   Legend,
   BarElement,
   CategoryScale,
-  LinearScale
+  LinearScale,
+  PluginOptionsByType,
+  ChartData,
+  DefaultDataPoint
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -20,7 +22,9 @@ export default defineComponent({
   },
   props: {
     chartData: {
-      type: Object,
+      type: Object as PropType<
+        ChartData<'bar', DefaultDataPoint<'bar'>, unknown>
+      >,
       required: true
     },
     chartId: {
@@ -40,11 +44,11 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'bar'>>,
       default: () => {}
     }
   },
@@ -67,4 +71,3 @@ export default defineComponent({
       })
   }
 })
-</script>

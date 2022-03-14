@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ReactivePropPage from './components/reactivePropPage.vue'
+import ReactivePropPage from './components/reactivePropPage'
 
 export default {
   name: 'App',

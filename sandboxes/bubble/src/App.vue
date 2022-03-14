@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import BubbleChart from './components/bubbleChart.vue'
+import BubbleChart from './components/bubbleChart'
 
 export default {
   name: 'App',

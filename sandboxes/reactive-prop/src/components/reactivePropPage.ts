@@ -1,6 +1,6 @@
-<script>
+import ReactivePropChart from './reactivePropChart'
+
 import { defineComponent, ref, h, onMounted } from 'vue'
-import { Bar } from 'vue-chartjs'
 import {
   Chart as ChartJS,
   Title,
@@ -8,7 +8,8 @@ import {
   Legend,
   BarElement,
   CategoryScale,
-  LinearScale
+  LinearScale,
+  ChartData
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -16,41 +17,12 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 export default defineComponent({
   name: 'ReactiveChart',
   components: {
-    Bar
+    ReactivePropChart
   },
-  props: {
-    chartId: {
-      type: String,
-      default: 'bar-chart'
-    },
-    width: {
-      type: Number,
-      default: 400
-    },
-    height: {
-      type: Number,
-      default: 400
-    },
-    cssClasses: {
-      default: '',
-      type: String
-    },
-    styles: {
-      type: Object,
-      default: () => {}
-    },
-    plugins: {
-      type: Object,
-      default: () => {}
-    }
-  },
-  setup(props) {
-    const chartData = ref({})
-
-    const chartOptions = {
-      responsive: true,
-      maintainAspectRatio: false
-    }
+  setup() {
+    const chartData = ref<ChartData<'bar'>>({
+      datasets: []
+    })
 
     function fillData() {
       const updatedChartData = {
@@ -104,16 +76,8 @@ export default defineComponent({
     })
 
     return () =>
-      h(Bar, {
-        chartData: chartData.value,
-        chartOptions,
-        chartId: props.chartId,
-        width: props.width,
-        height: props.height,
-        cssClasses: props.cssClasses,
-        styles: props.styles,
-        plugins: props.plugins
+      h(ReactivePropChart, {
+        chartData: chartData.value
       })
   }
 })
-</script>

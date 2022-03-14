@@ -1,27 +1,29 @@
-<script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 
-import { Line } from 'vue-chartjs'
+import { Bar } from 'vue-chartjs'
+
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  LineElement,
-  LinearScale
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  PluginOptionsByType
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale)
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default defineComponent({
-  name: 'LineChart',
+  name: 'BarChart',
   components: {
-    Line
+    Bar
   },
   props: {
     chartId: {
       type: String,
-      default: 'line-chart'
+      default: 'bar-chart'
     },
     width: {
       type: Number,
@@ -36,22 +38,35 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'bar'>>,
       default: () => {}
     }
   },
   setup(props) {
     const chartData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ],
       datasets: [
         {
           label: 'Data One',
           backgroundColor: '#f87979',
-          data: [40, 39, 10, 40, 39, 80, 40]
+          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
         }
       ]
     }
@@ -62,7 +77,7 @@ export default defineComponent({
     }
 
     return () =>
-      h(Line, {
+      h(Bar, {
         chartData,
         chartOptions,
         chartId: props.chartId,
@@ -74,4 +89,3 @@ export default defineComponent({
       })
   }
 })
-</script>

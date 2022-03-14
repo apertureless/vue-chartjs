@@ -1,5 +1,4 @@
-<script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 
 import { Pie } from 'vue-chartjs'
 import {
@@ -8,7 +7,8 @@ import {
   Tooltip,
   Legend,
   ArcElement,
-  CategoryScale
+  CategoryScale,
+  PluginOptionsByType
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
@@ -36,11 +36,11 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'pie'>>,
       default: () => {}
     }
   },
@@ -73,4 +73,3 @@ export default defineComponent({
       })
   }
 })
-</script>

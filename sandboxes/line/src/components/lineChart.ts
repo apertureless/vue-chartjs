@@ -1,27 +1,27 @@
-<script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 
-import { Doughnut } from 'vue-chartjs'
+import { Line } from 'vue-chartjs'
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  ArcElement,
-  CategoryScale
+  LineElement,
+  LinearScale,
+  PluginOptionsByType
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
+ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale)
 
 export default defineComponent({
-  name: 'DoughnutChart',
+  name: 'LineChart',
   components: {
-    Doughnut
+    Line
   },
   props: {
     chartId: {
       type: String,
-      default: 'doughnut-chart'
+      default: 'line-chart'
     },
     width: {
       type: Number,
@@ -36,21 +36,22 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'line'>>,
       default: () => {}
     }
   },
   setup(props) {
     const chartData = {
-      labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
         {
-          backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-          data: [40, 20, 80, 10]
+          label: 'Data One',
+          backgroundColor: '#f87979',
+          data: [40, 39, 10, 40, 39, 80, 40]
         }
       ]
     }
@@ -61,7 +62,7 @@ export default defineComponent({
     }
 
     return () =>
-      h(Doughnut, {
+      h(Line, {
         chartData,
         chartOptions,
         chartId: props.chartId,
@@ -73,4 +74,3 @@ export default defineComponent({
       })
   }
 })
-</script>

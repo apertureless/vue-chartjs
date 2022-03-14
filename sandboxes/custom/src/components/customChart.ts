@@ -1,5 +1,4 @@
-<script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 
 import { generateChart } from 'vue-chartjs'
 import {
@@ -11,7 +10,8 @@ import {
   LineElement,
   PointElement,
   CategoryScale,
-  LinearScale
+  LinearScale,
+  PluginOptionsByType
 } from 'chart.js'
 
 ChartJS.register(
@@ -25,13 +25,12 @@ ChartJS.register(
 )
 
 class LineWithLineController extends LineController {
-  draw() {
-    super.draw(arguments)
+  public override draw() {
+    super.draw()
 
-    if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
-      const activePoint = this.chart.tooltip._active[0]
+    if (this.chart?.tooltip?.active) {
       const ctx = this.chart.ctx
-      const x = activePoint.tooltipPosition().x
+      const x = this.chart.tooltip.x
       const topY = this.chart.scales['y-axis-0'].top
       const bottomY = this.chart.scales['y-axis-0'].bottom
 
@@ -77,11 +76,11 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'line'>>,
       default: () => {}
     }
   },
@@ -118,4 +117,3 @@ export default defineComponent({
       })
   }
 })
-</script>

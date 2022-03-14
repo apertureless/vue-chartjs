@@ -1,27 +1,28 @@
-<script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 
-import { Scatter } from 'vue-chartjs'
+import { Bubble } from 'vue-chartjs'
+
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  LineElement,
-  CategoryScale
+  PointElement,
+  LinearScale,
+  PluginOptionsByType
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale)
+ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale)
 
 export default defineComponent({
-  name: 'ScatterChart',
+  name: 'BubbleChart',
   components: {
-    Scatter
+    Bubble
   },
   props: {
     chartId: {
       type: String,
-      default: 'scatter-chart'
+      default: 'bubble-chart'
     },
     width: {
       type: Number,
@@ -36,11 +37,11 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'bubble'>>,
       default: () => {}
     }
   },
@@ -48,58 +49,44 @@ export default defineComponent({
     const chartData = {
       datasets: [
         {
-          label: 'Scatter Dataset 1',
-          fill: false,
-          borderColor: '#f87979',
+          label: 'Data One',
           backgroundColor: '#f87979',
           data: [
             {
-              x: -2,
-              y: 4
+              x: 20,
+              y: 25,
+              r: 5
             },
             {
-              x: -1,
-              y: 1
+              x: 40,
+              y: 10,
+              r: 10
             },
             {
-              x: 0,
-              y: 0
-            },
-            {
-              x: 1,
-              y: 1
-            },
-            {
-              x: 2,
-              y: 4
+              x: 30,
+              y: 22,
+              r: 30
             }
           ]
         },
         {
-          label: 'Scatter Dataset 2',
-          fill: false,
-          borderColor: '#7acbf9',
-          backgroundColor: '#7acbf9',
+          label: 'Data Two',
+          backgroundColor: '#7C8CF8',
           data: [
             {
-              x: -2,
-              y: -4
+              x: 10,
+              y: 30,
+              r: 15
             },
             {
-              x: -1,
-              y: -1
+              x: 20,
+              y: 20,
+              r: 10
             },
             {
-              x: 0,
-              y: 1
-            },
-            {
-              x: 1,
-              y: -1
-            },
-            {
-              x: 2,
-              y: -4
+              x: 15,
+              y: 8,
+              r: 30
             }
           ]
         }
@@ -112,7 +99,7 @@ export default defineComponent({
     }
 
     return () =>
-      h(Scatter, {
+      h(Bubble, {
         chartData,
         chartOptions,
         chartId: props.chartId,
@@ -124,4 +111,3 @@ export default defineComponent({
       })
   }
 })
-</script>

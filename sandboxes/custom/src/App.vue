@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import CustomChart from './components/customChart.vue'
+import CustomChart from './components/customChart'
 
 export default {
   name: 'App',
