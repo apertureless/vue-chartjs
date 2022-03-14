@@ -22,7 +22,7 @@ specifiers:
   chart.js: ^3.7.0
   clean-publish: ^4.0.0
   commitizen: ^4.2.4
-  cross-env: ^5.1.1
+  cross-env: ^7.0.0
   cz-conventional-changelog: 3.3.0
   del-cli: ^4.0.1
   eslint: 7.28.0
@@ -71,7 +71,7 @@ devDependencies:
   chart.js: 3.7.1
   clean-publish: 4.0.0
   commitizen: 4.2.4_@swc+core@1.2.120
-  cross-env: 5.2.1
+  cross-env: 7.0.3
   cz-conventional-changelog: 3.3.0_@swc+core@1.2.120
   del-cli: 4.0.1
   eslint: 7.28.0
@@ -7927,6 +7927,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -9371,12 +9372,12 @@ packages:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
     dev: true
 
-  /cross-env/5.2.1:
-    resolution: {integrity: sha512-1yHhtcfAd1r4nwQgknowuUNfIT9E8dOMMspC36g45dN+iD1blloi7xp8X/xAIDnjHWyt1uQ8PHk2fkNaym7soQ==}
-    engines: {node: '>=4.0'}
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
     hasBin: true
     dependencies:
-      cross-spawn: 6.0.5
+      cross-spawn: 7.0.3
     dev: true
 
   /cross-fetch/3.1.5:
@@ -11304,6 +11305,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -15167,6 +15169,7 @@ packages:
 
   /nan/2.15.0:
     resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==}
+    requiresBuild: true
     dev: true
     optional: true
 

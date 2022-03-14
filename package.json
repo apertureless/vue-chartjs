@@ -84,7 +84,7 @@
     "chart.js": "^3.7.0",
     "clean-publish": "^4.0.0",
     "commitizen": "^4.2.4",
-    "cross-env": "^5.1.1",
+    "cross-env": "^7.0.0",
     "cz-conventional-changelog": "3.3.0",
     "del-cli": "^4.0.1",
     "eslint": "7.28.0",
