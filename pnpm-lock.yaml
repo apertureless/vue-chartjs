@@ -13,6 +13,7 @@ specifiers:
   '@swc/core': ^1.2.120
   '@swc/helpers': ^0.3.2
   '@swc/jest': ^0.2.15
+  '@types/jest': ^27.4.1
   '@vitejs/plugin-vue': ^2.2.2
   '@vue/eslint-config-typescript': ^10.0.0
   '@vue/test-utils': ^2.0.0-rc.17
@@ -64,6 +65,7 @@ devDependencies:
   '@swc/core': 1.2.120
   '@swc/helpers': 0.3.2
   '@swc/jest': 0.2.15_@swc+core@1.2.120
+  '@types/jest': 27.4.1
   '@vitejs/plugin-vue': 2.2.2_vite@2.8.6+vue@3.2.31
   '@vue/eslint-config-typescript': 10.0.0_3991ff270b21162cb7043e22198f90cc
   '@vue/test-utils': 2.0.0-rc.17_vue@3.2.31
@@ -6240,6 +6242,13 @@ packages:
     resolution: {integrity: sha512-c3mAZEuK0lvBp8tmuL74XRKn1+y2dcwOUpH7x4WrF6gk1GIgiluDRgMYQtw2OFcBvAJWlt6ASU3tSqxp0Uu0Aw==}
     dependencies:
       '@types/istanbul-lib-report': 3.0.0
+    dev: true
+
+  /@types/jest/27.4.1:
+    resolution: {integrity: sha512-23iPJADSmicDVrWk+HT58LMJtzLAnB2AgIzplQuq/bSrGaxCrlvRFjGbXmamnnk/mAmCdLStiGqggu28ocUyiw==}
+    dependencies:
+      jest-matcher-utils: 27.4.2
+      pretty-format: 27.4.2
     dev: true
 
   /@types/json-schema/7.0.9:

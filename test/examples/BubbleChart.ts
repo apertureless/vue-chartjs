@@ -1,6 +1,6 @@
-<script>
-import { defineComponent, h } from 'vue'
-import { Bubble } from '../../src/index'
+import { defineComponent, h, PropType } from 'vue'
+
+import { Bubble } from '../../src'
 
 import {
   Chart as ChartJS,
@@ -8,7 +8,8 @@ import {
   Tooltip,
   Legend,
   PointElement,
-  LinearScale
+  LinearScale,
+  PluginOptionsByType
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale)
@@ -36,11 +37,11 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'bubble'>>,
       default: () => {}
     }
   },
@@ -110,4 +111,3 @@ export default defineComponent({
       })
   }
 })
-</script>

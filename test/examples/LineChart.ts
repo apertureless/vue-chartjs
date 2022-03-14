@@ -1,14 +1,14 @@
-<script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 
-import { Line } from '../../src/index'
+import { Line } from '../../src'
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
   LineElement,
-  LinearScale
+  LinearScale,
+  PluginOptionsByType
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale)
@@ -36,11 +36,11 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'line'>>,
       default: () => {}
     }
   },
@@ -74,4 +74,3 @@ export default defineComponent({
       })
   }
 })
-</script>

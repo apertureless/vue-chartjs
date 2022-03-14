@@ -1,20 +1,20 @@
 import { mount } from '@vue/test-utils'
-import PolarAreaChart from './examples/PolarAreaChart.vue'
+import BubbleChart from './examples/BubbleChart'
 
-describe('PolarChart', () => {
+describe('BubbleChart', () => {
   const Component = {
     template:
-      '<div><PolarAreaChart :chartId="chartId" :plugins="plugins" /></div>',
-    components: { PolarAreaChart },
+      '<div><BubbleChart :chartId="chartId" :plugins="plugins" /></div>',
+    components: { BubbleChart },
     props: ['chartId', 'plugins']
   }
 
   it('should render a canvas', () => {
     const wrapper = mount(Component)
 
-    const polarAreaChartEl = wrapper.find('#polar-chart')
-    expect(polarAreaChartEl.element.id).not.toBe('undefined')
-    expect(polarAreaChartEl.exists()).toBe(true)
+    const bubbleChartEl = wrapper.find('#bubble-chart')
+    expect(bubbleChartEl.element.id).not.toBe('undefined')
+    expect(bubbleChartEl.exists()).toBe(true)
 
     const canvasEl = wrapper.find('canvas')
     expect(canvasEl.exists()).toBe(true)
@@ -22,12 +22,12 @@ describe('PolarChart', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(Component, {
-      props: { chartId: 'polarchartprop' }
+      props: { chartId: 'bubblechartprop' }
     })
 
-    const polarAreaChartEl = wrapper.find('#polarchartprop')
-    expect(polarAreaChartEl.element.id).not.toBe('undefined')
-    expect(polarAreaChartEl.exists()).toBe(true)
+    const bubbleChartEl = wrapper.find('#bubblechartprop')
+    expect(bubbleChartEl.element.id).not.toBe('undefined')
+    expect(bubbleChartEl.exists()).toBe(true)
   })
 
   it('should add inline plugins based on prop', () => {

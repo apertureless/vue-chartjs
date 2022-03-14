@@ -1,20 +1,19 @@
 import { mount } from '@vue/test-utils'
-import ScatterChart from './examples/ScatterChart.vue'
+import LineChart from './examples/LineChart'
 
-describe('ScatterChart', () => {
+describe('LineChart', () => {
   const Component = {
-    template:
-      '<div><ScatterChart :chartId="chartId" :plugins="plugins" /></div>',
-    components: { ScatterChart },
+    template: '<div><LineChart :chartId="chartId" :plugins="plugins" /></div>',
+    components: { LineChart },
     props: ['chartId', 'plugins']
   }
 
   it('should render a canvas', () => {
     const wrapper = mount(Component)
 
-    const scatterChartEl = wrapper.find('#scatter-chart')
-    expect(scatterChartEl.element.id).not.toBe('undefined')
-    expect(scatterChartEl.exists()).toBe(true)
+    const lineChartEl = wrapper.find('#line-chart')
+    expect(lineChartEl.element.id).not.toBe('undefined')
+    expect(lineChartEl.exists()).toBe(true)
 
     const canvasEl = wrapper.find('canvas')
     expect(canvasEl.exists()).toBe(true)
@@ -22,12 +21,12 @@ describe('ScatterChart', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(Component, {
-      propsData: { chartId: 'scatterchartprop' }
+      props: { chartId: 'linechartprop' }
     })
 
-    const scatterChartEl = wrapper.find('#scatterchartprop')
-    expect(scatterChartEl.element.id).not.toBe('undefined')
-    expect(scatterChartEl.exists()).toBe(true)
+    const lineChartEl = wrapper.find('#linechartprop')
+    expect(lineChartEl.element.id).not.toBe('undefined')
+    expect(lineChartEl.exists()).toBe(true)
   })
 
   it('should add inline plugins based on prop', () => {

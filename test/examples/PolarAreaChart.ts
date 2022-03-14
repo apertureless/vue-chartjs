@@ -1,14 +1,14 @@
-<script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 
-import { PolarArea } from '../../src/index'
+import { PolarArea } from '../../src'
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
   ArcElement,
-  RadialLinearScale
+  RadialLinearScale,
+  PluginOptionsByType
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, RadialLinearScale)
@@ -36,11 +36,11 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'polarArea'>>,
       default: () => {}
     }
   },
@@ -95,4 +95,3 @@ export default defineComponent({
       })
   }
 })
-</script>

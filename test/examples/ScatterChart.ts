@@ -1,14 +1,14 @@
-<script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 
-import { Scatter } from '../../src/index'
+import { Scatter } from '../../src'
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
   LineElement,
-  CategoryScale
+  CategoryScale,
+  PluginOptionsByType
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale)
@@ -36,11 +36,11 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'scatter'>>,
       default: () => {}
     }
   },
@@ -124,4 +124,3 @@ export default defineComponent({
       })
   }
 })
-</script>

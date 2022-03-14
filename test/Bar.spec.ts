@@ -1,19 +1,19 @@
 import { mount } from '@vue/test-utils'
-import PieChart from './examples/PieChart.vue'
+import BarChart from './examples/BarChart'
 
-describe('PieChart', () => {
+describe('BarChart', () => {
   const Component = {
-    template: '<div><PieChart :chartId="chartId" :plugins="plugins" /></div>',
-    components: { PieChart },
+    template: '<div><BarChart :chartId="chartId" :plugins="plugins" /></div>',
+    components: { BarChart },
     props: ['chartId', 'plugins']
   }
 
   it('should render a canvas', () => {
     const wrapper = mount(Component)
 
-    const pieChartEl = wrapper.find('#pie-chart')
-    expect(pieChartEl.element.id).not.toBe('undefined')
-    expect(pieChartEl.exists()).toBe(true)
+    const barChart = wrapper.find('#bar-chart')
+    expect(barChart.element.id).not.toBe('undefined')
+    expect(barChart.exists()).toBe(true)
 
     const canvasEl = wrapper.find('canvas')
     expect(canvasEl.exists()).toBe(true)
@@ -21,12 +21,12 @@ describe('PieChart', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(Component, {
-      props: { chartId: 'piechartprop' }
+      props: { chartId: 'barchartprop' }
     })
 
-    const pieChartEl = wrapper.find('#piechartprop')
-    expect(pieChartEl.element.id).not.toBe('undefined')
-    expect(pieChartEl.exists()).toBe(true)
+    const barChart = wrapper.find('#barchartprop')
+    expect(barChart.element.id).not.toBe('undefined')
+    expect(barChart.exists()).toBe(true)
   })
 
   it('should add inline plugins based on prop', () => {

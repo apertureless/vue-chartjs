@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import ReactivePropChart from './examples/ReactivePropChart.vue'
+import ReactivePropChart from './examples/ReactivePropChart'
 
 describe('ReactivePropChart', () => {
   const Component = {

@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils'
-import CustomChart from './examples/CustomChart.vue'
+import ReactiveChart from './examples/ReactiveChart'
 
-describe('CustomChart', () => {
+describe('ReactiveChart', () => {
   const Component = {
-    template: '<div><CustomChart /></div>',
-    components: { CustomChart }
+    template: '<div><ReactiveChart /></div>',
+    components: { ReactiveChart }
   }
 
   it('should render a canvas', () => {

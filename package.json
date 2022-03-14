@@ -76,6 +76,7 @@
     "@swc/core": "^1.2.120",
     "@swc/helpers": "^0.3.2",
     "@swc/jest": "^0.2.15",
+    "@types/jest": "^27.4.1",
     "@vitejs/plugin-vue": "^2.2.2",
     "@vue/eslint-config-typescript": "^10.0.0",
     "@vue/test-utils": "^2.0.0-rc.17",

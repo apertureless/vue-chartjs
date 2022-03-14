@@ -1,6 +1,5 @@
-<script>
-import { defineComponent, ref, h, onMounted } from 'vue'
-import { Bar } from '../../src/index'
+import { defineComponent, ref, h, onMounted, PropType } from 'vue'
+import { Bar } from '../../src'
 import {
   Chart as ChartJS,
   Title,
@@ -8,7 +7,9 @@ import {
   Legend,
   BarElement,
   CategoryScale,
-  LinearScale
+  LinearScale,
+  PluginOptionsByType,
+  ChartData
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -36,16 +37,18 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'bar'>>,
       default: () => {}
     }
   },
   setup(props) {
-    const chartData = ref({})
+    const chartData = ref<ChartData<'bar'>>({
+      datasets: []
+    })
 
     const chartOptions = {
       responsive: true,
@@ -116,4 +119,3 @@ export default defineComponent({
       })
   }
 })
-</script>

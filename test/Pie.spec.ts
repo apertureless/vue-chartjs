@@ -1,19 +1,19 @@
 import { mount } from '@vue/test-utils'
-import RadarChart from './examples/RadarChart.vue'
+import PieChart from './examples/PieChart'
 
-describe('RadarChart', () => {
+describe('PieChart', () => {
   const Component = {
-    template: '<div><RadarChart :chartId="chartId" :plugins="plugins" /></div>',
-    components: { RadarChart },
+    template: '<div><PieChart :chartId="chartId" :plugins="plugins" /></div>',
+    components: { PieChart },
     props: ['chartId', 'plugins']
   }
 
   it('should render a canvas', () => {
     const wrapper = mount(Component)
 
-    const radarChartEl = wrapper.find('#radar-chart')
-    expect(radarChartEl.element.id).not.toBe('undefined')
-    expect(radarChartEl.exists()).toBe(true)
+    const pieChartEl = wrapper.find('#pie-chart')
+    expect(pieChartEl.element.id).not.toBe('undefined')
+    expect(pieChartEl.exists()).toBe(true)
 
     const canvasEl = wrapper.find('canvas')
     expect(canvasEl.exists()).toBe(true)
@@ -21,12 +21,12 @@ describe('RadarChart', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(Component, {
-      props: { chartId: 'rodarchartprop' }
+      props: { chartId: 'piechartprop' }
     })
 
-    const radarChartEl = wrapper.find('#rodarchartprop')
-    expect(radarChartEl.element.id).not.toBe('undefined')
-    expect(radarChartEl.exists()).toBe(true)
+    const pieChartEl = wrapper.find('#piechartprop')
+    expect(pieChartEl.element.id).not.toBe('undefined')
+    expect(pieChartEl.exists()).toBe(true)
   })
 
   it('should add inline plugins based on prop', () => {

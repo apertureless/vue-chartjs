@@ -1,14 +1,14 @@
-<script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 
-import { Radar } from '../../src/index'
+import { Radar } from '../../src'
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
   PointElement,
-  RadialLinearScale
+  RadialLinearScale,
+  PluginOptionsByType
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, PointElement, RadialLinearScale)
@@ -36,11 +36,11 @@ export default defineComponent({
       type: String
     },
     styles: {
-      type: Object,
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
       default: () => {}
     },
     plugins: {
-      type: Object,
+      type: Object as PropType<PluginOptionsByType<'radar'>>,
       default: () => {}
     }
   },
@@ -97,4 +97,3 @@ export default defineComponent({
       })
   }
 })
-</script>

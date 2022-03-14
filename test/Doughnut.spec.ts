@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import DoughnutChart from './examples/DoughnutChart.vue'
+import DoughnutChart from './examples/DoughnutChart'
 
 describe('DoughnutChart', () => {
   const Component = {
