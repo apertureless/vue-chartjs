@@ -132,7 +132,7 @@ export function setChartLabels<
   TLabel = unknown
 >(
   chart: TypedChartJS<TType, TData, TLabel>,
-  labels: TLabel[],
+  labels: TLabel[] | undefined,
   context: SetupContext
 ): void {
   chart.data.labels = labels

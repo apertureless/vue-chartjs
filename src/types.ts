@@ -41,14 +41,14 @@ export interface IChartProps<
   TLabel = unknown
 > {
   chartData: TChartData<TType, TData, TLabel>
-  datasetIdKey: string
-  chartOptions: TChartOptions<TType>
-  chartId: string
-  width: number
-  height: number
-  cssClasses: string
-  styles: Partial<CSSStyleDeclaration>
-  plugins: PluginOptionsByType<TType>
+  datasetIdKey?: string
+  chartOptions?: TChartOptions<TType>
+  chartId?: string
+  width?: number
+  height?: number
+  cssClasses?: string
+  styles?: Partial<CSSStyleDeclaration>
+  plugins?: PluginOptionsByType<TType>
 }
 
 export interface IChartComponentData<
