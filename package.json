@@ -38,7 +38,7 @@
   ],
   "sideEffects": false,
   "main": "./src/index.ts",
-  "typings": "./dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "publishConfig": {
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
@@ -52,6 +52,7 @@
     "unit": "jest -c jest.config.json",
     "test": "pnpm lint && pnpm unit",
     "test:size": "size-limit",
+    "test:typings": "tsd",
     "lint": "eslint 'src/**/*.ts'",
     "format": "prettier --write src test",
     "release": "standard-version",
@@ -109,10 +110,14 @@
     "simple-git-hooks": "^2.7.0",
     "size-limit": "^7.0.8",
     "standard-version": "^9.3.2",
+    "tsd": "^0.19.1",
     "typescript": "^4.6.2",
     "vite": "^2.8.6",
     "vue": "^3.2.31",
     "vue-loader": "^17.0.0",
     "vuepress": "^0.14.4"
+  },
+  "tsd": {
+    "directory": "./test"
   }
 }
