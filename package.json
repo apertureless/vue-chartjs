@@ -59,7 +59,8 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "commit": "cz",
-    "start:storybook": "start-storybook -p 6006"
+    "start:storybook": "start-storybook -p 6006",
+    "build:storybook": "del ./storybook-static; NODE_ENV=production build-storybook"
   },
   "peerDependencies": {
     "chart.js": "^3.7.0"
