@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   parserOptions: {
-    sourceType: 'module',
+    sourceType: 'module'
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
   extends: [
@@ -9,6 +9,8 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:vue/recommended',
     'plugin:prettier-vue/recommended',
+    'plugin:vue/vue3-essential',
+    '@vue/eslint-config-typescript'
   ],
   // required to lint *.vue files
   plugins: ['prettier'],
@@ -19,9 +21,6 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'prettier/prettier': 'error',
-    quotes: [2, 'single', 'avoid-escape'],
-  },
-  globals: {
-    LIB_VERSION: true,
-  },
-};
+    quotes: [2, 'single', 'avoid-escape']
+  }
+}

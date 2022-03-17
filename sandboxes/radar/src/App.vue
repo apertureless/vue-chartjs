@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import RadarChart from './components/radarChart.vue'
+import RadarChart from './components/radarChart'
 
 export default {
   name: 'App',

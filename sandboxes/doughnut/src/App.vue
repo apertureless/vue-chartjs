@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import DoughnutChart from './components/doughnutChart.vue'
+import DoughnutChart from './components/doughnutChart'
 
 export default {
   name: 'App',

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import PolarAreaChart from './components/polarAreaChart.vue'
+import PolarAreaChart from './components/polarAreaChart'
 
 export default {
   name: 'App',

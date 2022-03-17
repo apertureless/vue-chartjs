@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ReactiveChart from './components/reactiveChart.vue'
+import ReactiveChart from './components/reactiveChart'
 
 export default {
   name: 'App',

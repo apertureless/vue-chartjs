@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ScatterChart from './components/scatterChart.vue'
+import ScatterChart from './components/scatterChart'
 
 export default {
   name: 'App',

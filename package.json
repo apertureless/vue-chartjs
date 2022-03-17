@@ -37,8 +37,8 @@
     "Charts"
   ],
   "sideEffects": false,
-  "main": "./src/index.js",
-  "typings": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "types": "./dist/index.d.ts",
   "publishConfig": {
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
@@ -47,17 +47,20 @@
   "scripts": {
     "prepublishOnly": "pnpm test && pnpm build && del ./package && clean-publish",
     "postpublish": "del ./package",
-    "build": "rollup -c",
+    "emitDeclarations": "tsc --emitDeclarationOnly",
+    "build": "rollup -c & pnpm emitDeclarations",
     "unit": "jest -c jest.config.json",
     "test": "pnpm lint && pnpm unit",
     "test:size": "size-limit",
-    "lint": "eslint --ext .js,.vue src test",
+    "test:typings": "tsd",
+    "lint": "eslint 'src/**/*.ts'",
     "format": "prettier --write src test",
     "release": "standard-version",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "commit": "cz",
-    "start:storybook": "start-storybook -p 6006"
+    "start:storybook": "start-storybook -p 6006",
+    "build:storybook": "del ./storybook-static; NODE_ENV=production build-storybook"
   },
   "peerDependencies": {
     "chart.js": "^3.7.0"
@@ -75,7 +78,9 @@
     "@swc/core": "^1.2.120",
     "@swc/helpers": "^0.3.2",
     "@swc/jest": "^0.2.15",
+    "@types/jest": "^27.4.1",
     "@vitejs/plugin-vue": "^2.2.2",
+    "@vue/eslint-config-typescript": "^10.0.0",
     "@vue/test-utils": "^2.0.0-rc.17",
     "@vue/vue3-jest": "^27.0.0-alpha.4",
     "babel-jest": "^27.4.5",
@@ -106,9 +111,14 @@
     "simple-git-hooks": "^2.7.0",
     "size-limit": "^7.0.8",
     "standard-version": "^9.3.2",
+    "tsd": "^0.19.1",
+    "typescript": "^4.6.2",
     "vite": "^2.8.6",
     "vue": "^3.2.31",
     "vue-loader": "^17.0.0",
     "vuepress": "^0.14.4"
+  },
+  "tsd": {
+    "directory": "./test"
   }
 }

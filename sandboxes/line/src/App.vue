@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import LineChart from './components/lineChart.vue'
+import LineChart from './components/lineChart'
 
 export default {
   name: 'App',

@@ -7,7 +7,7 @@ module.exports = {
   webpackFinal: async config => {
     config.resolve.alias['vue-chartjs'] = path.resolve(
       __dirname,
-      '../src/index.js'
+      '../src/index.ts'
     )
     return config
   }
