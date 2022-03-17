@@ -116,7 +116,7 @@
     "vite": "^2.8.6",
     "vue": "^3.2.31",
     "vue-loader": "^17.0.0",
-    "vuepress": "^0.14.4"
+    "vuepress": "^1.0.0"
   },
   "tsd": {
     "directory": "./test"
