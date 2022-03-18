@@ -46,5 +46,30 @@ export default [
       file: pkg.publishConfig.module,
       sourcemap: true
     }
+  },
+  {
+    input: pkg.legacy,
+    plugins: plugins('defaults, not ie 11, not ie_mob 11', {
+      template: {
+        optimizeSSR: true
+      }
+    }),
+    external,
+    output: {
+      format: 'cjs',
+      file: pkg.publishConfig.legacyCjs,
+      exports: 'named',
+      sourcemap: true
+    }
+  },
+  {
+    input: pkg.legacy,
+    plugins: plugins('defaults and supports es6-module'),
+    external,
+    output: {
+      format: 'es',
+      file: pkg.publishConfig.legacyModule,
+      sourcemap: true
+    }
   }
 ]

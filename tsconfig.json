@@ -31,7 +31,8 @@
     "skipLibCheck": true
   },
   "include": [
-    "src"
+    "src",
+    "legacy/src/LegacyCharts.js"
   ],
   "exclude": [
     "dist"

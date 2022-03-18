@@ -38,10 +38,13 @@
   ],
   "sideEffects": false,
   "main": "./src/index.ts",
+  "legacy": "./legacy/src/index.js",
   "types": "./dist/index.d.ts",
   "publishConfig": {
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
+    "legacyCjs": "./legacy/index.cjs",
+    "legacyModule": "./legacy/index.js",
     "directory": "package"
   },
   "scripts": {
@@ -49,7 +52,9 @@
     "postpublish": "del ./package",
     "emitDeclarations": "tsc --emitDeclarationOnly",
     "build": "rollup -c & pnpm emitDeclarations",
-    "unit": "jest -c jest.config.json",
+    "unit": "pnpm unit:base && pnpm unit:legacy",
+    "unit:base": "jest -c jest.config.json",
+    "unit:legacy": "cd legacy && pnpm install && pnpm unit",
     "test": "pnpm lint && pnpm unit",
     "test:size": "size-limit",
     "test:typings": "tsd",
@@ -63,7 +68,8 @@
     "build:storybook": "del ./storybook-static; NODE_ENV=production build-storybook"
   },
   "peerDependencies": {
-    "chart.js": "^3.7.0"
+    "chart.js": "^3.7.0",
+    "vue": "^3.0.0-0 || ^2.6.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
