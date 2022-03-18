@@ -22,7 +22,7 @@ describe('ScatterChart', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(Component, {
-      propsData: { chartId: 'scatterchartprop' }
+      props: { chartId: 'scatterchartprop' }
     })
 
     const scatterChartEl = wrapper.find('#scatterchartprop')
@@ -38,7 +38,7 @@ describe('ScatterChart', () => {
     }
 
     const wrapper = mount(Component, {
-      propsData: { plugins: testPlugin }
+      props: { plugins: testPlugin }
     })
 
     expect(Object.keys(wrapper.props().plugins).length).toEqual(1)
