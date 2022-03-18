@@ -25,30 +25,39 @@ export function chartCreate<
     data: TChartData<TType, TData, TLabel>,
     options: TChartOptions<TType>
   ) => void,
-  context: SetupContext,
   chartData: TChartData<TType, TData, TLabel>,
-  chartOptions: TChartOptions<TType>
+  chartOptions: TChartOptions<TType>,
+  context?: SetupContext
 ): void {
   createChartFunction(chartData, chartOptions)
-  context.emit(ChartEmits.ChartRendered)
+
+  if (context !== undefined) {
+    context.emit(ChartEmits.ChartRendered)
+  }
 }
 
 export function chartUpdate<
   TType extends ChartType,
   TData = DefaultDataPoint<TType>,
   TLabel = unknown
->(chart: TypedChartJS<TType, TData, TLabel>, context: SetupContext): void {
+>(chart: TypedChartJS<TType, TData, TLabel>, context?: SetupContext): void {
   chart.update()
-  context.emit(ChartEmits.ChartUpdated)
+
+  if (context !== undefined) {
+    context.emit(ChartEmits.ChartUpdated)
+  }
 }
 
 export function chartDestroy<
   TType extends ChartType,
   TData = DefaultDataPoint<TType>,
   TLabel = unknown
->(chart: TypedChartJS<TType, TData, TLabel>, context: SetupContext): void {
+>(chart: TypedChartJS<TType, TData, TLabel>, context?: SetupContext): void {
   chart.destroy()
-  context.emit(ChartEmits.ChartDestroyed)
+
+  if (context !== undefined) {
+    context.emit(ChartEmits.ChartDestroyed)
+  }
 }
 
 export function getChartData<
@@ -133,10 +142,13 @@ export function setChartLabels<
 >(
   chart: TypedChartJS<TType, TData, TLabel>,
   labels: TLabel[] | undefined,
-  context: SetupContext
+  context?: SetupContext
 ): void {
   chart.data.labels = labels
-  context.emit(ChartEmits.LabelsUpdated)
+
+  if (context !== undefined) {
+    context.emit(ChartEmits.LabelsUpdated)
+  }
 }
 
 export function compareData<
@@ -162,3 +174,6 @@ export function compareData<
     newDatasetLabels.every((value, index) => value === oldDatasetLabels[index])
   )
 }
+
+export const templateError =
+  'Please remove the <template></template> tags from your chart component. See https://vue-chartjs.org/guide/#vue-single-file-components'
