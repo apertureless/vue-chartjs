@@ -2,6 +2,7 @@ import vue from '@vitejs/plugin-vue'
 import swc from 'rollup-plugin-swc'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import pkg from './package.json'
+import legacyPkg from './legacy/package.json'
 
 const extensions = ['.js', '.ts']
 const external = _ => /node_modules/.test(_) && !/@swc\/helpers/.test(_)
@@ -48,7 +49,7 @@ export default [
     }
   },
   {
-    input: pkg.legacy,
+    input: './legacy/src/index.js',
     plugins: plugins('defaults, not ie 11, not ie_mob 11', {
       template: {
         optimizeSSR: true
@@ -57,18 +58,18 @@ export default [
     external,
     output: {
       format: 'cjs',
-      file: pkg.publishConfig.legacyCjs,
+      file: legacyPkg.publishConfig.main,
       exports: 'named',
       sourcemap: true
     }
   },
   {
-    input: pkg.legacy,
+    input: './legacy/src/index.js',
     plugins: plugins('defaults and supports es6-module'),
     external,
     output: {
       format: 'es',
-      file: pkg.publishConfig.legacyModule,
+      file: legacyPkg.publishConfig.module,
       sourcemap: true
     }
   }

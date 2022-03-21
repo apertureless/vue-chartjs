@@ -38,13 +38,10 @@
   ],
   "sideEffects": false,
   "main": "./src/index.ts",
-  "legacy": "./legacy/src/index.js",
   "types": "./dist/index.d.ts",
   "publishConfig": {
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
-    "legacyCjs": "./legacy/index.cjs",
-    "legacyModule": "./legacy/index.js",
     "directory": "package"
   },
   "scripts": {
@@ -54,7 +51,7 @@
     "build": "rollup -c & pnpm emitDeclarations",
     "unit": "pnpm unit:base && pnpm unit:legacy",
     "unit:base": "jest -c jest.config.json",
-    "unit:legacy": "cd legacy && pnpm install && pnpm unit",
+    "unit:legacy": "cd legacy && pnpm unit",
     "test": "pnpm lint && pnpm unit",
     "test:size": "size-limit",
     "test:typings": "tsd",

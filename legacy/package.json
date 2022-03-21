@@ -1,4 +1,8 @@
 {
+  "publishConfig": {
+    "main": "./legacy/index.cjs",
+    "module": "./legacy/index.js"
+  },
   "scripts": {
     "unit": "jest -c jest.config.json"
   },
