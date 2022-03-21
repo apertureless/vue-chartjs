@@ -27,7 +27,7 @@ import {
 ChartJS.register(Title, Tooltip, Legend, PointElement, RadialLinearScale)
 
 export default {
-  name: 'LegacyRadar',
+  name: 'RadarChart',
   components: {
     Radar
   },

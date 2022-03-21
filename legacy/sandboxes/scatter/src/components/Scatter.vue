@@ -27,7 +27,7 @@ import {
 ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale)
 
 export default {
-  name: 'LegacyScatter',
+  name: 'ScatterChart',
   components: {
     Scatter
   },

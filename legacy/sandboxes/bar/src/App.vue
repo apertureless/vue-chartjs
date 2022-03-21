@@ -1,14 +1,14 @@
 <template>
-  <LegacyBar />
+  <BarChart />
 </template>
 
 <script>
-import LegacyBar from './components/LegacyBar.vue'
+import BarChart from './components/Bar.vue'
 
 export default {
   name: 'App',
   components: {
-    LegacyBar
+    BarChart
   }
 }
 </script>

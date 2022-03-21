@@ -1,5 +1,5 @@
 <template>
-  <Radar
+  <PolarArea
     :chart-options="chartOptions"
     :chart-data="chartData"
     :chart-id="chartId"
@@ -13,28 +13,28 @@
 </template>
 
 <script>
-import { Radar } from '../../src/index'
+import { PolarArea } from '../../src/index'
 
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  PointElement,
+  ArcElement,
   RadialLinearScale
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, PointElement, RadialLinearScale)
+ChartJS.register(Title, Tooltip, Legend, ArcElement, RadialLinearScale)
 
 export default {
-  name: 'LegacyRadar',
+  name: 'PolarAreaChart',
   components: {
-    Radar
+    PolarArea
   },
   props: {
     chartId: {
       type: String,
-      default: 'radar-chart'
+      default: 'polar-chart'
     },
     datasetIdKey: {
       type: String,
@@ -77,7 +77,6 @@ export default {
           {
             label: 'My First dataset',
             backgroundColor: 'rgba(179,181,198,0.2)',
-            borderColor: 'rgba(179,181,198,1)',
             pointBackgroundColor: 'rgba(179,181,198,1)',
             pointBorderColor: '#fff',
             pointHoverBackgroundColor: '#fff',
@@ -87,7 +86,6 @@ export default {
           {
             label: 'My Second dataset',
             backgroundColor: 'rgba(255,99,132,0.2)',
-            borderColor: 'rgba(255,99,132,1)',
             pointBackgroundColor: 'rgba(255,99,132,1)',
             pointBorderColor: '#fff',
             pointHoverBackgroundColor: '#fff',

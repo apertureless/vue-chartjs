@@ -1,14 +1,14 @@
 <template>
-  <LegacyScatter />
+  <ScatterChart />
 </template>
 
 <script>
-import LegacyScatter from './components/LegacyScatter.vue'
+import ScatterChart from './components/Scatter.vue'
 
 export default {
   name: 'App',
   components: {
-    LegacyScatter
+    ScatterChart
   }
 }
 </script>

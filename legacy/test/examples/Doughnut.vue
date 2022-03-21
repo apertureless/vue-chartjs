@@ -1,5 +1,5 @@
 <template>
-  <LineChart
+  <Doughnut
     :chart-options="chartOptions"
     :chart-data="chartData"
     :chart-id="chartId"
@@ -13,28 +13,28 @@
 </template>
 
 <script>
-import { Line as LineChart } from '../../src/index'
+import { Doughnut } from '../../src/index'
 
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  LineElement,
-  LinearScale
+  ArcElement,
+  CategoryScale
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale)
+ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
 
 export default {
-  name: 'LegacyLine',
+  name: 'DoughnutChart',
   components: {
-    LineChart
+    Doughnut
   },
   props: {
     chartId: {
       type: String,
-      default: 'line-chart'
+      default: 'doughnut-chart'
     },
     datasetIdKey: {
       type: String,
@@ -64,20 +64,11 @@ export default {
   data() {
     return {
       chartData: {
-        labels: [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July'
-        ],
+        labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
         datasets: [
           {
-            label: 'Data One',
-            backgroundColor: '#f87979',
-            data: [40, 39, 10, 40, 39, 80, 40]
+            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+            data: [40, 20, 80, 10]
           }
         ]
       },

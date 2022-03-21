@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import LegacyPolarArea from './examples/LegacyPolarArea.vue'
+import LegacyPolarArea from './examples/PolarArea.vue'
 
 describe('LegacyPolarArea', () => {
   const Component = {

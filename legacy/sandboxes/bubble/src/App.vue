@@ -1,14 +1,14 @@
 <template>
-  <LegacyBubble />
+  <BubbleChart />
 </template>
 
 <script>
-import LegacyBubble from './components/LegacyBubble.vue'
+import BubbleChart from './components/Bubble.vue'
 
 export default {
   name: 'App',
   components: {
-    LegacyBubble
+    BubbleChart
   }
 }
 </script>

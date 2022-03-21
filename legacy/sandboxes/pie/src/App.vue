@@ -1,14 +1,14 @@
 <template>
-  <LegacyPie />
+  <PieChart />
 </template>
 
 <script>
-import LegacyPie from './components/LegacyPie.vue'
+import PieChart from './components/Pie.vue'
 
 export default {
   name: 'App',
   components: {
-    LegacyPie
+    PieChart
   }
 }
 </script>

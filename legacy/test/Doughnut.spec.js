@@ -1,19 +1,20 @@
 import { mount } from '@vue/test-utils'
-import LegacyPie from './examples/LegacyPie.vue'
+import LegacyDoughnut from './examples/Doughnut.vue'
 
-describe('LegacyPie', () => {
+describe('LegacyDoughnut', () => {
   const Component = {
-    template: '<div><LegacyPie :chartId="chartId" :plugins="plugins" /></div>',
-    components: { LegacyPie },
+    template:
+      '<div><LegacyDoughnut :chartId="chartId" :plugins="plugins" /></div>',
+    components: { LegacyDoughnut },
     props: ['chartId', 'plugins']
   }
 
   it('should render a canvas', () => {
     const wrapper = mount(Component)
 
-    const pieChartEl = wrapper.find('#pie-chart')
-    expect(pieChartEl.element.id).not.toBe('undefined')
-    expect(pieChartEl.exists()).toBe(true)
+    const doughnutChartEl = wrapper.find('#doughnut-chart')
+    expect(doughnutChartEl.element.id).not.toBe('undefined')
+    expect(doughnutChartEl.exists()).toBe(true)
 
     const canvasEl = wrapper.find('canvas')
     expect(canvasEl.exists()).toBe(true)
@@ -21,12 +22,12 @@ describe('LegacyPie', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(Component, {
-      propsData: { chartId: 'piechartprop' }
+      propsData: { chartId: 'doughnutchartprop' }
     })
 
-    const pieChartEl = wrapper.find('#piechartprop')
-    expect(pieChartEl.element.id).not.toBe('undefined')
-    expect(pieChartEl.exists()).toBe(true)
+    const doughnutChartEl = wrapper.find('#doughnutchartprop')
+    expect(doughnutChartEl.element.id).not.toBe('undefined')
+    expect(doughnutChartEl.exists()).toBe(true)
   })
 
   it('should add inline plugins based on prop', () => {

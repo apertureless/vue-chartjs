@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { Bubble } from '../../src/index'
+import { Bubble } from 'vue-chartjs/legacy'
 
 import {
   Chart as ChartJS,
@@ -27,7 +27,7 @@ import {
 ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale)
 
 export default {
-  name: 'LegacyBubble',
+  name: 'BubbleChart',
   components: {
     Bubble
   },

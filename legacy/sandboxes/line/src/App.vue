@@ -1,14 +1,14 @@
 <template>
-  <LegacyLine />
+  <LineChart />
 </template>
 
 <script>
-import LegacyLine from './components/LegacyLine.vue'
+import LineChart from './components/Line.vue'
 
 export default {
   name: 'App',
   components: {
-    LegacyLine
+    LineChart
   }
 }
 </script>

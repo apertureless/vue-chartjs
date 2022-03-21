@@ -1,20 +1,19 @@
 import { mount } from '@vue/test-utils'
-import LegacyScatter from './examples/LegacyScatter.vue'
+import LegacyBar from './examples/Bar.vue'
 
-describe('LegacyScatter', () => {
+describe('LegacyBar', () => {
   const Component = {
-    template:
-      '<div><LegacyScatter :chartId="chartId" :plugins="plugins" /></div>',
-    components: { LegacyScatter },
+    template: '<div><LegacyBar :chart-id="chartId" :plugins="plugins" /></div>',
+    components: { LegacyBar },
     props: ['chartId', 'plugins']
   }
 
   it('should render a canvas', () => {
     const wrapper = mount(Component)
 
-    const scatterChartEl = wrapper.find('#scatter-chart')
-    expect(scatterChartEl.element.id).not.toBe('undefined')
-    expect(scatterChartEl.exists()).toBe(true)
+    const barChart = wrapper.find('#bar-chart')
+    expect(barChart.element.id).not.toBe('undefined')
+    expect(barChart.exists()).toBe(true)
 
     const canvasEl = wrapper.find('canvas')
     expect(canvasEl.exists()).toBe(true)
@@ -22,12 +21,12 @@ describe('LegacyScatter', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(Component, {
-      propsData: { chartId: 'scatterchartprop' }
+      propsData: { chartId: 'barchartprop' }
     })
 
-    const scatterChartEl = wrapper.find('#scatterchartprop')
-    expect(scatterChartEl.element.id).not.toBe('undefined')
-    expect(scatterChartEl.exists()).toBe(true)
+    const barChart = wrapper.find('#barchartprop')
+    expect(barChart.element.id).not.toBe('undefined')
+    expect(barChart.exists()).toBe(true)
   })
 
   it('should add inline plugins based on prop', () => {

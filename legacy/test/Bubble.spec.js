@@ -1,20 +1,20 @@
 import { mount } from '@vue/test-utils'
-import LegacyDoughnut from './examples/LegacyDoughnut.vue'
+import LegacyBubble from './examples/Bubble.vue'
 
-describe('LegacyDoughnut', () => {
+describe('LegacyBubble', () => {
   const Component = {
     template:
-      '<div><LegacyDoughnut :chartId="chartId" :plugins="plugins" /></div>',
-    components: { LegacyDoughnut },
+      '<div><LegacyBubble :chartId="chartId" :plugins="plugins" /></div>',
+    components: { LegacyBubble },
     props: ['chartId', 'plugins']
   }
 
   it('should render a canvas', () => {
     const wrapper = mount(Component)
 
-    const doughnutChartEl = wrapper.find('#doughnut-chart')
-    expect(doughnutChartEl.element.id).not.toBe('undefined')
-    expect(doughnutChartEl.exists()).toBe(true)
+    const bubbleChartEl = wrapper.find('#bubble-chart')
+    expect(bubbleChartEl.element.id).not.toBe('undefined')
+    expect(bubbleChartEl.exists()).toBe(true)
 
     const canvasEl = wrapper.find('canvas')
     expect(canvasEl.exists()).toBe(true)
@@ -22,12 +22,12 @@ describe('LegacyDoughnut', () => {
 
   it('should change id based on prop', () => {
     const wrapper = mount(Component, {
-      propsData: { chartId: 'doughnutchartprop' }
+      propsData: { chartId: 'bubblechartprop' }
     })
 
-    const doughnutChartEl = wrapper.find('#doughnutchartprop')
-    expect(doughnutChartEl.element.id).not.toBe('undefined')
-    expect(doughnutChartEl.exists()).toBe(true)
+    const bubbleChartEl = wrapper.find('#bubblechartprop')
+    expect(bubbleChartEl.element.id).not.toBe('undefined')
+    expect(bubbleChartEl.exists()).toBe(true)
   })
 
   it('should add inline plugins based on prop', () => {

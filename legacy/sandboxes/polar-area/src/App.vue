@@ -1,14 +1,14 @@
 <template>
-  <LegacyPolarArea />
+  <PolarAreaChart />
 </template>
 
 <script>
-import LegacyPolarArea from './components/LegacyPolarArea.vue'
+import PolarAreaChart from './components/PolarArea.vue'
 
 export default {
   name: 'App',
   components: {
-    LegacyPolarArea
+    PolarAreaChart
   }
 }
 </script>

@@ -27,7 +27,7 @@ import {
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
 
 export default {
-  name: 'LegacyDoughnut',
+  name: 'DoughnutChart',
   components: {
     Doughnut
   },

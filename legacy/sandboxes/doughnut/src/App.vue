@@ -1,14 +1,14 @@
 <template>
-  <LegacyDoughnut />
+  <DoughnutChart />
 </template>
 
 <script>
-import LegacyDoughnut from './components/LegacyDoughnut.vue'
+import DoughnutChart from './components/Doughnut.vue'
 
 export default {
   name: 'App',
   components: {
-    LegacyDoughnut
+    DoughnutChart
   }
 }
 </script>

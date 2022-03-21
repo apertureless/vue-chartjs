@@ -1,14 +1,14 @@
 <template>
-  <LegacyRadar />
+  <RadarChart />
 </template>
 
 <script>
-import LegacyRadar from './components/LegacyRadar.vue'
+import RadarChart from './components/Radar.vue'
 
 export default {
   name: 'App',
   components: {
-    LegacyRadar
+    RadarChart
   }
 }
 </script>

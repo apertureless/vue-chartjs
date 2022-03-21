@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import LegacyRadar from './examples/LegacyRadar.vue'
+import LegacyRadar from './examples/Radar.vue'
 
 describe('LegacyRadar', () => {
   const Component = {

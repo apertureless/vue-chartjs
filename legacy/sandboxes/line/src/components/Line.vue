@@ -1,5 +1,5 @@
 <template>
-  <Pie
+  <LineChartGenerator
     :chart-options="chartOptions"
     :chart-data="chartData"
     :chart-id="chartId"
@@ -13,28 +13,28 @@
 </template>
 
 <script>
-import { Pie } from '../../src/index'
+import { Line as LineChartGenerator } from 'vue-chartjs/legacy'
 
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  ArcElement,
-  CategoryScale
+  LineElement,
+  LinearScale
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
+ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale)
 
 export default {
-  name: 'LegacyPie',
+  name: 'LineChart',
   components: {
-    Pie
+    LineChartGenerator
   },
   props: {
     chartId: {
       type: String,
-      default: 'pie-chart'
+      default: 'line-chart'
     },
     datasetIdKey: {
       type: String,
@@ -64,11 +64,20 @@ export default {
   data() {
     return {
       chartData: {
-        labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+        labels: [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July'
+        ],
         datasets: [
           {
-            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-            data: [40, 20, 80, 10]
+            label: 'Data One',
+            backgroundColor: '#f87979',
+            data: [40, 39, 10, 40, 39, 80, 40]
           }
         ]
       },
