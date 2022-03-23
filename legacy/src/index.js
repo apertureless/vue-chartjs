@@ -7,6 +7,6 @@ import {
   Radar,
   Bubble,
   Scatter
-} from './LegacyCharts.js'
+} from './Charts.js'
 
 export { Bar, Doughnut, Line, Pie, PolarArea, Radar, Bubble, Scatter }

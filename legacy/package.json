@@ -1,4 +1,5 @@
 {
+  "main": "./legacy/src/index.js",
   "publishConfig": {
     "main": "./legacy/index.cjs",
     "module": "./legacy/index.js"

@@ -44,6 +44,10 @@
     "module": "./dist/index.js",
     "directory": "package"
   },
+  "files": [
+    "dist",
+    "legacy/index.*"
+  ],
   "scripts": {
     "prepublishOnly": "pnpm test && pnpm build && del ./package && clean-publish",
     "postpublish": "del ./package",
