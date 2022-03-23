@@ -44,12 +44,18 @@
     "module": "./dist/index.js",
     "directory": "package"
   },
+  "files": [
+    "dist",
+    "legacy/index.*"
+  ],
   "scripts": {
     "prepublishOnly": "pnpm test && pnpm build && del ./package && clean-publish",
     "postpublish": "del ./package",
     "emitDeclarations": "tsc --emitDeclarationOnly",
     "build": "rollup -c & pnpm emitDeclarations",
-    "unit": "jest -c jest.config.json",
+    "unit": "pnpm unit:base && pnpm unit:legacy",
+    "unit:base": "jest -c jest.config.json",
+    "unit:legacy": "cd legacy && pnpm unit",
     "test": "pnpm lint && pnpm unit",
     "test:size": "size-limit",
     "test:typings": "tsd",
@@ -63,7 +69,8 @@
     "build:storybook": "del ./storybook-static; NODE_ENV=production build-storybook"
   },
   "peerDependencies": {
-    "chart.js": "^3.7.0"
+    "chart.js": "^3.7.0",
+    "vue": "^3.0.0-0 || ^2.6.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",

@@ -21,5 +21,8 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
+      - name: Install dependencies to legacy folder
+        working-directory: legacy
+        run: pnpm install
       - name: Run tests
         run: pnpm test

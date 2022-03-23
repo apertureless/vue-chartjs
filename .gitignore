@@ -14,3 +14,9 @@ npm-debug.log*
 
 # testing
 coverage
+
+# legacy builds
+/legacy/index.cjs
+/legacy/index.cjs.map
+/legacy/index.js
+/legacy/index.js.map

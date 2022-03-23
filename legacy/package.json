@@ -1,0 +1,22 @@
+{
+  "main": "./legacy/src/index.js",
+  "publishConfig": {
+    "main": "./legacy/index.cjs",
+    "module": "./legacy/index.js"
+  },
+  "scripts": {
+    "unit": "jest -c jest.config.json"
+  },
+  "devDependencies": {
+    "@babel/core": "7.16.5",
+    "@swc/core": "1.2.120",
+    "@swc/jest": "0.2.15",
+    "@vue/test-utils": "1.3.0",
+    "@vue/vue2-jest": "27.0.0-alpha.4",
+    "babel-jest": "27.4.5",
+    "css-loader": "0.28.0",
+    "jest": "27.4.3",
+    "vue": "2.6.14",
+    "vue-template-compiler": "2.6.14"
+  }
+}

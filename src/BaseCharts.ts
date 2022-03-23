@@ -39,7 +39,8 @@ import {
   getChartData,
   setChartLabels,
   setChartDatasets,
-  compareData
+  compareData,
+  templateError
 } from './utils'
 
 import type {
@@ -112,9 +113,7 @@ export const generateChart = <
         }
 
         if (canvasEl.value === null) {
-          throw new Error(
-            'Please remove the <template></template> tags from your chart component. See https://vue-chartjs.org/guide/#vue-single-file-components'
-          )
+          throw new Error(templateError)
         } else {
           const chartData = getChartData<TType, TData, TLabel>(
             data,
@@ -174,9 +173,9 @@ export const generateChart = <
 
             chartCreate<TType, TData, TLabel>(
               renderChart,
-              context,
               props.chartData,
-              props.chartOptions as ChartOptions<TType>
+              props.chartOptions as ChartOptions<TType>,
+              context
             )
           }
         } else {
@@ -186,16 +185,19 @@ export const generateChart = <
 
           chartCreate<TType, TData, TLabel>(
             renderChart,
-            context,
             props.chartData,
-            props.chartOptions as ChartOptions<TType>
+            props.chartOptions as ChartOptions<TType>,
+            context
           )
         }
       }
 
       watch(
         () => props.chartData,
-        (newValue, oldValue) => chartDataHandler(newValue, oldValue),
+        (
+          newValue: TChartData<TType, TData, TLabel>,
+          oldValue: TChartData<TType, TData, TLabel>
+        ) => chartDataHandler(newValue, oldValue),
         { deep: true }
       )
 
@@ -206,9 +208,9 @@ export const generateChart = <
         ) {
           chartCreate<TType, TData, TLabel>(
             renderChart,
-            context,
             props.chartData,
-            props.chartOptions as ChartOptions<TType>
+            props.chartOptions as ChartOptions<TType>,
+            context
           )
         }
       })

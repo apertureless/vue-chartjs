@@ -38,7 +38,7 @@ describe('DoughnutChart', () => {
     }
 
     const wrapper = mount(Component, {
-      propsData: { plugins: testPlugin }
+      props: { plugins: testPlugin }
     })
 
     expect(Object.keys(wrapper.props().plugins).length).toEqual(1)

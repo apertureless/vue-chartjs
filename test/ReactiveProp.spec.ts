@@ -10,7 +10,7 @@ describe('ReactivePropChart', () => {
 
   it('should render a canvas', () => {
     const wrapper = mount(Component, {
-      propsData: { chartData: {} }
+      props: { chartData: {} }
     })
 
     const canvasEl = wrapper.find('canvas')
