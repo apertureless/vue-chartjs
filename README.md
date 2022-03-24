@@ -19,8 +19,6 @@ Supports Chart.js v3 and v2.
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C1WP7C)
 
 <br />
-<a href="#demo">Demo</a>
-<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="#docs">Docs</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="#install">Install</a>
@@ -29,15 +27,13 @@ Supports Chart.js v3 and v2.
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="#migration-to-v4">Migration to v4</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="#demo">Demo</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://slack.cube.dev/?ref=eco-vue-chartjs">Slack</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://stackoverflow.com/questions/tagged/vue-chartjs">Stack Overflow</a>
 <br />
 <hr />
-
-## Demo
-
-- 📺 [Demo](http://demo.vue-chartjs.org/)
 
 ## Docs
 
@@ -56,6 +52,8 @@ npm i vue-chartjs chart.js
 ```
 
 We recommend using `chart.js@^3.0.0`.
+
+<hr />
 
 Need an API to fetch data? Consider [Cube](https://cube.dev/?ref=eco-vue-chartjs), an open-source API for data apps.
 
@@ -402,6 +400,10 @@ export default {
 }
 </script>
 ```
+
+## Demo
+
+- 📺 [Demo](http://demo.vue-chartjs.org/)
 
 ## Available Charts
 
