@@ -1,10 +1,14 @@
-<div align="center">
-  <img width="256" heigth="256" src="/assets/vue-chartjs.png" alt="vue-chartjs logo">
-</div>
+# vue-chartjs
+
+<img align="right" width="150" height="150" alt="vue-chartjs logo" src="/assets/vue-chartjs.png">
+
+**vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in vue. You can easily create reuseable chart components.
+
+Supports Chart.js v3 and v2.
 
 [![npm version](https://badge.fury.io/js/vue-chartjs.svg)](https://badge.fury.io/js/vue-chartjs)
 [![codecov](https://codecov.io/gh/apertureless/vue-chartjs/branch/master/graph/badge.svg)](https://codecov.io/gh/apertureless/vue-chartjs)
-[![Build Status](https://travis-ci.org/apertureless/vue-chartjs.svg?branch=master)](https://travis-ci.org/apertureless/vue-chartjs)
+[![Build Status](https://travis-ci.org/apertureless/vue-chartjs.svg?branch=master)](https://github.com/apertureless/vue-chartjs/actions)
 [![Package Quality](http://npm.packagequality.com/shield/vue-chartjs.svg)](http://packagequality.com/#?package=vue-chartjs)
 [![npm](https://img.shields.io/npm/dm/vue-chartjs.svg)](https://www.npmjs.com/package/vue-chartjs)
 [![Gitter chat](https://img.shields.io/gitter/room/TechnologyAdvice/Stardust.svg)](https://gitter.im/vue-chartjs/Lobby)
@@ -14,15 +18,29 @@
 [![Donate](assets/donate.svg)](https://www.paypal.me/apertureless/50eur)
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C1WP7C)
 
-# vue-chartjs
+<br />
+<a href="#demo">Demo</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="#docs">Docs</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="#install">Install</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="#how-to-use">How to use</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="#migration-to-v4">Migration to v4</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="https://slack.cube.dev/?ref=eco-vue-chartjs">Slack</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="https://stackoverflow.com/questions/tagged/vue-chartjs">Stack Overflow</a>
+<br />
+<hr />
 
-**vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in vue. You can easily create reuseable chart components.
-
-Supports Chart.js v3 and v2.
-
-## Demo & Docs
+## Demo
 
 - 📺 [Demo](http://demo.vue-chartjs.org/)
+
+## Docs
+
 - 📖 [v3 Docs](http://vue-chartjs.org/)
 
 ## Install
@@ -38,6 +56,12 @@ npm i vue-chartjs chart.js
 ```
 
 We recommend using `chart.js@^3.0.0`.
+
+Need an API to fetch data? Consider [Cube](https://cube.dev/?ref=eco-vue-chartjs), an open-source API for data apps.
+
+<br />
+
+[![supported by Cube](https://user-images.githubusercontent.com/986756/154330861-d79ab8ec-aacb-4af8-9e17-1b28f1eccb01.svg)](https://cube.dev/?ref=eco-vue-chartjs)
 
 ## How to use
 
