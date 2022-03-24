@@ -18,74 +18,251 @@
 
 **vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in vue. You can easily create reuseable chart components.
 
+Supports Chart.js v3 and v2.
+
 ## Demo & Docs
 
 - 📺 [Demo](http://demo.vue-chartjs.org/)
-- 📖 [Docs](http://vue-chartjs.org/)
-
-### Compatibility
-
-- v1 later `@legacy`
-  - Vue.js 1.x
-- v2 later
-  - Vue.js 2.x
-
-After the final release of vue.js 2, you also get the v2 by default if you install vue-chartjs over npm.
-No need for the @next tag anymore. If you want the v1 you need to define the version or use the legacy tag.
-If you're looking for v1 check this [branch](https://github.com/apertureless/vue-chartjs/tree/release/1.x)
+- 📖 [v3 Docs](http://vue-chartjs.org/)
 
 ## Install
 
-- **yarn** install: `yarn add vue-chartjs chart.js@2.9.4`
-- **npm** install: `npm install vue-chartjs chart.js@2.9.4`
+Install this library with peer dependencies:
 
-Or if you want to use it directly in the browser add
-
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-<script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+```bash
+pnpm add vue-chartjs chart.js
+# or
+yarn add vue-chartjs chart.js
+# or
+npm i vue-chartjs chart.js
 ```
-to your scripts. See [Codepen](https://codepen.io/apertureless/pen/zEvvWM)
 
-
-### Browser
-You can use `vue-chartjs` directly in the browser without any build setup. Like in this [codepen](https://codepen.io/apertureless/pen/zEvvWM). For this case, please use the `vue-chartjs.min.js` which is the minified version. You also need to add the Chart.js CDN script.
-
-You can then simply register your component:
-
-```js
-Vue.component('line-chart', {
-  extends: VueChartJs.Line,
-  mounted () {
-    this.renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-        {
-          label: 'Data One',
-          backgroundColor: '#f87979',
-          data: [40, 39, 10, 40, 39, 80, 40]
-        }
-      ]
-    }, {responsive: true, maintainAspectRatio: false})
-  }
-})
-```
+We recommend using `chart.js@^3.0.0`.
 
 ## How to use
 
-You need to import the component and then either use `extends` or `mixins` and add it.
+This package works with version 2.x and 3.x of Vue.
 
-You can import the whole package or each module individual.
+Import the component.
 
 ```javascript
-import VueCharts from 'vue-chartjs'
-import { Bar, Line } from 'vue-chartjs'
+import { Bar } from 'vue-chartjs'
+```
+
+For Vue 2 projects, you need to import from 'vue-chartjs/legacy'.
+
+```javascript
+import { Bar } from 'vue-chartjs/legacy'
 ```
 
 Just create your own component.
 
+```vue
+<template>
+  <Bar
+    :chart-options="chartOptions"
+    :chart-data="chartData"
+    :chart-id="chartId"
+    :dataset-id-key="datasetIdKey"
+    :plugins="plugins"
+    :css-classes="cssClasses"
+    :styles="styles"
+    :width="width"
+    :height="height"
+  />
+</template>
+
+<script>
+import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+export default {
+  name: 'BarChart',
+  components: { Bar },
+  props: {
+    chartId: {
+      type: String,
+      default: 'bar-chart'
+    },
+    datasetIdKey: {
+      type: String,
+      default: 'label'
+    },
+    width: {
+      type: Number,
+      default: 400
+    },
+    height: {
+      type: Number,
+      default: 400
+    },
+    cssClasses: {
+      default: '',
+      type: String
+    },
+    styles: {
+      type: Object,
+      default: () => {}
+    },
+    plugins: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  data() {
+    return {
+      chartData: {
+        labels: [ 'January', 'February', 'March' ],
+        datasets: [ { data: [40, 20, 12] } ]
+      },
+      chartOptions: {
+        responsive: true
+      }
+    }
+  }
+}
+</script>
+```
+
+or in TypeScript
+
+```ts
+// BarChart.ts
+import { defineComponent, h, PropType } from 'vue'
+import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PluginOptionsByType } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+export default defineComponent({
+  name: 'BarChart',
+  components: { Bar },
+  props: {
+    chartId: {
+      type: String,
+      default: 'bar-chart'
+    },
+    width: {
+      type: Number,
+      default: 400
+    },
+    height: {
+      type: Number,
+      default: 400
+    },
+    cssClasses: {
+      default: '',
+      type: String
+    },
+    styles: {
+      type: Object as PropType<Partial<CSSStyleDeclaration>>,
+      default: () => {}
+    },
+    plugins: {
+      type: Object as PropType<PluginOptionsByType<'bar'>>,
+      default: () => {}
+    }
+  },
+  setup(props) {
+    const chartData = {
+      labels: [ 'January', 'February', 'March' ],
+      datasets: [ { data: [40, 20, 12] } ]
+    }
+
+    const chartOptions = { responsive: true }
+
+    return () =>
+      h(Bar, {
+        chartData,
+        chartOptions,
+        chartId: props.chartId,
+        width: props.width,
+        height: props.height,
+        cssClasses: props.cssClasses,
+        styles: props.styles,
+        plugins: props.plugins
+      })
+  }
+})
+
+```
+
+Use it in your vue app
+
+```vue
+<template>
+  <BarChart />
+</template>
+
+<script>
+import BarChart from 'path/to/component/BarChart'
+
+export default {
+  name: 'App',
+  components: { BarChart }
+}
+</script>
+```
+
+## Reactivity
+
+vue-chartjs will update or re-render the chart if new data is passed.
+
+## Migration to v4
+
+With v4, this library introduces a number of breaking changes. In order to improve performance, offer new features, and improve maintainability, it was necessary to break backwards compatibility, but we aimed to do so only when worth the benefit.
+
+v4 is fully compatible with Chart.js v3.
+
+### Tree-shaking
+
+v4 of this library, [just like Chart.js v3](https://www.chartjs.org/docs/latest/getting-started/v3-migration.html#setup-and-installation), is tree-shakable. It means that you need to import and register the controllers, elements, scales, and plugins you want to use.
+
+For a list of all the available items to import, see [Chart.js docs](https://www.chartjs.org/docs/latest/getting-started/integration.html#bundlers-webpack-rollup-etc).
+
+v3:
+
 ```javascript
-// CommitChart.js
+import { Bar } from 'vue-chartjs'
+```
+
+v4 — lazy way:
+
+```javascript
+import 'chart.js/auto';
+import { Bar } from 'vue-chartjs'
+```
+
+v4 — tree-shakable way:
+
+```javascript
+import { Bar } from 'vue-chartjs/legacy'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+```
+
+Using the "lazy way" is okay to simplify the migration, but please consider using the tree-shakable way to decrease the bundle size.
+
+Please note that typed chart components register their controllers by default, so you don't need to register them by yourself. For example, when using the Pie component, you don't need to register PieController explicitly.
+
+```javascript
+import { Pie } from 'vue-chartjs/legacy'
+import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
+```
+
+### Changing the creation of Charts
+
+In v3, you needed to import the component, and then either use extends or mixins and add it.
+
+v3:
+
+```javascript
+// BarChart.js
 import { Bar } from 'vue-chartjs'
 
 export default {
@@ -93,12 +270,12 @@ export default {
   mounted () {
     // Overwriting base render method with actual data.
     this.renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      labels: ['January', 'February', 'March'],
       datasets: [
         {
           label: 'GitHub Commits',
           backgroundColor: '#f87979',
-          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+          data: [40, 20, 12]
         }
       ]
     })
@@ -106,127 +283,64 @@ export default {
 }
 ```
 
-or in TypeScript
-
-```ts
-// CommitChart.ts
-import { Component, Mixins } from 'vue-property-decorator'
-import { Bar, mixins } from 'vue-chartjs';
-import { Component } from 'vue-property-decorator';
-
-@Component({
-    extends: Bar, // this is important to add the functionality to your component
-    mixins: [mixins.reactiveProp]
-})
-export default class CommitChart extends Mixins(mixins.reactiveProp, Bar) {
-  mounted () {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      datasets: [
-        {
-          label: 'GitHub Commits',
-          backgroundColor: '#f87979',
-          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-        }
-      ]
-    })
-  }
-}
-```
-
-Then simply import and use your own extended component and use it like a normal vue component
-
-```javascript
-import CommitChart from 'path/to/component/CommitChart'
-```
-
-## Another Example with options
-
-You can overwrite the default chart options. Just pass the options object as a second parameter to the render method
-
-```javascript
-// MonthlyIncome.vue
-import { Line } from 'vue-chartjs'
-
-export default {
-  extends: Line,
-  props: ['data', 'options'],
-  mounted () {
-    this.renderChart(this.data, this.options)
-  }
-}
-```
-
-Use it in your vue app
-
-```javascript
-import MonthlyIncome from 'path/to/component/MonthlyIncome'
-
+```vue
 <template>
-  <monthly-income :data={....} />
+  <BarChart />
 </template>
 
 <script>
+// DataPage.vue
+import BarChart from 'path/to/component/BarChart'
+
 export default {
-  components: { MonthlyIncome },
-  ....
+  name: 'DataPage',
+  components: { BarChart }
+}
+<script>
+```
+
+In v4, you need to import the component, pass props to it, and use Chart component as a standard Vue component.
+
+```vue
+<template>
+  <Bar :chart-data="chartData" />
+</template>
+
+<script>
+// DataPage.vue
+import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+export default {
+  name: 'BarChart',
+  components: { Bar },
+  data() {
+    return {
+      chartData: {
+        labels: [ 'January', 'February', 'March'],
+        datasets: [
+          {
+            label: 'Data One',
+            backgroundColor: '#f87979',
+            data: [40, 20, 12]
+          }
+        ]
+      }
+    }
+  }
 }
 </script>
 ```
 
-## Reactivity
+### New reactivity system
 
-Chart.js does not update or re-render the chart if new data is passed.
-However, you can simply implement this on your own or use one of the two mixins which are included.
+v3 does not update or re-render the chart if new data is passed. You needed to use `reactiveProp` and `reactiveData` mixins for that.
 
-- `reactiveProp`
-- `reactiveData`
-
-Both are included in the `mixins` module.
-
-The mixins automatically create `chartData` as a prop or data. And add a watcher. If data has changed, the chart will update.
-However, keep in mind the limitations of vue and javascript for mutations on arrays and objects.
-**It is important that you pass your options in a local variable named `options`!**
-The reason is that if the mixin re-renders the chart it calls `this.renderChart(this.chartData, this.options)` so don't pass in the options object directly or it will be ignored.
-
-More info [here](https://vue-chartjs.org/guide/#updating-charts)
+v3:
 
 ```javascript
-// MonthlyIncome.js
-import { Line, mixins } from 'vue-chartjs'
-
-export default {
-  extends: Line,
-  mixins: [mixins.reactiveProp],
-  props: ['chartData', 'options'],
-  mounted () {
-    this.renderChart(this.chartData, this.options)
-  }
-}
-
-```
-
-### Mixins module
-The `mixins` module is included in the `VueCharts` module and as a separate module.
-Some ways to import them:
-
-```javascript
-// Load complete module with all charts
-import VueCharts from 'vue-chartjs'
-
-export default {
-  extends: VueCharts.Line,
-  mixins: [VueCharts.mixins.reactiveProp],
-  props: ['chartData', 'options'],
-  mounted () {
-    this.renderChart(this.chartData, this.options)
-  }
-}
-```
-
-```javascript
-// Load separate modules
 import { Line, mixins } from 'vue-chartjs'
 
 export default {
@@ -239,24 +353,31 @@ export default {
 }
 ```
 
-```javascript
-// Load separate modules with destructure assign
-import { Line, mixins } from 'vue-chartjs'
-const { reactiveProp } = mixins
+v4 charts have data change watcher by default. v4 will update or re-render the chart if new data is passed.
+
+v4:
+
+```vue
+<template>
+  <Bar :chart-data="chartData" />
+</template>
+
+<script>
+// DataPage.vue
+import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default {
-  extends: Line,
-  mixins: [reactiveProp],
-  props: ['chartData', 'options'],
-  mounted () {
-    this.renderChart(this.chartData, this.options)
-  }
+  name: 'BarChart',
+  components: { Bar },
+  computed: {
+      chartData() { return /* mutable chart data */ }
+    }
 }
+</script>
 ```
-
-## Single File Components
-
-You can create your components in Vues single file components. However it is important that you **do not** have the `<template></template>` included. Because Vue can't merge templates. And the template is included in the mixin. If you leave the template tag in your component, it will overwrite the one which comes from the base chart and you will have a blank screen.
 
 ## Available Charts
 
@@ -296,19 +417,17 @@ You can create your components in Vues single file components. However it is imp
 
 ``` bash
 # install dependencies
-npm install
+pnpm install
 
 # build for production with minification
-npm run build
+pnpm build
 
 # run unit tests
-npm run unit
+pnpm unit
 
 # run all tests
-npm test
+pnpm test
 ```
-
-For a detailed explanation of how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Contributing
 
