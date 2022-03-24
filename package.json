@@ -61,12 +61,14 @@
     "test:typings": "tsd",
     "lint": "eslint 'src/**/*.ts'",
     "format": "prettier --write src test",
-    "release": "standard-version",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "commit": "cz",
     "start:storybook": "start-storybook -p 6006",
-    "build:storybook": "del ./storybook-static; NODE_ENV=production build-storybook"
+    "build:storybook": "del ./storybook-static; NODE_ENV=production build-storybook",
+    "bumpVersion": "standard-version",
+    "createGithubRelease": "simple-github-release",
+    "release": "pnpm bumpVersion && git push origin main --tags && pnpm createGithubRelease"
   },
   "peerDependencies": {
     "chart.js": "^3.7.0",
@@ -116,6 +118,7 @@
     "rollup": "^2.66.1",
     "rollup-plugin-swc": "^0.2.0",
     "simple-git-hooks": "^2.7.0",
+    "simple-github-release": "^1.0.0",
     "size-limit": "^7.0.8",
     "standard-version": "^9.3.2",
     "tsd": "^0.19.1",
