@@ -1,6 +1,6 @@
 # vue-chartjs
 
-<img align="right" width="150" height="150" alt="vue-chartjs logo" src="/assets/vue-chartjs.png">
+<img align="right" width="150" height="150" alt="vue-chartjs logo" src="https://raw.githubusercontent.com/apertureless/vue-chartjs/main/assets/vue-chartjs.png">
 
 **vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in vue. You can easily create reuseable chart components.
 
@@ -15,7 +15,7 @@ Supports Chart.js v3 and v2.
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/apertureless/vue-chartjs/blob/master/LICENSE.txt)
 [![CDNJS version](https://img.shields.io/cdnjs/v/vue-chartjs.svg)](https://cdnjs.com/libraries/vue-chartjs)
 [![Known Vulnerabilities](https://snyk.io/test/github/apertureless/vue-chartjs/badge.svg)](https://snyk.io/test/github/apertureless/vue-chartjs)
-[![Donate](assets/donate.svg)](https://www.paypal.me/apertureless/50eur)
+[![Donate](https://raw.githubusercontent.com/apertureless/vue-chartjs/main/assets/donate.svg)](https://www.paypal.me/apertureless/50eur)
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C1WP7C)
 
 <br />
