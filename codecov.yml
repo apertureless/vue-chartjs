@@ -24,7 +24,10 @@ coverage:
 
   ignore:
     - "tests/*"
-    - "src/mixins/*"
+    - "sandboxes/*"
+    - "stories/*"
+    - "legacy/sandboxes/*"
+    - "legacy/test/*"
 
 
 comment:

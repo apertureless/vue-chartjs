@@ -130,5 +130,6 @@
   },
   "tsd": {
     "directory": "./test"
-  }
+  },
+  "readme": ""
 }
