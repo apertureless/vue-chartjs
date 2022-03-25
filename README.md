@@ -71,7 +71,7 @@ Import the component.
 import { Bar } from 'vue-chartjs'
 ```
 
-For Vue 2 projects, you need to import from 'vue-chartjs/legacy'.
+For Vue 2 projects, you need to import from `vue-chartjs/legacy`.
 
 ```javascript
 import { Bar } from 'vue-chartjs/legacy'
@@ -260,7 +260,7 @@ import { Bar } from 'vue-chartjs'
 v4 — tree-shakable way:
 
 ```javascript
-import { Bar } from 'vue-chartjs/legacy'
+import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -271,7 +271,7 @@ Using the "lazy way" is okay to simplify the migration, but please consider usin
 Please note that typed chart components register their controllers by default, so you don't need to register them by yourself. For example, when using the Pie component, you don't need to register PieController explicitly.
 
 ```javascript
-import { Pie } from 'vue-chartjs/legacy'
+import { Pie } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
@@ -375,7 +375,7 @@ export default {
 }
 ```
 
-v4 charts have data change watcher by default. v4 will update or re-render the chart if new data is passed.
+v4 charts have data change watcher by default. v4 will update or re-render the chart if new data is passed. Mixins have been removed.
 
 v4:
 
