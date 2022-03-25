@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/apertureless/vue-chartjs/compare/v4.0.0...v4.0.1) (2022-03-25)
+
+
+### Bug Fixes
+
+* change images source in readme ([#779](https://github.com/apertureless/vue-chartjs/issues/779)) ([b77bd31](https://github.com/apertureless/vue-chartjs/commit/b77bd3128a549df0c052df07ad8854a3aaef0734))
+
 ## [4.0.0](https://github.com/apertureless/vue-chartjs/compare/v3.5.1...v4.0.0) (2022-03-25)
 
 
