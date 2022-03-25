@@ -8,7 +8,7 @@ Supports Chart.js v3 and v2.
 
 [![npm version](https://badge.fury.io/js/vue-chartjs.svg)](https://badge.fury.io/js/vue-chartjs)
 [![codecov](https://codecov.io/gh/apertureless/vue-chartjs/branch/master/graph/badge.svg)](https://codecov.io/gh/apertureless/vue-chartjs)
-[![Build Status](https://travis-ci.org/apertureless/vue-chartjs.svg?branch=master)](https://github.com/apertureless/vue-chartjs/actions)
+[![Build Status](https://img.shields.io/github/workflow/status/apertureless/vue-chartjs/CI.svg)](https://github.com/apertureless/vue-chartjs/actions)
 [![Package Quality](http://npm.packagequality.com/shield/vue-chartjs.svg)](http://packagequality.com/#?package=vue-chartjs)
 [![npm](https://img.shields.io/npm/dm/vue-chartjs.svg)](https://www.npmjs.com/package/vue-chartjs)
 [![Gitter chat](https://img.shields.io/gitter/room/TechnologyAdvice/Stardust.svg)](https://gitter.im/vue-chartjs/Lobby)
@@ -19,9 +19,9 @@ Supports Chart.js v3 and v2.
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C1WP7C)
 
 <br />
-<a href="#docs">Docs</a>
-<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="#install">Install</a>
+<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+<a href="#docs">Docs</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="#how-to-use">How to use</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -34,10 +34,6 @@ Supports Chart.js v3 and v2.
 <a href="https://stackoverflow.com/questions/tagged/vue-chartjs">Stack Overflow</a>
 <br />
 <hr />
-
-## Docs
-
-- 📖 [v3 Docs](http://vue-chartjs.org/)
 
 ## Install
 
@@ -60,6 +56,10 @@ Need an API to fetch data? Consider [Cube](https://cube.dev/?ref=eco-vue-chartjs
 <br />
 
 [![supported by Cube](https://user-images.githubusercontent.com/986756/154330861-d79ab8ec-aacb-4af8-9e17-1b28f1eccb01.svg)](https://cube.dev/?ref=eco-vue-chartjs)
+
+## Docs
+
+- 📖 [v3 Docs](http://vue-chartjs.org/)
 
 ## How to use
 
