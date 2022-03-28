@@ -1,5 +1,5 @@
 {
-  "name": "vue-chartjs-bubble-example",
+  "name": "vue-chartjs-scatter-example",
   "dependencies": {
     "vue": "2.6.14",
     "chart.js": "3.7.0",

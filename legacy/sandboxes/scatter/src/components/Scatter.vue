@@ -21,10 +21,20 @@ import {
   Tooltip,
   Legend,
   LineElement,
-  CategoryScale
+  CategoryScale,
+  PointElement,
+  LinearScale
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale)
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  CategoryScale,
+  PointElement,
+  LinearScale
+)
 
 export default {
   name: 'ScatterChart',

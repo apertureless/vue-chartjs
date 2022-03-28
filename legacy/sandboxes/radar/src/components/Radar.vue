@@ -21,10 +21,18 @@ import {
   Tooltip,
   Legend,
   PointElement,
+  LineElement,
   RadialLinearScale
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, PointElement, RadialLinearScale)
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+  RadialLinearScale,
+  LineElement
+)
 
 export default {
   name: 'RadarChart',

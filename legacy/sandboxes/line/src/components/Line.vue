@@ -21,10 +21,20 @@ import {
   Tooltip,
   Legend,
   LineElement,
-  LinearScale
+  LinearScale,
+  CategoryScale,
+  PointElement
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale)
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  LinearScale,
+  CategoryScale,
+  PointElement
+)
 
 export default {
   name: 'LineChart',
