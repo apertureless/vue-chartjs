@@ -228,5 +228,6 @@ export default {
   Pie,
   PolarArea,
   Radar,
-  Scatter
+  Scatter,
+  generateChart
 }

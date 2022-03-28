@@ -6,7 +6,18 @@ import {
   PolarArea,
   Radar,
   Bubble,
-  Scatter
+  Scatter,
+  generateChart
 } from './Charts.js'
 
-export { Bar, Doughnut, Line, Pie, PolarArea, Radar, Bubble, Scatter }
+export {
+  Bar,
+  Doughnut,
+  Line,
+  Pie,
+  PolarArea,
+  Radar,
+  Bubble,
+  Scatter,
+  generateChart
+}
