@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.2](https://github.com/apertureless/vue-chartjs/compare/v4.0.1...v4.0.2) (2022-03-28)
+
+
+### Bug Fixes
+
+* **legacycharts:** add missed export for legacy charts generateChart function ([#784](https://github.com/apertureless/vue-chartjs/issues/784)) ([4b68ba1](https://github.com/apertureless/vue-chartjs/commit/4b68ba168974242e947755cd40e5d7ce09e00092))
+
 ### [4.0.1](https://github.com/apertureless/vue-chartjs/compare/v4.0.0...v4.0.1) (2022-03-25)
 
 
