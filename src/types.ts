@@ -3,9 +3,8 @@ import type {
   ChartType,
   ChartData,
   ChartOptions,
-  PluginChartOptions,
   DefaultDataPoint,
-  PluginOptionsByType
+  Plugin
 } from 'chart.js'
 
 import {
@@ -27,8 +26,6 @@ export type TChartData<
 
 export type TChartOptions<TType extends ChartType> = ChartOptions<TType>
 
-export type TChartPlugins<TType extends ChartType> = PluginChartOptions<TType>
-
 export type TypedChartJS<
   TType extends ChartType = ChartType,
   TData = DefaultDataPoint<TType>,
@@ -48,7 +45,7 @@ export interface IChartProps<
   height?: number
   cssClasses?: string
   styles?: Partial<CSSStyleDeclaration>
-  plugins?: PluginOptionsByType<TType>
+  plugins?: Plugin<TType>[]
 }
 
 export interface IChartComponentData<

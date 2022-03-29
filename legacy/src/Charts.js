@@ -14,7 +14,6 @@ import {
   chartCreate,
   chartDestroy,
   chartUpdate,
-  getChartOptions,
   getChartData,
   setChartLabels,
   setChartDatasets,
@@ -59,8 +58,8 @@ export function generateChart(chartId, chartType, chartController) {
         default: () => {}
       },
       plugins: {
-        type: Object,
-        default: () => {}
+        type: Array,
+        default: () => []
       }
     },
     data() {
@@ -100,7 +99,8 @@ export function generateChart(chartId, chartType, chartController) {
             this.$data._chart = new ChartJS(canvasEl2DContext, {
               type: chartType,
               data: chartData,
-              options: getChartOptions(options, this.plugins)
+              options,
+              plugins: this.plugins
             })
           }
         }
