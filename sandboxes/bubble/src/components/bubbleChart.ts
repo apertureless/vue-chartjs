@@ -9,7 +9,7 @@ import {
   Legend,
   PointElement,
   LinearScale,
-  PluginOptionsByType
+  Plugin
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale)
@@ -41,8 +41,8 @@ export default defineComponent({
       default: () => {}
     },
     plugins: {
-      type: Object as PropType<PluginOptionsByType<'bubble'>>,
-      default: () => {}
+      type: Array as PropType<Plugin<'bubble'>[]>,
+      default: () => []
     }
   },
   setup(props) {

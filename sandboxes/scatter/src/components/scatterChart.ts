@@ -8,7 +8,7 @@ import {
   Legend,
   LineElement,
   CategoryScale,
-  PluginOptionsByType
+  Plugin
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale)
@@ -40,8 +40,8 @@ export default defineComponent({
       default: () => {}
     },
     plugins: {
-      type: Object as PropType<PluginOptionsByType<'scatter'>>,
-      default: () => {}
+      type: Array as PropType<Plugin<'scatter'>[]>,
+      default: () => []
     }
   },
   setup(props) {

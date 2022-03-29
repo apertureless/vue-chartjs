@@ -14,8 +14,8 @@ import type {
   ChartType,
   ChartComponentLike,
   DefaultDataPoint,
-  PluginOptionsByType,
-  ChartOptions
+  ChartOptions,
+  Plugin
 } from 'chart.js'
 
 import {
@@ -35,7 +35,6 @@ import {
   chartCreate,
   chartDestroy,
   chartUpdate,
-  getChartOptions,
   getChartData,
   setChartLabels,
   setChartDatasets,
@@ -94,8 +93,8 @@ export const generateChart = <
         default: () => {}
       },
       plugins: {
-        type: Object as PropType<PluginOptionsByType<TType>>,
-        default: () => {}
+        type: Array as PropType<Plugin<TType>[]>,
+        default: () => []
       }
     },
     setup(props, context) {
@@ -127,7 +126,8 @@ export const generateChart = <
               {
                 type: chartType,
                 data: isProxy(data) ? new Proxy(chartData, {}) : chartData,
-                options: getChartOptions<TType>(options, props.plugins)
+                options,
+                plugins: props.plugins
               }
             )
           }

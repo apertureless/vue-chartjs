@@ -10,7 +10,7 @@ import {
   BarElement,
   CategoryScale,
   LinearScale,
-  PluginOptionsByType
+  Plugin
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -42,8 +42,8 @@ export default defineComponent({
       default: () => {}
     },
     plugins: {
-      type: Object as PropType<PluginOptionsByType<'bar'>>,
-      default: () => {}
+      type: Array as PropType<Plugin<'bar'>[]>,
+      default: () => []
     }
   },
   setup(props) {

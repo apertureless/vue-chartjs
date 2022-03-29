@@ -11,7 +11,7 @@ import {
   PointElement,
   CategoryScale,
   LinearScale,
-  PluginOptionsByType
+  Plugin
 } from 'chart.js'
 
 ChartJS.register(
@@ -80,8 +80,8 @@ export default defineComponent({
       default: () => {}
     },
     plugins: {
-      type: Object as PropType<PluginOptionsByType<'line'>>,
-      default: () => {}
+      type: Array as PropType<Plugin<'line'>[]>,
+      default: () => []
     }
   },
   setup(props) {

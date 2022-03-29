@@ -8,7 +8,7 @@ import {
   Legend,
   ArcElement,
   RadialLinearScale,
-  PluginOptionsByType
+  Plugin
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, RadialLinearScale)
@@ -40,8 +40,8 @@ export default defineComponent({
       default: () => {}
     },
     plugins: {
-      type: Object as PropType<PluginOptionsByType<'polarArea'>>,
-      default: () => {}
+      type: Array as PropType<Plugin<'polarArea'>[]>,
+      default: () => []
     }
   },
   setup(props) {
