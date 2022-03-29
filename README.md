@@ -318,7 +318,7 @@ export default {
   name: 'DataPage',
   components: { BarChart }
 }
-<script>
+</script>
 ```
 
 In v4, you need to import the component, pass props to it, and use Chart component as a standard Vue component.

@@ -1,7 +1,6 @@
 {
   "name": "vue-chartjs",
   "version": "4.0.2",
-  "packageManager": "pnpm@6.32.2",
   "description": "Vue.js wrapper for chart.js for creating beautiful charts.",
   "author": "Jakub Juszczak <jakub@posteo.de>",
   "homepage": "http://vue-chartjs.org",
@@ -62,8 +61,8 @@
     "test:typings": "tsd",
     "lint": "eslint 'src/**/*.ts'",
     "format": "prettier --write src test",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
     "commit": "cz",
     "start:storybook": "start-storybook -p 6006",
     "build:storybook": "del ./storybook-static; NODE_ENV=production build-storybook",
@@ -125,9 +124,9 @@
     "tsd": "^0.19.1",
     "typescript": "^4.6.2",
     "vite": "^2.8.6",
+    "vitepress": "^0.22.3",
     "vue": "^3.2.31",
-    "vue-loader": "^17.0.0",
-    "vuepress": "^0.14.4"
+    "vue-loader": "^17.0.0"
   },
   "tsd": {
     "directory": "./test"

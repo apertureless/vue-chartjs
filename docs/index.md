@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /vue-chartjs.png
+heroImage: /images/vue-chartjs.png
 actionText: Get Started →
 actionLink: /guide/
 features:
