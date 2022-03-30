@@ -31,15 +31,13 @@ describe('RadarChart', () => {
 
   it('should add inline plugins based on prop', () => {
     const testPlugin = {
-      title: {
-        display: true
-      }
+      id: 'test'
     }
 
     const wrapper = mount(Component, {
-      props: { plugins: testPlugin }
+      props: { plugins: [testPlugin] }
     })
 
-    expect(Object.keys(wrapper.props().plugins).length).toEqual(1)
+    expect(wrapper.props().plugins.length).toEqual(1)
   })
 })

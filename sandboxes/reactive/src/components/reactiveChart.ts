@@ -8,7 +8,7 @@ import {
   BarElement,
   CategoryScale,
   LinearScale,
-  PluginOptionsByType,
+  Plugin,
   ChartData
 } from 'chart.js'
 
@@ -41,8 +41,8 @@ export default defineComponent({
       default: () => {}
     },
     plugins: {
-      type: Object as PropType<PluginOptionsByType<'bar'>>,
-      default: () => {}
+      type: Array as PropType<Plugin<'bar'>[]>,
+      default: () => []
     }
   },
   setup(props) {

@@ -1,9 +1,4 @@
-import type {
-  ChartType,
-  ChartDataset,
-  DefaultDataPoint,
-  PluginOptionsByType
-} from 'chart.js'
+import type { ChartType, ChartDataset, DefaultDataPoint } from 'chart.js'
 
 import type { TChartData, TChartOptions, TypedChartJS } from './types'
 
@@ -75,27 +70,6 @@ export function getChartData<
 
   setChartDatasets(nextData, { ...data }, datasetIdKey)
   return nextData
-}
-
-export function getChartOptions<TType extends ChartType = ChartType>(
-  options?: TChartOptions<TType>,
-  plugins?: PluginOptionsByType<TType>
-): TChartOptions<TType> | undefined {
-  const chartOptions = options
-
-  if (
-    chartOptions !== undefined &&
-    'plugins' in chartOptions &&
-    typeof plugins !== 'undefined' &&
-    Object.keys(plugins).length > 0
-  ) {
-    chartOptions.plugins = {
-      ...chartOptions.plugins,
-      ...plugins
-    }
-  }
-
-  return chartOptions
 }
 
 export function setChartDatasets<

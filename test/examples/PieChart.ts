@@ -8,7 +8,7 @@ import {
   Legend,
   ArcElement,
   CategoryScale,
-  PluginOptionsByType
+  Plugin
 } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
@@ -40,8 +40,8 @@ export default defineComponent({
       default: () => {}
     },
     plugins: {
-      type: Object as PropType<PluginOptionsByType<'pie'>>,
-      default: () => {}
+      type: Array as PropType<Plugin<'pie'>[]>,
+      default: () => []
     }
   },
   setup(props) {

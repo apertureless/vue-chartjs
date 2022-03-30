@@ -1,11 +1,15 @@
 import { h } from 'vue'
 import { expectError } from 'tsd'
-import { PluginOptionsByType } from 'chart.js'
+import { Plugin } from 'chart.js'
 
 import { Bar, Radar, Scatter, Doughnut } from '../src'
 
 const chartData = {
   datasets: []
+}
+
+const testPlugin = {
+  id: 'test'
 }
 
 /**
@@ -14,12 +18,12 @@ const chartData = {
 
 h(Radar, {
   chartData,
-  plugins: {} as PluginOptionsByType<'radar'>
+  plugins: []
 })
 
 h(Scatter, {
   chartData,
-  plugins: {} as PluginOptionsByType<'scatter'>
+  plugins: []
 })
 
 h(Bar, {
@@ -30,7 +34,7 @@ h(Bar, {
 expectError(
   h(Scatter, {
     chartData,
-    plugins: {} as PluginOptionsByType<'bubble'>
+    plugins: [testPlugin] as Plugin<'bubble'>[]
   })
 )
 

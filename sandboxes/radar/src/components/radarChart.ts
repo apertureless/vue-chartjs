@@ -8,8 +8,8 @@ import {
   Legend,
   PointElement,
   RadialLinearScale,
-  PluginOptionsByType,
-  LineElement
+  LineElement,
+  Plugin
 } from 'chart.js'
 
 ChartJS.register(
@@ -48,8 +48,8 @@ export default defineComponent({
       default: () => {}
     },
     plugins: {
-      type: Object as PropType<PluginOptionsByType<'radar'>>,
-      default: () => {}
+      type: Array as PropType<Plugin<'radar'>[]>,
+      default: () => []
     }
   },
   setup(props) {

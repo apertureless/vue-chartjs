@@ -10,7 +10,7 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
-  PluginOptionsByType
+  Plugin
 } from 'chart.js'
 
 ChartJS.register(
@@ -50,8 +50,8 @@ export default defineComponent({
       default: () => {}
     },
     plugins: {
-      type: Object as PropType<PluginOptionsByType<'scatter'>>,
-      default: () => {}
+      type: Array as PropType<Plugin<'scatter'>[]>,
+      default: () => []
     }
   },
   setup(props) {

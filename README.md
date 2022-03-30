@@ -129,8 +129,8 @@ export default {
       default: () => {}
     },
     plugins: {
-      type: Object,
-      default: () => {}
+      type: Array,
+      default: () => []
     }
   },
   data() {
@@ -183,8 +183,8 @@ export default defineComponent({
       default: () => {}
     },
     plugins: {
-      type: Object as PropType<PluginOptionsByType<'bar'>>,
-      default: () => {}
+      type: Array as PropType<Plugin<'bar'>[]>,
+      default: () => []
     }
   },
   setup(props) {
