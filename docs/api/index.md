@@ -14,7 +14,7 @@ There are some basic props defined in the components provided by `vue-chartjs`.
 | height | Chart height |
 | cssClasses | String with css classes for the surrounding div |
 | styles | Object with css styles for the surrounding div container |
-| plugins | Object with Chart plugins |
+| plugins | Array with Chart plugins |
 
 ## Events
 
