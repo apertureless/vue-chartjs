@@ -59,7 +59,7 @@ Need an API to fetch data? Consider [Cube](https://cube.dev/?ref=eco-vue-chartjs
 
 ## Docs
 
-- 📖 [v3 Docs](http://vue-chartjs.org/)
+- 📖 [Docs](http://vue-chartjs.org/)
 
 ## How to use
 
