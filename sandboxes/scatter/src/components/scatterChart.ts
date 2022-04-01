@@ -8,10 +8,20 @@ import {
   Legend,
   LineElement,
   CategoryScale,
+  LinearScale,
+  PointElement,
   Plugin
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale)
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement
+)
 
 export default defineComponent({
   name: 'ScatterChart',

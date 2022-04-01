@@ -62,8 +62,6 @@
     "test:typings": "tsd",
     "lint": "eslint 'src/**/*.ts'",
     "format": "prettier --write src test",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
     "commit": "cz",
     "start:storybook": "start-storybook -p 6006",
     "build:storybook": "del ./storybook-static; NODE_ENV=production build-storybook",
@@ -126,8 +124,7 @@
     "typescript": "^4.6.2",
     "vite": "^2.8.6",
     "vue": "^3.2.31",
-    "vue-loader": "^17.0.0",
-    "vuepress": "^0.14.4"
+    "vue-loader": "^17.0.0"
   },
   "tsd": {
     "directory": "./test"

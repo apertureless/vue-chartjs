@@ -59,7 +59,7 @@ Need an API to fetch data? Consider [Cube](https://cube.dev/?ref=eco-vue-chartjs
 
 ## Docs
 
-- 📖 [v3 Docs](http://vue-chartjs.org/)
+- 📖 [Docs](http://vue-chartjs.org/)
 
 ## How to use
 
@@ -318,7 +318,7 @@ export default {
   name: 'DataPage',
   components: { BarChart }
 }
-<script>
+</script>
 ```
 
 In v4, you need to import the component, pass props to it, and use Chart component as a standard Vue component.
