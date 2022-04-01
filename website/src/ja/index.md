@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /images/vue-chartjs.png
+heroImage: https://raw.githubusercontent.com/apertureless/vue-chartjs/main/website/src/images/vue-chartjs.png
 actionText: 初めに →
 actionLink: /ja/guide/
 features:
