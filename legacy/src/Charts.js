@@ -23,6 +23,8 @@ import {
 } from '../../src/utils'
 
 export function generateChart(chartId, chartType, chartController) {
+  let _chart = null
+
   return {
     props: {
       chartData: {
@@ -62,11 +64,6 @@ export function generateChart(chartId, chartType, chartController) {
         default: () => []
       }
     },
-    data() {
-      return {
-        _chart: null
-      }
-    },
     created() {
       ChartJS.register(chartController)
     },
@@ -83,8 +80,8 @@ export function generateChart(chartId, chartType, chartController) {
     },
     methods: {
       renderChart(data, options) {
-        if (this.$data._chart !== null) {
-          chartDestroy(this.$data._chart)
+        if (_chart !== null) {
+          chartDestroy(_chart)
           this.$emit(ChartEmits.ChartDestroyed)
         }
 
@@ -96,7 +93,7 @@ export function generateChart(chartId, chartType, chartController) {
           const canvasEl2DContext = this.$refs.canvas.getContext('2d')
 
           if (canvasEl2DContext !== null) {
-            this.$data._chart = new ChartJS(canvasEl2DContext, {
+            _chart = new ChartJS(canvasEl2DContext, {
               type: chartType,
               data: chartData,
               options,
@@ -110,23 +107,21 @@ export function generateChart(chartId, chartType, chartController) {
         const oldData = { ...oldValue }
 
         if (Object.keys(oldData).length > 0) {
-          const chart = this.$data._chart
-
           const isEqualLabelsAndDatasetsLength = compareData(newData, oldData)
 
-          if (isEqualLabelsAndDatasetsLength && chart !== null) {
-            setChartDatasets(chart.data, newData, this.datasetIdKey)
+          if (isEqualLabelsAndDatasetsLength && _chart !== null) {
+            setChartDatasets(_chart.data, newData, this.datasetIdKey)
 
             if (newData.labels !== undefined) {
-              setChartLabels(chart, newData.labels)
+              setChartLabels(_chart, newData.labels)
               this.$emit(ChartEmits.LabelsUpdated)
             }
 
-            chartUpdate(chart)
+            chartUpdate(_chart)
             this.$emit(ChartEmits.ChartUpdated)
           } else {
-            if (chart !== null) {
-              chartDestroy(chart)
+            if (_chart !== null) {
+              chartDestroy(_chart)
               this.$emit(ChartEmits.ChartDestroyed)
             }
 
@@ -134,8 +129,8 @@ export function generateChart(chartId, chartType, chartController) {
             this.$emit(ChartEmits.ChartRendered)
           }
         } else {
-          if (this.$data._chart !== null) {
-            chartDestroy(this.$data._chart)
+          if (_chart !== null) {
+            chartDestroy(_chart)
             this.$emit(ChartEmits.ChartDestroyed)
           }
 
@@ -145,8 +140,8 @@ export function generateChart(chartId, chartType, chartController) {
       }
     },
     beforeDestroy() {
-      if (this.$data._chart !== null) {
-        chartDestroy(this.$data._chart)
+      if (_chart !== null) {
+        chartDestroy(_chart)
         this.$emit(ChartEmits.ChartDestroyed)
       }
     },
