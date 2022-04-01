@@ -3,10 +3,10 @@
 # abort on errors
 set -e
 # build
-pnpm run docs:build
+pnpm build
 
 # navigate into the build output directory
-cd docs/.vitepress/dist
+cd src/.vitepress/dist
 
 # if you are deploying to a custom domain
 echo 'vue-chartjs.org' > CNAME

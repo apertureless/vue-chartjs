@@ -10,9 +10,11 @@ Supports Chart.js v3 and v2.
 
 It abstracts the basic logic but exposes the Chart.js object to give you maximal flexibility.
 
-## Installation
+:::tip Need an API to fetch data?
+Please consider [Cube](https://cube.dev/?ref=eco-vue-chartjs), an open-source API for data apps.
+:::
 
-### NPM
+## Installation
 
 You can install `vue-chartjs` over `yarn` or `npm` or `pnpm`. However, you also need to add `chart.js` as a dependency to your project because `Chart.js` is a peerDependency. This way you can have full control over the versioning of `Chart.js`.
 
@@ -23,20 +25,6 @@ yarn add vue-chartjs chart.js
 # or
 npm i vue-chartjs chart.js
 ```
-
-:::tip Need an API to fetch data?
-Please consider [Cube](https://cube.dev/?ref=eco-vue-chartjs), an open-source API for data apps.
-:::
-
-<!-- ### Browser
-
-You can also use `vue-chartjs` directly in the browser via CDN.
-First, add the `Chart.js` script, and then add the `vue-chartjs` script.
-
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-<script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
-``` -->
 
 ## Integration
 
