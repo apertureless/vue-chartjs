@@ -1,0 +1,56 @@
+name: "🐛 Bug Report"
+description: "If something isn't working as expected."
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to file a bug report! Please fill out this form as completely as possible.
+
+  - type: markdown
+    attributes:
+      value: ⚠️ vue-chartjs is just the wrapper around Chart.js, so if you are experiencing an issue with charts rendering, please create a related issue in [Chart.js repository](https://github.com/chartjs/Chart.js/issues).
+
+  - type: checkboxes
+    id: input1
+    attributes:
+      label: Would you like to work on a fix?
+      options:
+        - label: Check this if you would like to implement a PR, we are more than happy to help you go through the process.
+
+  - type: textarea
+    attributes:
+      label: Current and expected behavior
+      description: A clear and concise description of what the library is doing and what you would expect.
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Reproduction
+      description: |
+        Please provide issue reproduction.
+        You can give a link to a repository with the reproduction or make a fork of [this sandbox for Vue3](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/bar) or [this sandbox for Vue2](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/legacy/sandboxes/bar) and reproduce the issue there.
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: chart.js version
+      description: Which version of `chart.js` are you using?
+      placeholder: v0.0.0
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: vue-chartjs version
+      description: Which version of `vue-chartjs` are you using?
+      placeholder: v0.0.0
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Possible solution
+      description: If you have suggestions on a fix for the bug.
