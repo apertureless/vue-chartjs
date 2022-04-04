@@ -16,7 +16,7 @@
     "babel-jest": "27.4.5",
     "css-loader": "0.28.11",
     "jest": "27.4.3",
-    "vue": "2.6.14",
+    "vue": "3.2.31",
     "vue-template-compiler": "2.6.14"
   }
 }

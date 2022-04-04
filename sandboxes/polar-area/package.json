@@ -7,6 +7,6 @@
     "vue-chartjs": "^4.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0"
+    "@vue/cli-plugin-babel": "~5.0.0"
   }
 }
