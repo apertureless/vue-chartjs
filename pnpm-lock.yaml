@@ -40,7 +40,7 @@ specifiers:
   jest: ^27.4.3
   jest-canvas-mock: ^2.3.1
   lint-staged: ^12.1.2
-  prettier: 2.5.1
+  prettier: 2.6.2
   rollup: ^2.66.1
   rollup-plugin-swc: ^0.2.0
   simple-git-hooks: ^2.7.0
@@ -86,14 +86,14 @@ devDependencies:
   eslint-loader: 4.0.2_eslint@8.12.0
   eslint-plugin-import: 2.25.4_eslint@8.12.0
   eslint-plugin-node: 11.1.0_eslint@8.12.0
-  eslint-plugin-prettier: 4.0.0_0b50ac06f2ff59b1b5df953d56d59959
+  eslint-plugin-prettier: 4.0.0_239c1b4ec2edc3ff0d30e1496c93d905
   eslint-plugin-prettier-vue: 3.1.0
   eslint-plugin-promise: 6.0.0_eslint@8.12.0
   eslint-plugin-vue: 8.2.0_eslint@8.12.0
   jest: 27.4.4
   jest-canvas-mock: 2.3.1
   lint-staged: 12.1.2
-  prettier: 2.5.1
+  prettier: 2.6.2
   rollup: 2.66.1
   rollup-plugin-swc: 0.2.0_@swc+core@1.2.120+rollup@2.66.1
   simple-git-hooks: 2.7.0
@@ -8357,11 +8357,11 @@ packages:
     dependencies:
       '@vue/compiler-sfc': 3.2.31
       chalk: 4.1.2
-      prettier: 2.5.1
+      prettier: 2.6.2
       prettier-linter-helpers: 1.0.0
     dev: true
 
-  /eslint-plugin-prettier/4.0.0_0b50ac06f2ff59b1b5df953d56d59959:
+  /eslint-plugin-prettier/4.0.0_239c1b4ec2edc3ff0d30e1496c93d905:
     resolution: {integrity: sha512-98MqmCJ7vJodoQK359bqQWaxOE0CS8paAz/GgjaZLyex4TTk3g9HugoO89EqWCrFiOqn9EVvcoo7gZzONCWVwQ==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
@@ -8374,7 +8374,7 @@ packages:
     dependencies:
       eslint: 8.12.0
       eslint-config-prettier: 8.3.0_eslint@8.12.0
-      prettier: 2.5.1
+      prettier: 2.6.2
       prettier-linter-helpers: 1.0.0
     dev: true
 
@@ -12832,8 +12832,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.5.1:
-    resolution: {integrity: sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==}
+  /prettier/2.6.2:
+    resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
