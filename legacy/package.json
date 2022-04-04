@@ -13,9 +13,9 @@
     "@swc/jest": "0.2.20",
     "@vue/test-utils": "1.3.0",
     "@vue/vue2-jest": "27.0.0-alpha.4",
-    "babel-jest": "27.4.5",
+    "babel-jest": "27.5.1",
     "css-loader": "0.28.11",
-    "jest": "27.4.3",
+    "jest": "27.5.1",
     "vue": "2.6.14",
     "vue-template-compiler": "2.6.14"
   }
