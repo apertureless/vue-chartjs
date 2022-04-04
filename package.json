@@ -74,7 +74,7 @@
     "vue": "^3.0.0-0 || ^2.6.0"
   },
   "devDependencies": {
-    "@babel/core": "7.16.5",
+    "@babel/core": "7.17.8",
     "@babel/preset-env": "^7.16.5",
     "@commitlint/cli": "^16.0.0",
     "@commitlint/config-conventional": "^16.0.0",
@@ -92,7 +92,7 @@
     "@vue/test-utils": "^2.0.0-rc.17",
     "@vue/vue3-jest": "^27.0.0-alpha.4",
     "babel-jest": "^27.4.5",
-    "babel-loader": "8.2.3",
+    "babel-loader": "8.2.4",
     "browserslist": "^4.19.1",
     "chart.js": "^3.7.0",
     "clean-publish": "^4.0.0",
