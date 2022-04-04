@@ -7,7 +7,7 @@ specifiers:
   '@vue/test-utils': 1.3.0
   '@vue/vue2-jest': 27.0.0-alpha.4
   babel-jest: 27.4.5
-  css-loader: 0.28.0
+  css-loader: 0.28.11
   jest: 27.4.3
   vue: 2.6.14
   vue-template-compiler: 2.6.14
@@ -19,7 +19,7 @@ devDependencies:
   '@vue/test-utils': 1.3.0_9065e7474e033a8e4b95615fc8e6c36c
   '@vue/vue2-jest': 27.0.0-alpha.4_3ccb2e59d490095bf99c2835db73d7bf
   babel-jest: 27.4.5_@babel+core@7.16.5
-  css-loader: 0.28.0
+  css-loader: 0.28.11
   jest: 27.4.3
   vue: 2.6.14
   vue-template-compiler: 2.6.14
@@ -1383,13 +1383,14 @@ packages:
     resolution: {integrity: sha1-gIrcLnnPhHOAabZGyyDsJ762KeA=}
     dev: true
 
-  /css-loader/0.28.0:
-    resolution: {integrity: sha1-QXz6l4n4zeWaMMy/Pk2nqAaIm60=}
-    engines: {node: '>=0.12.0 || >=4.3.0 <5.0.0 || >=5.10'}
+  /css-loader/0.28.11:
+    resolution: {integrity: sha512-wovHgjAx8ZIMGSL8pTys7edA1ClmzxHeY6n/d97gg5odgsxEgKjULPR0viqyC+FWMCL9sfqoC/QCUBo62tLvPg==}
+    engines: {node: '>=0.12.0 || >= 4.3.0 < 5.0.0 || >=5.10'}
     dependencies:
       babel-code-frame: 6.26.0
       css-selector-tokenizer: 0.7.3
       cssnano: 3.10.0
+      icss-utils: 2.1.0
       loader-utils: 1.4.0
       lodash.camelcase: 4.3.0
       object-assign: 4.1.1
@@ -1398,7 +1399,8 @@ packages:
       postcss-modules-local-by-default: 1.2.0
       postcss-modules-scope: 1.1.0
       postcss-modules-values: 1.3.0
-      source-list-map: 0.1.8
+      postcss-value-parser: 3.3.1
+      source-list-map: 2.0.1
     dev: true
 
   /css-selector-tokenizer/0.7.3:
@@ -1905,6 +1907,12 @@ packages:
 
   /icss-replace-symbols/1.1.0:
     resolution: {integrity: sha1-Bupvg2ead0njhs/h/oEq5dsiPe0=}
+    dev: true
+
+  /icss-utils/2.1.0:
+    resolution: {integrity: sha1-g/Cg7DeL8yRheLbCrZE28TWxyWI=}
+    dependencies:
+      postcss: 6.0.23
     dev: true
 
   /import-local/3.1.0:
@@ -3427,8 +3435,8 @@ packages:
       is-plain-obj: 1.1.0
     dev: true
 
-  /source-list-map/0.1.8:
-    resolution: {integrity: sha1-xVCyq1Qn9rPyH1r+rYjE9Vh7IQY=}
+  /source-list-map/2.0.1:
+    resolution: {integrity: sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==}
     dev: true
 
   /source-map-resolve/0.5.3:
