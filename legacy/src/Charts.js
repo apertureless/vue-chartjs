@@ -82,11 +82,7 @@ export function generateChart(chartId, chartType, chartController) {
     },
     methods: {
       renderChart(data, options) {
-        if (
-          _chartRef !== null &&
-          'current' in _chartRef &&
-          _chartRef.current !== null
-        ) {
+        if (_chartRef?.current !== null) {
           chartDestroy(_chartRef.current)
           this.$emit(ChartEmits.ChartDestroyed)
         }
@@ -98,11 +94,7 @@ export function generateChart(chartId, chartType, chartController) {
 
           const canvasEl2DContext = this.$refs.canvas.getContext('2d')
 
-          if (
-            canvasEl2DContext !== null &&
-            _chartRef !== null &&
-            'current' in _chartRef
-          ) {
+          if (canvasEl2DContext !== null) {
             _chartRef.current = new ChartJS(canvasEl2DContext, {
               type: chartType,
               data: chartData,
@@ -119,12 +111,7 @@ export function generateChart(chartId, chartType, chartController) {
         if (Object.keys(oldData).length > 0) {
           const isEqualLabelsAndDatasetsLength = compareData(newData, oldData)
 
-          if (
-            isEqualLabelsAndDatasetsLength &&
-            _chartRef !== null &&
-            'current' in _chartRef &&
-            _chartRef.current !== null
-          ) {
+          if (isEqualLabelsAndDatasetsLength && _chartRef?.current !== null) {
             setChartDatasets(_chartRef.current.data, newData, this.datasetIdKey)
 
             if (newData.labels !== undefined) {
@@ -135,11 +122,7 @@ export function generateChart(chartId, chartType, chartController) {
             chartUpdate(_chartRef.current)
             this.$emit(ChartEmits.ChartUpdated)
           } else {
-            if (
-              _chartRef !== null &&
-              'current' in _chartRef &&
-              _chartRef.current !== null
-            ) {
+            if (_chartRef?.current !== null) {
               chartDestroy(_chartRef.currentt)
               this.$emit(ChartEmits.ChartDestroyed)
             }
@@ -148,11 +131,7 @@ export function generateChart(chartId, chartType, chartController) {
             this.$emit(ChartEmits.ChartRendered)
           }
         } else {
-          if (
-            _chartRef !== null &&
-            'current' in _chartRef &&
-            _chartRef.current !== null
-          ) {
+          if (_chartRef?.current !== null) {
             chartDestroy(_chartRef.current)
             this.$emit(ChartEmits.ChartDestroyed)
           }
@@ -163,11 +142,7 @@ export function generateChart(chartId, chartType, chartController) {
       }
     },
     beforeDestroy() {
-      if (
-        _chartRef !== null &&
-        'current' in _chartRef &&
-        _chartRef.current !== null
-      ) {
+      if (_chartRef?.current !== null) {
         chartDestroy(_chartRef.current)
         this.$emit(ChartEmits.ChartDestroyed)
       }
