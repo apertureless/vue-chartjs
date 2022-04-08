@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.5](https://github.com/apertureless/vue-chartjs/compare/v4.0.4...v4.0.5) (2022-04-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chart.js to v3.7.1 ([9ada94b](https://github.com/apertureless/vue-chartjs/commit/9ada94b6cba425070b101699c143eaff49737553))
+* **legacy-charts:** fix render multiple charts at one page ([#803](https://github.com/apertureless/vue-chartjs/issues/803)) ([fe97040](https://github.com/apertureless/vue-chartjs/commit/fe97040aac4ec6d6c0e12457fb08e4de0c967bc1)), closes [#800](https://github.com/apertureless/vue-chartjs/issues/800) [#801](https://github.com/apertureless/vue-chartjs/issues/801)
+
 ### [4.0.4](https://github.com/apertureless/vue-chartjs/compare/v4.0.3...v4.0.4) (2022-04-01)
 
 
