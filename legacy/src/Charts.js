@@ -123,7 +123,7 @@ export function generateChart(chartId, chartType, chartController) {
             this.$emit(ChartEmits.ChartUpdated)
           } else {
             if (_chartRef?.current !== null) {
-              chartDestroy(_chartRef.currentt)
+              chartDestroy(_chartRef.current)
               this.$emit(ChartEmits.ChartDestroyed)
             }
 
