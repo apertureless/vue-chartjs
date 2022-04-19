@@ -23,7 +23,7 @@ import {
 } from '../../src/utils'
 
 export function generateChart(chartId, chartType, chartController) {
-  let _chartRef = null
+  // let _chartRef = null
 
   return {
     props: {
@@ -64,11 +64,16 @@ export function generateChart(chartId, chartType, chartController) {
         default: () => []
       }
     },
+    data() {
+      return {
+        chartRef: null
+      }
+    },
     created() {
       ChartJS.register(chartController)
     },
     mounted() {
-      _chartRef = { current: null }
+      this.chartRef = { current: null }
 
       if ('datasets' in this.chartData && this.chartData.datasets.length > 0) {
         chartCreate(this.renderChart, this.chartData, this.chartOptions)
@@ -82,8 +87,8 @@ export function generateChart(chartId, chartType, chartController) {
     },
     methods: {
       renderChart(data, options) {
-        if (_chartRef?.current !== null) {
-          chartDestroy(_chartRef.current)
+        if (this.chartRef?.current !== null) {
+          chartDestroy(this.chartRef.current)
           this.$emit(ChartEmits.ChartDestroyed)
         }
 
@@ -95,7 +100,7 @@ export function generateChart(chartId, chartType, chartController) {
           const canvasEl2DContext = this.$refs.canvas.getContext('2d')
 
           if (canvasEl2DContext !== null) {
-            _chartRef.current = new ChartJS(canvasEl2DContext, {
+            this.chartRef.current = new ChartJS(canvasEl2DContext, {
               type: chartType,
               data: chartData,
               options,
@@ -111,19 +116,26 @@ export function generateChart(chartId, chartType, chartController) {
         if (Object.keys(oldData).length > 0) {
           const isEqualLabelsAndDatasetsLength = compareData(newData, oldData)
 
-          if (isEqualLabelsAndDatasetsLength && _chartRef?.current !== null) {
-            setChartDatasets(_chartRef.current.data, newData, this.datasetIdKey)
+          if (
+            isEqualLabelsAndDatasetsLength &&
+            this.chartRef?.current !== null
+          ) {
+            setChartDatasets(
+              this.chartRef.current.data,
+              newData,
+              this.datasetIdKey
+            )
 
             if (newData.labels !== undefined) {
-              setChartLabels(_chartRef.current, newData.labels)
+              setChartLabels(this.chartRef.current, newData.labels)
               this.$emit(ChartEmits.LabelsUpdated)
             }
 
-            chartUpdate(_chartRef.current)
+            chartUpdate(this.chartRef.current)
             this.$emit(ChartEmits.ChartUpdated)
           } else {
-            if (_chartRef?.current !== null) {
-              chartDestroy(_chartRef.current)
+            if (this.chartRef?.current !== null) {
+              chartDestroy(this.chartRef.current)
               this.$emit(ChartEmits.ChartDestroyed)
             }
 
@@ -131,8 +143,8 @@ export function generateChart(chartId, chartType, chartController) {
             this.$emit(ChartEmits.ChartRendered)
           }
         } else {
-          if (_chartRef?.current !== null) {
-            chartDestroy(_chartRef.current)
+          if (this.chartRef?.current !== null) {
+            chartDestroy(this.chartRef.current)
             this.$emit(ChartEmits.ChartDestroyed)
           }
 
@@ -142,8 +154,8 @@ export function generateChart(chartId, chartType, chartController) {
       }
     },
     beforeDestroy() {
-      if (_chartRef?.current !== null) {
-        chartDestroy(_chartRef.current)
+      if (this.chartRef?.current !== null) {
+        chartDestroy(this.chartRef.current)
         this.$emit(ChartEmits.ChartDestroyed)
       }
     },
