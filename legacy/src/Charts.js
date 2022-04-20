@@ -22,6 +22,8 @@ import {
   ChartEmits
 } from '../../src/utils'
 
+const ANNOTATION_PLUGIN_KEY = 'annotation'
+
 export function generateChart(chartId, chartType, chartController) {
   let _chartRef = null
 
@@ -64,6 +66,21 @@ export function generateChart(chartId, chartType, chartController) {
         default: () => []
       }
     },
+    data() {
+      return {
+        _chart: null
+      }
+    },
+    computed: {
+      hasAnnotationPlugin() {
+        return (
+          Object.keys(this.chartOptions).length > 0 &&
+          'plugins' in this.chartOptions &&
+          Object.keys(this.chartOptions.plugins).length > 0 &&
+          ANNOTATION_PLUGIN_KEY in this.chartOptions.plugins
+        )
+      }
+    },
     created() {
       ChartJS.register(chartController)
     },
@@ -82,8 +99,10 @@ export function generateChart(chartId, chartType, chartController) {
     },
     methods: {
       renderChart(data, options) {
-        if (_chartRef?.current !== null) {
-          chartDestroy(_chartRef.current)
+        const currentChart = this.getCurrentChart()
+
+        if (currentChart !== null) {
+          chartDestroy(currentChart)
           this.$emit(ChartEmits.ChartDestroyed)
         }
 
@@ -95,35 +114,38 @@ export function generateChart(chartId, chartType, chartController) {
           const canvasEl2DContext = this.$refs.canvas.getContext('2d')
 
           if (canvasEl2DContext !== null) {
-            _chartRef.current = new ChartJS(canvasEl2DContext, {
-              type: chartType,
-              data: chartData,
-              options,
-              plugins: this.plugins
-            })
+            this.setCurrentChart(
+              new ChartJS(canvasEl2DContext, {
+                type: chartType,
+                data: chartData,
+                options,
+                plugins: this.plugins
+              })
+            )
           }
         }
       },
       chartDataHandler(newValue, oldValue) {
         const newData = { ...newValue }
         const oldData = { ...oldValue }
+        const currentChart = this.getCurrentChart()
 
         if (Object.keys(oldData).length > 0) {
           const isEqualLabelsAndDatasetsLength = compareData(newData, oldData)
 
-          if (isEqualLabelsAndDatasetsLength && _chartRef?.current !== null) {
-            setChartDatasets(_chartRef.current.data, newData, this.datasetIdKey)
+          if (isEqualLabelsAndDatasetsLength && currentChart !== null) {
+            setChartDatasets(currentChart.data, newData, this.datasetIdKey)
 
             if (newData.labels !== undefined) {
-              setChartLabels(_chartRef.current, newData.labels)
+              setChartLabels(currentChart, newData.labels)
               this.$emit(ChartEmits.LabelsUpdated)
             }
 
-            chartUpdate(_chartRef.current)
+            chartUpdate(currentChart)
             this.$emit(ChartEmits.ChartUpdated)
           } else {
-            if (_chartRef?.current !== null) {
-              chartDestroy(_chartRef.current)
+            if (currentChart !== null) {
+              chartDestroy(currentChart)
               this.$emit(ChartEmits.ChartDestroyed)
             }
 
@@ -131,19 +153,29 @@ export function generateChart(chartId, chartType, chartController) {
             this.$emit(ChartEmits.ChartRendered)
           }
         } else {
-          if (_chartRef?.current !== null) {
-            chartDestroy(_chartRef.current)
+          if (currentChart !== null) {
+            chartDestroy(currentChart)
             this.$emit(ChartEmits.ChartDestroyed)
           }
 
           chartCreate(this.renderChart, this.chartData, this.chartOptions)
           this.$emit(ChartEmits.ChartRendered)
         }
+      },
+      getCurrentChart() {
+        return this.hasAnnotationPlugin ? _chartRef.current : this.$data._chart
+      },
+      setCurrentChart(chart) {
+        this.hasAnnotationPlugin
+          ? (_chartRef.current = chart)
+          : (this.$data._chart = chart)
       }
     },
     beforeDestroy() {
-      if (_chartRef?.current !== null) {
-        chartDestroy(_chartRef.current)
+      const currentChart = this.getCurrentChart()
+
+      if (currentChart !== null) {
+        chartDestroy(currentChart)
         this.$emit(ChartEmits.ChartDestroyed)
       }
     },
