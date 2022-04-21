@@ -19,7 +19,7 @@ specifiers:
   '@vue/test-utils': ^2.0.0-rc.17
   '@vue/vue3-jest': ^27.0.0-alpha.4
   babel-jest: ^27.4.5
-  babel-loader: 8.2.4
+  babel-loader: 8.2.5
   browserslist: ^4.19.1
   chart.js: ^3.7.0
   clean-publish: ^4.0.0
@@ -61,8 +61,8 @@ devDependencies:
   '@rollup/plugin-node-resolve': 13.1.3_rollup@2.66.1
   '@size-limit/preset-big-lib': 7.0.8_070b32a7cd5b24e1aa86940aabf66c67
   '@storybook/addon-actions': 6.4.13
-  '@storybook/addon-essentials': 6.4.13_958e3b10cd50dfbadd586cd06ed9e0f3
-  '@storybook/vue3': 6.4.19_ca0f5d6bcd9b03ed22a220e87373253d
+  '@storybook/addon-essentials': 6.4.13_02fe22cefcc55ca91144aa635868f796
+  '@storybook/vue3': 6.4.19_8ab4f34649a0cb563500d5f9ebbd00c8
   '@swc/core': 1.2.120
   '@swc/helpers': 0.3.2
   '@swc/jest': 0.2.15_@swc+core@1.2.120
@@ -72,7 +72,7 @@ devDependencies:
   '@vue/test-utils': 2.0.0-rc.17_vue@3.2.31
   '@vue/vue3-jest': 27.0.0-alpha.4_9f47c8595fe3b2bd9df6fa03125105aa
   babel-jest: 27.4.5_@babel+core@7.17.9
-  babel-loader: 8.2.4_@babel+core@7.17.9
+  babel-loader: 8.2.5_@babel+core@7.17.9
   browserslist: 4.19.1
   chart.js: 3.7.1
   clean-publish: 4.0.0
@@ -2691,7 +2691,7 @@ packages:
       '@storybook/source-loader': 6.4.13
       '@storybook/store': 6.4.13
       '@storybook/theming': 6.4.13
-      '@storybook/vue3': 6.4.19_ca0f5d6bcd9b03ed22a220e87373253d
+      '@storybook/vue3': 6.4.19_8ab4f34649a0cb563500d5f9ebbd00c8
       acorn: 7.4.1
       acorn-jsx: 5.3.2_acorn@7.4.1
       acorn-walk: 7.2.0
@@ -2729,7 +2729,7 @@ packages:
       - webpack-command
     dev: true
 
-  /@storybook/addon-essentials/6.4.13_958e3b10cd50dfbadd586cd06ed9e0f3:
+  /@storybook/addon-essentials/6.4.13_02fe22cefcc55ca91144aa635868f796:
     resolution: {integrity: sha512-ekvyeVckKkffGQMzp6cT0/Mi8Wo1fqF/DGp3vJIcIrExfvuZa/qi8PoHyx+cr8dfI0b8Jf8Lv7qcLIxNnkA5Bg==}
     peerDependencies:
       '@babel/core': ^7.9.6
@@ -2766,7 +2766,7 @@ packages:
       '@storybook/addons': 6.4.13
       '@storybook/api': 6.4.13
       '@storybook/node-logger': 6.4.13
-      babel-loader: 8.2.4_@babel+core@7.17.9
+      babel-loader: 8.2.5_@babel+core@7.17.9
       core-js: 3.20.2
       regenerator-runtime: 0.13.9
       ts-dedent: 2.2.0
@@ -3029,7 +3029,7 @@ packages:
       '@types/node': 14.18.5
       '@types/webpack': 4.41.32
       autoprefixer: 9.8.8
-      babel-loader: 8.2.4_598a497cebab8e15ee8f9e5632178e63
+      babel-loader: 8.2.5_598a497cebab8e15ee8f9e5632178e63
       babel-plugin-macros: 2.8.0
       babel-plugin-polyfill-corejs3: 0.1.7_@babel+core@7.17.9
       case-sensitive-paths-webpack-plugin: 2.4.0
@@ -3119,7 +3119,7 @@ packages:
       '@types/node': 14.18.5
       '@types/webpack': 4.41.32
       autoprefixer: 9.8.8
-      babel-loader: 8.2.4_598a497cebab8e15ee8f9e5632178e63
+      babel-loader: 8.2.5_598a497cebab8e15ee8f9e5632178e63
       babel-plugin-macros: 2.8.0
       babel-plugin-polyfill-corejs3: 0.1.7_@babel+core@7.17.9
       case-sensitive-paths-webpack-plugin: 2.4.0
@@ -3510,7 +3510,7 @@ packages:
       '@storybook/semver': 7.3.2
       '@types/node': 14.18.5
       '@types/pretty-hrtime': 1.0.1
-      babel-loader: 8.2.4_598a497cebab8e15ee8f9e5632178e63
+      babel-loader: 8.2.5_598a497cebab8e15ee8f9e5632178e63
       babel-plugin-macros: 3.1.0
       babel-plugin-polyfill-corejs3: 0.1.7_@babel+core@7.17.9
       chalk: 4.1.2
@@ -3578,7 +3578,7 @@ packages:
       '@storybook/semver': 7.3.2
       '@types/node': 14.18.5
       '@types/pretty-hrtime': 1.0.1
-      babel-loader: 8.2.4_598a497cebab8e15ee8f9e5632178e63
+      babel-loader: 8.2.5_598a497cebab8e15ee8f9e5632178e63
       babel-plugin-macros: 3.1.0
       babel-plugin-polyfill-corejs3: 0.1.7_@babel+core@7.17.9
       chalk: 4.1.2
@@ -3909,7 +3909,7 @@ packages:
       '@storybook/ui': 6.4.13
       '@types/node': 14.18.5
       '@types/webpack': 4.41.32
-      babel-loader: 8.2.4_598a497cebab8e15ee8f9e5632178e63
+      babel-loader: 8.2.5_598a497cebab8e15ee8f9e5632178e63
       case-sensitive-paths-webpack-plugin: 2.4.0
       chalk: 4.1.2
       core-js: 3.20.2
@@ -3966,7 +3966,7 @@ packages:
       '@storybook/ui': 6.4.19_react-dom@16.14.0+react@16.14.0
       '@types/node': 14.18.5
       '@types/webpack': 4.41.32
-      babel-loader: 8.2.4_598a497cebab8e15ee8f9e5632178e63
+      babel-loader: 8.2.5_598a497cebab8e15ee8f9e5632178e63
       case-sensitive-paths-webpack-plugin: 2.4.0
       chalk: 4.1.2
       core-js: 3.20.2
@@ -4316,7 +4316,7 @@ packages:
       - '@types/react'
     dev: true
 
-  /@storybook/vue3/6.4.19_ca0f5d6bcd9b03ed22a220e87373253d:
+  /@storybook/vue3/6.4.19_8ab4f34649a0cb563500d5f9ebbd00c8:
     resolution: {integrity: sha512-ocW2haoDOXudK3XHC7raBjq9k9gPsApiyQc4dPnjcF8sXmC3WZg6CYSPt0o00UMDmeDL0MDW336fw94jy6+LfA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -4333,7 +4333,7 @@ packages:
       '@storybook/csf': 0.0.2--canary.87bc651.0
       '@storybook/store': 6.4.19_react-dom@16.14.0+react@16.14.0
       '@types/webpack-env': 1.16.3
-      babel-loader: 8.2.4_@babel+core@7.17.9
+      babel-loader: 8.2.5_@babel+core@7.17.9
       core-js: 3.20.2
       global: 4.4.0
       react: 16.14.0
@@ -5845,8 +5845,8 @@ packages:
       - supports-color
     dev: true
 
-  /babel-loader/8.2.4_598a497cebab8e15ee8f9e5632178e63:
-    resolution: {integrity: sha512-8dytA3gcvPPPv4Grjhnt8b5IIiTcq/zeXOPk4iTYI0SVXcsmuGg7JtBRDp8S9X+gJfhQ8ektjXZlDu1Bb33U8A==}
+  /babel-loader/8.2.5_598a497cebab8e15ee8f9e5632178e63:
+    resolution: {integrity: sha512-OSiFfH89LrEMiWd4pLNqGz4CwJDtbs2ZVc+iGu2HrkRfPxId9F2anQj38IxWpmRfsUY0aBZYi1EFcd3mhtRMLQ==}
     engines: {node: '>= 8.9'}
     peerDependencies:
       '@babel/core': ^7.0.0
@@ -5860,8 +5860,8 @@ packages:
       webpack: 4.46.0
     dev: true
 
-  /babel-loader/8.2.4_@babel+core@7.17.9:
-    resolution: {integrity: sha512-8dytA3gcvPPPv4Grjhnt8b5IIiTcq/zeXOPk4iTYI0SVXcsmuGg7JtBRDp8S9X+gJfhQ8ektjXZlDu1Bb33U8A==}
+  /babel-loader/8.2.5_@babel+core@7.17.9:
+    resolution: {integrity: sha512-OSiFfH89LrEMiWd4pLNqGz4CwJDtbs2ZVc+iGu2HrkRfPxId9F2anQj38IxWpmRfsUY0aBZYi1EFcd3mhtRMLQ==}
     engines: {node: '>= 8.9'}
     peerDependencies:
       '@babel/core': ^7.0.0
