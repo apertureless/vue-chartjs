@@ -73,12 +73,10 @@ export function generateChart(chartId, chartType, chartController) {
     },
     computed: {
       hasAnnotationPlugin() {
-        return (
-          Object.keys(this.chartOptions).length > 0 &&
-          'plugins' in this.chartOptions &&
-          Object.keys(this.chartOptions.plugins).length > 0 &&
-          ANNOTATION_PLUGIN_KEY in this.chartOptions.plugins
-        )
+        const pluginSettings =
+          this.chartOptions?.plugins?.[ANNOTATION_PLUGIN_KEY]
+
+        return typeof pluginSettings !== 'undefined'
       }
     },
     created() {
