@@ -164,6 +164,7 @@ export function generateChart(chartId, chartType, chartController) {
         return this.hasAnnotationPlugin ? _chartRef.current : this.$data._chart
       },
       setCurrentChart(chart) {
+        chart.__ob__ = new this.$data.__ob__.constructor({})
         this.hasAnnotationPlugin
           ? (_chartRef.current = chart)
           : (this.$data._chart = chart)
