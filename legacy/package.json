@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.17.9",
-    "@swc/core": "1.2.172",
+    "@swc/core": "1.2.173",
     "@swc/jest": "0.2.20",
     "@vue/test-utils": "1.3.0",
     "@vue/vue2-jest": "27.0.0",
