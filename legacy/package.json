@@ -5,7 +5,8 @@
     "module": "./legacy/index.js"
   },
   "scripts": {
-    "unit": "jest -c jest.config.json"
+    "unit": "jest -c jest.config.json",
+    "emitDeclarations": "tsc index.js --allowJs  --skipLibCheck --declaration --emitDeclarationOnly --declarationMap"
   },
   "devDependencies": {
     "@babel/core": "7.17.9",
