@@ -125,6 +125,17 @@ export function setChartLabels<
   }
 }
 
+export function setChartOptions<
+  TType extends ChartType,
+  TData = DefaultDataPoint<TType>,
+  TLabel = unknown
+>(
+  chart: TypedChartJS<TType, TData, TLabel>,
+  options: TChartOptions<TType>
+): void {
+  chart.options = { ...options }
+}
+
 export function compareData<
   TType extends ChartType = ChartType,
   TData = DefaultDataPoint<TType>,
@@ -151,3 +162,5 @@ export function compareData<
 
 export const templateError =
   'Please remove the <template></template> tags from your chart component. See https://vue-chartjs.org/guide/#vue-single-file-components'
+
+export const chartUpdateError = 'Update ERROR: chart instance not found'

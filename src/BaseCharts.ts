@@ -39,7 +39,9 @@ import {
   setChartLabels,
   setChartDatasets,
   compareData,
-  templateError
+  templateError,
+  chartUpdateError,
+  setChartOptions
 } from './utils'
 
 import type {
@@ -165,7 +167,7 @@ export const generateChart = <
               )
             }
 
-            chartUpdate<TType, TData, TLabel>(chart, context)
+            updateChart()
           } else {
             if (chart !== null) {
               chartDestroy<TType, TData, TLabel>(chart, context)
@@ -192,12 +194,44 @@ export const generateChart = <
         }
       }
 
+      function chartOptionsHandler(options: TChartOptions<TType>): void {
+        const chart = toRaw(_chart.value)
+
+        if (chart !== null) {
+          setChartOptions<TType, TData, TLabel>(chart, options)
+          updateChart()
+        } else {
+          chartCreate<TType, TData, TLabel>(
+            renderChart,
+            props.chartData,
+            props.chartOptions as ChartOptions<TType>,
+            context
+          )
+        }
+      }
+
+      function updateChart(): void {
+        const chart = toRaw(_chart.value)
+
+        if (chart !== null) {
+          chartUpdate<TType, TData, TLabel>(chart, context)
+        } else {
+          console.error(chartUpdateError)
+        }
+      }
+
       watch(
         () => props.chartData,
         (
           newValue: TChartData<TType, TData, TLabel>,
           oldValue: TChartData<TType, TData, TLabel>
         ) => chartDataHandler(newValue, oldValue),
+        { deep: true }
+      )
+
+      watch(
+        () => props.chartOptions,
+        newValue => chartOptionsHandler(newValue as ChartOptions<TType>),
         { deep: true }
       )
 
@@ -219,6 +253,11 @@ export const generateChart = <
         if (_chart.value !== null) {
           chartDestroy(toRaw(_chart.value), context)
         }
+      })
+
+      context.expose({
+        chart: _chart,
+        updateChart
       })
 
       return () =>

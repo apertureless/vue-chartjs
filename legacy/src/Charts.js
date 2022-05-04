@@ -19,7 +19,8 @@ import {
   setChartDatasets,
   compareData,
   templateError,
-  ChartEmits
+  ChartEmits,
+  setChartOptions
 } from '../../src/utils'
 
 const ANNOTATION_PLUGIN_KEY = 'annotation'
@@ -91,8 +92,17 @@ export function generateChart(chartId, chartType, chartController) {
       }
     },
     watch: {
-      chartData(newValue, oldValue) {
-        this.chartDataHandler(newValue, oldValue)
+      chartData: {
+        handler: function (newValue, oldValue) {
+          this.chartDataHandler(newValue, oldValue)
+        },
+        deep: true
+      },
+      chartOptions: {
+        handler: function (newValue) {
+          this.chartOptionsHandler(newValue)
+        },
+        deep: true
       }
     },
     methods: {
@@ -139,7 +149,7 @@ export function generateChart(chartId, chartType, chartController) {
               this.$emit(ChartEmits.LabelsUpdated)
             }
 
-            chartUpdate(currentChart)
+            this.updateChart()
             this.$emit(ChartEmits.ChartUpdated)
           } else {
             if (currentChart !== null) {
@@ -159,6 +169,20 @@ export function generateChart(chartId, chartType, chartController) {
           chartCreate(this.renderChart, this.chartData, this.chartOptions)
           this.$emit(ChartEmits.ChartRendered)
         }
+      },
+      chartOptionsHandler(options) {
+        const currentChart = this.getCurrentChart()
+
+        if (currentChart !== null) {
+          setChartOptions(currentChart, options)
+          this.updateChart()
+        } else {
+          chartCreate(this.renderChart, this.chartData, this.chartOptions)
+        }
+      },
+      updateChart() {
+        const currentChart = this.getCurrentChart()
+        chartUpdate(currentChart)
       },
       getCurrentChart() {
         return this.hasAnnotationPlugin ? _chartRef.current : this.$data._chart
