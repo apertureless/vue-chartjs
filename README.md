@@ -27,8 +27,6 @@ Supports Chart.js v3 and v2.
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="#migration-to-v4">Migration to v4</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-<a href="#demo">Demo</a>
-<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://slack.cube.dev/?ref=eco-vue-chartjs">Slack</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://stackoverflow.com/questions/tagged/vue-chartjs">Stack Overflow</a>
@@ -230,7 +228,35 @@ export default {
 
 ## Reactivity
 
-vue-chartjs will update or re-render the chart if new data is passed.
+vue-chartjs will update or re-render the chart if new data or new options is passed.
+
+## Access to Chart instance
+
+You can get access to chart instance via template refs.
+
+```vue
+<template>
+  <BarChart ref="bar" />
+</template>
+```
+
+In Vue3 projects:
+
+```javascript
+const chartInstance = this.$refs.bar.chart
+```
+
+In Vue2 projects:
+
+```javascript
+const chartInstance = this.$refs.bar.getCurrentChart
+```
+
+Also you can get access to **updateChart** function
+
+```javascript
+this.$refs.bar.updateChart()
+```
 
 ## Migration to v4
 
@@ -375,13 +401,13 @@ export default {
 }
 ```
 
-v4 charts have data change watcher by default. v4 will update or re-render the chart if new data is passed. Mixins have been removed.
+v4 charts have data change watcher and options change watcher by default. v4 will update or re-render the chart if new data or new options is passed. Mixins have been removed.
 
 v4:
 
 ```vue
 <template>
-  <Bar :chart-data="chartData" />
+  <Bar :chart-data="chartData" :chart-options="chartOptions" />
 </template>
 
 <script>
@@ -395,15 +421,12 @@ export default {
   name: 'BarChart',
   components: { Bar },
   computed: {
-      chartData() { return /* mutable chart data */ }
+      chartData() { return /* mutable chart data */ },
+      chartOptions() { return /* mutable chart options */ }
     }
 }
 </script>
 ```
-
-## Demo
-
-- 📺 [Demo](http://demo.vue-chartjs.org/)
 
 ## Available Charts
 
