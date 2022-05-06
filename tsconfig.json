@@ -22,18 +22,12 @@
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
     /* Language and Environment */
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "target": "esnext",
     /* Completeness */
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["vitest", "vitest/globals"]
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "dist"
-  ]
+  "include": ["src", "test"],
+  "exclude": ["dist"]
 }
