@@ -231,10 +231,6 @@ export default {
 </script>
 ```
 
-## Reactivity
-
-vue-chartjs will update or re-render the chart if new data or new options is passed.
-
 ## Access to Chart instance
 
 You can get access to chart instance via template refs.
