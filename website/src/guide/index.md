@@ -206,11 +206,11 @@ export default {
 
 ## Updating Charts
 
-vue-chartjs charts have data change watcher by default. vue-chartjs will update or re-render the chart if new data is passed.
+v4 charts have data change watcher and options change watcher by default. v4 will update or re-render the chart if new data or new options is passed. Mixins have been removed.
 
 ```vue
 <template>
-  <Bar :chart-data="chartData" />
+  <Bar :chart-data="chartData" :chart-options="chartOptions" />
 </template>
 
 <script>
@@ -224,15 +224,40 @@ export default {
   name: 'BarChart',
   components: { Bar },
   computed: {
-      chartData() { return /* mutable chart data */ }
+      chartData() { return /* mutable chart data */ },
+      chartOptions() { return /* mutable chart options */ }
     }
 }
 </script>
 ```
 
-### Options
+## Access to Chart instance
 
-The `options` object is not currently implemented reactively. Therefore, if you dynamically change the chart options, they will not be recognized by the update data handler.
+You can get access to chart instance via template refs.
+
+```vue
+<template>
+  <BarChart ref="bar" />
+</template>
+```
+
+In Vue3 projects:
+
+```javascript
+const chartInstance = this.$refs.bar.chart
+```
+
+In Vue2 projects:
+
+```javascript
+const chartInstance = this.$refs.bar.getCurrentChart
+```
+
+Also you can get access to **updateChart** function
+
+```javascript
+this.$refs.bar.updateChart()
+```
 
 ### Events
 
