@@ -76,7 +76,7 @@
     "vue": "^3.0.0-0 || ^2.6.0"
   },
   "devDependencies": {
-    "@babel/core": "7.17.9",
+    "@babel/core": "7.17.10",
     "@babel/preset-env": "^7.16.5",
     "@commitlint/cli": "^16.0.0",
     "@commitlint/config-conventional": "^16.0.0",
