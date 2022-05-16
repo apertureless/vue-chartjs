@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@babel/core': 7.17.10
-  '@swc/core': 1.2.174
+  '@swc/core': 1.2.185
   '@swc/jest': 0.2.20
   '@vue/test-utils': 1.3.0
   '@vue/vue2-jest': 27.0.0
@@ -14,8 +14,8 @@ specifiers:
 
 devDependencies:
   '@babel/core': 7.17.10
-  '@swc/core': 1.2.174
-  '@swc/jest': 0.2.20_@swc+core@1.2.174
+  '@swc/core': 1.2.185
+  '@swc/jest': 0.2.20_@swc+core@1.2.185
   '@vue/test-utils': 1.3.0_9065e7474e033a8e4b95615fc8e6c36c
   '@vue/vue2-jest': 27.0.0_b2db882d9e553a81e398109fcdef5d69
   babel-jest: 27.5.1_@babel+core@7.17.10
@@ -188,18 +188,24 @@ packages:
     resolution: {integrity: sha512-n2Q6i+fnJqzOaq2VkdXxy2TCPCWQZHiCo0XqmrCvDWcZQKRyZzYi4Z0yxlBuN0w+r2ZHmre+Q087DSrw3pbJDQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.17.10
     dev: true
 
   /@babel/parser/7.17.8:
     resolution: {integrity: sha512-BoHhDJrJXqcg+ZL16Xv39H9n+AqJ4pcDrQBGZN+wHxIysrLZ3/ECwCBUch/1zUNhnsXULcONU3Ei5Hmkfk6kiQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.17.10
     dev: true
 
   /@babel/parser/7.17.9:
     resolution: {integrity: sha512-vqUSBLP8dQHFPdPi9bc5GK9vRkYHJ49fsZdtoJ8EQ8ibpwk5rPKfvNIwChB0KVXcIjcepEBBd2VHC5r9Gy8ueg==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.17.10
     dev: true
 
   /@babel/plugin-syntax-async-generators/7.8.4_@babel+core@7.17.10:
@@ -638,8 +644,8 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@swc/core-android-arm-eabi/1.2.174:
-    resolution: {integrity: sha512-sxH6jIq57wnZ8LyLKN8SXM4DhMo4aTq0mClo+zBMPTyHzNO5AEAwh5nqs+d51Dycs3epur/8iv/J6xDv+cKkfw==}
+  /@swc/core-android-arm-eabi/1.2.185:
+    resolution: {integrity: sha512-/ZTj5yaPkPC0UwggYN+y4d2DNZJI+b1y1gi4twrQJz997OMU032Hi9/59VxHFzHNxlzhIuCJYcbxOxi1Aqk2bA==}
     engines: {node: '>=10'}
     cpu: [arm]
     os: [android]
@@ -647,8 +653,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-android-arm64/1.2.174:
-    resolution: {integrity: sha512-gGXBuY8Zs93eNduyrhm+rB+K/smF535uwmamHB1+7BrkuUtt/Lrk3vDTc4D61GMA/vBOqus9IXKHBc+EFmBbog==}
+  /@swc/core-android-arm64/1.2.185:
+    resolution: {integrity: sha512-TgidzM+7H0YTIABu2ILI8MRDiIzcFULz5vIUWbhLwypPH9vJCFcDnAv5rBpg/4KBMzuSI6BNNBIcf/8Wc9e0HA==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [android]
@@ -656,8 +662,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-darwin-arm64/1.2.174:
-    resolution: {integrity: sha512-dFxu2o8dR55A+d0Qf/Ai0yKnGjon/UT1hWnBY9tcyvgo7XsiFRB/P83tlbVohqq9N+SDVxdBg9bMAR2i8rDTHg==}
+  /@swc/core-darwin-arm64/1.2.185:
+    resolution: {integrity: sha512-segMc9FVYz+M5KzpPJR+M20Mmeq4ZQw4gi6rt0HXNpSPykm+oe/wb1CZbMk/9SpMaevpXOOZa0HHBM2ue+WhVA==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [darwin]
@@ -665,8 +671,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-darwin-x64/1.2.174:
-    resolution: {integrity: sha512-LsANlfBkqfJobPvfojTbUY9xw0ZwTxTicdwaK6BC5TLmYXVfvxvMpmhsvIe3bNlx4jV1z0IrFaJ0YxDSc1s6vw==}
+  /@swc/core-darwin-x64/1.2.185:
+    resolution: {integrity: sha512-PL1Xq6R5zpBbYZsWJU0xK2/WQlhag/Kiq1eZd6ftSLaxn0q00wdSGPpzOqK5FTYAqi+5R1CWM/kCOHFoSlYDfg==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [darwin]
@@ -674,8 +680,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-freebsd-x64/1.2.174:
-    resolution: {integrity: sha512-IG0qc9/qUHmiqC6fqT3yq4iBwNRHN1zYbGpzQm4DU/d7DTwsV7D2A+1McFUKmnUOvBG7zdgg5ee91QxUVOCZTQ==}
+  /@swc/core-freebsd-x64/1.2.185:
+    resolution: {integrity: sha512-scaFxGfV7RhJrrCGzouwFe1XOzJvY/WjYWysHuD+slSdn3pjSnxXtX2Q9jPIYF0bmIcbTp4D6V8VITLhmfkzEA==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [freebsd]
@@ -683,8 +689,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-linux-arm-gnueabihf/1.2.174:
-    resolution: {integrity: sha512-nK4U8s9++e5AVEhWz3W6V0tUsPPjYJlMsb4ZzZR2qhYe53YBURCznFIhUDwe0ib/f6T773Tn7sr52uemcQBu8A==}
+  /@swc/core-linux-arm-gnueabihf/1.2.185:
+    resolution: {integrity: sha512-WQ84BVGF0al3ynWBeXuEpO7y6h8Bh4AXr+Ys2YaEgyZtAZ6zWUi3Ca4ktFWwpACSm0XUUB3lhlapUcqXJE8lZg==}
     engines: {node: '>=10'}
     cpu: [arm]
     os: [linux]
@@ -692,8 +698,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-linux-arm64-gnu/1.2.174:
-    resolution: {integrity: sha512-Tf6Ths472ul9Z4p8uFP7vMJXLmBS2h4PQL/zDj3g3N+9D8hs6+tnnBNrkEm6jXs09gO4bvaN+706QxmZUEgyPg==}
+  /@swc/core-linux-arm64-gnu/1.2.185:
+    resolution: {integrity: sha512-INrmHqV5ti0ROS9FeGXPF5ZcIAWZ9Sp+Xbn5isWZ9owqT0c2CU4f9+w+OzNMMDKVFe2ARvlH/D927mLIgwqDmQ==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
@@ -701,8 +707,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-linux-arm64-musl/1.2.174:
-    resolution: {integrity: sha512-vsQjxyCe3+qRMQSuDlYwmFxbRILIycRC8OB/tBhTJXYuwIh4zvpxc+zvSuERbd4cmMWwM/JtXIlP5grSNjgH6A==}
+  /@swc/core-linux-arm64-musl/1.2.185:
+    resolution: {integrity: sha512-OEwVBlypM7SOZqpa82hIh9jeiu/eSXG+J+R0vekcWz7EkW5zb504uyGPeZJKMqX23I5GZtBpk96UUbhnNCaYUg==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
@@ -710,8 +716,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-linux-x64-gnu/1.2.174:
-    resolution: {integrity: sha512-CFEL2WMIQ1mZvvDguaVGgwan9X7Ah7ctHG8SOa+mFaWXdAyVXOWp8sdNMJbqvwYAv980CENfYioI8yL0z1heWA==}
+  /@swc/core-linux-x64-gnu/1.2.185:
+    resolution: {integrity: sha512-H8LnCdViP7JsFlDE02w5czlKQWnAAM9ZN3oZnvAuTod2gJBjTJ4eZ3h9d+EQdcszw7Csh+IwXbmPz0mPwaR0vQ==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
@@ -719,8 +725,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-linux-x64-musl/1.2.174:
-    resolution: {integrity: sha512-qulTJ3GYE8gUR0yfIOJVfo8SSl/AgLKAplskIHJu/cP0JtRpHL8B598mfny6SuD+ZabBjUvAz6d8ACL9JdhYTw==}
+  /@swc/core-linux-x64-musl/1.2.185:
+    resolution: {integrity: sha512-DRHmhjCsA2FloF+6/HMxJ8bkdfddAY/wqnpuW/l3CPUyL3VMDmvSiZICN8f/J8LKpGfDV2FdczztmbGi14jO+g==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
@@ -728,8 +734,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-win32-arm64-msvc/1.2.174:
-    resolution: {integrity: sha512-ZogvH4sOVk3pLguYLlc+3lBlGwJ4WOi375VUqDSb92TirBFPjhX98xDn/Xus1fyRKofSGp1zoAs4w80F6hkX6g==}
+  /@swc/core-win32-arm64-msvc/1.2.185:
+    resolution: {integrity: sha512-0BmuvU+Lfz5n1/ihh30UF2Viu9JJn3S3YC9QD9BfF80ueEl8KT4JihhJGuEG3XuZk5+35o2oZiCRkn6NKI/qpA==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [win32]
@@ -737,8 +743,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-win32-ia32-msvc/1.2.174:
-    resolution: {integrity: sha512-QcnXBs2L0O5BiV61orDxJqZsmk2wPUscTTY4upfW5++eCI6IpDYVyfQmtQ9OdVCXWfVEPrhQKuUxLZEjoKxdNQ==}
+  /@swc/core-win32-ia32-msvc/1.2.185:
+    resolution: {integrity: sha512-yRNa/frm5MeXJMpj6V6uQy5a0yfO9q6ZOQ4L+439UH8vBcgIZYOG07bJGvxeUjaKkkrhfzEu5Q8fdXTzPgGeAA==}
     engines: {node: '>=10'}
     cpu: [ia32]
     os: [win32]
@@ -746,8 +752,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-win32-x64-msvc/1.2.174:
-    resolution: {integrity: sha512-9aFcbPTFA5jtiTQbOsq+/QN29F/YNpOrhcwsUa2Haqq0+2h71rMiBn7oluUERFQ+/se9J0C00iSC0QXif4pfuQ==}
+  /@swc/core-win32-x64-msvc/1.2.185:
+    resolution: {integrity: sha512-nLF0AKADjeR3Rr05lWoKOeDbGBFpmbFnGkpLJK9EAwAIQUC9lDRYIps5yinPZsgqBwa0RCUsxzS3PjbWEY18bg==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [win32]
@@ -755,34 +761,34 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core/1.2.174:
-    resolution: {integrity: sha512-PbBwwaqrBCyOae+hZV9QK+QeR1azqb+MGKvuk6SVxsk3Rvh1HSX4CieMnuhcmX+Sm4L58eQv9l37ZLCu2hBZcA==}
+  /@swc/core/1.2.185:
+    resolution: {integrity: sha512-dDNzDrJ4bzMVWeFWqLJojjv5XZJZ84Zia7kQdJjp+kfOMdEhS+onrAwrk5Q88PlAvbrhY6kQbWD2LZ8JdyEaSQ==}
     engines: {node: '>=10'}
     hasBin: true
     optionalDependencies:
-      '@swc/core-android-arm-eabi': 1.2.174
-      '@swc/core-android-arm64': 1.2.174
-      '@swc/core-darwin-arm64': 1.2.174
-      '@swc/core-darwin-x64': 1.2.174
-      '@swc/core-freebsd-x64': 1.2.174
-      '@swc/core-linux-arm-gnueabihf': 1.2.174
-      '@swc/core-linux-arm64-gnu': 1.2.174
-      '@swc/core-linux-arm64-musl': 1.2.174
-      '@swc/core-linux-x64-gnu': 1.2.174
-      '@swc/core-linux-x64-musl': 1.2.174
-      '@swc/core-win32-arm64-msvc': 1.2.174
-      '@swc/core-win32-ia32-msvc': 1.2.174
-      '@swc/core-win32-x64-msvc': 1.2.174
+      '@swc/core-android-arm-eabi': 1.2.185
+      '@swc/core-android-arm64': 1.2.185
+      '@swc/core-darwin-arm64': 1.2.185
+      '@swc/core-darwin-x64': 1.2.185
+      '@swc/core-freebsd-x64': 1.2.185
+      '@swc/core-linux-arm-gnueabihf': 1.2.185
+      '@swc/core-linux-arm64-gnu': 1.2.185
+      '@swc/core-linux-arm64-musl': 1.2.185
+      '@swc/core-linux-x64-gnu': 1.2.185
+      '@swc/core-linux-x64-musl': 1.2.185
+      '@swc/core-win32-arm64-msvc': 1.2.185
+      '@swc/core-win32-ia32-msvc': 1.2.185
+      '@swc/core-win32-x64-msvc': 1.2.185
     dev: true
 
-  /@swc/jest/0.2.20_@swc+core@1.2.174:
+  /@swc/jest/0.2.20_@swc+core@1.2.185:
     resolution: {integrity: sha512-5qSUBYY1wyIMn7p0Vl9qqV4hMI69oJwZCIPUpBsTFWN2wlwn6RDugzdgCn+bLXVYh+Cxi8bJcZ1uumDgsoL+FA==}
     engines: {npm: '>= 7.0.0'}
     peerDependencies:
       '@swc/core': '*'
     dependencies:
       '@jest/create-cache-key-function': 27.5.1
-      '@swc/core': 1.2.174
+      '@swc/core': 1.2.185
     dev: true
 
   /@tootallnate/once/1.1.2:
@@ -876,6 +882,60 @@ packages:
       vue-template-es2015-compiler: 1.9.1
     optionalDependencies:
       prettier: 2.6.0
+    transitivePeerDependencies:
+      - arc-templates
+      - atpl
+      - babel-core
+      - bracket-template
+      - coffee-script
+      - dot
+      - dust
+      - dustjs-helpers
+      - dustjs-linkedin
+      - eco
+      - ect
+      - ejs
+      - haml-coffee
+      - hamlet
+      - hamljs
+      - handlebars
+      - hogan.js
+      - htmling
+      - jade
+      - jazz
+      - jqtpl
+      - just
+      - liquid-node
+      - liquor
+      - lodash
+      - marko
+      - mote
+      - mustache
+      - nunjucks
+      - plates
+      - pug
+      - qejs
+      - ractive
+      - razor-tmpl
+      - react
+      - react-dom
+      - slm
+      - squirrelly
+      - swig
+      - swig-templates
+      - teacup
+      - templayed
+      - then-jade
+      - then-pug
+      - tinyliquid
+      - toffee
+      - twig
+      - twing
+      - underscore
+      - vash
+      - velocityjs
+      - walrus
+      - whiskers
     dev: true
 
   /@vue/test-utils/1.3.0_9065e7474e033a8e4b95615fc8e6c36c:
@@ -915,7 +975,60 @@ packages:
       vue: 2.6.14
       vue-template-compiler: 2.6.14
     transitivePeerDependencies:
+      - arc-templates
+      - atpl
+      - babel-core
+      - bracket-template
+      - coffee-script
+      - dot
+      - dust
+      - dustjs-helpers
+      - dustjs-linkedin
+      - eco
+      - ect
+      - ejs
+      - haml-coffee
+      - hamlet
+      - hamljs
+      - handlebars
+      - hogan.js
+      - htmling
+      - jade
+      - jazz
+      - jqtpl
+      - just
+      - liquid-node
+      - liquor
+      - lodash
+      - marko
+      - mote
+      - mustache
+      - nunjucks
+      - plates
+      - pug
+      - qejs
+      - ractive
+      - razor-tmpl
+      - react
+      - react-dom
+      - slm
+      - squirrelly
       - supports-color
+      - swig
+      - swig-templates
+      - teacup
+      - templayed
+      - then-jade
+      - then-pug
+      - tinyliquid
+      - toffee
+      - twig
+      - twing
+      - underscore
+      - vash
+      - velocityjs
+      - walrus
+      - whiskers
     dev: true
 
   /abab/2.0.5:
@@ -1263,6 +1376,167 @@ packages:
   /consolidate/0.15.1:
     resolution: {integrity: sha512-DW46nrsMJgy9kqAbPt5rKaCr7uFtpo4mSUvLHIUbJEjm0vo+aY5QLwBUq3FK4tRnJr/X0Psc0C4jf/h+HtXSMw==}
     engines: {node: '>= 0.10.0'}
+    peerDependencies:
+      arc-templates: ^0.5.3
+      atpl: '>=0.7.6'
+      babel-core: ^6.26.3
+      bracket-template: ^1.1.5
+      coffee-script: ^1.12.7
+      dot: ^1.1.3
+      dust: ^0.3.0
+      dustjs-helpers: ^1.7.4
+      dustjs-linkedin: ^2.7.5
+      eco: ^1.1.0-rc-3
+      ect: ^0.5.9
+      ejs: ^3.1.5
+      haml-coffee: ^1.14.1
+      hamlet: ^0.3.3
+      hamljs: ^0.6.2
+      handlebars: ^4.7.6
+      hogan.js: ^3.0.2
+      htmling: ^0.0.8
+      jade: ^1.11.0
+      jazz: ^0.0.18
+      jqtpl: ~1.1.0
+      just: ^0.1.8
+      liquid-node: ^3.0.1
+      liquor: ^0.0.5
+      lodash: ^4.17.20
+      marko: ^3.14.4
+      mote: ^0.2.0
+      mustache: ^4.0.1
+      nunjucks: ^3.2.2
+      plates: ~0.4.11
+      pug: ^3.0.0
+      qejs: ^3.0.5
+      ractive: ^1.3.12
+      razor-tmpl: ^1.3.1
+      react: ^16.13.1
+      react-dom: ^16.13.1
+      slm: ^2.0.0
+      squirrelly: ^5.1.0
+      swig: ^1.4.2
+      swig-templates: ^2.0.3
+      teacup: ^2.0.0
+      templayed: '>=0.2.3'
+      then-jade: '*'
+      then-pug: '*'
+      tinyliquid: ^0.2.34
+      toffee: ^0.3.6
+      twig: ^1.15.2
+      twing: ^5.0.2
+      underscore: ^1.11.0
+      vash: ^0.13.0
+      velocityjs: ^2.0.1
+      walrus: ^0.10.1
+      whiskers: ^0.4.0
+    peerDependenciesMeta:
+      arc-templates:
+        optional: true
+      atpl:
+        optional: true
+      babel-core:
+        optional: true
+      bracket-template:
+        optional: true
+      coffee-script:
+        optional: true
+      dot:
+        optional: true
+      dust:
+        optional: true
+      dustjs-helpers:
+        optional: true
+      dustjs-linkedin:
+        optional: true
+      eco:
+        optional: true
+      ect:
+        optional: true
+      ejs:
+        optional: true
+      haml-coffee:
+        optional: true
+      hamlet:
+        optional: true
+      hamljs:
+        optional: true
+      handlebars:
+        optional: true
+      hogan.js:
+        optional: true
+      htmling:
+        optional: true
+      jade:
+        optional: true
+      jazz:
+        optional: true
+      jqtpl:
+        optional: true
+      just:
+        optional: true
+      liquid-node:
+        optional: true
+      liquor:
+        optional: true
+      lodash:
+        optional: true
+      marko:
+        optional: true
+      mote:
+        optional: true
+      mustache:
+        optional: true
+      nunjucks:
+        optional: true
+      plates:
+        optional: true
+      pug:
+        optional: true
+      qejs:
+        optional: true
+      ractive:
+        optional: true
+      razor-tmpl:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      slm:
+        optional: true
+      squirrelly:
+        optional: true
+      swig:
+        optional: true
+      swig-templates:
+        optional: true
+      teacup:
+        optional: true
+      templayed:
+        optional: true
+      then-jade:
+        optional: true
+      then-pug:
+        optional: true
+      tinyliquid:
+        optional: true
+      toffee:
+        optional: true
+      twig:
+        optional: true
+      twing:
+        optional: true
+      underscore:
+        optional: true
+      vash:
+        optional: true
+      velocityjs:
+        optional: true
+      walrus:
+        optional: true
+      whiskers:
+        optional: true
     dependencies:
       bluebird: 3.7.2
     dev: true
