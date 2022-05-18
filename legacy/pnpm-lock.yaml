@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@babel/core': 7.17.10
   '@swc/core': 1.2.185
-  '@swc/jest': 0.2.20
+  '@swc/jest': 0.2.21
   '@vue/test-utils': 1.3.0
   '@vue/vue2-jest': 27.0.0
   babel-jest: 27.5.1
@@ -15,7 +15,7 @@ specifiers:
 devDependencies:
   '@babel/core': 7.17.10
   '@swc/core': 1.2.185
-  '@swc/jest': 0.2.20_@swc+core@1.2.185
+  '@swc/jest': 0.2.21_@swc+core@1.2.185
   '@vue/test-utils': 1.3.0_9065e7474e033a8e4b95615fc8e6c36c
   '@vue/vue2-jest': 27.0.0_b2db882d9e553a81e398109fcdef5d69
   babel-jest: 27.5.1_@babel+core@7.17.10
@@ -781,8 +781,8 @@ packages:
       '@swc/core-win32-x64-msvc': 1.2.185
     dev: true
 
-  /@swc/jest/0.2.20_@swc+core@1.2.185:
-    resolution: {integrity: sha512-5qSUBYY1wyIMn7p0Vl9qqV4hMI69oJwZCIPUpBsTFWN2wlwn6RDugzdgCn+bLXVYh+Cxi8bJcZ1uumDgsoL+FA==}
+  /@swc/jest/0.2.21_@swc+core@1.2.185:
+    resolution: {integrity: sha512-/+NcExiZbxXANNhNPnIdFuGq62CeumulLS1bngwqIXd8H7d96LFUfrYzdt8tlTwLMel8tFtQ5aRjzVkyOTyPDw==}
     engines: {npm: '>= 7.0.0'}
     peerDependencies:
       '@swc/core': '*'
