@@ -9,7 +9,7 @@
     "emitDeclarations": "tsc index.js --allowJs  --skipLibCheck --declaration --emitDeclarationOnly --declarationMap"
   },
   "devDependencies": {
-    "@babel/core": "7.17.10",
+    "@babel/core": "7.18.0",
     "@swc/core": "1.2.185",
     "@swc/jest": "0.2.21",
     "@vue/test-utils": "1.3.0",
