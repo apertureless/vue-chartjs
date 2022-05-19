@@ -19,9 +19,9 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/', activeMatch: '^/guide/' },
       {
-        text: 'Migration to V4',
-        link: '/migration-to-v4/',
-        activeMatch: '^/migration-to-v4/'
+        text: 'Migration guides',
+        link: '/migration-guides/',
+        activeMatch: '^/migration-guides/'
       },
       {
         text: 'API',
