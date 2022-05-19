@@ -224,7 +224,8 @@ export default {
 
 - [Reactivity](https://vue-chartjs.org/guide/#updating-charts)
 - [Access to Chart instance](https://vue-chartjs.org/guide/#access-to-chart-instance)
-- [Migration to v4](https://vue-chartjs.org/migration-to-v4/)
+- [Migration from v3 to v4](https://vue-chartjs.org/migration-guides/#migration-from-v3-to-v4/)
+- [Migration from vue-chart-3](https://vue-chartjs.org/migration-guides/#migration-from-vue-chart-3/)
 - [API](https://vue-chartjs.org/api/)
 - [Examples](https://vue-chartjs.org/examples/)
 

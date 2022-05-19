@@ -1,10 +1,10 @@
-# Migration to v4
+## Migration from v3 to v4
 
 With v4, this library introduces a number of breaking changes. In order to improve performance, offer new features, and improve maintainability, it was necessary to break backwards compatibility, but we aimed to do so only when worth the benefit.
 
 v4 is fully compatible with Chart.js v3.
 
-## Tree-shaking
+### Tree-shaking
 
 v4 of this library, [just like Chart.js v3](https://www.chartjs.org/docs/latest/getting-started/v3-migration.html#setup-and-installation), is tree-shakable. It means that you need to import and register the controllers, elements, scales, and plugins you want to use.
 
@@ -43,7 +43,7 @@ import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale } f
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
 ```
 
-## Changing the creation of Charts
+### Changing the creation of Charts
 
 In v3, you needed to import the component, and then either use extends or mixins and add it.
 
@@ -121,7 +121,7 @@ export default {
 </script>
 ```
 
-## New reactivity system
+### New reactivity system
 
 v3 does not update or re-render the chart if new data is passed. You needed to use `reactiveProp` and `reactiveData` mixins for that.
 
@@ -165,3 +165,54 @@ export default {
 }
 </script>
 ```
+
+## Migration from vue-chart-3
+
+### Uninstall vue-chart-3
+
+```bash
+pnpm rm vue-chart-3
+# or
+yarn remove vue-chart-3
+# or
+npm uninstall vue-chart-3
+```
+
+### Install vue-chartjs
+
+```bash
+pnpm add vue-chartjs
+# or
+yarn add vue-chartjs
+# or
+npm i vue-chartjs
+```
+
+### Change component import path
+
+For Vue 3 projects:
+
+```javascript
+import { /* component */ } from 'vue-chartjs'
+```
+
+For Vue 2 projects:
+
+```javascript
+import { /* component */ } from 'vue-chartjs/legacy'
+```
+
+### Rename components
+
+- BarChart to Bar
+- DoughnutChart to Doughnut
+- LineChart to Line
+- PieChart to Pie
+- PolarAreaChart to PolarArea
+- RadarChart to Radar
+- BubbleChart to Bubble
+- ScatterChart to Scatter
+
+### Rename props
+
+- options to chartOptions
