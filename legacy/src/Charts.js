@@ -223,48 +223,56 @@ export function generateChart(chartId, chartType, chartController) {
   }
 }
 
+/** @type Object */
 export const Bar = /* #__PURE__ */ generateChart(
   'bar-chart',
   'bar',
   BarController
 )
 
+/** @type Object */
 export const Doughnut = /* #__PURE__ */ generateChart(
   'doughnut-chart',
   'doughnut',
   DoughnutController
 )
 
+/** @type Object */
 export const Line = /* #__PURE__ */ generateChart(
   'line-chart',
   'line',
   LineController
 )
 
+/** @type Object */
 export const Pie = /* #__PURE__ */ generateChart(
   'pie-chart',
   'pie',
   PieController
 )
 
+/** @type Object */
 export const PolarArea = /* #__PURE__ */ generateChart(
   'polar-chart',
   'polarArea',
   PolarAreaController
 )
 
+/** @type Object */
 export const Radar = /* #__PURE__ */ generateChart(
   'radar-chart',
   'radar',
   RadarController
 )
 
+/** @type Object */
 export const Bubble = /* #__PURE__ */ generateChart(
   'bubble-chart',
   'bubble',
   BubbleController
 )
 
+/** @type Object */
 export const Scatter = /* #__PURE__ */ generateChart(
   'scatter-chart',
   'scatter',
