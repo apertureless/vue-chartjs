@@ -111,7 +111,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-prettier-vue": "^3.1.0",
     "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-vue": "^8.2.0",
+    "eslint-plugin-vue": "^9.0.0",
     "jest": "^27.4.3",
     "jest-canvas-mock": "^2.3.1",
     "lint-staged": "^12.1.2",
