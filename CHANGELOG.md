@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/apertureless/vue-chartjs/compare/v4.1.0...v4.1.1) (2022-05-27)
+
+
+### Bug Fixes
+
+* add type comment on Chart Objects ([#825](https://github.com/apertureless/vue-chartjs/issues/825)) ([#860](https://github.com/apertureless/vue-chartjs/issues/860)) ([2311361](https://github.com/apertureless/vue-chartjs/commit/231136131d3cce81f362ccf1e58a0573308a5503))
+
 ## [4.1.0](https://github.com/apertureless/vue-chartjs/compare/v4.0.7...v4.1.0) (2022-05-10)
 
 
