@@ -114,7 +114,7 @@
     "eslint-plugin-vue": "^9.0.0",
     "jest": "^27.4.3",
     "jest-canvas-mock": "^2.3.1",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^13.0.0",
     "prettier": "2.6.2",
     "rollup": "^2.66.1",
     "rollup-plugin-swc": "^0.2.0",
