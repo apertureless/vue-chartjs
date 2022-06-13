@@ -104,7 +104,7 @@
     "del-cli": "^4.0.1",
     "eslint": "8.17.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-config-standard": "^16.0.3",
+    "eslint-config-standard": "^17.0.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",

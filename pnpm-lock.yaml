@@ -29,7 +29,7 @@ specifiers:
   del-cli: ^4.0.1
   eslint: 8.17.0
   eslint-config-prettier: ^8.3.0
-  eslint-config-standard: ^16.0.3
+  eslint-config-standard: ^17.0.0
   eslint-loader: ^4.0.2
   eslint-plugin-import: ^2.25.4
   eslint-plugin-node: ^11.1.0
@@ -82,7 +82,7 @@ devDependencies:
   del-cli: 4.0.1
   eslint: 8.17.0
   eslint-config-prettier: 8.5.0_eslint@8.17.0
-  eslint-config-standard: 16.0.3_447c59fcafa6bc598c8c2c18ee95ed72
+  eslint-config-standard: 17.0.0_ca6b741c3078b6e8f8ed3ebb5c6ca112
   eslint-loader: 4.0.2_eslint@8.17.0
   eslint-plugin-import: 2.26.0_eslint@8.17.0
   eslint-plugin-node: 11.1.0_eslint@8.17.0
@@ -8209,17 +8209,16 @@ packages:
       eslint: 8.17.0
     dev: true
 
-  /eslint-config-standard/16.0.3_447c59fcafa6bc598c8c2c18ee95ed72:
-    resolution: {integrity: sha512-x4fmJL5hGqNJKGHSjnLdgA6U6h1YW/G2dW9fA+cyVur4SK6lyue8+UgNKWlZtUDTXvgKDD/Oa3GQjmB5kjtVvg==}
+  /eslint-config-standard/17.0.0_ca6b741c3078b6e8f8ed3ebb5c6ca112:
+    resolution: {integrity: sha512-/2ks1GKyqSOkH7JFvXJicu0iMpoojkwB+f5Du/1SC0PtBL+s8v30k9njRZ21pm2drKYm2342jFnGWzttxPmZVg==}
     peerDependencies:
-      eslint: ^7.12.1
-      eslint-plugin-import: ^2.22.1
-      eslint-plugin-node: ^11.1.0
-      eslint-plugin-promise: ^4.2.1 || ^5.0.0
+      eslint: ^8.0.1
+      eslint-plugin-import: ^2.25.2
+      eslint-plugin-n: ^15.0.0
+      eslint-plugin-promise: ^6.0.0
     dependencies:
       eslint: 8.17.0
       eslint-plugin-import: 2.26.0_eslint@8.17.0
-      eslint-plugin-node: 11.1.0_eslint@8.17.0
       eslint-plugin-promise: 6.0.0_eslint@8.17.0
     dev: true
 
