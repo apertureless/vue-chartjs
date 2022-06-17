@@ -11,7 +11,7 @@ specifiers:
   '@storybook/addon-essentials': ^6.4.13
   '@storybook/vue3': ^6.4.19
   '@swc/core': ^1.2.120
-  '@swc/helpers': ^0.3.2
+  '@swc/helpers': ^0.4.0
   '@swc/jest': ^0.2.15
   '@types/jest': ^27.4.1
   '@vitejs/plugin-vue': ^2.2.2
@@ -64,7 +64,7 @@ devDependencies:
   '@storybook/addon-essentials': 6.4.22_1bb4d28b92b4492ca826266408431898
   '@storybook/vue3': 6.4.22_8ab5c766c282436721834bfe43ee8813
   '@swc/core': 1.2.183
-  '@swc/helpers': 0.3.13
+  '@swc/helpers': 0.4.2
   '@swc/jest': 0.2.21_@swc+core@1.2.183
   '@types/jest': 27.5.1
   '@vitejs/plugin-vue': 2.3.3_vite@2.9.9+vue@3.2.33
@@ -4464,8 +4464,8 @@ packages:
       '@swc/core-win32-x64-msvc': 1.2.183
     dev: true
 
-  /@swc/helpers/0.3.13:
-    resolution: {integrity: sha512-A1wswJhnqaLRn8uYVQ8YiNTtY5i/JIPmV08EXXjjTresIkUVUEUaFv/wXVhGXfRNYMvHPkuoMR1Nb6NgpxGjNg==}
+  /@swc/helpers/0.4.2:
+    resolution: {integrity: sha512-556Az0VX7WR6UdoTn4htt/l3zPQ7bsQWK+HqdG4swV7beUCxo/BqmvbOpUkTIm/9ih86LIf1qsUnywNL3obGHw==}
     dependencies:
       tslib: 2.4.0
     dev: true
