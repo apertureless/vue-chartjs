@@ -1,7 +1,7 @@
 {
   "name": "vue-chartjs",
   "version": "4.1.1",
-  "packageManager": "pnpm@6.32.22",
+  "packageManager": "pnpm@7.3.0",
   "description": "Vue.js wrapper for chart.js for creating beautiful charts.",
   "author": "Jakub Juszczak <jakub@posteo.de>",
   "homepage": "http://vue-chartjs.org",
