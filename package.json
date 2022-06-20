@@ -86,7 +86,7 @@
     "@storybook/addon-essentials": "^6.4.13",
     "@storybook/vue3": "^6.4.19",
     "@swc/core": "^1.2.120",
-    "@swc/helpers": "^0.3.2",
+    "@swc/helpers": "^0.4.0",
     "@swc/jest": "^0.2.15",
     "@types/jest": "^27.4.1",
     "@vitejs/plugin-vue": "^2.2.2",
