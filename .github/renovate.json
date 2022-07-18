@@ -2,5 +2,7 @@
   "extends": [
     "config:base",
     ":preserveSemverRanges"
-  ]
+  ],
+  "ignoreDeps": ["vue"],
+  "ignorePaths": ["**/legacy/**"]
 }
