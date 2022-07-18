@@ -36,8 +36,8 @@ specifiers:
   eslint-plugin-import: ^2.25.4
   eslint-plugin-n: ^15.2.4
   eslint-plugin-node: ^11.1.0
-  eslint-plugin-prettier: ^4.0.0
-  eslint-plugin-prettier-vue: ^4.2.0
+  eslint-plugin-prettier: ^4.2.1
+  eslint-plugin-prettier-vue: 3.1.0
   eslint-plugin-promise: ^6.0.0
   eslint-plugin-vue: ^9.0.0
   jest: ^27.4.3
@@ -93,7 +93,7 @@ devDependencies:
   eslint-plugin-n: 15.2.4_eslint@8.20.0
   eslint-plugin-node: 11.1.0_eslint@8.20.0
   eslint-plugin-prettier: 4.2.1_g4fztgbwjyq2fvmcscny2sj6fy
-  eslint-plugin-prettier-vue: 4.2.0
+  eslint-plugin-prettier-vue: 3.1.0
   eslint-plugin-promise: 6.0.0_eslint@8.20.0
   eslint-plugin-vue: 9.2.0_eslint@8.20.0
   jest: 27.5.1
@@ -8023,9 +8023,8 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-plugin-prettier-vue/4.2.0:
-    resolution: {integrity: sha512-DA2oNRx+pZ6RM/EIHIPME4FQZifnkEROa55OWtTTUFGHpj53tcHomuxVP/kS/2MM+ul46GEK+jymK69STWDWoA==}
-    engines: {node: '>=14'}
+  /eslint-plugin-prettier-vue/3.1.0:
+    resolution: {integrity: sha512-PxJxmHTAqBv5v6rU/hSg55cyJAp+LhF2K0ffF+MeR3zt0Njy36X5AcYQ75sYLt0KKdgA35XkQHIBrgLF63hTxA==}
     dependencies:
       '@vue/compiler-sfc': 3.2.37
       chalk: 4.1.2

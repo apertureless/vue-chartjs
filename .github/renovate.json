@@ -3,6 +3,6 @@
     "config:base",
     ":preserveSemverRanges"
   ],
-  "ignoreDeps": ["vue"],
+  "ignoreDeps": ["vue", "eslint-plugin-prettier-vue"],
   "ignorePaths": ["**/legacy/**"]
 }
