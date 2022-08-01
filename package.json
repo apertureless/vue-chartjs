@@ -93,7 +93,7 @@
     "@vitejs/plugin-vue": "^3.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/test-utils": "^2.0.0-rc.17",
-    "@vue/vue3-jest": "^27.0.0-alpha.4",
+    "@vue/vue3-jest": "^28.0.0",
     "babel-jest": "^27.4.5",
     "babel-loader": "8.2.5",
     "browserslist": "^4.19.1",

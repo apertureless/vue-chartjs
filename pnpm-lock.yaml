@@ -19,7 +19,7 @@ specifiers:
   '@vitejs/plugin-vue': ^3.0.0
   '@vue/eslint-config-typescript': ^11.0.0
   '@vue/test-utils': ^2.0.0-rc.17
-  '@vue/vue3-jest': ^27.0.0-alpha.4
+  '@vue/vue3-jest': ^28.0.0
   babel-jest: ^27.4.5
   babel-loader: 8.2.5
   browserslist: ^4.19.1
@@ -75,7 +75,7 @@ devDependencies:
   '@vitejs/plugin-vue': 3.0.1_vite@3.0.2+vue@3.2.37
   '@vue/eslint-config-typescript': 11.0.0_usemwu2orllh6tzptz2hsp6y3e
   '@vue/test-utils': 2.0.2_vue@3.2.37
-  '@vue/vue3-jest': 27.0.0_kg4fr4wi76kgxdhcrauxqbt4um
+  '@vue/vue3-jest': 28.0.1_kg4fr4wi76kgxdhcrauxqbt4um
   babel-jest: 27.5.1_@babel+core@7.18.9
   babel-loader: 8.2.5_@babel+core@7.18.9
   browserslist: 4.21.2
@@ -4689,14 +4689,15 @@ packages:
       vue: 3.2.37
     dev: true
 
-  /@vue/vue3-jest/27.0.0_kg4fr4wi76kgxdhcrauxqbt4um:
-    resolution: {integrity: sha512-VL61CgZBoQqayXfzlZJHHpZuX4lsT8dmdZMJzADhdAJjKu26JBpypHr/2ppevxItljPiuALQW4MKhhCXZRXnLg==}
+  /@vue/vue3-jest/28.0.1_kg4fr4wi76kgxdhcrauxqbt4um:
+    resolution: {integrity: sha512-fdzbp4HvU8dbo3Pup5sgll4R6hmBf5dHOjpLOFPiwwGnuA57g+Fe2u56nmBVYNd+XA4RInQobdBCl5GbnmhGhw==}
+    engines: {node: '>10'}
     peerDependencies:
       '@babel/core': 7.x
-      babel-jest: 27.x
-      jest: 27.x
-      ts-jest: 27.x
-      typescript: '>= 3.x'
+      babel-jest: 28.x
+      jest: 28.x
+      ts-jest: 28.x
+      typescript: '>= 4.3'
       vue: ^3.0.0-0
     peerDependenciesMeta:
       ts-jest:
