@@ -90,7 +90,7 @@
     "@swc/helpers": "^0.4.0",
     "@swc/jest": "^0.2.15",
     "@types/jest": "^27.4.1",
-    "@vitejs/plugin-vue": "^2.2.2",
+    "@vitejs/plugin-vue": "^3.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/test-utils": "^2.0.0-rc.17",
     "@vue/vue3-jest": "^27.0.0-alpha.4",
