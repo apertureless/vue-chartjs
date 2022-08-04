@@ -1,7 +1,7 @@
 {
   "name": "vue-chartjs-radar-example",
   "dependencies": {
-    "chart.js": "3.8.0",
+    "chart.js": "^3.8.0",
     "typescript": "^4.6.2",
     "vue": "^3.2.31",
     "vue-chartjs": "^4.0.0"

@@ -4,5 +4,5 @@
     ":preserveSemverRanges"
   ],
   "ignoreDeps": ["vue", "eslint-plugin-prettier-vue"],
-  "ignorePaths": ["**/legacy/**"]
+  "ignorePaths": ["**/legacy/**", "**/sandboxes/**"]
 }
