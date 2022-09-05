@@ -13,7 +13,8 @@ export default defineConfig({
 
     algolia: {
       indexName: 'vue-chartjs',
-      apiKey: 'b3544f7387612693644777553675d56a'
+      apiKey: 'a1bb4528e8ed1eb89e40d6e4c1000514',
+      appId: '24VA3R3NCC'
     },
 
     nav: [
