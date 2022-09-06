@@ -205,11 +205,19 @@ export function generateChart(chartId, chartType, chartController) {
       return createElement(
         'div',
         {
-          style: this.styles,
+          style:{
+            maxWidth: '100%',
+            height: '100%',
+            ...this.styles
+          },
           class: this.cssClasses
         },
         [
           createElement('canvas', {
+            style: {
+              maxWidth: '100%',
+              maxHeight: '100%',
+            },
             attrs: {
               id: this.chartId,
               width: this.width,
