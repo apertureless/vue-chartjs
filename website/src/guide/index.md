@@ -204,6 +204,59 @@ export default {
 </script>
 ```
 
+## Using with Nuxt
+
+**/plugins/chart.js**
+
+```javascript
+import Vue from "vue";
+import { Line } from "vue-chartjs/legacy";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  LineElement,
+  PointElement,
+} from "chart.js";
+
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  LineElement,
+);
+
+Vue.component("line-chart", {
+  extends: Line,
+});
+```
+
+**nuxt.config.js**
+
+```javascript
+plugins: [
+    {src: '~/plugins/chart/chart.js', mode: 'client'}
+  ]
+```
+
+Then you can use it in your pages or components:
+
+```
+<line-chart
+  :chart-options='chartOptions'
+  :chart-data='chartData'
+  chart-id='myCustomId'
+/>
+```
+
 ## Updating Charts
 
 v4 charts have data change watcher and options change watcher by default. v4 will update or re-render the chart if new data or new options is passed. Mixins have been removed.
