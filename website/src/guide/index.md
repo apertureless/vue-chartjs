@@ -2,7 +2,7 @@
 
 **vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in vue. You can easily create reuseable chart components.
 
-Supports Chart.js v3 and v2.
+Supports Chart.js v3.
 
 ## Introduction
 
