@@ -321,10 +321,6 @@ Charts will emit events if the data changes. You can listen to them in the chart
 - `chart:updated` - if the update handler performs an update instead of a re-render
 - `labels:updated` - if new labels were set
 
-## chartjs-plugin-annotation
-
-When using [chartjs-plugin-annotation](https://www.chartjs.org/chartjs-plugin-annotation/latest/) and **Vue 2** simultaneously, you will not be able to place multiple reactive charts on one page.
-
 ## Examples
 
 ### Chart with props

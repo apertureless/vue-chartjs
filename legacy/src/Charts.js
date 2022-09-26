@@ -26,7 +26,7 @@ import {
 const ANNOTATION_PLUGIN_KEY = 'annotation'
 
 export function generateChart(chartId, chartType, chartController) {
-  let _chartRef = null
+  let _chartRef = {}
 
   return {
     props: {
@@ -69,7 +69,8 @@ export function generateChart(chartId, chartType, chartController) {
     },
     data() {
       return {
-        _chart: null
+        _chart: null,
+        _id: Math.random().toString(36).substring(2),
       }
     },
     computed: {
@@ -84,7 +85,7 @@ export function generateChart(chartId, chartType, chartController) {
       ChartJS.register(chartController)
     },
     mounted() {
-      _chartRef = { current: null }
+      _chartRef[this.$data._id] = null
 
       if ('datasets' in this.chartData && this.chartData.datasets.length > 0) {
         chartCreate(this.renderChart, this.chartData, this.chartOptions)
@@ -185,11 +186,11 @@ export function generateChart(chartId, chartType, chartController) {
         chartUpdate(currentChart)
       },
       getCurrentChart() {
-        return this.hasAnnotationPlugin ? _chartRef.current : this.$data._chart
+        return this.hasAnnotationPlugin ? _chartRef[this.$data._id] : this.$data._chart
       },
       setCurrentChart(chart) {
         this.hasAnnotationPlugin
-          ? (_chartRef.current = chart)
+          ? (_chartRef[this.$data._id] = chart)
           : (this.$data._chart = chart)
       }
     },
