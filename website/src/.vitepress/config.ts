@@ -5,7 +5,7 @@ export default defineConfig({
 
   themeConfig: {
     repo: 'apertureless/vue-chartjs',
-    docsDir: 'docs',
+    docsDir: 'website/src',
     docsBranch: 'main',
     editLinks: true,
     editLinkText: 'Help us improve this page!',
