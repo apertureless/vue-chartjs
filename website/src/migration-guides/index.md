@@ -190,13 +190,13 @@ npm i vue-chartjs
 
 ### Change component import path
 
-For Vue 3 projects:
+For Vue 2.7 and Vue 3 projects:
 
 ```javascript
 import { /* component */ } from 'vue-chartjs'
 ```
 
-For Vue 2 projects:
+For Vue 2 (<2.7) projects:
 
 ```javascript
 import { /* component */ } from 'vue-chartjs/legacy'
