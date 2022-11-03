@@ -95,7 +95,7 @@
     "@vue/test-utils": "^2.0.0-rc.17",
     "@vue/vue3-jest": "^28.0.0",
     "babel-jest": "^27.4.5",
-    "babel-loader": "8.2.5",
+    "babel-loader": "9.1.0",
     "browserslist": "^4.19.1",
     "chart.js": "^3.7.0",
     "clean-publish": "^4.0.0",
