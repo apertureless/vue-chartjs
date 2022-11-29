@@ -9,7 +9,7 @@
 | width | チャート幅 |
 | height | チャート高さ |
 | chart-id | canvas要素のid |
-| canvasAttrs | canvas要素の属性 |
+| canvas-attrs | canvas要素の属性 |
 | css-classes | 囲んでいる div の css クラス (文字列) |
 | styles | 囲んでいる div の css クラス (オブジェクト) |
 | plugins | chartjs プラグイン (配列) |

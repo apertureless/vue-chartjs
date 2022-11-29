@@ -9,7 +9,7 @@
 | width | 图表宽度 |
 | height | 图表高度 |
 | chart-id | canvas的id |
-| canvasAttrs | canvas的属性 |
+| canvas-attrs | canvas的属性 |
 | css-classes |  css类的字符串 |
 | styles |  css 样式对象 |
 | plugins | chartjs 插件数组 |
