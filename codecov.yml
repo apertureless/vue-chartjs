@@ -26,8 +26,6 @@ coverage:
     - "tests/*"
     - "sandboxes/*"
     - "stories/*"
-    - "legacy/sandboxes/*"
-    - "legacy/test/*"
 
 
 comment:

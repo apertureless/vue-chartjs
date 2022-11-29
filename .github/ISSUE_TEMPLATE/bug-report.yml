@@ -30,7 +30,7 @@ body:
       label: Reproduction
       description: |
         Please provide issue reproduction.
-        You can give a link to a repository with the reproduction or make a fork of [this sandbox for Vue3](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/bar) or [this sandbox for Vue2](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/legacy/sandboxes/bar) and reproduce the issue there.
+        You can give a link to a repository with the reproduction or make a fork of [this sandbox for Vue3](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/bar) or [this sandbox for Vue2](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/legacy/sandboxes/bar) and reproduce the issue there.
     validations:
       required: true
 

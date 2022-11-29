@@ -21,9 +21,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: pnpm install
-      - name: Install dependencies to legacy folder
-        working-directory: legacy
-        run: pnpm install
       - name: Publish
         run: pnpm publish --no-git-checks
         env:
