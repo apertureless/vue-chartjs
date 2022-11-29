@@ -4,7 +4,7 @@ specifiers:
   '@commitlint/cli': ^17.0.0
   '@commitlint/config-conventional': ^17.0.0
   '@rollup/plugin-node-resolve': ^13.1.3
-  '@size-limit/preset-big-lib': ^7.0.8
+  '@size-limit/preset-big-lib': ^8.0.0
   '@storybook/addon-actions': ^6.5.13
   '@storybook/addon-controls': ^6.5.13
   '@storybook/addon-docs': ^6.5.13
@@ -58,7 +58,7 @@ devDependencies:
   '@commitlint/cli': 17.3.0_@swc+core@1.3.20
   '@commitlint/config-conventional': 17.3.0
   '@rollup/plugin-node-resolve': 13.3.0_rollup@2.79.1
-  '@size-limit/preset-big-lib': 7.0.8_ytfyrmbfqseqck7aknlypenbz4
+  '@size-limit/preset-big-lib': 8.1.0_ytfyrmbfqseqck7aknlypenbz4
   '@storybook/addon-actions': 6.5.13_biqbaboplfbrettd7655fr4n2y
   '@storybook/addon-controls': 6.5.13_koyxpsizmbdcqlqpv7dysdsjpi
   '@storybook/addon-docs': 6.5.13_koyxpsizmbdcqlqpv7dysdsjpi
@@ -4027,24 +4027,24 @@ packages:
       - supports-color
     dev: true
 
-  /@size-limit/file/7.0.8_size-limit@8.1.0:
-    resolution: {integrity: sha512-1KeFQuMXIXAH/iELqIX7x+YNYDFvzIvmxcp9PrdwEoSNL0dXdaDIo9WE/yz8xvOmUcKaLfqbWkL75DM0k91WHQ==}
-    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+  /@size-limit/file/8.1.0_size-limit@8.1.0:
+    resolution: {integrity: sha512-Ur+NgJSRHBnbQBrD8X2doxXYdBcVJsMxe2KfWrUmnZ6wYz09YKhQ1iYLqNztjf2yf/JEp00zp1vyhmimUQfUHQ==}
+    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
-      size-limit: 7.0.8
+      size-limit: 8.1.0
     dependencies:
-      semver: 7.3.5
+      semver: 7.3.7
       size-limit: 8.1.0
     dev: true
 
-  /@size-limit/preset-big-lib/7.0.8_ytfyrmbfqseqck7aknlypenbz4:
-    resolution: {integrity: sha512-m9C+FPPmETg9vg3V3Aq4hTflX1GVRpjYO94C4gqrl26I5YqB+BlKf8WKHmna3IbmJyePf7M8qvya/ougzMVHkQ==}
+  /@size-limit/preset-big-lib/8.1.0_ytfyrmbfqseqck7aknlypenbz4:
+    resolution: {integrity: sha512-onkwmJt+gXzoRXOkcmvAX2mGyAoS6vXltqZsQHKpqYENJDghi5o4XuIZhYoEdsAYeP/vrM7u9jGGB7a0PGXR+Q==}
     peerDependencies:
-      size-limit: 7.0.8
+      size-limit: 8.1.0
     dependencies:
-      '@size-limit/file': 7.0.8_size-limit@8.1.0
-      '@size-limit/time': 7.0.8_size-limit@8.1.0
-      '@size-limit/webpack': 7.0.8_ytfyrmbfqseqck7aknlypenbz4
+      '@size-limit/file': 8.1.0_size-limit@8.1.0
+      '@size-limit/time': 8.1.0_size-limit@8.1.0
+      '@size-limit/webpack': 8.1.0_ytfyrmbfqseqck7aknlypenbz4
       size-limit: 8.1.0
     transitivePeerDependencies:
       - '@swc/core'
@@ -4057,11 +4057,11 @@ packages:
       - webpack-cli
     dev: true
 
-  /@size-limit/time/7.0.8_size-limit@8.1.0:
-    resolution: {integrity: sha512-CS3pHTxeQXgrrMbhlqYfSR+b4QGp1rjEcYYkByIP+X/Go88R44yp19tyBFmmCQzs2Te2BAxfq3jv8FG+54oBew==}
-    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+  /@size-limit/time/8.1.0_size-limit@8.1.0:
+    resolution: {integrity: sha512-rOfIqpq8RSjKUnByJcWr2qw8XBTo3DAL16lmzjILvzQBkKi1kgDHU4QVa9K/BehYqH+Lx3rA3pVFMrQ5aJsOkg==}
+    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
-      size-limit: 7.0.8
+      size-limit: 8.1.0
     dependencies:
       estimo: 2.3.6
       react: 17.0.2
@@ -4073,11 +4073,11 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@size-limit/webpack/7.0.8_ytfyrmbfqseqck7aknlypenbz4:
-    resolution: {integrity: sha512-69YuY0o4geRNJDb55Vri+bNPs9+WZlK0pzcziip1p4uajCFMFQE0K8pKj3vsIOUADdTcimfypHciriCY/qrnJQ==}
-    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+  /@size-limit/webpack/8.1.0_ytfyrmbfqseqck7aknlypenbz4:
+    resolution: {integrity: sha512-TLego57hQbR0dmYZzIa9KZecebGMJoxZaqJTx9v3NDllxt6kJTljVXWghEvsGLpdKQfZTqraZ6nRm38+lG3sNw==}
+    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     peerDependencies:
-      size-limit: 7.0.8
+      size-limit: 8.1.0
     dependencies:
       escape-string-regexp: 4.0.0
       nanoid: 3.3.4
@@ -5579,7 +5579,7 @@ packages:
     resolution: {integrity: sha512-l6NQsDDyQUVeoTynNpC9uRvCUint/gSUXQA2euwmTuWGvPY5LSDUu6tkCtJB2SvGQlJQzLaKqcGZP4//7EDveA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 16.18.3
+      '@types/node': 18.11.9
     dev: true
 
   /@types/graceful-fs/4.1.5:
@@ -5647,7 +5647,7 @@ packages:
   /@types/node-fetch/2.6.2:
     resolution: {integrity: sha512-DHqhlq5jeESLy19TYhLakJ07kNumXWjcDdxXsLUMJZ6ue8VZJj4kLPQVE/2mdHh3xZziNF1xppu5lwmS53HR+A==}
     dependencies:
-      '@types/node': 16.18.3
+      '@types/node': 18.11.9
       form-data: 3.0.1
     dev: true
 
@@ -5722,7 +5722,7 @@ packages:
   /@types/webpack-sources/3.2.0:
     resolution: {integrity: sha512-Ft7YH3lEVRQ6ls8k4Ff1oB4jN6oy/XmU6tQISKdhfh+1mR+viZFphS6WL0IrtDOzvefmJg5a0s7ZQoRXwqTEFg==}
     dependencies:
-      '@types/node': 16.18.3
+      '@types/node': 18.11.9
       '@types/source-list-map': 0.1.2
       source-map: 0.7.4
     dev: true
@@ -5730,7 +5730,7 @@ packages:
   /@types/webpack/4.41.33:
     resolution: {integrity: sha512-PPajH64Ft2vWevkerISMtnZ8rTs4YmRbs+23c402J0INmxDKCrhZNvwZYtzx96gY2wAtXdrK1BS2fiC8MlLr3g==}
     dependencies:
-      '@types/node': 16.18.3
+      '@types/node': 18.11.9
       '@types/tapable': 1.0.8
       '@types/uglify-js': 3.17.1
       '@types/webpack-sources': 3.2.0
@@ -14467,14 +14467,6 @@ packages:
   /semver/6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
-    dev: true
-
-  /semver/7.3.5:
-    resolution: {integrity: sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      lru-cache: 6.0.0
     dev: true
 
   /semver/7.3.7:
