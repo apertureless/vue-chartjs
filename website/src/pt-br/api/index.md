@@ -4,14 +4,15 @@
 
 Existem alguns props básicas definidas nos componentes fornecidos pelo `vue-chartjs`. Porque você os `estende`, eles são _invisíveis_, mas você pode substituí-los:
 
-| Prop        | Descrição                                               |
-| ----------- | ------------------------------------------------------- |
-| width       | largura do gráfico                                      |
-| height      | altura do gráfico                                       |
-| chart-id    | Id da tela                                              |
-| css-classes | String com classes css para a div circundante           |
-| styles      | Objeto com estilos css para o div contêiner circundante |
-| plugins     | Array com plugins chartjs                               |
+| Prop         | Descrição                                               |
+| ------------ | ------------------------------------------------------- |
+| width        | largura do gráfico                                      |
+| height       | altura do gráfico                                       |
+| chart-id     | Id da tela                                              |
+| canvas-attrs | Atributos da tela                                       |
+| css-classes  | String com classes css para a div circundante           |
+| styles       | Objeto com estilos css para o div contêiner circundante |
+| plugins      | Array com plugins chartjs                               |
 
 ## Eventos
 

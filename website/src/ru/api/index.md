@@ -9,6 +9,7 @@
 | width | ширина графика |
 | height | высота графика |
 | chart-id | id canvas-элемента |
+| canvas-attrs | атрибуты canvas-элемента |
 | css-classes | String с классами CSS для родительского элемента div |
 | styles | Object со стилями CSS для родительского элемента div |
 | plugins | Array с плагинами chartjs |

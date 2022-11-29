@@ -12,6 +12,7 @@ There are some basic props defined in the components provided by `vue-chartjs`.
 | chartId | Id of the canvas |
 | width | Chart width |
 | height | Chart height |
+| canvasAttrs | Attributes of the canvas |
 | cssClasses | String with css classes for the surrounding div |
 | styles | Object with css styles for the surrounding div container |
 | plugins | Array with Chart plugins |
