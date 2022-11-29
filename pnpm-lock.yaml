@@ -45,7 +45,7 @@ specifiers:
   rollup-plugin-swc: ^0.2.0
   simple-git-hooks: ^2.7.0
   simple-github-release: ^1.0.0
-  size-limit: ^7.0.8
+  size-limit: ^8.0.0
   standard-version: ^9.3.2
   tsd: ^0.22.0
   typescript: ^4.6.2
@@ -58,7 +58,7 @@ devDependencies:
   '@commitlint/cli': 17.3.0_@swc+core@1.3.20
   '@commitlint/config-conventional': 17.3.0
   '@rollup/plugin-node-resolve': 13.3.0_rollup@2.79.1
-  '@size-limit/preset-big-lib': 7.0.8_2t3wrc2z4e4hptbjpua23i2rku
+  '@size-limit/preset-big-lib': 7.0.8_ytfyrmbfqseqck7aknlypenbz4
   '@storybook/addon-actions': 6.5.13_biqbaboplfbrettd7655fr4n2y
   '@storybook/addon-controls': 6.5.13_koyxpsizmbdcqlqpv7dysdsjpi
   '@storybook/addon-docs': 6.5.13_koyxpsizmbdcqlqpv7dysdsjpi
@@ -99,7 +99,7 @@ devDependencies:
   rollup-plugin-swc: 0.2.1_cjbrhyywzvvyh6otltqtw4alqy
   simple-git-hooks: 2.8.1
   simple-github-release: 1.0.0
-  size-limit: 7.0.8
+  size-limit: 8.1.0
   standard-version: 9.5.0
   tsd: 0.22.0
   typescript: 4.9.3
@@ -4027,25 +4027,25 @@ packages:
       - supports-color
     dev: true
 
-  /@size-limit/file/7.0.8_size-limit@7.0.8:
+  /@size-limit/file/7.0.8_size-limit@8.1.0:
     resolution: {integrity: sha512-1KeFQuMXIXAH/iELqIX7x+YNYDFvzIvmxcp9PrdwEoSNL0dXdaDIo9WE/yz8xvOmUcKaLfqbWkL75DM0k91WHQ==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
     peerDependencies:
       size-limit: 7.0.8
     dependencies:
       semver: 7.3.5
-      size-limit: 7.0.8
+      size-limit: 8.1.0
     dev: true
 
-  /@size-limit/preset-big-lib/7.0.8_2t3wrc2z4e4hptbjpua23i2rku:
+  /@size-limit/preset-big-lib/7.0.8_ytfyrmbfqseqck7aknlypenbz4:
     resolution: {integrity: sha512-m9C+FPPmETg9vg3V3Aq4hTflX1GVRpjYO94C4gqrl26I5YqB+BlKf8WKHmna3IbmJyePf7M8qvya/ougzMVHkQ==}
     peerDependencies:
       size-limit: 7.0.8
     dependencies:
-      '@size-limit/file': 7.0.8_size-limit@7.0.8
-      '@size-limit/time': 7.0.8_size-limit@7.0.8
-      '@size-limit/webpack': 7.0.8_2t3wrc2z4e4hptbjpua23i2rku
-      size-limit: 7.0.8
+      '@size-limit/file': 7.0.8_size-limit@8.1.0
+      '@size-limit/time': 7.0.8_size-limit@8.1.0
+      '@size-limit/webpack': 7.0.8_ytfyrmbfqseqck7aknlypenbz4
+      size-limit: 8.1.0
     transitivePeerDependencies:
       - '@swc/core'
       - bufferutil
@@ -4057,7 +4057,7 @@ packages:
       - webpack-cli
     dev: true
 
-  /@size-limit/time/7.0.8_size-limit@7.0.8:
+  /@size-limit/time/7.0.8_size-limit@8.1.0:
     resolution: {integrity: sha512-CS3pHTxeQXgrrMbhlqYfSR+b4QGp1rjEcYYkByIP+X/Go88R44yp19tyBFmmCQzs2Te2BAxfq3jv8FG+54oBew==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
     peerDependencies:
@@ -4065,7 +4065,7 @@ packages:
     dependencies:
       estimo: 2.3.6
       react: 17.0.2
-      size-limit: 7.0.8
+      size-limit: 8.1.0
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -4073,7 +4073,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@size-limit/webpack/7.0.8_2t3wrc2z4e4hptbjpua23i2rku:
+  /@size-limit/webpack/7.0.8_ytfyrmbfqseqck7aknlypenbz4:
     resolution: {integrity: sha512-69YuY0o4geRNJDb55Vri+bNPs9+WZlK0pzcziip1p4uajCFMFQE0K8pKj3vsIOUADdTcimfypHciriCY/qrnJQ==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
     peerDependencies:
@@ -4081,7 +4081,7 @@ packages:
     dependencies:
       escape-string-regexp: 4.0.0
       nanoid: 3.3.4
-      size-limit: 7.0.8
+      size-limit: 8.1.0
       webpack: 5.75.0_@swc+core@1.3.20
     transitivePeerDependencies:
       - '@swc/core'
@@ -7025,6 +7025,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -7292,7 +7293,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1
+      promise-inflight: 1.0.1_bluebird@3.7.2
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -9866,6 +9867,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -12466,6 +12468,7 @@ packages:
 
   /nan/2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -13432,6 +13435,17 @@ packages:
     peerDependenciesMeta:
       bluebird:
         optional: true
+    dev: true
+
+  /promise-inflight/1.0.1_bluebird@3.7.2:
+    resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
+    peerDependencies:
+      bluebird: '*'
+    peerDependenciesMeta:
+      bluebird:
+        optional: true
+    dependencies:
+      bluebird: 3.7.2
     dev: true
 
   /promise.allsettled/1.0.6:
@@ -14641,9 +14655,9 @@ packages:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
     dev: true
 
-  /size-limit/7.0.8:
-    resolution: {integrity: sha512-3h76c9E0e/nNhYLSR7IBI/bSoXICeo7EYkYjlyVqNIsu7KvN/PQmMbIXeyd2QKIF8iZKhaiZQoXLkGWbyPDtvQ==}
-    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+  /size-limit/8.1.0:
+    resolution: {integrity: sha512-bUL+Uyyt/G+a1XzKlI2WKHVDepmXtqMDhF65pdtjccheiQTNjExWW4nFefgbRL2QgNTzRfK6ayFKjO3o4ER4gg==}
+    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     dependencies:
       bytes-iec: 3.1.1
