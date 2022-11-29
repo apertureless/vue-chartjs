@@ -45,19 +45,14 @@
     "directory": "package"
   },
   "files": [
-    "dist",
-    "legacy/index.*"
+    "dist"
   ],
   "scripts": {
     "prepublishOnly": "pnpm test && pnpm build && del ./package && clean-publish",
     "postpublish": "del ./package",
-    "emitDeclarations:legacy": "cd legacy && pnpm emitDeclarations",
-    "emitDeclarations:base": "tsc --emitDeclarationOnly",
-    "emitDeclarations": "pnpm emitDeclarations:base && pnpm emitDeclarations:legacy",
+    "emitDeclarations": "tsc --emitDeclarationOnly",
     "build": "rollup -c & pnpm emitDeclarations",
-    "unit": "pnpm unit:base && pnpm unit:legacy",
-    "unit:base": "jest -c jest.config.json",
-    "unit:legacy": "cd legacy && pnpm unit",
+    "unit": "jest -c jest.config.json",
     "test": "pnpm lint && pnpm unit",
     "test:size": "size-limit",
     "test:typings": "tsd",
