@@ -91,7 +91,7 @@
     "@vitest/coverage-c8": "^0.25.3",
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/test-utils": "^2.0.0-rc.17",
-    "babel-loader": "8.2.5",
+    "babel-loader": "9.1.0",
     "browserslist": "^4.19.1",
     "chart.js": "^3.7.0",
     "clean-publish": "^4.0.0",
