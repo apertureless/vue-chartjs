@@ -28,7 +28,8 @@ import {
   watch,
   isProxy,
   toRaw,
-  PropType
+  PropType,
+  CanvasHTMLAttributes
 } from 'vue'
 
 import {
@@ -85,6 +86,10 @@ export const generateChart = <
       height: {
         type: Number,
         default: 400
+      },
+      canvasAttrs: {
+        type: Object as PropType<Partial<CanvasHTMLAttributes>>,
+        default: () => ({}),
       },
       cssClasses: {
         type: String,
@@ -266,6 +271,7 @@ export const generateChart = <
             id: props.chartId,
             width: props.width,
             height: props.height,
+            ...props.canvasAttrs,
             ref: canvasEl
           })
         ])
