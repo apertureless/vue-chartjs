@@ -7,9 +7,6 @@ jobs:
   size:
     runs-on: ubuntu-latest
     name: Checking size
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
-    env:
-      CI_JOB_NUMBER: 1
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
