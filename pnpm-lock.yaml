@@ -47,7 +47,7 @@ specifiers:
   simple-github-release: ^1.0.0
   size-limit: ^8.0.0
   standard-version: ^9.3.2
-  tsd: ^0.22.0
+  tsd: ^0.25.0
   typescript: ^4.6.2
   vite: ^3.0.2
   vitest: ^0.25.3
@@ -101,7 +101,7 @@ devDependencies:
   simple-github-release: 1.0.0
   size-limit: 8.1.0
   standard-version: 9.5.0
-  tsd: 0.22.0
+  tsd: 0.25.0
   typescript: 4.9.3
   vite: 3.2.4
   vitest: 0.25.3_jsdom@20.0.3
@@ -5516,9 +5516,8 @@ packages:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
     dev: true
 
-  /@tsd/typescript/4.7.4:
-    resolution: {integrity: sha512-jbtC+RgKZ9Kk65zuRZbKLTACf+tvFW4Rfq0JEMXrlmV3P3yme+Hm+pnb5fJRyt61SjIitcrC810wj7+1tgsEmg==}
-    hasBin: true
+  /@tsd/typescript/4.9.3:
+    resolution: {integrity: sha512-iyi45620s9QN62rW90KelRJLG7p15g4NhTezxYCHmE5RY/BI270Sn7E8vWtiLzB+9mQgy71sYXcgyDKjtJamSQ==}
     dev: true
 
   /@types/chai-subset/1.3.3:
@@ -5535,7 +5534,7 @@ packages:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
       '@types/eslint': 8.4.10
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
     dev: true
 
   /@types/eslint/7.29.0:
@@ -5548,7 +5547,7 @@ packages:
   /@types/eslint/8.4.10:
     resolution: {integrity: sha512-Sl/HOqN8NKPmhWo2VBEPm0nvHnu2LL3v9vKo8MEq0EtbJ4eVzGPl41VNPvn5E1i5poMk4/XD8UriLHpJvEP/Nw==}
     dependencies:
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
       '@types/json-schema': 7.0.11
     dev: true
 
@@ -15527,12 +15526,12 @@ packages:
       strip-bom: 3.0.0
     dev: true
 
-  /tsd/0.22.0:
-    resolution: {integrity: sha512-NH+tfEDQ0Ze8gH7TorB6IxYybD+M68EYawe45YNVrbQcydNBfdQHP9IiD0QbnqmwNXrv+l9GAiULT68mo4q/xA==}
+  /tsd/0.25.0:
+    resolution: {integrity: sha512-liUlvKtsdr+70XEZP/kkF6U8+Q9URZi4Pw58ih7a9x3kjJblG8rdVgvG62xcvkgRva1q3yWX5qAxfYZuYiC5CA==}
     engines: {node: '>=14.16'}
     hasBin: true
     dependencies:
-      '@tsd/typescript': 4.7.4
+      '@tsd/typescript': 4.9.3
       eslint-formatter-pretty: 4.1.0
       globby: 11.1.0
       meow: 9.0.0
