@@ -112,7 +112,7 @@
     "prettier": "2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^2.66.1",
+    "rollup": "^3.0.0",
     "rollup-plugin-swc": "^0.2.0",
     "simple-git-hooks": "^2.7.0",
     "simple-github-release": "^1.0.0",

@@ -41,7 +41,7 @@ specifiers:
   prettier: 2.7.1
   react: ^18.2.0
   react-dom: ^18.2.0
-  rollup: ^2.66.1
+  rollup: ^3.0.0
   rollup-plugin-swc: ^0.2.0
   simple-git-hooks: ^2.7.0
   simple-github-release: ^1.0.0
@@ -57,7 +57,7 @@ specifiers:
 devDependencies:
   '@commitlint/cli': 17.3.0_@swc+core@1.3.20
   '@commitlint/config-conventional': 17.3.0
-  '@rollup/plugin-node-resolve': 13.3.0_rollup@2.79.1
+  '@rollup/plugin-node-resolve': 13.3.0_rollup@3.5.0
   '@size-limit/preset-big-lib': 8.1.0_ytfyrmbfqseqck7aknlypenbz4
   '@storybook/addon-actions': 6.5.13_biqbaboplfbrettd7655fr4n2y
   '@storybook/addon-controls': 6.5.13_koyxpsizmbdcqlqpv7dysdsjpi
@@ -95,8 +95,8 @@ devDependencies:
   prettier: 2.7.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  rollup: 2.79.1
-  rollup-plugin-swc: 0.2.1_cjbrhyywzvvyh6otltqtw4alqy
+  rollup: 3.5.0
+  rollup-plugin-swc: 0.2.1_oepiuhfbijtn2h33hil5q7bbwe
   simple-git-hooks: 2.8.1
   simple-github-release: 1.0.0
   size-limit: 8.1.0
@@ -3983,22 +3983,22 @@ packages:
       '@octokit/openapi-types': 12.11.0
     dev: true
 
-  /@rollup/plugin-node-resolve/13.3.0_rollup@2.79.1:
+  /@rollup/plugin-node-resolve/13.3.0_rollup@3.5.0:
     resolution: {integrity: sha512-Lus8rbUo1eEcnS4yTFKLZrVumLPY+YayBdWXgFSHYhTT2iJbMhoaaBL3xl5NCdeRytErGr8tZ0L71BMRmnlwSw==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
       rollup: ^2.42.0
     dependencies:
-      '@rollup/pluginutils': 3.1.0_rollup@2.79.1
+      '@rollup/pluginutils': 3.1.0_rollup@3.5.0
       '@types/resolve': 1.17.1
       deepmerge: 4.2.2
       is-builtin-module: 3.2.0
       is-module: 1.0.0
       resolve: 1.22.1
-      rollup: 2.79.1
+      rollup: 3.5.0
     dev: true
 
-  /@rollup/pluginutils/3.1.0_rollup@2.79.1:
+  /@rollup/pluginutils/3.1.0_rollup@3.5.0:
     resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
@@ -4007,7 +4007,7 @@ packages:
       '@types/estree': 0.0.39
       estree-walker: 1.0.1
       picomatch: 2.3.1
-      rollup: 2.79.1
+      rollup: 3.5.0
     dev: true
 
   /@rollup/pluginutils/4.2.1:
@@ -7293,7 +7293,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -13437,17 +13437,6 @@ packages:
         optional: true
     dev: true
 
-  /promise-inflight/1.0.1_bluebird@3.7.2:
-    resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
-    peerDependencies:
-      bluebird: '*'
-    peerDependenciesMeta:
-      bluebird:
-        optional: true
-    dependencies:
-      bluebird: 3.7.2
-    dev: true
-
   /promise.allsettled/1.0.6:
     resolution: {integrity: sha512-22wJUOD3zswWFqgwjNHa1965LvqTX87WPu/lreY2KSd7SVcERfuZ4GfUaOnJNnvtoIv2yXT/W00YIGMetXtFXg==}
     engines: {node: '>= 0.4'}
@@ -14307,7 +14296,7 @@ packages:
       inherits: 2.0.4
     dev: true
 
-  /rollup-plugin-swc/0.2.1_cjbrhyywzvvyh6otltqtw4alqy:
+  /rollup-plugin-swc/0.2.1_oepiuhfbijtn2h33hil5q7bbwe:
     resolution: {integrity: sha512-wWRYt9tC0aIBvRQHNnVtwJ6DRPDj9XYpOAcOyFB11sKSkR/R+NAmbrjBACCPNVmZcxg6joV29wXgb5mU1DI7eA==}
     peerDependencies:
       '@swc/core': '>=1.0'
@@ -14315,12 +14304,20 @@ packages:
     dependencies:
       '@rollup/pluginutils': 4.2.1
       '@swc/core': 1.3.20
-      rollup: 2.79.1
+      rollup: 3.5.0
     dev: true
 
   /rollup/2.79.1:
     resolution: {integrity: sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==}
     engines: {node: '>=10.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /rollup/3.5.0:
+    resolution: {integrity: sha512-TYu2L+TGhmNsXCtByont89u+ATQLcDy6A+++PwLXYunRtOm7XnaD+65s1pvewaOxMYR0eOkMXn9/i0saBxxpnQ==}
+    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
