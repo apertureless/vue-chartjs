@@ -1,17 +1,25 @@
 const path = require('path')
+const { mergeConfig } = require('vite')
 
 module.exports = {
-  stories: ['../stories/*.stories.@(ts|js)'],
-  addons: ['@storybook/addon-essentials'],
-  framework: '@storybook/vue3',
   core: {
-    builder: '@storybook/builder-webpack5'
+    builder: '@storybook/builder-vite'
   },
-  webpackFinal: async config => {
-    config.resolve.alias['vue-chartjs'] = path.resolve(
-      __dirname,
-      '../src/index.ts'
-    )
-    return config
-  }
+  viteFinal(config) {
+    return mergeConfig(config, {
+      resolve: {
+        dedupe: ['@storybook/client-api'],
+        alias: {
+          'vue-chartjs': path.resolve(__dirname, '../src')
+        }
+      }
+    })
+  },
+  framework: '@storybook/vue3',
+  stories: ['../stories/*.stories.@(ts|js)'],
+  addons: [
+    '@storybook/addon-docs',
+    '@storybook/addon-controls',
+    '@storybook/addon-actions'
+  ]
 }
