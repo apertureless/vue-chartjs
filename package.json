@@ -52,19 +52,20 @@
     "postpublish": "del ./package",
     "emitDeclarations": "tsc --emitDeclarationOnly",
     "build": "rollup -c & pnpm emitDeclarations",
-    "lint": "eslint 'src/**/*.ts'",
+    "start:storybook": "start-storybook -p 6006 --ci",
+    "build:storybook": "del ./storybook-static; NODE_ENV=production build-storybook",
+    "lint": "eslint 'sandboxes/**/*.{js,ts,vue}' 'src/**/*.{js,ts,vue}' 'stories/**/*.{js,ts,vue}' 'test/**/*.{js,ts,vue}'",
     "test:unit": "vitest run --coverage",
     "test:unit:watch": "vitest watch",
     "test:typings": "tsd",
     "test:size": "size-limit",
     "test": "pnpm lint && pnpm test:unit",
-    "format": "prettier --write src test",
+    "format": "prettier --write src test sandboxes stories",
     "commit": "cz",
-    "start:storybook": "start-storybook -p 6006 --ci",
-    "build:storybook": "del ./storybook-static; NODE_ENV=production build-storybook",
     "bumpVersion": "standard-version",
     "createGithubRelease": "simple-github-release",
-    "release": "pnpm bumpVersion && git push origin main --tags && pnpm createGithubRelease"
+    "release": "pnpm bumpVersion && git push origin main --tags && pnpm createGithubRelease",
+    "updateGitHooks": "simple-git-hooks"
   },
   "peerDependencies": {
     "chart.js": "^3.7.0",
@@ -107,7 +108,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-vue": "^9.0.0",
     "jsdom": "^20.0.3",
-    "lint-staged": "^13.0.0",
+    "nano-staged": "^0.8.0",
     "prettier": "2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -126,6 +127,5 @@
   },
   "tsd": {
     "directory": "./test"
-  },
-  "readme": ""
+  }
 }

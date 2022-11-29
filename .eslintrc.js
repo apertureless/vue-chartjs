@@ -22,5 +22,13 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'prettier/prettier': 'error',
     quotes: [2, 'single', 'avoid-escape']
-  }
+  },
+  overrides: [
+    {
+      files: ['sandboxes/**/*', 'test/**/*'],
+      rules: {
+        'vue/no-reserved-component-names': 'off'
+      }
+    }
+  ]
 }
