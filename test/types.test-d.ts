@@ -4,7 +4,7 @@ import { Plugin } from 'chart.js'
 
 import { Bar, Radar, Scatter, Doughnut } from '../src'
 
-const chartData = {
+const data = {
   datasets: []
 }
 
@@ -17,23 +17,23 @@ const testPlugin = {
  */
 
 h(Radar, {
-  chartData,
+  data,
   plugins: []
 })
 
 h(Scatter, {
-  chartData,
+  data,
   plugins: []
 })
 
 h(Bar, {
-  chartData,
-  chartOptions: {}
+  data,
+  options: {}
 })
 
 expectError(
   h(Scatter, {
-    chartData,
+    data,
     plugins: [testPlugin] as Plugin<'bubble'>[]
   })
 )
@@ -43,16 +43,16 @@ expectError(
  */
 
 h(Doughnut, {
-  chartData,
-  chartOptions: {
+  data,
+  options: {
     cutout: '75%'
   }
 })
 
 expectError(
   h(Scatter, {
-    chartData,
-    chartOptions: {
+    data,
+    options: {
       cutout: '75%'
     }
   })

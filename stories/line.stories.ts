@@ -1,24 +1,28 @@
-import LineChart from '../sandboxes/line/src/components/lineChart'
+import 'chart.js/auto'
+import { Line } from '../src'
+import * as lineChartConfig from '../sandboxes/line/src/chartConfig'
 
 export default {
   title: 'LineChart',
-  component: LineChart,
+  component: Line,
   parameters: {
     layout: 'centered'
   }
 }
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { LineChart },
-  template: '<LineChart />'
-})
+export function Default(args) {
+  return {
+    components: { Line },
+    template: '<Line v-bind="args" />',
+    setup() {
+      return { args }
+    }
+  }
+}
 
-export const DefaultLine = Template.bind({})
-
-DefaultLine.args = {
-  chartId: 'line-chart',
+Default.args = {
+  id: 'line-chart',
   width: 400,
   height: 400,
-  plugins: []
+  ...lineChartConfig
 }

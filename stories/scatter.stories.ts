@@ -1,24 +1,28 @@
-import ScatterChart from '../sandboxes/scatter/src/components/scatterChart'
+import 'chart.js/auto'
+import { Scatter } from '../src'
+import * as scatterChartConfig from '../sandboxes/scatter/src/chartConfig'
 
 export default {
   title: 'ScatterChart',
-  component: ScatterChart,
+  component: Scatter,
   parameters: {
     layout: 'centered'
   }
 }
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { ScatterChart },
-  template: '<ScatterChart />'
-})
+export function Default(args) {
+  return {
+    components: { Scatter },
+    template: '<Scatter v-bind="args" />',
+    setup() {
+      return { args }
+    }
+  }
+}
 
-export const DefaultScatter = Template.bind({})
-
-DefaultScatter.args = {
-  chartId: 'scatter-chart',
+Default.args = {
+  id: 'scatter-chart',
   width: 400,
   height: 400,
-  plugins: []
+  ...scatterChartConfig
 }

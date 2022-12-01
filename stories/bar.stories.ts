@@ -1,24 +1,28 @@
-import BarChart from '../sandboxes/bar/src/components/barChart'
+import 'chart.js/auto'
+import { Bar } from '../src'
+import * as barChartConfig from '../sandboxes/bar/src/chartConfig'
 
 export default {
   title: 'BarChart',
-  component: BarChart,
+  component: Bar,
   parameters: {
     layout: 'centered'
   }
 }
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { BarChart },
-  template: '<BarChart />'
-})
+export function Default(args) {
+  return {
+    components: { Bar },
+    template: '<Bar v-bind="args" />',
+    setup() {
+      return { args }
+    }
+  }
+}
 
-export const DefaultBar = Template.bind({})
-
-DefaultBar.args = {
-  chartId: 'bar-chart',
+Default.args = {
+  id: 'bar-chart',
   width: 400,
   height: 400,
-  plugins: []
+  ...barChartConfig
 }

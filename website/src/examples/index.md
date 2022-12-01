@@ -2,17 +2,17 @@
 
 ## Vue 3 charts
 
-- [Bar](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/bar)
-- [Bubble](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/bubble)
-- [Doughnut](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/doughnut)
-- [Line](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/line)
-- [Pie](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/pie)
-- [PolarArea](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/polar-area)
-- [Radar](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/radar)
-- [Scatter](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/scatter)
-- [Bar with reactive prop](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/reactive-prop)
-- [Bar with reactive data](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/reactive)
-- [Custom chart](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/main/sandboxes/custom)
+- [Bar](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/sandboxes/bar)
+- [Bubble](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/sandboxes/bubble)
+- [Doughnut](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/sandboxes/doughnut)
+- [Line](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/sandboxes/line)
+- [Pie](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/sandboxes/pie)
+- [PolarArea](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/sandboxes/polar-area)
+- [Radar](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/sandboxes/radar)
+- [Scatter](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/sandboxes/scatter)
+- [Bar with reactive prop](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/sandboxes/reactive-prop)
+- [Bar with reactive data](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/sandboxes/reactive)
+- [Custom chart](https://codesandbox.io/s/github/apertureless/vue-chartjs/tree/v4/sandboxes/custom)
 
 ## Vue 2 charts
 

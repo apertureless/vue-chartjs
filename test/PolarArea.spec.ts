@@ -1,34 +1,32 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import PolarAreaChart from './examples/PolarAreaChart'
+import { PolarArea } from '../src'
+import * as polarAreaChartConfig from '../sandboxes/polar-area/src/chartConfig'
 
-describe('PolarChart', () => {
-  const Component = {
-    template:
-      '<div><PolarAreaChart :chartId="chartId" :plugins="plugins" /></div>',
-    components: { PolarAreaChart },
-    props: ['chartId', 'plugins']
-  }
-
+describe('PolarAreaChart', () => {
   it('should render a canvas', () => {
-    const wrapper = mount(Component)
+    const wrapper = mount(PolarArea, {
+      props: polarAreaChartConfig as any
+    })
 
-    const polarAreaChartEl = wrapper.find('#polar-chart')
-    expect(polarAreaChartEl.element.id).not.toBe('undefined')
-    expect(polarAreaChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
 
-    const canvasEl = wrapper.find('canvas')
-    expect(canvasEl.exists()).toBe(true)
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('')
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(Component, {
-      props: { chartId: 'polarchartprop' }
+    const wrapper = mount(PolarArea, {
+      props: {
+        id: 'polar-area-chart-id',
+        ...polarAreaChartConfig
+      } as any
     })
 
-    const polarAreaChartEl = wrapper.find('#polarchartprop')
-    expect(polarAreaChartEl.element.id).not.toBe('undefined')
-    expect(polarAreaChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
+
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('polar-area-chart-id')
   })
 
   it('should add inline plugins based on prop', () => {
@@ -36,8 +34,11 @@ describe('PolarChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(Component, {
-      props: { plugins: [testPlugin] }
+    const wrapper = mount(PolarArea, {
+      props: {
+        plugins: [testPlugin],
+        ...polarAreaChartConfig
+      } as any
     })
 
     expect(wrapper.props().plugins.length).toEqual(1)

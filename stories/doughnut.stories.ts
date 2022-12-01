@@ -1,24 +1,28 @@
-import DoughnutChart from '../sandboxes/doughnut/src/components/doughnutChart'
+import 'chart.js/auto'
+import { Doughnut } from '../src'
+import * as doughnutChartConfig from '../sandboxes/doughnut/src/chartConfig'
 
 export default {
   title: 'DoughnutChart',
-  component: DoughnutChart,
+  component: Doughnut,
   parameters: {
     layout: 'centered'
   }
 }
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { DoughnutChart },
-  template: '<DoughnutChart />'
-})
+export function Default(args) {
+  return {
+    components: { Doughnut },
+    template: '<Doughnut v-bind="args" />',
+    setup() {
+      return { args }
+    }
+  }
+}
 
-export const DefaultDoughnut = Template.bind({})
-
-DefaultDoughnut.args = {
-  chartId: 'doughnut-chart',
+Default.args = {
+  id: 'doughnut-chart',
   width: 400,
   height: 400,
-  plugins: []
+  ...doughnutChartConfig
 }

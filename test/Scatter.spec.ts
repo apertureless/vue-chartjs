@@ -1,34 +1,32 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import ScatterChart from './examples/ScatterChart'
+import { Scatter } from '../src'
+import * as scatterChartConfig from '../sandboxes/scatter/src/chartConfig'
 
 describe('ScatterChart', () => {
-  const Component = {
-    template:
-      '<div><ScatterChart :chartId="chartId" :plugins="plugins" /></div>',
-    components: { ScatterChart },
-    props: ['chartId', 'plugins']
-  }
-
   it('should render a canvas', () => {
-    const wrapper = mount(Component)
+    const wrapper = mount(Scatter, {
+      props: scatterChartConfig as any
+    })
 
-    const scatterChartEl = wrapper.find('#scatter-chart')
-    expect(scatterChartEl.element.id).not.toBe('undefined')
-    expect(scatterChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
 
-    const canvasEl = wrapper.find('canvas')
-    expect(canvasEl.exists()).toBe(true)
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('')
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(Component, {
-      props: { chartId: 'scatterchartprop' }
+    const wrapper = mount(Scatter, {
+      props: {
+        id: 'scatter-chart-id',
+        ...scatterChartConfig
+      } as any
     })
 
-    const scatterChartEl = wrapper.find('#scatterchartprop')
-    expect(scatterChartEl.element.id).not.toBe('undefined')
-    expect(scatterChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
+
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('scatter-chart-id')
   })
 
   it('should add inline plugins based on prop', () => {
@@ -36,8 +34,11 @@ describe('ScatterChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(Component, {
-      props: { plugins: [testPlugin] }
+    const wrapper = mount(Scatter, {
+      props: {
+        plugins: [testPlugin],
+        ...scatterChartConfig
+      } as any
     })
 
     expect(wrapper.props().plugins.length).toEqual(1)

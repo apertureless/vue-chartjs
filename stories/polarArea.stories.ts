@@ -1,24 +1,28 @@
-import PolarAreaChart from '../sandboxes/polar-area/src/components/polarAreaChart'
+import 'chart.js/auto'
+import { PolarArea } from '../src'
+import * as polarAreaChartConfig from '../sandboxes/polar-area/src/chartConfig'
 
 export default {
   title: 'PolarAreaChart',
-  component: PolarAreaChart,
+  component: PolarArea,
   parameters: {
     layout: 'centered'
   }
 }
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { PolarAreaChart },
-  template: '<PolarAreaChart />'
-})
+export function Default(args) {
+  return {
+    components: { PolarArea },
+    template: '<PolarArea v-bind="args" />',
+    setup() {
+      return { args }
+    }
+  }
+}
 
-export const DefaultPolarArea = Template.bind({})
-
-DefaultPolarArea.args = {
-  chartId: 'polar-area-chart',
+Default.args = {
+  id: 'polar-area-chart',
   width: 400,
   height: 400,
-  plugins: []
+  ...polarAreaChartConfig
 }

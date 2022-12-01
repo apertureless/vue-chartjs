@@ -1,24 +1,43 @@
-import ReactiveChart from '../sandboxes/reactive/src/components/reactiveChart'
+import 'chart.js/auto'
+import { ref, onMounted } from 'vue'
+import { Bar } from '../src'
+import * as reactiveChartConfig from '../sandboxes/reactive/src/chartConfig'
 
 export default {
-  title: 'ReactiveChart',
-  component: ReactiveChart,
+  title: 'Reactive',
+  component: Bar,
   parameters: {
     layout: 'centered'
   }
 }
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { ReactiveChart },
-  template: '<ReactiveChart />'
-})
+export function Default(args) {
+  return {
+    components: { Bar },
+    template: '<Bar v-bind="args" :options="options" :data="data" />',
+    setup() {
+      const options = reactiveChartConfig.options
+      const data = ref<any>({
+        datasets: []
+      })
 
-export const DefaultReactive = Template.bind({})
+      onMounted(() => {
+        setInterval(() => {
+          data.value = { ...reactiveChartConfig.data }
+        }, 3000)
+      })
 
-DefaultReactive.args = {
-  chartId: 'reactive-chart',
+      return {
+        args,
+        options,
+        data
+      }
+    }
+  }
+}
+
+Default.args = {
+  id: 'reactive-chart',
   width: 400,
-  height: 400,
-  plugins: []
+  height: 400
 }

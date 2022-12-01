@@ -1,34 +1,32 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import DoughnutChart from './examples/DoughnutChart'
+import { Doughnut } from '../src'
+import * as doughnutChartConfig from '../sandboxes/doughnut/src/chartConfig'
 
 describe('DoughnutChart', () => {
-  const Component = {
-    template:
-      '<div><DoughnutChart :chartId="chartId" :plugins="plugins" /></div>',
-    components: { DoughnutChart },
-    props: ['chartId', 'plugins']
-  }
-
   it('should render a canvas', () => {
-    const wrapper = mount(Component)
+    const wrapper = mount(Doughnut, {
+      props: doughnutChartConfig as any
+    })
 
-    const doughnutChartEl = wrapper.find('#doughnut-chart')
-    expect(doughnutChartEl.element.id).not.toBe('undefined')
-    expect(doughnutChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
 
-    const canvasEl = wrapper.find('canvas')
-    expect(canvasEl.exists()).toBe(true)
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('')
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(Component, {
-      props: { chartId: 'doughnutchartprop' }
+    const wrapper = mount(Doughnut, {
+      props: {
+        id: 'doughnut-chart-id',
+        ...doughnutChartConfig
+      } as any
     })
 
-    const doughnutChartEl = wrapper.find('#doughnutchartprop')
-    expect(doughnutChartEl.element.id).not.toBe('undefined')
-    expect(doughnutChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
+
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('doughnut-chart-id')
   })
 
   it('should add inline plugins based on prop', () => {
@@ -36,8 +34,11 @@ describe('DoughnutChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(Component, {
-      props: { plugins: [testPlugin] }
+    const wrapper = mount(Doughnut, {
+      props: {
+        plugins: [testPlugin],
+        ...doughnutChartConfig
+      } as any
     })
 
     expect(wrapper.props().plugins.length).toEqual(1)
