@@ -1,24 +1,28 @@
-import RadarChart from '../sandboxes/radar/src/components/radarChart'
+import 'chart.js/auto'
+import { Radar } from '../src'
+import * as radarChartConfig from '../sandboxes/radar/src/chartConfig'
 
 export default {
   title: 'RadarChart',
-  component: RadarChart,
+  component: Radar,
   parameters: {
     layout: 'centered'
   }
 }
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { RadarChart },
-  template: '<RadarChart />'
-})
+export function Default(args) {
+  return {
+    components: { Radar },
+    template: '<Radar v-bind="args" />',
+    setup() {
+      return { args }
+    }
+  }
+}
 
-export const DefaultRadar = Template.bind({})
-
-DefaultRadar.args = {
-  chartId: 'radar-chart',
+Default.args = {
+  id: 'radar-chart',
   width: 400,
   height: 400,
-  plugins: []
+  ...radarChartConfig
 }

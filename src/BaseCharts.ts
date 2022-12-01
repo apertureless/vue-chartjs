@@ -51,22 +51,23 @@ import type {
   TypedChartComponent
 } from './types'
 
-export const generateChart = <
+export function createTypedChart<
   TType extends ChartType = ChartType,
   TData = DefaultDataPoint<TType>,
   TLabel = unknown
 >(
-  chartId: string,
-  chartType: TType,
-  chartController: ChartComponentLike
-): TypedChartComponent<TType, TData, TLabel> =>
-  defineComponent({
+  type: TType,
+  registerables: ChartComponentLike
+): TypedChartComponent<TType, TData, TLabel> {
+  ChartJS.register(registerables)
+
+  return defineComponent({
     props: {
-      chartData: {
+      data: {
         type: Object as PropType<TChartData<TType, TData, TLabel>>,
         required: true
       },
-      chartOptions: {
+      options: {
         type: Object as PropType<TChartOptions<TType>>,
         default: () => {}
       },
@@ -74,34 +75,12 @@ export const generateChart = <
         type: String,
         default: 'label'
       },
-      chartId: {
-        type: String,
-        default: chartId
-      },
-      width: {
-        type: Number,
-        default: 400
-      },
-      height: {
-        type: Number,
-        default: 400
-      },
-      cssClasses: {
-        type: String,
-        default: ''
-      },
-      styles: {
-        type: Object as PropType<Partial<CSSStyleDeclaration>>,
-        default: () => {}
-      },
       plugins: {
         type: Array as PropType<Plugin<TType>[]>,
         default: () => []
       }
     },
     setup(props, context) {
-      ChartJS.register(chartController)
-
       const _chart = shallowRef<TypedChartJS<TType, TData, TLabel> | null>(null)
       const canvasEl = ref<HTMLCanvasElement | null>(null)
 
@@ -126,7 +105,7 @@ export const generateChart = <
             _chart.value = new ChartJS<TType, TData, TLabel>(
               canvasEl2DContext,
               {
-                type: chartType,
+                type,
                 data: isProxy(data) ? new Proxy(chartData, {}) : chartData,
                 options,
                 plugins: props.plugins
@@ -175,8 +154,8 @@ export const generateChart = <
 
             chartCreate<TType, TData, TLabel>(
               renderChart,
-              props.chartData,
-              props.chartOptions as ChartOptions<TType>,
+              props.data,
+              props.options as ChartOptions<TType>,
               context
             )
           }
@@ -187,8 +166,8 @@ export const generateChart = <
 
           chartCreate<TType, TData, TLabel>(
             renderChart,
-            props.chartData,
-            props.chartOptions as ChartOptions<TType>,
+            props.data,
+            props.options as ChartOptions<TType>,
             context
           )
         }
@@ -203,8 +182,8 @@ export const generateChart = <
         } else {
           chartCreate<TType, TData, TLabel>(
             renderChart,
-            props.chartData,
-            props.chartOptions as ChartOptions<TType>,
+            props.data,
+            props.options as ChartOptions<TType>,
             context
           )
         }
@@ -221,7 +200,7 @@ export const generateChart = <
       }
 
       watch(
-        () => props.chartData,
+        () => props.data,
         (
           newValue: TChartData<TType, TData, TLabel>,
           oldValue: TChartData<TType, TData, TLabel>
@@ -230,20 +209,17 @@ export const generateChart = <
       )
 
       watch(
-        () => props.chartOptions,
+        () => props.options,
         newValue => chartOptionsHandler(newValue as ChartOptions<TType>),
         { deep: true }
       )
 
       onMounted(() => {
-        if (
-          'datasets' in props.chartData &&
-          props.chartData.datasets.length > 0
-        ) {
+        if ('datasets' in props.data && props.data.datasets.length > 0) {
           chartCreate<TType, TData, TLabel>(
             renderChart,
-            props.chartData,
-            props.chartOptions as ChartOptions<TType>,
+            props.data,
+            props.options as ChartOptions<TType>,
             context
           )
         }
@@ -260,62 +236,39 @@ export const generateChart = <
         updateChart
       })
 
-      return () =>
-        h('div', { style: props.styles, class: props.cssClasses }, [
-          h('canvas', {
-            id: props.chartId,
-            width: props.width,
-            height: props.height,
-            ref: canvasEl
-          })
-        ])
+      return () => {
+        return h('canvas', {
+          ref: canvasEl
+        })
+      }
     }
   }) as any
+}
 
-export const Bar = /* #__PURE__ */ generateChart(
-  'bar-chart',
-  'bar',
-  BarController
-)
+export const Bar = /* #__PURE__ */ createTypedChart('bar', BarController)
 
-export const Doughnut = /* #__PURE__ */ generateChart(
-  'doughnut-chart',
+export const Doughnut = /* #__PURE__ */ createTypedChart(
   'doughnut',
   DoughnutController
 )
 
-export const Line = /* #__PURE__ */ generateChart(
-  'line-chart',
-  'line',
-  LineController
-)
+export const Line = /* #__PURE__ */ createTypedChart('line', LineController)
 
-export const Pie = /* #__PURE__ */ generateChart(
-  'pie-chart',
-  'pie',
-  PieController
-)
+export const Pie = /* #__PURE__ */ createTypedChart('pie', PieController)
 
-export const PolarArea = /* #__PURE__ */ generateChart(
-  'polar-chart',
+export const PolarArea = /* #__PURE__ */ createTypedChart(
   'polarArea',
   PolarAreaController
 )
 
-export const Radar = /* #__PURE__ */ generateChart(
-  'radar-chart',
-  'radar',
-  RadarController
-)
+export const Radar = /* #__PURE__ */ createTypedChart('radar', RadarController)
 
-export const Bubble = /* #__PURE__ */ generateChart(
-  'bubble-chart',
+export const Bubble = /* #__PURE__ */ createTypedChart(
   'bubble',
   BubbleController
 )
 
-export const Scatter = /* #__PURE__ */ generateChart(
-  'scatter-chart',
+export const Scatter = /* #__PURE__ */ createTypedChart(
   'scatter',
   ScatterController
 )

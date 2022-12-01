@@ -20,11 +20,11 @@ export function chartCreate<
     data: TChartData<TType, TData, TLabel>,
     options: TChartOptions<TType>
   ) => void,
-  chartData: TChartData<TType, TData, TLabel>,
-  chartOptions: TChartOptions<TType>,
+  data: TChartData<TType, TData, TLabel>,
+  options: TChartOptions<TType>,
   context?: SetupContext
 ): void {
-  createChartFunction(chartData, chartOptions)
+  createChartFunction(data, options)
 
   if (context !== undefined) {
     context.emit(ChartEmits.ChartRendered)

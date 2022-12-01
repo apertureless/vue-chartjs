@@ -1,14 +1,28 @@
 <template>
-  <ScatterChart />
+  <Scatter :data="data" :options="options" />
 </template>
 
-<script>
-import ScatterChart from './components/scatterChart'
+<script lang="ts">
+import {
+  Chart as ChartJS,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend
+} from 'chart.js'
+import { Scatter } from 'vue-chartjs'
+import * as chartConfig from './chartConfig'
+
+ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend)
 
 export default {
   name: 'App',
   components: {
-    ScatterChart
+    Scatter
+  },
+  data() {
+    return chartConfig
   }
 }
 </script>

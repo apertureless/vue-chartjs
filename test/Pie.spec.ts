@@ -1,33 +1,32 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import PieChart from './examples/PieChart'
+import { Pie } from '../src'
+import * as pieChartConfig from '../sandboxes/pie/src/chartConfig'
 
 describe('PieChart', () => {
-  const Component = {
-    template: '<div><PieChart :chartId="chartId" :plugins="plugins" /></div>',
-    components: { PieChart },
-    props: ['chartId', 'plugins']
-  }
-
   it('should render a canvas', () => {
-    const wrapper = mount(Component)
+    const wrapper = mount(Pie, {
+      props: pieChartConfig as any
+    })
 
-    const pieChartEl = wrapper.find('#pie-chart')
-    expect(pieChartEl.element.id).not.toBe('undefined')
-    expect(pieChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
 
-    const canvasEl = wrapper.find('canvas')
-    expect(canvasEl.exists()).toBe(true)
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('')
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(Component, {
-      props: { chartId: 'piechartprop' }
+    const wrapper = mount(Pie, {
+      props: {
+        id: 'pie-chart-id',
+        ...pieChartConfig
+      } as any
     })
 
-    const pieChartEl = wrapper.find('#piechartprop')
-    expect(pieChartEl.element.id).not.toBe('undefined')
-    expect(pieChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
+
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('pie-chart-id')
   })
 
   it('should add inline plugins based on prop', () => {
@@ -35,8 +34,11 @@ describe('PieChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(Component, {
-      props: { plugins: [testPlugin] }
+    const wrapper = mount(Pie, {
+      props: {
+        plugins: [testPlugin],
+        ...pieChartConfig
+      } as any
     })
 
     expect(wrapper.props().plugins.length).toEqual(1)

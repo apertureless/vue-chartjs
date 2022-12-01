@@ -1,24 +1,28 @@
-import PieChart from '../sandboxes/pie/src/components/pieChart'
+import 'chart.js/auto'
+import { Pie } from '../src'
+import * as pieChartConfig from '../sandboxes/pie/src/chartConfig'
 
 export default {
   title: 'PieChart',
-  component: PieChart,
+  component: Pie,
   parameters: {
     layout: 'centered'
   }
 }
 
-const Template = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { PieChart },
-  template: '<PieChart />'
-})
+export function Default(args) {
+  return {
+    components: { Pie },
+    template: '<Pie v-bind="args" />',
+    setup() {
+      return { args }
+    }
+  }
+}
 
-export const DefaultPie = Template.bind({})
-
-DefaultPie.args = {
-  chartId: 'pie-chart',
+Default.args = {
+  id: 'pie-chart',
   width: 400,
   height: 400,
-  plugins: []
+  ...pieChartConfig
 }

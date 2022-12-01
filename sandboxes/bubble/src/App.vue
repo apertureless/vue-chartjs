@@ -1,14 +1,27 @@
 <template>
-  <BubbleChart />
+  <Bubble :data="data" :options="options" />
 </template>
 
-<script>
-import BubbleChart from './components/bubbleChart'
+<script lang="ts">
+import {
+  Chart as ChartJS,
+  Tooltip,
+  Legend,
+  PointElement,
+  LinearScale
+} from 'chart.js'
+import { Bubble } from 'vue-chartjs'
+import * as chartConfig from './chartConfig'
+
+ChartJS.register(LinearScale, PointElement, Tooltip, Legend)
 
 export default {
   name: 'App',
   components: {
-    BubbleChart
+    Bubble
+  },
+  data() {
+    return chartConfig
   }
 }
 </script>

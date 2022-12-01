@@ -1,33 +1,32 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import BarChart from './examples/BarChart'
+import { Bar } from '../src'
+import * as barChartConfig from '../sandboxes/bar/src/chartConfig'
 
 describe('BarChart', () => {
-  const Component = {
-    template: '<div><BarChart :chartId="chartId" :plugins="plugins" /></div>',
-    components: { BarChart },
-    props: ['chartId', 'plugins']
-  }
-
   it('should render a canvas', () => {
-    const wrapper = mount(Component)
+    const wrapper = mount(Bar, {
+      props: barChartConfig as any
+    })
 
-    const barChart = wrapper.find('#bar-chart')
-    expect(barChart.element.id).not.toBe('undefined')
-    expect(barChart.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
 
-    const canvasEl = wrapper.find('canvas')
-    expect(canvasEl.exists()).toBe(true)
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('')
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(Component, {
-      props: { chartId: 'barchartprop' }
+    const wrapper = mount(Bar, {
+      props: {
+        id: 'bar-chart-id',
+        ...barChartConfig
+      } as any
     })
 
-    const barChart = wrapper.find('#barchartprop')
-    expect(barChart.element.id).not.toBe('undefined')
-    expect(barChart.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
+
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('bar-chart-id')
   })
 
   it('should add inline plugins based on prop', () => {
@@ -35,8 +34,11 @@ describe('BarChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(Component, {
-      props: { plugins: [testPlugin] }
+    const wrapper = mount(Bar, {
+      props: {
+        plugins: [testPlugin],
+        ...barChartConfig
+      } as any
     })
 
     expect(wrapper.props().plugins.length).toEqual(1)

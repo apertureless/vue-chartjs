@@ -1,33 +1,32 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import LineChart from './examples/LineChart'
+import { Line } from '../src'
+import * as lineChartConfig from '../sandboxes/line/src/chartConfig'
 
 describe('LineChart', () => {
-  const Component = {
-    template: '<div><LineChart :chartId="chartId" :plugins="plugins" /></div>',
-    components: { LineChart },
-    props: ['chartId', 'plugins']
-  }
-
   it('should render a canvas', () => {
-    const wrapper = mount(Component)
+    const wrapper = mount(Line, {
+      props: lineChartConfig as any
+    })
 
-    const lineChartEl = wrapper.find('#line-chart')
-    expect(lineChartEl.element.id).not.toBe('undefined')
-    expect(lineChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
 
-    const canvasEl = wrapper.find('canvas')
-    expect(canvasEl.exists()).toBe(true)
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('')
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(Component, {
-      props: { chartId: 'linechartprop' }
+    const wrapper = mount(Line, {
+      props: {
+        id: 'line-chart-id',
+        ...lineChartConfig
+      } as any
     })
 
-    const lineChartEl = wrapper.find('#linechartprop')
-    expect(lineChartEl.element.id).not.toBe('undefined')
-    expect(lineChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
+
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('line-chart-id')
   })
 
   it('should add inline plugins based on prop', () => {
@@ -35,8 +34,11 @@ describe('LineChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(Component, {
-      props: { plugins: [testPlugin] }
+    const wrapper = mount(Line, {
+      props: {
+        plugins: [testPlugin],
+        ...lineChartConfig
+      } as any
     })
 
     expect(wrapper.props().plugins.length).toEqual(1)

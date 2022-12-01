@@ -1,33 +1,32 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import RadarChart from './examples/RadarChart'
+import { Radar } from '../src'
+import * as radarChartConfig from '../sandboxes/radar/src/chartConfig'
 
 describe('RadarChart', () => {
-  const Component = {
-    template: '<div><RadarChart :chartId="chartId" :plugins="plugins" /></div>',
-    components: { RadarChart },
-    props: ['chartId', 'plugins']
-  }
-
   it('should render a canvas', () => {
-    const wrapper = mount(Component)
+    const wrapper = mount(Radar, {
+      props: radarChartConfig as any
+    })
 
-    const radarChartEl = wrapper.find('#radar-chart')
-    expect(radarChartEl.element.id).not.toBe('undefined')
-    expect(radarChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
 
-    const canvasEl = wrapper.find('canvas')
-    expect(canvasEl.exists()).toBe(true)
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('')
   })
 
   it('should change id based on prop', () => {
-    const wrapper = mount(Component, {
-      props: { chartId: 'rodarchartprop' }
+    const wrapper = mount(Radar, {
+      props: {
+        id: 'radar-chart-id',
+        ...radarChartConfig
+      } as any
     })
 
-    const radarChartEl = wrapper.find('#rodarchartprop')
-    expect(radarChartEl.element.id).not.toBe('undefined')
-    expect(radarChartEl.exists()).toBe(true)
+    const canvas = wrapper.find('canvas')
+
+    expect(canvas.exists()).toBe(true)
+    expect(canvas.element.id).toBe('radar-chart-id')
   })
 
   it('should add inline plugins based on prop', () => {
@@ -35,8 +34,11 @@ describe('RadarChart', () => {
       id: 'test'
     }
 
-    const wrapper = mount(Component, {
-      props: { plugins: [testPlugin] }
+    const wrapper = mount(Radar, {
+      props: {
+        plugins: [testPlugin],
+        ...radarChartConfig
+      } as any
     })
 
     expect(wrapper.props().plugins.length).toEqual(1)
