@@ -30,5 +30,6 @@ module.exports = {
         'vue/no-reserved-component-names': 'off'
       }
     }
-  ]
+  ],
+  ignorePatterns: ['dist/**/*', 'node_modules/**/*', 'rollup.config.mjs']
 }
