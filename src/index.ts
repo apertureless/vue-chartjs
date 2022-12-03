@@ -24,14 +24,3 @@ export {
   Bubble,
   Scatter
 }
-
-export default {
-  Bar,
-  Doughnut,
-  Line,
-  Pie,
-  PolarArea,
-  Radar,
-  Bubble,
-  Scatter
-}
