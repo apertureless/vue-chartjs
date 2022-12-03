@@ -2,7 +2,7 @@ function getRandomInt() {
   return Math.floor(Math.random() * (50 - 5 + 1)) + 5
 }
 
-export const data = {
+export const randomData = () => ({
   labels: [
     'January' + getRandomInt(),
     'February',
@@ -37,7 +37,7 @@ export const data = {
       ]
     }
   ]
-}
+})
 
 export const options = {
   responsive: true,

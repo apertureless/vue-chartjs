@@ -1,5 +1,6 @@
-import { Chart as ChartJS } from 'chart.js'
+import type { DefineComponent } from 'vue'
 import type {
+  Chart as ChartJS,
   ChartType,
   ChartData,
   ChartOptions,
@@ -7,77 +8,49 @@ import type {
   Plugin
 } from 'chart.js'
 
-import {
-  ComponentOptionsMixin,
-  ComputedOptions,
-  DefineComponent,
-  MethodOptions,
-  Ref,
-  ShallowRef
-} from 'vue'
-
-import { ChartEmits } from './utils'
-
-export type TChartData<
+export interface ChartProps<
   TType extends ChartType = ChartType,
-  TData = DefaultDataPoint<TType>,
-  TLabel = unknown
-> = ChartData<TType, TData, TLabel>
-
-export type TChartOptions<TType extends ChartType> = ChartOptions<TType>
-
-export type TypedChartJS<
-  TType extends ChartType = ChartType,
-  TData = DefaultDataPoint<TType>,
-  TLabel = unknown
-> = ChartJS<TType, TData, TLabel>
-
-export interface IChartProps<
-  TType extends ChartType,
   TData = DefaultDataPoint<TType>,
   TLabel = unknown
 > {
-  data: TChartData<TType, TData, TLabel>
-  options?: TChartOptions<TType>
+  /**
+   * Chart.js chart type
+   */
+  type: TType
+  /**
+   * The data object that is passed into the Chart.js chart
+   * @see https://www.chartjs.org/docs/latest/getting-started/
+   */
+  data: ChartData<TType, TData, TLabel>
+  /**
+   * The options object that is passed into the Chart.js chart
+   * @see https://www.chartjs.org/docs/latest/general/options.html
+   * @default {}
+   */
+  options?: ChartOptions<TType>
+  /**
+   * The plugins array that is passed into the Chart.js chart
+   * @see https://www.chartjs.org/docs/latest/developers/plugins.html
+   * @default []
+   */
   plugins?: Plugin<TType>[]
+  /**
+   * Key name to identificate dataset
+   * @default 'label'
+   */
   datasetIdKey?: string
 }
 
-export interface IChartComponentData<
-  TType extends ChartType,
+export interface ChartComponentRef<
+  TType extends ChartType = ChartType,
   TData = DefaultDataPoint<TType>,
   TLabel = unknown
 > {
-  _chart: ShallowRef<TypedChartJS<TType, TData, TLabel> | null>
-  canvasEl: Ref<HTMLCanvasElement | null>
-  renderChart: (
-    data: TChartData<TType, TData, TLabel>,
-    options: TChartOptions<TType>
-  ) => void
-  chartDataHandler: (
-    newValue: TChartData<TType, TData, TLabel>,
-    oldValue: TChartData<TType, TData, TLabel>
-  ) => void
-}
-
-export type TypedChartEmits = {
-  [ChartEmits.ChartRendered]: () => true
-  [ChartEmits.ChartUpdated]: () => true
-  [ChartEmits.ChartDestroyed]: () => true
-  [ChartEmits.LabelsUpdated]: () => true
+  chart: ChartJS<TType, TData, TLabel> | null
 }
 
 export type TypedChartComponent<
   TType extends ChartType,
   TData = DefaultDataPoint<TType>,
   TLabel = unknown
-> = DefineComponent<
-  IChartProps<TType, TData, TLabel>,
-  IChartComponentData<TType, TData, TLabel>,
-  unknown,
-  ComputedOptions,
-  MethodOptions,
-  ComponentOptionsMixin,
-  ComponentOptionsMixin,
-  TypedChartEmits
->
+> = DefineComponent<Omit<ChartProps<TType, TData, TLabel>, 'type'>>
