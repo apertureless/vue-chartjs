@@ -26,7 +26,7 @@ const data = ref<ChartData<'bar'>>({
 
 onMounted(() => {
   setInterval(() => {
-    data.value = { ...chartConfig.data }
+    data.value = chartConfig.randomData()
   }, 3000)
 })
 </script>

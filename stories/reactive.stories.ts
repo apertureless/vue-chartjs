@@ -23,7 +23,7 @@ export function Default(args) {
 
       onMounted(() => {
         setInterval(() => {
-          data.value = { ...reactiveChartConfig.data }
+          data.value = reactiveChartConfig.randomData()
         }, 3000)
       })
 
