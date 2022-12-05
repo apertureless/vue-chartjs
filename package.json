@@ -100,7 +100,7 @@
     "cross-env": "^7.0.0",
     "cz-conventional-changelog": "3.3.0",
     "del-cli": "^5.0.0",
-    "eslint": "8.28.0",
+    "eslint": "8.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.25.4",
