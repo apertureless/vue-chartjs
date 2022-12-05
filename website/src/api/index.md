@@ -6,40 +6,27 @@ There are some basic props defined in the components provided by `vue-chartjs`.
 
 | Prop | Description |
 |---|---|
-| chartData | Object with Chart data |
-| chartOptions | Object with Chart options |
-| datasetIdKey | Id key for Chart data datasets |
-| chartId | Id of the canvas |
-| width | Chart width |
-| height | Chart height |
-| cssClasses | String with css classes for the surrounding div |
-| styles | Object with css styles for the surrounding div container |
-| plugins | Array with Chart plugins |
+| data | The data object that is passed into the Chart.js chart |
+| options | The options object that is passed into the Chart.js chart |
+| datasetIdKey | Key name to identificate dataset |
+| plugins | The plugins array that is passed into the Chart.js chart |
+| updateMode | A mode string to indicate transition configuration should be used. |
 
-## Events
-
-Charts will emit events if the data changes. You can listen to them in the chart component. The following events are available:
-
-| Event | Description|
-|---|---|
-| `chart:rendered` | if the chart object instance rendered |
-| `chart:destroyed` | if the chart object instance removed |
-| `chart:updated` | if the update handler performs an update instead of a re-render |
-| `labels:updated` | if new labels were set |
+Rest props will fall through to the canvas element.
 
 ## Global Methods
 
 Global Methods need to be imported.
 
-### generateChart
+### createTypedChart
 
 - **Type:** `Function`
-- **Arguments**: `chart-id`, `chart-type`, `chart-controller`
+- **Arguments**:`chart-type`, `chart-controller`
 - **Usage:**
 
 ```js
-import { generateChart } from 'vue-chartjs'
+import { createTypedChart } from 'vue-chartjs'
 import { LineController } from 'chart.js'
-// The first argument is the chart-id, the second the chart type, third is the custom controller
-const CustomLine = generateChart('custom-line', 'line', LineController)
+
+const CustomLine = createTypedChart('line', LineController)
 ```
