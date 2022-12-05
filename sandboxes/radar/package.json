@@ -6,7 +6,7 @@
   "dependencies": {
     "chart.js": "^4.0.0",
     "vue": "^3.2.31",
-    "vue-chartjs": "^5.0.0"
+    "vue-chartjs": "^4.1.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.1",
