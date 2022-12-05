@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import type { ChartType, ChartData, Plugin } from 'chart.js'
+import type { ChartType, ChartData, Plugin, UpdateMode } from 'chart.js'
 
 export const CommonProps = {
   data: {
@@ -17,6 +17,10 @@ export const CommonProps = {
   datasetIdKey: {
     type: String,
     default: 'label'
+  },
+  updateMode: {
+    type: String as PropType<UpdateMode>,
+    default: undefined
   }
 } as const
 

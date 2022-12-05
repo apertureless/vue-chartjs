@@ -53,7 +53,7 @@ export const Chart = defineComponent({
     }
 
     const update = (chart: ChartJS) => {
-      chart.update()
+      chart.update(props.updateMode)
     }
 
     onMounted(renderChart)

@@ -5,7 +5,8 @@ import type {
   ChartData,
   ChartOptions,
   DefaultDataPoint,
-  Plugin
+  Plugin,
+  UpdateMode
 } from 'chart.js'
 
 export interface ChartProps<
@@ -39,6 +40,11 @@ export interface ChartProps<
    * @default 'label'
    */
   datasetIdKey?: string
+  /**
+   * A mode string to indicate transition configuration should be used.
+   * @see https://www.chartjs.org/docs/latest/developers/api.html#update-mode
+   */
+  updateMode?: UpdateMode
 }
 
 export interface ChartComponentRef<
