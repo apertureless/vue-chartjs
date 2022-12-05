@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/apertureless/vue-chartjs/compare/v4.1.2...v5.0.0) (2022-12-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* package now is ESM-only, no CommonJS support
+* default export was removed, please use named exports
+* chart events were removed
+* div wrapper was removed, `chartData` prop was renamed to `data`, `chartOptions`
+prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
+* Vue.js < 2.7 is no longer supported.
+
+### Features
+
+* base Chart component ([#958](https://github.com/apertureless/vue-chartjs/issues/958)) ([f3ecfb0](https://github.com/apertureless/vue-chartjs/commit/f3ecfb04927d39b54d26d2ac729147141702b4a9))
+* drop Vue.js < 2.7 support ([#947](https://github.com/apertureless/vue-chartjs/issues/947)) ([d1fbacc](https://github.com/apertureless/vue-chartjs/commit/d1fbacc410ce1095a1c7f8c7d9c85b8b709dc8c7))
+* events utils ([#963](https://github.com/apertureless/vue-chartjs/issues/963)) ([752407e](https://github.com/apertureless/vue-chartjs/commit/752407eba19befcfb4923c492ad900b251658837))
+* fallthrough props to canvas ([#955](https://github.com/apertureless/vue-chartjs/issues/955)) ([6675cb0](https://github.com/apertureless/vue-chartjs/commit/6675cb031276579bca74fd3bc2e767b76fa6e068))
+* updateMode prop ([#962](https://github.com/apertureless/vue-chartjs/issues/962)) ([5bd9805](https://github.com/apertureless/vue-chartjs/commit/5bd9805ae9fbe2a26b0dd063d4084725d307426f))
+* upgrade Chart.js to v4 ([#960](https://github.com/apertureless/vue-chartjs/issues/960)) ([7fd4ae4](https://github.com/apertureless/vue-chartjs/commit/7fd4ae4e8c487759d675af5947d1b55fbd0b3391))
+
+
+### Bug Fixes
+
+* **deps:** update dependency chart.js to v4 ([#954](https://github.com/apertureless/vue-chartjs/issues/954)) ([c3f8fc9](https://github.com/apertureless/vue-chartjs/commit/c3f8fc9effc36a39c8734177259fd0911c3426b6))
+
+
+* remove default export ([#959](https://github.com/apertureless/vue-chartjs/issues/959)) ([5ab27bc](https://github.com/apertureless/vue-chartjs/commit/5ab27bc66335932476b9cdff6167659f12f2fee4))
+
 ### [4.1.2](https://github.com/apertureless/vue-chartjs/compare/v4.1.1...v4.1.2) (2022-09-27)
 
 
