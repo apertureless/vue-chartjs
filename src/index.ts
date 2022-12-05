@@ -13,6 +13,11 @@ import {
 
 export type { ChartProps, ChartComponentRef } from './types.js'
 export {
+  getDatasetAtEvent,
+  getElementAtEvent,
+  getElementsAtEvent
+} from './utils.js'
+export {
   Chart,
   createTypedChart,
   Bar,
