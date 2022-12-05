@@ -1,4 +1,4 @@
-import { Chart } from './chart'
+import { Chart } from './chart.js'
 import {
   createTypedChart,
   Bar,
@@ -9,9 +9,9 @@ import {
   Radar,
   Bubble,
   Scatter
-} from './typedCharts'
+} from './typedCharts.js'
 
-export type { ChartProps, ChartComponentRef } from './types'
+export type { ChartProps, ChartComponentRef } from './types.js'
 export {
   Chart,
   createTypedChart,

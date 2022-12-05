@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { Bar } from '../src'
-import * as barChartConfig from '../sandboxes/bar/src/chartConfig'
+import { Bar } from '../src/index.js'
+import * as barChartConfig from '../sandboxes/bar/src/chartConfig.js'
 
 describe('BarChart', () => {
   it('should render a canvas', () => {

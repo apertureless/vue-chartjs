@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { PolarArea } from '../src'
-import * as polarAreaChartConfig from '../sandboxes/polar-area/src/chartConfig'
+import { PolarArea } from '../src/index.js'
+import * as polarAreaChartConfig from '../sandboxes/polar-area/src/chartConfig.js'
 
 describe('PolarAreaChart', () => {
   it('should render a canvas', () => {

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { Bubble } from '../src'
-import * as bubbleChartConfig from '../sandboxes/bubble/src/chartConfig'
+import { Bubble } from '../src/index.js'
+import * as bubbleChartConfig from '../sandboxes/bubble/src/chartConfig.js'
 
 describe('BubbleChart', () => {
   it('should render a canvas', () => {

@@ -11,7 +11,7 @@ import {
   LinearScale
 } from 'chart.js'
 import { Bubble } from 'vue-chartjs'
-import * as chartConfig from './chartConfig'
+import * as chartConfig from './chartConfig.js'
 
 ChartJS.register(LinearScale, PointElement, Tooltip, Legend)
 

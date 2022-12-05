@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { Line } from '../src'
-import * as lineChartConfig from '../sandboxes/line/src/chartConfig'
+import { Line } from '../src/index.js'
+import * as lineChartConfig from '../sandboxes/line/src/chartConfig.js'
 
 describe('LineChart', () => {
   it('should render a canvas', () => {

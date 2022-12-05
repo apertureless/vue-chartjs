@@ -13,8 +13,8 @@ import {
   Tooltip,
   Legend
 } from 'chart.js'
-import LineWithLineChart from './components/LineWithLineChart'
-import * as chartConfig from './chartConfig'
+import LineWithLineChart from './components/LineWithLineChart.js'
+import * as chartConfig from './chartConfig.js'
 
 ChartJS.register(
   CategoryScale,

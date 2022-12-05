@@ -1,6 +1,6 @@
 import 'chart.js/auto'
-import LineWithLineChart from '../sandboxes/custom/src/components/LineWithLineChart'
-import * as customChartConfig from '../sandboxes/custom/src/chartConfig'
+import LineWithLineChart from '../sandboxes/custom/src/components/LineWithLineChart.js'
+import * as customChartConfig from '../sandboxes/custom/src/chartConfig.js'
 
 export default {
   title: 'CustomChart',

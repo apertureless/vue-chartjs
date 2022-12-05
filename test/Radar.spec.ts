@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { Radar } from '../src'
-import * as radarChartConfig from '../sandboxes/radar/src/chartConfig'
+import { Radar } from '../src/index.js'
+import * as radarChartConfig from '../sandboxes/radar/src/chartConfig.js'
 
 describe('RadarChart', () => {
   it('should render a canvas', () => {

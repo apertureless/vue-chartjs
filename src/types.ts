@@ -49,6 +49,8 @@ export interface ChartComponentRef<
   chart: ChartJS<TType, TData, TLabel> | null
 }
 
+export type ChartComponent = DefineComponent<ChartProps>
+
 export type TypedChartComponent<
   TType extends ChartType,
   TData = DefaultDataPoint<TType>,

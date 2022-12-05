@@ -1,7 +1,7 @@
 import 'chart.js/auto'
 import { ref, onMounted } from 'vue'
-import { Bar } from '../src'
-import * as reactiveChartConfig from '../sandboxes/reactive/src/chartConfig'
+import { Bar } from '../src/index.js'
+import * as reactiveChartConfig from '../sandboxes/reactive/src/chartConfig.js'
 
 export default {
   title: 'Reactive',

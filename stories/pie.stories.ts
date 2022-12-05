@@ -1,6 +1,6 @@
 import 'chart.js/auto'
-import { Pie } from '../src'
-import * as pieChartConfig from '../sandboxes/pie/src/chartConfig'
+import { Pie } from '../src/index.js'
+import * as pieChartConfig from '../sandboxes/pie/src/chartConfig.js'
 
 export default {
   title: 'PieChart',

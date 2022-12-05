@@ -15,7 +15,7 @@ import {
   ChartData
 } from 'chart.js'
 import { Bar } from 'vue-chartjs'
-import * as chartConfig from './chartConfig'
+import * as chartConfig from './chartConfig.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 

@@ -1,5 +1,6 @@
 {
   "name": "vue-chartjs",
+  "type": "module",
   "version": "4.1.2",
   "description": "Vue.js wrapper for chart.js for creating beautiful charts.",
   "author": "Jakub Juszczak <jakub@posteo.de>",
@@ -37,11 +38,13 @@
     "Charts"
   ],
   "sideEffects": false,
-  "main": "./src/index.ts",
   "types": "./dist/index.d.ts",
+  "exports": "./src/index.ts",
   "publishConfig": {
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.js",
+    "exports": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
     "directory": "package"
   },
   "files": [
@@ -68,7 +71,7 @@
     "updateGitHooks": "simple-git-hooks"
   },
   "peerDependencies": {
-    "chart.js": "^3.7.0",
+    "chart.js": "^4.0.0",
     "vue": "^3.0.0-0 || ^2.6.0"
   },
   "devDependencies": {

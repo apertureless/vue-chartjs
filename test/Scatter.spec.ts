@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { Scatter } from '../src'
-import * as scatterChartConfig from '../sandboxes/scatter/src/chartConfig'
+import { Scatter } from '../src/index.js'
+import * as scatterChartConfig from '../sandboxes/scatter/src/chartConfig.js'
 
 describe('ScatterChart', () => {
   it('should render a canvas', () => {

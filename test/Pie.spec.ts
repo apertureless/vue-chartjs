@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { Pie } from '../src'
-import * as pieChartConfig from '../sandboxes/pie/src/chartConfig'
+import { Pie } from '../src/index.js'
+import * as pieChartConfig from '../sandboxes/pie/src/chartConfig.js'
 
 describe('PieChart', () => {
   it('should render a canvas', () => {

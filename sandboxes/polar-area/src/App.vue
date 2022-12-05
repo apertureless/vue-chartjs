@@ -11,7 +11,7 @@ import {
   Legend
 } from 'chart.js'
 import { PolarArea } from 'vue-chartjs'
-import * as chartConfig from './chartConfig'
+import * as chartConfig from './chartConfig.js'
 
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend)
 

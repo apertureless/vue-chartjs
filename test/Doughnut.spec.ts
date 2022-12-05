@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { Doughnut } from '../src'
-import * as doughnutChartConfig from '../sandboxes/doughnut/src/chartConfig'
+import { Doughnut } from '../src/index.js'
+import * as doughnutChartConfig from '../sandboxes/doughnut/src/chartConfig.js'
 
 describe('DoughnutChart', () => {
   it('should render a canvas', () => {
