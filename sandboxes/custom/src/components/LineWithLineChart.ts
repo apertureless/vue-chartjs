@@ -2,16 +2,16 @@ import { createTypedChart } from 'vue-chartjs'
 import { LineController } from 'chart.js'
 
 class LineWithLineController extends LineController {
+  static override id = 'line-with-line'
+
   public override draw() {
     super.draw()
 
-    console.log(this.chart?.tooltip?.active)
-
-    if (this.chart?.tooltip?.active) {
+    if (this.chart?.tooltip && this.chart.tooltip.opacity > 0) {
       const ctx = this.chart.ctx
       const x = this.chart.tooltip.x
-      const topY = this.chart.scales['y-axis-0'].top
-      const bottomY = this.chart.scales['y-axis-0'].bottom
+      const topY = this.chart.scales.y.top
+      const bottomY = this.chart.scales.y.bottom
 
       // draw line
       ctx.save()
@@ -26,6 +26,9 @@ class LineWithLineController extends LineController {
   }
 }
 
-const LineWithLineChart = createTypedChart('line', LineWithLineController)
+const LineWithLineChart = createTypedChart(
+  'line-with-line' as 'line',
+  LineWithLineController
+)
 
 export default LineWithLineChart
