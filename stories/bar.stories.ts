@@ -1,6 +1,6 @@
 import 'chart.js/auto'
-import { Bar } from '../src'
-import * as barChartConfig from '../sandboxes/bar/src/chartConfig'
+import { Bar } from '../src/index.js'
+import * as barChartConfig from '../sandboxes/bar/src/chartConfig.js'
 
 export default {
   title: 'BarChart',

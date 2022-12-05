@@ -1,6 +1,6 @@
 import 'chart.js/auto'
-import { Line } from '../src'
-import * as lineChartConfig from '../sandboxes/line/src/chartConfig'
+import { Line } from '../src/index.js'
+import * as lineChartConfig from '../sandboxes/line/src/chartConfig.js'
 
 export default {
   title: 'LineChart',

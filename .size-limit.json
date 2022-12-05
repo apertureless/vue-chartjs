@@ -1,16 +1,5 @@
 [
   {
-    "path": "dist/index.cjs",
-    "limit": "1.75 KB",
-    "webpack": false,
-    "running": false
-  },
-  {
-    "path": "dist/index.cjs",
-    "limit": "1 KB",
-    "import": "{ Bar }"
-  },
-  {
     "path": "dist/index.js",
     "limit": "1.7 KB",
     "webpack": false,

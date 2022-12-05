@@ -9,7 +9,8 @@ import {
   toRaw
 } from 'vue'
 import { Chart as ChartJS } from 'chart.js'
-import { Props } from './props'
+import type { ChartComponent } from './types.js'
+import { Props } from './props.js'
 import {
   cloneData,
   setLabels,
@@ -17,7 +18,7 @@ import {
   setOptions,
   toRawIfProxy,
   cloneProxy
-} from './utils'
+} from './utils.js'
 
 export const Chart = defineComponent({
   props: Props,
@@ -113,4 +114,4 @@ export const Chart = defineComponent({
       })
     }
   }
-})
+}) as ChartComponent

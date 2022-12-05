@@ -1,6 +1,6 @@
 import 'chart.js/auto'
-import { Doughnut } from '../src'
-import * as doughnutChartConfig from '../sandboxes/doughnut/src/chartConfig'
+import { Doughnut } from '../src/index.js'
+import * as doughnutChartConfig from '../sandboxes/doughnut/src/chartConfig.js'
 
 export default {
   title: 'DoughnutChart',

@@ -1,8 +1,8 @@
 import { h } from 'vue'
 import { expectError } from 'tsd'
-import { Plugin } from 'chart.js'
+import type { Plugin } from 'chart.js'
 
-import { Bar, Radar, Scatter, Doughnut } from '../src'
+import { Bar, Radar, Scatter, Doughnut } from '../src/index.js'
 
 const data = {
   datasets: []

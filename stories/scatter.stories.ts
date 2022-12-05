@@ -1,6 +1,6 @@
 import 'chart.js/auto'
-import { Scatter } from '../src'
-import * as scatterChartConfig from '../sandboxes/scatter/src/chartConfig'
+import { Scatter } from '../src/index.js'
+import * as scatterChartConfig from '../sandboxes/scatter/src/chartConfig.js'
 
 export default {
   title: 'ScatterChart',

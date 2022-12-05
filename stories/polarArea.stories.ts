@@ -1,6 +1,6 @@
 import 'chart.js/auto'
-import { PolarArea } from '../src'
-import * as polarAreaChartConfig from '../sandboxes/polar-area/src/chartConfig'
+import { PolarArea } from '../src/index.js'
+import * as polarAreaChartConfig from '../sandboxes/polar-area/src/chartConfig.js'
 
 export default {
   title: 'PolarAreaChart',

@@ -1,5 +1,5 @@
-import { PropType } from 'vue'
-import type { ChartType, ChartData, ChartOptions, Plugin } from 'chart.js'
+import type { PropType } from 'vue'
+import type { ChartType, ChartData, Plugin } from 'chart.js'
 
 export const CommonProps = {
   data: {
@@ -7,7 +7,7 @@ export const CommonProps = {
     required: true
   },
   options: {
-    type: Object as PropType<ChartOptions>,
+    type: Object, // as PropType<ChartOptions>, restore after Chart.js update
     default: () => ({})
   },
   plugins: {

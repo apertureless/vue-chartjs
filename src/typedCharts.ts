@@ -11,9 +11,9 @@ import {
   RadarController,
   ScatterController
 } from 'chart.js'
-import type { TypedChartComponent, ChartComponentRef } from './types'
-import { CommonProps } from './props'
-import { Chart } from './chart'
+import type { TypedChartComponent, ChartComponentRef } from './types.js'
+import { CommonProps } from './props.js'
+import { Chart } from './chart.js'
 
 export function createTypedChart<
   TType extends ChartType = ChartType,

@@ -13,7 +13,7 @@ import {
   LinearScale
 } from 'chart.js'
 import { Bar } from 'vue-chartjs'
-import * as chartConfig from './chartConfig'
+import * as chartConfig from './chartConfig.js'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 

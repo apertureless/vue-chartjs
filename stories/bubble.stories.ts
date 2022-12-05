@@ -1,6 +1,6 @@
 import 'chart.js/auto'
-import { Bubble } from '../src'
-import * as bubbleChartConfig from '../sandboxes/bubble/src/chartConfig'
+import { Bubble } from '../src/index.js'
+import * as bubbleChartConfig from '../sandboxes/bubble/src/chartConfig.js'
 
 export default {
   title: 'BubbleChart',
