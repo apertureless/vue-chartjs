@@ -20,7 +20,7 @@ specifiers:
   '@vue/eslint-config-typescript': ^11.0.0
   '@vue/test-utils': ^2.0.0-rc.17
   browserslist: ^4.19.1
-  chart.js: ^3.7.0
+  chart.js: ^4.0.0
   clean-publish: ^4.0.0
   commitizen: ^4.2.4
   cross-env: ^7.0.0
@@ -74,7 +74,7 @@ devDependencies:
   '@vue/eslint-config-typescript': 11.0.2_sb3redb42nwkq4q6vnqovjecl4
   '@vue/test-utils': 2.2.4_vue@3.2.45
   browserslist: 4.21.4
-  chart.js: 3.9.1
+  chart.js: 4.0.1
   clean-publish: 4.0.1
   commitizen: 4.2.5_@swc+core@1.3.21
   cross-env: 7.0.3
@@ -7509,8 +7509,9 @@ packages:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
     dev: true
 
-  /chart.js/3.9.1:
-    resolution: {integrity: sha512-Ro2JbLmvg83gXF5F4sniaQ+lTbSv18E+TIf2cOeiH1Iqd2PGFOtem+DUufMZsCJwFE7ywPOpfXFBwRTGq7dh6w==}
+  /chart.js/4.0.1:
+    resolution: {integrity: sha512-5/8/9eBivwBZK81mKvmIwTb2Pmw4D/5h1RK9fBWZLLZ8mCJ+kfYNmV9rMrGoa5Hgy2/wVDBMLSUDudul2/9ihA==}
+    engines: {pnpm: ^7.0.0}
     dev: true
 
   /check-error/1.0.2:
