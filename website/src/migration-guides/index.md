@@ -1,3 +1,27 @@
+## Migration from v4 to v5
+
+With v5, this library introduces a number of breaking changes
+
+### ESM
+
+Chart.js v4 and vue-chartjs v5 are [ESM-only packages](https://nodejs.org/api/esm.html). To use them in your project, it also should be ESM:
+
+```json
+// pckage.json
+{
+  "type": "module"
+}
+```
+
+If you are experiencing this problem with Jest, you should follow [this doc](https://jestjs.io/docs/ecmascript-modules) to enable ESM support. Or, we can recommend you migrate to [Vitest](https://vitest.dev/). Vitest has ESM support out of the box and [has almost the same API as Jest](https://vitest.dev/guide/migration.html#migrating-from-jest). [Here is our example of migration](https://github.com/reactchartjs/react-chartjs-2/commit/7f3ec96101d21e43cae8cbfe5e09a46a17cff1ef).
+
+### API changes
+
+- `chartData` props were renamed to `data`
+- `chartOptions` props were renamed to `options`
+- unknown props will fall through to the canvas element.
+- `generateChart` were refactored and renamed to `createTypedChart`
+
 ## Migration from v3 to v4
 
 With v4, this library introduces a number of breaking changes. In order to improve performance, offer new features, and improve maintainability, it was necessary to break backwards compatibility, but we aimed to do so only when worth the benefit.

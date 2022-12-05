@@ -1,8 +1,8 @@
 # Getting Started
 
-**vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in vue. You can easily create reuseable chart components.
+**vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in Vue. You can easily create reuseable chart components.
 
-Supports Chart.js v3.
+Supports Chart.js v4.
 
 ## Introduction
 
@@ -40,12 +40,6 @@ First, you need to import the base chart.
 import { Bar } from 'vue-chartjs'
 ```
 
-For Vue 2 projects, you need to import from `vue-chartjs/legacy`.
-
-```javascript
-import { Bar } from 'vue-chartjs/legacy'
-```
-
 Check out the official [Chart.js docs](http://www.chartjs.org/docs/latest/#creating-a-chart) to see the object structure you need to provide.
 
 Just create your own component.
@@ -55,15 +49,9 @@ Just create your own component.
 ```vue
 <template>
   <Bar
-    :chart-options="chartOptions"
-    :chart-data="chartData"
-    :chart-id="chartId"
-    :dataset-id-key="datasetIdKey"
-    :plugins="plugins"
-    :css-classes="cssClasses"
-    :styles="styles"
-    :width="width"
-    :height="height"
+    id="my-chart-id"
+    :options="chartOptions"
+    :data="chartData"
   />
 </template>
 
@@ -76,36 +64,6 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 export default {
   name: 'BarChart',
   components: { Bar },
-  props: {
-    chartId: {
-      type: String,
-      default: 'bar-chart'
-    },
-    datasetIdKey: {
-      type: String,
-      default: 'label'
-    },
-    width: {
-      type: Number,
-      default: 400
-    },
-    height: {
-      type: Number,
-      default: 400
-    },
-    cssClasses: {
-      default: '',
-      type: String
-    },
-    styles: {
-      type: Object,
-      default: () => {}
-    },
-    plugins: {
-      type: Object,
-      default: () => {}
-    }
-  },
   data() {
     return {
       chartData: {
@@ -119,70 +77,6 @@ export default {
   }
 }
 </script>
-```
-
-or in TypeScript:
-
-**BarChart.ts**
-
-```ts
-import { defineComponent, h, PropType } from 'vue'
-import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, Plugin } from 'chart.js'
-
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
-
-export default defineComponent({
-  name: 'BarChart',
-  components: { Bar },
-  props: {
-    chartId: {
-      type: String,
-      default: 'bar-chart'
-    },
-    width: {
-      type: Number,
-      default: 400
-    },
-    height: {
-      type: Number,
-      default: 400
-    },
-    cssClasses: {
-      default: '',
-      type: String
-    },
-    styles: {
-      type: Object as PropType<Partial<CSSStyleDeclaration>>,
-      default: () => {}
-    },
-    plugins: {
-      type: Object as PropType<Plugin<'bar'>>,
-      default: () => {}
-    }
-  },
-  setup(props) {
-    const chartData = {
-      labels: [ 'January', 'February', 'March' ],
-      datasets: [ { data: [40, 20, 12] } ]
-    }
-
-    const chartOptions = { responsive: true }
-
-    return () =>
-      h(Bar, {
-        chartData,
-        chartOptions,
-        chartId: props.chartId,
-        width: props.width,
-        height: props.height,
-        cssClasses: props.cssClasses,
-        styles: props.styles,
-        plugins: props.plugins
-      })
-  }
-})
-
 ```
 
 Use it in your vue app:
@@ -204,66 +98,13 @@ export default {
 </script>
 ```
 
-## Using with Nuxt
-
-**/plugins/chart.js**
-
-```javascript
-import Vue from "vue";
-import { Line } from "vue-chartjs/legacy";
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  LineElement,
-  PointElement,
-} from "chart.js";
-
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  PointElement,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  LineElement,
-);
-
-Vue.component("line-chart", {
-  extends: Line,
-});
-```
-
-**nuxt.config.js**
-
-```javascript
-plugins: [
-    {src: '~/plugins/chart/chart.js', mode: 'client'}
-  ]
-```
-
-Then you can use it in your pages or components:
-
-```
-<line-chart
-  :chart-options='chartOptions'
-  :chart-data='chartData'
-  chart-id='myCustomId'
-/>
-```
-
 ## Updating Charts
 
-v4 charts have data change watcher and options change watcher by default. v4 will update or re-render the chart if new data or new options is passed. Mixins have been removed.
+Since v4 charts have data change watcher and options change watcher by default. Wrapper will update or re-render the chart if new data or new options is passed. Mixins have been removed.
 
 ```vue
 <template>
-  <Bar :chart-data="chartData" :chart-options="chartOptions" />
+  <Bar :data="chartData" :options="chartOptions" />
 </template>
 
 <script>
@@ -300,27 +141,6 @@ In Vue3 projects:
 const chartInstance = this.$refs.bar.chart
 ```
 
-In Vue2 projects:
-
-```javascript
-const chartInstance = this.$refs.bar.getCurrentChart
-```
-
-Also you can get access to **updateChart** function
-
-```javascript
-this.$refs.bar.updateChart()
-```
-
-## Events
-
-Charts will emit events if the data changes. You can listen to them in the chart component. The following events are available:
-
-- `chart:rendered` - if the chart object instance rendered
-- `chart:destroyed` - if the chart object instance removed
-- `chart:updated` - if the update handler performs an update instead of a re-render
-- `labels:updated` - if new labels were set
-
 ## Examples
 
 ### Chart with props
@@ -329,7 +149,7 @@ Your goal should be to create reusable chart components. For this purpose, you s
 
 ```vue
 <template>
-  <Bar :chart-data="chartData" :chart-options="chartOptions" />
+  <Bar :data="chartData" :options="chartOptions" />
 </template>
 
 <script>
@@ -361,7 +181,7 @@ You can handle your chart data directly in your parent component.
 
 ```vue
 <template>
-  <Bar :chart-data="chartData" />
+  <Bar :data="chartData" />
 </template>
 
 <script>
@@ -402,7 +222,7 @@ Create your chart component with a data prop and options prop, so we can pass in
 ```vue
 <template>
   <div class="container">
-    <Bar v-if="loaded" :chart-data="chartData" />
+    <Bar v-if="loaded" :data="chartData" />
   </div>
 </template>
 
@@ -446,7 +266,7 @@ You can set `responsive: true` and pass in a styles object which gets applied as
 ```vue
 <template>
   <div>
-    <Bar :styles="myStyles"/>
+    <Bar :style="myStyles"/>
   </div>
 </template>
 
@@ -480,8 +300,8 @@ In `vue-chartjs`, you can do this pretty much the same way:
 ```js
 // 1. Import Chart.js so you can use the global Chart object
 import { Chart } from 'chart.js'
-// 2. Import the `generateChart()` method to create the vue component.
-import { generateChart } from 'vue-chartjs'
+// 2. Import the `createTypedChart()` method to create the vue component.
+import { createTypedChart } from 'vue-chartjs'
 // 3. Import needed controller from Chart.js
 import { LineController } from 'chart.js'
 
@@ -491,7 +311,7 @@ class LineWithLineController extends LineController { /* custom magic here */}
 
 // 4. Generate the vue-chartjs component
 // The first argument is the chart-id, the second the chart type, third is the custom controller
-const CustomLine = generateChart('custom-line', 'line', LineWithLineController)
+const CustomLine = createTypedChart('line', LineWithLineController)
 
 // 5. Extend the CustomLine Component just like you do with the default vue-chartjs charts.
 
