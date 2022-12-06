@@ -1,4 +1,4 @@
-import { isProxy, toRaw } from 'vue'
+import { isProxy, toRaw, version } from 'vue'
 import type {
   Chart,
   ChartType,
@@ -7,6 +7,13 @@ import type {
   ChartOptions,
   DefaultDataPoint
 } from 'chart.js'
+
+export const compatProps =
+  version[0] === '2'
+    ? <I extends {}, T extends {}>(internals: I, props: T) =>
+        Object.assign(internals, { attrs: props }) as unknown as I & T
+    : <I extends {}, T extends {}>(internals: I, props: T) =>
+        Object.assign(internals, props)
 
 export function toRawIfProxy<T>(obj: T) {
   return isProxy(obj) ? toRaw(obj) : obj
