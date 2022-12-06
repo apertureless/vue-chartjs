@@ -21,6 +21,7 @@ If you are experiencing this problem with Jest, you should follow [this doc](htt
 - `chartOptions` props were renamed to `options`
 - unknown props will fall through to the canvas element.
 - `generateChart` were refactored and renamed to `createTypedChart`
+- Vue.js < 2.7 is no longer supported. If you want to use vue-chartjs with Vue < 2.7 you have to lock your version to 4.x.
 
 ## Migration from v3 to v4
 

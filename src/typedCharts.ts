@@ -14,6 +14,7 @@ import {
 import type { TypedChartComponent, ChartComponentRef } from './types.js'
 import { CommonProps } from './props.js'
 import { Chart } from './chart.js'
+import { compatProps } from './utils.js'
 
 export function createTypedChart<
   TType extends ChartType = ChartType,
@@ -36,11 +37,18 @@ export function createTypedChart<
       expose({ chart: ref })
 
       return () => {
-        return h(Chart, {
-          ref: reforwardRef as any,
-          type,
-          ...props
-        })
+        return h(
+          Chart,
+          compatProps(
+            {
+              ref: reforwardRef as any
+            },
+            {
+              type,
+              ...props
+            }
+          )
+        )
       }
     }
   }) as any
