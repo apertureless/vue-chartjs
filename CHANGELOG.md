@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.1](https://github.com/apertureless/vue-chartjs/compare/v5.0.0...v5.0.1) (2022-12-06)
+
+
+### Bug Fixes
+
+* fix compatability with Vue >=2.7 ([#967](https://github.com/apertureless/vue-chartjs/issues/967)) ([742bf62](https://github.com/apertureless/vue-chartjs/commit/742bf62f9a4fd15994d346ce076aa4081716c1a7))
+
 ## [5.0.0](https://github.com/apertureless/vue-chartjs/compare/v4.1.2...v5.0.0) (2022-12-05)
 
 
