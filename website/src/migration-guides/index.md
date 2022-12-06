@@ -7,7 +7,7 @@ With v5, this library introduces a number of breaking changes
 Chart.js v4 and vue-chartjs v5 are [ESM-only packages](https://nodejs.org/api/esm.html). To use them in your project, it also should be ESM:
 
 ```json
-// pckage.json
+// package.json
 {
   "type": "module"
 }
