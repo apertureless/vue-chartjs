@@ -42,7 +42,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   rollup: ^3.5.1
-  rollup-plugin-swc3: ^0.7.0
+  rollup-plugin-swc3: ^0.8.0
   simple-git-hooks: ^2.7.0
   simple-github-release: ^1.0.0
   size-limit: ^8.0.0
@@ -96,7 +96,7 @@ devDependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   rollup: 3.5.1
-  rollup-plugin-swc3: 0.7.0_zzmspvlpqvc2us4kjalbp73okm
+  rollup-plugin-swc3: 0.8.0_zzmspvlpqvc2us4kjalbp73okm
   simple-git-hooks: 2.8.1
   simple-github-release: 1.0.0
   size-limit: 8.1.0
@@ -14334,8 +14334,8 @@ packages:
       inherits: 2.0.4
     dev: true
 
-  /rollup-plugin-swc3/0.7.0_zzmspvlpqvc2us4kjalbp73okm:
-    resolution: {integrity: sha512-aWkbRGjmzSLs8BPQEuGo3PQsBAsYyL9Nk5xZ6ruEnBp+5RN9KavSQV1nM13gSmXZNBhz7Wh5mscyo5lCWQ1Bpg==}
+  /rollup-plugin-swc3/0.8.0_zzmspvlpqvc2us4kjalbp73okm:
+    resolution: {integrity: sha512-IJapqORpU4NgSJHaFvbTcUe4WQPzgE6v8Suu95ZO4Qw1VwGRcuurvSCuYX1fIzR+DLVlZH4zq/T6uqbmw3Bzxw==}
     engines: {node: '>=12'}
     peerDependencies:
       '@swc/core': '>=1.2.165'
