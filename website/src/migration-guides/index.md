@@ -4,6 +4,8 @@ With v5, this library introduces a number of breaking changes
 
 ### ESM
 
+#### v5.0
+
 Chart.js v4 and vue-chartjs v5 are [ESM-only packages](https://nodejs.org/api/esm.html). To use them in your project, it also should be ESM:
 
 ```json
@@ -14,6 +16,11 @@ Chart.js v4 and vue-chartjs v5 are [ESM-only packages](https://nodejs.org/api/es
 ```
 
 If you are experiencing this problem with Jest, you should follow [this doc](https://jestjs.io/docs/ecmascript-modules) to enable ESM support. Or, we can recommend you migrate to [Vitest](https://vitest.dev/). Vitest has ESM support out of the box and [has almost the same API as Jest](https://vitest.dev/guide/migration.html#migrating-from-jest). [Here is our example of migration](https://github.com/reactchartjs/react-chartjs-2/commit/7f3ec96101d21e43cae8cbfe5e09a46a17cff1ef).
+
+
+#### v5.1
+
+Chart.js v4.1 and vue-chartjs v5.1 have restored the CommonJS support.
 
 ### API changes
 

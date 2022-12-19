@@ -8,7 +8,7 @@ Supports Chart.js v4.
 
 [![npm version](https://badge.fury.io/js/vue-chartjs.svg)](https://badge.fury.io/js/vue-chartjs)
 [![codecov](https://codecov.io/gh/apertureless/vue-chartjs/branch/master/graph/badge.svg)](https://codecov.io/gh/apertureless/vue-chartjs)
-[![Build Status](https://img.shields.io/github/workflow/status/apertureless/vue-chartjs/CI.svg)](https://github.com/apertureless/vue-chartjs/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/apertureless/vue-chartjs/ci.yml?branch=main)](https://github.com/apertureless/vue-chartjs/actions)
 [![Package Quality](http://npm.packagequality.com/shield/vue-chartjs.svg)](http://packagequality.com/#?package=vue-chartjs)
 [![npm](https://img.shields.io/npm/dm/vue-chartjs.svg)](https://www.npmjs.com/package/vue-chartjs)
 [![Gitter chat](https://img.shields.io/gitter/room/TechnologyAdvice/Stardust.svg)](https://gitter.im/vue-chartjs/Lobby)
