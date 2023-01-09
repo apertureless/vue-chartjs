@@ -38,7 +38,7 @@ specifiers:
   eslint-plugin-vue: ^9.0.0
   jsdom: ^21.0.0
   nano-staged: ^0.8.0
-  prettier: 2.8.1
+  prettier: 2.8.2
   react: ^18.2.0
   react-dom: ^18.2.0
   rollup: ^3.7.5
@@ -86,13 +86,13 @@ devDependencies:
   eslint-plugin-import: 2.26.0_eslint@8.30.0
   eslint-plugin-n: 15.5.1_eslint@8.30.0
   eslint-plugin-node: 11.1.0_eslint@8.30.0
-  eslint-plugin-prettier: 4.2.1_kl4pe43v5b43npmso5hoplpbyi
+  eslint-plugin-prettier: 4.2.1_2yh4e5vozmhfm4bfonrgkes4uq
   eslint-plugin-prettier-vue: 4.2.0
   eslint-plugin-promise: 6.1.1_eslint@8.30.0
   eslint-plugin-vue: 9.8.0_eslint@8.30.0
   jsdom: 21.0.0
   nano-staged: 0.8.0
-  prettier: 2.8.1
+  prettier: 2.8.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   rollup: 3.7.5
@@ -7796,7 +7796,7 @@ packages:
       mississippi: 3.0.0
       mkdirp: 0.5.6
       move-concurrently: 1.0.1
-      promise-inflight: 1.0.1_bluebird@3.7.2
+      promise-inflight: 1.0.1
       rimraf: 2.7.1
       ssri: 6.0.2
       unique-filename: 1.1.1
@@ -9662,11 +9662,11 @@ packages:
     dependencies:
       '@vue/compiler-sfc': 3.2.45
       chalk: 4.1.2
-      prettier: 2.8.1
+      prettier: 2.8.2
       prettier-linter-helpers: 1.0.0
     dev: true
 
-  /eslint-plugin-prettier/4.2.1_kl4pe43v5b43npmso5hoplpbyi:
+  /eslint-plugin-prettier/4.2.1_2yh4e5vozmhfm4bfonrgkes4uq:
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -9679,7 +9679,7 @@ packages:
     dependencies:
       eslint: 8.30.0
       eslint-config-prettier: 8.5.0_eslint@8.30.0
-      prettier: 2.8.1
+      prettier: 2.8.2
       prettier-linter-helpers: 1.0.0
     dev: true
 
@@ -13812,8 +13812,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.8.1:
-    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
+  /prettier/2.8.2:
+    resolution: {integrity: sha512-BtRV9BcncDyI2tsuS19zzhzoxD8Dh8LiCx7j7tHzrkz8GFXAexeWFdi22mjE1d16dftH2qNaytVxqiRTGlMfpw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -13851,17 +13851,6 @@ packages:
     peerDependenciesMeta:
       bluebird:
         optional: true
-    dev: true
-
-  /promise-inflight/1.0.1_bluebird@3.7.2:
-    resolution: {integrity: sha512-6zWPyEOFaQBJYcGMHBKTKJ3u6TBsnMFOIZSa6ce1e/ZrrsOlnHRHbabMjLiBYKp+n44X9eUI6VUPaukCXHuG4g==}
-    peerDependencies:
-      bluebird: '*'
-    peerDependenciesMeta:
-      bluebird:
-        optional: true
-    dependencies:
-      bluebird: 3.7.2
     dev: true
 
   /promise.allsettled/1.0.6:
