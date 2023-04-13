@@ -41,8 +41,8 @@ devDependencies:
     specifier: ^1.3.23
     version: 1.3.23
   '@swc/helpers':
-    specifier: ^0.4.0
-    version: 0.4.14
+    specifier: ^0.5.0
+    version: 0.5.0
   '@vitejs/plugin-vue':
     specifier: ^4.0.0
     version: 4.0.0(vite@4.0.2)(vue@3.2.45)
@@ -5219,8 +5219,8 @@ packages:
       '@swc/core-win32-x64-msvc': 1.3.23
     dev: true
 
-  /@swc/helpers@0.4.14:
-    resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
+  /@swc/helpers@0.5.0:
+    resolution: {integrity: sha512-SjY/p4MmECVVEWspzSRpQEM3sjR17sP8PbGxELWrT+YZMBfiUyt1MRUNjMV23zohwlG2HYtCQOsCwsTHguXkyg==}
     dependencies:
       tslib: 2.4.1
     dev: true
