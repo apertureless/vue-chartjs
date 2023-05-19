@@ -19,9 +19,7 @@ Supports Chart.js v4.
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C1WP7C)
 
 <br />
-<a href="#install">Install</a>
-<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-<a href="#how-to-use">How to use</a>
+<a href="#quickstart">QuickStart</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="#docs">Docs</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
