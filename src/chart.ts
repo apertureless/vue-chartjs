@@ -102,7 +102,9 @@ export const Chart = defineComponent({
         }
 
         if (shouldUpdate) {
-          update(chart)
+          nextTick(() => {
+            update(chart)
+          })
         }
       },
       { deep: true }
