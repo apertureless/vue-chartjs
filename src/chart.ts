@@ -6,7 +6,8 @@ import {
   onMounted,
   onBeforeUnmount,
   watch,
-  toRaw
+  toRaw,
+  nextTick
 } from 'vue'
 import { Chart as ChartJS } from 'chart.js'
 import type { ChartComponent } from './types.js'
@@ -102,7 +103,9 @@ export const Chart = defineComponent({
         }
 
         if (shouldUpdate) {
-          update(chart)
+          nextTick(() => {
+            update(chart)
+          })
         }
       },
       { deep: true }
