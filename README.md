@@ -23,8 +23,6 @@ Supports Chart.js v4.
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="#docs">Docs</a>
 <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-<a href="https://slack.cube.dev/?ref=eco-vue-chartjs">Slack</a>
-<span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
 <a href="https://stackoverflow.com/questions/tagged/vue-chartjs">Stack Overflow</a>
 <br />
 <hr />
