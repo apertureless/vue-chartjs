@@ -35,10 +35,6 @@ export default defineConfig({
         activeMatch: '^/examples/'
       },
       {
-        text: 'Slack',
-        link: 'https://slack.cube.dev/?ref=eco-vue-chartjs'
-      },
-      {
         text: 'Stack Overflow',
         link: 'https://stackoverflow.com/questions/tagged/vue-chartjs/'
       }
