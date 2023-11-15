@@ -2,17 +2,17 @@
 
 ## Props
 
-There are some basic props defined in the components provided by `vue-chartjs`.
+Some basic props are defined in the components provided by `vue-chartjs`.
 
 | Prop | Description |
 |---|---|
-| data | The data object that is passed into the Chart.js chart |
-| options | The options object that is passed into the Chart.js chart |
-| datasetIdKey | Key name to identificate dataset |
-| plugins | The plugins array that is passed into the Chart.js chart |
-| updateMode | A mode string to indicate transition configuration should be used. |
+| data | Data object that is passed into the Chart.js chart |
+| options | Options object that is passed into the Chart.js chart |
+| datasetIdKey | Key name to identify the dataset |
+| plugins | Plugins array that is passed into the Chart.js chart |
+| updateMode | Mode string to indicate the transition configuration to be used. |
 
-Rest props will fall through to the canvas element.
+The rest of the props will fall through to the canvas element.
 
 ## Global Methods
 
