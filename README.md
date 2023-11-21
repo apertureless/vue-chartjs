@@ -92,6 +92,7 @@ Need an API to fetch data? Consider [Cube](https://cube.dev/?ref=eco-vue-chartjs
 
 - [Reactivity](https://vue-chartjs.org/guide/#updating-charts)
 - [Access to Chart instance](https://vue-chartjs.org/guide/#access-to-chart-instance)
+- [Accessibility](https://vue-chartjs.org/guide/#accessibility)
 - [Migration from v4 to v5](https://vue-chartjs.org/migration-guides/#migration-from-v4-to-v5/)
 - [Migration from vue-chart-3](https://vue-chartjs.org/migration-guides/#migration-from-vue-chart-3/)
 - [API](https://vue-chartjs.org/api/)
