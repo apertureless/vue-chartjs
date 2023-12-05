@@ -1,15 +1,16 @@
+import { Chart as ChartJS } from 'chart.js'
 import {
   defineComponent,
+  h,
+  nextTick,
+  onBeforeUnmount,
+  onMounted,
   ref,
   shallowRef,
-  h,
-  onMounted,
-  onBeforeUnmount,
-  watch,
   toRaw,
-  nextTick
+  watch
 } from 'vue'
-import { Chart as ChartJS } from 'chart.js'
+
 import type { ChartComponent } from './types.js'
 import { Props } from './props.js'
 import {
@@ -23,7 +24,7 @@ import {
 
 export const Chart = defineComponent({
   props: Props,
-  setup(props, { expose }) {
+  setup(props, { expose, slots }) {
     const canvasRef = ref<HTMLCanvasElement | null>(null)
     const chartRef = shallowRef<ChartJS | null>(null)
 
@@ -112,9 +113,16 @@ export const Chart = defineComponent({
     )
 
     return () => {
-      return h('canvas', {
-        ref: canvasRef
-      })
+      return h(
+        'canvas',
+        {
+          role: 'img',
+          ariaLabel: props.ariaLabel,
+          ariaDescribedby: props.ariaDescribedby,
+          ref: canvasRef
+        },
+        [h('p', {}, [slots.default ? slots.default() : ''])]
+      )
     }
   }
 }) as ChartComponent

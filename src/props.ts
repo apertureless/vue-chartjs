@@ -30,10 +30,20 @@ export const CommonProps = {
   }
 } as const
 
+export const A11yProps = {
+  ariaLabel: {
+    type: String
+  },
+  ariaDescribedby: {
+    type: String
+  }
+} as const
+
 export const Props = {
   type: {
     type: String as PropType<ChartType>,
     required: true
   },
-  ...CommonProps
+  ...CommonProps,
+  ...A11yProps
 } as const

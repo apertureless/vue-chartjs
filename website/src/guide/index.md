@@ -141,6 +141,58 @@ In Vue3 projects:
 const chartInstance = this.$refs.bar.chart
 ```
 
+## Accessibility
+
+To make your charts accessible to all users, you should label your charts.
+Please refer also to the official [Chart.js Accessibility notes](https://www.chartjs.org/docs/latest/general/accessibility.html).
+
+### `aria-label`
+
+You can directly label a chart by passing an `aria-label` prop.
+
+```vue
+<template>
+  <BarChart aria-label="Sales figures for the years 2022 to 2024. Sales in 2022: 987, Sales in 2023: 1209, Sales in 2024: 825." />
+</template>
+```
+
+### `aria-describedby`
+
+You can reference to a describing element such as a table which describes the data by using the `aria-describedby` property.
+
+```vue
+<template>
+  <BarChart aria-describedby="my-data-table" />
+  <table id="my-data-table">
+    <caption>Sales figures for the years 2022 to 2024.</caption>
+    <thead>
+      <tr>
+        <th>2022</th>
+        <th>2023</th>
+        <th>2024</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>987</td>
+        <td>1209</td>
+        <td>825</td>
+      </tr>
+    </tbody>
+  </table>
+</template>
+```
+
+### Fallback-Content
+
+In case the Browser is not able to render the `canvas` element, you should consider providing fallback content by using the Slot of each component.
+
+```vue
+<template>
+  <BarChart>Chart couldn't be loaded.</BarChart>
+</template>
+```
+
 ## Examples
 
 ### Chart with props
