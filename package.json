@@ -119,7 +119,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^3.7.5",
-    "rollup-plugin-swc3": "^0.8.0",
+    "rollup-plugin-swc3": "^0.11.0",
     "simple-git-hooks": "^2.7.0",
     "simple-github-release": "^1.0.0",
     "size-limit": "^11.0.0",
