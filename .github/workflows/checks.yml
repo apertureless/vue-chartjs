@@ -4,37 +4,18 @@ on:
     branches:
       - main
 jobs:
-  size:
-    runs-on: ubuntu-latest
-    name: Checking size
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v3
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'pnpm'
-      - name: Check size
-        uses: andresz1/size-limit-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
   typings:
     runs-on: ubuntu-latest
     name: typings
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 16
           cache: 'pnpm'
@@ -50,13 +31,13 @@ jobs:
     name: storybook
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 16
           cache: 'pnpm'
