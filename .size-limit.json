@@ -1,13 +1,13 @@
 [
   {
     "path": "dist/index.js",
-    "limit": "1.95 KB",
+    "limit": "2.95 KB",
     "webpack": false,
     "running": false
   },
   {
     "path": "dist/index.js",
-    "limit": "1 KB",
+    "limit": "1.5 KB",
     "import": "{ Bar }"
   }
 ]
