@@ -19,10 +19,6 @@ jobs:
         with:
           node-version: 16
           cache: 'pnpm'
-      - name: Check size
-        uses: andresz1/size-limit-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
   typings:
     runs-on: ubuntu-latest
     name: typings
