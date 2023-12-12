@@ -156,8 +156,8 @@ devDependencies:
     specifier: ^0.31.0
     version: 0.31.0(jsdom@22.0.0)
   vitest-canvas-mock:
-    specifier: ^0.2.2
-    version: 0.2.2(vitest@0.31.0)
+    specifier: ^0.3.0
+    version: 0.3.3(vitest@0.31.0)
   vue:
     specifier: ^3.2.31
     version: 3.2.45
@@ -11430,8 +11430,8 @@ packages:
       iterate-iterator: 1.0.2
     dev: true
 
-  /jest-canvas-mock@2.4.0:
-    resolution: {integrity: sha512-mmMpZzpmLzn5vepIaHk5HoH3Ka4WykbSoLuG/EKoJd0x0ID/t+INo1l8ByfcUJuDM+RIsL4QDg/gDnBbrj2/IQ==}
+  /jest-canvas-mock@2.5.2:
+    resolution: {integrity: sha512-vgnpPupjOL6+L5oJXzxTxFrlGEIbHdZqFU+LFNdtLxZ3lRDCl17FlTMM7IatoRQkrcyOTMlDinjUguqmQ6bR2A==}
     dependencies:
       cssfontparser: 1.2.1
       moo-color: 1.0.3
@@ -16285,12 +16285,12 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest-canvas-mock@0.2.2(vitest@0.31.0):
-    resolution: {integrity: sha512-xWieqkTMWa7hXbmHcUP9HOnn4qM8/0pK043BD5bD3ipCpr2tNuEn300necwB3Eh2WZp8QV2k1RelXx50fJDT6g==}
+  /vitest-canvas-mock@0.3.3(vitest@0.31.0):
+    resolution: {integrity: sha512-3P968tYBpqYyzzOaVtqnmYjqbe13576/fkjbDEJSfQAkHtC5/UjuRHOhFEN/ZV5HVZIkaROBUWgazDKJ+Ibw+Q==}
     peerDependencies:
       vitest: '*'
     dependencies:
-      jest-canvas-mock: 2.4.0
+      jest-canvas-mock: 2.5.2
       vitest: 0.31.0(jsdom@22.0.0)
     dev: true
 
