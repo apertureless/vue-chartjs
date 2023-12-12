@@ -128,7 +128,7 @@
     "typescript": "^4.9.4",
     "vite": "^4.0.2",
     "vitest": "^0.31.0",
-    "vitest-canvas-mock": "^0.2.2",
+    "vitest-canvas-mock": "^0.3.0",
     "vue": "^3.2.31"
   },
   "tsd": {
