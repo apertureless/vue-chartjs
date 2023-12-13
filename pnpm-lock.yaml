@@ -63,8 +63,8 @@ devDependencies:
     specifier: ^4.19.1
     version: 4.21.4
   chart.js:
-    specifier: ^4.1.1
-    version: 4.1.1
+    specifier: ^4.4.1
+    version: 4.4.1
   clean-publish:
     specifier: ^4.0.0
     version: 4.0.1
@@ -6277,9 +6277,9 @@ packages:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
     dev: true
 
-  /chart.js@4.1.1:
-    resolution: {integrity: sha512-P0pCosNXp+LR8zO/QTkZKT6Hb7p0DPFtypEeVOf+6x06hX13NIb75R0DXUA4Ksx/+48chDQKtCCmRCviQRTqsA==}
-    engines: {pnpm: ^7.0.0}
+  /chart.js@4.4.1:
+    resolution: {integrity: sha512-C74QN1bxwV1v2PEujhmKjOZ7iUM4w6BWs23Md/6aOZZSlwMzeCIDGuZay++rBgChYru7/+QFeoQW0fQoP534Dg==}
+    engines: {pnpm: '>=7'}
     dependencies:
       '@kurkle/color': 0.3.1
     dev: true
