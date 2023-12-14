@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.3.0](https://github.com/apertureless/vue-chartjs/compare/v5.2.0...v5.3.0) (2023-12-14)
+
+
+### Features
+
+* **a11y:** support ARIA attributes, role and fallback content for canvas ([#1061](https://github.com/apertureless/vue-chartjs/issues/1061)) ([c1ee49d](https://github.com/apertureless/vue-chartjs/commit/c1ee49d6a8ad2fc0ae798b34944ea90059bb70f6))
+
+
+### Bug Fixes
+
+* update to chart.js v4.4.1 ([#1064](https://github.com/apertureless/vue-chartjs/issues/1064)) ([34a7e6e](https://github.com/apertureless/vue-chartjs/commit/34a7e6e2a28d296229d862cf71ff3466b6148d79))
+
 ## [5.2.0](https://github.com/apertureless/vue-chartjs/compare/v5.1.0...v5.2.0) (2023-01-09)
 
 
