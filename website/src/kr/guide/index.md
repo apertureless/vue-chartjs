@@ -96,33 +96,44 @@ export default {
 
 ## 차트 데이터 업데이트
 
-Chart.js 자체는 데이터 세트를 변경할 때 라이브 업데이트 기능을 제공하지 않습니다. 그러나 `vue-chartjs`는 이것을 실현하기 위해 2 개의 mixin을 제공합니다.
-
-- `reactiveProp`
-- `reactiveData`
-
-두 믹스 인은 실제로 동일한 결과를 얻습니다. 대부분의 경우 `reactiveProp`을 사용합니다. 이 믹스인은 차트 컴포넌트의 로직을 확장하고 자동으로 `chartData`라는 속성을 생성하고 이 속성에 `vue watch`를 추가합니다. 데이터가 변경되면, 데이터 세트내의 데이터만이 변경되고 있으면 `update()`를, 새로운 데이터 세트가 추가되고 있으면 `renderChart()`를 호출합니다.
-
-`ractiveData`는 속성이 아닌 로컬 chartData 변수를 만들고 Watcher를 추가합니다. 이것은 단일 목적 차트가 필요하고 차트 구성 요소 내에서 API 호출을 수행하는 경우에만 유용합니다.
+v4부터 차트는 기본적으로 데이터 변경 `watch`와 옵션 변경 `watch`가 있으므로 새 데이터 또는 새 옵션이 전달되면 (변경되면) Vue Chart 래퍼가 차트를 업데이트하거나 다시 렌더링합니다. v4부터는 믹스인이 제거되었습니다.
 
 ### 예제
 
-**LineChart.js**
-```javascript
-import { Line, mixins } from 'vue-chartjs'
-const { reactiveProp } = mixins
+```vue
+<template>
+  <Bar :data="chartData" :options="chartOptions" />
+</template>
+
+<script>
+// DataPage.vue
+import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default {
-  extends: Line,
-  mixins: [reactiveProp],
-  props: ['options'],
-  mounted () {
-    // this.chartData is created in the mixin.
-    // If you want to pass options please create a local options object
-    this.renderChart(this.chartData, this.options)
-  }
+  name: 'BarChart',
+  components: { Bar },
+  computed: {
+      chartData() { return /* mutable chart data */ },
+      chartOptions() { return /* mutable chart options */ }
+    }
 }
+</script>
 ```
+
+차트 데이터를 업데이트할 때 Vue의 `Target is read only` 경고가 나타날 수 있습니다.
+
+데이터가 '읽기 전용' (`read only`) 반응 값인 경우 클론을 사용하여 이 경고를 재정의할 수 있습니다
+
+```vue
+<template>
+  <Bar :data="JSON.stringify(JSON.parse(chartData))" :options="chartOptions" />
+</template>
+```
+
+차트 데이터가 수정 가능한 계산된 속성 경우 [writable computed value](https://vuejs.org/guide/essentials/computed#writable-computed) 클론을 사용할 필요가 없습니다
 
 **RandomChart.vue**
 

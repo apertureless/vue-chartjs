@@ -125,6 +125,22 @@ export default {
 </script>
 ```
 
+You may get Vue's `Target is readonly` warnings when you are updating your `chartData`.
+
+If your `chartData` is a `read-only` reactive value, you can override this warning by using a clone:
+
+```vue
+<template>
+  <Bar :data="JSON.stringify(JSON.parse(chartData))" :options="chartOptions" />
+</template>
+```
+
+Unless you have a writable computed `chartData`, you won't be able to use the newer `structuredClone`, as you'll likely hit the `Write operation failed: computed value is readonly` error.
+
+You don't need to use a clone if your `chartData` is a [writable computed value](https://vuejs.org/guide/essentials/computed#writable-computed).
+
+
+
 ## Access to Chart instance
 
 You can get access to chart instance via template refs.
