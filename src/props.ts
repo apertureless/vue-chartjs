@@ -44,6 +44,10 @@ export const Props = {
     type: String as PropType<ChartType>,
     required: true
   },
+  destroyDelay: {
+    type: Number,
+    default: 0 // No delay by default
+  },
   ...CommonProps,
   ...A11yProps
 } as const
