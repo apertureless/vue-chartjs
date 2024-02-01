@@ -133,7 +133,7 @@ export default {
 </template>
 ```
 
-차트 데이터가 계산된 속성 경우 [writable computed value](https://vuejs.org/guide/essentials/computed#writable-computed) 클론을 사용할 필요가 없습니다
+차트 데이터가 수정 가능한 계산된 속성 경우 [writable computed value](https://vuejs.org/guide/essentials/computed#writable-computed) 클론을 사용할 필요가 없습니다
 
 **RandomChart.vue**
 
