@@ -3,7 +3,7 @@ import {
   defineComponent,
   h,
   nextTick,
-  onBeforeUnmount,
+  onUnmounted,
   onMounted,
   ref,
   shallowRef,
@@ -60,7 +60,7 @@ export const Chart = defineComponent({
 
     onMounted(renderChart)
 
-    onBeforeUnmount(destroyChart)
+    onUnmounted(destroyChart)
 
     watch(
       [() => props.options, () => props.data],
