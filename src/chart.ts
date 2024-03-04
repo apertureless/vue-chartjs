@@ -49,8 +49,15 @@ export const Chart = defineComponent({
       const chart = toRaw(chartRef.value)
 
       if (chart) {
-        chart.destroy()
-        chartRef.value = null
+        if (props.destroyDelay > 0) {
+          setTimeout(() => {
+            chart.destroy()
+            chartRef.value = null
+          }, props.destroyDelay)
+        } else {
+          chart.destroy()
+          chartRef.value = null
+        }
       }
     }
 
