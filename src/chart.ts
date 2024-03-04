@@ -3,7 +3,7 @@ import {
   defineComponent,
   h,
   nextTick,
-  onBeforeUnmount,
+  onUnmounted,
   onMounted,
   ref,
   shallowRef,
@@ -49,8 +49,15 @@ export const Chart = defineComponent({
       const chart = toRaw(chartRef.value)
 
       if (chart) {
-        chart.destroy()
-        chartRef.value = null
+        if (props.destroyDelay > 0) {
+          setTimeout(() => {
+            chart.destroy()
+            chartRef.value = null
+          }, props.destroyDelay)
+        } else {
+          chart.destroy()
+          chartRef.value = null
+        }
       }
     }
 
@@ -60,7 +67,7 @@ export const Chart = defineComponent({
 
     onMounted(renderChart)
 
-    onBeforeUnmount(destroyChart)
+    onUnmounted(destroyChart)
 
     watch(
       [() => props.options, () => props.data],
