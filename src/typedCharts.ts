@@ -11,12 +11,11 @@ import {
   RadarController,
   ScatterController
 } from 'chart.js'
-
+import type { DistributiveArray } from 'chart.js/dist/types/utils'
 import type { TypedChartComponent, ChartComponentRef } from './types.js'
 import { CommonProps } from './props.js'
 import { Chart } from './chart.js'
 import { compatProps } from './utils.js'
-import type { DistributiveArray } from 'chart.js/dist/types/utils'
 
 export function createTypedChart<
   TType extends ChartType = ChartType,
