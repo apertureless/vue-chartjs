@@ -11,10 +11,12 @@ import {
   RadarController,
   ScatterController
 } from 'chart.js'
+
 import type { TypedChartComponent, ChartComponentRef } from './types.js'
 import { CommonProps } from './props.js'
 import { Chart } from './chart.js'
 import { compatProps } from './utils.js'
+import type { DistributiveArray } from 'chart.js/dist/types/utils'
 
 export function createTypedChart<
   TType extends ChartType = ChartType,
@@ -54,7 +56,14 @@ export function createTypedChart<
   }) as any
 }
 
-export const Bar = /* #__PURE__ */ createTypedChart('bar', BarController)
+interface ExtendedDataPoint {
+  [key: string]: string | number | null | ExtendedDataPoint
+}
+
+export const Bar = /* #__PURE__ */ createTypedChart<
+  'bar',
+  DefaultDataPoint<'bar'> | DistributiveArray<ExtendedDataPoint>
+>('bar', BarController)
 
 export const Doughnut = /* #__PURE__ */ createTypedChart(
   'doughnut',
