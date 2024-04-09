@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.1](https://github.com/apertureless/vue-chartjs/compare/v5.3.0...v5.3.1) (2024-04-09)
+
+
+### Bug Fixes
+
+* **types:** bar chart data ([#1087](https://github.com/apertureless/vue-chartjs/issues/1087)) ([f5ffcab](https://github.com/apertureless/vue-chartjs/commit/f5ffcab7a99bbf0009153fd47e72e28d25dfe2c2))
+
 ## [5.3.0](https://github.com/apertureless/vue-chartjs/compare/v5.2.0...v5.3.0) (2023-12-14)
 
 
