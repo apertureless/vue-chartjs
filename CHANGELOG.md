@@ -2,289 +2,243 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [5.3.3](https://github.com/apertureless/vue-chartjs/compare/v5.3.2...v5.3.3) (2024-04-09)
-
-### [5.3.2](https://github.com/apertureless/vue-chartjs/compare/v5.3.1...v5.3.2) (2024-04-09)
-
 ### [5.3.1](https://github.com/apertureless/vue-chartjs/compare/v5.3.0...v5.3.1) (2024-04-09)
-
 
 ### Bug Fixes
 
-* **types:** bar chart data ([#1087](https://github.com/apertureless/vue-chartjs/issues/1087)) ([f5ffcab](https://github.com/apertureless/vue-chartjs/commit/f5ffcab7a99bbf0009153fd47e72e28d25dfe2c2))
+- **types:** bar chart data ([#1087](https://github.com/apertureless/vue-chartjs/issues/1087)) ([f5ffcab](https://github.com/apertureless/vue-chartjs/commit/f5ffcab7a99bbf0009153fd47e72e28d25dfe2c2))
 
 ## [5.3.0](https://github.com/apertureless/vue-chartjs/compare/v5.2.0...v5.3.0) (2023-12-14)
 
-
 ### Features
 
-* **a11y:** support ARIA attributes, role and fallback content for canvas ([#1061](https://github.com/apertureless/vue-chartjs/issues/1061)) ([c1ee49d](https://github.com/apertureless/vue-chartjs/commit/c1ee49d6a8ad2fc0ae798b34944ea90059bb70f6))
-
+- **a11y:** support ARIA attributes, role and fallback content for canvas ([#1061](https://github.com/apertureless/vue-chartjs/issues/1061)) ([c1ee49d](https://github.com/apertureless/vue-chartjs/commit/c1ee49d6a8ad2fc0ae798b34944ea90059bb70f6))
 
 ### Bug Fixes
 
-* update to chart.js v4.4.1 ([#1064](https://github.com/apertureless/vue-chartjs/issues/1064)) ([34a7e6e](https://github.com/apertureless/vue-chartjs/commit/34a7e6e2a28d296229d862cf71ff3466b6148d79))
+- update to chart.js v4.4.1 ([#1064](https://github.com/apertureless/vue-chartjs/issues/1064)) ([34a7e6e](https://github.com/apertureless/vue-chartjs/commit/34a7e6e2a28d296229d862cf71ff3466b6148d79))
 
 ## [5.2.0](https://github.com/apertureless/vue-chartjs/compare/v5.1.0...v5.2.0) (2023-01-09)
 
-
 ### Features
 
-* restore compatability with webpack 4 ([#996](https://github.com/apertureless/vue-chartjs/issues/996)) ([0ee705c](https://github.com/apertureless/vue-chartjs/commit/0ee705c7727434a0aee1c1801beb152e2339c15b))
-
+- restore compatability with webpack 4 ([#996](https://github.com/apertureless/vue-chartjs/issues/996)) ([0ee705c](https://github.com/apertureless/vue-chartjs/commit/0ee705c7727434a0aee1c1801beb152e2339c15b))
 
 ### Bug Fixes
 
-* peer dependency drop Vue.js < 2.7 ([#947](https://github.com/apertureless/vue-chartjs/issues/947)) ([#982](https://github.com/apertureless/vue-chartjs/issues/982)) ([5808c6e](https://github.com/apertureless/vue-chartjs/commit/5808c6ec95f5f36ed30e3b5d5e1ca41e569aa8b8))
+- peer dependency drop Vue.js < 2.7 ([#947](https://github.com/apertureless/vue-chartjs/issues/947)) ([#982](https://github.com/apertureless/vue-chartjs/issues/982)) ([5808c6e](https://github.com/apertureless/vue-chartjs/commit/5808c6ec95f5f36ed30e3b5d5e1ca41e569aa8b8))
 
 ## [5.1.0](https://github.com/apertureless/vue-chartjs/compare/v5.0.1...v5.1.0) (2022-12-19)
 
-
 ### Features
 
-* restore CommonJS bundle ([#980](https://github.com/apertureless/vue-chartjs/issues/980)) ([1eb1ba7](https://github.com/apertureless/vue-chartjs/commit/1eb1ba7468a8dbde0d606f48a089c023d5aa9fbb))
+- restore CommonJS bundle ([#980](https://github.com/apertureless/vue-chartjs/issues/980)) ([1eb1ba7](https://github.com/apertureless/vue-chartjs/commit/1eb1ba7468a8dbde0d606f48a089c023d5aa9fbb))
 
 ### [5.0.1](https://github.com/apertureless/vue-chartjs/compare/v5.0.0...v5.0.1) (2022-12-06)
 
-
 ### Bug Fixes
 
-* fix compatability with Vue >=2.7 ([#967](https://github.com/apertureless/vue-chartjs/issues/967)) ([742bf62](https://github.com/apertureless/vue-chartjs/commit/742bf62f9a4fd15994d346ce076aa4081716c1a7))
+- fix compatability with Vue >=2.7 ([#967](https://github.com/apertureless/vue-chartjs/issues/967)) ([742bf62](https://github.com/apertureless/vue-chartjs/commit/742bf62f9a4fd15994d346ce076aa4081716c1a7))
 
 ## [5.0.0](https://github.com/apertureless/vue-chartjs/compare/v4.1.2...v5.0.0) (2022-12-05)
 
-
 ### ⚠ BREAKING CHANGES
 
-* package now is ESM-only, no CommonJS support
-* default export was removed, please use named exports
-* chart events were removed
-* div wrapper was removed, `chartData` prop was renamed to `data`, `chartOptions`
-prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
-* Vue.js < 2.7 is no longer supported.
+- package now is ESM-only, no CommonJS support
+- default export was removed, please use named exports
+- chart events were removed
+- div wrapper was removed, `chartData` prop was renamed to `data`, `chartOptions`
+  prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
+- Vue.js < 2.7 is no longer supported.
 
 ### Features
 
-* base Chart component ([#958](https://github.com/apertureless/vue-chartjs/issues/958)) ([f3ecfb0](https://github.com/apertureless/vue-chartjs/commit/f3ecfb04927d39b54d26d2ac729147141702b4a9))
-* drop Vue.js < 2.7 support ([#947](https://github.com/apertureless/vue-chartjs/issues/947)) ([d1fbacc](https://github.com/apertureless/vue-chartjs/commit/d1fbacc410ce1095a1c7f8c7d9c85b8b709dc8c7))
-* events utils ([#963](https://github.com/apertureless/vue-chartjs/issues/963)) ([752407e](https://github.com/apertureless/vue-chartjs/commit/752407eba19befcfb4923c492ad900b251658837))
-* fallthrough props to canvas ([#955](https://github.com/apertureless/vue-chartjs/issues/955)) ([6675cb0](https://github.com/apertureless/vue-chartjs/commit/6675cb031276579bca74fd3bc2e767b76fa6e068))
-* updateMode prop ([#962](https://github.com/apertureless/vue-chartjs/issues/962)) ([5bd9805](https://github.com/apertureless/vue-chartjs/commit/5bd9805ae9fbe2a26b0dd063d4084725d307426f))
-* upgrade Chart.js to v4 ([#960](https://github.com/apertureless/vue-chartjs/issues/960)) ([7fd4ae4](https://github.com/apertureless/vue-chartjs/commit/7fd4ae4e8c487759d675af5947d1b55fbd0b3391))
-
+- base Chart component ([#958](https://github.com/apertureless/vue-chartjs/issues/958)) ([f3ecfb0](https://github.com/apertureless/vue-chartjs/commit/f3ecfb04927d39b54d26d2ac729147141702b4a9))
+- drop Vue.js < 2.7 support ([#947](https://github.com/apertureless/vue-chartjs/issues/947)) ([d1fbacc](https://github.com/apertureless/vue-chartjs/commit/d1fbacc410ce1095a1c7f8c7d9c85b8b709dc8c7))
+- events utils ([#963](https://github.com/apertureless/vue-chartjs/issues/963)) ([752407e](https://github.com/apertureless/vue-chartjs/commit/752407eba19befcfb4923c492ad900b251658837))
+- fallthrough props to canvas ([#955](https://github.com/apertureless/vue-chartjs/issues/955)) ([6675cb0](https://github.com/apertureless/vue-chartjs/commit/6675cb031276579bca74fd3bc2e767b76fa6e068))
+- updateMode prop ([#962](https://github.com/apertureless/vue-chartjs/issues/962)) ([5bd9805](https://github.com/apertureless/vue-chartjs/commit/5bd9805ae9fbe2a26b0dd063d4084725d307426f))
+- upgrade Chart.js to v4 ([#960](https://github.com/apertureless/vue-chartjs/issues/960)) ([7fd4ae4](https://github.com/apertureless/vue-chartjs/commit/7fd4ae4e8c487759d675af5947d1b55fbd0b3391))
 
 ### Bug Fixes
 
-* **deps:** update dependency chart.js to v4 ([#954](https://github.com/apertureless/vue-chartjs/issues/954)) ([c3f8fc9](https://github.com/apertureless/vue-chartjs/commit/c3f8fc9effc36a39c8734177259fd0911c3426b6))
+- **deps:** update dependency chart.js to v4 ([#954](https://github.com/apertureless/vue-chartjs/issues/954)) ([c3f8fc9](https://github.com/apertureless/vue-chartjs/commit/c3f8fc9effc36a39c8734177259fd0911c3426b6))
 
-
-* remove default export ([#959](https://github.com/apertureless/vue-chartjs/issues/959)) ([5ab27bc](https://github.com/apertureless/vue-chartjs/commit/5ab27bc66335932476b9cdff6167659f12f2fee4))
+- remove default export ([#959](https://github.com/apertureless/vue-chartjs/issues/959)) ([5ab27bc](https://github.com/apertureless/vue-chartjs/commit/5ab27bc66335932476b9cdff6167659f12f2fee4))
 
 ### [4.1.2](https://github.com/apertureless/vue-chartjs/compare/v4.1.1...v4.1.2) (2022-09-27)
 
-
 ### Bug Fixes
 
-* legacy multiple annotations ([#910](https://github.com/apertureless/vue-chartjs/issues/910)) ([2a20eb8](https://github.com/apertureless/vue-chartjs/commit/2a20eb8cdc1834e2ca4478c5b9a7be8c88d77737))
+- legacy multiple annotations ([#910](https://github.com/apertureless/vue-chartjs/issues/910)) ([2a20eb8](https://github.com/apertureless/vue-chartjs/commit/2a20eb8cdc1834e2ca4478c5b9a7be8c88d77737))
 
 ### [4.1.1](https://github.com/apertureless/vue-chartjs/compare/v4.1.0...v4.1.1) (2022-05-27)
 
-
 ### Bug Fixes
 
-* add type comment on Chart Objects ([#825](https://github.com/apertureless/vue-chartjs/issues/825)) ([#860](https://github.com/apertureless/vue-chartjs/issues/860)) ([2311361](https://github.com/apertureless/vue-chartjs/commit/231136131d3cce81f362ccf1e58a0573308a5503))
+- add type comment on Chart Objects ([#825](https://github.com/apertureless/vue-chartjs/issues/825)) ([#860](https://github.com/apertureless/vue-chartjs/issues/860)) ([2311361](https://github.com/apertureless/vue-chartjs/commit/231136131d3cce81f362ccf1e58a0573308a5503))
 
 ## [4.1.0](https://github.com/apertureless/vue-chartjs/compare/v4.0.7...v4.1.0) (2022-05-10)
 
-
 ### Features
 
-* add reactivity to options ([#840](https://github.com/apertureless/vue-chartjs/issues/840)) ([6f8fa51](https://github.com/apertureless/vue-chartjs/commit/6f8fa5173f4b027e23e1ae933b0a50714466c540))
-* **legacy-charts:** add typescript definitions for legacy charts ([#839](https://github.com/apertureless/vue-chartjs/issues/839)) ([d937f80](https://github.com/apertureless/vue-chartjs/commit/d937f80ee794958f2cde86d613f42330db7aceb7)), closes [#825](https://github.com/apertureless/vue-chartjs/issues/825)
+- add reactivity to options ([#840](https://github.com/apertureless/vue-chartjs/issues/840)) ([6f8fa51](https://github.com/apertureless/vue-chartjs/commit/6f8fa5173f4b027e23e1ae933b0a50714466c540))
+- **legacy-charts:** add typescript definitions for legacy charts ([#839](https://github.com/apertureless/vue-chartjs/issues/839)) ([d937f80](https://github.com/apertureless/vue-chartjs/commit/d937f80ee794958f2cde86d613f42330db7aceb7)), closes [#825](https://github.com/apertureless/vue-chartjs/issues/825)
 
 ### [4.0.7](https://github.com/apertureless/vue-chartjs/compare/v4.0.6...v4.0.7) (2022-04-25)
 
-
 ### Bug Fixes
 
-* **legacy-charts:** tune chartoptions type check ([#821](https://github.com/apertureless/vue-chartjs/issues/821)) ([4409b98](https://github.com/apertureless/vue-chartjs/commit/4409b982caed251846c5ddfaae15857d47167402))
+- **legacy-charts:** tune chartoptions type check ([#821](https://github.com/apertureless/vue-chartjs/issues/821)) ([4409b98](https://github.com/apertureless/vue-chartjs/commit/4409b982caed251846c5ddfaae15857d47167402))
 
 ### [4.0.6](https://github.com/apertureless/vue-chartjs/compare/v4.0.5...v4.0.6) (2022-04-21)
 
-
 ### Bug Fixes
 
-* Fix typo in chartDestroy ([0907322](https://github.com/apertureless/vue-chartjs/commit/09073224b2a247facc725483831b176dc96c024b))
-* **legacycharts:** fix update for multiple reactive charts in one page ([#818](https://github.com/apertureless/vue-chartjs/issues/818)) ([45cb362](https://github.com/apertureless/vue-chartjs/commit/45cb36271f629a3df3d0a078ddae037da813c1aa))
+- Fix typo in chartDestroy ([0907322](https://github.com/apertureless/vue-chartjs/commit/09073224b2a247facc725483831b176dc96c024b))
+- **legacycharts:** fix update for multiple reactive charts in one page ([#818](https://github.com/apertureless/vue-chartjs/issues/818)) ([45cb362](https://github.com/apertureless/vue-chartjs/commit/45cb36271f629a3df3d0a078ddae037da813c1aa))
 
 ### [4.0.5](https://github.com/apertureless/vue-chartjs/compare/v4.0.4...v4.0.5) (2022-04-08)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency chart.js to v3.7.1 ([9ada94b](https://github.com/apertureless/vue-chartjs/commit/9ada94b6cba425070b101699c143eaff49737553))
-* **legacy-charts:** fix render multiple charts at one page ([#803](https://github.com/apertureless/vue-chartjs/issues/803)) ([fe97040](https://github.com/apertureless/vue-chartjs/commit/fe97040aac4ec6d6c0e12457fb08e4de0c967bc1)), closes [#800](https://github.com/apertureless/vue-chartjs/issues/800) [#801](https://github.com/apertureless/vue-chartjs/issues/801)
+- **deps:** update dependency chart.js to v3.7.1 ([9ada94b](https://github.com/apertureless/vue-chartjs/commit/9ada94b6cba425070b101699c143eaff49737553))
+- **legacy-charts:** fix render multiple charts at one page ([#803](https://github.com/apertureless/vue-chartjs/issues/803)) ([fe97040](https://github.com/apertureless/vue-chartjs/commit/fe97040aac4ec6d6c0e12457fb08e4de0c967bc1)), closes [#800](https://github.com/apertureless/vue-chartjs/issues/800) [#801](https://github.com/apertureless/vue-chartjs/issues/801)
 
 ### [4.0.4](https://github.com/apertureless/vue-chartjs/compare/v4.0.3...v4.0.4) (2022-04-01)
 
-
 ### Bug Fixes
 
-* change legacy chart instance type ([#789](https://github.com/apertureless/vue-chartjs/issues/789)) ([543774c](https://github.com/apertureless/vue-chartjs/commit/543774c4b0c68535824a4b337d6d12bfab6583bb)), closes [#782](https://github.com/apertureless/vue-chartjs/issues/782)
+- change legacy chart instance type ([#789](https://github.com/apertureless/vue-chartjs/issues/789)) ([543774c](https://github.com/apertureless/vue-chartjs/commit/543774c4b0c68535824a4b337d6d12bfab6583bb)), closes [#782](https://github.com/apertureless/vue-chartjs/issues/782)
 
 ### [4.0.3](https://github.com/apertureless/vue-chartjs/compare/v4.0.2...v4.0.3) (2022-03-29)
 
-
 ### Bug Fixes
 
-* fix chart plugins type ([#786](https://github.com/apertureless/vue-chartjs/issues/786)) ([65762c8](https://github.com/apertureless/vue-chartjs/commit/65762c893175b1d24245020e2ff74d3ba633a6fa)), closes [#782](https://github.com/apertureless/vue-chartjs/issues/782)
+- fix chart plugins type ([#786](https://github.com/apertureless/vue-chartjs/issues/786)) ([65762c8](https://github.com/apertureless/vue-chartjs/commit/65762c893175b1d24245020e2ff74d3ba633a6fa)), closes [#782](https://github.com/apertureless/vue-chartjs/issues/782)
 
 ### [4.0.2](https://github.com/apertureless/vue-chartjs/compare/v4.0.1...v4.0.2) (2022-03-28)
 
-
 ### Bug Fixes
 
-* **legacycharts:** add missed export for legacy charts generateChart function ([#784](https://github.com/apertureless/vue-chartjs/issues/784)) ([4b68ba1](https://github.com/apertureless/vue-chartjs/commit/4b68ba168974242e947755cd40e5d7ce09e00092))
+- **legacycharts:** add missed export for legacy charts generateChart function ([#784](https://github.com/apertureless/vue-chartjs/issues/784)) ([4b68ba1](https://github.com/apertureless/vue-chartjs/commit/4b68ba168974242e947755cd40e5d7ce09e00092))
 
 ### [4.0.1](https://github.com/apertureless/vue-chartjs/compare/v4.0.0...v4.0.1) (2022-03-25)
 
-
 ### Bug Fixes
 
-* change images source in readme ([#779](https://github.com/apertureless/vue-chartjs/issues/779)) ([b77bd31](https://github.com/apertureless/vue-chartjs/commit/b77bd3128a549df0c052df07ad8854a3aaef0734))
+- change images source in readme ([#779](https://github.com/apertureless/vue-chartjs/issues/779)) ([b77bd31](https://github.com/apertureless/vue-chartjs/commit/b77bd3128a549df0c052df07ad8854a3aaef0734))
 
 ## [4.0.0](https://github.com/apertureless/vue-chartjs/compare/v3.5.1...v4.0.0) (2022-03-25)
 
-
 ### ⚠ BREAKING CHANGES
 
-* migration to vue3
+- migration to vue3
 
-* upgrade to Chart.js 3.0
+- upgrade to Chart.js 3.0
 
 ### Features
 
-* chart.js 3.0 support ([#754](https://github.com/apertureless/vue-chartjs/issues/754)) ([baba8e3](https://github.com/apertureless/vue-chartjs/commit/baba8e3e6f4b2b7d9a8c7b8e51cc698af23b972f))
-* migration to vue3 ([#755](https://github.com/apertureless/vue-chartjs/issues/755)) ([1104335](https://github.com/apertureless/vue-chartjs/commit/11043352f2475bd97a90318d1c2a8c71b82acd71))
-* typescript support ([#757](https://github.com/apertureless/vue-chartjs/issues/757)) ([67e73a0](https://github.com/apertureless/vue-chartjs/commit/67e73a0f1659a07e8508d58631153eb909dc7f8c))
-* vue2 legacy support ([#771](https://github.com/apertureless/vue-chartjs/issues/771)) ([5c9a69c](https://github.com/apertureless/vue-chartjs/commit/5c9a69c8ea18909f3633d91b480302fbc86591f3))
+- chart.js 3.0 support ([#754](https://github.com/apertureless/vue-chartjs/issues/754)) ([baba8e3](https://github.com/apertureless/vue-chartjs/commit/baba8e3e6f4b2b7d9a8c7b8e51cc698af23b972f))
+- migration to vue3 ([#755](https://github.com/apertureless/vue-chartjs/issues/755)) ([1104335](https://github.com/apertureless/vue-chartjs/commit/11043352f2475bd97a90318d1c2a8c71b82acd71))
+- typescript support ([#757](https://github.com/apertureless/vue-chartjs/issues/757)) ([67e73a0](https://github.com/apertureless/vue-chartjs/commit/67e73a0f1659a07e8508d58631153eb909dc7f8c))
+- vue2 legacy support ([#771](https://github.com/apertureless/vue-chartjs/issues/771)) ([5c9a69c](https://github.com/apertureless/vue-chartjs/commit/5c9a69c8ea18909f3633d91b480302fbc86591f3))
 
 ### [3.5.1](https://github.com/apertureless/vue-chartjs/compare/v3.5.0...v3.5.1) (2020-08-22)
 
-
 ### Bug Fixes
 
-* Fix typescript issue [#614](https://github.com/apertureless/vue-chartjs/issues/614) ([#621](https://github.com/apertureless/vue-chartjs/issues/621)) ([2901be4](https://github.com/apertureless/vue-chartjs/commit/2901be4a7599630e1f6fe75d25fa9f2c3bf94582))
+- Fix typescript issue [#614](https://github.com/apertureless/vue-chartjs/issues/614) ([#621](https://github.com/apertureless/vue-chartjs/issues/621)) ([2901be4](https://github.com/apertureless/vue-chartjs/commit/2901be4a7599630e1f6fe75d25fa9f2c3bf94582))
 
 ## [3.5.0](https://github.com/apertureless/vue-chartjs/compare/v3.4.2...v3.5.0) (2019-11-01)
 
-
 ### Bug Fixes
 
-* Fix type script definition for `addPlugin` method ([#564](https://github.com/apertureless/vue-chartjs/issues/564)) ([3065d70](https://github.com/apertureless/vue-chartjs/commit/3065d70))
-* Update chart.js peerDependency ([a140f5a](https://github.com/apertureless/vue-chartjs/commit/a140f5a))
-
+- Fix type script definition for `addPlugin` method ([#564](https://github.com/apertureless/vue-chartjs/issues/564)) ([3065d70](https://github.com/apertureless/vue-chartjs/commit/3065d70))
+- Update chart.js peerDependency ([a140f5a](https://github.com/apertureless/vue-chartjs/commit/a140f5a))
 
 ### Features
 
-* **typescript:** Improve mixins type definitions ([2a6eb7b](https://github.com/apertureless/vue-chartjs/commit/2a6eb7b))
-* **typescript:** Improve mixins type definitions ([#514](https://github.com/apertureless/vue-chartjs/issues/514)) ([520faca](https://github.com/apertureless/vue-chartjs/commit/520faca))
-* Add @types/chart.js types in typescript definitions ([#536](https://github.com/apertureless/vue-chartjs/issues/536)) ([22fb8d1](https://github.com/apertureless/vue-chartjs/commit/22fb8d1))
-* enhance search on the documentation ([3542b34](https://github.com/apertureless/vue-chartjs/commit/3542b34))
+- **typescript:** Improve mixins type definitions ([2a6eb7b](https://github.com/apertureless/vue-chartjs/commit/2a6eb7b))
+- **typescript:** Improve mixins type definitions ([#514](https://github.com/apertureless/vue-chartjs/issues/514)) ([520faca](https://github.com/apertureless/vue-chartjs/commit/520faca))
+- Add @types/chart.js types in typescript definitions ([#536](https://github.com/apertureless/vue-chartjs/issues/536)) ([22fb8d1](https://github.com/apertureless/vue-chartjs/commit/22fb8d1))
+- enhance search on the documentation ([3542b34](https://github.com/apertureless/vue-chartjs/commit/3542b34))
 
 ## [3.4.2](https://github.com/apertureless/vue-chartjs/compare/v3.4.1...v3.4.2) (2019-03-18)
 
-
 ### Bug Fixes
 
-* Change peerDependency version of chart.js to include older versions ([8c780d3](https://github.com/apertureless/vue-chartjs/commit/8c780d3))
-
-
+- Change peerDependency version of chart.js to include older versions ([8c780d3](https://github.com/apertureless/vue-chartjs/commit/8c780d3))
 
 ## [3.4.1](https://github.com/apertureless/vue-chartjs/compare/v3.4.0...v3.4.1) (2019-03-18)
 
-
 ### Bug Fixes
 
-* **reactive-mixins:** Add prop type and default value ([8762521](https://github.com/apertureless/vue-chartjs/commit/8762521))
-* Update peerDependencies ([5b19efc](https://github.com/apertureless/vue-chartjs/commit/5b19efc)), closes [#489](https://github.com/apertureless/vue-chartjs/issues/489)
-
-
+- **reactive-mixins:** Add prop type and default value ([8762521](https://github.com/apertureless/vue-chartjs/commit/8762521))
+- Update peerDependencies ([5b19efc](https://github.com/apertureless/vue-chartjs/commit/5b19efc)), closes [#489](https://github.com/apertureless/vue-chartjs/issues/489)
 
 <a name="3.4.0"></a>
+
 # [3.4.0](https://github.com/apertureless/vue-chartjs/compare/v3.3.2...v3.4.0) (2018-08-04)
 
-
 ### Features
 
-* **events:** Add events to reactiveMixins ([#389](https://github.com/apertureless/vue-chartjs/issues/389)) ([67e8e4d](https://github.com/apertureless/vue-chartjs/commit/67e8e4d)), closes [#382](https://github.com/apertureless/vue-chartjs/issues/382)
-* **typescript:** Add basic typescript definitions ([184be5c](https://github.com/apertureless/vue-chartjs/commit/184be5c)), closes [#376](https://github.com/apertureless/vue-chartjs/issues/376)
-* **ux:** Add a wrapper around generateLegend ([#390](https://github.com/apertureless/vue-chartjs/issues/390)) ([fc646d8](https://github.com/apertureless/vue-chartjs/commit/fc646d8))
-* **ux:** Add fake render method with error message ([23ff90d](https://github.com/apertureless/vue-chartjs/commit/23ff90d)), closes [#380](https://github.com/apertureless/vue-chartjs/issues/380)
-
-
+- **events:** Add events to reactiveMixins ([#389](https://github.com/apertureless/vue-chartjs/issues/389)) ([67e8e4d](https://github.com/apertureless/vue-chartjs/commit/67e8e4d)), closes [#382](https://github.com/apertureless/vue-chartjs/issues/382)
+- **typescript:** Add basic typescript definitions ([184be5c](https://github.com/apertureless/vue-chartjs/commit/184be5c)), closes [#376](https://github.com/apertureless/vue-chartjs/issues/376)
+- **ux:** Add a wrapper around generateLegend ([#390](https://github.com/apertureless/vue-chartjs/issues/390)) ([fc646d8](https://github.com/apertureless/vue-chartjs/commit/fc646d8))
+- **ux:** Add fake render method with error message ([23ff90d](https://github.com/apertureless/vue-chartjs/commit/23ff90d)), closes [#380](https://github.com/apertureless/vue-chartjs/issues/380)
 
 <a name="3.3.2"></a>
+
 ## [3.3.2](https://github.com/apertureless/vue-chartjs/compare/v3.3.1...v3.3.2) (2018-06-18)
 
-
 ### Bug Fixes
 
-* **babel:** fix decorator error with new version of babel ([2fe804b](https://github.com/apertureless/vue-chartjs/commit/2fe804b))
-* **core:** Delete old chart.js instance first ([#375](https://github.com/apertureless/vue-chartjs/issues/375)) ([89a7cac](https://github.com/apertureless/vue-chartjs/commit/89a7cac))
-* **mixins:** Add condition to check if chart instance is present. ([1fed8e7](https://github.com/apertureless/vue-chartjs/commit/1fed8e7))
-
+- **babel:** fix decorator error with new version of babel ([2fe804b](https://github.com/apertureless/vue-chartjs/commit/2fe804b))
+- **core:** Delete old chart.js instance first ([#375](https://github.com/apertureless/vue-chartjs/issues/375)) ([89a7cac](https://github.com/apertureless/vue-chartjs/commit/89a7cac))
+- **mixins:** Add condition to check if chart instance is present. ([1fed8e7](https://github.com/apertureless/vue-chartjs/commit/1fed8e7))
 
 ### Features
 
-* **privacy:** Remove GA from docs page ([d2d944f](https://github.com/apertureless/vue-chartjs/commit/d2d944f))
-
-
+- **privacy:** Remove GA from docs page ([d2d944f](https://github.com/apertureless/vue-chartjs/commit/d2d944f))
 
 <a name="3.3.1"></a>
+
 ## [3.3.1](https://github.com/apertureless/vue-chartjs/compare/v3.3.0...v3.3.1) (2018-03-26)
 
-
 ### Bug Fixes
 
-* **release:** Add exports to index ([8341f94](https://github.com/apertureless/vue-chartjs/commit/8341f94))
-
-
+- **release:** Add exports to index ([8341f94](https://github.com/apertureless/vue-chartjs/commit/8341f94))
 
 <a name="3.3.0"></a>
+
 # [3.3.0](https://github.com/apertureless/vue-chartjs/compare/v3.2.1...v3.3.0) (2018-03-23)
 
-
 ### Bug Fixes
 
-* **readme:** Update paypal donate button ([bfda218](https://github.com/apertureless/vue-chartjs/commit/bfda218))
-
+- **readme:** Update paypal donate button ([bfda218](https://github.com/apertureless/vue-chartjs/commit/bfda218))
 
 ### Features
 
-* **charts:** Export generateChart to create custom charts ([50e5644](https://github.com/apertureless/vue-chartjs/commit/50e5644))
-* **docs:** Update docs with custom chart example ([3247a61](https://github.com/apertureless/vue-chartjs/commit/3247a61))
-
-
+- **charts:** Export generateChart to create custom charts ([50e5644](https://github.com/apertureless/vue-chartjs/commit/50e5644))
+- **docs:** Update docs with custom chart example ([3247a61](https://github.com/apertureless/vue-chartjs/commit/3247a61))
 
 <a name="3.1.0"></a>
-# [3.1.0](https://github.com/apertureless/vue-chartjs/compare/v3.0.2...v3.1.0) (2018-01-12)
 
+# [3.1.0](https://github.com/apertureless/vue-chartjs/compare/v3.0.2...v3.1.0) (2018-01-12)
 
 ### Bug Fixes
 
-* **mixins:** Check for chartjs instance before rendering chart ([39ff839](https://github.com/apertureless/vue-chartjs/commit/39ff839)), closes [#288](https://github.com/apertureless/vue-chartjs/issues/288)
-
+- **mixins:** Check for chartjs instance before rendering chart ([39ff839](https://github.com/apertureless/vue-chartjs/commit/39ff839)), closes [#288](https://github.com/apertureless/vue-chartjs/issues/288)
 
 ### Features
 
-* **charts:** Remove default styling ([ac5d4d8](https://github.com/apertureless/vue-chartjs/commit/ac5d4d8))
-
-
+- **charts:** Remove default styling ([ac5d4d8](https://github.com/apertureless/vue-chartjs/commit/ac5d4d8))
 
 # Change Log
 
 ## [v3.0.1](https://github.com/apertureless/vue-chartjs/tree/v3.0.1) (2017-11-06)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v3.0.0...v3.0.1)
 
 **Closed issues:**
@@ -292,7 +246,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - \[Suggestion\]Loose package dependencies [\#245](https://github.com/apertureless/vue-chartjs/issues/245)
 - reactiveData mixin [\#244](https://github.com/apertureless/vue-chartjs/issues/244)
 - Customise individual Axis Labels [\#243](https://github.com/apertureless/vue-chartjs/issues/243)
-- presets es2015  [\#242](https://github.com/apertureless/vue-chartjs/issues/242)
+- presets es2015 [\#242](https://github.com/apertureless/vue-chartjs/issues/242)
 - Uncaught TypeError: Cannot read property 'transition' of null [\#241](https://github.com/apertureless/vue-chartjs/issues/241)
 - Is it possible to create an callback on the onAnimationComplete option [\#240](https://github.com/apertureless/vue-chartjs/issues/240)
 - When resizing window, chart returns to first loaded state [\#239](https://github.com/apertureless/vue-chartjs/issues/239)
@@ -322,6 +276,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - update webpack to version 3 [\#227](https://github.com/apertureless/vue-chartjs/pull/227) ([kingkong64](https://github.com/kingkong64))
 
 ## [v3.0.0](https://github.com/apertureless/vue-chartjs/tree/v3.0.0) (2017-10-14)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.7...v3.0.0)
 
 **Closed issues:**
@@ -351,6 +306,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - French translation for README.md [\#211](https://github.com/apertureless/vue-chartjs/pull/211) ([julienc91](https://github.com/julienc91))
 
 ## [v2.8.7](https://github.com/apertureless/vue-chartjs/tree/v2.8.7) (2017-09-16)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.6...v2.8.7)
 
 **Closed issues:**
@@ -364,9 +320,11 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - TypeError: Cannot convert undefined or null to object [\#193](https://github.com/apertureless/vue-chartjs/issues/193)
 
 ## [v2.8.6](https://github.com/apertureless/vue-chartjs/tree/v2.8.6) (2017-09-12)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.5...v2.8.6)
 
 ## [v2.8.5](https://github.com/apertureless/vue-chartjs/tree/v2.8.5) (2017-09-12)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.4...v2.8.5)
 
 **Closed issues:**
@@ -374,6 +332,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Chart error since the addition of deepmerge in build 2.8.4 [\#192](https://github.com/apertureless/vue-chartjs/issues/192)
 
 ## [v2.8.4](https://github.com/apertureless/vue-chartjs/tree/v2.8.4) (2017-09-08)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.3...v2.8.4)
 
 **Closed issues:**
@@ -388,6 +347,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Replace Object.assign with deepmerge [\#191](https://github.com/apertureless/vue-chartjs/pull/191) ([apertureless](https://github.com/apertureless))
 
 ## [v2.8.3](https://github.com/apertureless/vue-chartjs/tree/v2.8.3) (2017-09-06)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.2...v2.8.3)
 
 **Closed issues:**
@@ -396,7 +356,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Access canvas object from parents [\#184](https://github.com/apertureless/vue-chartjs/issues/184)
 - Issue with DonutChart in Safari [\#183](https://github.com/apertureless/vue-chartjs/issues/183)
 - Responsive Width, Fixed Height [\#180](https://github.com/apertureless/vue-chartjs/issues/180)
-- Entire Lodash Library Is Loaded!! 200kb chunk!  [\#179](https://github.com/apertureless/vue-chartjs/issues/179)
+- Entire Lodash Library Is Loaded!! 200kb chunk! [\#179](https://github.com/apertureless/vue-chartjs/issues/179)
 - height changed unexpectedly after re-rendering [\#178](https://github.com/apertureless/vue-chartjs/issues/178)
 - Default height no longer working in 2.8 [\#176](https://github.com/apertureless/vue-chartjs/issues/176)
 - how to get click on point in bar chart? [\#175](https://github.com/apertureless/vue-chartjs/issues/175)
@@ -412,6 +372,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - remvove lodash merge [\#186](https://github.com/apertureless/vue-chartjs/pull/186) ([apertureless](https://github.com/apertureless))
 
 ## [v2.8.2](https://github.com/apertureless/vue-chartjs/tree/v2.8.2) (2017-08-12)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.1...v2.8.2)
 
 **Closed issues:**
@@ -425,6 +386,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Update README.md [\#165](https://github.com/apertureless/vue-chartjs/pull/165) ([mikeybeck](https://github.com/mikeybeck))
 
 ## [v2.8.1](https://github.com/apertureless/vue-chartjs/tree/v2.8.1) (2017-08-05)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.8.0...v2.8.1)
 
 **Merged pull requests:**
@@ -432,6 +394,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Add Russian documentation [\#163](https://github.com/apertureless/vue-chartjs/pull/163) ([dood-](https://github.com/dood-))
 
 ## [v2.8.0](https://github.com/apertureless/vue-chartjs/tree/v2.8.0) (2017-08-04)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v1.2.0...v2.8.0)
 
 **Closed issues:**
@@ -449,6 +412,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Add Chinese simplified docs support. [\#159](https://github.com/apertureless/vue-chartjs/pull/159) ([Mooooooon](https://github.com/Mooooooon))
 
 ## [v1.2.0](https://github.com/apertureless/vue-chartjs/tree/v1.2.0) (2017-07-25)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.7.2...v1.2.0)
 
 **Closed issues:**
@@ -460,6 +424,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Before destroy fix [\#152](https://github.com/apertureless/vue-chartjs/pull/152) ([DenisLapi](https://github.com/DenisLapi))
 
 ## [v2.7.2](https://github.com/apertureless/vue-chartjs/tree/v2.7.2) (2017-07-22)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.7.1...v2.7.2)
 
 **Closed issues:**
@@ -476,9 +441,10 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 
 - ⬆️ Update dependency vue to 2.4.2 [\#154](https://github.com/apertureless/vue-chartjs/pull/154) ([apertureless](https://github.com/apertureless))
 - Remove useless labels [\#153](https://github.com/apertureless/vue-chartjs/pull/153) ([clarkdo](https://github.com/clarkdo))
-- :pencil2: Remove generateLegend\(\)  from initialization codes [\#145](https://github.com/apertureless/vue-chartjs/pull/145) ([k-rumi](https://github.com/k-rumi))
+- :pencil2: Remove generateLegend\(\) from initialization codes [\#145](https://github.com/apertureless/vue-chartjs/pull/145) ([k-rumi](https://github.com/k-rumi))
 
 ## [v2.7.1](https://github.com/apertureless/vue-chartjs/tree/v2.7.1) (2017-07-05)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.7.0...v2.7.1)
 
 **Closed issues:**
@@ -490,6 +456,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Fix links to images in translated documents [\#141](https://github.com/apertureless/vue-chartjs/pull/141) ([k-rumi](https://github.com/k-rumi))
 
 ## [v2.7.0](https://github.com/apertureless/vue-chartjs/tree/v2.7.0) (2017-07-04)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.5...v2.7.0)
 
 **Closed issues:**
@@ -501,7 +468,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Ticks not working with reactive props [\#127](https://github.com/apertureless/vue-chartjs/issues/127)
 - Error in callback for watcher "chartData": "TypeError: Cannot read property 'data' of undefined" [\#126](https://github.com/apertureless/vue-chartjs/issues/126)
 - Passing the data from vue to chartjs [\#125](https://github.com/apertureless/vue-chartjs/issues/125)
-- Combination of Bar and Line Chart  [\#123](https://github.com/apertureless/vue-chartjs/issues/123)
+- Combination of Bar and Line Chart [\#123](https://github.com/apertureless/vue-chartjs/issues/123)
 - Reactive data example not working [\#122](https://github.com/apertureless/vue-chartjs/issues/122)
 - vue-chartjs height was 0 when i set v-show [\#120](https://github.com/apertureless/vue-chartjs/issues/120)
 - Bar chart, barPercentage in X axis [\#119](https://github.com/apertureless/vue-chartjs/issues/119)
@@ -519,9 +486,11 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Update README [\#121](https://github.com/apertureless/vue-chartjs/pull/121) ([stoykostanchev](https://github.com/stoykostanchev))
 
 ## [v2.6.5](https://github.com/apertureless/vue-chartjs/tree/v2.6.5) (2017-06-10)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.4...v2.6.5)
 
 ## [v2.6.4](https://github.com/apertureless/vue-chartjs/tree/v2.6.4) (2017-06-04)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.3...v2.6.4)
 
 **Closed issues:**
@@ -542,6 +511,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Fix reactive mixins animation re-rendering issue. [\#109](https://github.com/apertureless/vue-chartjs/pull/109) ([MuseofMoose](https://github.com/MuseofMoose))
 
 ## [v2.6.3](https://github.com/apertureless/vue-chartjs/tree/v2.6.3) (2017-05-14)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.2...v2.6.3)
 
 **Closed issues:**
@@ -562,6 +532,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - add CDNJS version badge in README.md [\#100](https://github.com/apertureless/vue-chartjs/pull/100) ([extend1994](https://github.com/extend1994))
 
 ## [v2.6.2](https://github.com/apertureless/vue-chartjs/tree/v2.6.2) (2017-04-29)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.1...v2.6.2)
 
 **Merged pull requests:**
@@ -569,6 +540,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - ⬆️ Update dev dependencies [\#96](https://github.com/apertureless/vue-chartjs/pull/96) ([apertureless](https://github.com/apertureless))
 
 ## [v2.6.1](https://github.com/apertureless/vue-chartjs/tree/v2.6.1) (2017-04-21)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.0...v2.6.1)
 
 **Closed issues:**
@@ -580,6 +552,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Unable to add to material-vue layout [\#87](https://github.com/apertureless/vue-chartjs/issues/87)
 
 ## [v2.6.0](https://github.com/apertureless/vue-chartjs/tree/v2.6.0) (2017-04-09)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.6.0-rc1...v2.6.0)
 
 **Closed issues:**
@@ -589,6 +562,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Adding annotation plugin functionality [\#86](https://github.com/apertureless/vue-chartjs/issues/86)
 
 ## [v2.6.0-rc1](https://github.com/apertureless/vue-chartjs/tree/v2.6.0-rc1) (2017-04-05)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.6...v2.6.0-rc1)
 
 **Closed issues:**
@@ -600,6 +574,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Update release build to not include externals. [\#84](https://github.com/apertureless/vue-chartjs/pull/84) ([gcoguiec](https://github.com/gcoguiec))
 
 ## [v2.5.6](https://github.com/apertureless/vue-chartjs/tree/v2.5.6) (2017-03-29)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.5...v2.5.6)
 
 **Closed issues:**
@@ -618,18 +593,20 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Styling componement's surrounding \<div\> [\#70](https://github.com/apertureless/vue-chartjs/issues/70)
 
 ## [v2.5.5](https://github.com/apertureless/vue-chartjs/tree/v2.5.5) (2017-03-24)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.4...v2.5.5)
 
 **Closed issues:**
 
 - Access chartjs methods [\#71](https://github.com/apertureless/vue-chartjs/issues/71)
-- Pass Reactive data into Scatterplot  [\#69](https://github.com/apertureless/vue-chartjs/issues/69)
+- Pass Reactive data into Scatterplot [\#69](https://github.com/apertureless/vue-chartjs/issues/69)
 
 **Merged pull requests:**
 
 - Removed -s flag from yarn command in docs [\#73](https://github.com/apertureless/vue-chartjs/pull/73) ([mika76](https://github.com/mika76))
 
 ## [v2.5.4](https://github.com/apertureless/vue-chartjs/tree/v2.5.4) (2017-03-19)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.3...v2.5.4)
 
 **Closed issues:**
@@ -644,6 +621,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Update dependencies to enable Greenkeeper 🌴 [\#65](https://github.com/apertureless/vue-chartjs/pull/65) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
 
 ## [v2.5.3](https://github.com/apertureless/vue-chartjs/tree/v2.5.3) (2017-03-17)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.2...v2.5.3)
 
 **Closed issues:**
@@ -651,6 +629,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Cannot modify styling using options [\#60](https://github.com/apertureless/vue-chartjs/issues/60)
 
 ## [v2.5.2](https://github.com/apertureless/vue-chartjs/tree/v2.5.2) (2017-03-14)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.1...v2.5.2)
 
 **Closed issues:**
@@ -665,6 +644,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Fix typo for legacy tag [\#61](https://github.com/apertureless/vue-chartjs/pull/61) ([kylestev](https://github.com/kylestev))
 
 ## [v2.5.1](https://github.com/apertureless/vue-chartjs/tree/v2.5.1) (2017-03-11)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.5.0...v2.5.1)
 
 **Closed issues:**
@@ -674,22 +654,25 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Mixins don't seem to trigger a refresh of the chart [\#44](https://github.com/apertureless/vue-chartjs/issues/44)
 
 ## [v2.5.0](https://github.com/apertureless/vue-chartjs/tree/v2.5.0) (2017-03-08)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.4.1...v2.5.0)
 
 **Closed issues:**
 
 - UglifyJs is not happy with versions after 2.3.8 [\#54](https://github.com/apertureless/vue-chartjs/issues/54)
-- Why "main"  in Package.json is "src/index.js" and not "dist/vue-chartjs.js" [\#53](https://github.com/apertureless/vue-chartjs/issues/53)
-- Adding static data and dynamic data at the same time.  [\#52](https://github.com/apertureless/vue-chartjs/issues/52)
+- Why "main" in Package.json is "src/index.js" and not "dist/vue-chartjs.js" [\#53](https://github.com/apertureless/vue-chartjs/issues/53)
+- Adding static data and dynamic data at the same time. [\#52](https://github.com/apertureless/vue-chartjs/issues/52)
 
 **Merged pull requests:**
 
 - separate HorizontalBar component added [\#56](https://github.com/apertureless/vue-chartjs/pull/56) ([imbashamba](https://github.com/imbashamba))
 
 ## [v2.4.1](https://github.com/apertureless/vue-chartjs/tree/v2.4.1) (2017-03-04)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.4.0...v2.4.1)
 
 ## [v2.4.0](https://github.com/apertureless/vue-chartjs/tree/v2.4.0) (2017-03-03)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.9...v2.4.0)
 
 **Merged pull requests:**
@@ -697,6 +680,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Added browserify support [\#51](https://github.com/apertureless/vue-chartjs/pull/51) ([craigh411](https://github.com/craigh411))
 
 ## [v2.3.9](https://github.com/apertureless/vue-chartjs/tree/v2.3.9) (2017-03-01)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.8...v2.3.9)
 
 **Closed issues:**
@@ -709,6 +693,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - 🐛 Fix \#49 [\#50](https://github.com/apertureless/vue-chartjs/pull/50) ([apertureless](https://github.com/apertureless))
 
 ## [v2.3.8](https://github.com/apertureless/vue-chartjs/tree/v2.3.8) (2017-03-01)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.6...v2.3.8)
 
 **Closed issues:**
@@ -722,6 +707,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - 📝 Update github issue template [\#45](https://github.com/apertureless/vue-chartjs/pull/45) ([apertureless](https://github.com/apertureless))
 
 ## [v2.3.6](https://github.com/apertureless/vue-chartjs/tree/v2.3.6) (2017-02-22)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.5...v2.3.6)
 
 **Closed issues:**
@@ -737,6 +723,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - 🐛 Fix reactiveMixins issue \#42 [\#43](https://github.com/apertureless/vue-chartjs/pull/43) ([apertureless](https://github.com/apertureless))
 
 ## [v2.3.5](https://github.com/apertureless/vue-chartjs/tree/v2.3.5) (2017-02-14)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.4...v2.3.5)
 
 **Closed issues:**
@@ -749,6 +736,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - 🔨 Change reactiveMixins to fix \#35 [\#36](https://github.com/apertureless/vue-chartjs/pull/36) ([apertureless](https://github.com/apertureless))
 
 ## [v2.3.4](https://github.com/apertureless/vue-chartjs/tree/v2.3.4) (2017-02-11)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.3...v2.3.4)
 
 **Closed issues:**
@@ -757,19 +745,21 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Compatibility with Vue 2.1.10 [\#30](https://github.com/apertureless/vue-chartjs/issues/30)
 
 ## [v2.3.3](https://github.com/apertureless/vue-chartjs/tree/v2.3.3) (2017-01-19)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.2...v2.3.3)
 
 **Closed issues:**
 
 - How to create mixed chart types [\#29](https://github.com/apertureless/vue-chartjs/issues/29)
 - hello a q about reactivity [\#28](https://github.com/apertureless/vue-chartjs/issues/28)
-- chart do not render after build  [\#26](https://github.com/apertureless/vue-chartjs/issues/26)
+- chart do not render after build [\#26](https://github.com/apertureless/vue-chartjs/issues/26)
 
 **Merged pull requests:**
 
 - 🐛 Fix \#30 type error [\#31](https://github.com/apertureless/vue-chartjs/pull/31) ([apertureless](https://github.com/apertureless))
 
 ## [v2.3.2](https://github.com/apertureless/vue-chartjs/tree/v2.3.2) (2016-12-23)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.1...v2.3.2)
 
 **Closed issues:**
@@ -782,6 +772,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - 📝 Update README [\#25](https://github.com/apertureless/vue-chartjs/pull/25) ([apertureless](https://github.com/apertureless))
 
 ## [v2.3.1](https://github.com/apertureless/vue-chartjs/tree/v2.3.1) (2016-12-20)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.3.0...v2.3.1)
 
 **Closed issues:**
@@ -795,13 +786,15 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Feature/runtimebuild \#22 [\#23](https://github.com/apertureless/vue-chartjs/pull/23) ([apertureless](https://github.com/apertureless))
 
 ## [v2.3.0](https://github.com/apertureless/vue-chartjs/tree/v2.3.0) (2016-12-17)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.2.1...v2.3.0)
 
 **Closed issues:**
 
-- Uncaught TypeError: \_c is not a function  [\#20](https://github.com/apertureless/vue-chartjs/issues/20)
+- Uncaught TypeError: \_c is not a function [\#20](https://github.com/apertureless/vue-chartjs/issues/20)
 
 ## [v2.2.1](https://github.com/apertureless/vue-chartjs/tree/v2.2.1) (2016-12-07)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.2.0...v2.2.1)
 
 **Closed issues:**
@@ -814,6 +807,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Update README.md [\#16](https://github.com/apertureless/vue-chartjs/pull/16) ([Ag47](https://github.com/Ag47))
 
 ## [v2.2.0](https://github.com/apertureless/vue-chartjs/tree/v2.2.0) (2016-10-24)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v2.1.1...v2.2.0)
 
 **Closed issues:**
@@ -828,12 +822,15 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - WIP Feature/reactive chart data \#11 [\#11](https://github.com/apertureless/vue-chartjs/pull/11) ([apertureless](https://github.com/apertureless))
 
 ## [v2.1.1](https://github.com/apertureless/vue-chartjs/tree/v2.1.1) (2016-10-02)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v.2.1.0...v2.1.1)
 
 ## [v.2.1.0](https://github.com/apertureless/vue-chartjs/tree/v.2.1.0) (2016-09-23)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/v1.1.3...v.2.1.0)
 
 ## [v1.1.3](https://github.com/apertureless/vue-chartjs/tree/v1.1.3) (2016-09-08)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.2...v1.1.3)
 
 **Closed issues:**
@@ -846,6 +843,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Added bubble chart type [\#9](https://github.com/apertureless/vue-chartjs/pull/9) ([jcalonso](https://github.com/jcalonso))
 
 ## [1.1.2](https://github.com/apertureless/vue-chartjs/tree/1.1.2) (2016-09-07)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.1...1.1.2)
 
 **Closed issues:**
@@ -853,9 +851,11 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Change name of the render method to ensure compatiblity with Vue 2.0 [\#4](https://github.com/apertureless/vue-chartjs/issues/4)
 
 ## [1.1.1](https://github.com/apertureless/vue-chartjs/tree/1.1.1) (2016-08-23)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.1.0...1.1.1)
 
 ## [1.1.0](https://github.com/apertureless/vue-chartjs/tree/1.1.0) (2016-08-21)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.0.3...1.1.0)
 
 **Closed issues:**
@@ -867,6 +867,7 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 - Feature/merge options \#5 [\#6](https://github.com/apertureless/vue-chartjs/pull/6) ([apertureless](https://github.com/apertureless))
 
 ## [1.0.3](https://github.com/apertureless/vue-chartjs/tree/1.0.3) (2016-08-20)
+
 [Full Changelog](https://github.com/apertureless/vue-chartjs/compare/1.0.2...1.0.3)
 
 **Closed issues:**
@@ -879,5 +880,4 @@ prop was renamed to `options`, `generateChart` was renamed to `createTypedChart`
 
 ## [1.0.2](https://github.com/apertureless/vue-chartjs/tree/1.0.2) (2016-07-27)
 
-
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* _This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)_
