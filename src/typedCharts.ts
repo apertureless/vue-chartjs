@@ -55,7 +55,7 @@ export function createTypedChart<
   }) as any
 }
 
-interface ExtendedDataPoint {
+export interface ExtendedDataPoint {
   [key: string]: string | number | null | ExtendedDataPoint
 }
 
