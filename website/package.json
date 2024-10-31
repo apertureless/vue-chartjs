@@ -2,11 +2,12 @@
   "name": "website",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev src",
     "build": "vitepress build src"
   },
   "devDependencies": {
-    "vitepress": "^0.22.3"
+    "vitepress": "^1.4.3"
   }
 }

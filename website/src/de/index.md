@@ -2,19 +2,19 @@
 layout: home
 hero:
   name: 📈 vue-chartjs
-  tagline: ⚡ Easy and beautiful charts with Chart.js and Vue.js
+  tagline: ⚡ Einfache und schöne Diagramme mit Chart.js und Vue.js
   actions:
     - theme: brand
       text: Get Started →
       link: /guide/
 features:
 - icon: 🙌
-  title: Easy
-  details: Easy for both beginners and pros
+  title: Einfach
+  details: Einfach für beginner sowie fortgeschrittene
 - icon: 💪
-  title: Extendable
+  title: Erweiterbar
   details: Simple to use, easy to extend
 - icon: 💯
-  title: Powerful
+  title: Mächtig
   details: With the full power of chart.js 💯
 ---
