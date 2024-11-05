@@ -1,4 +1,4 @@
-# Examples
+# Beispiele
 
 ## Vue 3 charts
 
