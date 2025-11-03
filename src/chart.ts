@@ -124,8 +124,8 @@ export const Chart = defineComponent({
         'canvas',
         {
           role: 'img',
-          ariaLabel: props.ariaLabel,
-          ariaDescribedby: props.ariaDescribedby,
+          'aria-label': props.ariaLabel,
+          'aria-describedby': props.ariaDescribedby,
           ref: canvasRef
         },
         [h('p', {}, [slots.default ? slots.default() : ''])]
