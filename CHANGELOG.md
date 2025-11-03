@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.3](https://github.com/apertureless/vue-chartjs/compare/v5.3.2...v5.3.3) (2025-11-03)
+
+
+### Bug Fixes
+
+* fix aria labels ([8ed95f2](https://github.com/apertureless/vue-chartjs/commit/8ed95f26f415785e919ae8ff0b6e15432cfd6bab))
+* fix website ci ([#1108](https://github.com/apertureless/vue-chartjs/issues/1108)) ([72ac2cd](https://github.com/apertureless/vue-chartjs/commit/72ac2cd94d301fe7f38612457c87958b5b88e0a4))
+
 ### [5.3.2](https://github.com/apertureless/vue-chartjs/compare/v5.3.1...v5.3.2) (2024-10-31)
 
 ### [5.3.1](https://github.com/apertureless/vue-chartjs/compare/v5.3.0...v5.3.1) (2024-04-09)
