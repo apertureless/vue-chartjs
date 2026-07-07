@@ -16,9 +16,9 @@ Some basic props are defined in the components provided by `vue-chartjs`.
 
 The rest of the props will fall through to the canvas element.
 
-## Global Methods
+## Globale Methoden
 
-Global Methods need to be imported.
+Globale methoden müssen importiert werden
 
 ### createTypedChart
 
