@@ -1,4 +1,4 @@
-import { defineComponent, shallowRef, h } from 'vue'
+import { defineComponent, shallowRef, h, watch } from 'vue'
 import type { ChartType, ChartComponentLike, DefaultDataPoint } from 'chart.js'
 import {
   Chart as ChartJS,
@@ -30,12 +30,22 @@ export function createTypedChart<
   return defineComponent({
     props: CommonProps,
     setup(props, { expose }) {
-      const ref = shallowRef<ChartJS | null>(null)
-      const reforwardRef = (chartRef: ChartComponentRef) => {
-        ref.value = chartRef?.chart
-      }
+      const chart = shallowRef<ChartJS | null>(null)
+      const chartComponentRef = shallowRef<ChartComponentRef | null>(null)
 
-      expose({ chart: ref })
+      watch(
+        () => chartComponentRef.value?.chart ?? null,
+        nextChart => {
+          chart.value = nextChart
+        },
+        { flush: 'sync' }
+      )
+
+      expose({ chart })
+
+      const reforwardRef = (instance: ChartComponentRef | null) => {
+        chartComponentRef.value = instance
+      }
 
       return () => {
         return h(
