@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.4](https://github.com/apertureless/vue-chartjs/compare/v5.3.3...v5.3.4) (2026-07-07)
+
+
+### Bug Fixes
+
+* Chart instance ref remains null with Vue 3.5.39 ([#1122](https://github.com/apertureless/vue-chartjs/issues/1122)) ([#1123](https://github.com/apertureless/vue-chartjs/issues/1123)) ([5abe08c](https://github.com/apertureless/vue-chartjs/commit/5abe08c0ee2e6384eb8ca84a73a51f9da5dff897))
+
 ### [5.3.3](https://github.com/apertureless/vue-chartjs/compare/v5.3.2...v5.3.3) (2025-11-03)
 
 
