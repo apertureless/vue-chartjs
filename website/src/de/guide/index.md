@@ -1,10 +1,10 @@
 # Getting Started
 
-**vue-chartjs** is a wrapper for [Chart.js](https://github.com/chartjs/Chart.js) in Vue. You can easily create reuseable chart components.
+**vue-chartjs** ist ein wrapper für [Chart.js](https://github.com/chartjs/Chart.js) in Vue. Man kann einfach wiederverwendbare Diagram Komponenten erstellen.
 
 Supports Chart.js v4.
 
-## Introduction
+## Einleitung
 
 `vue-chartjs` lets you use Chart.js without much hassle inside Vue. It's perfect for people who need simple charts up and running as fast as possible.
 
@@ -32,7 +32,7 @@ Every chart type that is available in Chart.js is exported as a named component 
 
 The idea behind vue-chartjs is to provide easy-to-use components, with maximal flexibility and extensibility.
 
-## Creating your first Chart
+## Erstelle das erste Diagram
 
 First, you need to import the base chart.
 
