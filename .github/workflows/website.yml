@@ -19,10 +19,13 @@ jobs:
         with:
           node-version: 26
           cache: 'pnpm'
+          cache-dependency-path: |
+            pnpm-lock.yaml
+            website/pnpm-lock.yaml
       - name: Install dependencies
         run: pnpm install
       - name: Install website dependencies
-        run: pnpm install
+        run: pnpm install --ignore-workspace
         working-directory: ./website
       - name: Build website
         run: pnpm build
