@@ -5,18 +5,22 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: Running tests
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22, 24, 26]
+    name: Running tests (Node ${{ matrix.node-version }})
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v7
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v6
         with:
           version: 9
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
