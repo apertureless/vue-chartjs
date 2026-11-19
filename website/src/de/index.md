@@ -13,8 +13,8 @@ features:
   details: Einfach für beginner sowie fortgeschrittene
 - icon: 💪
   title: Erweiterbar
-  details: Simple to use, easy to extend
+  details: Einfach zu benutzen und zu erweitern
 - icon: 💯
   title: Mächtig
-  details: With the full power of chart.js 💯
+  details: Mit der ganzen Kraft von chart.js 💯
 ---
