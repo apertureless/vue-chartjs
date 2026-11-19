@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.6](https://github.com/apertureless/vue-chartjs/compare/v5.3.5...v5.3.6) (2026-11-19)
+
+
+### Bug Fixes
+
+* **1117:** fix reactivity system to work with nested items ([f04fd33](https://github.com/apertureless/vue-chartjs/commit/f04fd33d838b6635081f3d7ff01eb57ac4dc5288))
+
 ### [5.3.5](https://github.com/apertureless/vue-chartjs/compare/v5.3.4...v5.3.5) (2026-11-19)
 
 
