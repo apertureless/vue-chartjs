@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.5](https://github.com/apertureless/vue-chartjs/compare/v5.3.4...v5.3.5) (2026-11-19)
+
+
+### Bug Fixes
+
+* fix skip queued chart updates after unmount ([#1126](https://github.com/apertureless/vue-chartjs/issues/1126)) ([29c3c83](https://github.com/apertureless/vue-chartjs/commit/29c3c83a7f4f429f34bbd1d24e2bacc7b2854d24))
+* update README license links ([#1125](https://github.com/apertureless/vue-chartjs/issues/1125)) ([c816811](https://github.com/apertureless/vue-chartjs/commit/c81681145fc1493924d8de4ff957c5a0d5dd8eef))
+
 ### [5.3.4](https://github.com/apertureless/vue-chartjs/compare/v5.3.3...v5.3.4) (2026-07-07)
 
 
