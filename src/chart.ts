@@ -112,7 +112,9 @@ export const Chart = defineComponent({
 
         if (shouldUpdate) {
           nextTick(() => {
-            update(chart)
+            if (chartRef.value === chart) {
+              update(chart)
+            }
           })
         }
       },
