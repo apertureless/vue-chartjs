@@ -71,10 +71,7 @@ export const Chart = defineComponent({
 
     watch(
       [() => props.options, () => props.data],
-      (
-        [nextOptionsProxy, nextDataProxy],
-        [prevOptionsProxy, prevDataProxy]
-      ) => {
+      ([nextOptionsProxy, nextDataProxy], [prevOptionsProxy]) => {
         const chart = toRaw(chartRef.value)
 
         if (!chart) {
@@ -94,20 +91,15 @@ export const Chart = defineComponent({
         }
 
         if (nextDataProxy) {
-          const nextLabels = toRawIfProxy(nextDataProxy.labels)
-          const prevLabels = toRawIfProxy(prevDataProxy.labels)
-          const nextDatasets = toRawIfProxy(nextDataProxy.datasets)
-          const prevDatasets = toRawIfProxy(prevDataProxy.datasets)
-
-          if (nextLabels !== prevLabels) {
-            setLabels(chart.config.data, nextLabels)
-            shouldUpdate = true
-          }
-
-          if (nextDatasets && nextDatasets !== prevDatasets) {
-            setDatasets(chart.config.data, nextDatasets, props.datasetIdKey)
-            shouldUpdate = true
-          }
+          // In-place mutations keep the same labels/datasets references, so
+          // identity checks miss nested changes. Always copy into Chart.js.
+          setLabels(chart.config.data, toRawIfProxy(nextDataProxy.labels))
+          setDatasets(
+            chart.config.data,
+            toRawIfProxy(nextDataProxy.datasets),
+            props.datasetIdKey
+          )
+          shouldUpdate = true
         }
 
         if (shouldUpdate) {

@@ -19,6 +19,39 @@ export function toRawIfProxy<T>(obj: T) {
   return isProxy(obj) ? toRaw(obj) : obj
 }
 
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  if (value === null || typeof value !== 'object') {
+    return false
+  }
+
+  const proto = Object.getPrototypeOf(value)
+  return proto === Object.prototype || proto === null
+}
+
+/**
+ * Clone chart data into plain objects/arrays so Chart.js never instruments
+ * Vue reactive collections (that pairing recurses in `listenArrayEvents`).
+ */
+function cloneForChart<T>(value: T): T {
+  const raw = toRawIfProxy(value)
+
+  if (Array.isArray(raw)) {
+    return raw.map(item => cloneForChart(item)) as T
+  }
+
+  if (isPlainObject(raw)) {
+    const result: Record<string, unknown> = {}
+
+    for (const key of Object.keys(raw)) {
+      result[key] = cloneForChart(raw[key])
+    }
+
+    return result as T
+  }
+
+  return raw
+}
+
 export function cloneProxy<T extends object>(obj: T, src = obj) {
   return isProxy(src) ? new Proxy(obj, {}) : obj
 }
@@ -43,7 +76,7 @@ export function setLabels<
   currentData: ChartData<TType, TData, TLabel>,
   nextLabels: TLabel[] | undefined
 ) {
-  currentData.labels = nextLabels
+  currentData.labels = cloneForChart(nextLabels)
 }
 
 export function setDatasets<
@@ -59,24 +92,26 @@ export function setDatasets<
 
   currentData.datasets = nextDatasets.map(
     (nextDataset: Record<string, unknown>) => {
+      const clonedNext = cloneForChart(nextDataset)
+
       // given the new set, find it's current match
       const currentDataset = currentData.datasets.find(
         (dataset: Record<string, unknown>) =>
-          dataset[datasetIdKey] === nextDataset[datasetIdKey]
+          dataset[datasetIdKey] === clonedNext[datasetIdKey]
       )
 
       // There is no original to update, so simply add new one
       if (
         !currentDataset ||
-        !nextDataset.data ||
+        !clonedNext.data ||
         addedDatasets.includes(currentDataset)
       ) {
-        return { ...nextDataset } as ChartDataset<TType, TData>
+        return { ...clonedNext } as ChartDataset<TType, TData>
       }
 
       addedDatasets.push(currentDataset)
 
-      Object.assign(currentDataset, nextDataset)
+      Object.assign(currentDataset, clonedNext)
 
       return currentDataset
     }
