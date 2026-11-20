@@ -1,6 +1,14 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+### [5.3.7](https://github.com/apertureless/vue-chartjs/compare/v5.3.6...v5.3.7) (2026-11-20)
+
+
+### Bug Fixes
+
+* fix build ([90904e6](https://github.com/apertureless/vue-chartjs/commit/90904e6dd1a889b6428ebaf47fbb249e04047421))
+* remove standard-version from dependencies ([2c3cb5d](https://github.com/apertureless/vue-chartjs/commit/2c3cb5dc23a85a21e7d87298c1f49a721f5d8091))
 
 ### [5.3.6](https://github.com/apertureless/vue-chartjs/compare/v5.3.5...v5.3.6) (2026-11-19)
 
