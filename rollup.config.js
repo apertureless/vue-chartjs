@@ -1,6 +1,9 @@
+import { createRequire } from 'node:module'
 import { swc } from 'rollup-plugin-swc3'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
-import pkg from './package.json' assert { type: 'json' }
+
+const require = createRequire(import.meta.url)
+const pkg = require('./package.json')
 
 const extensions = ['.js', '.ts']
 const external = _ => /node_modules/.test(_) && !/@swc\/helpers/.test(_)

@@ -68,7 +68,7 @@
     "test": "pnpm lint && pnpm test:unit",
     "format": "prettier --write src test sandboxes stories",
     "commit": "cz",
-    "bumpVersion": "standard-version",
+    "bumpVersion": "commit-and-tag-version",
     "createGithubRelease": "simple-github-release",
     "release": "pnpm bumpVersion && git push origin main --tags && pnpm createGithubRelease",
     "updateGitHooks": "simple-git-hooks"
@@ -90,7 +90,7 @@
     "@storybook/client-api": "^6.5.16",
     "@storybook/client-logger": "^6.5.16",
     "@storybook/vue3": "^6.5.16",
-    "@swc/core": "^1.3.23",
+    "@swc/core": "^1.7.42",
     "@swc/helpers": "^0.5.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitest/coverage-c8": "^0.31.0",
