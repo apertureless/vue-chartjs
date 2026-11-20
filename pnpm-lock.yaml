@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      standard-version:
-        specifier: ^9.5.0
-        version: 9.5.0
     devDependencies:
       '@commitlint/cli':
         specifier: ^18.0.0
@@ -150,6 +146,9 @@ importers:
       size-limit:
         specifier: ^11.0.0
         version: 11.0.1
+      standard-version:
+        specifier: ^9.5.0
+        version: 9.5.0
       tsd:
         specifier: ^0.25.0
         version: 0.25.0
