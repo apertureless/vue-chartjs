@@ -78,8 +78,8 @@
     "vue": "^3.0.0-0 || ^2.7.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.0.0",
-    "@commitlint/config-conventional": "^18.0.0",
+    "@commitlint/cli": "^21.0.0",
+    "@commitlint/config-conventional": "^21.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@size-limit/preset-big-lib": "^11.0.0",
     "@storybook/addon-actions": "^6.5.16",
@@ -99,7 +99,7 @@
     "browserslist": "^4.19.1",
     "chart.js": "^4.4.1",
     "clean-publish": "^7.0.0",
-    "commit-and-tag-version": "^9.5.0",
+    "commit-and-tag-version": "^13.0.0",
     "commitizen": "^4.2.4",
     "cross-env": "^7.0.0",
     "cz-conventional-changelog": "3.3.0",
